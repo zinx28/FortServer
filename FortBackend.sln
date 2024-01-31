@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FortBackend", "FortBackend\FortBackend.csproj", "{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		HTTPS|Any CPU = HTTPS|Any CPU
+		HTTPS|x64 = HTTPS|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Debug|x64.ActiveCfg = Debug|x64
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Debug|x64.Build.0 = Debug|x64
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.HTTPS|Any CPU.ActiveCfg = HTTPS|Any CPU
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.HTTPS|Any CPU.Build.0 = HTTPS|Any CPU
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.HTTPS|x64.ActiveCfg = HTTPS|x64
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.HTTPS|x64.Build.0 = HTTPS|x64
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Release|x64.ActiveCfg = Release|x64
+		{853C2DE8-4705-4070-94B5-0BDAD9FD78E0}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A10DD76-049B-4961-8B1E-67E08D8A87C4}
+	EndGlobalSection
+EndGlobal

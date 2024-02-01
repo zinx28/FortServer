@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="src\App\Utilities\MongoDB\" />
     <Folder Include="src\Resources\Certificates\" />
   </ItemGroup>
 

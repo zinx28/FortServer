@@ -1,4 +1,6 @@
 {
-  "//":  "FortBackend Config",
-  "BackendPort": 1111
+  "//": "FortBackend Config",
+  "BackendPort": 1111,
+  "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
+  "MongoDBConnectionName": "FortBackend"
 }

@@ -9,12 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\App\Utilities\MongoDB\" />
     <Folder Include="src\Resources\Certificates\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	<PackageReference Include="MongoDB.Driver" Version="2.22.0" />
   </ItemGroup>
 
 </Project>

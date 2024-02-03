@@ -22,35 +22,40 @@ namespace FortBackend.src.App
                                                            
                                                            ");
 
-            Console.WriteLine("MARVELCO IS LOADING (marcellowmellow)");
+            Logger.Log("MARVELCO IS LOADING (marcellowmellow)");
+            Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
             var builder = WebApplication.CreateBuilder(args);
             var startup = new Startup(builder.Configuration);
-            startup.ConfigureServices(builder.Services);
+         
 
             var ReadConfig = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "config.json"));
             if (ReadConfig == null)
             {
-                Console.WriteLine("Returning... temp response");
+                Logger.Error("Couldn't find config");
                 throw new Exception("Couldn't find config");
             }
 
-            Config DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<Config>(ReadConfig);
-            if (DeserializeConfig == null)
+            Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<Config>(ReadConfig);
+            if (Saved.DeserializeConfig == null)
             {
-                Console.WriteLine("Returning... temp response");
+                Logger.Error("Couldn't deserialize config");
                 throw new Exception("Couldn't deserialize config");
+            }else
+            {
+                Logger.Log("Loaded Config");
             }
 
-            Console.WriteLine($"Built on {RuntimeInformation.OSArchitecture}-bit");
-            #if HTTPS
-            builder.WebHost.UseUrls($"https://0.0.0.0:{DeserializeConfig.BackendPort}");
+            startup.ConfigureServices(builder.Services);
+
+#if HTTPS
+            builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
-                    serverOptions.Listen(IPAddress.Any, DeserializeConfig.BackendPort, listenOptions =>
+                    serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.BackendPort, listenOptions =>
                     {
                         var certPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx");
                         if(!File.Exists(certPath)) {
-                            Console.WriteLine("Returning... temp response");
+                            Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
                         listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
@@ -58,8 +63,8 @@ namespace FortBackend.src.App
                         listenOptions.UseHttps(certificate);
                     });
                 });
-            #else
-            builder.WebHost.UseUrls($"http://0.0.0.0:{DeserializeConfig.BackendPort}");
+#else
+            builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
             #endif
 
 

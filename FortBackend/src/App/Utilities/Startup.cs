@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using FortBackend.src.App.Utilities.MongoDB;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+
 
 namespace FortBackend.src.App.Utilities
 {
@@ -23,6 +24,7 @@ namespace FortBackend.src.App.Utilities
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            MongoDBStart.Initialize(services, Configuration);
         }
     
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -34,7 +36,7 @@ namespace FortBackend.src.App.Utilities
 
             app.UseRouting();
 
-            Console.WriteLine("Loading all endpoints");
+            Logger.Log("Loading all endpoints");
 
             app.UseEndpoints(endpoints =>
             {
@@ -55,18 +57,18 @@ namespace FortBackend.src.App.Utilities
                         .Distinct();
 
 
-                        Console.WriteLine($"[{string.Join(",", HttpMethod)}]: /{route}");
+                        Logger.Log($"/{route}", string.Join(",", HttpMethod));
                     }
                 }
 
                 endpoints.MapControllers();
             });
 
-            Console.WriteLine("Done Loading");
+            Logger.Log("Done Loading");
 
             app.UseStatusCodePages(async (StatusCodeContext context) =>
             {
-                Console.WriteLine($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}");
+                Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}");
             });
         }
     }

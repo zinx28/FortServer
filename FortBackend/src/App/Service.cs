@@ -6,12 +6,12 @@ using System.Runtime.CompilerServices;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Routes;
 using System.Runtime.InteropServices;
-
+using FortBackend.src.App.Utilities.Discord;
 namespace FortBackend.src.App
 {
     public class Service
     {
-        public static void Intiliazation(string[] args)
+        public static async void Intiliazation(string[] args)
         {
             Console.WriteLine(@"  ______         _   ____             _                  _ 
  |  ____|       | | |  _ \           | |                | |
@@ -78,6 +78,7 @@ namespace FortBackend.src.App
 
             startup.Configure(app, app.Environment);
             //Setup.Initialize(app);
+            DiscordBot.Start(); // dont away... app.run does it for you
 
             app.Run();
 

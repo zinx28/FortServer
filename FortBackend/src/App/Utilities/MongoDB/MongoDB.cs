@@ -1,4 +1,6 @@
-﻿using FortBackend.src.App.Utilities.Saved;
+﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities.Saved;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 
@@ -7,6 +9,8 @@ namespace FortBackend.src.App.Utilities.MongoDB
 {
     public class MongoDBStart
     {
+        public static IMongoDatabase Database { get; private set; }
+
         public static void Initialize(IServiceCollection services, IConfiguration Configuration)
         {
             Logger.Log("Initializing MongoDB", "MongoDB");
@@ -14,8 +18,12 @@ namespace FortBackend.src.App.Utilities.MongoDB
             string connectionString = DeserializeConfig.MongoDBConnectionString;
             string connectionName = DeserializeConfig.MongoDBConnectionName;
 
+
             MongoClient MongoDBStartup = new MongoClient(connectionString);
-            IMongoDatabase database69 = MongoDBStartup.GetDatabase(connectionName);
+
+            IMongoDatabase database = MongoDBStartup.GetDatabase(connectionName);
+            Database = database;
+
             services.AddSingleton<IMongoClient>(new MongoClient(connectionString));
 
             services.AddScoped<IMongoDatabase>(serviceProvider =>
@@ -34,7 +42,7 @@ namespace FortBackend.src.App.Utilities.MongoDB
 
             Logger.Log("Attempting Blank Files", "MongoDB");
 
-            Logger.Log("Skipped Blank Files", "MongoDB");
+            CreateBlank.Module<User>(database);
 
             Logger.Log("MongoDB has fully loaded", "MongoDB");
         }

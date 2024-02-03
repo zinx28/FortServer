@@ -13,8 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Discord.Net" Version="3.13.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	<PackageReference Include="MongoDB.Driver" Version="2.22.0" />
+	<PackageReference Include="MongoDB.Driver" Version="2.23.1" />
   </ItemGroup>
 
 </Project>

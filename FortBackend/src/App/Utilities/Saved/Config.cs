@@ -21,6 +21,9 @@ namespace FortBackend.src.App.Utilities.Saved
         // MongoDBConnectionName by default set to FortBackend this just creates the database "FortBackend"
         public string MongoDBConnectionName { get; set; } = "FortBackend"; // 
 
+        public string DiscordToken { get; set; } = "";
+
+        public ulong ServerID { get; set; } = 0;
 
         // more stuff in the future when i add ofc
     }

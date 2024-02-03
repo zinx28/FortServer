@@ -4,5 +4,8 @@
   "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
   "MongoDBConnectionName": "FortBackend",
   "DiscordToken": "",
-  "ServerID": 0
+  "ServerID": 0,
+  "ApplicationClientID": "",
+  "ApplicationSecret": "",
+  "ApplicationURI": ""
 }

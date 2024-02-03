@@ -25,6 +25,10 @@ namespace FortBackend.src.App.Utilities.Saved
 
         public ulong ServerID { get; set; } = 0;
 
+        public string ApplicationClientID = "";
+        public string ApplicationSecret = "";
+        public string ApplicationURI = "";
+
         // more stuff in the future when i add ofc
     }
 }

@@ -2,6 +2,8 @@
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.Utilities.MongoDB.Module;
 
 namespace FortBackend.src.App.Routes.APIS.Development
 {
@@ -58,7 +60,27 @@ namespace FortBackend.src.App.Routes.APIS.Development
                     var id = responseData1.id;
                     var email = responseData1.email;
 
-                    // create acc? ig can't erlaly be bothered rn
+                    var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
+                    if (FindDiscordID != "Error")
+                    {
+                        // returns the users token or what not
+
+                        return Ok(new { test = "access" });
+                    }
+                    else
+                    {
+                        // create acc? ig can't erlaly be bothered rn
+                        var FindUserId = await Handlers.FindOne<User>("username", username);
+                        if (FindUserId != "Error")
+                        {
+                            // Create the account
+                            return Ok(new { test = "username is in use but lkets make you a acc" });
+                        }
+                        else
+                        {
+                            return Ok(new { test = "not a user!!!!" });
+                        }
+                    }
 
                     //https://discord.com/api/users/@me
                     Console.WriteLine(responseContent);
@@ -72,5 +94,28 @@ namespace FortBackend.src.App.Routes.APIS.Development
 
             return Ok(new { test = "ngl" });
         }
+
+        // This will be removed at some point this is just for me to test without discord...
+        [HttpGet("/devers/create")]
+        public async Task<IActionResult> CreateAccount()
+        {
+            var FormRequest = HttpContext.Request.Form;
+
+            var username = "";
+
+            if (FormRequest.TryGetValue("username", out var usernameL))
+            {
+                username = usernameL;
+            }
+
+            var FindAccountId = await Handlers.FindOne<User>("username", username);
+            if (FindAccountId == "Error")
+            {
+
+            }
+
+            return Ok(new { test = "iidrk" });
+        }
+
     }
 }

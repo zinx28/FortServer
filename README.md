@@ -1,6 +1,8 @@
-# FortBackend
+# FortBackend (Read me will be sh~~ for a bit)
 
-- Universal Backend
+- Universal Backend (aiming for season 3 - 15/?!?! but expand after hitting to a basic state)
+
+- STW is aimed at the very end and might never actually be implemented
 
 - Build on x64
 

@@ -11,5 +11,23 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+
+        [BsonElement("accountId")]
+        public string AccountId { get; set; }
+
+        [BsonElement("DiscordId")]
+        public string DiscordId { get; set; }
+
+        [BsonElement("accesstoken")]
+        [BsonIgnoreIfNull]
+        public string accesstoken { get; set; }
+
+        // This will be auto randomly generated when the user creates a account
+        [BsonElement("email")]
+        public string Email { get; set; }
+
+        [BsonElement("password")]
+        public string Password { get; set; }
+
     }
 }

@@ -23,6 +23,7 @@ namespace FortBackend.src.App.Utilities.MongoDB
 
             IMongoDatabase database = MongoDBStartup.GetDatabase(connectionName);
             Database = database;
+            Handlers.LaunchDataBase(database); // legit helps and cleans so much stuff up
 
             services.AddSingleton<IMongoClient>(new MongoClient(connectionString));
 

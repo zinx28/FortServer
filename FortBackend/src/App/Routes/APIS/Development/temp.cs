@@ -13,6 +13,7 @@ using System;
 using FortBackend.src.App.Utilities.Helpers;
 using MongoDB.Driver;
 using Discord;
+using Amazon.Runtime.Internal.Transform;
 
 namespace FortBackend.src.App.Routes.APIS.Development
 {
@@ -105,10 +106,11 @@ namespace FortBackend.src.App.Routes.APIS.Development
                         {
                             return Ok(new { test = "Server Sided Error" });
                         }
-
+                        Console.WriteLine(responseContent);
                         UserInfo responseData1 = JsonConvert.DeserializeObject<UserInfo>(responseContent);
 
                         var username = responseData1.username;
+                        var GlobalName = responseData1.global_name;
                         var id = responseData1.id;
                         var email = responseData1.email;
 
@@ -120,18 +122,60 @@ namespace FortBackend.src.App.Routes.APIS.Development
                         var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
                         if (FindDiscordID != "Error")
                         {
-                            // returns the users token or what not
+                            string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
 
-                            return Ok(new { test = "access" });
+                            var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", id, new Dictionary<string, object>()
+                            {
+                                { "accesstoken", NewAccessToken }
+                            });
+
+                            if(UpdateResponse != "Error")
+                            {
+                                return Ok(new { test = NewAccessToken });
+                            }else
+                            {
+                                return Ok(new { test = "error!! couldnt login" });
+                            }
                         }
                         else
                         {
-                            // create acc? ig can't erlaly be bothered rn
-                            var FindUserId = await Handlers.FindOne<User>("username", username);
+                            var FindUserId = await Handlers.FindOne<User>("username", GlobalName);
                             if (FindUserId != "Error")
                             {
-                                // Create the account
-                                return Ok(new { test = "username is in use but lkets make you a acc" });
+                                FindUserId = await Handlers.FindOne<User>("username", GlobalName);
+                                if (FindUserId != "Error")
+                                {
+                                    // Create the account
+                                    return Ok(new { test = "username is in use but lkets make you a acc" });
+                                }else
+                                {
+                                    IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
+                                    IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
+
+
+                                    string AccountId = Guid.NewGuid().ToString();
+                                    string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
+                                    User UserData = new User
+                                    {
+                                        AccountId = AccountId,
+                                        DiscordId = id,
+                                        Username = GlobalName,
+                                        Email = GenerateRandomString(10) + "@fortbackend.com",
+                                        accesstoken = NewAccessToken,
+                                        Password = GenerateRandomString(15)
+                                    };
+
+                                    Account AccountData = new Account
+                                    {
+                                        AccountId = AccountId,
+                                        DiscordId = id
+                                    };
+
+                                    Accountcollection.InsertOne(AccountData);
+                                    Usercollection.InsertOne(UserData);
+
+                                    return Ok(new { test = NewAccessToken });
+                                }
                             }
                             else
                             {
@@ -145,7 +189,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                 {
                                     AccountId = AccountId,
                                     DiscordId = id,
-                                    Username = username,
+                                    Username = GlobalName,
                                     Email = GenerateRandomString(10) + "@fortbackend.com",
                                     accesstoken = NewAccessToken,
                                     Password = GenerateRandomString(15)
@@ -182,27 +226,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
             return Ok(new { test = "ngl" });
         }
 
-        // This will be removed at some point this is just for me to test without discord...
-        [HttpGet("/devers/create")]
-        public async Task<IActionResult> CreateAccount()
-        {
-            var FormRequest = HttpContext.Request.Form;
-
-            var username = "";
-
-            if (FormRequest.TryGetValue("username", out var usernameL))
-            {
-                username = usernameL;
-            }
-
-            var FindAccountId = await Handlers.FindOne<User>("username", username);
-            if (FindAccountId == "Error")
-            {
-
-            }
-
-            return Ok(new { test = "iidrk" });
-        }
+      
 
     }
 }

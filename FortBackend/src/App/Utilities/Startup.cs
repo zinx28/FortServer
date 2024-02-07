@@ -68,7 +68,7 @@ namespace FortBackend.src.App.Utilities
 
             app.UseStatusCodePages(async (StatusCodeContext context) =>
             {
-                Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}");
+                Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}?{context.HttpContext.Request.Query}");
             });
         }
     }

@@ -4,6 +4,15 @@ using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using System.Collections.Generic;
+using FortBackend.src.App.Routes.Classes;
+using static FortBackend.src.App.Routes.Classes.DiscordAuth;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Text;
+using System;
+using FortBackend.src.App.Utilities.Helpers;
+using MongoDB.Driver;
+using Discord;
 
 namespace FortBackend.src.App.Routes.APIS.Development
 {
@@ -11,10 +20,26 @@ namespace FortBackend.src.App.Routes.APIS.Development
     [Route("temp")]
     public class TempController : ControllerBase
     {
-        [HttpGet("yeah69")]
+        private IMongoDatabase _database;
+        public TempController(IMongoDatabase database)
+        {
+            _database = database;
+        }
+    [HttpGet("yeah69")]
         public IActionResult YeahImsoGayyy()
         {
             return Ok(new { });
+        }
+        private static Random random = new Random();
+        private static string GenerateRandomString(int length)
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            StringBuilder randomString = new StringBuilder();
+            for (int i = 0; i < length; i++)
+            {
+                randomString.Append(chars[random.Next(chars.Length)]);
+            }
+            return randomString.ToString();
         }
 
         [HttpGet("/callback")]
@@ -49,38 +74,100 @@ namespace FortBackend.src.App.Routes.APIS.Development
 
                 if (responseData.TryGetValue("access_token", out var accessToken))
                 {
-                    var client = new HttpClient();
-                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
-                    response = await client.GetAsync("https://discord.com/api/users/@me");
-                    responseContent = await response.Content.ReadAsStringAsync();
+                  
 
-                    dynamic responseData1 = JsonConvert.DeserializeObject<dynamic>(responseContent);
+                    var client2 = new HttpClient();
+                    client2.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
+                    var response2 = await client2.GetAsync("https://discord.com/api/users/@me/guilds");
+                    var responseContent2 = await response2.Content.ReadAsStringAsync();
 
-                    var username = responseData1.username;
-                    var id = responseData1.id;
-                    var email = responseData1.email;
-
-                    var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
-                    if (FindDiscordID != "Error")
+                  
+                    List<DiscordAuth.Server> responseData2 = JsonConvert.DeserializeObject<List<DiscordAuth.Server>>(responseContent2);
+                    bool IsInServer = false;
+                    foreach (DiscordAuth.Server item in responseData2)
                     {
-                        // returns the users token or what not
-
-                        return Ok(new { test = "access" });
-                    }
-                    else
-                    {
-                        // create acc? ig can't erlaly be bothered rn
-                        var FindUserId = await Handlers.FindOne<User>("username", username);
-                        if (FindUserId != "Error")
+                        //Console.WriteLine(item);
+                        if (item.id == "1204461240882307123")
                         {
-                            // Create the account
-                            return Ok(new { test = "username is in use but lkets make you a acc" });
+                            //Console.WriteLine("IS IN CHAPTER DEV SERVER");
+                            IsInServer = true;
+                        }
+                    }
+                    if (IsInServer)
+                    {
+                        // Only call this api if they are in the server
+                        var client = new HttpClient();
+                        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
+                        response = await client.GetAsync("https://discord.com/api/users/@me");
+                        responseContent = await response.Content.ReadAsStringAsync();
+
+                        if(responseContent == null)
+                        {
+                            return Ok(new { test = "Server Sided Error" });
+                        }
+
+                        UserInfo responseData1 = JsonConvert.DeserializeObject<UserInfo>(responseContent);
+
+                        var username = responseData1.username;
+                        var id = responseData1.id;
+                        var email = responseData1.email;
+
+                        if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(id))
+                        {
+                            return Ok(new { test = "why is the response wrong" });
+                        }
+
+                        var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
+                        if (FindDiscordID != "Error")
+                        {
+                            // returns the users token or what not
+
+                            return Ok(new { test = "access" });
                         }
                         else
                         {
-                            return Ok(new { test = "not a user!!!!" });
+                            // create acc? ig can't erlaly be bothered rn
+                            var FindUserId = await Handlers.FindOne<User>("username", username);
+                            if (FindUserId != "Error")
+                            {
+                                // Create the account
+                                return Ok(new { test = "username is in use but lkets make you a acc" });
+                            }
+                            else
+                            {
+                                IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
+                                IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
+
+
+                                string AccountId = Guid.NewGuid().ToString();
+                                string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
+                                User UserData = new User
+                                {
+                                    AccountId = AccountId,
+                                    DiscordId = id,
+                                    Username = username,
+                                    Email = GenerateRandomString(10) + "@fortbackend.com",
+                                    accesstoken = NewAccessToken,
+                                    Password = GenerateRandomString(15)
+                                };
+
+                                Account AccountData = new Account
+                                {
+                                    AccountId = AccountId,
+                                    DiscordId = id
+                                };
+
+                                Accountcollection.InsertOne(AccountData);
+                                Usercollection.InsertOne(UserData);
+
+                                return Ok(new { test = NewAccessToken });
+                            }
                         }
+                    }else
+                    {
+                        // user is not in the server!
                     }
+
 
                     //https://discord.com/api/users/@me
                     Console.WriteLine(responseContent);

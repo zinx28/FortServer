@@ -22,6 +22,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonIgnoreIfNull]
         public string accesstoken { get; set; }
 
+        [BsonElement("Username")]
+        public string Username { get; set; }
+
         // This will be auto randomly generated when the user creates a account
         [BsonElement("email")]
         public string Email { get; set; }

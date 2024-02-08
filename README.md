@@ -1,12 +1,12 @@
-# FortBackend (Read me will be sh~~ for a bit)
+# FortBackend
+FortBackend is a Universal Fortnite Private Server Backend wrriten in C# 
 
-- Universal Backend (aiming for season 3 - 15/?!?! but expand after hitting to a basic state)
+- FortBackend aims to support S3 - S15
+- While Save the World (STW) integration is considered, it might never be implemented
+- Developed for x64 architecture.
 
-- STW is aimed at the very end and might never actually be implemented
-
-- Build on x64
-
-# Supports Https and Http!
-- FortBackend/src/resource/cert/yourcert.pfx eh it works trust... i've tried with cosmos
-- if you have the cert and key then just search to make it a pfx not hard
-- Build on https if https duh
+# HTTPS and HTTP Support
+- FortBackend supports both HTTPS and HTTP protocols.
+- Find your certificate at FortBackend/src/resource/cert/yourcert.pfx. Trust it totally works, tested with Cosmos.
+- If you posses the certificate and key, converting it to a PFX format shouldn't pose a challenge.
+- HTTPS is the default configuration, because, well, it's HTTPS.

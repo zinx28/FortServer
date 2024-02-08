@@ -31,6 +31,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
             Response.ContentType = "application/json";
             try
             {
+
                 string grant_type = "";
                 string DisplayName = "";
                 string Email = "";
@@ -48,7 +49,10 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     {
                         grant_type = emailToken;
                     }
-
+                    if (FormRequest.TryGetValue("Syphon", out var SyphonToken))
+                    {
+                        Console.WriteLine(SyphonToken);
+                    }
                     if (FormRequest.TryGetValue("username", out var username))
                     {
                         Email = username;
@@ -97,9 +101,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                         error = "invalid_client"
                     });
                 }
-                Console.WriteLine(clientId);
-                Console.WriteLine(grant_type);
-                // 
+              
                 switch (grant_type)
                 {
                     

@@ -12,10 +12,7 @@ namespace FortBackend.src.App.Utilities.Helpers
         public static string GenerateJwtToken(Claim[] claims, int expires)
         {
             var GrabBytes = new byte[32];
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(GrabBytes);
-            }
+            new RNGCryptoServiceProvider().GetBytes(GrabBytes);
             // var GrabBytes = Encoding.UTF8.GetBytes(Key);
 
             var tokenHandler = new JwtSecurityTokenHandler();

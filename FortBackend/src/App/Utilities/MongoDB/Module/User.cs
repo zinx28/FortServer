@@ -32,5 +32,8 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonElement("password")]
         public string Password { get; set; }
 
+        [BsonElement("banned")]
+        public bool banned { get; set; } = false; // idk this might not be used if theres a better system
+
     }
 }

@@ -4,16 +4,11 @@ using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
-using System.Collections.Generic;
-using FortBackend.src.App.Routes.Classes;
-using static FortBackend.src.App.Routes.Classes.DiscordAuth;
-using Microsoft.AspNetCore.Mvc.Formatters;
+using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 using System.Text;
-using System;
 using FortBackend.src.App.Utilities.Helpers;
 using MongoDB.Driver;
-using Discord;
-using Amazon.Runtime.Internal.Transform;
+using FortBackend.src.App.Utilities.Classes;
 
 namespace FortBackend.src.App.Routes.APIS.Development
 {
@@ -106,9 +101,13 @@ namespace FortBackend.src.App.Routes.APIS.Development
                         {
                             return Ok(new { test = "Server Sided Error" });
                         }
-                        Console.WriteLine(responseContent);
+                        //Console.WriteLine(responseContent);
                         UserInfo responseData1 = JsonConvert.DeserializeObject<UserInfo>(responseContent);
 
+                        if(responseData1 == null)
+                        {
+                            return Ok(new { test = "Server Sided Error -> 2" });
+                        }
                         var username = responseData1.username;
                         var GlobalName = responseData1.global_name;
                         var id = responseData1.id;
@@ -150,7 +149,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                 }else
                                 {
                                     IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
-                                    IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
+                                    IMongoCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account> Accountcollection = _database.GetCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account>("Account");
 
 
                                     string AccountId = Guid.NewGuid().ToString();
@@ -165,7 +164,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                         Password = GenerateRandomString(15)
                                     };
 
-                                    Account AccountData = new Account
+                                    FortBackend.src.App.Utilities.MongoDB.Module.Account AccountData = new FortBackend.src.App.Utilities.MongoDB.Module.Account
                                     {
                                         AccountId = AccountId,
                                         DiscordId = id
@@ -180,7 +179,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                             else
                             {
                                 IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
-                                IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
+                                IMongoCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account> Accountcollection = _database.GetCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account>("Account");
 
 
                                 string AccountId = Guid.NewGuid().ToString();
@@ -195,7 +194,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                     Password = GenerateRandomString(15)
                                 };
 
-                                Account AccountData = new Account
+                                FortBackend.src.App.Utilities.MongoDB.Module.Account AccountData = new FortBackend.src.App.Utilities.MongoDB.Module.Account
                                 {
                                     AccountId = AccountId,
                                     DiscordId = id
@@ -214,7 +213,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
 
 
                     //https://discord.com/api/users/@me
-                    Console.WriteLine(responseContent);
+                    //Console.WriteLine(responseContent);
                 }
              
             }

@@ -1,8 +1,8 @@
-﻿namespace FortBackend.src.App.Routes.Classes
+﻿namespace FortBackend.src.App.Utilities.Classes
 {
     public class DiscordAuth
     {
-        
+
         public class Server
         {
             public string id { get; set; }

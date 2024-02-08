@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="src\Resources\Certificates\" />
+    <Folder Include="src\Resources\Json\" />
   </ItemGroup>
 
   <ItemGroup>

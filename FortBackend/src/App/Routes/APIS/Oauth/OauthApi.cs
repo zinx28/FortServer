@@ -49,10 +49,10 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     {
                         grant_type = emailToken;
                     }
-                    if (FormRequest.TryGetValue("Syphon", out var SyphonToken))
-                    {
-                        Console.WriteLine(SyphonToken);
-                    }
+                    //if (FormRequest.TryGetValue("Syphon", out var SyphonToken))
+                    //{
+                    //    Console.WriteLine(SyphonToken);
+                    //}
                     if (FormRequest.TryGetValue("username", out var username))
                     {
                         Email = username;

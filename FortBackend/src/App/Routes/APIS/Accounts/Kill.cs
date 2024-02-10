@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
-namespace FortBackend.src.App.Routes.APIS.Account
+namespace FortBackend.src.App.Routes.APIS.Accounts
 {
     [ApiController]
     [Route("account/api")]

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Diagnostics.Metrics;
 
-namespace FortBackend.src.App.Routes.APIS.Account
+namespace FortBackend.src.App.Routes.APIS.Accounts
 {
     [ApiController]
     [Route("account/api")]

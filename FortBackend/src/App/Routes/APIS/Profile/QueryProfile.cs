@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities;
+using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Routes.APIS.Profile
 {
@@ -23,29 +27,44 @@ namespace FortBackend.src.App.Routes.APIS.Profile
             Response.ContentType = "application/json"; // yips
             try
             {
+                var RVN = Request.Query["rvn"].FirstOrDefault() ?? "-1";
+                var ProfileID = Request.Query["profileId"];
+                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
+                if(AccountData != "Error")
+                {
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+
+                    if(AccountDataParsed != null)
+                    {
+
+                    }
+                }
+
                 return Ok(new
                 {
-                    profileRevision = 1,
-                    profileId = "athena",
-                    profileChangesBaseRevision = 1,
+                    profileRevision = RVN,
+                    profileId = ProfileID,
+                    profileChangesBaseRevision = RVN,
                     profileChanges = new object[0],
-                    profileCommandRevision = 1,
+                    profileCommandRevision = RVN,
                     serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     responseVersion = 1
                 });
             }
             catch (Exception ex) {
-                return Ok(new
-                {
-                    profileRevision = 1,
-                    profileId = "athena",
-                    profileChangesBaseRevision = 1,
-                    profileChanges = new object[0],
-                    profileCommandRevision = 1,
-                    serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                    responseVersion = 1
-                });
+                Logger.Error($"QueryProfile: {ex.Message}");
             }
+
+            return Ok(new
+            {
+                profileRevision = 1,
+                profileId = "athena",
+                profileChangesBaseRevision = 1,
+                profileChanges = new object[0],
+                profileCommandRevision = 1,
+                serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                responseVersion = 1
+            });
         }
     }
 }

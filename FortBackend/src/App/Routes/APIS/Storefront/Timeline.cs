@@ -8,15 +8,23 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
     [Route("fortnite/api/calendar/v1/timeline")]
     public class TimelineApiController : ControllerBase
     {
+        //class ShopData
+        //{
+        //    public string expiration { get; set; }
+        //    public string cacheExpire { get; set; }
+        //    public string 
+        //}
         [HttpGet]
         public async Task<IActionResult> GrabTimeline()
         {
             Response.ContentType = "application/json";
             try
             {
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/shop/shop.json");
-                string json = System.IO.File.ReadAllText(filePath);
-                dynamic shopData = JsonConvert.DeserializeObject(json);
+                string Json = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/shop/shop.json"));
+                if(Json == null) {
+                    return BadRequest(new {});
+                }
+                dynamic shopData = JsonConvert.DeserializeObject(Json);
 
                 int season = await Grabber.SeasonUserAgent(Request);
 
@@ -52,13 +60,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                                 eventType = $"EventFlag.LobbySeason{season}",
                                                 activeUntil = "9999-12-31T23:59:59.999Z",
                                                 activeSince = "2020-01-01T23:59:59.999Z"
-                                            },
-                                            new
-                                            {
-                                                eventType = "JCD02",
-                                                activeUntil = "2023-12-31T23:59:59.999Z",
-                                                activeSince = "2020-01-01T23:59:59.999Z"
-                                            },
+                                            }
                                         },
                                         state = new
                                         {

@@ -1,6 +1,9 @@
-﻿using FortBackend.src.App.Utilities.Helpers;
+﻿using FortBackend.src.App.Utilities.Classes.EpicResponses;
+using FortBackend.src.App.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json.Nodes;
+using Newtonsoft.Json;
+using System.Net;
+using ZstdSharp.Unsafe;
 
 namespace FortBackend.src.App.Routes.APIS.API
 {
@@ -8,22 +11,37 @@ namespace FortBackend.src.App.Routes.APIS.API
     [Route("content/api/pages/fortnite-game")]
     public class ContentController : ControllerBase
     {
-        class ContentJson
+        class ContentConfig
         {
-            public List<Dictionary<string, object>> emergencynotice { get; set; }
-            public List<Dictionary<string, object>> news { get; set; }
-            public List<Dictionary<string, object>> dynamicbackground { get; set; }
-            public object tournamentinformation { get; set; } = new
-            {
-                containerName = new Dictionary<string, object>()
-            };
+            public Battleroyalenewscontent battleroyalenews { get; set; } = new Battleroyalenewscontent();
+            public List<Emergencynoticecontent> emergencynotice { get; set; } = new List<Emergencynoticecontent>();
         }
+
+        class Battleroyalenewscontent
+        {
+            public List<TempMotds> motds { get; set; } = new List<TempMotds>();
+            public List<TempMotds> messages { get; set; } = new List<TempMotds>();
+        }
+
+        class TempMotds
+        {
+            public string image { get; set; } = "";
+            public string title { get; set; } = "FortBackend";
+            public string body { get; set; } = "Play Universal on fort the backend yippeee";
+        }
+        class Emergencynoticecontent
+        {
+            public string title { get; set; } = "FortBackend";
+            public string body { get; set; } = "Play Universal on fort the backend yippeee";
+        }
+
         [HttpGet]
-        public async Task<IActionResult> ContentApi()
+        public async Task<ActionResult<ContentJson>> ContentApi()
         {
             Response.ContentType = "application/json";
             try
             {
+               
                 var userAgent = Request.Headers["User-Agent"].ToString();
                 string season = "2";
 
@@ -32,20 +50,84 @@ namespace FortBackend.src.App.Routes.APIS.API
                 {
                     season = "x";
                 }
-                dynamic jsonData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\content.json"));
-                dynamic test = JsonObject.Parse(jsonData); //dynamicbackgrounds.news
 
-                Console.WriteLine(test["dynamicbackgrounds"]["backgrounds"]["backgrounds"].ToString());
-                test["dynamicbackgrounds"]["backgrounds"]["backgrounds"] = JsonNode.Parse(System.Text.Json.JsonSerializer.Serialize(new[] {
-                        new
+                var ResponseIG = new ContentJson
+                {
+
+                    dynamicbackgrounds = new DynamicBackground()
+                    {
+                        backgrounds = new DynamicBackgrounds()
                         {
-                            stage = $"season{season}",
-                            _type = "DynamicBackground",
-                            key = "lobby"
-                        }
-                }));
-                return Ok(test);
+                            backgrounds = new List<DynamicBackgroundList>
+                            {
+                                new DynamicBackgroundList
+                                {
+                                    stage = $"season{season}",
+                                    _type = "DynamicBackground",
+                                    key = "lobby"
+                                }
+                            }
 
+                        }
+                    }
+                };
+          
+                Console.WriteLine("TEST");
+
+                var jsonData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\content.json"));
+                ContentConfig contentconfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData); //dynamicbackgrounds.news
+
+                if(contentconfig != null)
+                {
+                    contentconfig.battleroyalenews.motds.ForEach(x =>
+                    {
+                        ResponseIG.battleroyalenews.news.motds.Add(new NewContentMotds()
+                        {
+                            image = x.image,
+                            title = x.title,
+                            body = x.body,
+                        });
+
+                        ResponseIG.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
+                        {
+                            image = x.image,
+                            title = x.title,
+                            body = x.body,
+                        });
+                    });
+
+                    contentconfig.battleroyalenews.messages.ForEach(x =>
+                    {
+                        ResponseIG.battleroyalenews.news.messages.Add(new NewContentMessages()
+                        {
+                            image = x.image,
+                            title = x.title,
+                            body = x.body,
+                        });
+                    });
+
+                    contentconfig.emergencynotice.ForEach(x =>
+                    {
+                        ResponseIG.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
+                        {
+                            title = x.title,
+                            body = x.body,
+                        });
+
+                        ResponseIG.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
+                        {
+                            title = x.title,
+                            body = x.body,
+                        });
+                    });
+                }
+
+                //var jsonData1 = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\ph.json"));
+                //ContentJson contentconfig1 = JsonConvert.DeserializeObject<ContentJson>(jsonData); //dynamicbackgrounds.news
+
+                //return Ok(contentconfig1);
+
+                return ResponseIG;
             }
             catch (Exception ex)
             {

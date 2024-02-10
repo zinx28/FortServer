@@ -1,0 +1,120 @@
+{
+    "jcr:isCheckedOut": false,
+    "_title": "Fortnite Game",
+    "jcr:baseVersion": "a7ca237317f1e7883b3279-c38f-4aa7-a325-e099e4bf71e5",
+    "_activeDate": "2017-08-30T03:20:48.050Z",
+    "lastModified": "2023-11-09T18:08:17.334Z",
+    "_locale": "en_US",
+    "battleroyalenews": {
+        "news": {
+            "_type": "Battle Royale News",
+            "messages": [
+                {
+                    "image": "https://cdn2.unrealengine.com/ch4s2-lobbyupdate-4-20-2022-lifted-copy-3840x2160-d3a138f5f9e7.jpg",
+                    "hidden": false,
+                    "_type": "CommonUI Simple Message Base",
+                    "entrytype": "normal",
+                    "messagetype": "normal",
+                    "title": "Fortnite chapter 2 season",
+                    "body": "TEMP",
+                    "spotlight": false
+                }
+            ],
+            "platform_motds": []
+        },
+        "_title": "battleroyalenews",
+        "header": "",
+        "style": "None",
+        "_noIndex": false,
+        "alwaysShow": false,
+        "_activeDate": "2020-01-21T14:00:00.000Z",
+        "lastModified": "2021-09-12T17:34:19.796Z",
+        "_locale": "en-US",
+        "_templateName": "FortniteGameMOTD",
+        "_suggestedPrefetch": []
+    },
+    "battleroyalenewsv2": {
+        "news": {
+            "motds": [
+                {
+                    "image": "https://cdn2.unrealengine.com/ch4s2-lobbyupdate-4-20-2022-lifted-copy-3840x2160-d3a138f5f9e7.jpg",
+                    "hidden": false,
+                    "_type": "CommonUI Simple Message Base",
+                    "entrytype": "normal",
+                    "messagetype": "normal",
+                    "title": "Fortnite chapter 2 season",
+                    "body": "TEMP",
+                    "spotlight": false
+                }
+            ],
+            "_type": "Battle Royale News V2"
+        },
+        "_title": "battleroyalenewsv2",
+        "_noIndex": false,
+        "alwaysShow": true,
+        "_activeDate": "2023-07-18T18:20:13.533Z",
+        "lastModified": "2023-11-09T18:08:17.347Z",
+        "_locale": "en-US",
+        "_templateName": "FortniteGameMOTD",
+        "_suggestedPrefetch": []
+    },
+    "emergencynotice": {
+        "news": {
+            "platform_messages": [],
+            "_type": "Battle Royale News",
+            "messages": [
+                {
+                    "hidden": false,
+                    "_type": "CommonUI Simple Message Base",
+                    "subgame": "br",
+                    "title": "Fortnite chapter 2 season",
+                    "body": "TEMP",
+                    "spotlight": true
+                }
+            ],
+            "_title": "emergencynotice",
+            "_activeDate": "2023-11-09T18:08:17.347Z",
+            "lastModified": "2023-11-09T18:08:17.347Z",
+            "_locale": "en-US"
+        }
+    },
+    "emergencynoticev2": {
+        "_title": "emergencynoticev2",
+        "_noIndex": false,
+        "emergencynotices": {
+            "_type": "Emergency Notices",
+            "emergencynotices": [
+                {
+                    "hidden": false,
+                    "_type": "CommonUI Emergency Notice Base",
+                    "title": "Matchmaking Issues",
+                    "body": "Matchmaking is currently experiencing issues and we are working to resolve them."
+                }
+            ]
+        },
+        "_activeDate": "2023-09-26T03:00:00.000Z",
+        "lastModified": "2024-02-10T18:38:12.907Z",
+        "_locale": "en-US",
+        "_templateName": "FortniteGameMOTD",
+        "_suggestedPrefetch": []
+    },
+    "dynamicbackgrounds": {
+        "backgrounds": {
+            "backgrounds": [
+                {
+                    "stage": "season2",
+                    "_type": "DynamicBackground",
+                    "key": "lobby"
+                }
+            ],
+            "_type": "DynamicBackgroundList"
+        },
+        "_title": "dynamicbackgrounds",
+        "_noIndex": false,
+        "_activeDate": "2023-11-09T18:08:17.347Z",
+        "lastModified": "2023-11-09T18:08:17.347Z",
+        "_locale": "en-US",
+        "_templateName": "FortniteGameDynamicBackgrounds",
+        "_suggestedPrefetch": []
+    }
+}

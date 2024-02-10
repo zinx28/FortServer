@@ -18,9 +18,8 @@
                         string[] seasonParts = userAgentParts[1].Split(".");
                         season = int.Parse(seasonParts[0]);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        Console.WriteLine(ex.Message);
                         season = 2;
                     }
                 }

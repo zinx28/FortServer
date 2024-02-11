@@ -43,19 +43,19 @@ namespace FortBackend.src.App.Routes.APIS.API
             Response.ContentType = "application/json";
             try
             {
-                var cacheKey = "ContentEndpointKey";
-                if (memoryCache.TryGetValue(cacheKey, out ContentJson cachedResult))
-                {
-                    return cachedResult;
-                }
-
                 var userAgent = Request.Headers["User-Agent"].ToString();
                 string season = "2";
 
                 season = (await Grabber.SeasonUserAgent(Request)).ToString();
-                if(season == "10")
+                if (season == "10")
                 {
                     season = "x";
+                }
+
+                var cacheKey = $"ContentEndpointKey-{season}";
+                if (memoryCache.TryGetValue(cacheKey, out ContentJson cachedResult))
+                {
+                    return cachedResult;
                 }
 
                 var ResponseIG = new ContentJson

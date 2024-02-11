@@ -63,7 +63,18 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                     {
                         if (seasonObject.SeasonNumber.ToString() == Season.ToString())
                         {
+                            Class.Athena AthenaClass = new Class.Athena()
+                            {
+                                profileRevision = int.Parse(AthenaDataParsed.athena.RVN.ToString() ?? "0"),
+                                profileId = ProfileId,
+                                profileChangesBaseRevision = AthenaDataParsed.athena.RVN,
+                                profileChanges = new List<Class.ProfileChange>
+                                {
 
+                                }
+                            };
+
+                            return AthenaClass;
                         }
                     }
                 }

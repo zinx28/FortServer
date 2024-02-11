@@ -48,7 +48,25 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                     });
                 }
 
+                AthenaDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
 
+                if (AthenaDataParsed == null)
+                {
+                    return new Class();
+                }
+
+                Season[] Seasons = AthenaDataParsed.commoncore.Seasons;
+
+                if (AthenaDataParsed.commoncore.Seasons != null)
+                {
+                    foreach (Season seasonObject in Seasons)
+                    {
+                        if (seasonObject.SeasonNumber.ToString() == Season.ToString())
+                        {
+
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {

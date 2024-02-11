@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities.Classes.EpicResponses;
 using FortBackend.src.App.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System.Net;
 using ZstdSharp.Unsafe;
@@ -36,12 +37,18 @@ namespace FortBackend.src.App.Routes.APIS.API
         }
 
         [HttpGet]
-        public async Task<ActionResult<ContentJson>> ContentApi()
+      
+        public async Task<ActionResult<ContentJson>> ContentApi([FromServices] IMemoryCache memoryCache)
         {
             Response.ContentType = "application/json";
             try
             {
-               
+                var cacheKey = "ContentEndpointKey";
+                if (memoryCache.TryGetValue(cacheKey, out ContentJson cachedResult))
+                {
+                    return cachedResult;
+                }
+
                 var userAgent = Request.Headers["User-Agent"].ToString();
                 string season = "2";
 
@@ -121,6 +128,11 @@ namespace FortBackend.src.App.Routes.APIS.API
                         });
                     });
                 }
+
+                memoryCache.Set(cacheKey, ResponseIG, new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+                });
 
                 //var jsonData1 = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\ph.json"));
                 //ContentJson contentconfig1 = JsonConvert.DeserializeObject<ContentJson>(jsonData); //dynamicbackgrounds.news

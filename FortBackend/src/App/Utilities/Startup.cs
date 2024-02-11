@@ -28,6 +28,7 @@ namespace FortBackend.src.App.Utilities
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
+            services.AddMemoryCache();
             MongoDBStart.Initialize(services, Configuration);
         }
     

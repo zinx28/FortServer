@@ -47,7 +47,7 @@ namespace FortBackend.src.App.Utilities
 
             Logger.Log("Loading all endpoints");
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(async endpoints =>
             {
                 var IActionDescriptorCollectionProvider = app.ApplicationServices.GetRequiredService<IActionDescriptorCollectionProvider>();
                 var ActionDescriptors = IActionDescriptorCollectionProvider.ActionDescriptors.Items;
@@ -58,13 +58,12 @@ namespace FortBackend.src.App.Utilities
                     {
                         var route = actionDescriptor.AttributeRouteInfo?.Template ?? actionDescriptor.RouteValues["action"];
                         var controller = actionDescriptor.RouteValues["controller"];
-                       
+
                         var HttpMethod = controllerActionDescriptor.MethodInfo
                         .GetCustomAttributes(true)
                         .OfType<HttpMethodAttribute>()
                         .SelectMany(attr => attr.HttpMethods)
                         .Distinct();
-
 
                         Logger.Log($"/{route}", string.Join(",", HttpMethod));
                     }

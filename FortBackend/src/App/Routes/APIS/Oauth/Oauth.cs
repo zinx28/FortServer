@@ -88,6 +88,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                 }
                 catch (Exception ex)
                 {
+                    Logger.Error("OAUTH -> " + ex.Message);
                     Response.StatusCode = 400;
                     return Ok(new MainResponse
                     {

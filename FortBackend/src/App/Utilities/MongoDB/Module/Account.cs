@@ -8,20 +8,20 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         [BsonElement("accountId")]
-        public string AccountId { get; set; }
+        public string AccountId { get; set; } = string.Empty;
 
         [BsonElement("DiscordId")]
-        public string DiscordId { get; set; }
+        public string DiscordId { get; set; } = string.Empty;
 
 
         [BsonElement("athena")]
-        public Athena athena { get; set; }
+        public Athena athena { get; set; } = new Athena();
 
         [BsonElement("commoncore")]
-        public CommonCore commoncore { get; set; }
+        public CommonCore commoncore { get; set; } = new CommonCore();
 
         // last !
 
@@ -250,10 +250,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         };
 
         [BsonElement("ban_status")]
-        public BanStatus BanStatus { get; set; }
+        public BanStatus BanStatus { get; set; } = new BanStatus();
 
         [BsonElement("ban_history")]
-        public BanHistory BanHistory { get; set; }
+        public BanHistory BanHistory { get; set; } = new BanHistory();
 
         [BsonElement("mtx_affiliate")]
         public string mtx_affiliate { get; set; } = "";
@@ -281,10 +281,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
     public class BanHistory
     {
         [BsonElement("banCount")]
-        public Dictionary<string, int> BanCount { get; set; }
+        public Dictionary<string, int> BanCount { get; set; } = new Dictionary<string, int>();
 
         [BsonElement("banTier")]
-        public object BanTier { get; set; }
+        public object BanTier { get; set; } = new { };
     }
 
     public class BanStatus
@@ -293,7 +293,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public bool RequiresUserAck { get; set; }
 
         [BsonElement("banReasons")]
-        public List<string> BanReasons { get; set; }
+        public List<string> BanReasons { get; set; } = new List<string>();
 
         [BsonElement("bBanHasStarted")]
         public bool BanHasStarted { get; set; }
@@ -305,13 +305,13 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public double BanDurationDays { get; set; }
 
         [BsonElement("exploitProgramName")]
-        public string ExploitProgramName { get; set; }
+        public string ExploitProgramName { get; set; } = "NotProper";
 
         [BsonElement("additionalInfo")]
-        public string AdditionalInfo { get; set; }
+        public string AdditionalInfo { get; set; } = "NotProper";
 
         [BsonElement("competitiveBanReason")]
-        public string CompetitiveBanReason { get; set; }
+        public string CompetitiveBanReason { get; set; } = "NotProper";
     };
     public class DailyQuests
     {

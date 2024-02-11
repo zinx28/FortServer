@@ -7,11 +7,12 @@ using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Routes;
 using System.Runtime.InteropServices;
 using FortBackend.src.App.Utilities.Discord;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 namespace FortBackend.src.App
 {
     public class Service
     {
-        public static async void Intiliazation(string[] args)
+        public static void Intiliazation(string[] args)
         {
             Console.WriteLine(@"  ______         _   ____             _                  _ 
  |  ____|       | | |  _ \           | |                | |
@@ -44,7 +45,7 @@ namespace FortBackend.src.App
             {
                 Logger.Log("Loaded Config");
             }
-
+            
             startup.ConfigureServices(builder.Services);
 
 #if HTTPS
@@ -73,7 +74,7 @@ namespace FortBackend.src.App
             #if HTTPS
                 app.UseHttpsRedirection();
             #endif
-
+          
             app.UseRouting();
 
             startup.Configure(app, app.Environment);

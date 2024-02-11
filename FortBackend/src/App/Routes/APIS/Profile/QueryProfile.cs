@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities;
 using Newtonsoft.Json;
+using FortBackend.src.App.Utilities.Helpers;
 
 namespace FortBackend.src.App.Routes.APIS.Profile
 {
@@ -30,13 +31,19 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                 var RVN = Request.Query["rvn"].FirstOrDefault() ?? "-1";
                 var ProfileID = Request.Query["profileId"];
                 var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
-                if(AccountData != "Error")
+                if (AccountData != "Error")
                 {
                     Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
 
-                    if(AccountDataParsed != null)
+                    if (AccountDataParsed != null)
                     {
+                        var Season = await Grabber.SeasonUserAgent(Request);
 
+                        if (ProfileID == "athena" || ProfileID == "profile0")
+                        {
+                            var response = await AthenaResponses.Response.AthenaResponse(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                            return Ok(response);
+                        }
                     }
                 }
 

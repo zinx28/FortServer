@@ -1,11 +1,10 @@
-﻿
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace FortBackend.src.App.Utilities.Helpers
+namespace FortBackend.src.App.Utilities.Helpers.Encoders
 {
     public class JWT
     {
@@ -35,14 +34,14 @@ namespace FortBackend.src.App.Utilities.Helpers
             // var GrabBytes = Encoding.UTF8.GetBytes(Key);
 
             var signingCredentials = Encoding.UTF8.GetBytes(secret);
-            
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateJwtSecurityToken(new SecurityTokenDescriptor
             {
                 Expires = DateTime.UtcNow.AddHours(expires),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(signingCredentials), SecurityAlgorithms.HmacSha256Signature)
             });
-           
+
             var tokenString = tokenHandler.WriteToken(token);
 
             return tokenString;

@@ -1,6 +1,5 @@
 ﻿using FortBackend.src.App.Utilities.Classes.EpicResponses;
 using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +9,7 @@ using Newtonsoft.Json;
 using System.Security.Claims;
 using System.Text;
 using FortBackend.src.App.XMPP;
+using FortBackend.src.App.Utilities.Helpers.Encoders;
 
 
 namespace FortBackend.src.App.Routes.APIS.Oauth

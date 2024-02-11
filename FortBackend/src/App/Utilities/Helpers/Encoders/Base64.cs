@@ -1,4 +1,4 @@
-﻿namespace FortBackend.src.App.Utilities.Helpers
+﻿namespace FortBackend.src.App.Utilities.Helpers.Encoders
 {
     public class Base64
     {

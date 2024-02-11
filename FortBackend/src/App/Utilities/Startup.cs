@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.MongoDB;
+﻿using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -36,6 +37,10 @@ namespace FortBackend.src.App.Utilities
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            #if DEBUG
+                app.UseMiddleware<LoggingMiddleware>();
+            #endif
 
             app.UseRouting();
 

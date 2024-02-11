@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
@@ -250,9 +251,11 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         };
 
         [BsonElement("ban_status")]
+        [BsonIgnoreIfNull]
         public BanStatus BanStatus { get; set; } = new BanStatus();
 
         [BsonElement("ban_history")]
+        [BsonIgnoreIfNull]
         public BanHistory BanHistory { get; set; } = new BanHistory();
 
         [BsonElement("mtx_affiliate")]
@@ -284,7 +287,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public Dictionary<string, int> BanCount { get; set; } = new Dictionary<string, int>();
 
         [BsonElement("banTier")]
-        public object BanTier { get; set; } = new { };
+        public object BanTier { get; set; }
     }
 
     public class BanStatus
@@ -324,51 +327,66 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
     public class Season
     {
         [BsonElement("season")]
+        [JsonProperty("season")]
         public int SeasonNumber { get; set; } = 12;
 
         [BsonElement("season_match_boost")]
+        [JsonProperty("season_match_boost")]
         public int season_match_boost = 0;
 
         [BsonElement("season_friend_match_boost")]
+        [JsonProperty("season_friend_match_boost")]
         public int season_friend_match_boost = 0;
 
         [BsonElement("book_level")]
+        [JsonProperty("book_level")]
         public int BookLevel { get; set; } = 1;
 
         [BsonElement("level")]
+        [JsonProperty("level")]
         public int Level { get; set; } = 1;
 
         [BsonElement("battlestars_currency")]
+        [JsonProperty("battlestars_currency")]
         public int battlestars_currency { get; set; } = 0;
 
         [BsonElement("book_xp")]
+        [JsonProperty("book_xp")]
         public int BookXP { get; set; } = 0;
 
         [BsonElement("book_purchased")]
+        [JsonProperty("book_purchased")]
         public bool BookPurchased { get; set; } = false;
 
         [BsonElement("lastclaimeditem")]
+        [JsonProperty("lastclaimeditem")]
         public int lastclaimeditem { get; set; } = 0;
 
         [BsonElement("Quests")]
+        [JsonProperty("Quests")]
         [BsonIgnoreIfNull]
         public List<Dictionary<string, object>> Quests { get; set; } = new List<Dictionary<string, object>>();
 
         [BsonElement("PinnedQuests")]
+        [JsonProperty("PinnedQuests")]
         [BsonIgnoreIfNull]
         public List<Dictionary<string, object>> PinnedQuests { get; set; } = new List<Dictionary<string, object>>();
 
         [BsonElement("PinnedPartyQuests")]
+        [JsonProperty("PinnedPartyQuests")]
         [BsonIgnoreIfNull]
         public List<Dictionary<string, object>> PinnedPartyQuests { get; set; } = new List<Dictionary<string, object>>();
 
         [BsonElement("quest_manager")]
+        [JsonProperty("quest_manager")]
         public DailyQuests DailyQuests { get; set; } = new DailyQuests();
 
         [BsonElement("BattleStars")]
+        [JsonProperty("BattleStars")]
         public int BattleStars { get; set; } = 0;
 
         [BsonElement("intro_game_played")]
+        [JsonProperty("intro_game_played")]
         public bool intro_game_played { get; set; } = false;
     }
 }

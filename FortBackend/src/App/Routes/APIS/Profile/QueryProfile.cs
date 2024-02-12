@@ -29,7 +29,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
             try
             {
                 var RVN = Request.Query["rvn"].FirstOrDefault() ?? "-1";
-                var ProfileID = Request.Query["profileId"];
+                var ProfileID = Request.Query["profileId"].ToString() ?? "athena";
                 var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if (AccountData != "Error")
                 {
@@ -37,6 +37,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
 
                     if (AccountDataParsed != null)
                     {
+                        Console.WriteLine(AccountDataParsed.ToString());
                         var Season = await Grabber.SeasonUserAgent(Request);
 
                         if (ProfileID == "athena" || ProfileID == "profile0")

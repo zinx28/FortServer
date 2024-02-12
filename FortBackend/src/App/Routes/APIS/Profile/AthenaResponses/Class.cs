@@ -188,7 +188,7 @@
         public class Athena
         {
             public int profileRevision { get; set; }
-            public string profileId { get; set; } = "notproper";
+            public string profileId { get; set; }
             public int profileChangesBaseRevision { get; set; }
             public List<ProfileChange> profileChanges { get; set; } = new List<ProfileChange>();
             public DateTime serverTime { get; set; }

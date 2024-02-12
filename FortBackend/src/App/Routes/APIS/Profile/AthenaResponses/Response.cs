@@ -17,10 +17,14 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
             try
             {
                 bool FoundSeasonDataInProfile = false;
-                foreach (dynamic SeasonData in AthenaDataParsed.commoncore.Seasons)
+                foreach (Season SeasonData in AthenaDataParsed.commoncore.Seasons)
                 {
+                    Console.WriteLine(SeasonData.SeasonNumber);
+                    Console.WriteLine(Season);
+                    Console.WriteLine(SeasonData.SeasonNumber == Season);
                     if (SeasonData.SeasonNumber == Season)
                     {
+                        Console.WriteLine("FOUND");
                         FoundSeasonDataInProfile = true;
                     }
                 }
@@ -45,17 +49,20 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                     await Handlers.PushOne<Account>("accountId", AccountId, new Dictionary<string, object>
                     {
                         {
-                            "common_core.Season", BsonDocument.Parse(seasonJson)
+                            "commoncore.Season", BsonDocument.Parse(seasonJson)
                         }
                     });
                 }
 
+              
                 AthenaDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
-
+              
                 if (AthenaDataParsed == null)
                 {
                     return new Class.Athena();
                 }
+
+                Console.WriteLine(AthenaDataParsed.commoncore.Seasons);
 
                 Season[] Seasons = AthenaDataParsed.commoncore.Seasons;
 
@@ -63,8 +70,11 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                 {
                     foreach (Season seasonObject in Seasons)
                     {
-                        if (seasonObject.SeasonNumber.ToString() == Season.ToString())
+                        Console.WriteLine(seasonObject.SeasonNumber);
+                        Console.WriteLine(Season);
+                        if (seasonObject.SeasonNumber == Season)
                         {
+                            Console.WriteLine("CORRECT SEASON!");
                             DailyQuests quest_manager = seasonObject.DailyQuests;
                             DateTime inputDateTime1;
                             if (DateTime.TryParseExact(quest_manager.Interval, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out inputDateTime1)) { }
@@ -150,7 +160,58 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                 responseVersion = 1,
                             };
 
-                            return AthenaClass;
+                            List<Dictionary<string, object>> items = AthenaDataParsed.athena.Items;
+
+                            foreach (Dictionary<string, object> item in items)
+                            {
+                                try
+                                {
+                                    string Key = "";
+                                    object Value = "";
+
+                                    foreach (KeyValuePair<string, object> KeyValuePair in item)
+                                    {
+                                        Key = KeyValuePair.Key;
+                                        Value = KeyValuePair.Value;
+
+                                        try
+                                        {
+                                            int AthenaIndex = Key.IndexOf("Athena");
+                                            Key = Key.Substring(AthenaIndex);
+                                        }
+                                        catch {/*idk*/}
+                                    }
+
+                                    var itemValue = item[Key] as Dictionary<string, object>;
+
+                                    if (itemValue == null)
+                                    {
+                                        if (Value is Newtonsoft.Json.Linq.JObject)
+                                        {
+                                            //Console.WriteLine(Value.GetType());
+                                            //Console.WriteLine(itemValue == null);
+                                            //Console.WriteLine("TERST" + Key);
+                                            //Console.WriteLine("yo" + Value);
+                                            Console.WriteLine(Value);
+                                            dynamic itemAttributes = JsonConvert.DeserializeObject(Value.ToString());
+
+                                            //ProfileItem itemAttributes = JsonConvert.DeserializeObject<ProfileItem>(Value.ToString());
+
+                                            if (itemAttributes != null)
+                                            {
+                                                AthenaClass.profileChanges[0].Profile.items.Add(Key, itemAttributes);
+                                            }
+
+                                        }
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Logger.Error(ex.Message);
+                                }
+                            }
+
+                                return AthenaClass;
                         }
                     }
                 }

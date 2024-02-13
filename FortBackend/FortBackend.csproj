@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\App\Routes\APIS\Profile\CommonCoreRespones\" />
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\shop\" />
   </ItemGroup>

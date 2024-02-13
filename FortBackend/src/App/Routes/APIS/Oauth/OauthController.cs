@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Text;
 using FortBackend.src.App.XMPP;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Oauth;
 
 
 namespace FortBackend.src.App.Routes.APIS.Oauth
@@ -18,19 +20,14 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
     [Route("account/api")]
     public class OauthApiController : ControllerBase
     {
-        private IMongoDatabase _database;
-
-        public OauthApiController(IMongoDatabase database)
-        {
-            _database = database;
-        }
-
         [HttpPost("oauth/token")]
         public async Task<IActionResult> LoginToken()
         {
             Response.ContentType = "application/json";
             try
             {
+                var Headers = Request.Headers;
+                var FormRequest = HttpContext.Request.Form;
 
                 string grant_type = "";
                 string DisplayName = "";
@@ -40,57 +37,58 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                 string exchange_token = "";
                 bool IsMyFavUserBanned = false;
 
-                var Headers = Request.Headers;
-                var FormRequest = HttpContext.Request.Form;
-
-                try
+                if (FormRequest.TryGetValue("grant_type", out var GrantType))
                 {
-                    if (FormRequest.TryGetValue("grant_type", out var emailToken))
-                    {
-                        grant_type = emailToken;
-                    }
-                    //if (FormRequest.TryGetValue("Syphon", out var SyphonToken))
-                    //{
-                    //    Console.WriteLine(SyphonToken);
-                    //}
-                    if (FormRequest.TryGetValue("username", out var username))
-                    {
-                        Email = username;
-                    }
-
-                    if (FormRequest.TryGetValue("exchange_code", out var ExchangeCode))
-                    {
-                        exchange_token = ExchangeCode;
-                    }
-
-                    if (FormRequest.TryGetValue("password", out var password))
-                    {
-                        Password = password;
-                    }
+                    grant_type = GrantType;
                 }
-                catch { } // who cares about errors
+    
+                if (FormRequest.TryGetValue("username", out var username))
+                {
+                    Email = username;
+                }
+
+                if (FormRequest.TryGetValue("exchange_code", out var ExchangeCode))
+                {
+                    exchange_token = ExchangeCode;
+                }
+
+                if (FormRequest.TryGetValue("password", out var password))
+                {
+                    Password = password;
+                }
 
                 string clientId = "";
                 try
                 {
                     string AuthorizationToken = Request.Headers["Authorization"];
+
+                    if (string.IsNullOrEmpty(AuthorizationToken))
+                    {
+                        throw new Exception("Authorization header is missing");
+                    }
+
                     string base64String = AuthorizationToken.Substring(6);
                     byte[] base64Bytes = Convert.FromBase64String(base64String);
                     string decodedString = Encoding.UTF8.GetString(base64Bytes);
                     string[] credentials = decodedString.Split(':');
 
+                    if (credentials.Length < 2)
+                    {
+                        throw new Exception("Invalid credentials format");
+                    }
+
                     clientId = credentials[0];
 
-                    if (credentials[1] == null)
+                    if (string.IsNullOrEmpty(clientId))
                     {
-                        throw new Exception("Invaild Client ID");
+                        throw new Exception("Invalid Client ID");
                     }
                 }
                 catch (Exception ex)
                 {
                     Logger.Error("OAUTH -> " + ex.Message);
                     Response.StatusCode = 400;
-                    return Ok(new MainResponse
+                    return Ok(new BaseError
                     {
                         errorCode = "errors.com.epicgames.account.invalid_client",
                         errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
@@ -105,11 +103,10 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
               
                 switch (grant_type)
                 {
-                    
                     case "exchange_code":
                         if (string.IsNullOrEmpty(exchange_token))
                         {
-                            return BadRequest(new MainResponse
+                            return BadRequest(new BaseError
                             {
                                 errorCode = "errors.com.epicgames.common.oauth.invalid_request",
                                 errorMessage = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid",
@@ -133,22 +130,20 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                                 IsMyFavUserBanned = bool.Parse(UserDataParsed.banned.ToString() ?? "false");
                             }
                         }
-
-                        Console.WriteLine("Exchange Token!");
                         break;
                 }
 
                 if (IsMyFavUserBanned)
                 {
-                    return BadRequest(new MainResponse
+                    return BadRequest(new BaseError
                     {
                         errorCode = "errors.com.epicgames.account.account_not_active",
-                        errorMessage = "You have been permanently banned from Cosmos.",
+                        errorMessage = "You have been permanently banned from FortBackend.",
                         messageVars = new string[0],
                         numericErrorCode = -1,
                         originatingService = "any",
                         intent = "prod",
-                        error_description = "You have been permanently banned from Cosmos."
+                        error_description = "You have been permanently banned from FortBackend."
                     });
                 }
 
@@ -193,7 +188,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                 //GlobalData.AccessToken.Add(AccessTokenClient);
                 //GlobalData.RefreshToken.Add(RefreshTokenClient);
 
-                await Handlers.UpdateOne<FortBackend.src.App.Utilities.MongoDB.Module.Account>("accountId", AccountId, new Dictionary<string, object>
+                await Handlers.UpdateOne<Account>("accountId", AccountId, new Dictionary<string, object>
                 {
                     {
                         "refreshToken", new string[] { RefreshToken }
@@ -203,7 +198,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     }
                 });
 
-                return Ok(new OauthLong
+                return Ok(new OauthToken
                 {
                     access_token = $"eg1~{AccessToken}",
                     expires_in = 28800,
@@ -227,7 +222,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                 Logger.Error("OauthToken -> " + ex.Message);
             }
 
-            var response = new MainResponse
+            return BadRequest(new BaseError
             {
                 errorCode = "errors.com.epicgames.account.invalid_account_credentials",
                 errorMessage = "Seems like there has been a error on the backend",
@@ -237,9 +232,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                 intent = "prod",
                 error_description = "Seems like there has been a error on the backend",
                 error = "invalid_grant"
-            };
-
-            return BadRequest(response);
+            });
         }
 
     }

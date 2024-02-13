@@ -12,13 +12,6 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
     [Route("account/api")]
     public class AccountApiController : ControllerBase
     {
-        private IMongoDatabase _database;
-
-        public AccountApiController(IMongoDatabase database)
-        {
-            _database = database;
-        }
-
         [HttpGet("public/account/{accountId}")]
         public async Task<IActionResult> AccountAcc(string accountId)
         {

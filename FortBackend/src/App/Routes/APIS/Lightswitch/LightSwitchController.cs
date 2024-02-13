@@ -9,13 +9,6 @@ namespace FortBackend.src.App.Routes.APIS.Lightswitch
     [Route("lightswitch/api/service/bulk/status")]
     public class LightSwitchApiController : ControllerBase
     {
-        private IMongoDatabase _database;
-
-        public LightSwitchApiController(IMongoDatabase database)
-        {
-            _database = database;
-        }
-
         [HttpGet]
         public async Task<ActionResult<List<LightSwitchData>>> LightSwitch()
         {

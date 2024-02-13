@@ -7,13 +7,6 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
     [Route("account/api")]
     public class KillController : ControllerBase
     {
-        private IMongoDatabase _database;
-
-        public KillController(IMongoDatabase database)
-        {
-            _database = database;
-        }
-
         //https://account-public-service-prod.ol.epicgames.com/account/api/oauth/sessions/kill?killType=OTHERS_ACCOUNT_CLIENT_SERVICE
         [HttpDelete("oauth/sessions/kill")]
         public IActionResult KillSessions([FromQuery] string killType)

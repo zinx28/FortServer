@@ -7,13 +7,6 @@ namespace FortBackend.src.App.Routes.APIS.API
     [Route("api")]
     public class ApisController : ControllerBase
     {
-        private IMongoDatabase _database;
-
-        public ApisController(IMongoDatabase database)
-        {
-            _database = database;
-        }
-
         [HttpPost("/datarouter/api/v1/public/data")]
         public IActionResult DataRouter()
         {

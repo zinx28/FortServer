@@ -7,13 +7,6 @@ namespace FortBackend.src.App.Routes.APIS.API
     [Route("fortnite/api")]
     public class FortniteApiController : ControllerBase
     {
-        private IMongoDatabase _database;
-
-        public FortniteApiController(IMongoDatabase database)
-        {
-            _database = database;
-        }
-
         [HttpGet("v2/versioncheck/{version}")]
         public IActionResult CheckToken(string version)
         {

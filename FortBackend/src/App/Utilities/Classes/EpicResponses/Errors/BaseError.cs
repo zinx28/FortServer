@@ -1,6 +1,6 @@
-﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses
+﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Errors
 {
-    public class MainResponse
+    public class BaseError
     {
         public string errorCode { get; set; }
         public string errorMessage { get; set; }

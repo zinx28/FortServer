@@ -7,13 +7,6 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
     [Route("fortnite/api/cloudstorage")]
     public class CloudStorageApiController : ControllerBase
     {
-        private IMongoDatabase _database;
-
-        public CloudStorageApiController(IMongoDatabase database)
-        {
-            _database = database;
-        }
-
         [HttpGet("system")]
         public IActionResult SystemApi()
         {

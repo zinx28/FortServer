@@ -1,4 +1,7 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using MongoDB.Bson;
@@ -6,18 +9,16 @@ using MongoDB.Driver;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Security.Claims;
-using static FortBackend.src.App.Routes.APIS.Profile.AthenaResponses.Class;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
+namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
 {
-    public class Response
+    public class AthenaResponse
     {
-        public static async Task<Class.Athena> AthenaResponse(string AccountId, string ProfileId, int Season, string RVN, Account AthenaDataParsed)
+        public static async Task<Mcp> Grab(string AccountId, string ProfileId, int Season, int RVN, Account AccountDataParsed)
         {
             try
             {
-                bool FoundSeasonDataInProfile = AthenaDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
-
+                bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
 
                 if (!FoundSeasonDataInProfile)
                 {
@@ -44,18 +45,18 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                     });
                 }
 
-                AthenaDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
+                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
 
-                if (AthenaDataParsed == null)
+                if (AccountDataParsed == null)
                 {
-                    return new Class.Athena();
+                    return new Mcp();
                 }
 
-                Season[] Seasons = AthenaDataParsed.commoncore.Seasons;
+                Season[] Seasons = AccountDataParsed.commoncore.Seasons;
 
-                if (AthenaDataParsed.commoncore.Seasons != null)
+                if (AccountDataParsed.commoncore.Seasons != null)
                 {
-                    Season seasonObject = AthenaDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
+                    Season seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
 
                     if (seasonObject != null)
                     {
@@ -63,12 +64,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                         DailyQuests quest_manager = seasonObject.DailyQuests;
                         DateTime inputDateTime1;
                         if (DateTime.TryParseExact(quest_manager.Interval, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out inputDateTime1)) { }
-                        Class.Athena AthenaClass = new Class.Athena()
+                        Mcp AthenaClass = new Mcp()
                         {
-                            profileRevision = int.Parse(AthenaDataParsed.athena.RVN.ToString() ?? "0"),
+                            profileRevision = AccountDataParsed.athena.RVN,
                             profileId = ProfileId,
-                            profileChangesBaseRevision = AthenaDataParsed.athena.RVN,
-                            profileChanges = new List<Class.ProfileChange>
+                            profileChangesBaseRevision = AccountDataParsed.athena.RVN,
+                            profileChanges = new List<ProfileChange>
                             {
                                 new ProfileChange
                                 {
@@ -80,19 +81,19 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                         Update = "",
                                         Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
                                         Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
-                                        rvn = AthenaDataParsed.athena.RVN,
+                                        rvn = AccountDataParsed.athena.RVN,
                                         WipeNumber = 1,
                                         accountId = AccountId,
                                         profileId = ProfileId,
                                         version = "no_version",
-                                        stats = new Stats69
+                                        stats = new Stats
                                         {
                                                 attributes = new StatsAttributes
                                                 {
                                                 use_random_loadout = false,
                                                 past_seasons = new List<object>(),
                                                 season_match_boost = seasonObject.season_match_boost,
-                                                loadouts =  AthenaDataParsed.athena.loadouts,
+                                                loadouts =  AccountDataParsed.athena.loadouts,
                                                 mfa_reward_claimed = false,
                                                 rested_xp_overflow = 0,
                                                 last_xp_interaction = "9999-12-10T22:14:37.647Z",
@@ -118,7 +119,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                                 season_friend_match_boost = seasonObject.season_friend_match_boost,
                                                 active_loadout_index = 0,
                                                 purchased_bp_offers = new List<object> { },
-                                                last_applied_loadout = AthenaDataParsed.athena.last_applied_loadout?.ToString() ?? "",
+                                                last_applied_loadout = AccountDataParsed.athena.last_applied_loadout?.ToString() ?? "",
                                                 //favorite_musicpack = AthenaDataParsed.athena.MusicPack.Items?.ToString() ?? "",
                                                 //banner_icon = AthenaDataParsed.athena.Banner.BannerIcon?.ToString() ?? "",
                                                 //banner_color = AthenaDataParsed.athena.Banner.BannerColor?.ToString() ?? "",
@@ -133,17 +134,17 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                             }
                                         },
                                         items = new Dictionary<string, object>(),
-                                        commandRevision = AthenaDataParsed.athena.CommandRevision,
+                                        commandRevision = AccountDataParsed.athena.CommandRevision,
                                     }
 
                                     }
                             },
-                            profileCommandRevision = AthenaDataParsed.athena.CommandRevision,
+                            profileCommandRevision = AccountDataParsed.athena.CommandRevision,
                             serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                             responseVersion = 1,
                         };
 
-                        List<Dictionary<string, object>> items = AthenaDataParsed.athena.Items;
+                        List<Dictionary<string, object>> items = AccountDataParsed.athena.Items;
 
                         foreach (Dictionary<string, object> item in items)
                         {
@@ -182,7 +183,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
 
                         return AthenaClass;
                     }
-                          
+
                 }
             }
             catch (Exception ex)
@@ -190,7 +191,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                 Logger.Error($"AthenaResponse: {ex.Message}");
             }
 
-            return new Class.Athena();
+            return new Mcp();
         }
     }
 }

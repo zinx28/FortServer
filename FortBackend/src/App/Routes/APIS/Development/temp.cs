@@ -21,7 +21,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
         {
             _database = database;
         }
-    [HttpGet("yeah69")]
+        [HttpGet("yeah69")]
         public IActionResult YeahImsoGayyy()
         {
             return Ok(new { });

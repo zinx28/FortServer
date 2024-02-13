@@ -15,7 +15,6 @@ namespace FortBackend.src.App.Routes.APIS.API
     {
 
         [HttpGet]
-      
         public async Task<ActionResult<ContentJson>> ContentApi([FromServices] IMemoryCache memoryCache)
         {
             Response.ContentType = "application/json";

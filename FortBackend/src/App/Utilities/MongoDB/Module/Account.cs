@@ -319,9 +319,11 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
     public class DailyQuests
     {
         [BsonElement("dailyLoginInterval")]
+        [JsonProperty("dailyLoginInterval")]
         public string Interval { get; set; } = DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
         [BsonElement("dailyQuestRerolls")]
+        [JsonProperty("dailyQuestRerolls")]
         public int Rerolls { get; set; } = 1;
     }
     public class Season

@@ -166,7 +166,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                                     use_random_loadout = false,
                                                     past_seasons = new List<object>(),
                                                     season_match_boost = seasonObject.season_match_boost,
-                                                    loadouts =  new List<string> { "sandbox_loadout" },
+                                                    loadouts =  AthenaDataParsed.athena.loadouts,
                                                     mfa_reward_claimed = false,
                                                     rested_xp_overflow = 0,
                                                     last_xp_interaction = "9999-12-10T22:14:37.647Z",

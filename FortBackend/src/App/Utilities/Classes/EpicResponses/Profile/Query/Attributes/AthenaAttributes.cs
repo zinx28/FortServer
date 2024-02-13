@@ -13,12 +13,12 @@
         public string[] loadouts { get; set; }
         public bool mfa_reward_claimed { get; set; }
         public int rested_xp_overflow { get; set; }
-        public string last_xp_interaction { get; set; } = "notproper";
+        public string last_xp_interaction { get; set; } = string.Empty;
         public object quest_manager { get; set; } = new object();
         public int book_level { get; set; }
         public int season_num { get; set; }
         public int book_xp { get; set; }
-        public object creative_dynamic_xp { get; set; } = "notproper";
+        public object creative_dynamic_xp { get; set; } = string.Empty;
         public SeasonStats season { get; set; } = new SeasonStats();
         public int battlestars { get; set; }
         public object vote_data { get; set; } = new object();
@@ -35,18 +35,18 @@
         public int season_friend_match_boost { get; set; }
         public int active_loadout_index { get; set; }
         public List<object> purchased_bp_offers { get; set; } = new List<object>();
-        public string last_applied_loadout { get; set; } = "notproper";
-        public string favorite_musicpack { get; set; } = "notproper";
-        public string banner_icon { get; set; } = "notproper";
+        public string last_applied_loadout { get; set; } = string.Empty;
+        public string favorite_musicpack { get; set; } = string.Empty;
+        public string banner_icon { get; set; } = string.Empty;
         public string[] favorite_itemwraps { get; set; } = new string[0];
-        public string favorite_skydivecontrail { get; set; } = "notproper";
-        public string favorite_pickaxe { get; set; } = "notproper";
-        public string favorite_glider { get; set; } = "notproper";
-        public string favorite_backpack { get; set; } = "notproper";
+        public string favorite_skydivecontrail { get; set; } = string.Empty;
+        public string favorite_pickaxe { get; set; } = string.Empty;
+        public string favorite_glider { get; set; } = string.Empty;
+        public string favorite_backpack { get; set; } = string.Empty;
         public string[] favorite_dance { get; set; } = new string[0];
-        public string favorite_loadingscreen { get; set; } = "notproper";
-        public string banner_color { get; set; } = "notproper";
-        public string favorite_character { get; set; } = "notproper";
+        public string favorite_loadingscreen { get; set; } = string.Empty;
+        public string banner_color { get; set; } = string.Empty;
+        public string favorite_character { get; set; } = string.Empty;
     }
 
     public class SeasonStats

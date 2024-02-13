@@ -4,7 +4,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
 {
     public class SandboxLoadout
     {
-        public string templateId { get; set; } = "0";
+        public string templateId { get; set; } = string.Empty;
         public SandboxLoadoutAttributes attributes { get; set; } = new SandboxLoadoutAttributes();
         public int quantity { get; set; } = 0;
     }
@@ -17,25 +17,22 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
     public class SandboxLoadoutAttributes
     {
         public SandboxLoadoutSlots locker_slots_data { get; set; } = new SandboxLoadoutSlots();
-        public int use_count { get; set; }
-        public string banner_icon_template { get; set; } = "notproper";
-        public string banner_color_template { get; set; } = "notproper";
-        public string locker_name { get; set; } = "notproper";
-        public bool item_seen { get; set; }
-        public bool favorite { get; set; }
+        public string banner_icon_template { get; set; } = string.Empty;
+        public string banner_color_template { get; set; } = string.Empty;
+        public string locker_name { get; set; } = string.Empty;
     }
 
     public class LockerSlotsData
     {
-        public Slots MusicPack { get; set; } = new Slots();
-        public Slots Character { get; set; } = new Slots();
-        public Slots Backpack { get; set; } = new Slots();
-        public Slots SkyDiveContrail { get; set; } = new Slots();
-        public Slots Dance { get; set; } = new Slots();
-        public Slots LoadingScreen { get; set; } = new Slots();
-        public Slots Pickaxe { get; set; } = new Slots();
-        public Slots Glider { get; set; } = new Slots();
-        public Slots ItemWrap { get; set; } = new Slots();
+        public Slots musicpack { get; set; } = new Slots();
+        public Slots character { get; set; } = new Slots();
+        public Slots backpack { get; set; } = new Slots();
+        public Slots pickaxe { get; set; } = new Slots();
+        public Slots skydivecontrail { get; set; } = new Slots();
+        public Slots dance { get; set; } = new Slots();
+        public Slots loadingscreen { get; set; } = new Slots();
+        public Slots glider { get; set; } = new Slots();
+        public Slots itemwrap { get; set; } = new Slots();
     }
 
     public class Slots
@@ -46,7 +43,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
 
     public class Loadout
     {
-        public string templateId { get; set; } = "notproper";
+        public string templateId { get; set; } = string.Empty;
         public SandboxLoadoutAttributes attributes { get; set; } = new SandboxLoadoutAttributes();
         public int quantity { get; set; }
     }

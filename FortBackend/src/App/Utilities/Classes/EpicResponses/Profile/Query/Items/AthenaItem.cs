@@ -4,7 +4,9 @@
     public class AthenaItem
     {
         public AthenaItemAttributes attributes { get; set; } = new AthenaItemAttributes();
-        public string templateId { get; set; } = "notproper";
+        public string templateId { get; set; } = string.Empty;
+        public int quantity { get; set; } = 1;
+
     }
     public class AthenaItemAttributes
     {

@@ -9,11 +9,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\Resources\Ini\DefaultEngine.ini" />
+    <None Remove="src\Resources\Ini\DefaultGame.ini" />
     <None Remove="src\Resources\Ini\DefaultInput.ini" />
+    <None Remove="src\Resources\Ini\DefaultRuntimeOptions.ini" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="src\Resources\Ini\DefaultInput.ini" />
+    <Content Include="src\Resources\Ini\DefaultEngine.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Resources\Ini\DefaultGame.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Resources\Ini\DefaultRuntimeOptions.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="src\Resources\Ini\DefaultInput.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

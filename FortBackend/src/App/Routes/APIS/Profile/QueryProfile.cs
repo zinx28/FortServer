@@ -42,8 +42,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile
 
                         if (ProfileID == "athena" || ProfileID == "profile0")
                         {
-                            var response = await AthenaResponses.Response.AthenaResponse(accountId, ProfileID, Season, RVN, AccountDataParsed);
-                            return Ok(response);
+                           var response = await AthenaResponses.Response.AthenaResponse(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                           return Ok(response);
                         }
                     }
                 }

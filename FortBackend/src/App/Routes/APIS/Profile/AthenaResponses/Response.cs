@@ -16,18 +16,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
         {
             try
             {
-                bool FoundSeasonDataInProfile = false;
-                foreach (Season SeasonData in AthenaDataParsed.commoncore.Seasons)
-                {
-                    Console.WriteLine(SeasonData.SeasonNumber);
-                    Console.WriteLine(Season);
-                    Console.WriteLine(SeasonData.SeasonNumber == Season);
-                    if (SeasonData.SeasonNumber == Season)
-                    {
-                        Console.WriteLine("FOUND");
-                        FoundSeasonDataInProfile = true;
-                    }
-                }
+                bool FoundSeasonDataInProfile = AthenaDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
+
 
                 if (!FoundSeasonDataInProfile)
                 {
@@ -54,173 +44,151 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                     });
                 }
 
-              
+
                 AthenaDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
-              
+
                 if (AthenaDataParsed == null)
                 {
                     return new Class.Athena();
                 }
 
-                Console.WriteLine(AthenaDataParsed.commoncore.Seasons);
+                //Console.WriteLine(AthenaDataParsed.commoncore.Seasons);
 
                 Season[] Seasons = AthenaDataParsed.commoncore.Seasons;
 
                 if (AthenaDataParsed.commoncore.Seasons != null)
                 {
-                    foreach (Season seasonObject in Seasons)
+                    Season seasonObject = AthenaDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
+
+                    if (seasonObject != null)
                     {
-                        Console.WriteLine(seasonObject.SeasonNumber);
-                        Console.WriteLine(Season);
-                        if (seasonObject.SeasonNumber == Season)
+                        Console.WriteLine("CORRECT SEASON!");
+                        DailyQuests quest_manager = seasonObject.DailyQuests;
+                        DateTime inputDateTime1;
+                        if (DateTime.TryParseExact(quest_manager.Interval, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out inputDateTime1)) { }
+                        Class.Athena AthenaClass = new Class.Athena()
                         {
-                            Console.WriteLine("CORRECT SEASON!");
-                            DailyQuests quest_manager = seasonObject.DailyQuests;
-                            DateTime inputDateTime1;
-                            if (DateTime.TryParseExact(quest_manager.Interval, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out inputDateTime1)) { }
-                            Class.Athena AthenaClass = new Class.Athena()
-                            {
-                                profileRevision = int.Parse(AthenaDataParsed.athena.RVN.ToString() ?? "0"),
-                                profileId = ProfileId,
-                                profileChangesBaseRevision = AthenaDataParsed.athena.RVN,
-                                profileChanges = new List<Class.ProfileChange>
-                                {
-                                    new ProfileChange
-                                    {
-                                         ChangeType = "fullProfileUpdate",
-                                        _id = "RANDOM",
-                                        Profile = new ProfileData
+                            profileRevision = int.Parse(AthenaDataParsed.athena.RVN.ToString() ?? "0"),
+                            profileId = ProfileId,
+                            profileChangesBaseRevision = AthenaDataParsed.athena.RVN,
+                            profileChanges = new List<Class.ProfileChange>
                                         {
-                                            _id = "RANDOM",
-                                            Update = "",
-                                            Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                            Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
-                                            rvn = AthenaDataParsed.athena.RVN,
-                                            WipeNumber = 1,
-                                            accountId = AccountId,
-                                            profileId = ProfileId,
-                                            version = "no_version",
-                                            stats = new Stats69
+                                            new ProfileChange
                                             {
-                                                  attributes = new StatsAttributes
-                                                  {
-                                                    use_random_loadout = false,
-                                                    past_seasons = new List<object>(),
-                                                    season_match_boost = seasonObject.season_match_boost,
-                                                    loadouts =  AthenaDataParsed.athena.loadouts,
-                                                    mfa_reward_claimed = false,
-                                                    rested_xp_overflow = 0,
-                                                    last_xp_interaction = "9999-12-10T22:14:37.647Z",
-                                                    quest_manager = new {
-                                                        dailyLoginInterval = inputDateTime1.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                                        dailyQuestRerolls = quest_manager.Rerolls
-                                                    },
-                                                    creative_dynamic_xp = new { },
-                                                    season = new SeasonStats
+                                                 ChangeType = "fullProfileUpdate",
+                                                _id = "RANDOM",
+                                                Profile = new ProfileData
+                                                {
+                                                    _id = "RANDOM",
+                                                    Update = "",
+                                                    Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
+                                                    Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
+                                                    rvn = AthenaDataParsed.athena.RVN,
+                                                    WipeNumber = 1,
+                                                    accountId = AccountId,
+                                                    profileId = ProfileId,
+                                                    version = "no_version",
+                                                    stats = new Stats69
                                                     {
-                                                        numWins = 0,
-                                                        numHighBracket = 0,
-                                                        numLowBracket = 0,
+                                                          attributes = new StatsAttributes
+                                                          {
+                                                            use_random_loadout = false,
+                                                            past_seasons = new List<object>(),
+                                                            season_match_boost = seasonObject.season_match_boost,
+                                                            loadouts =  AthenaDataParsed.athena.loadouts,
+                                                            mfa_reward_claimed = false,
+                                                            rested_xp_overflow = 0,
+                                                            last_xp_interaction = "9999-12-10T22:14:37.647Z",
+                                                            quest_manager = new {
+                                                                dailyLoginInterval = inputDateTime1.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                                dailyQuestRerolls = quest_manager.Rerolls
+                                                            },
+                                                            creative_dynamic_xp = new { },
+                                                            season = new SeasonStats
+                                                            {
+                                                                numWins = 0,
+                                                                numHighBracket = 0,
+                                                                numLowBracket = 0,
+                                                            },
+                                                            battlestars = seasonObject.battlestars_currency,
+                                                            vote_data = new { },
+                                                            battlestars_season_total = seasonObject.battlestars_currency,
+                                                            lifetime_wins = 0,
+                                                            level = seasonObject.Level,
+                                                            rested_xp_exchange = 1,
+                                                            rested_xp_cumulative = 0,
+                                                            rested_xp_mult = 0,
+                                                            season_friend_match_boost = seasonObject.season_friend_match_boost,
+                                                            active_loadout_index = 0,
+                                                            purchased_bp_offers = new List<object> { },
+                                                            last_applied_loadout = AthenaDataParsed.athena.last_applied_loadout?.ToString() ?? "",
+                                                            //favorite_musicpack = AthenaDataParsed.athena.MusicPack.Items?.ToString() ?? "",
+                                                            //banner_icon = AthenaDataParsed.athena.Banner.BannerIcon?.ToString() ?? "",
+                                                            //banner_color = AthenaDataParsed.athena.Banner.BannerColor?.ToString() ?? "",
+                                                            //favorite_character = AthenaDataParsed.athena.Character.Items?.ToString() ?? "",
+                                                            //favorite_itemwraps = AthenaDataParsed.athena.ItemWrap.Items ?? new string[0],
+                                                            //favorite_skydivecontrail = AthenaDataParsed.athena.SkydiveContrail.Items?.ToString() ?? "",
+                                                            //favorite_pickaxe = AthenaDataParsed.athena.Pickaxe.Items?.ToString() ?? "",
+                                                            //favorite_glider = AthenaDataParsed.athena.Glider.Items?.ToString() ?? "",
+                                                            //favorite_backpack = AthenaDataParsed.athena.Backpack.Items?.ToString() ?? "",
+                                                            //favorite_dance = AthenaDataParsed.athena.Dance.Items ?? new string[0],
+                                                            //favorite_loadingscreen = AthenaDataParsed.Athena.LoadingScreen.Items?.ToString() ?? ""
+                                                        }
                                                     },
-                                                    battlestars = seasonObject.battlestars_currency,
-                                                    vote_data = new { },
-                                                    battlestars_season_total = seasonObject.battlestars_currency,
-                                                    lifetime_wins = 0,
-                                                    level = seasonObject.Level,
-                                                    rested_xp_exchange = 1,
-                                                    rested_xp_cumulative = 0,
-                                                    rested_xp_mult = 0,
-                                                    season_friend_match_boost = seasonObject.season_friend_match_boost,
-                                                    active_loadout_index = 0,
-                                                    purchased_bp_offers = new List<object> { },
-                                                    last_applied_loadout = AthenaDataParsed.athena.last_applied_loadout?.ToString() ?? "",
-                                                    //favorite_musicpack = AthenaDataParsed.athena.MusicPack.Items?.ToString() ?? "",
-                                                    //banner_icon = AthenaDataParsed.athena.Banner.BannerIcon?.ToString() ?? "",
-                                                    //banner_color = AthenaDataParsed.athena.Banner.BannerColor?.ToString() ?? "",
-                                                    //favorite_character = AthenaDataParsed.athena.Character.Items?.ToString() ?? "",
-                                                    //favorite_itemwraps = AthenaDataParsed.athena.ItemWrap.Items ?? new string[0],
-                                                    //favorite_skydivecontrail = AthenaDataParsed.athena.SkydiveContrail.Items?.ToString() ?? "",
-                                                    //favorite_pickaxe = AthenaDataParsed.athena.Pickaxe.Items?.ToString() ?? "",
-                                                    //favorite_glider = AthenaDataParsed.athena.Glider.Items?.ToString() ?? "",
-                                                    //favorite_backpack = AthenaDataParsed.athena.Backpack.Items?.ToString() ?? "",
-                                                    //favorite_dance = AthenaDataParsed.athena.Dance.Items ?? new string[0],
-                                                    //favorite_loadingscreen = AthenaDataParsed.Athena.LoadingScreen.Items?.ToString() ?? ""
+                                                    items = new Dictionary<string, object>(),
+                                                    commandRevision = AthenaDataParsed.athena.CommandRevision,
                                                 }
-                                            },
-                                            items = new Dictionary<string, object>(),
-                                            commandRevision = AthenaDataParsed.athena.CommandRevision,
-                                        }
-                                    
-                                     }
-                                },
-                                profileCommandRevision = AthenaDataParsed.athena.CommandRevision,
-                                serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-                                responseVersion = 1,
-                            };
 
-                            List<Dictionary<string, object>> items = AthenaDataParsed.athena.Items;
+                                             }
+                                        },
+                            profileCommandRevision = AthenaDataParsed.athena.CommandRevision,
+                            serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                            responseVersion = 1,
+                        };
 
-                            foreach (Dictionary<string, object> item in items)
+                        List<Dictionary<string, object>> items = AthenaDataParsed.athena.Items;
+
+                        foreach (Dictionary<string, object> item in items)
+                        {
+                            try
                             {
-                                try
+                                string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || k.Contains("loadout")) ?? "";
+                                Console.WriteLine(key);
+                                if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
                                 {
-                                    string Key = "";
-                                    object Value = "";
+                                    dynamic itemAttributes1 = JsonConvert.DeserializeObject(value.ToString());
 
-                                    foreach (KeyValuePair<string, object> KeyValuePair in item)
+                                    Console.WriteLine(itemAttributes1.templateId);
+                                    if (itemAttributes1.templateId != null && itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
                                     {
-                                        Key = KeyValuePair.Key;
-                                        Value = KeyValuePair.Value;
+                                        Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
 
-                                        try
+                                        if (itemAttributes != null)
                                         {
-                                            int AthenaIndex = Key.IndexOf("Athena");
-                                            Key = Key.Substring(AthenaIndex);
-                                        }
-                                        catch {/*idk*/}
-                                    }
-
-                                    var itemValue = item[Key] as Dictionary<string, object>;
-
-                                    if (itemValue == null)
-                                    {
-                                        if (Value is Newtonsoft.Json.Linq.JObject)
-                                        {
-                                            dynamic itemAttributes1 = JsonConvert.DeserializeObject(Value.ToString());
-                                            Console.WriteLine(Value);
-
-                                            // Loadouts
-                                            if (itemAttributes1.templateId != null && itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
-                                            {
-                                                Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(Value.ToString());
-
-                                                if (itemAttributes != null)
-                                                {
-                                                    AthenaClass.profileChanges[0].Profile.items.Add(Key, itemAttributes);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                // Items
-                                                AthenaItem ItemAttributes = JsonConvert.DeserializeObject<AthenaItem>(Value.ToString()); 
-
-                                                if(ItemAttributes != null)
-                                                {
-                                                    AthenaClass.profileChanges[0].Profile.items.Add(Key, ItemAttributes);
-                                                }
-                                            }
+                                            AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
                                         }
                                     }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Logger.Error(ex.Message);
+                                    else
+                                    {
+                                        // Items
+                                        AthenaItem itemAttributes = JsonConvert.DeserializeObject<AthenaItem>(value.ToString());
+
+                                        if (itemAttributes != null)
+                                        {
+                                            AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
+                                        }
+                                    }
                                 }
                             }
-
-                                return AthenaClass;
+                            catch (Exception ex)
+                            {
+                                Logger.Error(ex.Message);
+                            }
                         }
+
+                        return AthenaClass;
                     }
+                          
                 }
             }
             catch (Exception ex)

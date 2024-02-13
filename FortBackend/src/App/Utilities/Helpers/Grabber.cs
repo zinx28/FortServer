@@ -22,7 +22,6 @@
                         {
                             season = parsedSeason;
                         }
-
                     }
                 }
             }

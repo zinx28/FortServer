@@ -10,65 +10,6 @@ using static FortBackend.src.App.Routes.APIS.Profile.AthenaResponses.Class;
 
 namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
 {
-    class ItemIG
-    {
-        public string templateId { get; set; }
-
-        public ItemIGAttrbutes attributes { get; set; }
-        public int quantity { get; set; }
-
-    }
-
-    class ItemIGAttrbutes
-    {
-        public bool item_seen { get; set; } = true;
-        public int level { get; set; } = 1;
-        public List<object> variants { get; set; }
-    }
-
-
-    class CosmeticsItem
-    {
-        public string templateId { get; set; }
-
-        public CosmeticsItemAttrbutes attributes { get; set; }
-        public int quantity { get; set; }
-
-    }
-
-    class CosmeticsItemAttrbutes
-    {
-        public CosmeticsItemDataObject locker_slots_data { get; set; }
-        public string banner_color_template { get; set; } = "";
-        public string banner_icon_template { get; set; } = "";
-        public string locker_name { get; set; } = "FortBackend";
-    }
-
-    class CosmeticsItemDataObject
-    {
-        public CosmeticsItemDataObjectSlots slots { get; set; }
-    }
-
-    class CosmeticsItemDataObjectSlots
-    {
-        public AverageItemIg musicpack { get; set; }
-        public AverageItemIg character { get; set; }
-        public AverageItemIg backpack { get; set; }
-        public AverageItemIg pickaxe { get; set; }
-        public AverageItemIg skydivecontrail { get; set; }
-        public AverageItemIg dance { get; set; }
-        public AverageItemIg loadingscreen { get; set; }
-        public AverageItemIg glider { get; set; }
-        public AverageItemIg itemwrap { get; set; }
-
-
-    }
-
-    class AverageItemIg
-    {
-        public string[] items { get; set; }
-        public List<dynamic> ActiveVariants { get; set; } = new List<dynamic>();
-    }
     public class Response
     {
         public static async Task<Class.Athena> AthenaResponse(string AccountId, string ProfileId, int Season, string RVN, Account AthenaDataParsed)
@@ -251,7 +192,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                             // Loadouts
                                             if (itemAttributes1.templateId != null && itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
                                             {
-                                                CosmeticsItem itemAttributes = JsonConvert.DeserializeObject<CosmeticsItem>(Value.ToString());
+                                                Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(Value.ToString());
 
                                                 if (itemAttributes != null)
                                                 {
@@ -261,7 +202,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                             else
                                             {
                                                 // Items
-                                                ItemIG ItemAttributes = JsonConvert.DeserializeObject<ItemIG>(Value.ToString()); 
+                                                AthenaItem ItemAttributes = JsonConvert.DeserializeObject<AthenaItem>(Value.ToString()); 
 
                                                 if(ItemAttributes != null)
                                                 {

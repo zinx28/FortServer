@@ -16,7 +16,7 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
         public IActionResult SystemApi()
         {
             Response.ContentType = "application/json";
-            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\ini");
+            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src\\Resources\\ini");
             List<object> files = new List<object>();
 
             foreach (string filePath in Directory.EnumerateFiles(directoryPath).Where(f => f.EndsWith(".ini")))
@@ -53,7 +53,7 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
             Response.ContentType = "application/octet-stream";
             try
             {
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Resources\\ini\\{filename}");
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\{filename}");
 
                 if (!System.IO.File.Exists(filePath))
                 {

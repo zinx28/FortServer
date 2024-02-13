@@ -28,8 +28,12 @@ namespace FortBackend.src.App.Utilities
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
-            services.AddMemoryCache();
+
             MongoDBStart.Initialize(services, Configuration);
+
+            services.AddHttpContextAccessor();
+            services.AddMemoryCache();
+            services.AddControllers();
         }
     
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,12 +51,10 @@ namespace FortBackend.src.App.Utilities
 
             Logger.Log("Loading all endpoints");
 
-            app.UseEndpoints(async endpoints =>
+            app.UseEndpoints(endpoints =>
             {
-                var IActionDescriptorCollectionProvider = app.ApplicationServices.GetRequiredService<IActionDescriptorCollectionProvider>();
-                var ActionDescriptors = IActionDescriptorCollectionProvider.ActionDescriptors.Items;
-
-                foreach (var actionDescriptor in ActionDescriptors)
+                var actionDescriptors = app.ApplicationServices.GetRequiredService<IActionDescriptorCollectionProvider>().ActionDescriptors.Items;
+                foreach (var actionDescriptor in actionDescriptors)
                 {
                     if (actionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
                     {

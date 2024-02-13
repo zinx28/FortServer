@@ -44,15 +44,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                     });
                 }
 
-
                 AthenaDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
 
                 if (AthenaDataParsed == null)
                 {
                     return new Class.Athena();
                 }
-
-                //Console.WriteLine(AthenaDataParsed.commoncore.Seasons);
 
                 Season[] Seasons = AthenaDataParsed.commoncore.Seasons;
 
@@ -72,75 +69,75 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                             profileId = ProfileId,
                             profileChangesBaseRevision = AthenaDataParsed.athena.RVN,
                             profileChanges = new List<Class.ProfileChange>
+                            {
+                                new ProfileChange
+                                {
+                                        ChangeType = "fullProfileUpdate",
+                                    _id = "RANDOM",
+                                    Profile = new ProfileData
+                                    {
+                                        _id = "RANDOM",
+                                        Update = "",
+                                        Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
+                                        Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
+                                        rvn = AthenaDataParsed.athena.RVN,
+                                        WipeNumber = 1,
+                                        accountId = AccountId,
+                                        profileId = ProfileId,
+                                        version = "no_version",
+                                        stats = new Stats69
                                         {
-                                            new ProfileChange
-                                            {
-                                                 ChangeType = "fullProfileUpdate",
-                                                _id = "RANDOM",
-                                                Profile = new ProfileData
+                                                attributes = new StatsAttributes
                                                 {
-                                                    _id = "RANDOM",
-                                                    Update = "",
-                                                    Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                                    Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
-                                                    rvn = AthenaDataParsed.athena.RVN,
-                                                    WipeNumber = 1,
-                                                    accountId = AccountId,
-                                                    profileId = ProfileId,
-                                                    version = "no_version",
-                                                    stats = new Stats69
-                                                    {
-                                                          attributes = new StatsAttributes
-                                                          {
-                                                            use_random_loadout = false,
-                                                            past_seasons = new List<object>(),
-                                                            season_match_boost = seasonObject.season_match_boost,
-                                                            loadouts =  AthenaDataParsed.athena.loadouts,
-                                                            mfa_reward_claimed = false,
-                                                            rested_xp_overflow = 0,
-                                                            last_xp_interaction = "9999-12-10T22:14:37.647Z",
-                                                            quest_manager = new {
-                                                                dailyLoginInterval = inputDateTime1.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                                                dailyQuestRerolls = quest_manager.Rerolls
-                                                            },
-                                                            creative_dynamic_xp = new { },
-                                                            season = new SeasonStats
-                                                            {
-                                                                numWins = 0,
-                                                                numHighBracket = 0,
-                                                                numLowBracket = 0,
-                                                            },
-                                                            battlestars = seasonObject.battlestars_currency,
-                                                            vote_data = new { },
-                                                            battlestars_season_total = seasonObject.battlestars_currency,
-                                                            lifetime_wins = 0,
-                                                            level = seasonObject.Level,
-                                                            rested_xp_exchange = 1,
-                                                            rested_xp_cumulative = 0,
-                                                            rested_xp_mult = 0,
-                                                            season_friend_match_boost = seasonObject.season_friend_match_boost,
-                                                            active_loadout_index = 0,
-                                                            purchased_bp_offers = new List<object> { },
-                                                            last_applied_loadout = AthenaDataParsed.athena.last_applied_loadout?.ToString() ?? "",
-                                                            //favorite_musicpack = AthenaDataParsed.athena.MusicPack.Items?.ToString() ?? "",
-                                                            //banner_icon = AthenaDataParsed.athena.Banner.BannerIcon?.ToString() ?? "",
-                                                            //banner_color = AthenaDataParsed.athena.Banner.BannerColor?.ToString() ?? "",
-                                                            //favorite_character = AthenaDataParsed.athena.Character.Items?.ToString() ?? "",
-                                                            //favorite_itemwraps = AthenaDataParsed.athena.ItemWrap.Items ?? new string[0],
-                                                            //favorite_skydivecontrail = AthenaDataParsed.athena.SkydiveContrail.Items?.ToString() ?? "",
-                                                            //favorite_pickaxe = AthenaDataParsed.athena.Pickaxe.Items?.ToString() ?? "",
-                                                            //favorite_glider = AthenaDataParsed.athena.Glider.Items?.ToString() ?? "",
-                                                            //favorite_backpack = AthenaDataParsed.athena.Backpack.Items?.ToString() ?? "",
-                                                            //favorite_dance = AthenaDataParsed.athena.Dance.Items ?? new string[0],
-                                                            //favorite_loadingscreen = AthenaDataParsed.Athena.LoadingScreen.Items?.ToString() ?? ""
-                                                        }
-                                                    },
-                                                    items = new Dictionary<string, object>(),
-                                                    commandRevision = AthenaDataParsed.athena.CommandRevision,
-                                                }
-
-                                             }
+                                                use_random_loadout = false,
+                                                past_seasons = new List<object>(),
+                                                season_match_boost = seasonObject.season_match_boost,
+                                                loadouts =  AthenaDataParsed.athena.loadouts,
+                                                mfa_reward_claimed = false,
+                                                rested_xp_overflow = 0,
+                                                last_xp_interaction = "9999-12-10T22:14:37.647Z",
+                                                quest_manager = new {
+                                                    dailyLoginInterval = inputDateTime1.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                    dailyQuestRerolls = quest_manager.Rerolls
+                                                },
+                                                creative_dynamic_xp = new { },
+                                                season = new SeasonStats
+                                                {
+                                                    numWins = 0,
+                                                    numHighBracket = 0,
+                                                    numLowBracket = 0,
+                                                },
+                                                battlestars = seasonObject.battlestars_currency,
+                                                vote_data = new { },
+                                                battlestars_season_total = seasonObject.battlestars_currency,
+                                                lifetime_wins = 0,
+                                                level = seasonObject.Level,
+                                                rested_xp_exchange = 1,
+                                                rested_xp_cumulative = 0,
+                                                rested_xp_mult = 0,
+                                                season_friend_match_boost = seasonObject.season_friend_match_boost,
+                                                active_loadout_index = 0,
+                                                purchased_bp_offers = new List<object> { },
+                                                last_applied_loadout = AthenaDataParsed.athena.last_applied_loadout?.ToString() ?? "",
+                                                //favorite_musicpack = AthenaDataParsed.athena.MusicPack.Items?.ToString() ?? "",
+                                                //banner_icon = AthenaDataParsed.athena.Banner.BannerIcon?.ToString() ?? "",
+                                                //banner_color = AthenaDataParsed.athena.Banner.BannerColor?.ToString() ?? "",
+                                                //favorite_character = AthenaDataParsed.athena.Character.Items?.ToString() ?? "",
+                                                //favorite_itemwraps = AthenaDataParsed.athena.ItemWrap.Items ?? new string[0],
+                                                //favorite_skydivecontrail = AthenaDataParsed.athena.SkydiveContrail.Items?.ToString() ?? "",
+                                                //favorite_pickaxe = AthenaDataParsed.athena.Pickaxe.Items?.ToString() ?? "",
+                                                //favorite_glider = AthenaDataParsed.athena.Glider.Items?.ToString() ?? "",
+                                                //favorite_backpack = AthenaDataParsed.athena.Backpack.Items?.ToString() ?? "",
+                                                //favorite_dance = AthenaDataParsed.athena.Dance.Items ?? new string[0],
+                                                //favorite_loadingscreen = AthenaDataParsed.Athena.LoadingScreen.Items?.ToString() ?? ""
+                                            }
                                         },
+                                        items = new Dictionary<string, object>(),
+                                        commandRevision = AthenaDataParsed.athena.CommandRevision,
+                                    }
+
+                                    }
+                            },
                             profileCommandRevision = AthenaDataParsed.athena.CommandRevision,
                             serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                             responseVersion = 1,
@@ -153,12 +150,10 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                             try
                             {
                                 string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || k.Contains("loadout")) ?? "";
-                                Console.WriteLine(key);
                                 if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
                                 {
                                     dynamic itemAttributes1 = JsonConvert.DeserializeObject(value.ToString());
 
-                                    Console.WriteLine(itemAttributes1.templateId);
                                     if (itemAttributes1.templateId != null && itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
                                     {
                                         Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
@@ -170,7 +165,6 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                     }
                                     else
                                     {
-                                        // Items
                                         AthenaItem itemAttributes = JsonConvert.DeserializeObject<AthenaItem>(value.ToString());
 
                                         if (itemAttributes != null)

@@ -18,12 +18,11 @@ namespace FortBackend.src.App.Routes.APIS.API
         public IActionResult CheckToken(string version)
         {
             Response.ContentType = "application/json";
-            var omg = new
+
+            return Ok(new
             {
                 type = "NO_UPDATE"
-            };
-
-            return Ok(omg);
+            });
         }
 
         [HttpGet("game/v2/enabled_features")]

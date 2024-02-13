@@ -12,20 +12,18 @@
 
                 if (!string.IsNullOrEmpty(userAgent))
                 {
-                    try
+                    string[] userAgentParts = userAgent.Split('-');
+
+                    if (userAgentParts.Length > 1)
                     {
-                        string[] userAgentParts = userAgent.Split("-");
-                        string[] seasonParts = userAgentParts[1].Split(".");
-                        season = int.Parse(seasonParts[0]);
+                        string[] seasonParts = userAgentParts[1].Split('.');
+
+                        if (seasonParts.Length > 0 && int.TryParse(seasonParts[0], out int parsedSeason))
+                        {
+                            season = parsedSeason;
+                        }
+
                     }
-                    catch
-                    {
-                        season = 2;
-                    }
-                }
-                else
-                {
-                    season = 2;
                 }
             }
             catch (Exception ex)

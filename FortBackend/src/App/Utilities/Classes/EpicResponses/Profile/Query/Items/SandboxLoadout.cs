@@ -20,6 +20,11 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
         public string banner_icon_template { get; set; } = string.Empty;
         public string banner_color_template { get; set; } = string.Empty;
         public string locker_name { get; set; } = string.Empty;
+        public bool favorite { get; set; } = false;
+        public int use_count { get; set; } = 1;
+        public bool item_seen { get; set; } = true;
+
+
     }
 
     public class LockerSlotsData
@@ -38,7 +43,8 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
     public class Slots
     {
         public List<string> items { get; set; } = new List<string>();
-        public List<string> activeVariants { get; set; } = new List<string>();
+
+        public List<object> activeVariants { get; set; } = new List<object>();
     }
 
     public class Loadout

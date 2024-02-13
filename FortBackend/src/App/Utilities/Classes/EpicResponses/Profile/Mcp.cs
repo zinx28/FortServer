@@ -11,7 +11,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile
         public List<ProfileChange> profileChanges { get; set; } = new List<ProfileChange>();
         public DateTime serverTime { get; set; }
 
-        public int profileCommandRevision = 1;
+        public int profileCommandRevision { get; set; } = 1;
         public int responseVersion { get; set; } = 1;
     }
 }

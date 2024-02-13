@@ -113,7 +113,6 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                                 vote_data = new { },
                                                 battlestars_season_total = seasonObject.battlestars_currency,
                                                 lifetime_wins = 0,
-                                                level = seasonObject.Level,
                                                 rested_xp_exchange = 1,
                                                 rested_xp_cumulative = 0,
                                                 rested_xp_mult = 0,
@@ -122,8 +121,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                                 purchased_bp_offers = new List<object> { },
                                                 last_applied_loadout = AccountDataParsed.athena.last_applied_loadout?.ToString() ?? "",
                                                 //favorite_musicpack = AthenaDataParsed.athena.MusicPack.Items?.ToString() ?? "",
-                                                //banner_icon = AthenaDataParsed.athena.Banner.BannerIcon?.ToString() ?? "",
-                                                //banner_color = AthenaDataParsed.athena.Banner.BannerColor?.ToString() ?? "",
+                                                //banner_icon = AccountDataParsed.athena.Banner.BannerIcon?.ToString() ?? "",
+                                                //banner_color = AccountDataParsed.athena.Banner.BannerColor?.ToString() ?? "",
                                                 //favorite_character = AthenaDataParsed.athena.Character.Items?.ToString() ?? "",
                                                 //favorite_itemwraps = AthenaDataParsed.athena.ItemWrap.Items ?? new string[0],
                                                 //favorite_skydivecontrail = AthenaDataParsed.athena.SkydiveContrail.Items?.ToString() ?? "",
@@ -132,6 +131,14 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                                 //favorite_backpack = AthenaDataParsed.athena.Backpack.Items?.ToString() ?? "",
                                                 //favorite_dance = AthenaDataParsed.athena.Dance.Items ?? new string[0],
                                                 //favorite_loadingscreen = AthenaDataParsed.Athena.LoadingScreen.Items?.ToString() ?? ""
+                                                xp = seasonObject.BookXP,
+                                                rested_xp = seasonObject.BookXP,
+                                                accountLevel = seasonObject.Level,
+                                                level = seasonObject.Level,
+                                                book_purchased = seasonObject.BookPurchased,
+                                                book_xp = seasonObject.BattleStars,
+                                                season_num = Season,
+                                                book_level = seasonObject.BookLevel
                                             }
                                         },
                                         items = new Dictionary<string, object>(),

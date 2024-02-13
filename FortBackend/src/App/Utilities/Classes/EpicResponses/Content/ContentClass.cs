@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
-namespace FortBackend.src.App.Utilities.Classes.EpicResponses
+namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Content
 {
     public class ContentJson
     {

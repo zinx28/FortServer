@@ -185,6 +185,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                                     vote_data = new { },
                                                     battlestars_season_total = seasonObject.battlestars_currency,
                                                     lifetime_wins = 0,
+                                                    level = seasonObject.Level,
                                                     rested_xp_exchange = 1,
                                                     rested_xp_cumulative = 0,
                                                     rested_xp_mult = 0,
@@ -205,10 +206,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.AthenaResponses
                                                     //favorite_loadingscreen = AthenaDataParsed.Athena.LoadingScreen.Items?.ToString() ?? ""
                                                 }
                                             },
-                                            items = new Dictionary<string, object>()
-                                            {
-
-                                            },
+                                            items = new Dictionary<string, object>(),
                                             commandRevision = AthenaDataParsed.athena.CommandRevision,
                                         }
                                     

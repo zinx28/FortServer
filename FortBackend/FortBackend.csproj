@@ -9,6 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\Resources\Ini\DefaultInput.ini" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="src\Resources\Ini\DefaultInput.ini" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\shop\" />
   </ItemGroup>

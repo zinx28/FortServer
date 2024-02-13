@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
@@ -88,7 +89,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                         version = "no_version",
                                         stats = new Stats
                                         {
-                                                attributes = new StatsAttributes
+                                                attributes = new AthenaStatsAttributes
                                                 {
                                                 use_random_loadout = false,
                                                 past_seasons = new List<object>(),
@@ -154,23 +155,25 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                 if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
                                 {
                                     dynamic itemAttributes1 = JsonConvert.DeserializeObject(value.ToString());
-
-                                    if (itemAttributes1.templateId != null && itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
+                                    if (itemAttributes1.templateId != null || value != null)
                                     {
-                                        Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
-
-                                        if (itemAttributes != null)
+                                        if (itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
                                         {
-                                            AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
+                                            Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
+
+                                            if (itemAttributes != null)
+                                            {
+                                                AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        AthenaItem itemAttributes = JsonConvert.DeserializeObject<AthenaItem>(value.ToString());
-
-                                        if (itemAttributes != null)
+                                        else
                                         {
-                                            AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
+                                            AthenaItem itemAttributes = JsonConvert.DeserializeObject<AthenaItem>(value.ToString());
+
+                                            if (itemAttributes != null)
+                                            {
+                                                AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
+                                            }
                                         }
                                     }
                                 }

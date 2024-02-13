@@ -1,6 +1,8 @@
-﻿using MongoDB.Bson;
+﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
@@ -258,8 +260,14 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonIgnoreIfNull]
         public BanHistory BanHistory { get; set; } = new BanHistory();
 
+        [BsonElement("current_mtx_platform")]
+        public string current_mtx_platform { get; set; } = "EpicPC";
+
         [BsonElement("mtx_affiliate")]
         public string mtx_affiliate { get; set; } = "";
+
+        [BsonElement("mtx_purchase_history")]
+        public MtxPurchaseHistory mtx_purchase_history { get; set; } = new MtxPurchaseHistory();
 
         [BsonElement("weekly_purchases")]
         public List<Dictionary<string, object>> weekly_purchases { get; set; } = new List<Dictionary<string, object>>();
@@ -279,6 +287,20 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
         [BsonElement("CommandRevision")]
         public int CommandRevision { get; set; } = 0;
+    }
+
+    public class MtxPurchaseHistory
+    {
+        [BsonElement("refundsUsed")]
+        public int refundsUsed { get; set; } = 0;
+
+        [BsonElement("refundCredits")]
+        public int refundCredits { get; set; } = 0;
+
+        [BsonElement("purchases")]
+        [BsonIgnoreIfNull]
+        public List<object> purchases { get; set; } = new List<object>();
+
     }
 
     public class BanHistory

@@ -40,7 +40,10 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         switch (mcp)
                         {
                             case "QueryProfile":
-                                response = await QueryProfile.QueryProfileHelper(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                                response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                            break;
+                            case "ClientQuestLogin":
+                                response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
                             break;
                             default:
                             response = new Mcp

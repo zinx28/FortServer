@@ -1,4 +1,4 @@
-﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Content
+﻿namespace FortBackend.src.App.Utilities.Classes.ConfigHelpers
 {
     class ContentConfig
     {

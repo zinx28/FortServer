@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
+﻿using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
 using FortBackend.src.App.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -54,9 +55,7 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                         }
                     }
-                };
-          
-                Console.WriteLine("TEST");
+                }; 
 
                 var jsonData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\content.json"));
                 ContentConfig contentconfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData); //dynamicbackgrounds.news

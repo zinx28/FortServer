@@ -12,6 +12,7 @@ using FortBackend.src.App.XMPP;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Oauth;
+using System.IdentityModel.Tokens.Jwt;
 
 
 namespace FortBackend.src.App.Routes.APIS.Oauth
@@ -20,6 +21,61 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
     [Route("account/api")]
     public class OauthApiController : ControllerBase
     {
+        [HttpGet("oauth/verify")]
+        public async Task<IActionResult> VerifyToken()
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
+                var accessToken = token.Replace("eg1~", "");
+
+                var handler = new JwtSecurityTokenHandler();
+                var decodedToken = handler.ReadJwtToken(accessToken);
+                var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+                var UserData = await Handlers.FindOne<User>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+
+                if (AccountData != "Error" || UserData != "Error")
+                {
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
+
+                    if (AccountDataParsed != null && UserDataParsed != null)
+                    {
+                        if (AccountData.ToString().Contains(accessToken))
+                        {
+                            if (UserDataParsed.banned != true)
+                            {
+                                return Ok(new
+                                {
+                                    token = $"{token}",
+                                    session_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "jti")?.Value,
+                                    token_type = "bearer",
+                                    client_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value,
+                                    internal_client = true,
+                                    client_service = "fortnite",
+                                    account_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value,
+                                    expires_in = 28800,
+                                    expires_at = DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    auth_method = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "am")?.Value,
+                                    display_name = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dn")?.Value,
+                                    app = "fortnite",
+                                    in_app_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value,
+                                    device_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dvid")?.Value
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"[OauthApi:Verify] -> {ex.Message}");
+            }
+            return Ok(new { });
+
+        }
+
         [HttpPost("oauth/token")]
         public async Task<IActionResult> LoginToken()
         {

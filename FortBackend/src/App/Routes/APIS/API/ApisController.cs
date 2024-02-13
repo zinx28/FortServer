@@ -20,7 +20,6 @@ namespace FortBackend.src.App.Routes.APIS.API
             return StatusCode(204);
         }
 
-
         [HttpGet("/eulatracking/api/public/agreements/fn/account/{accountId}")]
         public IActionResult eulatracking(string accountId)
         {

@@ -122,6 +122,6 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                 Console.WriteLine("Errlr " + ex.Message);
                 return Ok(Array.Empty<string>());
             }
-        }
+        }      
     }
 }

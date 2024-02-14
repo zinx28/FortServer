@@ -15,7 +15,7 @@
     },
     {
         "item": "AthenaCharacter:CID_011_Athena_Commando_M",
-        "name": "Scout", 
+        "name": "Scout",
         "description": "Uncommon scout outfit.",
         "items": [],
         "rarity": "uncommon"
@@ -1124,6 +1124,22 @@
             {
                 "item": "AthenaBAckpack:BID_107_GarageBandFemale",
                 "name": "Keytar"
+            }
+        ],
+        "variants": [
+            {
+                "channel": "Parts",
+                "type": "STYLE",
+                "options": [
+                    {
+                        "tag": "Stage1",
+                        "name": "DEFAULT"
+                    },
+                    {
+                        "tag": "Stage2",
+                        "name": "GLASSES"
+                    }
+                ]
             }
         ],
         "rarity": "epic"

@@ -17,6 +17,22 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
         public static string PricejsonContent = File.ReadAllText(PriceFile);
         public static Dictionary<string, Dictionary<string, int>> PriceValues = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, int>>>(PricejsonContent);
 
+        public static string[] itemTypes1 = {
+            "skins",
+            "emotes",
+            "gliders",
+            "pickaxes",
+            "wrap"
+        };
+
+        public static double[] rarityProb1 = {
+            0.30,
+            0.30,
+            0.30,
+            0.30,
+            0.15
+        };
+
         public static async Task<bool> GenerateBundles()
         {
             
@@ -135,6 +151,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             price = Price,
                             normalprice = Price, // not done
                             rarity = Item.rarity,
+                            type = "large",
                             categories = Item.categories
                         });
                     }
@@ -212,13 +229,14 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             price = Price,
                             normalprice = Price, // not done
                             rarity = Item.rarity,
+                            type = "large",
                             categories = Item.categories
                         });
                     }
                     WeeklyItems -= HowManyTurns;
                 }
-
-            }else
+            }
+            else
             {
                 Logger.Error("Shop items is null");
             }
@@ -226,12 +244,97 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
             return true;
         }
+
+        public static async Task GenerateDailyItems(int Items, List<ItemsSaved> Type, string ItemType = "small")
+        {
+            Logger.Log("Generating useless stuff -> " + Items, "ItemShop");
+            for (int i = 0; i < Items; i++)
+            {
+                await GenerateSingleItem(savedData, Type, itemTypes1, rarityProb1, ItemType);
+            }
+        }
+
+        public static async Task GenerateSingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, string[] itemType, double[] rarityProb, string type = "small")
+        {
+            Random random = new Random();
+            string ChosenItem = string.Empty;
+            int Price = -1;
+            double y = 0.0;
+            double randomValue = random.NextDouble();
+
+            for (int i = 0; i < rarityProb.Length; i++)
+            {
+                y += rarityProb[i];
+                if (randomValue < y)
+                {
+                    ChosenItem = itemType[i];
+                    break;
+                }
+            }
+
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/shop/{ChosenItem}.json");
+            //Console.WriteLine(filePath);
+            string jsonContent = File.ReadAllText(filePath);
+     
+            List<ShopItems> skinItems = JsonConvert.DeserializeObject<List<ShopItems>>(jsonContent);
+
+
+            ////Console.WriteLine(jsonContent);
+
+            if (skinItems != null)
+            {
+                int randomIndex = random.Next(skinItems.Count);
+                ShopItems RandomSkinItem = skinItems[randomIndex];
+                Random random1 = new Random();
+
+                DateTime lastShownDate;
+                if (DateTime.TryParse(RandomSkinItem.LastShownDate, out lastShownDate))
+                {
+                    if (lastShownDate.Month == DateTime.Now.Month && lastShownDate.Year == DateTime.Now.Year)
+                    {
+                        await GenerateSingleItem(savedData, ListItemSaved, itemType, rarityProb);
+                        return;
+                    }
+                }
+
+                RandomSkinItem.LastShownDate = DateTime.Now.ToString("yyyy-MM-dd");
+                string updatedJsonContent = JsonConvert.SerializeObject(skinItems, Formatting.Indented);
+                File.WriteAllText(filePath, updatedJsonContent);
+
+                if (PriceValues.TryGetValue(ChosenItem, out var categoryPrices) && categoryPrices.TryGetValue(RandomSkinItem.rarity, out var price))
+                {
+                    Price = price;
+                }
+
+                ListItemSaved.Add(new ItemsSaved
+                {
+                    id = Guid.NewGuid().ToString().Replace("-", ""),
+                    item = RandomSkinItem.item,
+                    name = RandomSkinItem.name,
+                    items = RandomSkinItem.items,
+                    price = Price,
+                    normalprice = Price,
+                    variants = RandomSkinItem.variants,
+                    type = "small",
+                    rarity = RandomSkinItem.rarity
+                });
+
+                Logger.Log($"Generated Item: {ChosenItem}:{RandomSkinItem.name}", "ItemShop");
+            }
+            else
+            {
+                Logger.Error($"Failed To Generate Item: {ChosenItem}:Unknown ofc", "ItemShop");
+
+            }
+
+        }
+
         public static async Task<SavedData> Start(SavedData saveddata)
         {
             savedData = saveddata;
             Random RandomNumber = new Random();
-            WeeklyItems = RandomNumber.Next(2, 3);
-            DailyItems = RandomNumber.Next(2, 3);
+            WeeklyItems = RandomNumber.Next(1, 2);
+            DailyItems = RandomNumber.Next(1, 2);
             // generate 2 rows - daily and weekly row!
             if (WeeklyItems > 3) { WeeklyItems = 3; }
             if (DailyItems > 3) { DailyItems = 3; }
@@ -250,7 +353,14 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     Logger.Error("Attempting again", "ItemShop");
                 }
             }
-            
+            Console.WriteLine(DailyItems);
+            Logger.Log("Generating left over items", "ItemShop");
+            //ItemType
+            await GenerateDailyItems(DailyItems, savedData.Daily, "large");
+            await GenerateDailyItems(4, savedData.Daily);
+            await GenerateDailyItems(DailyItems, savedData.Weekly, "large");
+            await GenerateDailyItems(4, savedData.Weekly);
+
             TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
             DateTime date = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
 
@@ -269,7 +379,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             string updatedJsonContent = JsonConvert.SerializeObject(shopGen, Formatting.Indented);
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
             File.WriteAllText(filePath, updatedJsonContent);
-            Console.WriteLine("TET");
             return savedData;
         }
     }

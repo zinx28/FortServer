@@ -9,6 +9,18 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Class
         public string LastShownDate { get; set; } = string.Empty;
     }
 
+    public class ShopItems
+    {
+        public string item { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
+        public List<Item> items { get; set; } = new List<Item>();
+
+        public List<Variants> variants { get; set; } = new List<Variants>();
+        public string rarity { get; set; } = string.Empty;
+        public string LastShownDate { get; set; } = string.Empty;
+    }
+
     public class ShopBundlesItem
     {
         public string item { get; set; } = string.Empty;
@@ -25,5 +37,18 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Class
     {
         public string name { get; set; }
         public string item { get; set; }
+    }
+
+    public class Variants
+    {
+        public string channel { get; set; }
+        public string type { get; set; }
+        public List<VariantsOptions> options { get; set; }
+    }
+
+    public class VariantsOptions
+    {
+        public string tag { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
     }
 }

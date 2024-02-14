@@ -6,8 +6,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Data
     {
         public List<ItemsSaved> Weekly { get; set; } = new List<ItemsSaved>();
         public List<ItemsSaved> Daily { get; set; } = new List<ItemsSaved>();
-        public List<object> WeeklyFields { get; set; } = new List<object>();
-        public List<object> DailyFields { get; set; } = new List<object>();
     }
 
     public class ItemsSaved
@@ -18,7 +16,9 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Data
         public List<Item> items { get; set; } = new List<Item>();
         public int price { get; set; } = -1;
         public int normalprice { get; set; } = -1;
+        public List<Variants> variants { get; set; } = new List<Variants>();
         public string rarity { get; set; } = string.Empty;
+        public string type = string.Empty;
         public string[] categories { get; set; } = new string[0];
     }
 }

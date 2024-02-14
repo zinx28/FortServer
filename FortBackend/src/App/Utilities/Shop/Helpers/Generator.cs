@@ -364,11 +364,11 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
             DateTime date = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
 
-            var shopGen = new
+            var shopGen = new ShopJson
             {
                 expiration = new DateTime(date.Year, date.Month, date.Day, 17, 0, 0).AddDays(1).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                 cacheExpire = new DateTime(date.Year, date.Month, date.Day, 16, 57, 14, 490).AddDays(1).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                ShopItems = new
+                ShopItems = new ShopJsonItem
                 {
                     Weekly = savedData.Weekly,
                     Daily = savedData.Daily,

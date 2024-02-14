@@ -1,9 +1,12 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Fortnite;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace FortBackend.src.App.Routes.APIS.CloudStorage
@@ -23,7 +26,7 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
             {
                 FileInfo fileInfo = new FileInfo(filePath);
                 fileInfo.GetHashCode();
-                files.Add(new
+                files.Add(new CloudstorageFile
                 {
                     uniqueFilename = fileInfo.Name,
                     filename = fileInfo.Name,
@@ -72,14 +75,15 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
         }
 
         [HttpGet("user/{id}/{file}")]
-        public IActionResult UserApi(string id, string file)
+        public async Task<IActionResult> UserApi(string id, string file)
         {
             Response.ContentType = "application/octet-stream";
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Cosmos", "ClientSettings", $"ClientSettings-{id}.sav");
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FortBackend", "ClientSettings", $"ClientSettings-{id}.sav");
 
             if (System.IO.File.Exists(filePath))
             {
                 byte[] fileContent = System.IO.File.ReadAllBytes(filePath);
+                
                 return File(fileContent, "application/octet-stream");
             }
 
@@ -110,11 +114,11 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
                 var UserData = await Handlers.FindOne<User>("accountId", accountId);
                 if (UserData != "Error")
                 {
-                    string filePath = Path.Combine(folderPath, $"ClientSettings-{accountId}.Sav");
-
-                    System.IO.File.WriteAllText(filePath, requestBody, Encoding.GetEncoding("latin1"));
-                    return StatusCode(204);
+                    System.IO.File.WriteAllText(Path.Combine(folderPath, $"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
+                    StatusCode(204);
                 }
+
+                reader.Close();
             }
             return NoContent();
         }
@@ -134,11 +138,11 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
 
                     return Ok(new[]
                     {
-                        new
+                        new CloudstorageFile
                         {
                             uniqueFilename = $"ClientSettings.Sav",
                             filename = $"ClientSettings.Sav",
-                            hash = fileInfo.GetHashCode(),
+                            hash = "sd", // need to do this in today
                             hash256 = "973124FFC4A03E66D6A4458E587D5D6146F71FC57F359C8D516E0B12A50AB0D9",
                             length = fileContents.Length,
                             contentType = "application/octet-stream",
@@ -150,17 +154,12 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
                         }
                     });
                 }
-                else
-                {
-                    return Ok(new object[] { });
-                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return Ok(new object[] { });
-
+                Logger.Error("IdUserApi " + ex.Message);
             }
+            return Ok(new object[] { });
         }
     }
 }

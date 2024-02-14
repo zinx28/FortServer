@@ -28,7 +28,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                         {
                             return new Mcp();
                         }
-                        var SandBoxLoadout = AccountDataParsed.athena.Items[0][AccountDataParsed.athena.last_applied_loadout] as SandboxLoadout;
+                        var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(AccountDataParsed.athena.Items[0][AccountDataParsed.athena.last_applied_loadout]));
+                     
                         if(SandBoxLoadout != null)
                         {
                             var ItemsCount = SandBoxLoadout.attributes.locker_slots_data.slots.itemwrap.items.Count();

@@ -2,6 +2,7 @@
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Newtonsoft.Json;
@@ -27,9 +28,25 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                         {
                             return new Mcp();
                         }
-                    }else
+                        var SandBoxLoadout = AccountDataParsed.athena.Items[0][AccountDataParsed.athena.last_applied_loadout] as SandboxLoadout;
+                        if(SandBoxLoadout != null)
+                        {
+                            var ItemsCount = SandBoxLoadout.attributes.locker_slots_data.slots.itemwrap.items.Count();
+                            string[] ReplacedItems = Enumerable.Repeat(Body.itemToSlot.ToLower(), ItemsCount).ToArray();
+
+                            UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", ReplacedItems);
+                        }
+                    }
+                    else
                     {
                         // emotes
+                        if (Body.itemToSlot == "")
+                        {
+                            UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", "");
+                        }else
+                        {
+                            UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", Body.itemToSlot.ToLower());
+                        }
                     }
                 }else
                 {
@@ -41,7 +58,6 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     }
                     else
                     {
-                        Console.WriteLine("SET!");
                         UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> { 
                             Body.itemToSlot.ToLower() 
                         });

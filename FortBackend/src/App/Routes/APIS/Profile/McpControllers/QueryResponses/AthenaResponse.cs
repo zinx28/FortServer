@@ -70,7 +70,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                             profileRevision = AccountDataParsed.athena.RVN,
                             profileId = ProfileId,
                             profileChangesBaseRevision = AccountDataParsed.athena.RVN,
-                            profileChanges = new List<ProfileChange>
+                            profileChanges = new List<object>()
                             {
                                 new ProfileChange
                                 {
@@ -162,13 +162,15 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                 if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
                                 {
                                     dynamic itemAttributes1 = JsonConvert.DeserializeObject(value.ToString());
+                                    var ProfileChange = AthenaClass.profileChanges[0] as ProfileChange;
+
                                     if (itemAttributes1.templateId != null || value != null)
                                     {
                                         if (itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
                                         {
                                             Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
 
-                                            if (itemAttributes != null)
+                                            if (ProfileChange != null && itemAttributes != null)
                                             {
                                                 AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
                                             }
@@ -176,10 +178,10 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                         else
                                         {
                                             AthenaItem itemAttributes = JsonConvert.DeserializeObject<AthenaItem>(value.ToString());
-
-                                            if (itemAttributes != null)
+                                           
+                                            if (ProfileChange != null && itemAttributes != null)
                                             {
-                                                AthenaClass.profileChanges[0].Profile.items.Add(key, itemAttributes);
+                                                ProfileChange.Profile.items.Add(key, itemAttributes);
                                             }
                                         }
                                     }

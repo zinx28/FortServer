@@ -142,8 +142,8 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
                         {
                             uniqueFilename = $"ClientSettings.Sav",
                             filename = $"ClientSettings.Sav",
-                            hash = "sd", // need to do this in today
-                            hash256 = "973124FFC4A03E66D6A4458E587D5D6146F71FC57F359C8D516E0B12A50AB0D9",
+                            hash = Hex.MakeHexWithString(fileInfo.Name),
+                            hash256 = Hex.MakeHexWithString(fileInfo.Name),
                             length = fileContents.Length,
                             contentType = "application/octet-stream",
                             uploaded = fileInfo.LastWriteTime,

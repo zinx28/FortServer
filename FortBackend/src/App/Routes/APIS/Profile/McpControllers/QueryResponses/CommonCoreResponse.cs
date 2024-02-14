@@ -57,7 +57,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                     profileRevision = AccountDataParsed.athena.RVN,
                     profileId = ProfileId,
                     profileChangesBaseRevision = AccountDataParsed.athena.RVN,
-                    profileChanges = new List<ProfileChange>
+                    profileChanges = new List<dynamic>
                     {
                         new ProfileChange
                         {
@@ -128,10 +128,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                                 {
 
                                     Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
+                                    var ProfileChange = CommonCoreClass.profileChanges[0] as ProfileChange;
 
                                     if (itemAttributes != null)
                                     {
-                                        CommonCoreClass.profileChanges[0].Profile.items.Add(key, new
+
+                                        ProfileChange.Profile.items.Add(key, new
                                         {
                                             templateId = itemAttributes.templateId,
                                             attributes = new

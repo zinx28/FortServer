@@ -50,7 +50,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                                     response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
                                     break;
                                 case "SetCosmeticLockerSlot":
-                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, requestbody);
+                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
                                     break;
                                 default:
                                     response = new Mcp

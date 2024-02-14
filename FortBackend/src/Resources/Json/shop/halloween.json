@@ -1,0 +1,229 @@
+[
+    {
+        "item": "AthenaCharacter:CID_029_Athena_Commando_F_Halloween",
+        "name": "Ghoul Trooper",
+        "description": "Epic ghoul trooper outfit.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_030_Athena_Commando_M_Halloween",
+        "name": "Skull Trooper",
+        "description": "Victory runs bone-deep.",
+        "items": [],
+        "rarity": "epic"
+    }, 
+    {
+        "item": "AthenaCharacter:CID_102_Athena_Commando_M_Raven",
+        "name": "Raven",
+        "description": "Brooding master of dark skies.",
+        "items": [],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_194_Athena_Commando_F_RavenQuill",
+        "name": "Ravage",
+        "description": "Circling overhead, shrouded by night...",
+        "items": [],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_220_Athena_Commando_F_Clown",
+        "name": "Peekaboo",
+        "description": "I see you!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_111_ClownFemale",
+                "name": "Battle Balloon"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_221_Athena_Commando_M_Clown",
+        "name": "Nite Nite",
+        "description": "Sleep tight!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_112_ClownMale",
+                "name": "Balloon Llama"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_243_Athena_Commando_M_PumpkinSlice",
+        "name": "Hollowhead",
+        "description": "All tricks. No treats.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_129_PumpkinSlice",
+                "name": "Mouldering Cloak"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_244_Athena_Commando_M_PumpkinSuit",
+        "name": "Jack Gourdon",
+        "description": "Squash the competition.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_246_Athena_Commando_F_Grave",
+        "name": "Skull Ranger",
+        "description": "She's got a bone to pick.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_248_Athena_Commando_M_BlackWidow",
+        "name": "Spider Knight",
+        "description": "They'll fall into your web.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_132_BlackWidowMale",
+                "name": "Spider Shield"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_249_Athena_Commando_F_BlackWidow",
+        "name": "Arachne",
+        "description": "Weave a web to victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_131_BlackWidowfemale",
+                "name": "Long Legs"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_250_Athena_Commando_M_EvilCowboy",
+        "name": "Deadfire",
+        "description": "This town ain't big enough... Reactive: Transforms by dealing damage, or by outliving other players.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_137_EvilCowboy",
+                "name": "Shackled Stone"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_251_Athena_Commando_F_Muertos",
+        "name": "Rosa",
+        "description": "Celebrate the unknown. Reactive: Glows in the dark",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_135_MuertosFemale",
+                "name": "Calavera"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_252_Athena_Commando_M_Muertos",
+        "name": "Dante",
+        "description": "Back for more. Reactive: Glows in the dark",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_136_MuertosMale",
+                "name": "Spirit Cape"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_325_Athena_Commando_M_WavyMan",
+        "name": "Bendie",
+        "description": "Plagued by uncontrollable fits of bending.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_201_WavyManMale",
+                "name": "Bendie Inflator"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_326_Athena_Commando_F_WavyMan",
+        "name": "Twistie",
+        "description": "Partially inflated, and ready to flop to the top.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_202_WavyManFemale",
+                "name": "Twistie Inflator"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_258_Athena_Commando_F_FuzzyBearHalloween",
+        "name": "Spooky Team Leader",
+        "description": "Find delight in fright.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_139_FuzzyBearHalloween",
+                "name": "Goodie Gourd"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_269_Athena_Commando_M_Wizard",
+        "name": "Castor",
+        "description": "The wandering warlock of Wailing Woods.",
+        "items": [{
+            "item": "AthenaBackpack:BID_149_Wizard",
+            "name": "Spellbinder"
+        }],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_270_Athena_Commando_F_Witch",
+        "name": "Elmira",
+        "description": "She'll literally charm you.",
+        "items": [{
+            "item": "AthenaBackpack:BID_150_Witch",
+            "name": "Tome Pouch"
+        }],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_HalloweenCandy",
+        "name": "Treat Yourself",
+        "description": "Go ahead and take two... or the entire bucket.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_236_Athena_Commando_F_Scarecrow",
+        "name": "Straw Ops",
+        "description": "The harvest grows near.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_125_ScarecrowFemale",
+                "name": "Birdhovel"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_254_Athena_Commando_M_Zombie",
+        "name": "Brainiac",
+        "description": "Victory takes braaaains.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Zombie",
+        "name": "Reanimated",
+        "description": "From beyond the rave!",
+        "items": [],
+        "rarity": "epic"
+    }
+]

@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\App\Utilities\Shop\" />
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\shop\" />
   </ItemGroup>
@@ -43,6 +42,7 @@
     <PackageReference Include="Discord.Net" Version="3.13.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	<PackageReference Include="MongoDB.Driver" Version="2.23.1" />
+	<PackageReference Include="SkiaSharp" Version="2.88.7" />
 	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
   </ItemGroup>
 

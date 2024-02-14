@@ -1,0 +1,3097 @@
+[
+    {
+        "item": "AthenaCharacter:CID_009_Athena_Commando_M",
+        "name": "Tracker",
+        "description": "Uncommon tracker outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_010_Athena_Commando_M",
+        "name": "Ranger",
+        "description": "Uncommon ranger outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_011_Athena_Commando_M",
+        "name": "Scout", 
+        "description": "Uncommon scout outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_012_Athena_Commando_M",
+        "name": "Trooper",
+        "description": "Uncommon trooper outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_013_Athena_Commando_F",
+        "name": "Renegade",
+        "description": "Uncommon renegade outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_014_Athena_Commando_F",
+        "name": "Pathfinder",
+        "description": "Uncommon pathfinder outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_015_Athena_Commando_F",
+        "name": "Assault Trooper",
+        "description": "Uncommon assault trooper outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_016_Athena_Commando_F",
+        "name": "Commando",
+        "description": "Uncommon commando outfit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_017_Athena_Commando_M",
+        "name": "Aerial Assault Trooper",
+        "description": "Rare aerial assault trooper outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_018_Athena_Commando_M",
+        "name": "Recon Scout",
+        "description": "Rare recon scout outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_019_Athena_Commando_M",
+        "name": "Infiltrator",
+        "description": "Rare infiltrator outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_020_Athena_Commando_M",
+        "name": "Special Forces",
+        "description": "Rare special forces outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_021_Athena_Commando_F",
+        "name": "Brawler",
+        "description": "Rare brawler outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_022_Athena_Commando_F",
+        "name": "Recon Expert",
+        "description": "Rare recon expert outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_023_Athena_Commando_F",
+        "name": "Munitions Expert",
+        "description": "Rare munitions expert outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_024_Athena_Commando_F",
+        "name": "Recon Specialist",
+        "description": "Rare recon specialist outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_025_Athena_Commando_M",
+        "name": "First strike Specialist",
+        "description": "Rare first strike specialist outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_026_Athena_Commando_M",
+        "name": "Desperado",
+        "description": "Rare desperado outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_027_Athena_Commando_F",
+        "name": "Survival Specialist",
+        "description": "Rare Survival Specialist outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_028_Athena_Commando_F",
+        "name": "Renegade Raider",
+        "description": "Rare renegade raider outfit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_031_Athena_Commando_M_Retro",
+        "name": "Raptor",
+        "description": "Royale Air Force test pilot.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_005_Raptor",
+                "name": "Raptor Satchel"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_034_Athena_Commando_F_Medieval",
+        "name": "Red Knight",
+        "description": "The red menace of Anarchy Acres.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_003_RedKnight",
+                "name": "Red Shield"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_036_Athena_Commando_M_WinterCamo",
+        "name": "Absolute Zero",
+        "description": "Freeze out the competition.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_037_Athena_Commando_F_WinterCamo",
+        "name": "Arctic Assassin",
+        "description": "Stay frosty.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_038_Athena_Commando_M_Disco",
+        "name": "Funk Ops",
+        "description": "Boogie on down to umbrella town.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_195_FunkOpsFemale",
+                "name": "Disco Ball"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_040_Athena_Commando_M_District",
+        "name": "Devastator",
+        "description": "Dominate the eye of the storm.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_041_Athena_Commando_F_District",
+        "name": "Dominator",
+        "description": "One step ahead of the pack.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_042_Athena_Commando_M_Cyberpunk",
+        "name": "Circuit Breaker",
+        "description": "The deadliest keyboard cowboy in the west.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_043_Athena_Commando_F_Stealth",
+        "name": "Shadow Ops",
+        "description": "You didn't see a thing.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_312_Stealth",
+                "name": "Prospect"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_044_Athena_Commando_F_SciPop",
+        "name": "Brite Bomber",
+        "description": "The future looks bright...",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_069_Athena_Commando_F_PinkBear",
+        "name": "Cuddle Team Leader",
+        "description": "Hug it out.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_023_Pinkbear",
+                "name": "Cuddle Bow"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_070_Athena_Commando_M_Cupid",
+        "name": "Love Ranger",
+        "description": "Aim for the heart.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_022_Cupid",
+                "name": "Love Wings"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_071_Athena_Commando_M_Wukong",
+        "name": "Wukong",
+        "description": "Long live the king!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_040_Wukong",
+                "name": "Royale Flags"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_072_Athena_Commando_M_Scout",
+        "name": "Sash Sergeant",
+        "description": "Set up camp and start a firefight.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_073_Athena_Commando_F_Scuba",
+        "name": "Snorkel Ops",
+        "description": "Diving head first into the fight.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_074_Athena_Commando_F_Stripe",
+        "name": "Jungle Scout",
+        "description": "Blaze a trail to victory.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_075_Athena_Commando_F_Stripe",
+        "name": "Tactics Officer",
+        "description": "Ready for action.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_076_Athena_Commando_F_Sup",
+        "name": "Dazzle",
+        "description": "The dominator of Dusty Depot.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_077_Athena_Commando_M_Sup",
+        "name": "Hyperion",
+        "description": "The gladiator of Greasy Grove.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_078_Athena_Commando_M_Camo",
+        "name": "Highrise Assault Trooper",
+        "description": "Rise to the top.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_079_Athena_Commando_F_Camo",
+        "name": "Tower Recon Specialist",
+        "description": "Master of the mean streets.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_086_Athena_Commando_M_RedSilk",
+        "name": "Crimson Scout",
+        "description": "A dashing and deadly scout.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_087_Athena_Commando_F_RedSilk",
+        "name": "Scarlet Defender",
+        "description": "Poised for victory.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_091_Athena_Commando_M_RedShirt",
+        "name": "Radiant Striker",
+        "description": "Strike first.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_092_Athena_Commando_F_RedShirt",
+        "name": "Brilliant Striker",
+        "description": "Strike true.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_093_Athena_Commando_M_Dinosaur",
+        "name": "Rex",
+        "description": "Hunting the competition to extinction.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_031_Dinosaur",
+                "name": "Scaly"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_094_Athena_Commando_M_Rider",
+        "name": "Burnout",
+        "description": "All roads lead to victory.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_097_Athena_Commando_F_RockerPunk",
+        "name": "Power Chord",
+        "description": "Bring on the noise complaints.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_034_RockerPunk",
+                "name": "Six String"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_099_Athena_Commando_F_Scathach",
+        "name": "Highland Warrior",
+        "description": "The shadow of Ulster.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_035_Scathach",
+                "name": "Buckler"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_100_Athena_Commando_M_CuChulainn",
+        "name": "Battle Hound",
+        "description": "Release the hound!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_063_CuChulainn",
+                "name": "Crested Cape"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_101_Athena_Commando_M_Stealth",
+        "name": "Midnight Ops",
+        "description": "Strike by night.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_105_Athena_Commando_F_SpaceBlack",
+        "name": "Dark Vanguard",
+        "description": "Exploring the outer limits.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_039_SpaceBlackFemale",
+                "name": "BID_039_SpaceBlackFemale"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_106_Athena_Commando_F_Taxi",
+        "name": "Whiplash",
+        "description": "Brake for no one.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_107_Athena_Commando_F_PajamaParty",
+        "name": "Tricera Ops",
+        "description": "Sink your teeth into victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_041_PajamaParty",
+                "name": "Hatchling"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_108_Athena_Commando_M_Fishhead",
+        "name": "Leviathan",
+        "description": "Call me fishman.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_042_Fishhead",
+                "name": "Fish Tank"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_109_Athena_Commando_M_Pizza",
+        "name": "Tomatohead",
+        "description": "Extra saucy.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_043_Pizza",
+                "name": "Special Delivery"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_110_Athena_Commando_F_CircuitBreaker",
+        "name": "Cipher",
+        "description": "Decoding the opposition's weakness.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_111_Athena_Commando_F_Robo",
+        "name": "Steelsight",
+        "description": "Victory demands nerves of steel.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_044_Robo",
+                "name": "Steelcast"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_112_Athena_Commando_M_Brite",
+        "name": "Brite Gunner",
+        "description": "Look on the bright side.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_026_Brite",
+                "name": "Brite Bag"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_121_Athena_Commando_M_Graffiti",
+        "name": "Abstrakt",
+        "description": "The writing's on the wall.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_048_Graffiti",
+                "name": "Tag Bag"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_122_Athena_Commando_M_Metal",
+        "name": "Diecast",
+        "description": "The die has been cast.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_123_Athena_Commando_F_Metal",
+        "name": "Chromium",
+        "description": "Solid to the core.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_124_Athena_Commando_F_AuroraGlow",
+        "name": "Nitelite",
+        "description": "Never afraid of the dark.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_126_Athena_Commando_M_AuroraGlow",
+        "name": "Liteshow",
+        "description": "Light it up!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_127_Athena_Commando_M_Hazmat",
+        "name": "Toxic Trooper",
+        "description": "Dominate the hot zone.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_050_Hazmat",
+                "name": "Pathogen"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_128_Athena_Commando_F_Hazmat",
+        "name": "Hazard Agent",
+        "description": "Warning: Hazardous!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_052_HazmatFemale",
+                "name": "Contagion"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_152_Athena_Commando_F_CarbideOrange",
+        "name": "Criterion",
+        "description": "Unwavering dedication.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_061_CarbideOrange",
+                "name": "Stabilizer"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_129_Athena_Commando_M_Deco",
+        "name": "Venturion",
+        "description": "Adventure awaits!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_069_DecoMale",
+                "name": "Venturion Cape"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_130_Athena_Commando_M_Merman",
+        "name": "Moisty Merman",
+        "description": "From the moisty depths of... the backlot of Studio B.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_051_Merman",
+                "name": "Mertank"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_131_Athena_Commando_M_Warpaint",
+        "name": "Bandolier",
+        "description": "No shirt. No surrender.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_133_Athena_Commando_F_Deco",
+        "name": "Ventura",
+        "description": "Destined for greatness.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_070_DecoFemale",
+                "name": "Ventura Cape"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_134_Athena_Commando_M_Jailbird",
+        "name": "Scoundrel",
+        "description": "Moisty's most wanted.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_053_JailbirdMale",
+                "name": "Strongbox"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_135_Athena_Commando_F_Jailbird",
+        "name": "Rapscallion",
+        "description": "Bail out of the Battle Bus.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_054_JailbirdFemale",
+                "name": "Burgle Bag"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_136_Athena_Commando_M_StreetBasketball",
+        "name": "Jumpshot",
+        "description": "Vertical victory.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_137_Athena_Commando_F_StreetBasketball",
+        "name": "Triple Threat",
+        "description": "It's all about the fundamentals.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_141_Athena_Commando_M_DarkEagle",
+        "name": "Omen",
+        "description": "Your victory has been foretold.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_058_DarkEagle",
+                "name": "Battle Shroud"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_142_Athena_Commando_M_WWIIPilot",
+        "name": "Sky Stalker",
+        "description": "Barrel roll through the competition.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_059_WWIIPilot",
+                "name": "Last Gasp"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_143_Athena_Commando_F_DarkNinja",
+        "name": "Fate",
+        "description": "Prepare to meet your fate.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_060_DarkNinja",
+                "name": "Ominous Orb"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_153_Athena_Commando_F_CarbideBlack",
+        "name": "Oblivion",
+        "description": "Unending vengeance.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_065_CarbideBlack",
+                "name": "Destabilizer"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_154_Athena_Commando_M_Gumshoe",
+        "name": "Sleuth",
+        "description": "This detective is on the case.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_062_Gumshoe",
+                "name": "Evidence Bag"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_155_Athena_Commando_F_Gumshoe",
+        "name": "Gumshoe",
+        "description": "The kid's got gumption.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_067_GumshoeFemale",
+                "name": "Confidential Case"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_156_Athena_Commando_F_FuzzyBearInd",
+        "name": "Fireworks Team Leader",
+        "description": "Life, liberty, and the bear suit of happiness.",
+        "items": [
+            {
+                "item": "AthenaBackPack:BID_064_FuzzyBearInd",
+                "name": "Blasting Cap"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_157_Athena_Commando_M_StarsAndStripes",
+        "name": "Star-Spangled Trooper",
+        "description": "Salute your stripes.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_158_Athena_Commando_F_StarsAndStripes",
+        "name": "Star-Spangled Ranger",
+        "description": "Make 'em see stars.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_159_Athena_Commando_M_GumshoeDark",
+        "name": "Noir",
+        "description": "Infiltrating the seedy underbelly of Tilted Towers.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_068_GumshoeDark",
+                "name": "Cluefinder"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_160_Athena_Commando_M_SpeedyRed",
+        "name": "Vertex",
+        "description": "From beyond the point of no return.",
+        "items": [
+            {
+                "item": "AthenaBackpak:BID_066_SpeedyRed",
+                "name": "Deflector"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_164_Athena_Commando_M_Viking",
+        "name": "Magnus",
+        "description": "Conquer The Storm.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_072_VikingMale",
+                "name": "Enduring Cape"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_168_Athena_Commando_M_Shark",
+        "name": "Chomp Sr.",
+        "description": "Take a bite out of victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_076_Shark",
+                "name": "Shark Fin"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_169_Athena_Commando_M_Luchador",
+        "name": "Masked Fury",
+        "description": "Who's behind the mask?",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_170_Athena_Commando_F_Luchador",
+        "name": "Dynamo",
+        "description": "Rule the ring.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_171_Athena_Commando_M_SharpDresser",
+        "name": "Moniker",
+        "description": "Make a name for yourself.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_172_Athena_Commando_F_SharpDresser",
+        "name": "Fortune",
+        "description": "Take charge of your fortune.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_175_Athena_Commando_M_Celestial",
+        "name": "Galaxy",
+        "description": "Victory is written in the stars.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_176_Athena_Commando_M_Lifeguard",
+        "name": "Sun Tan Specialist",
+        "description": "Don't get burned.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_083_LifeguardMale",
+                "name": "Rescue Ring"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_177_Athena_Commando_M_StreetRacerCobra",
+        "name": "Maverick",
+        "description": "Just drive.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_080_StreetRacerCobraMale",
+                "name": "Bat Attitude"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_178_Athena_Commando_F_StreetRacerCobra",
+        "name": "Shade",
+        "description": "Stay cool.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_078_StreetRacerCobraFemale",
+                "name": "Ballistic"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_179_Athena_Commando_F_Scuba",
+        "name": "Reef Ranger",
+        "description": "Dive into the fray.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_082_ScubaFemale",
+                "name": "Air Tank"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_180_Athena_Commando_M_Scuba",
+        "name": "Wreck Raider",
+        "description": "Wrecks to riches.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_081_ScubaMale",
+                "name": "Diving Tank"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_182_Athena_Commando_M_ModernMilitary",
+        "name": "Archetype",
+        "description": "Engineered for combat performance.",
+        "items": [
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_079_ModernMilitary",
+                "name": "Caliper"
+            },
+            {
+                "item": "AthenaBackpack:BID_085_ModernMilitary",
+                "name": "Paradigm"
+            },
+            {
+                "item": "AthenaGlider:Glider_ID_057_ModernMilitary",
+                "name": "Servo"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_184_Athena_Commando_M_DurrburgerWorker",
+        "name": "Grill Sergeant",
+        "description": "Make it sizzle.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_185_Athena_Commando_M_DurrburgerHero",
+        "name": "Beef Boss",
+        "description": "Victory well done.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_091_DurrrBurgerHero",
+                "name": "Deep Fried"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_186_Athena_Commando_M_Exercise",
+        "name": "Mullet Marauder",
+        "description": "Totally. Totally radical.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_087_ExerciseMale",
+                "name": "Boombox"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_187_Athena_Commando_F_FuzzyBearPanda",
+        "name": "P.A.N.D.A Team Leader",
+        "description": "Victory now. Nap later.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_092_FuzzyBearPanda",
+                "name": "Bamboo"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_188_Athena_Commando_F_StreetRacerWhite",
+        "name": "Whiteout",
+        "description": "Break away from the pack.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_089_StreetRacerWhiteFemale",
+                "name": "Ignition"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_189_Athena_Commando_F_Exercise",
+        "name": "Aerobic Assassin",
+        "description": "Flex your victory muscles.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_086_ExerciseFemale",
+                "name": "Back Plate"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_190_Athena_Commando_M_StreetRacerWhite",
+        "name": "Overtaker",
+        "description": "Take over the competition.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_090_StreetRacerWhiteMale",
+                "name": "Lane Splitter"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_191_Athena_Commando_M_SushiChef",
+        "name": "Sushi Master",
+        "description": "Roll out!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_088_SushiChefMale",
+                "name": "Chef's Choice"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_192_Athena_Commando_M_Hippie",
+        "name": "Far Out Man",
+        "description": "Out of sight.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_093_HippieMale",
+                "name": "Summer Strummer"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_193_Athena_Commando_F_Hippie",
+        "name": "Dreamflower",
+        "description": "Can you dig it?",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_094_HippieFemale",
+                "name": "Hip Shakers"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_196_Athena_Commando_M_Biker",
+        "name": "Backbone",
+        "description": "King of the highway.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_096_BikerMale",
+                "name": "Road Ready"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_197_Athena_Commando_F_Biker",
+        "name": "Chopper",
+        "description": "No one crosses Chopper and rides away.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_097_BikerFemale",
+                "name": "Road Flair"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_198_Athena_Commando_M_BlueSamurai",
+        "name": "Musha",
+        "description": "A fearless and noble warrior.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_098_BlueSamuraiMale",
+                "name": "Sashimono"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_199_Athena_Commando_F_BlueSamurai",
+        "name": "Hime",
+        "description": "Catlike grace under pressure.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_099_BlueSamuraiFemale",
+                "name": "Shiro"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_201_Athena_Commando_M_DesertOps",
+        "name": "Armadillo",
+        "description": "Thick skinned and battle hardened.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_202_Athena_Commando_F_DesertOps",
+        "name": "Scorpion",
+        "description": "Beware the stinger.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_203_Athena_Commando_M_CloakedStar",
+        "name": "Cloaked Star",
+        "description": "Cloaked in mystery.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_456_CloakedMale",
+                "name": "Darkest Edge"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_204_Athena_Commando_M_GarageBand",
+        "name": "Stage Slayer",
+        "description": "Crank it up!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_106_GarageBandMale",
+                "name": "Kick Drum"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_205_Athena_Commando_F_GarageBand",
+        "name": "Synth Star",
+        "description": "Ride a new wave to victory.",
+        "items": [
+            {
+                "item": "AthenaBAckpack:BID_107_GarageBandFemale",
+                "name": "Keytar"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_214_Athena_Commando_F_FootballReferee",
+        "name": "Whistle Warrior",
+        "description": "Throw a flag on the play.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_215_Athena_Commando_M_FootballReferee",
+        "name": "Striped Soldier",
+        "description": "Call it like you see it.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_216_Athena_Commando_F_Medic",
+        "name": "Field Surgeon",
+        "description": "Scalpel!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_110_MedicFemale",
+                "name": "Gurney Gear"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_217_Athena_Commando_M_Medic",
+        "name": "Triage Trooper",
+        "description": "No one is beyond saving.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_109_MedicMale",
+                "name": "BID_109_MedicMale"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_218_Athena_Commando_M_GreenBeret",
+        "name": "Garrison",
+        "description": "Hold down the fort.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_219_Athena_Commando_M_Hacivat",
+        "name": "Hacivat",
+        "description": "From lore to legend.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_108_HacivatMale",
+                "name": "Crafted Carrier"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_223_Athena_Commando_M_Dieselpunk",
+        "name": "Maximilian",
+        "description": "Pilot your way to victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_115_DieselpunkMale",
+                "name": "Para-Provisions"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_224_Athena_Commando_F_Dieselpunk",
+        "name": "Airheart",
+        "description": "Setting records flying solo.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_116_DieselpunkFemale",
+                "name": "Airflow"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_225_Athena_Commando_M_Octoberfest",
+        "name": "Ludwig",
+        "description": "Best of the wurst.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_117_OctoberfestMale",
+                "name": "Clockworks"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_226_Athena_Commando_F_Octoberfest",
+        "name": "Heidi",
+        "description": "Fest with the best.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_118_OctoberfestFemale",
+                "name": "Pretzel Protector"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_228_Athena_Commando_M_Vampire",
+        "name": "Sanctum",
+        "description": "Bestill your beating heart.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_130_VampireMale02",
+                "name": "Coven Cape"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_229_Athena_Commando_F_DarkBomber",
+        "name": "Dark Bomber",
+        "description": "The future looks dark.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_126_DarkBomber",
+                "name": "Dark Bag"
+            }
+        ],
+        "rarity": "dark"
+    },
+    {
+        "item": "AthenaCharacter:CID_235_Athena_Commando_M_Scarecrow",
+        "name": "Hay Man",
+        "description": "Scare. Those. Crows.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_124_ScarecrowMale",
+                "name": "Hay Nest"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_240_Athena_Commando_F_Plague",
+        "name": "Scourge",
+        "description": "Seeking the cure.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_128_PlagueFemale",
+                "name": "Arcanum"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_241_Athena_Commando_M_Plague",
+        "name": "Plague",
+        "description": "The doctor is in...",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_127_PlagueMale",
+                "name": "Dismal Cape"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_242_Athena_Commando_F_Bullseye",
+        "name": "Bullseye",
+        "description": "I never miss.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_247_Athena_Commando_M_GuanYu",
+        "name": "Guan Yu",
+        "description": "Loyalty and bravery at all times.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_133_GuanYu",
+                "name": "Loyal Shield"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_255_Athena_Commando_F_HalloweenBunny",
+        "name": "Bunnymoon",
+        "description": "Who are you supposed to be again?",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_256_Athena_Commando_M_Pumpkin",
+        "name": "Patch Patroller",
+        "description": "Self-appointed Grand Guardian of the Gourd.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_257_Athena_Commando_M_SamuraiUltra",
+        "name": "Shogun",
+        "description": "Suited for the ultimate showdown.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_142_SamuraiUltra",
+                "name": "Bladed Wings"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_259_Athena_Commando_M_StreetOps",
+        "name": "Reflex",
+        "description": "Quick to react, first to retaliate.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_140_StreetOpsMale",
+                "name": "Response Unit"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_260_Athena_Commando_F_StreetOps",
+        "name": "Instinct",
+        "description": "Victory comes naturally.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_141_StreetOpsFemale",
+                "name": "Reaction Tank"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_262_Athena_Commando_M_MadCommander",
+        "name": "Ruckus",
+        "description": "Bring the bedlam.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_143_MadCommanderMale",
+                "name": "Spike Chamber"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_263_Athena_Commando_F_MadCommander",
+        "name": "Mayhem",
+        "description": "Embrace the destruction.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_144_MadCommanderFemale",
+                "name": "Puncture Pack"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_264_Athena_Commando_M_AnimalJackets",
+        "name": "Growler",
+        "description": "This good boy is not afraid to bare his teeth.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_145_AnimalJacketsMale",
+                "name": "Woofs"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_265_Athena_Commando_F_AnimalJackets",
+        "name": "Flapjackie",
+        "description": "Loves pancakes almost as much as victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_146_AnimalJacketsFemale",
+                "name": "Nibbles"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_266_Athena_Commando_F_LlamaRider",
+        "name": "Yee-Haw!",
+        "description": "Giddy-up!",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_268_Athena_Commando_M_RockerPunk",
+        "name": "Riot",
+        "description": "Defining the pre-post-punk-post-hardcore scene.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_271_Athena_Commando_F_SushiChef",
+        "name": "Maki Master",
+        "description": "Roll up your sleeves and get to work.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_151_SushiChefFemale",
+                "name": "Shrimpy"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_272_Athena_Commando_M_HornedMask",
+        "name": "Taro",
+        "description": "Protector of the wilds.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_152_HornedMaskMale",
+                "name": "Trusty Tusks"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_273_Athena_Commando_F_HornedMask",
+        "name": "Nara",
+        "description": "Messenger of the spirits.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_153_HornedMaskFemale",
+                "name": "White Fang"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_275_Athena_Commando_M_SniperHood",
+        "name": "Longshot",
+        "description": "No target is out of range.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_155_SniperHoodMale",
+                "name": "Scope Satchel"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_276_Athena_Commando_F_SniperHood",
+        "name": "Insight",
+        "description": "Target in sight.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_156_SniperHoodFemale",
+                "name": "Sight Sling"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_277_Athena_Commando_M_Moth",
+        "name": "Mothmando",
+        "description": "Out of the shadows, and into the light.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_157_MothMale",
+                "name": "Wingback"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_290_Athena_Commando_F_BlueBadass",
+        "name": "Waypoint",
+        "description": "Make your move.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_165_BlueBadassFemale",
+                "name": "Signal Hub"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_291_Athena_Commando_M_Dieselpunk02",
+        "name": "Cloudbreaker",
+        "description": "Turbulent by nature.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_292_Athena_Commando_F_Dieselpunk02",
+        "name": "Wingtip",
+        "description": "Flying on the edge.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_297_Athena_Commando_F_Math",
+        "name": "Maven",
+        "description": "Victory is the common denominator.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_170_MathFemale",
+                "name": "Techie"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_300_Athena_Commando_F_Angel",
+        "name": "Ark",
+        "description": "Upholding the principles of righteous victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_178_Angel",
+                "name": "Ark Wings"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_301_Athena_Commando_M_Rhino",
+        "name": "Beastmode",
+        "description": "Gassed up and ready to roar.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_171_Rhino",
+                "name": "V6"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_302_Athena_Commando_F_Nutcracker",
+        "name": "Crackabella",
+        "description": "She's a hard nut to crack.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_183_NutcrackerFemale",
+                "name": "Snackshot"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_303_Athena_Commando_F_SnowFairy",
+        "name": "Sugarplum",
+        "description": "As sugary sweet as winter berries.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_184_SnowFairyFemale",
+                "name": "Flutterfrost"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_304_Athena_Commando_M_Gnome",
+        "name": "Grimbles",
+        "description": "This garden gnome is at home on the roam in a snowy biome.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_185_GnomeMale",
+                "name": "Luminous Lamp"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_308_Athena_Commando_F_FortniteDJ",
+        "name": "DJ Bop",
+        "description": "Lose yourself in the beat.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_188_FortniteDJFemale",
+                "name": "Glow Show"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_309_Athena_Commando_M_StreetGoth",
+        "name": "Paradox",
+        "description": "Strike the impossible balance.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_189_StreetGothMale",
+                "name": "Eternal"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_310_Athena_Commando_F_StreetGoth",
+        "name": "Lace",
+        "description": "Lives for the thrill of the frill.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_190_StreetGothFemale",
+                "name": "Stitches"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_312_Athena_Commando_F_FunkOps",
+        "name": "Disco Diva",
+        "description": "Make way for the queen of the dance floor.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_195_FunkOpsFemale",
+                "name": "Disco Ball"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_314_Athena_Commando_M_Krampus",
+        "name": "Krampus",
+        "description": "Here comes anti-claus...",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_194_Krampus",
+                "name": "Brat Bag"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_315_Athena_Commando_M_TeriyakiFish",
+        "name": "Fishstick",
+        "description": "Keep far away from Maki Master.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_193_TeriyakiFishMale",
+                "name": "Saltwater Satchel"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_317_Athena_Commando_M_WinterGhoul",
+        "name": "Cloaked Shadow",
+        "description": "Cast an ominous shadow.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_191_WinterGhoulMale",
+                "name": "Shadow Wings"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_318_Athena_Commando_M_Demon",
+        "name": "Malcore",
+        "description": "Malevolent to the core.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_179_DemonMale",
+                "name": "Malcore Wings"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_319_Athena_Commando_F_Nautilus",
+        "name": "Deep Sea Dominator",
+        "description": "In a completely different league.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_177_NautilusFemale",
+                "name": "Octotank"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_320_Athena_Commando_M_Nautilus",
+        "name": "Deep Sea Destroyer",
+        "description": "Straight out of the trenches.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_176_NautilusMale",
+                "name": "Rebreather"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_321_Athena_Commando_M_MilitaryFashion1",
+        "name": "Verge",
+        "description": "Always on the forefront.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_322_Athena_Commando_M_TechOps",
+        "name": "Tech Ops",
+        "description": "Overtake the battlefield.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_198_TechOps",
+                "name": "Capacitor"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_323_Athena_Commando_M_Barbarian",
+        "name": "Jaeger",
+        "description": "Leading the hunt.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_196_BarbarianMale",
+                "name": "Emblazoned Buckler"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_324_Athena_Commando_F_Barbarian",
+        "name": "Fyra",
+        "description": "Lives for the chase.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_197_BarbarianFemale",
+                "name": "Runic Shield"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_328_Athena_Commando_F_Tennis",
+        "name": "Volley Girl",
+        "description": "If you get served, it's not her fault.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_331_Athena_Commando_M_Taxi",
+        "name": "Cabbie",
+        "description": "First to the fare. First to the finishline.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_334_Athena_Commando_M_Scrapyard",
+        "name": "Kitbash",
+        "description": "Show 'em what you're made of.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_205_ScrapyardMale",
+                "name": "Trash Lid"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_335_Athena_Commando_F_Scrapyard",
+        "name": "Sparkplug",
+        "description": "Scrap the competition.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_206_ScrapyardFemale",
+                "name": "Scrappy"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_336_Athena_Commando_M_DragonMask",
+        "name": "Firewalker",
+        "description": "Fueled by flames.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_339_Athena_Commando_M_RobotTrouble",
+        "name": "Revolt",
+        "description": "Conquer the system.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_209_RobotTroubleMale",
+                "name": "Board Bag"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_340_Athena_Commando_F_RobotTrouble",
+        "name": "Rebel",
+        "description": "Oppose the establishment.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_210_RobotTroubleFemale",
+                "name": "Cannister Carrier"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_344_Athena_Commando_M_IceCream",
+        "name": "Lil Whip",
+        "description": "Whipped up, and ready to serve.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_213_IceCream",
+                "name": "Sno Cone"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_353_Athena_Commando_F_Bandolier",
+        "name": "Bandolette",
+        "description": "Unrivaled ambush predator of the jungle.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_354_Athena_Commando_M_MunitionsExpert",
+        "name": "Munitions Major",
+        "description": "Fire in the hole!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_355_Athena_Commando_M_Farmer",
+        "name": "Hayseed",
+        "description": "Roll up your sleeves and battle the field.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_356_Athena_Commando_F_Farmer",
+        "name": "Sunflower",
+        "description": "Certified organic.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_357_Athena_Commando_M_OrangeCamo",
+        "name": "Hypernova",
+        "description": "Undeniable.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_223_OrangeCamo",
+                "name": "Oscilloscope"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_358_Athena_Commando_M_Aztec",
+        "name": "Mezmer",
+        "description": "All eyes are on you.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_221_AztecMale",
+                "name": "Hypnotic"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_359_Athena_Commando_F_Aztec",
+        "name": "Sunbird",
+        "description": "Fly in light, and eclipse the sun.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_222_AztecFemale",
+                "name": "Sun Wings"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_363_Athena_Commando_M_SciOps",
+        "name": "Axiom",
+        "description": "Envision the win.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_228_SciOpsMale",
+                "name": "BID_228_SciOpsMale"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_364_Athena_Commando_F_SciOps",
+        "name": "Psion",
+        "description": "Mind over matter.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_227_SciOpsFemale",
+                "name": "Omission"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_366_Athena_Commando_M_Tropical",
+        "name": "Marino",
+        "description": "Tame the tropics.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_230_TropicalMale",
+                "name": "Banana Bag"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_369_Athena_Commando_F_DevilRock",
+        "name": "Malice",
+        "description": "Misery is her playground.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_233_DevilRock",
+                "name": "Malice Wings"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_372_Athena_Commando_F_Pirate01",
+        "name": "Buccaneer",
+        "description": "Sail the salty seas.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_236_Pirate01Female",
+                "name": "Seaworthy"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_373_Athena_Commando_M_Pirate01",
+        "name": "Sea Wolf",
+        "description": "Howl at the sea.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_238_Pirate02Male",
+                "name": "Barrel & Booty"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_376_Athena_Commando_M_DarkShaman",
+        "name": "Shaman",
+        "description": "Embody the spirit of victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_240_DarkShamanMale",
+                "name": "Battle Mask"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_377_Athena_Commando_F_DarkShaman",
+        "name": "Nightwitch",
+        "description": "Rise with the moon.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_241_DarkShamanFemale",
+                "name": "Cuddle Doll"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_381_Athena_Commando_F_BaseballKitbash",
+        "name": "Fastball",
+        "description": "Another victory is on deck.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_245_BaseballKitbashFemale",
+                "name": "Double Play"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_382_Athena_Commando_M_BaseballKitbash",
+        "name": "Slugger",
+        "description": "Batter up!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_246_BaseballKitbashMale",
+                "name": "Strike Zone"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_383_Athena_Commando_F_Cacti",
+        "name": "Prickly Patroller",
+        "description": "Just a cactus being a cactus.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_385_Athena_Commando_M_PilotSkull",
+        "name": "Supersonic",
+        "description": "Approaching mach speed.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_248_Pilots",
+                "name": "Gauge"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_387_Athena_Commando_F_Golf",
+        "name": "Birdie",
+        "description": "No mulligans required.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_388_Athena_Commando_M_TheBomb",
+        "name": "Splode",
+        "description": "Countdown to a big boom!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_250_TheBomb",
+                "name": "Volatile"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_390_Athena_Commando_M_EvilBunny",
+        "name": "Nitehare",
+        "description": "Hopping straight out of your nightmares.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_252_EvilBunny",
+                "name": "Floppy"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_392_Athena_Commando_F_BountyBunny",
+        "name": "Pastel",
+        "description": "Spring into action.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_393_Athena_Commando_M_Shiny",
+        "name": "Sterling",
+        "description": "Shine like a diamond.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_254_ShinyMale",
+                "name": "Diamond Star"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_394_Athena_Commando_M_MoonlightAssassin",
+        "name": "Luminos",
+        "description": "From the dark side to the light.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_255_MoonlightAssassin",
+                "name": "Lunar Light"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_395_Athena_Commando_F_ShatterFly",
+        "name": "Dream",
+        "description": "Light breaks through.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_256_ShatterFly",
+                "name": "Shattered Wing"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_396_Athena_Commando_F_Swashbuckler",
+        "name": "Daring Duelist",
+        "description": "En garde!",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_257_Swashbuckler",
+                "name": "Slice 'n dice"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_397_Athena_Commando_F_TreasureHunterFashion",
+        "name": "Aura",
+        "description": "Get the goods in style.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_398_Athena_Commando_M_TreasureHunterFashion",
+        "name": "Guild",
+        "description": "On the path to riches.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_401_Athena_Commando_M_Miner",
+        "name": "Cole",
+        "description": "It's a dirty job but somebody's gotta do it.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_410_Athena_Commando_M_CyberScavenger",
+        "name": "Ether",
+        "description": "Infiltrate and conquer.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_267_CyberScavengerMale",
+                "name": "CnXn"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_411_Athena_Commando_F_CyberScavenger",
+        "name": "Versa",
+        "description": "Mastermind for hire.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_268_CyberScavengerFemale",
+                "name": "Phrenzy"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_412_Athena_Commando_F_Raptor",
+        "name": "Velocity",
+        "description": "Royale Air Force flying ace.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_269_RaptorFemale",
+                "name": "Bomber bag"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_413_Athena_Commando_M_StreetDemon",
+        "name": "Cryptic",
+        "description": "Master of mystery.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_270_StreetDemon",
+                "name": "Spectral Spine"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_414_Athena_Commando_F_MilitaryFashion",
+        "name": "Bracer",
+        "description": "Advanced tactics, classic cool.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_415_Athena_Commando_F_AssassinSuit",
+        "name": "Sofia",
+        "description": "The assassin's assassin.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_272_AssassinSuitFemale",
+                "name": "Gun Bag"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_416_Athena_Commando_M_AssassinSuit",
+        "name": "John Wick",
+        "description": "Every action has consequences.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_271_AssassinSuitMale",
+                "name": "Assassin Pack"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_418_Athena_Commando_F_Geisha",
+        "name": "Takara",
+        "description": "Agent of influence and intrigue.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_275_Geisha",
+                "name": "Gaze"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_419_Athena_Commando_M_Pug",
+        "name": "Doggo",
+        "description": "Who's a good boy?",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_276_Pug",
+                "name": "Chow Down"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_421_Athena_Commando_M_MaskedWarrior",
+        "name": "Scimitar",
+        "description": "Razor sharp and battle ready.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_422_Athena_Commando_F_MaskedWarrior",
+        "name": "Sandstorm",
+        "description": "Timeless warrior.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_425_Athena_Commando_F_CyberRunner",
+        "name": "Synapse",
+        "description": "Two steps ahead of the competition.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_279_CyberRunner",
+                "name": "Holo-pack"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_428_Athena_Commando_M_UrbanScavenger",
+        "name": "Shot Caller",
+        "description": "It's your move. Take your shot.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_282_UrbanScavenger",
+                "name": "Utility Pack"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_430_Athena_Commando_M_StormSoldier",
+        "name": "Tempest",
+        "description": "Consumed by the storm. Back for revenge.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_283_StormSoldier",
+                "name": "Lightning Cloak"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_431_Athena_Commando_F_StormPilot",
+        "name": "Bolt",
+        "description": "Fearless stormfighter.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_432_Athena_Commando_M_BalloonHead",
+        "name": "Airhead",
+        "description": "Pop into action.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_433_Athena_Commando_F_TacticalDesert",
+        "name": "Desert Dominator",
+        "description": "Battle tested munitions expert.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_434_Athena_Commando_F_StealthHonor",
+        "name": "Wonder",
+        "description": "Inspire wonder.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_435_Athena_Commando_M_MunitionsExpertGreenPlastic",
+        "name": "Plastic Patroller",
+        "description": "Toy with the competition.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_436_Athena_Commando_M_ReconSpecialist",
+        "name": "Relay",
+        "description": "Keep the line clear.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_440_Athena_Commando_F_BullseyeGreenPlastic",
+        "name": "Toy Trooper",
+        "description": "Molded for victory.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_441_Athena_Commando_F_CyberScavengerBlue",
+        "name": "Neo Versa",
+        "description": "Elite chaser for hire.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_288_CyberScavengerFemaleBlue",
+                "name": "Neo Phrenzy"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_450_Athena_Commando_F_Butterfly",
+        "name": "Flutter",
+        "description": "Take flight.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_290_Butterfly",
+                "name": "Flutter Wings"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_451_Athena_Commando_M_Caterpillar",
+        "name": "Pillar",
+        "description": "This isn't even my final form.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_291_Caterpillar",
+                "name": "Carapace"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_452_Athena_Commando_F_CyberFu",
+        "name": "Focus",
+        "description": "Visualize the future.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_292_CyberFuFemale",
+                "name": "Chuck Pack"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_453_Athena_Commando_F_GlowBro",
+        "name": "Nitebeam",
+        "description": "Beaming with luminous energy.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_293_GlowBroFemale",
+                "name": "Lumi Core Red"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_454_Athena_Commando_M_GlowBro",
+        "name": "Flare",
+        "description": "Burn bright.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_294_GlowBroMale",
+                "name": "Lumi Core Green"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_455_Athena_Commando_F_Jellyfish",
+        "name": "Starfish",
+        "description": "Queen of the reef.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_295_Jellyfish",
+                "name": "Anemone"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_457_Athena_Commando_F_SpaceGirl",
+        "name": "Dare",
+        "description": "Dare to dream.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_297_SpaceGirl",
+                "name": "Streamline"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_458_Athena_Commando_M_TechMage",
+        "name": "Vector",
+        "description": "Control the variables, control the battle.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_459_Athena_Commando_F_Zodiac",
+        "name": "Biz",
+        "description": "Nothing personal, it's just business.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_463_Athena_Commando_M_Hairy",
+        "name": "Bigfoot",
+        "description": "International man of mystery.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_302_Hairy",
+                "name": "Cooler"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_464_Athena_Commando_M_Flamingo",
+        "name": "King Flamingo",
+        "description": "Some of us were born to fly...",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_465_Athena_Commando_M_PuffyVest",
+        "name": "Gage",
+        "description": "Instigate. Escalate. Overcome.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_466_Athena_Commando_M_WeirdObjectsCreature",
+        "name": "Demogorgon",
+        "description": "Turn the battle upside down.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_467_Athena_Commando_M_WeirdObjectsPolice",
+        "name": "Chief Hopper",
+        "description": "Hawkins PD's finest.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_468_Athena_Commando_F_TennisWhite",
+        "name": "Match Point",
+        "description": "Serving with skill.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_470_Athena_Commando_M_Anarchy",
+        "name": "Anarchy Agent",
+        "description": "Go your own way.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_471_Athena_Commando_F_Bani",
+        "name": "Bachii",
+        "description": "Adorably mysterious.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_307_Bani",
+                "name": "Mochi"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_472_Athena_Commando_F_CyberKarate",
+        "name": "Tsuki",
+        "description": "Unpredictable and unforgiving.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_308_CyberKarateFemale",
+                "name": "Tahna"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_473_Athena_Commando_M_CyberKarate",
+        "name": "Copper Wasp",
+        "description": "Karate master known for his vicious sting.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_309_CyberKarateMale",
+                "name": "Striped Stalker"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_475_Athena_Commando_M_Multibot",
+        "name": "Mecha Team Leader",
+        "description": "Some assembly required.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_311_Multibot",
+                "name": "Jet Set"
+            },
+            {
+                "item": "AthenaDance:EID_SuckerPunch",
+                "name": "Turbocharged"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_476_Athena_Commando_F_FutureBiker",
+        "name": "Mika",
+        "description": "Riding into the future.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_477_Athena_Commando_F_SpaceSuit",
+        "name": "Astro Assassin",
+        "description": "Out of this atmosphere.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_251_SpaceBunny",
+                "name": "Cryo Hops"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_478_Athena_Commando_F_WorldCup",
+        "name": "World Warrior",
+        "description": "Take home the prize.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_480_Athena_Commando_F_Bubblegum",
+        "name": "Bubble Bomber",
+        "description": "Candy-colored commando.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_313_Bubblegum",
+                "name": "Bubble Blast"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_481_Athena_Commando_F_Geode",
+        "name": "Facet",
+        "description": "Multifaceted combat specialist.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_314_Geode",
+                "name": "Geode"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_482_Athena_Commando_F_PizzaPit",
+        "name": "PJ Pepperoni",
+        "description": "Cozy combat, fresh to your door.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_315_PizzaPit",
+                "name": "Cheesy"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_490_Athena_Commando_M_BlueBadass",
+        "name": "Bravo Leader",
+        "description": "Take point.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_324_BlueBadass",
+                "name": "Tri-Pack"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_491_Athena_Commando_M_BoneWasp",
+        "name": "Bone Wasp",
+        "description": "Beware the wasp.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_326_Bronto",
+                "name": "Bronto Bag"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_492_Athena_Commando_M_Bronto",
+        "name": "Bronto",
+        "description": "Eating plants and takin' names.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_493_Athena_Commando_F_JurassicArchaeology",
+        "name": "Crystal",
+        "description": "Clarity, wits, and vision.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_494_Athena_Commando_M_MechPilotShark",
+        "name": "B.R.U.T.E. Navigator",
+        "description": "Precision and determination.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_495_Athena_Commando_F_MechPilotShark",
+        "name": "B.R.U.T.E. Gunner",
+        "description": "Navigation and execution.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_496_Athena_Commando_M_SurvivalSpecialist",
+        "name": "Grit",
+        "description": "The will and skill to outlast.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_497_Athena_Commando_F_WildWest",
+        "name": "Rio Grande",
+        "description": "Brave the untamed wilds.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_329_WildWestFemale",
+                "name": "Grande Pack"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_498_Athena_Commando_M_WildWest",
+        "name": "Frontier",
+        "description": "Rustle 'em up and head out.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_328_WildWest",
+                "name": "Detonator"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_499_Athena_Commando_F_AstronautEvil",
+        "name": "Corrupted Voyager",
+        "description": "Spread the corruption.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_330_AstronautEvilUpgrade",
+                "name": "Xenopod"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_502_Athena_Commando_F_Reverb",
+        "name": "Freestyle",
+        "description": "Follow the beat. Secure the win.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_333_Reverb",
+                "name": "Backbeat"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_503_Athena_Commando_F_TacticalWoodlandFuture",
+        "name": "Recon Ranger",
+        "description": "Expert field intel ranger.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_504_Athena_Commando_M_Lopex",
+        "name": "Fennix",
+        "description": "Never outfoxed.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_335_Lopex",
+                "name": "Foxpack"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_505_Athena_Commando_M_MilitiaMascotBurger",
+        "name": "Gutbomb",
+        "description": "A good burger gone bad...",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_336_MascotMilitiaBurger",
+                "name": "Takeout"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_506_Athena_Commando_M_MilitiaMascotTomato",
+        "name": "Hothouse",
+        "description": "You feelin' the heat?",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_337_MascotMilitiaTomato",
+                "name": "TomCom"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_507_Athena_Commando_M_StarWalker",
+        "name": "Infinity",
+        "description": "Victory is in the stars.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_338_StarWalker",
+                "name": "Starfield"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_508_Athena_Commando_M_Syko",
+        "name": "Oppressor",
+        "description": "Out of time, and out for vengeance.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_339_Syko",
+                "name": "Exo-Spine"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "item": "AthenaCharacter:CID_509_Athena_Commando_M_WiseMaster",
+        "name": "Shifu",
+        "description": "Master of harmonious victory.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_340_WiseMaster",
+                "name": "Kunai Shield"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_514_Athena_Commando_F_ToxicKitty",
+        "name": "Catastrophe",
+        "description": "Sharpen your claws.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_345_ToxicKitty",
+                "name": "Toxic Kitty"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_518_Athena_Commando_M_WWII_PilotSciFi",
+        "name": "Aeronaut",
+        "description": "Journey beyond the edge of the sky.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_519_Athena_Commando_M_RaptorBlackOps",
+        "name": "Vulture",
+        "description": "Loom over the competition.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_349_RaptorBlackOps",
+                "name": "Containment Pack"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_520_Athena_Commando_M_PaddedArmor",
+        "name": "Sledge",
+        "description": "Make an impact.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_348_PaddedArmor",
+                "name": "Stronghold "
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_521_Athena_Commando_M_TacticalBiker",
+        "name": "Hard Charger",
+        "description": "Gassed up and ready to ride.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_522_Athena_Commando_M_Bullseye",
+        "name": "Sureshot",
+        "description": "His aim is true.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_523_Athena_Commando_F_Cupid",
+        "name": "Stoneheart",
+        "description": "Statuesque love warrior.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_352_CupidFemale",
+                "name": "Wings of Love"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_524_Athena_Commando_F_FutureBikerWhite",
+        "name": "Payback",
+        "description": "It's time to strike back.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_351_FutureBikerWhite",
+                "name": "Spiked Shell"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_525_Athena_Commando_F_LemonLime",
+        "name": "Limelight",
+        "description": "Bold trendsetter with a sour twist.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_342_LemonLime",
+                "name": "Wedge"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_526_Athena_Commando_F_DesertOpsSwamp",
+        "name": "Swamp Stalker",
+        "description": "Master of the mire.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_527_Athena_Commando_F_StreetFashionRed",
+        "name": "Ruby",
+        "description": "Sometimes you gotta shine.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_354_StreetFashionRed",
+                "name": "Red Alert"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_530_Athena_Commando_F_BlackMonday_1BV6J",
+        "name": "Catwoman Comic Book Outfit",
+        "description": "Gotham’s Feline Femme Fatale.",
+        "items": [
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_599_CavernFemale",
+                "name": "Catwoman's Grappling Claw"
+            }
+        ],
+        "rarity": "dc"
+    },
+    {
+        "item": "AthenaCharacter:CID_532_Athena_Commando_F_Punchy",
+        "name": "Moxie",
+        "description": "Put up your dukes.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_356_Punchy",
+                "name": "Moose"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_533_Athena_Commando_M_StreetUrchin",
+        "name": "Toxic Tagger",
+        "description": "The world is your canvas, leave your mark.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_358_StreetUrchin",
+                "name": "Pry Pack"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_536_Athena_Commando_F_DurrburgerWorker",
+        "name": "Sizzle Sgt.",
+        "description": "She's cookin' up a win.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_537_Athena_Commando_M_Jumpstart",
+        "name": "Hotwire",
+        "description": "Get amped.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_355_Jumpstart",
+                "name": "Turbocoil"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_538_Athena_Commando_M_Taco",
+        "name": "Guaco",
+        "description": "Stay crunchy, Guaco's comin...",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_539_Athena_Commando_F_StreetGothCandy",
+        "name": "Starlie",
+        "description": "Shine bright.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_353_StreetGothCandy",
+                "name": "Starlet"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_541_Athena_Commando_M_GraffitiGold",
+        "name": "Street Striker",
+        "description": "Hustle hard and make the play.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_543_Athena_Commando_M_LlamaHero",
+        "name": "Bash",
+        "description": "When good llamas go bad.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_545_Athena_Commando_F_SushiNinja",
+        "name": "Red Jade",
+        "description": "Summon your fighting spirit.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_546_Athena_Commando_F_TacticalRed",
+        "name": "Manic",
+        "description": "Show 'em your game face.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_547_Athena_Commando_F_Meteorwoman",
+        "name": "The Paradigm",
+        "description": "Her allegiance is unknown.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_548_Athena_Commando_M_YellowCamoA",
+        "name": "Snakepit",
+        "description": "Fearless.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_549_Athena_Commando_M_YellowCamoB",
+        "name": "Knockout",
+        "description": "Precise.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_550_Athena_Commando_M_YellowCamoC",
+        "name": "Deadfall",
+        "description": "Relentless.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_551_Athena_Commando_M_YellowCamoD",
+        "name": "Vice",
+        "description": "Wild.",
+        "items": [],
+        "rarity": "uncommon"
+    }, 
+    {
+        "item": "AthenaCharacter:CID_552_Athena_Commando_F_TaxiUpgrade",
+        "name": "Slingshot",
+        "description": "Race to win.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_553_Athena_Commando_M_BrightGunnerRemix",
+        "name": "Brite Blaster",
+        "description": "Life's a blast.",
+        "items": [
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_278_BrightGunnerRemix1H",
+                "name": "Brite Bashers"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_554_Athena_Commando_F_MilitiaMascotCuddle",
+        "name": "Ragsy",
+        "description": "Say hello to your worst nightbear.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_365_MascotMilitiaCuddle",
+                "name": "Heartless"
+            }
+        ],
+        "rarity": "epic"
+    }
+]

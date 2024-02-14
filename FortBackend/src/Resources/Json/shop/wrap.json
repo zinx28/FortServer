@@ -1,0 +1,65 @@
+[
+    {
+        "item": "AthenaItemWrap:Wrap_011_HotCold",
+        "name": "Hot & Cold",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_012_DragonMask",
+        "name": "Golden Clouds", 
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_014_IceCream",
+        "name": "Sprinkles",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_015_Snowboard",
+        "name": "Chromatic",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_017_DragonNinja",
+        "name": "Dragon Scales",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_018_magma",
+        "name": "Magma",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_024_StealthBlack",
+        "name": "Stealth Black",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_028_DevilLace",
+        "name": "Heat",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaItemWrap:Wrap_034_Waypoint",
+        "name": "Rivet",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "uncommon"
+    }
+]

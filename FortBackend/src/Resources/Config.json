@@ -7,5 +7,6 @@
   "ServerID": 0,
   "ApplicationClientID": "",
   "ApplicationSecret": "",
-  "ApplicationURI": ""
+  "ApplicationURI": "",
+  "ShopWebhookUrl": ""
 }

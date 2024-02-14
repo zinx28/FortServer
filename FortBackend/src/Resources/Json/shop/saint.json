@@ -1,0 +1,33 @@
+[
+    {
+        "item": "AthenaCharacter:CID_098_Athena_Commando_F_StPatty",
+        "name": "Sgt. Green Clover",
+        "description": "Good luck out there!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaCharacter:CID_365_Athena_Commando_M_LuckyRider",
+        "name": "Lucky Rider",
+        "description": "Ride on and make your own luck.",
+        "items": [{
+            "item": "AthenaBackpack:BID_229_LuckyRiderMale",
+            "name": "Rainbow Clover"
+        }],
+        "rarity": "epic"
+    }, 
+    {
+        "item": "AthenaPickaxe:Pickaxe_ID_033_PotOfGold",
+        "name": "Pot O' Gold",
+        "description": "Everything that glitters...",
+        "items": [],
+        "rarity": "epic"
+    },
+	{
+        "item": "AthenaItemWrap:Wrap_027_Lucky",
+        "name": "Lucky",
+        "description": "Show your style.",
+        "items": [],
+        "rarity": "uncommon"
+    }
+]

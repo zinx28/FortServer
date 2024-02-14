@@ -1,0 +1,1416 @@
+[
+    {
+        "item": "AthenaDance:EID_Accolades",
+        "name": "Accolades",
+        "description": "Soak it all in.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_AcrobaticSuperhero",
+        "name": "Ground Pound",
+        "description": "Take it for a spin.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Aerobics",
+        "name": "Work It Out",
+        "description": "Break a sweat.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_AfroHouse",
+        "name": "Bombastic",
+        "description": "Step up and show 'em what you've got.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_AirHorn",
+        "name": "Air Horn",
+        "description": "Subtle.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_AirHornRaisin",
+        "name": "Air Horn",
+        "description": "Subtle.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Alien",
+        "name": "Extraterrestrial",
+        "description": "Interplanetary groove.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_AlienSupport",
+        "name": "Team Space",
+        "description": "Humanity had its chance.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_AntiVisitorProtest",
+        "name": "Go home!",
+        "description": "Leave us alone!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_ArmUpDance",
+        "name": "Backstroke",
+        "description": "Put your back into it.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_AssassinSalute",
+        "name": "Be Seeing You",
+        "description": "Not if I see you first.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_AssassinVest",
+        "name": "Bulletproof",
+        "description": "Brush it off.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Backflip",
+        "name": "Flippin' Incredible",
+        "description": "Flip on 'em. Flex on 'em.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Basketball",
+        "name": "Baller",
+        "description": "Show off your moves.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Bendy",
+        "name": "Zany",
+        "description": "Go ahead, get weird with it.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_BillyBounce",
+        "name": "Billy Bounce",
+        "description": "You do you.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_BlackMondayFemale_6HO4L",
+        "name": "Whipcrack",
+        "description": "Whip up some action.",
+        "items": [],
+        "rarity": "dc"
+    },
+    {
+        "item": "AthenaDance:EID_BlackMondayMale2",
+        "name": "Martial Arts Master",
+        "description": "Master the art of battle.",
+        "items": [],
+        "rarity": "dc"
+    },
+    {
+        "item": "AthenaDance:EID_BlackMondayMale_E0VSB",
+        "name": "Bat Signal",
+        "description": "Did somebody order a Batman?",
+        "items": [],
+        "rarity": "dc"
+    },
+    {
+        "item": "AthenaDance:EID_Boneless",
+        "name": "Boneless",
+        "description": "Beyond bendy.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Breakboy",
+        "name": "Switchstep",
+        "description": "Switch it up.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_BreakDance",
+        "name": "Breakin'",
+        "description": "Bust a move!",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_BreakYou",
+        "name": "Breaking Point",
+        "description": "Give 'em a break.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_BringItOn",
+        "name": "Bring It",
+        "description": "Let's see what you've got.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Bunnyhop",
+        "name": "Bunny Hop",
+        "description": "Put all your eggs in one basket.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_BurgerFlipping",
+        "name": "Sizzlin'",
+        "description": "Flip with flavor.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_Burpee",
+        "name": "Burpee",
+        "description": "Set a new personal best.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_CactusTPose",
+        "name": "Prickly Pose",
+        "description": "Completely inconspicuous.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_CandyDance",
+        "name": "Sugar Rush",
+        "description": "Shake it til you crash.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Capoeira",
+        "name": "Capoeira",
+        "description": "Are you ready to dance with danger?",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Cartwheel",
+        "name": "Cartwheelin'",
+        "description": "Head over heels.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Celebration",
+        "name": "Jubilation",
+        "description": "A heaping helping of happiness!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Cheerleading",
+        "name": "Cheer Up",
+        "description": "Be aggressive. B-E aggressive.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_Chicken",
+        "name": "Chicken",
+        "description": "Top of the pecking order.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Chug",
+        "name": "Go! Go! Go!",
+        "description": "You can do it!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Clapperboard",
+        "name": "Take 14",
+        "description": "...and action!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Confused",
+        "name": "Confused",
+        "description": "Seriously. What happened?",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_CoolRobot",
+        "name": "Overdrive",
+        "description": "Push it past the limit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_CoolRobotRaisin",
+        "name": "Overdrive",
+        "description": "Push it past the limit.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_CowboyDance",
+        "name": "Knee Slapper",
+        "description": "Rustle up the rhythm.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_CrabDance",
+        "name": "Crabby",
+        "description": "Ready in a pinch.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_CrackshotDance",
+        "name": "Crackdown",
+        "description": "Go nuts.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_CrazyFeet",
+        "name": "Crazy Feet",
+        "description": "Wild and crazy feet!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_CrissCross",
+        "name": "Criss Cross",
+        "description": "Get your point across.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Cry",
+        "name": "Waterworks",
+        "description": "Show 'em your battle cry.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Dab",
+        "name": "Dab",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_DeepDab",
+        "name": "Deep Dab",
+        "description": "Bring 'em down to your level.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Dinosaur",
+        "name": "Rawr",
+        "description": "Tyrannosaurus royale.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Disagree",
+        "name": "Denied",
+        "description": "Not this time.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_DiscoFever",
+        "name": "Disco Fever",
+        "description": "Heat up the dance floor.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_DJ01",
+        "name": "Drop The Bass",
+        "description": "Wait for it...",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_Doublesnap",
+        "name": "Revel",
+        "description": "Nothing wrong with a little celebration.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_DreamFeet",
+        "name": "Dream Feet",
+        "description": "Get some boogie in your boots.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_DrumMajor",
+        "name": "Drum Major",
+        "description": "Lead the line, and step in time.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Dunk",
+        "name": "Buckets",
+        "description": "Own the game.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_DustingHands",
+        "name": "Job Well Done",
+        "description": "That's that.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_DustOffShoulders",
+        "name": "Brush Your Shoulders",
+        "description": "Get that dirt off your shoulder.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_EasternBloc",
+        "name": "Squat Kick",
+        "description": "Don't skip leg day.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_ElectroShuffle",
+        "name": "Electro Shuffle",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_ElectroShuffle_V2",
+        "name": "Signature Shuffle",
+        "description": "Show off your signature moves.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_ElectroSwing",
+        "name": "Electro Swing",
+        "description": "Brand new groove, old school swing.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Everytime",
+        "name": "Vivacious",
+        "description": "Never stop dancing.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_Facepalm",
+        "name": "Face Palm",
+        "description": "The cringe is real.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_FancyFeet",
+        "name": "Fancy Feet",
+        "description": "Show off that footwork.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_FancyWorkout",
+        "name": "Fanciful",
+        "description": "Just a little dance to get the heartrate going.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_FingerGuns",
+        "name": "Finger Guns",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_FireDance",
+        "name": "Fire Spinner",
+        "description": "Heat it up.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_FireworksSpin",
+        "name": "Rocket Spinner",
+        "description": "Don't try this at home!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_FistPump",
+        "name": "Fist Pump",
+        "description": "Emphatically flailing fists.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Flapper",
+        "name": "Flapper",
+        "description": "It's the bee's knees!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Flex",
+        "name": "Gun Show",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Flex02",
+        "name": "Flex On 'Em",
+        "description": "Let them know.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Floppy",
+        "name": "Fandangle",
+        "description": "Loosen up and prepare for nonsense.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Fresh",
+        "name": "Fresh",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_GlowstickDance",
+        "name": "Glowsticks",
+        "description": "Make it glow.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_GothDance",
+        "name": "Infectious",
+        "description": "Let it take over.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Grooving",
+        "name": "Vibin'",
+        "description": "Find your flow.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_GuitarWalk",
+        "name": "Guitar Walk",
+        "description": "Play on.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_HandSignals",
+        "name": "Hand Signals",
+        "description": "All signals go?",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_HeadBang",
+        "name": "Headbanger",
+        "description": "Bang your head against the air.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_HeadBangRaisin",
+        "name": "Headbanger",
+        "description": "Bang your head against the air.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_HeadShake",
+        "name": "Bobbin'",
+        "description": "Really get into it.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_HeelClick",
+        "name": "Click!",
+        "description": "Jump for joy.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_HiLowWave",
+        "name": "Daydream",
+        "description": "Dance the day away.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_HipToBeSquare",
+        "name": "Business Hips",
+        "description": "Put some swivel in your step.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Hitchhiker",
+        "name": "Hitchhiker",
+        "description": "Take a hike.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_HoldOnAMinute",
+        "name": "Hang on",
+        "description": "Let's just talk this out...",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Hopper",
+        "name": "Bouncer",
+        "description": "Hop on.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_HotStuff",
+        "name": "Hot Stuff",
+        "description": "Tss!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Hula",
+        "name": "Hula",
+        "description": "Get the luau started!",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_IDontKnow",
+        "name": "IDK",
+        "description": "Don't ask me.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_IndianDance",
+        "name": "Lavish",
+        "description": "Join in the celebration.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_InfiniteDab",
+        "name": "Infinite Dab",
+        "description": "Can't stop, won't stop.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_InfiniteDabRaisin",
+        "name": "Infinite Dab",
+        "description": "Can't stop, won't stop.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Intensity",
+        "name": "Intensity",
+        "description": "Dance like you mean it.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_IrishJig",
+        "name": "Step It Up",
+        "description": "Do a little jig.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Jammin",
+        "name": "Clean Groove",
+        "description": "Dust off your best moves.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_JazzDance",
+        "name": "Slick",
+        "description": "Makin' it look easy.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_JazzHands",
+        "name": "Jazz Hands",
+        "description": "Get jazzy.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Juggler",
+        "name": "Jugglin'",
+        "description": "Pure concentration.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_JumpingJack",
+        "name": "Jumping Jacks",
+        "description": "Get jacked!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_KEagle",
+        "name": "Eagle",
+        "description": "Believe you can fly.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_KissKiss",
+        "name": "Kiss Kiss",
+        "description": "Show some love.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_KPopDance01",
+        "name": "True Heart",
+        "description": "<3",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_KPopDance02",
+        "name": "Smooth Moves",
+        "description": "Make them swoon.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_KpopDance04",
+        "name": "Glitter",
+        "description": "Show your sparkle.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Laugh",
+        "name": "Laugh It Up",
+        "description": "What's so funny?",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_LazyShuffle",
+        "name": "Lazy Shuffle",
+        "description": "Keep it lazy.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_LivingLarge",
+        "name": "Living Large",
+        "description": "Life is good.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_LlamaBell",
+        "name": "Llama Bell",
+        "description": "Clang! Clang! Clang! Clang!",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_LlamaMarch",
+        "name": "Llama Conga",
+        "description": "Trot on.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_LlamaRider_Glitter",
+        "name": "Glitter-up",
+        "description": "What a sparkly mess!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_LockItUp",
+        "name": "Lock It Up",
+        "description": "Snap into place.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_LookAtThis",
+        "name": "Behold!",
+        "description": "Look at this!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_MakeItPlantain",
+        "name": "Make It Plantain",
+        "description": "It's bananas.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_MakeItRain",
+        "name": "Make It Rain",
+        "description": "Better grab an umbrella!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_MakeItRainV2",
+        "name": "Raining Doubloons",
+        "description": "Make it rain gold.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Maracas",
+        "name": "Shake It Up",
+        "description": "Feel the rhythm.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_MartialArts",
+        "name": "Punched Up",
+        "description": "Show off your form.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Mime",
+        "name": "Mime Time",
+        "description": "Please take me seriously!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_MindBlown",
+        "name": "Mind Blown",
+        "description": "Rethink everything you know.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Moonwalking",
+        "name": "Moon Bounce",
+        "description": "Gravity can't hold you down.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_MyIdol",
+        "name": "My Idol!",
+        "description": "...in the presence of a legend.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_NotToday",
+        "name": "Finger Wag",
+        "description": "Not today, my friend.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_OG_RunningMan",
+        "name": "Old School",
+        "description": "Never out of style.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_OneArmFloss",
+        "name": "No Sweat",
+        "description": "With one hand tied behind your back.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_OnTheHook",
+        "name": "On The Hook",
+        "description": "Reel in a prize catch.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Pizzatime",
+        "name": "Pizza Party",
+        "description": "Delicious.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_PopDance01",
+        "name": "Star Power",
+        "description": "No autographs please.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_PopLock",
+        "name": "Pop Lock",
+        "description": "Lock it down.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_PraiseStorm",
+        "name": "Storm Salutation",
+        "description": "Respect the storm.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_PraiseTheTomato",
+        "name": "Praise The Tomato",
+        "description": "Splatter unto thee.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_PresentOpening",
+        "name": "Unwrapped",
+        "description": "What did you get me?",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_ProVisitorProtest",
+        "name": "Welcome!",
+        "description": "Show us the way!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Pump",
+        "name": "Pumpernickel",
+        "description": "Get pumped.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_PureSalt",
+        "name": "Pure Salt",
+        "description": "All-purpose seasoning.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_QuickSweeper",
+        "name": "Jamboree",
+        "description": "Celebrate anything and everything.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_RageQuit",
+        "name": "Rage Quit",
+        "description": "I'm out.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_RedCard",
+        "name": "Red Card",
+        "description": "Foul play!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_RideThePonyTwo",
+        "name": "Pony Up",
+        "description": "Yeehaw!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_RocketRodeo",
+        "name": "Rocket Rodeo",
+        "description": "Hang on tight!",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_RockGuitar",
+        "name": "Rock Out",
+        "description": "Are you ready to rock?!",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_RockPaperScissors",
+        "name": "Rock Paper Scissors",
+        "description": "Best out of three.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_RunningManv3",
+        "name": "Pick It Up",
+        "description": "Pick it up, pick it up, pick it up!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Saxophone",
+        "name": "Phone It In",
+        "description": "Lay down a saxy groove.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_ScoreCard",
+        "name": "Scorecard",
+        "description": "Consider yourself judged.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_ScoreCardBurger",
+        "name": "Team Burger",
+        "description": "Be beefy.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_ScorecardTomato",
+        "name": "Team Tomato",
+        "description": "Stay saucy.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_SecurityGuard",
+        "name": "Work It",
+        "description": "Split the dancefloor.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_SexyFlip",
+        "name": "Flippin' Sexy",
+        "description": "Flip out!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Shadowboxing",
+        "name": "Shadow Boxer",
+        "description": "Stick and move.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Shaka",
+        "name": "Hang Loose",
+        "description": "Take it easy.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Shaolin",
+        "name": "Shaolin Sit-up",
+        "description": "Mind over body.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Showstopper",
+        "name": "Showstopper",
+        "description": "Pull out all the stops.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_SlowClap",
+        "name": "Slow Clap",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_SmokeBombFail",
+        "name": "Poof",
+        "description": "Beguile your enemies in a cloud smoke.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Snap",
+        "name": "Snap",
+        "description": "Balance is restored.",
+        "items": [],
+        "rarity": "marvel"
+    },
+    {
+        "item": "AthenaDance:EID_Snap_DeployPartyRift",
+        "name": "Deploy Party Signal",
+        "description": "Spawn a Party Signal in front of you.",
+        "items": [],
+        "rarity": "marvel"
+    },
+    {
+        "item": "AthenaDance:EID_SneakingTraversal",
+        "name": "Very Sneaky",
+        "description": "Stealth mode engaged!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_SoccerJuggling",
+        "name": "Kick Ups",
+        "description": "Look, no hands.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_SomethingStinks",
+        "name": "Something Stinks",
+        "description": "Whoever smelt it...",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Sparkler",
+        "name": "Sparkler",
+        "description": "So sparkly!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_SpeedRun",
+        "name": "Full Tilt",
+        "description": "Lean into it.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Sprinkler",
+        "name": "Sprinkler",
+        "description": "Sprinkled with style.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Spyglass",
+        "name": "Spyglass",
+        "description": "Land ho!",
+        "items": [],
+        "rarity": "rare"
+    }, 
+    {
+        "item": "AthenaDance:EID_StatuePose",
+        "name": "Statuesque",
+        "description": "So lifelike!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_StrawberryPilotKpop",
+        "name": "Peace Out",
+        "description": "Keep It Positive.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_SwimDance",
+        "name": "Deep End",
+        "description": "Dive in.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_SwingDance",
+        "name": "Jitterbug",
+        "description": "We're buggin' out!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TacoTimeDance",
+        "name": "Taco Time",
+        "description": "Set your tacos free.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TaiChi",
+        "name": "Tai Chi",
+        "description": "Find your balance.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TakeTheW",
+        "name": "Savor The W",
+        "description": "This is what winning looks like.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TapShuffle",
+        "name": "Hootenanny",
+        "description": "Yee haw!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TeamMonster",
+        "name": "Team Monster",
+        "description": "You monster!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_TeamRobot",
+        "name": "Team Mech",
+        "description": "Mecha Team Leader Forever!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Texting",
+        "name": "Busy",
+        "description": "I'll be with you in just a moment.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_ThighSlapper",
+        "name": "Slap Happy",
+        "description": "Stop hitting yourself.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_ThumbsDown",
+        "name": "Thumbs Down",
+        "description": "Nah.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_ThumbsUp",
+        "name": "Thumbs Up",
+        "description": "Aye!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Tidy",
+        "name": "Tidy",
+        "description": "Keep it tidy.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TimeOut",
+        "name": "Time Out",
+        "description": "Stop the clock.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_TimetravelBackflip",
+        "name": "Spring-Loaded",
+        "description": "Handspring into action.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TorchSnuffer",
+        "name": "Tsssss",
+        "description": "Your time here is done.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Touchdown",
+        "name": "Spike It",
+        "description": "Celebrate a big play.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TPose",
+        "name": "T-Pose",
+        "description": "Chin up, arms straight!",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_TrophyCelebration",
+        "name": "Kiss The Cup",
+        "description": "Relish your victories.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_TrueLove",
+        "name": "True Love",
+        "description": "Get Romantic.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Twist",
+        "name": "Twist",
+        "description": "It's all in the hips.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_TwistRaisin",
+        "name": "Twist",
+        "description": "It's all in the hips.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_VikingHorn",
+        "name": "Battle Call",
+        "description": "Heed the call.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_WackyWavy",
+        "name": "Breezy",
+        "description": "Any way the wind blows.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Warehouse",
+        "name": "Dance Therapy",
+        "description": "Let it all out.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_WaveDance",
+        "name": "Flux",
+        "description": "Stay in the flow.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_WhereIsMatt",
+        "name": "Where Is Matt?",
+        "description": "Show the world your moves.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Whirlwind",
+        "name": "Whirlwind",
+        "description": "Around and around abound.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Wiggle",
+        "name": "Wiggle",
+        "description": "Never stop wigglin'.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_WindmillFloss",
+        "name": "Windmill Floss",
+        "description": "Take it all the way around.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_WIR",
+        "name": "Hot Marat",
+        "description": "Wreck the dance floor.",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaDance:EID_Wizard",
+        "name": "Llamacadabra",
+        "description": "Don't forget the magic word.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaDance:EID_WolfHowl",
+        "name": "Howl",
+        "description": "Stand in front of a moon for maximum effect.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Yeet",
+        "name": "Dip",
+        "description": "Take a dip.",
+        "items": [],
+        "rarity": "uncommon"
+    },
+    {
+        "item": "AthenaDance:EID_Zippy",
+        "name": "Rambunctious",
+        "description": "The embodiment of boundless energy.",
+        "items": [],
+        "rarity": "rare"
+    }
+]

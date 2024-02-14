@@ -29,6 +29,7 @@ namespace FortBackend.src.App.Utilities.Saved
         public string ApplicationSecret = "";
         public string ApplicationURI = "";
 
+        public string ShopWebhookUrl = "";
         // more stuff in the future when i add ofc
     }
 }

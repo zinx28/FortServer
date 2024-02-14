@@ -8,6 +8,7 @@ using FortBackend.src.App.Routes;
 using System.Runtime.InteropServices;
 using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.Shop;
 namespace FortBackend.src.App
 {
     public class Service
@@ -81,8 +82,35 @@ namespace FortBackend.src.App
             //Setup.Initialize(app);
             DiscordBot.Start(); // dont away... app.run does it for you
 
+            //var ItemShopGenThread = new Thread(async () =>
+            //{
+            //    await GenerateItemShop(0);
+            //});
+            //ItemShopGenThread.Start();
+
+            GenerateShop.Init();
+
             app.Run();
 
+        }
+
+        async static Task GenerateItemShop(int i)
+        {
+            await Task.Delay(1000);
+            TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");
+            DateTime dateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZoneInfo);
+            if (dateTime.Hour == 17 && dateTime.Minute == 59)
+            {
+                if (dateTime.Second >= 59)
+                {
+                    var GeneraterShocked = new Thread(async () => {
+                        await GenerateShop.Init();
+                    });
+
+                    GeneraterShocked.Start();
+                }
+            }
+            GenerateItemShop(++i);
         }
     }
 }

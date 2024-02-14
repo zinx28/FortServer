@@ -1,0 +1,38 @@
+[
+    {
+        "item": "AthenaCharacter:CID_103_Athena_Commando_M_Bunny",
+        "name": "Rabbit Raider",
+        "description": "Scary cute.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_104_Athena_Commando_F_Bunny",
+        "name": "Bunny Brawler",
+        "description": "Hop into action.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_391_Athena_Commando_M_HoppityHeist",
+        "name": "Hopper",
+        "description": "Hop into the heist.",
+        "items": [{
+            "item": "AthenaBackpack:BID_253_HoppityHeist",
+            "name": "Bunny Bag"
+        }],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_274_Athena_Commando_M_Feathers",
+        "name": "Tender Defender",
+        "description": "Protect your nuggets.",
+        "items": [
+            {
+                "item": "AthenaBackpack:BID_154_Feathers",
+                "name": "Hatchback"
+            }
+        ],
+        "rarity": "epic"
+    }
+]

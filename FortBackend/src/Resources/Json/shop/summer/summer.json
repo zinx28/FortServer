@@ -1,0 +1,23 @@
+[
+    {
+        "item": "AthenaCharacter:CID_460_Athena_Commando_F_BriteBomberSummer",
+        "name": "Beach Bomber",
+        "description": "Make the beach party brite!",
+        "items": [],
+        "rarity": "rare"
+    },
+    {
+        "item": "AthenaCharacter:CID_461_Athena_Commando_M_DriftSummer",
+        "name": "Summer Drift",
+        "description": "Drifting through the sunshine.",
+        "items": [],
+        "rarity": "epic"
+    },
+    {
+        "item": "AthenaCharacter:CID_456_Athena_Commando_F_Sarong",
+        "name": "Doublecross",
+        "description": "Never turn your back.",
+        "items": [],
+        "rarity": "rare"
+    }
+]

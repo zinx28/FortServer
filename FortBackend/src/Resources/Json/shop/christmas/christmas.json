@@ -1,0 +1,221 @@
+[
+  {
+    "item": "AthenaCharacter:CID_045_Athena_Commando_M_HolidaySweater",
+    "name": "Yuletide Ranger",
+    "description": "Up on the rooftop...",
+    "items": [],
+    "rarity": "uncommon"
+  },
+  {
+    "item": "AthenaCharacter:CID_046_Athena_Commando_F_HolidaySweater",
+    "name": "Nog Ops",
+    "description": "Have yourself a merry little skirmish.",
+    "items": [],
+    "rarity": "uncommon"
+  },
+  {
+    "item": "AthenaCharacter:CID_047_Athena_Commando_F_HolidayReindeer",
+    "name": "Red-Nosed Raider",
+    "description": "It's time for some reindeer games.",
+    "items": [],
+    "rarity": "rare"
+  },
+  {
+    "item": "AthenaPickaxe:Pickaxe_ID_155_ValentinesFrozen",
+    "name": "Cold Hearted",
+    "description": "No love lost.",
+    "items": [],
+    "rarity": "frozen"
+  },
+  {
+    "item": "AthenaPickaxe:Pickaxe_ID_156_RavenQuillFrozen",
+    "name": "Frozen Beak",
+    "description": "Break the ice.",
+    "items": [],
+    "rarity": "frozen"
+  },
+  {
+    "item": "AthenaCharacter:CID_048_Athena_Commando_F_HolidayGingerbread",
+    "name": "Ginger Gunner",
+    "description": "Spread some holiday fear.",
+    "items": [],
+    "rarity": "epic"
+  },
+  {
+    "item": "AthenaCharacter:CID_049_Athena_Commando_M_HolidayGingerbread",
+    "name": "Merry Marauder",
+    "description": "Sing a slaying song tonight.",
+    "items": [],
+    "rarity": "epic"
+  },
+  {
+    "item": "AthenaCharacter:CID_050_Athena_Commando_M_HolidayNutcracker",
+    "name": "Crackshot",
+    "description": "Get out there and... crack some nuts.",
+    "items": [],
+    "rarity": "legendary"
+  },
+  {
+    "item": "AthenaCharacter:CID_051_Athena_Commando_M_HolidayElf",
+    "name": "Codename E.L.F.",
+    "description": "Elusive. Lethal. Festive.",
+    "items": [],
+    "rarity": "rare"
+  },
+  {
+    "item": "AthenaCharacter:CID_330_Athena_Commando_F_IceQueen",
+    "name": "The Ice Queen",
+    "description": "Long live the queen.",
+    "items": [
+      {
+        "item": "AthenaBackpack:BID_199_IceQueen",
+        "name": "Ice Spikes"
+      }
+    ],
+    "rarity": "legendary"
+  },
+  {
+    "item": "AthenaCharacter:CID_329_Athena_Commando_F_SnowNinja",
+    "name": "Snowstrike",
+    "description": "Strike swiftly, and always leave your mark.",
+    "items": [
+      {
+        "item": "AthenaBackpack:BID_200_SnowNinjaFemale",
+        "nmame": "Snowbrand"
+      }
+    ],
+    "rarity": "epic"
+  },
+  {
+    "item": "AthenaCharacter:CID_298_Athena_Commando_F_IceMaiden",
+    "name": "Glimmer",
+    "description": "Elegantly reclaiming winter's crown.",
+    "items": [
+      {
+        "item": "AthenaBackpack:BID_180_IceMaiden",
+        "name": "Glimmering Cloak"
+      }
+    ],
+    "rarity": "legendary"
+  },
+  {
+    "item": "AthenaCharacter:CID_299_Athena_Commando_M_SnowNinja",
+    "name": "Snowfoot",
+    "description": "Tread lightly, and never leave a trace.",
+    "items": [
+      {
+        "item": "AthenaBackpack:BID_181_SnowNinjaMale",
+        "name": "Snow Star"
+      }
+    ],
+    "rarity": "epic"
+  },
+  {
+    "item": "AthenaCharacter:CID_280_Athena_Commando_M_Snowman",
+    "name": "Slushy Soldier",
+    "description": "Make every day a snow day.",
+    "items": [
+      {
+        "item": "AthenaBackpack:BID_164_SnowmanMale",
+        "name": "Slushy Jr."
+      }
+    ],
+    "rarity": "epic"
+  },
+  {
+    "item": "AthenaPickaxe:Pickaxe_ID_015_HolidayCandyCane",
+    "name": "Candy Axe",
+    "description": "Deck the walls with festive mayhem!",
+    "items": [],
+    "rarity": "epic"
+  },
+  {
+    "item": "AthenaPickaxe:Pickaxe_ID_145_IceMaiden",
+    "name": "Flurry",
+    "description": "Swing flurriously.",
+    "items": [],
+    "rarity": "rare"
+  },
+  {
+    "item": "AthenaCharacter:CID_222_Athena_Commando_F_DarkViking",
+    "name": "Valkyrie",
+    "description": "A chilling revelation.",
+    "items": [
+      {
+        "item": "AthenaBackpack:BID_113_DarkVikingFemale",
+        "name": "Valkyrie Wings"
+      }
+    ],
+    "rarity": "legendary"
+  },
+  {
+    "item": "AthenaPickaxe:Pickaxe_ID_150_IceQueen",
+    "name": "Icebringer",
+    "description": "Bitter cold.",
+    "items": [],
+    "rarity": "rare"
+  },
+  {
+    "item": "AthenaCharacter:CID_311_Athena_Commando_M_Reindeer",
+    "name": "Red-nosed Ranger",
+    "description": "Known for his antler antics.",
+    "items": [],
+    "rarity": "uncommon"
+  },
+  {
+    "item": "AthenaItemWrap:Wrap_007_CandyCane",
+    "name": "Candy Cane",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "uncommon"
+  },
+  {
+    "item": "AthenaCharacter:CID_316_Athena_Commando_F_WinterHoliday",
+    "name": "Tinseltoes",
+    "description": "Keep the competition on their toes.",
+    "items": [],
+    "rarity": "uncommon"
+  },
+  {
+    "item": "AthenaDance:EID_TakeTheElf",
+    "name": "Take The Elf",
+    "description": "Break out the mistletoe.",
+    "items": [],
+    "rarity": "uncommon"
+  },
+  {
+    "item": "AthenaGlider:Glider_ID_085_SkullTrooper",
+    "name": "Crypt Cruiser",
+    "description": "From beyond the grave!",
+    "items": [],
+    "rarity": "epic"
+  },
+  {
+    "item": "AthenaPickaxe:Pickaxe_ID_137_NutCracker",
+    "name": "Snow Globe",
+    "description": "Shake vigorously.",
+    "items": [],
+    "rarity": "rare"
+  },
+  {
+    "item": "AthenaGlider:Glider_ID_113_Barbarian",
+    "name": "Tusk",
+    "description": "Wild and woolly.",
+    "items": [],
+    "rarity": "uncommon"
+  },
+  {
+    "item": "AthenaGlider:Glider_ID_114_IceQueen",
+    "name": "Winter's Thorn",
+    "description": "Ride out the squall.",
+    "items": [],
+    "rarity": "rare"
+  },
+  {
+    "item": "AthenaGlider:Glider_ID_115_SnowNinja",
+    "name": "Snowblades",
+    "description": "Cut through the cold.",
+    "items": [],
+    "rarity": "rare"
+  }
+]

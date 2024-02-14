@@ -1,0 +1,74 @@
+{
+    "Male": {
+        "before": 4800,
+        "newprice": 2500,
+        "singleprice": 1200,
+        "name": "Champions of the pitch bundle",
+        "items": [
+            {
+                "item": "AthenaCharacter:CID_144_Athena_Commando_M_SoccerDudeA",
+                "name": "Super Striker",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaCharacter:CID_145_Athena_Commando_M_SoccerDudeB",
+                "name": "Midfield Maestro",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            }, 
+            {
+                "item": "AthenaCharacter:CID_146_Athena_Commando_M_SoccerDudeC",
+                "name": "Aerial Threat",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaCharacter:CID_147_Athena_Commando_M_SoccerDudeD",
+                "name": "Stalwart Sweeper",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            }
+        ]
+    },
+    "Female": {
+        "before": 4800,
+        "newprice": 2500,
+        "singleprice": 1200,
+        "name": "Star Playmakers Bundle",
+        "items": [
+            {
+                "item": "AthenaCharacter:CID_148_Athena_Commando_F_SoccerGirlA",
+                "name": "Dynamic Dribbler",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaCharacter:CID_149_Athena_Commando_F_SoccerGirlB",
+                "name": "Poised Playmaker",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaCharacter:CID_150_Athena_Commando_F_SoccerGirlC",
+                "name": "Finesse Finisher",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaCharacter:CID_151_Athena_Commando_F_SoccerGirlD",
+                "name": "Clinical Crosser",
+                "description": "Represent your country in style!",
+                "items": [],
+                "rarity": "rare"
+            }
+        ]
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "Weekly": [
+        {
+            "before": 1500,
+            "newprice": 1500,
+            "singleprice": 1500,
+            "name": "TRAVIS SCOTT",
+            "items": [
+                {
+                    "item": "AthenaCharacter:CID_703_Athena_Commando_M_Cyclone",
+                    "name": "Super Striker",
+                    "description": "La Flame.",
+                    "items": [
+                        {
+                            "item": "AthenaBackpack:BID_468_Cyclone",
+                            "name": "Cactus Jack"
+                        }
+                    ],
+                    "rarity": "icon"
+                }
+            ]
+        },
+        { 
+            "before": 4800,
+            "newprice": 2500,
+            "singleprice": 1200,
+            "name": "ASTRO JACK",
+            "items": [
+                {
+                    "item": "AthenaCharacter:CID_761_Athena_Commando_M_CycloneSpace",
+                    "name": "Astro Jack",
+                    "description": "Out of this world.",
+                    "items": [
+                        {
+                            "item": "AthenaBackpack:BID_520_CycloneUniverse",
+                            "name": "Astroworld"
+                        }
+                    ],
+                    "rarity": "icon"
+                }
+            ]
+        },
+        {
+            "before": 1600,
+            "newprice": 1100,
+            "singleprice": 1100,
+            "name": "Astronomical Gear",
+            "items": [
+                {
+                    "item": "AthenaDance:EID_HeadBang",
+                    "name": "Headbanger",
+                    "description": "Bang your head against the air.",
+                    "items": [],
+                    "rarity": "icon"
+                },
+                {
+                    "item": "AthenaPickaxe:Pickaxe_ID_359_CycloneMale",
+                    "name": "Diamond Jack",
+                    "description": "Astroworld's Finest.",
+                    "items": [],
+                    "rarity": "icon"
+                },
+                {
+                    "item": "AthenaItemWrap:Wrap_210_Thermal",
+                    "name": "Goosebumps",
+                    "description": "Pull up on you.",
+                    "items": [],
+                    "rarity": "icon"
+                }
+            ]
+        }
+    ]
+}

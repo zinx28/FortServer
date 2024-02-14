@@ -76,12 +76,10 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                     foreach (var Item in DailyArray)
                     {
-                        Console.WriteLine(Item.name);
                         if (!Item.categories.Any())
                         {
                             HowManyTurns += 1;
                         }
-
                         switch (Item.item.Split(":")[0])
                         {
                             case "AthenaCharacter":
@@ -147,7 +145,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 if (WeeklyArray != null)
                 {
                     Logger.Log("Generating Weekly Bundles", "ItemShop");
-                    Console.WriteLine(WeeklyArray.Count());
                     HowManyTurns = 0;
                     int Price = 93439340; // High As Broken
                     string ItemTemplateId = "";

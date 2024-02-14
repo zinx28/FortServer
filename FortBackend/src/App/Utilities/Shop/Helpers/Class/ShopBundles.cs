@@ -18,7 +18,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Class
         public string rarity { get; set; } = string.Empty;
         public int singleprice { get; set; } = -1;
         public int newprice { get; set; } = -1;
-        public string[] categories { get; set; } 
+        public string[] categories { get; set; } = new string[0];
     }
 
     public class Item

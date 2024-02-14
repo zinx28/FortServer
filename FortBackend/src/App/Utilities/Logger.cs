@@ -12,9 +12,9 @@
             Console.WriteLine($"\u001B[33m[Warn]: {Message}\u001B[0m");
         }
 
-        public static void Error(string Message)
+        public static void Error(string Message, string Custom = "Error")
         {
-            Console.WriteLine($"\u001B[31m[Error]: {Message}\u001B[0m");
+            Console.WriteLine($"\u001B[31m[{Custom}]: {Message}\u001B[0m");
         }
     }
 }

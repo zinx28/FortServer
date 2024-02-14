@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\App\Utilities\NewFolder\" />
+    <Folder Include="src\App\Utilities\Shop\" />
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\shop\" />
   </ItemGroup>

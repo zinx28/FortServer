@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers;
+using System.Text;
 
 namespace FortBackend.src.App.Routes.APIS.Profile
 {
@@ -36,27 +37,34 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                     var response = new Mcp();
                     if (AccountDataParsed != null)
                     {
-                        var Season = await Grabber.SeasonUserAgent(Request);
-                        switch (mcp)
+                        using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
-                            case "QueryProfile":
-                                response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
-                            break;
-                            case "ClientQuestLogin":
-                                response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
-                            break;
-                            default:
-                            response = new Mcp
+                            var requestbody = await reader.ReadToEndAsync();
+                            var Season = await Grabber.SeasonUserAgent(Request);
+                            switch (mcp)
                             {
-                                profileRevision = RVN,
-                                profileId = ProfileID,
-                                profileChangesBaseRevision = RVN,
-                                //profileChanges = /,
-                                profileCommandRevision = RVN,
-                                serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-                                responseVersion = 1
-                            };
-                            break;
+                                case "QueryProfile":
+                                    response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                                    break;
+                                case "ClientQuestLogin":
+                                    response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                                    break;
+                                case "SetCosmeticLockerSlot":
+                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, requestbody);
+                                    break;
+                                default:
+                                    response = new Mcp
+                                    {
+                                        profileRevision = RVN,
+                                        profileId = ProfileID,
+                                        profileChangesBaseRevision = RVN,
+                                        //profileChanges = /,
+                                        profileCommandRevision = RVN,
+                                        serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                                        responseVersion = 1
+                                    };
+                                    break;
+                            }
                         }
 
                         return response;

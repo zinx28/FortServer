@@ -128,14 +128,10 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                             });
                         }
 
-                        var shockedwow = new
+                        var WeeklyItem = new catalogEntrie
                         {
                             devName = $"{WeeklyItems.item}",
                             offerId = $"v2:/{WeeklyItems.id}",
-                            fulfillmentIds = new List<string>(),
-                            dailyLimit = -1,
-                            weeklyLimit = -1,
-                            monthlyLimit = -1,
                             categories = WeeklyItems.categories,
                             prices = new List<dynamic>
                             {
@@ -143,15 +139,12 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                 {
                                     currencyType = "MtxCurrency",
                                     currencySubType = "",
-                                    regularPrice = int.Parse(WeeklyItems.normalprice.ToString() ?? "4343434343"),
-                                    finalPrice = int.Parse(WeeklyItems.price.ToString() ?? "4343434343"),
+                                    regularPrice = WeeklyItems.normalprice,
+                                    finalPrice = WeeklyItems.price,
                                     saleExpiration = DateTime.MaxValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    basePrice = int.Parse(WeeklyItems.price.ToString() ?? "4343434343"),
+                                    basePrice = WeeklyItems.price,
                                 }
                             },
-                            matchFilter = "",
-                            filterWeight = 0,
-                            appStoreId = new List<string>(),
                             requirements = requirements,
                             offerType = "StaticPrice",
                             giftInfo = new
@@ -161,7 +154,6 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                 purchaseRequirements = new List<dynamic>(),
                                 giftRecordIds = new List<dynamic>()
                             },
-                            refundable = true,
                             metaInfo = new List<object>()
                             {
                                 new
@@ -183,13 +175,10 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                             displayAssetPath = $"/Game/Catalog/DisplayAssets/{DisplayAsset}.{DisplayAsset}",
                             itemGrants = itemGrants,
                             sortPriority = WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority,
-                            // catalogGroup = "",
                             catalogGroupPriority = 0,//WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority
                         };
-                        //Console.WriteLine("TEST");
-
-                        ShopObject.storefronts[1].catalogEntries.Add(shockedwow);
-                        //((List<dynamic>)ShopObject.storefronts[1].catalogEntries).Add(shockedwow);
+                    
+                        ShopObject.storefronts[1].catalogEntries.Add(WeeklyItem);
                     }
                 }
 
@@ -260,14 +249,10 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                             });
                         }
 
-                        var shockedwow = new
+                        var WeeklyItem = new catalogEntrie
                         {
                             devName = $"{WeeklyItems.item}",
                             offerId = $"v2:/{WeeklyItems.id}",
-                            fulfillmentIds = new List<string>(),
-                            dailyLimit = -1,
-                            weeklyLimit = -1,
-                            monthlyLimit = -1,
                             categories = WeeklyItems.categories,
                             prices = new List<dynamic>
                             {
@@ -281,9 +266,6 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                     basePrice = int.Parse(WeeklyItems.price.ToString() ?? "4343434343"),
                                 }
                             },
-                            matchFilter = "",
-                            filterWeight = 0,
-                            appStoreId = new List<string>(),
                             requirements = requirements,
                             offerType = "StaticPrice",
                             giftInfo = new
@@ -293,7 +275,6 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                 purchaseRequirements = new List<dynamic>(),
                                 giftRecordIds = new List<dynamic>()
                             },
-                            refundable = true,
                             metaInfo = new List<object>()
                             {
                                 new
@@ -315,12 +296,11 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                             displayAssetPath = $"/Game/Catalog/DisplayAssets/{DisplayAsset}.{DisplayAsset}",
                             itemGrants = itemGrants,
                             sortPriority = WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority,
-                            // catalogGroup = "",
                             catalogGroupPriority = 0,//WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority
 
                         };
 
-                        ShopObject.storefronts[0].catalogEntries.Add(shockedwow);
+                        ShopObject.storefronts[0].catalogEntries.Add(WeeklyItem);
                     }
                 }
 

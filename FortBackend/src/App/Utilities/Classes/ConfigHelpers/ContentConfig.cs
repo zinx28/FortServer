@@ -4,6 +4,14 @@
     {
         public Battleroyalenewscontent battleroyalenews { get; set; } = new Battleroyalenewscontent();
         public List<Emergencynoticecontent> emergencynotice { get; set; } = new List<Emergencynoticecontent>();
+        public List<shopSectionsItems> shopSections { get; set; } = new List<shopSectionsItems>();
+    }
+
+    class shopSectionsItems
+    {
+        public int landingPriority { get; set; } = 0;
+        public string sectionId { get; set; } = "TEST";
+        public string sectionDisplayName = "TEST";
     }
 
     class Battleroyalenewscontent

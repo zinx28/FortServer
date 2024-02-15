@@ -20,5 +20,17 @@
             "title": "Orion",
             "body": "Fortnite Kittens :3"
         }
+    ],
+    "shopSections": [
+        {
+            "landingPriority": 1,
+            "sectionId": "Daily",
+            "sectionDisplayName": "Daily"
+        },
+        {
+            "landingPriority": 2,
+            "sectionId": "Featured",
+            "sectionDisplayName": "Featured"
+        }
     ]
 }

@@ -35,7 +35,7 @@ namespace FortBackend.src.App.Routes.APIS.API
                     return cachedResult;
                 }
 
-                var ResponseIG = new ContentJson
+                var ContentJsonResponse = new ContentJson
                 {
 
                     dynamicbackgrounds = new DynamicBackground()
@@ -63,14 +63,14 @@ namespace FortBackend.src.App.Routes.APIS.API
                 {
                     contentconfig.battleroyalenews.motds.ForEach(x =>
                     {
-                        ResponseIG.battleroyalenews.news.motds.Add(new NewContentMotds()
+                        ContentJsonResponse.battleroyalenews.news.motds.Add(new NewContentMotds()
                         {
                             image = x.image,
                             title = x.title,
                             body = x.body,
                         });
 
-                        ResponseIG.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
+                        ContentJsonResponse.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
                         {
                             image = x.image,
                             title = x.title,
@@ -80,7 +80,7 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                     contentconfig.battleroyalenews.messages.ForEach(x =>
                     {
-                        ResponseIG.battleroyalenews.news.messages.Add(new NewContentMessages()
+                        ContentJsonResponse.battleroyalenews.news.messages.Add(new NewContentMessages()
                         {
                             image = x.image,
                             title = x.title,
@@ -90,21 +90,31 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                     contentconfig.emergencynotice.ForEach(x =>
                     {
-                        ResponseIG.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
+                        ContentJsonResponse.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
                         {
                             title = x.title,
                             body = x.body,
                         });
 
-                        ResponseIG.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
+                        ContentJsonResponse.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
                         {
                             title = x.title,
                             body = x.body,
                         });
                     });
+
+                    contentconfig.shopSections.ForEach(x =>
+                    {
+                        ContentJsonResponse.shopSections.sectionList.sections.Add(new ShopSectionsSectionsSEctions
+                        {
+                            sectionId = x.sectionId,
+                            sectionDisplayName = x.sectionDisplayName,
+                            landingPriority = x.landingPriority,
+                        });
+                    });
                 }
 
-                memoryCache.Set(cacheKey, ResponseIG, new MemoryCacheEntryOptions
+                memoryCache.Set(cacheKey, ContentJsonResponse, new MemoryCacheEntryOptions
                 {
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
                 });
@@ -114,7 +124,7 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                 //return Ok(contentconfig1);
 
-                return ResponseIG;
+                return ContentJsonResponse;
             }
             catch (Exception ex)
             {

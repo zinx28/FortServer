@@ -20,5 +20,8 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Content
         public EmergencyNotice emergencynotice { get; set; } = new EmergencyNotice();
         public EmergencyNoticeV2 emergencynoticev2 { get; set; } = new EmergencyNoticeV2();
         public DynamicBackground dynamicbackgrounds { get; set; } = new DynamicBackground();
+
+        public ShopCarousel shopCarousel { get; set; } = new ShopCarousel();
+        public ShopSections shopSections { get; set; } = new ShopSections();
     }
 }

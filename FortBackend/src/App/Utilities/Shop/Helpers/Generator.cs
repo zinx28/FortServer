@@ -56,9 +56,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     Logger.Error("Attempting again", "ItemShop");
                 }
             }
-            Console.WriteLine(DailyItems);
             Logger.Log("Generating left over items", "ItemShop");
-            //ItemType
+
             await Generate.RandomItems(DailyItems, savedData.Daily, "Normal");
             await Generate.RandomItems(4, savedData.Daily);
             await Generate.RandomItems(DailyItems, savedData.Weekly, "Normal");

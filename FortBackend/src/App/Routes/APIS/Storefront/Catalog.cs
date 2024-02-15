@@ -29,7 +29,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                 }
                 ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
 
-                //string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/temp.json");
+                //string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/test.json");
                 //string json1 = System.IO.File.ReadAllText(filePath1);
                 //Catalog shopData1 = JsonConvert.DeserializeObject<Catalog>(json1);
                 //return Content(json1);    

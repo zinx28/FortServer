@@ -1,6 +1,8 @@
-﻿using FortBackend.src.App.Utilities.MongoDB.Module;
+﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Routes.APIS.API
 {
@@ -58,6 +60,29 @@ namespace FortBackend.src.App.Routes.APIS.API
             {
                 accountId,
                 optOutOfPublicLeaderboards = false
+            });
+        }
+
+        // gold
+        [HttpGet("/fortnite/api/game/v2/br-inventory/account/{accountId}")]
+        public async Task<IActionResult> Accinventory(string accountId)
+        {
+            Response.ContentType = "application/json";
+            var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
+            int globalcash = 0;
+            if (AccountData != "Error")
+            {
+                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+
+                globalcash = AccountDataParsed.athena.Gold;
+            }
+
+            return Ok(new
+            {
+                stash = new
+                {
+                    globalcash,
+                }
             });
         }
     }

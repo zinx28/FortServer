@@ -13,6 +13,12 @@ namespace FortBackend.src.App.Routes.APIS.API
             return Ok();
         }
 
+        ///api/v1/events/Fortnite/download/644812f9-5e5e-4fd4-a670-b306e5956fd9
+        [HttpGet("v1/events/Fortnite/download/{accountId}")]
+        public IActionResult DownloadEndpoint(string accountId)
+        {
+            return Ok(new { });
+        }
 
         [HttpGet("/waitingroom/api/waitingroom")]
         public IActionResult WaitingRoom()
@@ -25,5 +31,16 @@ namespace FortBackend.src.App.Routes.APIS.API
         {
             return StatusCode(204);
         }
+
+        //catalog/api/shared/bulk/offers
+
+        [HttpGet("/catalog/api/shared/bulk/offers")]
+        public IActionResult Catoffers()
+        {
+            StatusCode(204);
+            return Ok(new { });
+        }
+
+       
     }
 }

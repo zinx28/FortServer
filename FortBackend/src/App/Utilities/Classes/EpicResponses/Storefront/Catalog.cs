@@ -2,7 +2,7 @@
 {
     public class Catalog
     {
-        public int refreshIntervalHrs { get; set; } = 24;
+        public int refreshIntervalHrs { get; set; } = 1;
         public int dailyPurchaseHrs { get; set; } = 24;
         public string expiration { get; set; } = string.Empty;
         public List<dynamic> storefronts  { get; set;} = new List<dynamic>();

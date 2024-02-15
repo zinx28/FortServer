@@ -27,9 +27,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
             {
                 var RVN = int.Parse(Request.Query["rvn"].FirstOrDefault() ?? "-1");
                 var ProfileID = Request.Query["profileId"].ToString() ?? "athena";
-                Console.WriteLine("T");
                 var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
-                Console.WriteLine("T");
                 if (AccountData != "Error")
                 {
                     Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];

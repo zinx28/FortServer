@@ -2,6 +2,7 @@
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Storefront;
 using FortBackend.src.App.Utilities.Shop.Helpers.Class;
 using FortBackend.src.App.Utilities.Shop.Helpers.Data;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -27,7 +28,11 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                 }
                 ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
 
-                if(shopData == null)
+                string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/temp.json");
+                string json1 = System.IO.File.ReadAllText(filePath1);
+                Catalog shopData1 = JsonConvert.DeserializeObject<Catalog>(json1);
+                return Content(json1);    
+                if (shopData == null)
                 {
                     Logger.Error("shopData is null -> weird issue");
                     return Ok(new Catalog());
@@ -35,14 +40,259 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
 
                 Catalog ShopObject = new Catalog
                 {
-                    refreshIntervalHrs = 24,
+                    refreshIntervalHrs = 1,
                     dailyPurchaseHrs = 24,
                     expiration = $"{shopData.expiration}",
+                    storefronts = new List<dynamic> {
+                        new
+                        {
+                            name = "BRDailyStorefront",
+                            catalogEntries = new List<dynamic>()
+                        },
+                        new
+                        {
+                            name = "BRWeeklyStorefront",
+                            catalogEntries = new List<dynamic>()
+                        }
+                    }
                 };
+               
 
+                int SortPriority = 0;
+         
                 foreach (var WeeklyItems in shopData.ShopItems.Weekly)
                 {
+                  
+                    SortPriority += 1;
+                    List<object> requirements = new List<object>();
+                    List<object> itemGrants = new List<object>();
+                    if (WeeklyItems.item == null || WeeklyItems.item == "")
+                    {
+                        if (WeeklyItems.name.ToString().ToLower().Contains("bundle"))
+                        {
+                            foreach (dynamic d in WeeklyItems.items)
+                            {
+                                itemGrants.Add(new
+                                {
+                                    templateId = d.item,
+                                    quantity = 1
+                                });
+                                requirements.Add(new
+                                {
+                                    requirementType = "DenyOnItemOwnership",
+                                    requiredId = d.item,
+                                    minQuantity = 1,
+                                });
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("ADDED");
+                        }
+                    }
+                    else
+                    {
 
+                        itemGrants.Add(new
+                        {
+                            templateId = $"{WeeklyItems.item}",
+                            quantity = 1
+                        });
+                        requirements.Add(new
+                        {
+                            requirementType = "DenyOnItemOwnership",
+                            requiredId = WeeklyItems.item,
+                            minQuantity = 1,
+                        });
+
+                        foreach (dynamic d in WeeklyItems.items)
+                        {
+                            itemGrants.Add(new
+                            {
+                                templateId = d.item,
+                                quantity = 1
+                            });
+                            requirements.Add(new
+                            {
+                                requirementType = "DenyOnItemOwnership",
+                                requiredId = d.item,
+                                minQuantity = 1,
+                            });
+                        }
+
+                        var shockedwow = new
+                        {
+                            devName = $"{WeeklyItems.item}",
+                            offerId = $"v2:/{WeeklyItems.id}",
+                            fulfillmentIds = new List<string>(),
+                            dailyLimit = -1,
+                            weeklyLimit = -1,
+                            monthlyLimit = -1,
+                            categories = WeeklyItems.categories,
+                            prices = new List<dynamic>
+                            {
+                                new
+                                {
+                                    currencyType = "MtxCurrency",
+                                    currencySubType = "",
+                                    regularPrice = int.Parse(WeeklyItems.normalprice.ToString() ?? "4343434343"),
+                                    finalPrice = int.Parse(WeeklyItems.price.ToString() ?? "4343434343"),
+                                    saleExpiration = DateTime.MaxValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    basePrice = int.Parse(WeeklyItems.price.ToString() ?? "4343434343"),
+                                }
+                            },
+                            matchFilter = "",
+                            filterWeight = 0,
+                            appStoreId = new List<string>(),
+                            requirements = requirements,
+                            offerType = "StaticPrice",
+                            giftInfo = new
+                            {
+                                bIsEnabled = true,
+                                forcedGiftBoxTemplateId = "",
+                                purchaseRequirements = new List<dynamic>(),
+                                giftRecordIds = new List<dynamic>()
+                            },
+                            refundable = true,
+                            metaInfo = new List<object>()
+                            {
+                                new
+                                {
+                                    key = "SectionId",
+                                    value = "Weekly"
+                                },
+                                new
+                                {
+                                    key = "TileSize",
+                                    value = WeeklyItems.type
+                                }
+                            },
+                            displayAssetPath = $"/Game/Catalog/DisplayAssets/DA_Featured_{WeeklyItems.name}.DA_Featured_{WeeklyItems.name}",
+                            itemGrants = itemGrants,
+                            sortPriority = SortPriority,
+                            catalogGroupPriority = SortPriority
+                        };
+                        Console.WriteLine("TEST");
+
+                        ShopObject.storefronts[1].catalogEntries.Add(shockedwow);
+                        //((List<dynamic>)ShopObject.storefronts[1].catalogEntries).Add(shockedwow);
+                    }
+                }
+                SortPriority = 0;
+                foreach (var WeeklyItems in shopData.ShopItems.Daily)
+                {
+                    SortPriority += 1;
+                    List<object> requirements = new List<object>();
+                    List<object> itemGrants = new List<object>();
+                    if (WeeklyItems.item == null || WeeklyItems.item == "")
+                    {
+                        if (WeeklyItems.name.ToString().ToLower().Contains("bundle"))
+                        {
+                            foreach (dynamic d in WeeklyItems.items)
+                            {
+                                itemGrants.Add(new
+                                {
+                                    templateId = d.item,
+                                    quantity = 1
+                                });
+                                requirements.Add(new
+                                {
+                                    requirementType = "DenyOnItemOwnership",
+                                    requiredId = d.item,
+                                    minQuantity = 1,
+                                });
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("ADDED");
+                        }
+                    }
+                    else
+                    {
+
+                        itemGrants.Add(new
+                        {
+                            templateId = $"{WeeklyItems.item}",
+                            quantity = 1
+                        });
+                        requirements.Add(new
+                        {
+                            requirementType = "DenyOnItemOwnership",
+                            requiredId = WeeklyItems.item,
+                            minQuantity = 1,
+                        });
+
+                        foreach (dynamic d in WeeklyItems.items)
+                        {
+                            itemGrants.Add(new
+                            {
+                                templateId = d.item,
+                                quantity = 1
+                            });
+                            requirements.Add(new
+                            {
+                                requirementType = "DenyOnItemOwnership",
+                                requiredId = d.item,
+                                minQuantity = 1,
+                            });
+                        }
+
+                        var shockedwow = new
+                        {
+                            devName = $"{WeeklyItems.item}",
+                            offerId = $"v2:/{WeeklyItems.id}",
+                            fulfillmentIds = new List<string>(),
+                            dailyLimit = -1,
+                            weeklyLimit = -1,
+                            monthlyLimit = -1,
+                            categories = WeeklyItems.categories,
+                            prices = new List<dynamic>
+                            {
+                                new
+                                {
+                                    currencyType = "MtxCurrency",
+                                    currencySubType = "",
+                                    regularPrice = int.Parse(WeeklyItems.normalprice.ToString() ?? "4343434343"),
+                                    finalPrice = int.Parse(WeeklyItems.price.ToString() ?? "4343434343"),
+                                    saleExpiration = DateTime.MaxValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    basePrice = int.Parse(WeeklyItems.price.ToString() ?? "4343434343"),
+                                }
+                            },
+                            matchFilter = "",
+                            filterWeight = 0,
+                            appStoreId = new List<string>(),
+                            requirements = requirements,
+                            offerType = "StaticPrice",
+                            giftInfo = new
+                            {
+                                bIsEnabled = true,
+                                forcedGiftBoxTemplateId = "",
+                                purchaseRequirements = new List<dynamic>(),
+                                giftRecordIds = new List<dynamic>()
+                            },
+                            refundable = true,
+                            metaInfo = new List<object>()
+                            {
+                                new
+                                {
+                                    key = "SectionId",
+                                    value = "Daily"
+                                },
+                                new
+                                {
+                                    key = "TileSize",
+                                    value = WeeklyItems.type
+                                }
+                            },
+                            displayAssetPath = $"/Game/Catalog/DisplayAssets/DA_Daily_{WeeklyItems.name}.DA_Daily_{WeeklyItems.name}",
+                            itemGrants = itemGrants,
+                            sortPriority = SortPriority,
+                            catalogGroupPriority = SortPriority
+                        };
+
+                        ShopObject.storefronts[0].catalogEntries.Add(shockedwow);
+                    }
                 }
 
                 return Ok(ShopObject);

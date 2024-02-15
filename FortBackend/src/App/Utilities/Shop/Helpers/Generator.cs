@@ -151,7 +151,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             price = Price,
                             normalprice = Price, // not done
                             rarity = Item.rarity,
-                            type = "large",
+                            type = "Normal",
                             categories = Item.categories
                         });
                     }
@@ -245,7 +245,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             return true;
         }
 
-        public static async Task GenerateDailyItems(int Items, List<ItemsSaved> Type, string ItemType = "small")
+        public static async Task GenerateDailyItems(int Items, List<ItemsSaved> Type, string ItemType = "Small")
         {
             Logger.Log("Generating useless stuff -> " + Items, "ItemShop");
             for (int i = 0; i < Items; i++)
@@ -254,7 +254,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
         }
 
-        public static async Task GenerateSingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, string[] itemType, double[] rarityProb, string type = "small")
+        public static async Task GenerateSingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, string[] itemType, double[] rarityProb, string type = "Small")
         {
             Random random = new Random();
             string ChosenItem = string.Empty;
@@ -315,7 +315,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     price = Price,
                     normalprice = Price,
                     variants = RandomSkinItem.variants,
-                    type = "small",
+                    type = type,
                     rarity = RandomSkinItem.rarity
                 });
 
@@ -356,9 +356,9 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             Console.WriteLine(DailyItems);
             Logger.Log("Generating left over items", "ItemShop");
             //ItemType
-            await GenerateDailyItems(DailyItems, savedData.Daily, "large");
+            await GenerateDailyItems(DailyItems, savedData.Daily, "Normal");
             await GenerateDailyItems(4, savedData.Daily);
-            await GenerateDailyItems(DailyItems, savedData.Weekly, "large");
+            await GenerateDailyItems(DailyItems, savedData.Weekly, "Normal");
             await GenerateDailyItems(4, savedData.Weekly);
 
             TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("GMT Standard Time");

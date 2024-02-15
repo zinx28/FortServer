@@ -159,7 +159,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                 new
                                 {
                                     key = "SectionId",
-                                    value = "Weekly"
+                                    value = "Featured"
                                 },
                                 new
                                 {

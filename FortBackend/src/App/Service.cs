@@ -88,7 +88,7 @@ namespace FortBackend.src.App
             //});
             //ItemShopGenThread.Start();
 
-            GenerateShop.Init();
+            //GenerateShop.Init();
 
             app.Run();
 

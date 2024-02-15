@@ -4,6 +4,7 @@ using FortBackend.src.App.Utilities.Shop.Helpers.Class;
 using FortBackend.src.App.Utilities.Shop.Helpers.Data;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Routes.APIS.Storefront
@@ -57,15 +58,22 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                     }
                 };
                
+                // NEED A RECODE RN
+                int SortPriority = 20;
+                int LargeSortPriority = -10;
 
-                int SortPriority = 0;
-         
                 foreach (var WeeklyItems in shopData.ShopItems.Weekly)
                 {
                   
                     SortPriority += 1;
+                    LargeSortPriority += 1;
                     List<object> requirements = new List<object>();
                     List<object> itemGrants = new List<object>();
+                    var DisplayAsset = $"DA_Featured_{WeeklyItems.name}";
+                    if(!string.IsNullOrEmpty(WeeklyItems.BundlePath))
+                    {
+                        DisplayAsset = WeeklyItems.BundlePath;
+                    }
                     if (WeeklyItems.item == null || WeeklyItems.item == "")
                     {
                         if (WeeklyItems.name.ToString().ToLower().Contains("bundle"))
@@ -165,25 +173,39 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                 {
                                     key = "TileSize",
                                     value = WeeklyItems.type
+                                },
+                                new
+                                {
+                                    key = "sectionPriority",
+                                    value = WeeklyItems.type == "Normal" ? LargeSortPriority.ToString() : SortPriority.ToString()
                                 }
                             },
-                            displayAssetPath = $"/Game/Catalog/DisplayAssets/DA_Featured_{WeeklyItems.name}.DA_Featured_{WeeklyItems.name}",
+                            displayAssetPath = $"/Game/Catalog/DisplayAssets/{DisplayAsset}.{DisplayAsset}",
                             itemGrants = itemGrants,
-                            sortPriority = SortPriority,
-                            catalogGroupPriority = SortPriority
+                            sortPriority = WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority,
+                            // catalogGroup = "",
+                            catalogGroupPriority = 0,//WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority
                         };
-                        Console.WriteLine("TEST");
+                        //Console.WriteLine("TEST");
 
                         ShopObject.storefronts[1].catalogEntries.Add(shockedwow);
                         //((List<dynamic>)ShopObject.storefronts[1].catalogEntries).Add(shockedwow);
                     }
                 }
-                SortPriority = 0;
+
                 foreach (var WeeklyItems in shopData.ShopItems.Daily)
                 {
                     SortPriority += 1;
+                    LargeSortPriority += 1;
                     List<object> requirements = new List<object>();
                     List<object> itemGrants = new List<object>();
+
+                    var DisplayAsset = $"DA_Daily_{WeeklyItems.name}";
+                    if (!string.IsNullOrEmpty(WeeklyItems.BundlePath))
+                    {
+                        DisplayAsset = WeeklyItems.BundlePath;
+                    }
+
                     if (WeeklyItems.item == null || WeeklyItems.item == "")
                     {
                         if (WeeklyItems.name.ToString().ToLower().Contains("bundle"))
@@ -283,12 +305,19 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                 {
                                     key = "TileSize",
                                     value = WeeklyItems.type
+                                },
+                                new
+                                {
+                                    key = "sectionPriority",
+                                    value = WeeklyItems.type == "Normal" ? LargeSortPriority.ToString() : SortPriority.ToString()
                                 }
                             },
-                            displayAssetPath = $"/Game/Catalog/DisplayAssets/DA_Daily_{WeeklyItems.name}.DA_Daily_{WeeklyItems.name}",
+                            displayAssetPath = $"/Game/Catalog/DisplayAssets/{DisplayAsset}.{DisplayAsset}",
                             itemGrants = itemGrants,
-                            sortPriority = SortPriority,
-                            catalogGroupPriority = SortPriority
+                            sortPriority = WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority,
+                            // catalogGroup = "",
+                            catalogGroupPriority = 0,//WeeklyItems.type == "Normal" ? LargeSortPriority : SortPriority
+
                         };
 
                         ShopObject.storefronts[0].catalogEntries.Add(shockedwow);

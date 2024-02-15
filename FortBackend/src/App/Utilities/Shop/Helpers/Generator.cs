@@ -151,6 +151,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             price = Price,
                             normalprice = Price, // not done
                             rarity = Item.rarity,
+                            BundlePath = Item.BundlePath,
                             type = "Normal",
                             categories = Item.categories
                         });
@@ -229,7 +230,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             price = Price,
                             normalprice = Price, // not done
                             rarity = Item.rarity,
-                            type = "large",
+                            BundlePath = Item.BundlePath,
+                            type = "Normal",
                             categories = Item.categories
                         });
                     }
@@ -315,6 +317,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     price = Price,
                     normalprice = Price,
                     variants = RandomSkinItem.variants,
+                    BundlePath = RandomSkinItem.BundlePath,
                     type = type,
                     rarity = RandomSkinItem.rarity
                 });

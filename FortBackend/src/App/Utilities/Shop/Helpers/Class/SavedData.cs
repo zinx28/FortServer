@@ -17,6 +17,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Data
         public int price { get; set; } = -1;
         public int normalprice { get; set; } = -1;
         public List<Variants> variants { get; set; } = new List<Variants>();
+
+        public string BundlePath { get; set; } = string.Empty;
         public string rarity { get; set; } = string.Empty;
         public string type = string.Empty;
         public string[] categories { get; set; } = new string[0];

@@ -16,6 +16,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Class
         public string description { get; set; } = string.Empty;
         public List<Item> items { get; set; } = new List<Item>();
 
+        public string BundlePath { get; set; } = string.Empty;
+
         public List<Variants> variants { get; set; } = new List<Variants>();
         public string rarity { get; set; } = string.Empty;
         public string LastShownDate { get; set; } = string.Empty;
@@ -28,6 +30,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Class
         public string description { get; set; } = string.Empty;
         public List<Item> items { get; set; }
         public string rarity { get; set; } = string.Empty;
+
+        public string BundlePath { get; set; } = string.Empty;
         public int singleprice { get; set; } = -1;
         public int newprice { get; set; } = -1;
         public string[] categories { get; set; } = new string[0];

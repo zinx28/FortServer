@@ -1,810 +1,812 @@
 [
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_053_Athena_Commando_M_SkiDude",
-        "name": "Alpine Ace",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_006_SkiDude",
-            "name": "Alpine Accessories"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_053_Athena_Commando_M_SkiDude",
+                "name": "Alpine Ace",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_006_SkiDude",
+                        "name": "Alpine Accessories"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_054_Athena_Commando_M_SkiDude_USA",
+                "name": "Alpine Ace (USA)",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_007_SkiDude_USA",
+                        "name": "Alpine Accessories (USA)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_055_Athena_Commando_M_SkiDude_CAN",
+                "name": "Alpine Ace (CAN)",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_008_SkiDude_CAN",
+                        "name": "Alpine Accessories (CAN)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_056_Athena_Commando_M_SkiDude_GBR",
+                "name": "Alpine Ace (GBR)",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_009_SkiDude_GBR",
+                        "name": "Alpine Accessories (GBR)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_057_Athena_Commando_M_SkiDude_FRA",
+                "name": "Alpine Ace (FRA)",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_009_SkiDude_GBR",
+                        "name": "Alpine Accessories (GBR)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_058_Athena_Commando_M_SkiDude_GER",
+                "name": "Alpine Ace (GER)",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_011_SkiDude_GER",
+                        "name": "Alpine Accessories (GER)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_059_Athena_Commando_M_SkiDude_CHN",
+                "name": "Alpine Ace (CHN)",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_012_SkiDude_CHN",
+                        "name": "Alpine Accessories (CHN)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_060_Athena_Commando_M_SkiDude_KOR",
+                "name": "Alpine Ace (KOR)",
+                "description": "So Aerodynamic!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_013_SkiDude_KOR",
+                        "name": "Alpine Accessories (KOR)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 1"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_061_Athena_Commando_F_SkiGirl",
+                "name": "Mogul Master",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_014_SkiGirl",
+                        "name": "Mogul Ski Bag"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_062_Athena_Commando_F_SkiGirl_USA",
+                "name": "Mogul Master (USA)",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_015_SkiGirl_USA",
+                        "name": "Mogul Ski Bag (USA)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_063_Athena_Commando_F_SkiGirl_CAN",
+                "name": "Mogul Master (CAN)",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_016_SkiGirl_CAN",
+                        "name": "Mogul Ski Bag (CAN)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_064_Athena_Commando_F_SkiGirl_GBR",
+                "name": "Mogul Master (GBR)",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_017_SkiGirl_GBR",
+                        "name": "Mogul Ski Bag (GBR)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_065_Athena_Commando_F_SkiGirl_FRA",
+                "name": "Mogul Master (FRA)",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_018_SkiGirl_FRA",
+                        "name": "Mogul Ski Bag (FRA)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_066_Athena_Commando_F_SkiGirl_GER",
+                "name": "Mogul Master (GER)",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_019_SkiGirl_GER",
+                        "name": "Mogul Ski Bag (GER)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_067_Athena_Commando_F_SkiGirl_CHN",
+                "name": "Mogul Master (CHN)",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_020_SkiGirl_CHN",
+                        "name": "Mogul Ski Bag (CHN)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            },
+            {
+                "item": "AthenaCharacter:CID_068_Athena_Commando_F_SkiGirl_KOR",
+                "name": "Mogul Master (KOR)",
+                "description": "Carve through the competition.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_021_SkiGirl_KOR",
+                        "name": "Mogul Ski Bag (KOR)"
+                    }
+                ],
+                "rarity": "epic",
+                "categories": [
+                    "Panel 2"
+                ]
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_054_Athena_Commando_M_SkiDude_USA",
-        "name": "Alpine Ace (USA)",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_007_SkiDude_USA",
-            "name": "Alpine Accessories (USA)"
-          }
+    },
+    {
+        "Daily": [
+            {
+                "item": "AthenaItemWrap:Wrap_175_Slurp",
+                "name": "Slurp",
+                "description": "Show your style.",
+                "items": [],
+                "rarity": "uncommon"
+            }
         ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_620_Athena_Commando_L_BigChuggus",
+                "name": "Big Chuggus",
+                "description": "Small chugguses need not apply.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_416_BigChuggus",
+                        "name": "Juggus"
+                    }
+                ],
+                "rarity": "epic"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_316_BigChuggus",
+                "name": "Double Tap",
+                "description": "Twice the slurp in one powerful swing.",
+                "items": [],
+                "rarity": "epic"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_055_Athena_Commando_M_SkiDude_CAN",
-        "name": "Alpine Ace (CAN)",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_008_SkiDude_CAN",
-            "name": "Alpine Accessories (CAN)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_333_Athena_Commando_M_Squishy",
+                "name": "Marshmello",
+                "description": "Start the party. Reactive: Lights up while using musical emotes.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "icon"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_249_Squishy1H",
+                "name": "Mello Mallets",
+                "description": "There X2",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "icon"
+            },
+            {
+                "item": "AthenaDance:EID_SquishyDance",
+                "name": "Marsh Walk",
+                "description": "Keep it mello.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "icon"
+            },
+            {
+                "item": "AthenaDance:EID_SquishyMedley",
+                "name": "Keep It Mello",
+                "description": "Join in the fun.",
+                "singleprice": 0,
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "icon"
+            },
+            {
+                "item": "AthenaGlider:Glider_ID_118_Squishy",
+                "name": "Mello Rider",
+                "description": "Fly happier.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "icon"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_056_Athena_Commando_M_SkiDude_GBR",
-        "name": "Alpine Ace (GBR)",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_009_SkiDude_GBR",
-            "name": "Alpine Accessories (GBR)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_515_Athena_Commando_M_BarbequeLarry",
+                "name": "Psycho Bundle",
+                "singleprice": 2000,
+                "BundlePath": "DA_Featured_LasagnaBundle",
+                "description": "Start the party. Reactive: Lights up while using musical emotes.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:PetCarrier_013_BbqLarry",
+                        "name": "ClapTrap"
+                    },
+                    {
+                        "item": "AthenaPickaxe:Pickaxe_ID_265_BarbequeLarry1H",
+                        "name": "Psycho Buzz Axes"
+                    }
+                ],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "gaminglegends"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_057_Athena_Commando_M_SkiDude_FRA",
-        "name": "Alpine Ace (FRA)",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_009_SkiDude_GBR",
-            "name": "Alpine Accessories (GBR)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_535_Athena_Commando_M_Traveler",
+                "name": "Traveler Bundle",
+                "singleprice": 1600,
+                "BundlePath": "DA_Featured_TravelerBundle",
+                "description": "Start the party. Reactive: Lights up while using musical emotes.",
+                "items": [
+                    {
+                        "item": "AthenaPickaxe:Pickaxe_ID_275_Traveler",
+                        "name": "Flying Slasher"
+                    }
+                ],
+                "categories": [
+                    "Panel 1"
+                ]
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_058_Athena_Commando_M_SkiDude_GER",
-        "name": "Alpine Ace (GER)",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_011_SkiDude_GER",
-            "name": "Alpine Accessories (GER)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_424_Athena_Commando_M_Vigilante",
+                "name": "Hang Time Bundle",
+                "singleprice": 1600,
+                "description": "Start the party. Reactive: Lights up while using musical emotes.",
+                "items": [
+                    {
+                        "item": "AthenaCharacter:CID_423_Athena_Commando_F_Painter",
+                        "name": "Clutch"
+                    }
+                ],
+                "categories": [
+                    "Panel 1"
+                ]
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_059_Athena_Commando_M_SkiDude_CHN",
-        "name": "Alpine Ace (CHN)",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_012_SkiDude_CHN",
-            "name": "Alpine Accessories (CHN)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_474_Athena_Commando_M_Lasagna",
+                "name": "Major Lazer Bundle",
+                "singleprice": 1600,
+                "newprice": 2475,
+                "description": "Start the party. Reactive: Lights up while using musical emotes.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_310_Lasagna",
+                        "name": "Lazer Wings"
+                    },
+                    {
+                        "item": "AthenaPickaxe:Pickaxe_ID_235_Lasagna",
+                        "name": "Lazer Axe"
+                    },
+                    {
+                        "item": "AthenaDance:EID_LasagnaDance",
+                        "name": "Lazer Blast"
+                    },
+                    {
+                        "item": "AthenaMusicPack:MusicPack_026_LasagnaChill",
+                        "name": "Default Vibe"
+                    },
+                    {
+                        "item": "AthenaMusicPack:MusicPack_027_LasagnaDope",
+                        "name": "Default Fire"
+                    }
+                ],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "icon"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_060_Athena_Commando_M_SkiDude_KOR",
-        "name": "Alpine Ace (KOR)",
-        "description": "So Aerodynamic!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_013_SkiDude_KOR",
-            "name": "Alpine Accessories (KOR)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 1"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_442_Athena_Commando_F_BannerA",
+                "name": "Banner Trooper",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaCharacter:CID_443_Athena_Commando_F_BannerB",
+                "name": "Sgt. Sigil",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaCharacter:CID_444_Athena_Commando_F_BannerC",
+                "name": "Branded Brigadier",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaCharacter:CID_445_Athena_Commando_F_BannerD",
+                "name": "Marked Marauder",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaCharacter:CID_446_Athena_Commando_M_BannerA",
+                "name": "Symbol Stalwart",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 2"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaCharacter:CID_447_Athena_Commando_M_BannerB",
+                "name": "Signature Sniper",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 2"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaCharacter:CID_448_Athena_Commando_M_BannerC",
+                "name": "Branded Brawler",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 2"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaCharacter:CID_449_Athena_Commando_M_BannerD",
+                "name": "Lt. Logo",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 2"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_222_Banner",
+                "name": "Emblematic",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "categories": [
+                    "Panel 3"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaBackpack:BID_289_Banner",
+                "name": "Banner Cape",
+                "description": "Customize your look by choosing a Banner and color in your Locker.",
+                "items": [],
+                "singleprice": 400,
+                "categories": [
+                    "Panel 3"
+                ],
+                "rarity": "uncommon"
+            },
+            {
+                "item": "AthenaGlider:Glider_ID_153_Banner",
+                "name": "Custom Cruiser",
+                "description": "Fly your banner.",
+                "items": [],
+                "categories": [
+                    "Panel 3"
+                ],
+                "rarity": "uncommon"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_061_Athena_Commando_F_SkiGirl",
-        "name": "Mogul Master",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_014_SkiGirl",
-            "name": "Mogul Ski Bag"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_400_Athena_Commando_M_AshtonSaltLake",
+                "name": "Star-Lord Outfit",
+                "description": "Do something good, something bad, a bit of both!",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_259_Ashton_SaltLake",
+                        "name": "Star-Lord Pack"
+                    }
+                ],
+                "categories": [],
+                "rarity": "marvel"
+            },
+            {
+                "item": "AthenaDance:EID_AshtonSaltLake",
+                "name": "Dance Off",
+                "description": "A perfect distraction.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "marvel"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_203_AshtonSaltLake",
+                "name": "Guardian Axe",
+                "description": "Cut down cosmic threats.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "marvel"
+            },
+            {
+                "item": "AthenaGlider:Glider_ID_142_AshtonSaltLake",
+                "name": "The Milan",
+                "description": "Guard the galaxy in style.",
+                "items": [],
+                "categories": [],
+                "rarity": "marvel"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_062_Athena_Commando_F_SkiGirl_USA",
-        "name": "Mogul Master (USA)",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_015_SkiGirl_USA",
-            "name": "Mogul Ski Bag (USA)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_399_Athena_Commando_F_AshtonBoardwalk",
+                "name": "Black Widow Outfit",
+                "description": "Whatever it takes.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_258_AshtonBoardwalk",
+                        "name": "Widow’s Pack"
+                    }
+                ],
+                "categories": [],
+                "rarity": "marvel"
+            },
+            {
+                "item": "AthenaDance:EID_AshtonBoardwalk",
+                "name": "Widow’s Pirouette",
+                "description": "A deadly dance.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "marvel"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_202_AshtonBoardwalk",
+                "name": "Widow’s Bite",
+                "description": "Shockingly effective.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "marvel"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_063_Athena_Commando_F_SkiGirl_CAN",
-        "name": "Mogul Master (CAN)",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_016_SkiGirl_CAN",
-            "name": "Mogul Ski Bag (CAN)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_531_Athena_Commando_M_Sleepytime",
+                "name": "Slumber",
+                "description": "It's time to say goodnight.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_357_Sleepytime",
+                        "name": "Dreamer"
+                    }
+                ],
+                "categories": [],
+                "rarity": "epic"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_272_SleepyTime",
+                "name": "Nighty Night",
+                "description": "Spread some sweet dreams.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaGlider:Glider_ID_174_SleepyTime",
+                "name": "Nite Flight",
+                "description": "Zzzzzzz.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaItemWrap:Wrap_137_SleepyTime",
+                "name": "Dreamy",
+                "description": "Show your style.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "rare"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_064_Athena_Commando_F_SkiGirl_GBR",
-        "name": "Mogul Master (GBR)",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_017_SkiGirl_GBR",
-            "name": "Mogul Ski Bag (GBR)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_132_Athena_Commando_M_Venus",
+                "name": "Flytrap",
+                "description": "Deviously inescapable.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_601_Venus",
+                        "name": "Flytrapper"
+                    }
+                ],
+                "categories": [],
+                "rarity": "legendary"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_056_Venus",
+                "name": "Tendril",
+                "description": "Rooted in fierce competition.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaGlider:Glider_ID_039_Venus",
+                "name": "Venus Flyer",
+                "description": "Pretty fly.",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "epic"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_065_Athena_Commando_F_SkiGirl_FRA",
-        "name": "Mogul Master (FRA)",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_018_SkiGirl_FRA",
-            "name": "Mogul Ski Bag (FRA)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_426_Athena_Commando_F_DemonHunter",
+                "name": "Callisto",
+                "description": "Demons, creeps, and monsters beware.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_280_DemonHunterFemale",
+                        "name": "Hexxed"
+                    }
+                ],
+                "categories": [],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaCharacter:CID_427_Athena_Commando_M_DemonHunter",
+                "name": "Asmodeus",
+                "description": "Stare down your enemies.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_281_DemonHunterMale",
+                        "name": "Ocular"
+                    }
+                ],
+                "categories": [],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaPickaxe:Pickaxe_ID_216_DemonHunter1H",
+                "name": "Foul Play",
+                "description": "Nailed it!",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "rare"
+            },
+            {
+                "item": "AthenaGlider:Glider_ID_152_DemonHunter",
+                "name": "Batso",
+                "description": "Be afraid, be slightly afraid!",
+                "items": [],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "rare"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_066_Athena_Commando_F_SkiGirl_GER",
-        "name": "Mogul Master (GER)",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_019_SkiGirl_GER",
-            "name": "Mogul Ski Bag (GER)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
+    },
+    {
+        "Daily": [],
+        "Weekly": [
+            {
+                "item": "AthenaCharacter:CID_362_Athena_Commando_F_BandageNinja",
+                "name": "Kuno",
+                "description": "Master the art of deception.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_226_BandageNinjaFemale",
+                        "name": "Dual Kama"
+                    }
+                ],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "epic"
+            },
+            {
+                "item": "AthenaCharacter:CID_361_Athena_Commando_M_BandageNinja",
+                "name": "Kenji",
+                "description": "Strike from the shadows.",
+                "items": [
+                    {
+                        "item": "AthenaBackpack:BID_225_BandageNinjaMale",
+                        "name": "Katana & Kunai"
+                    }
+                ],
+                "categories": [
+                    "Panel 1"
+                ],
+                "rarity": "epic"
+            }
         ]
-      },
-      {
-        "item": "AthenaCharacter:CID_067_Athena_Commando_F_SkiGirl_CHN",
-        "name": "Mogul Master (CHN)",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_020_SkiGirl_CHN",
-            "name": "Mogul Ski Bag (CHN)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
-        ]
-      },
-      {
-        "item": "AthenaCharacter:CID_068_Athena_Commando_F_SkiGirl_KOR",
-        "name": "Mogul Master (KOR)",
-        "description": "Carve through the competition.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_021_SkiGirl_KOR",
-            "name": "Mogul Ski Bag (KOR)"
-          }
-        ],
-        "rarity": "epic",
-        "categories": [
-          "Panel 2"
-        ]
-      }
-    ]
-  },
-  {
-    "Daily": [
-      {
-        "item": "AthenaItemWrap:Wrap_175_Slurp",
-        "name": "Slurp",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "uncommon"
-      }
-    ],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_620_Athena_Commando_L_BigChuggus",
-        "name": "Big Chuggus",
-        "description": "Small chugguses need not apply.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_416_BigChuggus",
-            "name": "Juggus"
-          }
-        ],
-        "rarity": "epic"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_316_BigChuggus",
-        "name": "Double Tap",
-        "description": "Twice the slurp in one powerful swing.",
-        "items": [],
-        "rarity": "epic"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_333_Athena_Commando_M_Squishy",
-        "name": "Marshmello",
-        "description": "Start the party. Reactive: Lights up while using musical emotes.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "icon"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_249_Squishy1H",
-        "name": "Mello Mallets",
-        "description": "There X2",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "icon"
-      },
-      {
-        "item": "AthenaDance:EID_SquishyDance",
-        "name": "Marsh Walk",
-        "description": "Keep it mello.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "icon"
-      },
-      {
-        "item": "AthenaDance:EID_SquishyMedley",
-        "name": "Keep It Mello",
-        "description": "Join in the fun.",
-        "singleprice": 0,
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "icon"
-      },
-      {
-        "item": "AthenaGlider:Glider_ID_118_Squishy",
-        "name": "Mello Rider",
-        "description": "Fly happier.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "icon"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_515_Athena_Commando_M_BarbequeLarry",
-        "name": "Psycho Bundle",
-        "singleprice": 2000,
-        "description": "Start the party. Reactive: Lights up while using musical emotes.",
-        "items": [
-          {
-            "item": "AthenaBackpack:PetCarrier_013_BbqLarry",
-            "name": "ClapTrap"
-          },
-          {
-            "item": "AthenaPickaxe:Pickaxe_ID_265_BarbequeLarry1H",
-            "name": "Psycho Buzz Axes"
-          }
-        ],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "gaminglegends"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_535_Athena_Commando_M_Traveler",
-        "name": "Traveler Bundle",
-        "singleprice": 1600,
-        "description": "Start the party. Reactive: Lights up while using musical emotes.",
-        "items": [
-          {
-            "item": "AthenaPickaxe:Pickaxe_ID_275_Traveler",
-            "name": "Flying Slasher"
-          }
-        ],
-        "categories": [
-          "Panel 1"
-        ]
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_424_Athena_Commando_M_Vigilante",
-        "name": "Hang Time Bundle",
-        "singleprice": 1600,
-        "description": "Start the party. Reactive: Lights up while using musical emotes.",
-        "items": [
-          {
-            "item": "AthenaCharacter:CID_423_Athena_Commando_F_Painter",
-            "name": "Clutch"
-          }
-        ],
-        "categories": [
-          "Panel 1"
-        ]
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_474_Athena_Commando_M_Lasagna",
-        "name": "Major Lazer Bundle",
-        "singleprice": 1600,
-        "newprice": 2475,
-        "description": "Start the party. Reactive: Lights up while using musical emotes.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_310_Lasagna",
-            "name": "Lazer Wings"
-          },
-          {
-            "item": "AthenaPickaxe:Pickaxe_ID_235_Lasagna",
-            "name": "Lazer Axe"
-          },
-          {
-            "item": "AthenaDance:EID_LasagnaDance",
-            "name": "Lazer Blast"
-          },
-          {
-            "item": "AthenaMusicPack:MusicPack_026_LasagnaChill",
-            "name": "Default Vibe"
-          },
-          {
-            "item": "AthenaMusicPack:MusicPack_027_LasagnaDope",
-            "name": "Default Fire"
-          }
-        ],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "icon"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_442_Athena_Commando_F_BannerA",
-        "name": "Banner Trooper",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaCharacter:CID_443_Athena_Commando_F_BannerB",
-        "name": "Sgt. Sigil",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaCharacter:CID_444_Athena_Commando_F_BannerC",
-        "name": "Branded Brigadier",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaCharacter:CID_445_Athena_Commando_F_BannerD",
-        "name": "Marked Marauder",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaCharacter:CID_446_Athena_Commando_M_BannerA",
-        "name": "Symbol Stalwart",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 2"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaCharacter:CID_447_Athena_Commando_M_BannerB",
-        "name": "Signature Sniper",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 2"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaCharacter:CID_448_Athena_Commando_M_BannerC",
-        "name": "Branded Brawler",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 2"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaCharacter:CID_449_Athena_Commando_M_BannerD",
-        "name": "Lt. Logo",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 2"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_222_Banner",
-        "name": "Emblematic",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "categories": [
-          "Panel 3"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaBackpack:BID_289_Banner",
-        "name": "Banner Cape",
-        "description": "Customize your look by choosing a Banner and color in your Locker.",
-        "items": [],
-        "singleprice": 400,
-        "categories": [
-          "Panel 3"
-        ],
-        "rarity": "uncommon"
-      },
-      {
-        "item": "AthenaGlider:Glider_ID_153_Banner",
-        "name": "Custom Cruiser",
-        "description": "Fly your banner.",
-        "items": [],
-        "categories": [
-          "Panel 3"
-        ],
-        "rarity": "uncommon"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_400_Athena_Commando_M_AshtonSaltLake",
-        "name": "Star-Lord Outfit",
-        "description": "Do something good, something bad, a bit of both!",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_259_Ashton_SaltLake",
-            "name": "Star-Lord Pack"
-          }
-        ],
-        "categories": [],
-        "rarity": "marvel"
-      },
-      {
-        "item": "AthenaDance:EID_AshtonSaltLake",
-        "name": "Dance Off",
-        "description": "A perfect distraction.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "marvel"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_203_AshtonSaltLake",
-        "name": "Guardian Axe",
-        "description": "Cut down cosmic threats.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "marvel"
-      },
-      {
-        "item": "AthenaGlider:Glider_ID_142_AshtonSaltLake",
-        "name": "The Milan",
-        "description": "Guard the galaxy in style.",
-        "items": [],
-        "categories": [],
-        "rarity": "marvel"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_399_Athena_Commando_F_AshtonBoardwalk",
-        "name": "Black Widow Outfit",
-        "description": "Whatever it takes.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_258_AshtonBoardwalk",
-            "name": "Widow’s Pack"
-          }
-        ],
-        "categories": [],
-        "rarity": "marvel"
-      },
-      {
-        "item": "AthenaDance:EID_AshtonBoardwalk",
-        "name": "Widow’s Pirouette",
-        "description": "A deadly dance.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "marvel"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_202_AshtonBoardwalk",
-        "name": "Widow’s Bite",
-        "description": "Shockingly effective.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "marvel"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_531_Athena_Commando_M_Sleepytime",
-        "name": "Slumber",
-        "description": "It's time to say goodnight.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_357_Sleepytime",
-            "name": "Dreamer"
-          }
-        ],
-        "categories": [],
-        "rarity": "epic"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_272_SleepyTime",
-        "name": "Nighty Night",
-        "description": "Spread some sweet dreams.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "rare"
-      },
-      {
-        "item": "AthenaGlider:Glider_ID_174_SleepyTime",
-        "name": "Nite Flight",
-        "description": "Zzzzzzz.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "rare"
-      },
-      {
-        "item": "AthenaItemWrap:Wrap_137_SleepyTime",
-        "name": "Dreamy",
-        "description": "Show your style.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "rare"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_132_Athena_Commando_M_Venus",
-        "name": "Flytrap",
-        "description": "Deviously inescapable.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_601_Venus",
-            "name": "Flytrapper"
-          }
-        ],
-        "categories": [],
-        "rarity": "legendary"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_056_Venus",
-        "name": "Tendril",
-        "description": "Rooted in fierce competition.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "rare"
-      },
-      {
-        "item": "AthenaGlider:Glider_ID_039_Venus",
-        "name": "Venus Flyer",
-        "description": "Pretty fly.",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "epic"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_426_Athena_Commando_F_DemonHunter",
-        "name": "Callisto",
-        "description": "Demons, creeps, and monsters beware.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_280_DemonHunterFemale",
-            "name": "Hexxed"
-          }
-        ],
-        "categories": [],
-        "rarity": "rare"
-      },
-      {
-        "item": "AthenaCharacter:CID_427_Athena_Commando_M_DemonHunter",
-        "name": "Asmodeus",
-        "description": "Stare down your enemies.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_281_DemonHunterMale",
-            "name": "Ocular"
-          }
-        ],
-        "categories": [],
-        "rarity": "rare"
-      },
-      {
-        "item": "AthenaPickaxe:Pickaxe_ID_216_DemonHunter1H",
-        "name": "Foul Play",
-        "description": "Nailed it!",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "rare"
-      },
-      {
-        "item": "AthenaGlider:Glider_ID_152_DemonHunter",
-        "name": "Batso",
-        "description": "Be afraid, be slightly afraid!",
-        "items": [],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "rare"
-      }
-    ]
-  },
-  {
-    "Daily": [],
-    "Weekly": [
-      {
-        "item": "AthenaCharacter:CID_362_Athena_Commando_F_BandageNinja",
-        "name": "Kuno",
-        "description": "Master the art of deception.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_226_BandageNinjaFemale",
-            "name": "Dual Kama"
-          }
-        ],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "epic"
-      },
-      {
-        "item": "AthenaCharacter:CID_361_Athena_Commando_M_BandageNinja",
-        "name": "Kenji",
-        "description": "Strike from the shadows.",
-        "items": [
-          {
-            "item": "AthenaBackpack:BID_225_BandageNinjaMale",
-            "name": "Katana & Kunai"
-          }
-        ],
-        "categories": [
-          "Panel 1"
-        ],
-        "rarity": "epic"
-      }
-    ]
-  }
+    }
 ] 

@@ -63,8 +63,18 @@ namespace FortBackend.src.App.Routes.APIS.API
             });
         }
 
+        ///fortnite/api/game/v2/tryPlayOnPlatform/account/ <summary>
+        /// fortnite/api/game/v2/tryPlayOnPlatform/account/
+
+        [HttpPost("game/v2/tryPlayOnPlatform/account/{accountId}")]
+        public IActionResult TryPlayOnPlatform(string accountId)
+        {
+            Response.ContentType = "text/plain";
+
+            return Content("true");
+        }
         // gold
-        [HttpGet("/fortnite/api/game/v2/br-inventory/account/{accountId}")]
+        [HttpGet("game/v2/br-inventory/account/{accountId}")]
         public async Task<IActionResult> Accinventory(string accountId)
         {
             Response.ContentType = "application/json";

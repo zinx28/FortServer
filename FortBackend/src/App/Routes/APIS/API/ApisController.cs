@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.Utilities.MongoDB.Module;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Routes.APIS.API
 {
@@ -20,6 +23,54 @@ namespace FortBackend.src.App.Routes.APIS.API
             return Ok(new { });
         }
 
+        //api/v1/user/setting
+
+        [HttpPost("v1/user/setting")]
+        public async Task<IActionResult> SettingsUser()
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                var FormRequest = HttpContext.Request.Form;
+
+                string accountId = "";
+
+                if (FormRequest.TryGetValue("accountId", out var accountId1))
+                {
+                    accountId = accountId1;
+                }
+
+
+                Console.WriteLine(accountId);
+                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
+                if (AccountData != "Error")
+                {
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                    if(AccountDataParsed != null)
+                    {
+                        //return Ok(new List<object>() {
+                        //    new
+                        //    {
+                        //        accountId = accountId,
+                        //        key = "avatar",
+                        //        value = $"{AccountDataParsed.athena.Items[AccountDataParsed.athena.last_applied_loadout]["attributes"]["locker_slots_data"]["slots"]["character"]["items"][0]}"
+                        //    },
+                        //    new {
+                        //        accountId = accountId,
+                        //        key = "avatarBackground",
+                        //        value = "[\"#B4F2FE\",\"#00ACF2\",\"#005679\"]" // TEMP DON't WRRORY!
+                        //    }
+                        //});
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return Ok(Array.Empty<string>());
+        }
+
         [HttpGet("/waitingroom/api/waitingroom")]
         public IActionResult WaitingRoom()
         {
@@ -37,8 +88,8 @@ namespace FortBackend.src.App.Routes.APIS.API
         [HttpGet("/catalog/api/shared/bulk/offers")]
         public IActionResult Catoffers()
         {
-            StatusCode(204);
-            return Ok(new { });
+            Response.ContentType = "application/json";
+            return Content("{}");
         }
 
        

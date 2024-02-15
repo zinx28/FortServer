@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
+﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
@@ -92,6 +93,23 @@ namespace FortBackend.src.App.Routes.APIS.API
             return Content("{}");
         }
 
-       
+        // /api/v1/assets/Fortnite/++Fortnite+Release-15.50/15526472?
+
+        [HttpPost("/v1/assets/Fortnite/{version}/{number}")]
+        public IActionResult AssetsV1(string version, string number)
+        {
+            Response.ContentType = "application/json";
+            return Ok(new
+            {
+                FortPlaylistAthena = new
+                {
+                    meta = new
+                    {
+                        promotion = 0
+                    },
+                    assets = new { }
+                }
+            });
+        }
     }
 }

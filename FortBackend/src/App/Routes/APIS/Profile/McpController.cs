@@ -39,6 +39,11 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         {
                             var requestbody = await reader.ReadToEndAsync();
                             var Season = await Grabber.SeasonUserAgent(Request);
+
+                            if(requestbody != null)
+                            {
+                                return response;
+                            }
                             switch (mcp)
                             {
                                 case "QueryProfile":
@@ -49,6 +54,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                                     break;
                                 case "SetCosmeticLockerSlot":
                                     response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
+                                    break;
+                                case "PurchaseCatalogEntry":
+                                    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
                                     break;
                                 default:
                                     response = new Mcp

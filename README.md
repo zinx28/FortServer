@@ -16,7 +16,7 @@
 - DO not update the config.json instead build the project do to the x64... resources/config and change it there then restart the backend after! :) if you ever need to clean the solution then just backup the file~ discord bot tokens, secrets are so secret kiddo
 
 # Added/Not Added 
-- MCP (QueryProfle, useless things) [!]
+- MCP (QueryProfle, Equiping and useless things) [!]
 - Timeline [+]
-- CloudStorage [X]
-- idrk
+- CloudStorage and Saving [X]
+- 24/7 Shop (Items might be weird atm)

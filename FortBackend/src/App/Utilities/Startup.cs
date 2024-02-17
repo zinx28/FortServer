@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 
 
 namespace FortBackend.src.App.Utilities
@@ -28,6 +29,10 @@ namespace FortBackend.src.App.Utilities
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
+            //services.AddControllers().AddNewtonsoftJson(options =>
+            //{
+            //    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //});
 
             MongoDBStart.Initialize(services, Configuration);
 

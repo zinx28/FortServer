@@ -402,3 +402,4 @@ FodyWeavers.xsd
 *Builds
 CosmosBackend/Resources/Certificates/lunar.key
 CosmosBackend/Resources/Certificates/lunar.cert
+*.xml

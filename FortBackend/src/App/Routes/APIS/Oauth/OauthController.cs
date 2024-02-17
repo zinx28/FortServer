@@ -148,7 +148,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     {
                         errorCode = "errors.com.epicgames.account.invalid_client",
                         errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
-                        messageVars = new string[0],
+                        messageVars = new List<string>(),
                         numericErrorCode = 1011,
                         originatingService = "any",
                         intent = "prod",
@@ -166,7 +166,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                             {
                                 errorCode = "errors.com.epicgames.common.oauth.invalid_request",
                                 errorMessage = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid",
-                                messageVars = new string[0],
+                                messageVars = new List<string>(),
                                 numericErrorCode = 18057,
                                 originatingService = "any",
                                 intent = "prod",
@@ -195,7 +195,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     {
                         errorCode = "errors.com.epicgames.account.account_not_active",
                         errorMessage = "You have been permanently banned from FortBackend.",
-                        messageVars = new string[0],
+                        messageVars = new List<string>(),
                         numericErrorCode = -1,
                         originatingService = "any",
                         intent = "prod",
@@ -282,7 +282,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
             {
                 errorCode = "errors.com.epicgames.account.invalid_account_credentials",
                 errorMessage = "Seems like there has been a error on the backend",
-                messageVars = new string[0],
+                messageVars = new List<string>(),
                 numericErrorCode = 18031,
                 originatingService = "any",
                 intent = "prod",

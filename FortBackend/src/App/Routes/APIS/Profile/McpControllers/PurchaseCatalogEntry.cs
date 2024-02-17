@@ -25,10 +25,16 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 
                         if(PurchaseQuantity < 1 )
                         {
-                            //throw new BaseError
-                            //{
-
-                            //};
+                            throw new BaseError
+                            {
+                                errorCode = "errors.com.epicgames.modules.catalog",
+                                errorMessage = "Catalog Limit is at least 1!",
+                                messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                numericErrorCode = 12801,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "Catalog Limit is at least 1!",
+                            };
                         }
                     }
                 }

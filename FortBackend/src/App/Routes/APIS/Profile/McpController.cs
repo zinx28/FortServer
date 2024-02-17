@@ -8,6 +8,7 @@ using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers;
 using System.Text;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 
 namespace FortBackend.src.App.Routes.APIS.Profile
 {
@@ -35,14 +36,24 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                     var response = new Mcp();
                     if (AccountDataParsed != null)
                     {
+
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             var requestbody = await reader.ReadToEndAsync();
                             var Season = await Grabber.SeasonUserAgent(Request);
-
-                            if(requestbody != null)
+                            Console.WriteLine(requestbody);
+                            if (requestbody != null)
                             {
-                                return response;
+                                throw new BaseError
+                                {
+                                    errorCode = "errors.com.epicgames.common.iforgot",
+                                    errorMessage = $"No Body for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                    messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                                    numericErrorCode = 1032,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                };
                             }
                             switch (mcp)
                             {
@@ -76,17 +87,36 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         return response;
                     }
                 }
-
-                return Ok(new Mcp
+                else
                 {
-                    profileRevision = RVN,
-                    profileId = ProfileID,
-                    profileChangesBaseRevision = RVN,
-                    //profileChanges = new object[0],
-                    profileCommandRevision = RVN,
-                    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-                    responseVersion = 1
-                });
+                    throw new BaseError
+                    {
+                        errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                        errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                        messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                        numericErrorCode = 1032,
+                        originatingService = "any",
+                        intent = "prod",
+                        error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                    };
+                }
+
+                //return Ok(new Mcp
+                //{
+                //    profileRevision = RVN,
+                //    profileId = ProfileID,
+                //    profileChangesBaseRevision = RVN,
+                //    //profileChanges = new object[0],
+                //    profileCommandRevision = RVN,
+                //    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                //    responseVersion = 1
+                //});
+            }
+            catch (BaseError ex)
+            {
+                var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+                return Content(jsonResult, "application/json");
+                // return Ok(errorDetails);
             }
             catch (Exception ex)
             {

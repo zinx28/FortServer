@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\App\Routes\APIS\Profile\McpControllers\NewFolder\" />
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\shop\" />
   </ItemGroup>

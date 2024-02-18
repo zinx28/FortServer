@@ -41,8 +41,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         {
                             var requestbody = await reader.ReadToEndAsync();
                             var Season = await Grabber.SeasonUserAgent(Request);
-                            Console.WriteLine(requestbody);
-                            if (requestbody != null)
+       
+                            if (string.IsNullOrEmpty(requestbody))
                             {
                                 throw new BaseError
                                 {
@@ -52,7 +52,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                                     numericErrorCode = 1032,
                                     originatingService = "any",
                                     intent = "prod",
-                                    error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                    error_description = $"No Body for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
                                 };
                             }
                             switch (mcp)

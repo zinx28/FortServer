@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
+using FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.MongoDB.Module;
@@ -36,6 +37,31 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                                 error_description = "Catalog Limit is at least 1!",
                             };
                         }
+
+                        if(Body.currency == "MtxCurrency")
+                        {
+                            if(Body.offerId != null)
+                            {
+                                string OfferId = Body.offerId;
+
+                                if (OfferId.Contains(":/"))
+                                {
+                                    Mcp mcp = await PurchaseItem.Init(Body, AccountDataParsed);
+                                    return mcp;
+                                }
+                            }
+                        }
+
+                        throw new BaseError
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "Error trying to purchase item",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Error trying to purchase item",
+                        };
                     }
                 }
                 //Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);

@@ -1,65 +1,101 @@
 [
     {
-        "item": "AthenaItemWrap:Wrap_011_HotCold",
-        "name": "Hot & Cold",
-        "description": "Show your style.",
-        "items": [],
+        "id": "qLLbFQaiCiuWQ1Q0b2WqqlbToC8CxXfFWQap6liP",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_011_HotCold",
+                "name": "Hot & Cold",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "uncommon"
     },
     {
-        "item": "AthenaItemWrap:Wrap_012_DragonMask",
-        "name": "Golden Clouds", 
-        "description": "Show your style.",
-        "items": [],
+        "id": "bwrb99RnSez8eDvwUt2wk7npetXyuZ09n8wUHtB5",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_012_DragonMask",
+                "name": "Golden Clouds",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "uncommon"
     },
     {
-        "item": "AthenaItemWrap:Wrap_014_IceCream",
-        "name": "Sprinkles",
-        "description": "Show your style.",
-        "items": [],
+        "id": "gqiDwGaiJUi4yOmzP-l3Ta1ZTQJbpbxH6Wzv1mES",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_014_IceCream",
+                "name": "Sprinkles",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "uncommon"
     },
     {
-        "item": "AthenaItemWrap:Wrap_015_Snowboard",
-        "name": "Chromatic",
-        "description": "Show your style.",
-        "items": [],
+        "id": "nmTVoe0TFvZNwEuUj9VheoX3skuW9uObGlRC0qKB",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_015_Snowboard",
+                "name": "Chromatic",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "uncommon"
     },
     {
-        "item": "AthenaItemWrap:Wrap_017_DragonNinja",
-        "name": "Dragon Scales",
-        "description": "Show your style.",
-        "items": [],
+        "id": "Dsa4-Sm-5li6Gq3DnK8L8qMJDjVFCghI93adw5P9",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_017_DragonNinja",
+                "name": "Dragon Scales",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "rare"
     },
     {
-        "item": "AthenaItemWrap:Wrap_018_magma",
-        "name": "Magma",
-        "description": "Show your style.",
-        "items": [],
+        "id": "UG7hUfZkurfmFNNafj5LkrUSXPmNJLwsuJQdgElo",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_018_magma",
+                "name": "Magma",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "epic"
     },
     {
-        "item": "AthenaItemWrap:Wrap_024_StealthBlack",
-        "name": "Stealth Black",
-        "description": "Show your style.",
-        "items": [],
+        "id": "rUfsmPHuc8aTku103LBXBppHQ2RwsqxlZzCqGNIi",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_024_StealthBlack",
+                "name": "Stealth Black",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "uncommon"
     },
     {
-        "item": "AthenaItemWrap:Wrap_028_DevilLace",
-        "name": "Heat",
-        "description": "Show your style.",
-        "items": [],
+        "id": "Opl2UNKYdw82zhc1FMUZPlJkqGsdSREgxNyGr-oT",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_028_DevilLace",
+                "name": "Heat",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "rare"
     },
     {
-        "item": "AthenaItemWrap:Wrap_034_Waypoint",
-        "name": "Rivet",
-        "description": "Show your style.",
-        "items": [],
+        "id": "H-roeNIl4IvhREVoseW3To54EDWXWWbHko2XVJ2w",
+        "items": [
+            {
+                "item": "AthenaItemWrap:Wrap_034_Waypoint",
+                "name": "Rivet",
+                "description": "Show your style."
+            }
+        ],
         "rarity": "uncommon"
     }
 ]

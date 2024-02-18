@@ -1,1080 +1,1696 @@
 [
-  {
-    "item": "AthenaGlider:Glider_Bold",
-    "name": "Modern",
-    "description": "A bold addition to your gliding repertoire.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_Flames",
-    "name": "Hot Rod",
-    "description": "Burn through the clouds with this custom Screaming Skull Hot Rod Glider.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_FlowerPOwer",
-    "name": "Petunia",
-    "description": "For when you're a pretty flower on a quest for vengeance.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_001",
-    "name": "Aerial Assault One",
-    "description": "Fly into battle on the wings of victory.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_005_HolidaySweater",
-    "name": "Cozy Coaster",
-    "description": "Snuggle up to the firefight in holiday style.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_006_WinterCamo",
-    "name": "Snow Squall",
-    "description": "Unleash winter's icy wrath.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_007_TurtleShell",
-    "name": "Half Shell",
-    "description": "Turtles glide with honor.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_008_Graffiti",
-    "name": "Zephyr",
-    "description": "Glide with style.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_009_CandyCoat",
-    "name": "Gum Drop",
-    "description": "Sweet victory!",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_010_Storm",
-    "name": "Cloud Strike",
-    "description": "Forecasting storms all week.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_011_JollyRoger",
-    "name": "Jolly Roger",
-    "description": "Avast!",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_012_TeddyBear",
-    "name": "Bear Force One",
-    "description": "It's so fluffy!",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_013_PSBlue",
-    "name": "Blue Streak",
-    "description": "Like a bolt from the blue!",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_014_Dragon",
-    "name": "Royale Dragon",
-    "description": "Ride the dragon!",
-    "items": [],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_016_Tactical",
-    "name": "Carbon",
-    "description": "Precision built carbon fiber glider.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_017_Assassin",
-    "name": "High Octane",
-    "description": "Operating at maximum horsepower.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_019_Taxi",
-    "name": "Checker",
-    "description": "Always in service.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_020_Fighter",
-    "name": "Fighter Kite",
-    "description": "Outmaneuver the competition.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_021_Scavenger",
-    "name": "Rusty Rider",
-    "description": "Finely crafted from twisted wreckage.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_022_RockerPunk",
-    "name": "Stage Dive",
-    "description": "Dive into the crowd.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_023_CuChulainn",
-    "name": "Storm Sigil",
-    "description": "From the Emerald Isle to the eye of the storm.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_024_Reaper",
-    "name": "Feathered Flyer",
-    "description": "Winged victory.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_025_ShuttleA",
-    "name": "Orbital Shuttle",
-    "description": "Cleared for re-entry.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_026_ShuttleB",
-    "name": "Deep Space Lander",
-    "description": "Light-years ahead of the competition.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_027_Satelite",
-    "name": "Planetary Probe",
-    "description": "Scanning the unknown.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_028_Googly",
-    "name": "Googly",
-    "description": "Hi guys!",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_029_PajamaParty",
-    "name": "Fossil Flyer",
-    "description": "Prehistoric aerodynamics.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_030_CircuitBreaker",
-    "name": "Mainframe",
-    "description": "Calculating optimal trajectory.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_031_Metal",
-    "name": "Solid Strider",
-    "description": "Hit your stride.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_032_TacticalWoodland",
-    "name": "Field Flyer",
-    "description": "Field tested battle standard.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_033_Valor",
-    "name": "Wings of Valor",
-    "description": "Spread your wings.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_036_AuroraGlow",
-    "name": "Glow Rider",
-    "description": "Illuminate a path to victory.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_037_Hazmat",
-    "name": "Meltdown",
-    "description": "Fall out of the battle bus with confidence.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_038_Deco",
-    "name": "Triumph",
-    "description": "Harness the winds of victory.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_040_Jailbird",
-    "name": "Starry Flight",
-    "description": "A masterpiece of flight.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_041_Basketball",
-    "name": "Hang Time",
-    "description": "Get air.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_042_Soccer",
-    "name": "Goalbound",
-    "description": "Goooooooooooooal!",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_043_DarkNinja",
-    "name": "Split Wing",
-    "description": "Snap into action.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_044_Pterodactyl",
-    "name": "Pterodactyl",
-    "description": "Saur into battle.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_045_CarbideBlack",
-    "name": "Terminus",
-    "description": "It's the end of the line.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_046_Gumshoe",
-    "name": "Viceroy Mark I",
-    "description": "Ain't she a beaut?",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_047_SpeedyRed",
-    "name": "Forerunner",
-    "description": "Amped and aerodynamic.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_051_Luchador",
-    "name": "Libre",
-    "description": "High-flying freedom.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_052_Bedazzled",
-    "name": "Rhinestone Rider",
-    "description": "Glide by the seat of your pants.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_053_Huya",
-    "name": "Rush",
-    "description": "It's a rush!",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_054_Douyu",
-    "name": "Helium",
-    "description": "Lighter than air.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_056_CarbideWhite",
-    "name": "Aurora",
-    "description": "Harness the solar wind.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_057_ModernMilitary",
-    "name": "Servo",
-    "description": "Prototype compound glider.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_058_Shark",
-    "name": "Laser Chomp",
-    "description": "Laser-guided. Razor-sharp. Slippery.",
-    "items": [],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_059_DurrburgerHero",
-    "name": "Flying Saucer",
-    "description": "Make mine a Royale.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_060_Exercise",
-    "name": "Windbreaker",
-    "description": "Break the wind.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_061_StreetRacerBiker",
-    "name": "Cyclone",
-    "description": "A whirlwind of fury.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_062_StreetRacerWhite",
-    "name": "White Squall",
-    "description": "Create a whirlwind.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_063_SushiChef",
-    "name": "Flying Fish",
-    "description": "Keep it fresh.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_064_Biker",
-    "name": "Blaze",
-    "description": "Glide down in a blaze of glory.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_065_Hippie",
-    "name": "Tie-dye Flyer",
-    "description": "So many colors.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_066_SamuraiBlue",
-    "name": "Purrfect",
-    "description": "It's the cat's meow.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_067_PSBurnout",
-    "name": "Flappy",
-    "description": "Flap happy.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_068_GarageBand",
-    "name": "Hot Ride",
-    "description": "Burn down the road.",
-    "items": [],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_069_Hacivat",
-    "name": "Shadow Puppet",
-    "description": "Play in the light.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_070_DarkViking",
-    "name": "Frostwing",
-    "description": "Awoken from ageless slumber.",
-    "items": [],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_071_Football",
-    "name": "Touchdown",
-    "description": "Go for the extra point.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_072_Bling",
-    "name": "Safecracker",
-    "description": "Breaking in was the easy part...",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_073_Medic",
-    "name": "Airlift",
-    "description": "Glide to the rescue.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_074_RaptorArcticCamo",
-    "name": "Cold Front",
-    "description": "Cool to the touch.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_076_DieselPunk",
-    "name": "Dirigible",
-    "description": "Lighter than air.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_077_Octoberfest",
-    "name": "Oktoberfeast",
-    "description": "Never glide on an empty stomach.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_081_CowboyGunslinger",
-    "name": "Crossfire",
-    "description": "Glider duel at high noon.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_082_Scarecrow",
-    "name": "Field Wraith",
-    "description": "Don't just scare crows, give them nightmares.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_083_DarkBomber",
-    "name": "Dark Glyph",
-    "description": "Indecipherable.",
-    "items": [],
-    "rarity": "dark"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_084_Plague",
-    "name": "Lamplight",
-    "description": "A light in the darkness.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_086_BlackWidow",
-    "name": "Hatchling",
-    "description": "Along came a glider...",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_087_GuanYu",
-    "name": "Divine Dragon",
-    "description": "Sail through the clouds, and row toward victory.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_088_EvilCowboy",
-    "name": "Dark Engine",
-    "description": "Fueled by darkness.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_089_Muertos",
-    "name": "Spirit",
-    "description": "It's a hoot. Reactive: Glows in the dark",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_090_Celestial",
-    "name": "Discovery",
-    "description": "Explore the galaxy.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_091_MadCommander",
-    "name": "Junkjet",
-    "description": "It might just get you where you're going.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_092_StreetOps",
-    "name": "Pivot",
-    "description": "Primed to pivot with precision.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_093_AnimalJackets",
-    "name": "Poofy Parasail",
-    "description": "Puffed up and ready for landing.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_094_SamuraiUltra",
-    "name": "Kabuto",
-    "description": "Sharp enough to cut through air.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_095_Witch",
-    "name": "Magic Wings",
-    "description": "Soaring and spellbound.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_096_HornedMask",
-    "name": "Flying Carp",
-    "description": "Dive into the sky.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_097_Feathers",
-    "name": "Flappy Flyer",
-    "description": "Keep it flappy.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_098_Sup",
-    "name": "Hyper",
-    "description": "What's up must come down.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_099_Moth",
-    "name": "Flutterbug",
-    "description": "Wings a flutter.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_101_TacticalSanta",
-    "name": "Tactical Sleigh",
-    "description": "No chimney is safe.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_102_Rhino",
-    "name": "Fuel",
-    "description": "Turn and burn.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_103_Nautilus",
-    "name": "Nautilus",
-    "description": "Dive! Dive! Dive!",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_104_FuzzyBear",
-    "name": "Cuddle Cruiser",
-    "description": "The turbulence is bearable.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_104_Math",
-    "name": "Paper Plane",
-    "description": "Finely folded flyer.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_105_Gingerbread",
-    "name": "Gingersled",
-    "description": "That's one sweet ride.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_105_SnowBoard",
-    "name": "Royale Air",
-    "description": "Don't forget your lift ticket.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_106_FortniteDJ",
-    "name": "Equalizer",
-    "description": "Soar through the soundscape.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_107_IceMaiden",
-    "name": "Crystal Carriage",
-    "description": "The finest coach in the land.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_108_Krampus",
-    "name": "Krampus' Little Helper",
-    "description": "The greatest of all time.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_109_StreetGoth",
-    "name": "Equilibrium",
-    "description": "Perfectly balanced.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_110_TeriyakiFish",
-    "name": "Coral Cruiser",
-    "description": "Ride the reef.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_111_MilitaryFashion",
-    "name": "Diverge",
-    "description": "Break away from the pack.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_112_TechOps",
-    "name": "Coaxial Copter",
-    "description": "Dual-rotor tactical copter.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_116_PizzaPit",
-    "name": "Extra Cheese",
-    "description": "Slice through the sky.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_117_Warpaint",
-    "name": "Wild Streak",
-    "description": "Marked for battle.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_118_Squishy",
-    "name": "Mello Rider",
-    "description": "Fly happier.",
-    "items": [],
-    "rarity": "icon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_119_ReaperFrozen",
-    "name": "Frozen Feathers",
-    "description": "A cold wind bellows.",
-    "items": [],
-    "rarity": "frozen"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_120_IceCream",
-    "name": "Ice Cream Cruiser",
-    "description": "Melty at every altitude.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_121_BriteBomberDeluxe",
-    "name": "Brite Blimp",
-    "description": "Rainbow powered.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_122_Valentines",
-    "name": "Heartspan",
-    "description": "Soar on the wide wings of love.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_123_MasterKey",
-    "name": "Lockstep",
-    "description": "Lock in the win.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_124_Medusa",
-    "name": "Sky Serpents",
-    "description": "Slither through the sky.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_125_Bandolier",
-    "name": "Choppa",
-    "description": "Calling in air support.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_126_Farmer",
-    "name": "Crop Duster",
-    "description": "Prepare for the harvest.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_127_Aztec",
-    "name": "Sunrise",
-    "description": "Rise up.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_128_BootyBuoy",
-    "name": "Booty Buoy",
-    "description": "Hide your plunder in a parachute.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_130_SciOps",
-    "name": "Disruptor",
-    "description": "Cause a commotion.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_131_SpeedyMidnight",
-    "name": "Dark Forerunner",
-    "description": "Distort. Distract. Destroy.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_132_Pirate01Octopus",
-    "name": "Plunder",
-    "description": "Set sail to plunder!",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_133_BandageNinja",
-    "name": "Falcon",
-    "description": "Soar on the wings of the fabled falcon.",
-    "items": [],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_134_DarkVikingFire",
-    "name": "Lavawing",
-    "description": "Awoken by a violent eruption.",
-    "items": [],
-    "rarity": "lava"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_135_Baseball",
-    "name": "Home Run",
-    "description": "It's outta here!",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_136_Bullseye",
-    "name": "Targeted",
-    "description": "Always hit your mark.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_137_StreetOpsStealth",
-    "name": "Stealth Pivot",
-    "description": "Strategic silence.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_138_BomberPlane",
-    "name": "Surefire",
-    "description": "Classic camo hits the spot.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_139_EarthDay",
-    "name": "Globetrotter",
-    "description": "The world is yours.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_140_ShatterFly",
-    "name": "Arcana",
-    "description": "Soar on wings of mystery.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_141_AshtonBoardwalk",
-    "name": "Avengers Quinjet",
-    "description": "Avengers assemble!",
-    "items": [],
-    "rarity": "marvel"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_145_StormTracker",
-    "name": "Tailwind Twister",
-    "description": "Fly into the eye.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_147_Raptor",
-    "name": "Assault Bomber",
-    "description": "Bomb's away!",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_148_CyberScavenger",
-    "name": "Tech Turbine",
-    "description": "Adapt and excel.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_149_Geisha",
-    "name": "Engage",
-    "description": "A new day begins.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_150_TechOpsBlue",
-    "name": "Coaxial Blue",
-    "description": "Dual-rotor tactical copter.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_151_StormSoldier",
-    "name": "Storm Eye",
-    "description": "Harness the storm.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_152_DemonHunter",
-    "name": "Batso",
-    "description": "Be afraid, be slightly afraid!",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_154_GlowBroBat",
-    "name": "Megabat",
-    "description": "Soar with the storm.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_155_Jellyfish",
-    "name": "Man O' War",
-    "description": "Behold the splendor of the sea. From a safe distance.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_156_SummerBomber",
-    "name": "Payload",
-    "description": "A megaton of smiles.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_157_Drift",
-    "name": "Driftstream",
-    "description": "Prepare for interdimensional drift.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_158_Hairy",
-    "name": "Camp Cruiser",
-    "description": "It's his now.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_159_TechMage",
-    "name": "Ion",
-    "description": "Glide beyond the edge of science.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_160_Anarchy",
-    "name": "Chaos",
-    "description": "No rules.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_161_RoseLeader",
-    "name": "Rose Rider",
-    "description": "Battle tested and pleasantly scented.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_162_BoneWasp",
-    "name": "Horned Strike",
-    "description": "Grab the battle by the horns.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_167_SparkleRemix",
-    "name": "Sparkle Strider",
-    "description": "Dazzle all the way down.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_168_StreetRacerDriftRemix",
-    "name": "Rift Rider",
-    "description": "Cruise the dimensional highway.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_172_RaptorBlackOps",
-    "name": "Dual Defiant",
-    "description": "Defy all expectations.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_173_TacticalBiker",
-    "name": "Stunt Cycle",
-    "description": "Hang on tight.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_174_SleepyTime",
-    "name": "Nite Flight",
-    "description": "Zzzzzzz.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_175_StreetFashionRed",
-    "name": "Sky Stripe",
-    "description": "Signature stripe glider.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_176_BlackMondayCape_4P79K",
-    "name": "Batglider",
-    "description": "On Leather Wings.",
-    "items": [],
-    "rarity": "dc"
-  },
-  {
-    "item": "AthenaGlider:Glider_MiG",
-    "name": "Raptor",
-    "description": "Go ahead. Buzz the tower. You've earned it.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_Military",
-    "name": "Warthog",
-    "description": "Hit the ground running with the battle tested Warthog Glider.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_Prismatic",
-    "name": "Prismatic",
-    "description": "It's so colorful!",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_RoadTrip",
-    "name": "Roadtrip",
-    "description": "Never miss a battle snack with the world's first picnic-ready glider.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_Stealth",
-    "name": "Stealth",
-    "description": "Shh.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_Venom",
-    "name": "Wasp",
-    "description": "Float like a glider. Sting like a wasp.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_Voyager",
-    "name": "Voyager",
-    "description": "Bravely float into the fray aboard the Voyager Glider.",
-    "items": [],
-    "rarity": "rare"
-  }
+    {
+        "id": "D8icLjBjkyyC9qqZYP77YP5DVKC5lRbDz95N17kk",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_Bold",
+                "name": "Modern",
+                "description": "A bold addition to your gliding repertoire."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "J3OHrLIEpND9sGc1Hl986RLsX8XAqXP05zNLmdIy",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_Flames",
+                "name": "Hot Rod",
+                "description": "Burn through the clouds with this custom Screaming Skull Hot Rod Glider."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "x7neiPbvz2iPv0WxBDmpaTD9qKl106NTRuDLqb1i",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_FlowerPOwer",
+                "name": "Petunia",
+                "description": "For when you're a pretty flower on a quest for vengeance."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "LKp55CzJq0Vxm5vdQ8un1oNat2EAKH3JpxPHdiKA",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_001",
+                "name": "Aerial Assault One",
+                "description": "Fly into battle on the wings of victory."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "HhDUZWLEAj8G-HtvOlivT6bxstq6jHn0iitI5JRL",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_005_HolidaySweater",
+                "name": "Cozy Coaster",
+                "description": "Snuggle up to the firefight in holiday style."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "N5jWBU26WGFxmdJH9ICH-E4PjO5krGuA4Ke4rWuH",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_006_WinterCamo",
+                "name": "Snow Squall",
+                "description": "Unleash winter's icy wrath."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "Mak-S0Jdobz6Svqo4hwXO6s5DVlFbwHzk9rqwIb7",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_007_TurtleShell",
+                "name": "Half Shell",
+                "description": "Turtles glide with honor."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "YtDogiKpnEsNkN8yuyiFwx1QE9A7mE1gsaMjOekF",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_008_Graffiti",
+                "name": "Zephyr",
+                "description": "Glide with style."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "efNhK10PXvTL7fXarWtJvT4an9KKubbESHIsf2fs",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_009_CandyCoat",
+                "name": "Gum Drop",
+                "description": "Sweet victory!"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "qwQ65O-hFLlOcjUZY5ZCeXhnNlNAmUqugeyFTBAm",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_010_Storm",
+                "name": "Cloud Strike",
+                "description": "Forecasting storms all week."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "hcot9dZgjrFNuzUEd2X2b6OCqigWR1Vf9gH7GOcJ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_011_JollyRoger",
+                "name": "Jolly Roger",
+                "description": "Avast!"
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "xbU0E9RZX4zAJPsRXZWRM1LRtFS-RjFhL0sQTGCz",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_012_TeddyBear",
+                "name": "Bear Force One",
+                "description": "It's so fluffy!"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "NgrK1lwhdng2XjKJImjnS6x--3m9bkGjRpnJMJXu",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_013_PSBlue",
+                "name": "Blue Streak",
+                "description": "Like a bolt from the blue!"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "Da1J4x3lthxf-zRIrXtI4-7257lgCO-Agk1VOK3S",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_014_Dragon",
+                "name": "Royale Dragon",
+                "description": "Ride the dragon!"
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "id": "0-70DBGudZnweCNrsjjQa-g2qqXRJVYTbYdlSs56",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_016_Tactical",
+                "name": "Carbon",
+                "description": "Precision built carbon fiber glider."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "E-uMB-5UstGvEoeEop3sql3u6DpvF6o44Gk1-5Td",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_017_Assassin",
+                "name": "High Octane",
+                "description": "Operating at maximum horsepower."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "f3mBzGcWwVk3RZ54-Qi5q07iB01rzZx6wkoZIYPD",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_019_Taxi",
+                "name": "Checker",
+                "description": "Always in service."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "ZHJej2XUs4ORIrttyrXY79jQaRk06ZLzsX4H65NX",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_020_Fighter",
+                "name": "Fighter Kite",
+                "description": "Outmaneuver the competition."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "nP5d2sDJwB6pg3jKa8KPwRCdZor2ocBLoT9PwqIb",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_021_Scavenger",
+                "name": "Rusty Rider",
+                "description": "Finely crafted from twisted wreckage."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "OWFFnDfknwzKzrXntqYSwTmVcsVFf7Q4VSJEENto",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_022_RockerPunk",
+                "name": "Stage Dive",
+                "description": "Dive into the crowd."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "Y82QLMhuAn28-7hrVjR3Sj9doTaysxAJ3OmMVsKI",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_023_CuChulainn",
+                "name": "Storm Sigil",
+                "description": "From the Emerald Isle to the eye of the storm."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "DQbWshyEcMmBVte8KLJQNVz0PU0uGD5Sf3WcfFtE",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_024_Reaper",
+                "name": "Feathered Flyer",
+                "description": "Winged victory."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "11NEx7msY97oiy6U8wN68Dv85-EUGDLl5tQZ-K4d",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_025_ShuttleA",
+                "name": "Orbital Shuttle",
+                "description": "Cleared for re-entry."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "LyRWhiFx0qT0pRB7afTeFVn4CkhLMdwAk2xBx37M",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_026_ShuttleB",
+                "name": "Deep Space Lander",
+                "description": "Light-years ahead of the competition."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "0VoJEKyvqlf-BNEDluvHYHEQSDeVjvTffYEr9Pca",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_027_Satelite",
+                "name": "Planetary Probe",
+                "description": "Scanning the unknown."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "XvDqgMeDGXiFHHQ40RHGlvFCI0pY8hLC-g4KmUF6",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_028_Googly",
+                "name": "Googly",
+                "description": "Hi guys!"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "RRLDdO-IXk1Gqk3cyd5W7sJZ4uNdMdwft1po2MOI",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_029_PajamaParty",
+                "name": "Fossil Flyer",
+                "description": "Prehistoric aerodynamics."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "Y99CYpDQHxi0fMNn63LphBs1xOTWREJBg99kb2XM",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_030_CircuitBreaker",
+                "name": "Mainframe",
+                "description": "Calculating optimal trajectory."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "3SfgdQ2dm4Y-Xery1ZhOOrKyeIPIW9nXBD2ly7Z9",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_031_Metal",
+                "name": "Solid Strider",
+                "description": "Hit your stride."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "08lpc5ITLbZ-IRVFMcqenSA5Wxb3MldB1LdnPuIP",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_032_TacticalWoodland",
+                "name": "Field Flyer",
+                "description": "Field tested battle standard."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "mL0zgOo9E1z1RryNzUpRRsQ935ZFRNKeleCM2gIJ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_033_Valor",
+                "name": "Wings of Valor",
+                "description": "Spread your wings."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "pfX8jR8fn21xdvuULBbMcAxoAdvp5S0jGtQpdzVn",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_036_AuroraGlow",
+                "name": "Glow Rider",
+                "description": "Illuminate a path to victory."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "kBLDaRZ6EBYYfdUelVp1HDeYKeGYW5yAy-JT3Xea",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_037_Hazmat",
+                "name": "Meltdown",
+                "description": "Fall out of the battle bus with confidence."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "nuVCbV3ZcYppt-ttJlNjffNe1n-y23glbW0gZjBZ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_038_Deco",
+                "name": "Triumph",
+                "description": "Harness the winds of victory."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "bHYY2kXvUaxwSHFJymilsnn-DeQ8twroBMTKTGR8",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_040_Jailbird",
+                "name": "Starry Flight",
+                "description": "A masterpiece of flight."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "8v0YfplpJbx9VHxAHB-9o3h2umzsKf9qdgV8iu34",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_041_Basketball",
+                "name": "Hang Time",
+                "description": "Get air."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "-vz6p3Z0JQbIQn8uLqGUArLodzehowtWP-izkBAl",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_042_Soccer",
+                "name": "Goalbound",
+                "description": "Goooooooooooooal!"
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "SCrgNG02umgxjuNoUjH3RtXVoSiwJKpq3G7jQ95U",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_043_DarkNinja",
+                "name": "Split Wing",
+                "description": "Snap into action."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "w-zK6kXd-g1egEJXorrSFSl8CkWzD5oKM7ZOpxP5",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_044_Pterodactyl",
+                "name": "Pterodactyl",
+                "description": "Saur into battle."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "9CntVpfhlGy7L42HggNbo9iem11heqV-MwYCNblO",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_045_CarbideBlack",
+                "name": "Terminus",
+                "description": "It's the end of the line."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "B40x4dgYeOFIbuLvyinhz4FEgi82BlAejbb4RIOL",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_046_Gumshoe",
+                "name": "Viceroy Mark I",
+                "description": "Ain't she a beaut?"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "fUZgVP5PSTzVQmwu6a4p0-qVcC5BzIySi0oFP7Q9",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_047_SpeedyRed",
+                "name": "Forerunner",
+                "description": "Amped and aerodynamic."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "atZgbzjJOvR0GIzQiVB2evULlRSQVqHSp0DvxivW",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_051_Luchador",
+                "name": "Libre",
+                "description": "High-flying freedom."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "eMZv2g8SObvi9kQJA3oOTRuDbgve9CyYvlFHSdk1",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_052_Bedazzled",
+                "name": "Rhinestone Rider",
+                "description": "Glide by the seat of your pants."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "XLvw14xFICunN7LLSlQdDhRmxRFjlw8r-4p-Sbby",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_053_Huya",
+                "name": "Rush",
+                "description": "It's a rush!"
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "SYp4cqyT5wOFIuW8kBgzHb96416Uu5ZcjzhivP9U",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_054_Douyu",
+                "name": "Helium",
+                "description": "Lighter than air."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "Uy11Qre1gbLRRFAQgTtAP8nSQ1UDpCGzFRasJBKh",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_056_CarbideWhite",
+                "name": "Aurora",
+                "description": "Harness the solar wind."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "ENpjzUfn55t5L59LuPEdUphAuj7-TVSfTD8ZSlBS",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_057_ModernMilitary",
+                "name": "Servo",
+                "description": "Prototype compound glider."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "u7B172gLeiIdVZO7yoazaz2adfD6XGeTHuwkqN1q",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_058_Shark",
+                "name": "Laser Chomp",
+                "description": "Laser-guided. Razor-sharp. Slippery."
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "id": "HsQ4RcA83qgDu36ZdoMJ3apXlrK08KT3EESKWzeR",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_059_DurrburgerHero",
+                "name": "Flying Saucer",
+                "description": "Make mine a Royale."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "n4F1jdLVgIIixzMmkrMfoCl0jls-AtlgyN8d2qTD",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_060_Exercise",
+                "name": "Windbreaker",
+                "description": "Break the wind."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "LdySPemcAeJlfiKPpm23RykLuPQdABh2s7hhlw4g",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_061_StreetRacerBiker",
+                "name": "Cyclone",
+                "description": "A whirlwind of fury."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "NVOCRkaJdXVSnvKM1fNObqlfEZ-eqz5v-l4IV8iY",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_062_StreetRacerWhite",
+                "name": "White Squall",
+                "description": "Create a whirlwind."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "c24NFUwT5wuNbZXZS9Cv7wTBcteKDCCINRqCCwMz",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_063_SushiChef",
+                "name": "Flying Fish",
+                "description": "Keep it fresh."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "SuFi2sCtUiF-4zofySxu0kGAuDNTc4MnWaW0-hT7",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_064_Biker",
+                "name": "Blaze",
+                "description": "Glide down in a blaze of glory."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "Q1SzhE8QK6mOec3nJye7ufeID6NWJIs0rRN854V-",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_065_Hippie",
+                "name": "Tie-dye Flyer",
+                "description": "So many colors."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "y4v86UbE5KxIvC0XSZSuJjwh4vXkHYHkhBr8Bzz-",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_066_SamuraiBlue",
+                "name": "Purrfect",
+                "description": "It's the cat's meow."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "TrpqrbtDzL0dBTEjsLZ9TD8-U6sV5UjabdSrbPNb",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_067_PSBurnout",
+                "name": "Flappy",
+                "description": "Flap happy."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "FAmB5-HLQEPPnq3etx-2sxRgXrYcOntGaIPuN0wW",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_068_GarageBand",
+                "name": "Hot Ride",
+                "description": "Burn down the road."
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "id": "FDOuWMtuIb93gVQ-JKMtzIt4XdNLjDZoFfpD75DH",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_069_Hacivat",
+                "name": "Shadow Puppet",
+                "description": "Play in the light."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "HDmz2clh8CSOMVDJBmRI-gwRqrzxXYxtzrSJcKDB",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_070_DarkViking",
+                "name": "Frostwing",
+                "description": "Awoken from ageless slumber."
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "id": "rQq6Sywe08YnZun4RNHhKHFcrxvyuogcW6b074KJ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_071_Football",
+                "name": "Touchdown",
+                "description": "Go for the extra point."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "1ahoY2uLlQTBLsgQdEhUxxtDkQT6-UMWdyA21MEy",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_072_Bling",
+                "name": "Safecracker",
+                "description": "Breaking in was the easy part..."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "UK9q6MtGCYmZ9HD2dgPiluskJB03kf8fi4ZejisL",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_073_Medic",
+                "name": "Airlift",
+                "description": "Glide to the rescue."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "pUYLRWrvAGDu5CJ29z7fNEFXO6u5l82V32dE7Kn0",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_074_RaptorArcticCamo",
+                "name": "Cold Front",
+                "description": "Cool to the touch."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "H6VLOWmnsfh5hUObrjUEwZWPbzKL5U52iVFArUtz",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_076_DieselPunk",
+                "name": "Dirigible",
+                "description": "Lighter than air."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "hQsSeErkKmeu9a6iUscv-VI9gPSRtl092itmggF5",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_077_Octoberfest",
+                "name": "Oktoberfeast",
+                "description": "Never glide on an empty stomach."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "Toabt5-JbreECguC5REyM5iwLmktI34DULtULBtU",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_081_CowboyGunslinger",
+                "name": "Crossfire",
+                "description": "Glider duel at high noon."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "mTDlPhFqvI5mYZ4KhdrxbrCfZOWLlMX46nqbVvKO",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_082_Scarecrow",
+                "name": "Field Wraith",
+                "description": "Don't just scare crows, give them nightmares."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "xFTzUCDWn-i4405-akpEAxHW-GGhRfOsN2X0GbQS",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_083_DarkBomber",
+                "name": "Dark Glyph",
+                "description": "Indecipherable."
+            }
+        ],
+        "rarity": "dark"
+    },
+    {
+        "id": "WxBrIYjrf6y4jWchuV5BT7QAWQoiwnBt0-pVQ-rW",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_084_Plague",
+                "name": "Lamplight",
+                "description": "A light in the darkness."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "DEMk2530av7hS-VXzByBPZr3l4kyxgxPkHHQ0XxM",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_086_BlackWidow",
+                "name": "Hatchling",
+                "description": "Along came a glider..."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "WG-Erdh1gCS2Wq3sWwARZYi-9piqEbkUgj1EujNO",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_087_GuanYu",
+                "name": "Divine Dragon",
+                "description": "Sail through the clouds, and row toward victory."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "k-GouPO2Ra0jUm7woJhwY08Jg4Y6BLRUWM65PyPB",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_088_EvilCowboy",
+                "name": "Dark Engine",
+                "description": "Fueled by darkness."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "L9yWVTIWSw--GaSF7ExXttx1lcYlVbBWItPGnRgu",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_089_Muertos",
+                "name": "Spirit",
+                "description": "It's a hoot. Reactive: Glows in the dark"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "AacJjWp3UycSy1qnPiBbYxq0UYfkTsdc-P53VqUG",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_090_Celestial",
+                "name": "Discovery",
+                "description": "Explore the galaxy."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "miKstHiqZ4iZxHWIl0vQulOj5w5ePSoys7ziovZw",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_091_MadCommander",
+                "name": "Junkjet",
+                "description": "It might just get you where you're going."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "dSvz-F7izHKe3GVcJpUncbJT08JJfC4jO0aE0o0n",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_092_StreetOps",
+                "name": "Pivot",
+                "description": "Primed to pivot with precision."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "rsAfQ0Z4hf8LxDNxIZl2sIiOFvVxSXkWvX7eGETt",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_093_AnimalJackets",
+                "name": "Poofy Parasail",
+                "description": "Puffed up and ready for landing."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "BnWorFcIcPk4NUOpUPxnPAwHhUD7ODbOKsg7pz5R",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_094_SamuraiUltra",
+                "name": "Kabuto",
+                "description": "Sharp enough to cut through air."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "i4BgePBLKqKPiT8kn2fX9eV7guN4nANgTMiRhFl0",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_095_Witch",
+                "name": "Magic Wings",
+                "description": "Soaring and spellbound."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "w50iubvrHHHFfqeGt5Q4K74GyrWcwRqNDx8o7Wrt",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_096_HornedMask",
+                "name": "Flying Carp",
+                "description": "Dive into the sky."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "WYxjzQH1Sd3uo8Iyzodim6bDH72cL-tPYQd82vmz",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_097_Feathers",
+                "name": "Flappy Flyer",
+                "description": "Keep it flappy."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "h58rIciK9jbY0NpL2c4-6Hq29LDw5RmnmfiagN-U",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_098_Sup",
+                "name": "Hyper",
+                "description": "What's up must come down."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "3XEZSNlljPbZytGdFbC7Pg9d860TMB6FDHoWDbjJ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_099_Moth",
+                "name": "Flutterbug",
+                "description": "Wings a flutter."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "VxJc8DS9R98tI2rusdZnCrK9RKZyuEhr16SjO6Q9",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_101_TacticalSanta",
+                "name": "Tactical Sleigh",
+                "description": "No chimney is safe."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "zEHwy6JD5MJAmBhGpquhX9c061-wyLE3VFjGPdDi",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_102_Rhino",
+                "name": "Fuel",
+                "description": "Turn and burn."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "lEYlS90IJYm4Db2e7U2lun5HmTLU6ZAp71PnMlHZ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_103_Nautilus",
+                "name": "Nautilus",
+                "description": "Dive! Dive! Dive!"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "5Sxq4aOeXoi5Og5vRvtiMTUzs07qQuyPbM2Ov1DK",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_104_FuzzyBear",
+                "name": "Cuddle Cruiser",
+                "description": "The turbulence is bearable."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "4Q2OQwc3Zmr8dtXyLlRX62APXybRFHgiO11VhRYI",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_104_Math",
+                "name": "Paper Plane",
+                "description": "Finely folded flyer."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "wEHWqItiWtM2a6Wz8sWXZjt9s0wnKqM0lAQ8aehV",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_105_Gingerbread",
+                "name": "Gingersled",
+                "description": "That's one sweet ride."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "gPIdORc9AuCAYg0-kmC5n4G4r43qqV94IUNaXntg",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_105_SnowBoard",
+                "name": "Royale Air",
+                "description": "Don't forget your lift ticket."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "FijDyrEM3eLC90O9fe11v-BZ8l0rFGU1o46Mpieu",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_106_FortniteDJ",
+                "name": "Equalizer",
+                "description": "Soar through the soundscape."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "K4yobLY2NgAVCeakLxHnoPL-RqLplbUeD4CsUjx6",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_107_IceMaiden",
+                "name": "Crystal Carriage",
+                "description": "The finest coach in the land."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "97UKQ-T-TkyeDBge1WFSK4K5Uaq3JTQ8KoRKXcsH",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_108_Krampus",
+                "name": "Krampus' Little Helper",
+                "description": "The greatest of all time."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "wsS3-OAGmuB6GrRCyRZYWkZJ4LVs95J5gcpU4oZt",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_109_StreetGoth",
+                "name": "Equilibrium",
+                "description": "Perfectly balanced."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "LnVpob-nsIeeAwl9JdBNCJ0Yu8wFs3szmM2e9O0Q",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_110_TeriyakiFish",
+                "name": "Coral Cruiser",
+                "description": "Ride the reef."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "kYbK1rXG9h9ZaY8gfKjzYt1b4qGwu3yirXaTA22q",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_111_MilitaryFashion",
+                "name": "Diverge",
+                "description": "Break away from the pack."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "F-Az0iS8BtBenpx7-XUGAEH-HfOpaz6IJ9LwpmLe",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_112_TechOps",
+                "name": "Coaxial Copter",
+                "description": "Dual-rotor tactical copter."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "CFP-8EZScNx0KzctfLGsDtKW6D23rhpmBwwpGt8L",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_116_PizzaPit",
+                "name": "Extra Cheese",
+                "description": "Slice through the sky."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "x7gkTcLKORGOXGAcqmvd-Aa8MSmF6AFx3bXTueZ6",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_117_Warpaint",
+                "name": "Wild Streak",
+                "description": "Marked for battle."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "FU512cMaVj-erLxSW94xV4RjKxJwl5pE4bxY5QZQ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_118_Squishy",
+                "name": "Mello Rider",
+                "description": "Fly happier."
+            }
+        ],
+        "rarity": "icon"
+    },
+    {
+        "id": "MYVAanscLR1LFV7Ps91tUnZmGvnqISraYUMYODKa",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_119_ReaperFrozen",
+                "name": "Frozen Feathers",
+                "description": "A cold wind bellows."
+            }
+        ],
+        "rarity": "frozen"
+    },
+    {
+        "id": "KKGHN0tmYtZBmRjhfrWWJepR21boqmPVeMfIHzVZ",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_120_IceCream",
+                "name": "Ice Cream Cruiser",
+                "description": "Melty at every altitude."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "8cdn1SHgujm8JkQMOFB8XWDFU4uO3OD93L20GBBo",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_121_BriteBomberDeluxe",
+                "name": "Brite Blimp",
+                "description": "Rainbow powered."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "8PTvz-FXRH3UEd-6LCiD75bCfHyR1-zkeNS29Ubo",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_122_Valentines",
+                "name": "Heartspan",
+                "description": "Soar on the wide wings of love."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "Z5SkFzxBd6247qpY9daVqo15KCwWZ9HDVfRDo1gT",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_123_MasterKey",
+                "name": "Lockstep",
+                "description": "Lock in the win."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "CTWeZ3CrQjpldRRIRXFUqiYssOGcqaKMuU9tXp6s",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_124_Medusa",
+                "name": "Sky Serpents",
+                "description": "Slither through the sky."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "NZ5ADaYz2fm29y4qI1LtjTgA4kwYqJzpnkGjx01S",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_125_Bandolier",
+                "name": "Choppa",
+                "description": "Calling in air support."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "RsXSNJkqJxppkBvU18gNfazLzDeE26tYt3tFkPp4",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_126_Farmer",
+                "name": "Crop Duster",
+                "description": "Prepare for the harvest."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "nSxoTD4HXVTdzkG43SZYPgm74eJgWyqKCg33Pock",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_127_Aztec",
+                "name": "Sunrise",
+                "description": "Rise up."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "uf5ERUtS6Z5FvVyHgzAvNPjtcORP5mfXtJmGRdnI",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_128_BootyBuoy",
+                "name": "Booty Buoy",
+                "description": "Hide your plunder in a parachute."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "b6hvVf2o6fMQAoowFV11x14KlRWU4VfWHnh9udjd",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_130_SciOps",
+                "name": "Disruptor",
+                "description": "Cause a commotion."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "x4M0uOaWU9qoXkHvU9yc6mqxbYEJ7tu-2ypmY5MY",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_131_SpeedyMidnight",
+                "name": "Dark Forerunner",
+                "description": "Distort. Distract. Destroy."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "utcuj27I4ZIUjYWwfayELK-7Xft9WonV9UDH-azs",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_132_Pirate01Octopus",
+                "name": "Plunder",
+                "description": "Set sail to plunder!"
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "anR9VDPXvsspCAuz5BwSElqsfl-d2CUoG3FWDVHd",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_133_BandageNinja",
+                "name": "Falcon",
+                "description": "Soar on the wings of the fabled falcon."
+            }
+        ],
+        "rarity": "legendary"
+    },
+    {
+        "id": "AevXd8OaqQjz9HG4cuzcvNBw0FNDUhvcdcruIQDV",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_134_DarkVikingFire",
+                "name": "Lavawing",
+                "description": "Awoken by a violent eruption."
+            }
+        ],
+        "rarity": "lava"
+    },
+    {
+        "id": "SZYihwITbexrDWHyVrd6XMNLp8-2tvmC7mBP61Av",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_135_Baseball",
+                "name": "Home Run",
+                "description": "It's outta here!"
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "cK0naWru4OAnToODzMD3L6d9qTqeF9arMpTxEQ0t",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_136_Bullseye",
+                "name": "Targeted",
+                "description": "Always hit your mark."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "OGXtwUuSFP8ahxmSFAZUkwKtBr16BnNMJFoxkalB",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_137_StreetOpsStealth",
+                "name": "Stealth Pivot",
+                "description": "Strategic silence."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "2FDULLDtvtTXjBypyfmysyF92G92Kf-x9gUqhwEu",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_138_BomberPlane",
+                "name": "Surefire",
+                "description": "Classic camo hits the spot."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "eXD3-D0q7Tm6NHIBw382muTwhxAxsHqwXor1OowG",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_139_EarthDay",
+                "name": "Globetrotter",
+                "description": "The world is yours."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "FlkJ3eKNIvuG8OVhMYQhS9cEnMUcMbOd57K-jZ73",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_140_ShatterFly",
+                "name": "Arcana",
+                "description": "Soar on wings of mystery."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "x8fD4wW-UlfetWNMpU-tkXgPv10QcYsKuRacZ35c",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_141_AshtonBoardwalk",
+                "name": "Avengers Quinjet",
+                "description": "Avengers assemble!"
+            }
+        ],
+        "rarity": "marvel"
+    },
+    {
+        "id": "qw9swLgUmleAtbns9GMOtXELXcuVrVdhPg2azthP",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_145_StormTracker",
+                "name": "Tailwind Twister",
+                "description": "Fly into the eye."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "ngZEfG0EWFxRu3BE2h7BW3BF9B6dHwGaVJK6VEhO",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_147_Raptor",
+                "name": "Assault Bomber",
+                "description": "Bomb's away!"
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "EOHb54oxSX9UjN5AvK9lpoZN1Kjd7RvG6b7GiBq2",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_148_CyberScavenger",
+                "name": "Tech Turbine",
+                "description": "Adapt and excel."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "c3HFuCtF9TgvbT5YJnf7orrLR7e1c0nB93bdeMFf",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_149_Geisha",
+                "name": "Engage",
+                "description": "A new day begins."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "o2DKs3NAxUvKyp8UP8Guwr8l6v5Bmx04tJ9KB3Uq",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_150_TechOpsBlue",
+                "name": "Coaxial Blue",
+                "description": "Dual-rotor tactical copter."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "WxGrXi7ix2wYCqGwdKZXHaCya2GgcZoMeA6hQrxE",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_151_StormSoldier",
+                "name": "Storm Eye",
+                "description": "Harness the storm."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "WSQ8swdZ5er6ml3nYPtit2fNEQrqXJwdYYgwiXoT",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_152_DemonHunter",
+                "name": "Batso",
+                "description": "Be afraid, be slightly afraid!"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "c4Pp45mhXedb8AEBNOaQIe7vAuWb7FV1I9TQ8B4l",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_154_GlowBroBat",
+                "name": "Megabat",
+                "description": "Soar with the storm."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "KW2GnuqRt2cLgTal7thCB3Fwh8byf6ZITBRXHMrs",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_155_Jellyfish",
+                "name": "Man O' War",
+                "description": "Behold the splendor of the sea. From a safe distance."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "fRS80QRt5Lt37OJew0zG-ePXXbPyh8LQycW9usVH",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_156_SummerBomber",
+                "name": "Payload",
+                "description": "A megaton of smiles."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "gDY1d7VKZKFfWc0kP8ODy0c9V8fV6DI8FzIvFE02",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_157_Drift",
+                "name": "Driftstream",
+                "description": "Prepare for interdimensional drift."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "BNvzgJ8Ojbhle8dLYJL8kCdfXGCJybb51ntWDFM1",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_158_Hairy",
+                "name": "Camp Cruiser",
+                "description": "It's his now."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "xN6WOzlBqNEXBp6UDVEa73ky6WH46KX9VSkQ4apG",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_159_TechMage",
+                "name": "Ion",
+                "description": "Glide beyond the edge of science."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "-fD59ez38DS70nD6xiuBmhwk9N2235ihu2rRAkSg",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_160_Anarchy",
+                "name": "Chaos",
+                "description": "No rules."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "fo-t2TaZjGVxJcusn00b7TRoJwXHHEAGzhMMEL9G",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_161_RoseLeader",
+                "name": "Rose Rider",
+                "description": "Battle tested and pleasantly scented."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "zAgsEs8XSmOw6HOUOurin0vqZezhUPIGlWALQdrb",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_162_BoneWasp",
+                "name": "Horned Strike",
+                "description": "Grab the battle by the horns."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "GqyUcfwmQjVt4e5XBlHDKJGo4I2QGDDnqTQYyza3",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_167_SparkleRemix",
+                "name": "Sparkle Strider",
+                "description": "Dazzle all the way down."
+            }
+        ],
+        "rarity": "epic"
+    },
+    {
+        "id": "BObEf6YfGyytXgHZSVm4CpBGlAd8qINoT87U2blo",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_168_StreetRacerDriftRemix",
+                "name": "Rift Rider",
+                "description": "Cruise the dimensional highway."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "zSInRZP4w0bkJ2AuiZslbOKp73I4arOCJO8bXxkD",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_172_RaptorBlackOps",
+                "name": "Dual Defiant",
+                "description": "Defy all expectations."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "s82euVQvY2g06rYdKOyqvtgzs1W-oBHnCXti8X4q",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_173_TacticalBiker",
+                "name": "Stunt Cycle",
+                "description": "Hang on tight."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "bDZpUrYTDhxGCgSBYySowYJUBD4jTklXDW27QRYM",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_174_SleepyTime",
+                "name": "Nite Flight",
+                "description": "Zzzzzzz."
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "0yJcdS5gds2TrxgNRdBnTwU69QtNXqkl2ST6jDtH",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_175_StreetFashionRed",
+                "name": "Sky Stripe",
+                "description": "Signature stripe glider."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "xryq5BxA7fkQlJpyeM0uZ1D1usKrR2HuKRslTgYD",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_ID_176_BlackMondayCape_4P79K",
+                "name": "Batglider",
+                "description": "On Leather Wings."
+            }
+        ],
+        "rarity": "dc"
+    },
+    {
+        "id": "Ljo43NmYYPgFQzzTAWCbUEd0HW6rKeJH-mQgKYXc",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_MiG",
+                "name": "Raptor",
+                "description": "Go ahead. Buzz the tower. You've earned it."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "yqe-AoFHSLcmeFj6tolQf4nhN74luYO0w-vHn4Fl",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_Military",
+                "name": "Warthog",
+                "description": "Hit the ground running with the battle tested Warthog Glider."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "3cFPSHlt9zbpKjKHxU9QBjv2W93SUzdxfutGXeHX",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_Prismatic",
+                "name": "Prismatic",
+                "description": "It's so colorful!"
+            }
+        ],
+        "rarity": "rare"
+    },
+    {
+        "id": "LlbOwSoikdIPtQLN5nT64Poy-Wrwiu86S2mAmHq8",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_RoadTrip",
+                "name": "Roadtrip",
+                "description": "Never miss a battle snack with the world's first picnic-ready glider."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "97SJqDFa849yB3xbG9XvoK-OibvU9VyUz6DM3rqa",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_Stealth",
+                "name": "Stealth",
+                "description": "Shh."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "6tuGdklIenVssTVoYJWfA570QnE24k44aRf6RPjN",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_Venom",
+                "name": "Wasp",
+                "description": "Float like a glider. Sting like a wasp."
+            }
+        ],
+        "rarity": "uncommon"
+    },
+    {
+        "id": "vYIR1oKz0P17VGzzDgc9y6OzIRnFRYeJyDhtqCkK",
+        "items": [
+            {
+                "item": "AthenaGlider:Glider_Voyager",
+                "name": "Voyager",
+                "description": "Bravely float into the fray aboard the Voyager Glider."
+            }
+        ],
+        "rarity": "rare"
+    }
 ]

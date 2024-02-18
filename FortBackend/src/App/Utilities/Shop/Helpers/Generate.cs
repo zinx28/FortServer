@@ -65,6 +65,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                     foreach (var Item in DailyArray)
                     {
+                        
                         if (!Item.categories.Any())
                         {
                             HowManyTurns += 1;
@@ -99,12 +100,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 default:
                                     break;
                             }
-
-                            if (!string.IsNullOrEmpty(ItemTemplateId))
-                            {
-                                break;
-                            }
-                            //}
 
                             if (string.IsNullOrEmpty(ItemTemplateId))
                             {
@@ -151,6 +146,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             type = "Normal",
                             categories = Item.categories
                         });
+                        Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                     }
                     Generator.DailyItems -= HowManyTurns;
                 }
@@ -163,10 +159,10 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     int Price = -1; // High As Broken
                     string ItemTemplateId = "";
 
-
-
+                  
                     foreach (var Item in WeeklyArray)
                     {
+                       
                         if (!Item.categories.Any())
                         {
                             HowManyTurns += 1;
@@ -177,36 +173,32 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         }
                         else
                         {
+                           // Console.WriteLine(Item.name);
+                           // Console.WriteLine(Item.item.Split(":")[0]);
                             //foreach (Item item in Item.items)
                             //{
                             //    string itemType = item.item.Split(":")[0];
 
-                                switch (Item.item.Split(":")[0])
-                                {
-                                    case "AthenaCharacter":
-                                        ItemTemplateId = "skins";
-                                        break;
-                                    case "AthenaDance":
-                                        ItemTemplateId = "emotes";
-                                        break;
-                                    case "AthenaPickaxe":
-                                        ItemTemplateId = "pickaxes";
-                                        break;
-                                    case "AthenaGlider":
-                                        ItemTemplateId = "gliders";
-                                        break;
-                                    case "AthenaItemWrap":
-                                        ItemTemplateId = "wrap";
-                                        break;
-                                    default:
-                                        break;
-                                }
-
-                                if(!string.IsNullOrEmpty(ItemTemplateId))
-                                {
+                            switch (Item.item.Split(":")[0])
+                            {
+                                case "AthenaCharacter":
+                                    ItemTemplateId = "skins";
                                     break;
-                                }
-                            //}
+                                case "AthenaDance":
+                                    ItemTemplateId = "emotes";
+                                    break;
+                                case "AthenaPickaxe":
+                                    ItemTemplateId = "pickaxes";
+                                    break;
+                                case "AthenaGlider":
+                                    ItemTemplateId = "gliders";
+                                    break;
+                                case "AthenaItemWrap":
+                                    ItemTemplateId = "wrap";
+                                    break;
+                                default:
+                                    break;
+                            }
 
                             if (string.IsNullOrEmpty(ItemTemplateId))
                             {
@@ -219,6 +211,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 Price = price;
                             }
                         }
+
+                       
 
                         //if (Item.singleprice == -1)
                         //{
@@ -253,6 +247,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             type = "Normal",
                             categories = Item.categories
                         });
+                        Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                     }
                     Generator.WeeklyItems -= HowManyTurns;
                 }

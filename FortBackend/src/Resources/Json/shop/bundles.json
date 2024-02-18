@@ -570,7 +570,7 @@
             }
         ]
     },
-    {
+    { 
         "Daily": [],
         "Weekly": [
             {
@@ -586,7 +586,7 @@
                 ],
                 "rarity": "uncommon",
                 "variants": []
-            },
+            }, 
             {
                 "id": "771yhVo7VbpzvfntGp9I8r15idpSFwZtEP1RHSVk",
                 "item": "AthenaCharacter:CID_443_Athena_Commando_F_BannerB",

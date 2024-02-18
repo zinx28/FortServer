@@ -69,60 +69,82 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         {
                             HowManyTurns += 1;
                         }
-                        switch (Item.item.Split(":")[0])
+                        if (Item.singleprice != -1)
                         {
-                            case "AthenaCharacter":
-                                ItemTemplateId = "skins";
-                                break;
-                            case "AthenaDance":
-                                ItemTemplateId = "emotes";
-                                break;
-                            case "AthenaPickaxe":
-                                ItemTemplateId = "pickaxes";
-                                break;
-                            case "AthenaGlider":
-                                ItemTemplateId = "gliders";
-                                break;
-                            case "AthenaItemWrap":
-                                ItemTemplateId = "wrap";
-                                break;
-                            default:
-                                break;
+                            Price = Item.singleprice;
                         }
-
-                        if (string.IsNullOrEmpty(ItemTemplateId))
+                        else
                         {
-                            Logger.Error("Shop generation will be canceled -> I cannot idenity the item");
-                            return false;
-                        }
+                            foreach (Item item in Item.items)
+                            {
+                                string itemType = item.item.Split(":")[0];
 
-                        if (Item.singleprice == -1)
-                        {
+                                switch (itemType)
+                                {
+                                    case "AthenaCharacter":
+                                        ItemTemplateId = "skins";
+                                        break;
+                                    case "AthenaDance":
+                                        ItemTemplateId = "emotes";
+                                        break;
+                                    case "AthenaPickaxe":
+                                        ItemTemplateId = "pickaxes";
+                                        break;
+                                    case "AthenaGlider":
+                                        ItemTemplateId = "gliders";
+                                        break;
+                                    case "AthenaItemWrap":
+                                        ItemTemplateId = "wrap";
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                if (!string.IsNullOrEmpty(ItemTemplateId))
+                                {
+                                    break;
+                                }
+                            }
+
+                            if (string.IsNullOrEmpty(ItemTemplateId))
+                            {
+                                Logger.Error("Shop generation will be canceled -> I cannot idenity the item");
+                                return false;
+                            }
+
                             if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
                             {
                                 Price = price;
                             }
                         }
-                        else
-                        {
-                            if (Item.newprice != -1)
-                            {
-                                Price = Item.newprice;
-                            }
-                            else
-                            {
-                                Price = Item.singleprice;
-                            }
-                        }
+
+                        //if (Item.singleprice == -1)
+                        //{
+                        //    if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                        //    {
+                        //        Price = price;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    if (Item.newprice != -1)
+                        //    {
+                        //        Price = Item.newprice;
+                        //    }
+                        //    else
+                        //    {
+                        //        Price = Item.singleprice;
+                        //    }
+                        //}
 
                         Generator.savedData.Daily.Add(new ItemsSaved
                         {
-                            id = Guid.NewGuid().ToString().Replace("-", ""),
-                            item = Item.item,
-                            name = Item.name,
+                            id = Item.id,
+                            //item = Item.item,
+                            //name = Item.name,
                             items = Item.items,
                             price = Price,
-                            normalprice = Price, // not done
+                            singleprice = Price, // not done
                             rarity = Item.rarity,
                             BundlePath = Item.BundlePath,
                             type = "Normal",
@@ -149,60 +171,81 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             HowManyTurns += 1;
                         }
 
-                        switch (Item.item.Split(":")[0])
-                        {
-                            case "AthenaCharacter":
-                                ItemTemplateId = "skins";
-                                break;
-                            case "AthenaDance":
-                                ItemTemplateId = "emotes";
-                                break;
-                            case "AthenaPickaxe":
-                                ItemTemplateId = "pickaxes";
-                                break;
-                            case "AthenaGlider":
-                                ItemTemplateId = "gliders";
-                                break;
-                            case "AthenaItemWrap":
-                                ItemTemplateId = "wrap";
-                                break;
-                            default:
-                                break;
+                        if(Item.singleprice != -1) {
+                            Price = Item.singleprice;
                         }
-
-                        if (string.IsNullOrEmpty(ItemTemplateId))
+                        else
                         {
-                            Logger.Error("Shop generation will be canceled -> I cannot idenity the item");
-                            return false;
-                        }
+                            foreach (Item item in Item.items)
+                            {
+                                string itemType = item.item.Split(":")[0];
 
-                        if (Item.singleprice == -1)
-                        {
+                                switch (itemType)
+                                {
+                                    case "AthenaCharacter":
+                                        ItemTemplateId = "skins";
+                                        break;
+                                    case "AthenaDance":
+                                        ItemTemplateId = "emotes";
+                                        break;
+                                    case "AthenaPickaxe":
+                                        ItemTemplateId = "pickaxes";
+                                        break;
+                                    case "AthenaGlider":
+                                        ItemTemplateId = "gliders";
+                                        break;
+                                    case "AthenaItemWrap":
+                                        ItemTemplateId = "wrap";
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                if(!string.IsNullOrEmpty(ItemTemplateId))
+                                {
+                                    break;
+                                }
+                            }
+
+                            if (string.IsNullOrEmpty(ItemTemplateId))
+                            {
+                                Logger.Error("Shop generation will be canceled -> I cannot idenity the item");
+                                return false;
+                            }
+
                             if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
                             {
                                 Price = price;
                             }
                         }
-                        else
-                        {
-                            if (Item.newprice != -1)
-                            {
-                                Price = Item.newprice;
-                            }
-                            else
-                            {
-                                Price = Item.singleprice;
-                            }
-                        }
+
+                        //if (Item.singleprice == -1)
+                        //{
+                        //    if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                        //    {
+                        //        Price = price;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    if (Item.newprice != -1)
+                        //    {
+                        //        Price = Item.newprice;
+                        //    }
+                        //    else
+                        //    {
+                        //        Price = Item.singleprice;
+                        //    }
+                        //}
 
                         Generator.savedData.Weekly.Add(new ItemsSaved
                         {
-                            id = Guid.NewGuid().ToString().Replace("-", ""),
-                            item = Item.item,
-                            name = Item.name,
+                            id = Item.id,
+                            //item = Item.item,
+                            //name = Item.name,
                             items = Item.items,
                             price = Price,
-                            normalprice = Price, // not done
+                            singleprice = Price, // not done
                             rarity = Item.rarity,
                             BundlePath = Item.BundlePath,
                             type = "Normal",
@@ -280,12 +323,12 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                 ListItemSaved.Add(new ItemsSaved
                 {
-                    id = Guid.NewGuid().ToString().Replace("-", ""),
-                    item = RandomSkinItem.item,
-                    name = RandomSkinItem.name,
+                    id = RandomSkinItem.id,
+                    //item = RandomSkinItem.item,
+                    //name = RandomSkinItem.name,
                     items = RandomSkinItem.items,
                     price = Price,
-                    normalprice = Price,
+                    singleprice = Price,
                     variants = RandomSkinItem.variants,
                     BundlePath = RandomSkinItem.BundlePath,
                     type = type,

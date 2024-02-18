@@ -53,7 +53,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
             }
 
             if(!string.IsNullOrEmpty(ShopContent.id)) {
-                bool HasUserHaveItem = AccountDataParsed.athena.Items.Any(item => item.ContainsKey(ShopContent.item));
+                bool HasUserHaveItem = AccountDataParsed.athena.Items.Any(item => item.ContainsKey(ShopContent.id));
 
                 if(HasUserHaveItem)
                 {
@@ -72,20 +72,24 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 NotificationsItems.Add(new
                 {
                     itemType = ShopContent.id,
-                    itemGuid = ShopContent.item,
+                    itemGuid = ShopContent.id,
                     itemProfile = "athena",
                     quantity = 1
                 });
 
-                MultiUpdates.Add(new
-                {
-                    changeType = "itemAdded",
-                    itemId = ShopContent.item,
-                    item = new
-                    {
-                        temp[]
-                    }
-                }) ;
+                //MultiUpdates.Add(new
+                //{
+                //    changeType = "itemAdded",
+                //    itemId = ShopContent.item,
+                //    item = new
+                //    {
+                //        templateId = ShopContent.item,
+                //        attribute = new
+                //        {
+
+                //        }
+                //    }
+                //});
 
             
             }

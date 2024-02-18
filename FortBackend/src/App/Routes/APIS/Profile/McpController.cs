@@ -115,7 +115,13 @@ namespace FortBackend.src.App.Routes.APIS.Profile
             catch (BaseError ex)
             {
                 var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
-                return Content(jsonResult, "application/json");
+                StatusCode(500);
+                return new ContentResult()
+                {
+                    Content = jsonResult,
+                    ContentType = "application/json",
+                    StatusCode = 500
+                };
                 // return Ok(errorDetails);
             }
             catch (Exception ex)

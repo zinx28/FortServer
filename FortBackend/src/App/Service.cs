@@ -49,8 +49,8 @@ namespace FortBackend.src.App
             
             startup.ConfigureServices(builder.Services);
 
-#if HTTPS
-            builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
+            #if HTTPS
+                builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.BackendPort, listenOptions =>
@@ -65,8 +65,8 @@ namespace FortBackend.src.App
                         listenOptions.UseHttps(certificate);
                     });
                 });
-#else
-            builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
+            #else
+                builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
             #endif
 
 

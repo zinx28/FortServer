@@ -23,12 +23,12 @@
     ],
     "shopSections": [
         {
-            "landingPriority": 1,
+            "landingPriority": 2,
             "sectionId": "Daily",
             "sectionDisplayName": "Daily"
         },
         {
-            "landingPriority": 2,
+            "landingPriority": 1,
             "sectionId": "Featured",
             "sectionDisplayName": "Featured"
         }

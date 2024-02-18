@@ -19,4 +19,4 @@
 - MCP (QueryProfle, Equiping and useless things) [!]
 - Timeline [+]
 - CloudStorage and Saving [X]
-- 24/7 Shop (Items might be weird atm)
+- 24/7 Shop (WIP - could be so random, items in wrong places)

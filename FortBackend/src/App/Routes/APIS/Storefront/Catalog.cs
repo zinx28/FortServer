@@ -69,12 +69,25 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                     LargeSortPriority += 1;
                     List<object> requirements = new List<object>();
                     List<object> itemGrants = new List<object>();
-                    Item itemIg = WeeklyItems.items.FirstOrDefault(item => !string.IsNullOrEmpty(item.description));
-                    var DisplayAsset = $"DA_Featured_{itemIg.name}";
-                    if(!string.IsNullOrEmpty(WeeklyItems.BundlePath))
+                    //Item itemIg = WeeklyItems.items.FirstOrDefault(item => !string.IsNullOrEmpty(item.description));
+                    var DisplayAsset = $"DA_Daily_{WeeklyItems.item}";
+                    if (!string.IsNullOrEmpty(WeeklyItems.BundlePath))
                     {
                         DisplayAsset = WeeklyItems.BundlePath;
                     }
+
+
+                    itemGrants.Add(new
+                    {
+                        templateId = WeeklyItems.item,
+                        quantity = 1
+                    });
+                    requirements.Add(new
+                    {
+                        requirementType = "DenyOnItemOwnership",
+                        requiredId = WeeklyItems.item,
+                        minQuantity = 1,
+                    });
 
                     foreach (dynamic d in WeeklyItems.items)
                     {
@@ -92,7 +105,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                         });
                     }
                    
-                    if (!itemIg.name.ToString().ToLower().Contains("bundle"))
+                    if (!WeeklyItems.name.ToString().ToLower().Contains("bundle"))
                     {
                         var WeeklyItem = new catalogEntrie
                         {
@@ -154,48 +167,43 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                     LargeSortPriority += 1;
                     List<object> requirements = new List<object>();
                     List<object> itemGrants = new List<object>();
-                    Item itemIg = WeeklyItems.items.FirstOrDefault(item => !string.IsNullOrEmpty(item.description));
-                    var DisplayAsset = $"DA_Daily_{itemIg.name}";
+                    //Item itemIg = WeeklyItems.items.FirstOrDefault(item => !string.IsNullOrEmpty(item.description));
+                    var DisplayAsset = $"DA_Daily_{WeeklyItems.item}";
                     if (!string.IsNullOrEmpty(WeeklyItems.BundlePath))
                     {
                         DisplayAsset = WeeklyItems.BundlePath;
                     }
 
 
-                    if (itemIg.name.ToString().ToLower().Contains("bundle"))
+                    itemGrants.Add(new
                     {
-                        foreach (dynamic d in WeeklyItems.items)
-                        {
-                            itemGrants.Add(new
-                            {
-                                templateId = d.item,
-                                quantity = 1
-                            });
-                            requirements.Add(new
-                            {
-                                requirementType = "DenyOnItemOwnership",
-                                requiredId = d.item,
-                                minQuantity = 1,
-                            });
-                        }
-                    }
-                    else
+                        templateId = WeeklyItems.item,
+                        quantity = 1
+                    });
+                    requirements.Add(new
                     {
-                        foreach (dynamic d in WeeklyItems.items)
-                        {
-                            itemGrants.Add(new
-                            {
-                                templateId = d.item,
-                                quantity = 1
-                            });
-                            requirements.Add(new
-                            {
-                                requirementType = "DenyOnItemOwnership",
-                                requiredId = d.item,
-                                minQuantity = 1,
-                            });
-                        }
+                        requirementType = "DenyOnItemOwnership",
+                        requiredId = WeeklyItems.item,
+                        minQuantity = 1,
+                    });
 
+                    foreach (dynamic d in WeeklyItems.items)
+                    {
+                        itemGrants.Add(new
+                        {
+                            templateId = d.item,
+                            quantity = 1
+                        });
+                        requirements.Add(new
+                        {
+                            requirementType = "DenyOnItemOwnership",
+                            requiredId = d.item,
+                            minQuantity = 1,
+                        });
+                    }
+
+                    if (!WeeklyItems.name.ToString().ToLower().Contains("bundle"))
+                    {
                         var WeeklyItem = new catalogEntrie
                         {
                             devName = $"{WeeklyItems.id}",

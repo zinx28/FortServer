@@ -27,6 +27,10 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Class
     public class ShopBundlesItem
     {
         public string id { get; set; } = string.Empty;
+
+        public string item { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
         public List<Item> items { get; set; }
         public string rarity { get; set; } = string.Empty;
 

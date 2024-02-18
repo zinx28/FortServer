@@ -3,7 +3,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "pe-enuYDZOtylNWueD9p9BCz0r1GciINP0fWkr7I",
+                "id": "JlvYHWrNsz-CHcaNmzQi79f4moK8nGGWaq8zIrDa",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_006_SkiDude",
@@ -12,6 +12,8 @@
                     {
                         "item": "AthenaCharacter:CID_053_Athena_Commando_M_SkiDude",
                         "name": "Alpine Ace",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -23,7 +25,7 @@
                 "variants": []
             },
             {
-                "id": "LYDT38oekAzZiFPxUTBeWYD-u4iYnMMMJIIUyJZE",
+                "id": "FMQvoguSbu0HtrxHE5fiAFZB3FOLAmlKuaHZf2Wk",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_007_SkiDude_USA",
@@ -32,6 +34,8 @@
                     {
                         "item": "AthenaCharacter:CID_054_Athena_Commando_M_SkiDude_USA",
                         "name": "Alpine Ace (USA)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -43,7 +47,7 @@
                 "variants": []
             },
             {
-                "id": "apiOuVRu1XwD28JeSr6nbLrOP9ZtYrhyOKYvOI1H",
+                "id": "w1dKZuuVuvS0EaPVAw1xUDdrpfVQAZuiQV2FvWJ1",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_008_SkiDude_CAN",
@@ -52,6 +56,8 @@
                     {
                         "item": "AthenaCharacter:CID_055_Athena_Commando_M_SkiDude_CAN",
                         "name": "Alpine Ace (CAN)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -63,7 +69,7 @@
                 "variants": []
             },
             {
-                "id": "rcy9T9ZdPtwtPEKU9RxzV8yFN5gyplzXLFC0xqI6",
+                "id": "WKGsHa-8l2nhFSRJW80rlEPyICjEPcprDEPRr3Nu",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_009_SkiDude_GBR",
@@ -72,6 +78,8 @@
                     {
                         "item": "AthenaCharacter:CID_056_Athena_Commando_M_SkiDude_GBR",
                         "name": "Alpine Ace (GBR)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -83,7 +91,7 @@
                 "variants": []
             },
             {
-                "id": "xzLLt-7cRVd-MoDEVs3HhTXqHOSWsqbGLQ5zIKPX",
+                "id": "5gkz-WgXZnCTobuRrf-zqeD6S7sN08xCd2KZ7qXL",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_009_SkiDude_GBR",
@@ -92,6 +100,8 @@
                     {
                         "item": "AthenaCharacter:CID_057_Athena_Commando_M_SkiDude_FRA",
                         "name": "Alpine Ace (FRA)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -103,7 +113,7 @@
                 "variants": []
             },
             {
-                "id": "dJoAOX5C5FOPJUHWWnYmWLVUF3Gpd757HM0rYPy3",
+                "id": "4cR8hNmStzln2bEs-1rzBFBzZ0qUTbdoYd7AP8t4",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_011_SkiDude_GER",
@@ -112,6 +122,8 @@
                     {
                         "item": "AthenaCharacter:CID_058_Athena_Commando_M_SkiDude_GER",
                         "name": "Alpine Ace (GER)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -123,7 +135,7 @@
                 "variants": []
             },
             {
-                "id": "FPDG4VqIwHUsoUvdAOB7I73sO90NAoMlGWf7iQP4",
+                "id": "XsSS9nV28RFLG5T3rYk1sTulw1Xmk-rEthZvtAyZ",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_012_SkiDude_CHN",
@@ -132,6 +144,8 @@
                     {
                         "item": "AthenaCharacter:CID_059_Athena_Commando_M_SkiDude_CHN",
                         "name": "Alpine Ace (CHN)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -143,7 +157,7 @@
                 "variants": []
             },
             {
-                "id": "-MWc-KZKjTW-OsLZcUfav7y8ds3aQ1xQcMLGEHBp",
+                "id": "ss9lK7KxN7ed02yXG0EgmVSFIOyLT7ipZDWVvVkg",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_013_SkiDude_KOR",
@@ -152,6 +166,8 @@
                     {
                         "item": "AthenaCharacter:CID_060_Athena_Commando_M_SkiDude_KOR",
                         "name": "Alpine Ace (KOR)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "So Aerodynamic!"
                     }
@@ -163,7 +179,7 @@
                 "variants": []
             },
             {
-                "id": "f4tmIKg0oepXYX9uxQVe4LwAB8PF4rqDKglu2DgF",
+                "id": "w5JbeDPyvl5KyDLIgvZPou42G8BcqupTx0D-gNw7",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_014_SkiGirl",
@@ -172,6 +188,8 @@
                     {
                         "item": "AthenaCharacter:CID_061_Athena_Commando_F_SkiGirl",
                         "name": "Mogul Master",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -183,7 +201,7 @@
                 "variants": []
             },
             {
-                "id": "o-5HmXahn3DJ8gJvkA2OXZIbPvez8g25HkJBNxVt",
+                "id": "p11Jh5oTaYaVDnUIu3sTxaU439ZHiRHUiVEjiAK0",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_015_SkiGirl_USA",
@@ -192,6 +210,8 @@
                     {
                         "item": "AthenaCharacter:CID_062_Athena_Commando_F_SkiGirl_USA",
                         "name": "Mogul Master (USA)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -203,7 +223,7 @@
                 "variants": []
             },
             {
-                "id": "rrFzUS0XOMM5mto2B3AkOBGrOddUQumsfy4FA2KH",
+                "id": "PHiAikv2YcCN4Hhv0R7AIhk6cSnJCb5OmOM-i7sV",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_016_SkiGirl_CAN",
@@ -212,6 +232,8 @@
                     {
                         "item": "AthenaCharacter:CID_063_Athena_Commando_F_SkiGirl_CAN",
                         "name": "Mogul Master (CAN)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -223,7 +245,7 @@
                 "variants": []
             },
             {
-                "id": "Jfr2eQpUUiepuobA4yCJZBmJRj3spxkvVF1HPp3T",
+                "id": "DfGzogAUrKDCHZmjnm84WsIeYiHCoppAxMcuR1Wc",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_017_SkiGirl_GBR",
@@ -232,6 +254,8 @@
                     {
                         "item": "AthenaCharacter:CID_064_Athena_Commando_F_SkiGirl_GBR",
                         "name": "Mogul Master (GBR)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -243,7 +267,7 @@
                 "variants": []
             },
             {
-                "id": "upE6CqcHTO52mnYIFgwm2PzZCqzhkHXNlAN7ttsv",
+                "id": "LPo-f6aBbDnN5TdlGYZq8AfnkOFcnVXJvynvcVlB",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_018_SkiGirl_FRA",
@@ -252,6 +276,8 @@
                     {
                         "item": "AthenaCharacter:CID_065_Athena_Commando_F_SkiGirl_FRA",
                         "name": "Mogul Master (FRA)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -263,7 +289,7 @@
                 "variants": []
             },
             {
-                "id": "nGGVPqtHa6d61x9uI2Xlt8k3EaxDe4P65TyJBfcK",
+                "id": "LcUhxKHWUbwTI3OsmNRL7dsT7rXjMII-tcyWcsBX",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_019_SkiGirl_GER",
@@ -272,6 +298,8 @@
                     {
                         "item": "AthenaCharacter:CID_066_Athena_Commando_F_SkiGirl_GER",
                         "name": "Mogul Master (GER)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -283,7 +311,7 @@
                 "variants": []
             },
             {
-                "id": "ejFh5bjeV3raPkJopA649capxlvNcx3KDrAO-p99",
+                "id": "R5XH21Cru5zZj-Zz4Gboid6VhhXQ7sbXzMY7Lai1",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_020_SkiGirl_CHN",
@@ -292,6 +320,8 @@
                     {
                         "item": "AthenaCharacter:CID_067_Athena_Commando_F_SkiGirl_CHN",
                         "name": "Mogul Master (CHN)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -303,7 +333,7 @@
                 "variants": []
             },
             {
-                "id": "S3E2AjVap4PFF52YP8jMft8kdBjyeUh5vYqqcHso",
+                "id": "iFzWnR6-jD7eUeOOJlG5K2H4I7dYacYX0dZHbY0S",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_021_SkiGirl_KOR",
@@ -312,6 +342,8 @@
                     {
                         "item": "AthenaCharacter:CID_068_Athena_Commando_F_SkiGirl_KOR",
                         "name": "Mogul Master (KOR)",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Carve through the competition."
                     }
@@ -327,11 +359,13 @@
     {
         "Daily": [
             {
-                "id": "pkYLogqweRrJZkkRHoEF3PTm9FITAUIBFzZXfliw",
+                "id": "GOvdNlA96y6paeTVAH4vHye5FaiSMvbMvR7l5vj1",
                 "items": [
                     {
                         "item": "AthenaItemWrap:Wrap_175_Slurp",
                         "name": "Slurp",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Show your style."
                     }
@@ -343,7 +377,7 @@
         ],
         "Weekly": [
             {
-                "id": "Nxof3-7Ua5BwuIZld8Kw11kj40Zl2dx-BncTDqmu",
+                "id": "agwXehBtlu6gS7Q1GOGQ0OCyDQMJU8C0akZoQj04",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_416_BigChuggus",
@@ -352,6 +386,8 @@
                     {
                         "item": "AthenaCharacter:CID_620_Athena_Commando_L_BigChuggus",
                         "name": "Big Chuggus",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Small chugguses need not apply."
                     }
@@ -361,11 +397,13 @@
                 "variants": []
             },
             {
-                "id": "9pUIIciiDhVnilSl59K1GxJzPgK0BuNuyC2u-lUn",
+                "id": "Sy388zE7l39Z4QPX4hGl4J6mvGpvMgGH3zreMyEk",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_316_BigChuggus",
                         "name": "Double Tap",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Twice the slurp in one powerful swing."
                     }
@@ -380,11 +418,13 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "DqI06IxEKBLK69vjq135JDjK-xihy3tfRWQSn00W",
+                "id": "c6Zn0cEbYsEuUJIHQbZS0RnJ52h5GLodtXQ5tSKv",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_333_Athena_Commando_M_Squishy",
                         "name": "Marshmello",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Start the party. Reactive: Lights up while using musical emotes."
                     }
@@ -396,11 +436,13 @@
                 "variants": []
             },
             {
-                "id": "dvkeJ6j1hJEHJMDngn0VoB5W2D1mRlbN2esLCW8-",
+                "id": "a3jhicVKRSlrcFLDNX5C-bvNz7Tl6qjR1St1hl9H",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_249_Squishy1H",
                         "name": "Mello Mallets",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "There X2"
                     }
@@ -412,11 +454,13 @@
                 "variants": []
             },
             {
-                "id": "lNCCNp8TyX08-FNfGyRaeZAA1pDgEXB1fUNwTrUQ",
+                "id": "TiJu4dfvWcxZr55j-rYSp0erFi6DtAGCIkMNilx6",
                 "items": [
                     {
                         "item": "AthenaDance:EID_SquishyDance",
                         "name": "Marsh Walk",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Keep it mello."
                     }
@@ -428,11 +472,13 @@
                 "variants": []
             },
             {
-                "id": "f18sY4cBTjKU6jZix16h85jWlwMvABNb4Q7G3c7b",
+                "id": "EMRv3VN11o1OBd2UK4vsSDct98GUCWFPcevoQsUz",
                 "items": [
                     {
                         "item": "AthenaDance:EID_SquishyMedley",
                         "name": "Keep It Mello",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Join in the fun."
                     }
@@ -444,11 +490,13 @@
                 "variants": []
             },
             {
-                "id": "MvSzxAw1Gt4MV62WIrUY7LnR-VR7SEcYPHs7kFvp",
+                "id": "-dcNETIzOct49x6D7nBq2h36LLKJPtPCzzXyE0pe",
                 "items": [
                     {
                         "item": "AthenaGlider:Glider_ID_118_Squishy",
                         "name": "Mello Rider",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Fly happier."
                     }
@@ -465,7 +513,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "5uOlmCi-W6m2X-4thgAK2vHCZQMRjTDnxrk8t5kI",
+                "id": "DcCZvv18KL6giZxb8Io5JD0KBEvgRvoSA5Sc9Vh4",
                 "items": [
                     {
                         "item": "AthenaBackpack:PetCarrier_013_BbqLarry",
@@ -478,6 +526,8 @@
                     {
                         "item": "AthenaCharacter:CID_515_Athena_Commando_M_BarbequeLarry",
                         "name": "Psycho Bundle",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Start the party. Reactive: Lights up while using musical emotes."
                     }
@@ -494,7 +544,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "xO435-6AdmGEZ6JEG2G7U02vNkki2sFTJ6omYfJt",
+                "id": "woKqSsHmtjjlnCITFLAKbjcAsJFYPe5sPaBtmXgP",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_275_Traveler",
@@ -503,6 +553,8 @@
                     {
                         "item": "AthenaCharacter:CID_535_Athena_Commando_M_Traveler",
                         "name": "Traveler Bundle",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Start the party. Reactive: Lights up while using musical emotes."
                     }
@@ -518,7 +570,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "n5hi0mo9SJCWIUoVlhWzIkKoIoWj280xU15Zgoof",
+                "id": "gCHny72R6oKmVoAO4BTOrNWWN87K8JBXxtopkJNo",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_423_Athena_Commando_F_Painter",
@@ -527,6 +579,8 @@
                     {
                         "item": "AthenaCharacter:CID_424_Athena_Commando_M_Vigilante",
                         "name": "Hang Time Bundle",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Start the party. Reactive: Lights up while using musical emotes."
                     }
@@ -542,7 +596,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "F5kOIlapWB2PzSGIPfRJNPlRPxfqrf-Zu4lKNJF8",
+                "id": "L-zKvJXLPUYenYXNWqriuzxy6IvFK8cJXjtfFltH",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_310_Lasagna",
@@ -567,6 +621,8 @@
                     {
                         "item": "AthenaCharacter:CID_474_Athena_Commando_M_Lasagna",
                         "name": "Major Lazer Bundle",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Start the party. Reactive: Lights up while using musical emotes."
                     }
@@ -583,11 +639,13 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "-wnfWsnUw-vetTNRBzP58-bfosIjYnaS6FR5RA8n",
+                "id": "iwFSqIsmy7IgHOpA2qaDrP1e997FekQVT6SMyI5o",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_442_Athena_Commando_F_BannerA",
                         "name": "Banner Trooper",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -599,11 +657,13 @@
                 "variants": []
             },
             {
-                "id": "gDnCNIbUDgPKnpVs4CZerNmBZSGDFLO2lo17STQO",
+                "id": "771yhVo7VbpzvfntGp9I8r15idpSFwZtEP1RHSVk",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_443_Athena_Commando_F_BannerB",
                         "name": "Sgt. Sigil",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -615,11 +675,13 @@
                 "variants": []
             },
             {
-                "id": "uTD7AH0FME0mCfbHXYTkZyweU0ker1DOt5z6c559",
+                "id": "-5OpfTITVekEEuOMYv-0mtHKyRSBdURoLguvCFuY",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_444_Athena_Commando_F_BannerC",
                         "name": "Branded Brigadier",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -631,11 +693,13 @@
                 "variants": []
             },
             {
-                "id": "hwd70e1ahFuATX8dvm2JUpKHhicewSC7vx7Zti3I",
+                "id": "poQ1uiA34gLEmVnMXJXoGwrCRLH9aMmAqx4TzMK6",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_445_Athena_Commando_F_BannerD",
                         "name": "Marked Marauder",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -647,11 +711,13 @@
                 "variants": []
             },
             {
-                "id": "unfb0nVOZ0-Bez01oDM1K1CwZM1Cee4lXSQQoDmd",
+                "id": "YqBq5t0Gtr2Hauk2OHZ2IKUSURWOkmBWKBgDZPYc",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_446_Athena_Commando_M_BannerA",
                         "name": "Symbol Stalwart",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -663,11 +729,13 @@
                 "variants": []
             },
             {
-                "id": "p2ZZbVcULZX1w-2L4kDxyYXMALHzrk-XXDKSKNHg",
+                "id": "DqdIcrhlcDV4De-9iB8-wtmpJ1GTYTDZvagSLDyE",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_447_Athena_Commando_M_BannerB",
                         "name": "Signature Sniper",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -679,11 +747,13 @@
                 "variants": []
             },
             {
-                "id": "hWVlxlOaJizuOnpUH0I9hBBCh2oILEkqnieMOZ3I",
+                "id": "3eLmQhpr6-H3XnCojo614zgRtNdmH6NC-iqXE6ry",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_448_Athena_Commando_M_BannerC",
                         "name": "Branded Brawler",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -695,11 +765,13 @@
                 "variants": []
             },
             {
-                "id": "uoaftCeFNcPgB3zEPpn8qmGprHY1eUBCNhVIUv6h",
+                "id": "hrXuAcDeqf1Z3wdzXgld2jUN3zDwzNdFhw89Yh5O",
                 "items": [
                     {
                         "item": "AthenaCharacter:CID_449_Athena_Commando_M_BannerD",
                         "name": "Lt. Logo",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -711,11 +783,13 @@
                 "variants": []
             },
             {
-                "id": "PS-YvLowyjeYBf2Ghgs57UCi17bP59rxpYhcMftk",
+                "id": "-hyuWBRGAG0QATzGygqrNGD61PGbXYqE0OmFT6ZK",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_222_Banner",
                         "name": "Emblematic",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -727,11 +801,13 @@
                 "variants": []
             },
             {
-                "id": "Ihtad1SGKAjwLsONBk1osykaJaeLc4ERjuLIw8Wz",
+                "id": "m8Oru0aHQmDBws8C3AvUwPu3LVAAOyYZSx-xJNW9",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_289_Banner",
                         "name": "Banner Cape",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Customize your look by choosing a Banner and color in your Locker."
                     }
@@ -743,11 +819,13 @@
                 "variants": []
             },
             {
-                "id": "LzKE9FGXW4cnIoQDwoWnuALLHCYtUk6s4w5azmCS",
+                "id": "B7DfdZss5fK-rAfVqwK08uHyyBY8sjNKM9TmeXfq",
                 "items": [
                     {
                         "item": "AthenaGlider:Glider_ID_153_Banner",
                         "name": "Custom Cruiser",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Fly your banner."
                     }
@@ -764,7 +842,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "jTSFDnoGJNrABa0NBQiEm5wSyEjxsEu1lQtM8HNm",
+                "id": "-iMKD53v3HnXZT0P1HYceybn7QLCefktEMVtd6yY",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_259_Ashton_SaltLake",
@@ -773,6 +851,8 @@
                     {
                         "item": "AthenaCharacter:CID_400_Athena_Commando_M_AshtonSaltLake",
                         "name": "Star-Lord Outfit",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Do something good, something bad, a bit of both!"
                     }
@@ -782,11 +862,13 @@
                 "variants": []
             },
             {
-                "id": "JLJH8BDwKFL8XRkcOTLgaW1Auizxsa88cwAwIodL",
+                "id": "m9tbgLsKSevNxrvwEGglReT5xH2gRB905KUrhj6x",
                 "items": [
                     {
                         "item": "AthenaDance:EID_AshtonSaltLake",
                         "name": "Dance Off",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "A perfect distraction."
                     }
@@ -798,11 +880,13 @@
                 "variants": []
             },
             {
-                "id": "mVTvXTv7dfYFCawRsZObET7U6kw7zJEK89-SyDUG",
+                "id": "jinscaekYfcvDfhbE4qmCTHY9kjERRMWLjPwqEqs",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_203_AshtonSaltLake",
                         "name": "Guardian Axe",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Cut down cosmic threats."
                     }
@@ -814,11 +898,13 @@
                 "variants": []
             },
             {
-                "id": "eprW4LXE6oRZDN7tdmF34cXh5dQASgwn57-nV39F",
+                "id": "NwHQiz8axOlxU57S-bIDkkTV3n2nN7Liy3F4GZq4",
                 "items": [
                     {
                         "item": "AthenaGlider:Glider_ID_142_AshtonSaltLake",
                         "name": "The Milan",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Guard the galaxy in style."
                     }
@@ -833,7 +919,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "EBoGWmip-Ouhqlf9rgzQw2uoa80MxJuzDUntPOv6",
+                "id": "1yoMLT98zjw6PNfKWvzVQKJVsZwBD2Svuw1Z7dOx",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_258_AshtonBoardwalk",
@@ -842,6 +928,8 @@
                     {
                         "item": "AthenaCharacter:CID_399_Athena_Commando_F_AshtonBoardwalk",
                         "name": "Black Widow Outfit",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Whatever it takes."
                     }
@@ -851,11 +939,13 @@
                 "variants": []
             },
             {
-                "id": "13gDYBvCmt6kIGJKgsmXo6PW2P3TaA9q0QLX46oa",
+                "id": "OKkDD2lTHdFcMl8KkCeyEQ59I1hZfvz2SWriJ7Bj",
                 "items": [
                     {
                         "item": "AthenaDance:EID_AshtonBoardwalk",
                         "name": "Widow’s Pirouette",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "A deadly dance."
                     }
@@ -867,11 +957,13 @@
                 "variants": []
             },
             {
-                "id": "z4d9-WQjopX21aeOLiNP4QKgSh4AD1MdhCDBjXRi",
+                "id": "TAG-PBllUg2pXpFHzuI0enrVCDeTOOemjWXUjPAE",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_202_AshtonBoardwalk",
                         "name": "Widow’s Bite",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Shockingly effective."
                     }
@@ -888,7 +980,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "HZvEvHmyLNXpxYreaoqNDBOY647ZO4MmIYSvc2-a",
+                "id": "Pnme9qfZp8qJEy0USx29gZDQ-Mj0aAj95asWILTf",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_357_Sleepytime",
@@ -897,6 +989,8 @@
                     {
                         "item": "AthenaCharacter:CID_531_Athena_Commando_M_Sleepytime",
                         "name": "Slumber",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "It's time to say goodnight."
                     }
@@ -906,11 +1000,13 @@
                 "variants": []
             },
             {
-                "id": "IUOHhBO8Rz9pJ3njGN140on1IHLeY-T9KRbbW4uV",
+                "id": "0MK8KZjw54R3AEeCABwAKd320o0AzZMwqw7PGC0G",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_272_SleepyTime",
                         "name": "Nighty Night",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Spread some sweet dreams."
                     }
@@ -922,11 +1018,13 @@
                 "variants": []
             },
             {
-                "id": "Tr5If-hc-Fw8j9TAT-hnUQp-FRQoMnt9dZqROAgT",
+                "id": "3Nd3KqqiO-j0ECTgEL9TtmPCWL0ReAtnt-sWeTi1",
                 "items": [
                     {
                         "item": "AthenaGlider:Glider_ID_174_SleepyTime",
                         "name": "Nite Flight",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Zzzzzzz."
                     }
@@ -938,11 +1036,13 @@
                 "variants": []
             },
             {
-                "id": "teNWBSbUp8xjjruwcdEfEFqw6ywUY0dNZqeulA3j",
+                "id": "zhnaYeYlrdedxIVJ--ENpVBywEjYTDlovZxG0UUe",
                 "items": [
                     {
                         "item": "AthenaItemWrap:Wrap_137_SleepyTime",
                         "name": "Dreamy",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Show your style."
                     }
@@ -959,7 +1059,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "5F-VEhNyREzKlK9jQNXgpiXgG6j6vWv16T89go5V",
+                "id": "UOwuoixnOUTaJQDHL3UikL8mNINcQ3ahr24U04au",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_601_Venus",
@@ -968,6 +1068,8 @@
                     {
                         "item": "AthenaCharacter:CID_132_Athena_Commando_M_Venus",
                         "name": "Flytrap",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Deviously inescapable."
                     }
@@ -977,11 +1079,13 @@
                 "variants": []
             },
             {
-                "id": "4xZpUm6g-76FC70N7cDlRI9w3VffNe-o1DkSc1Av",
+                "id": "4FsRwY2BFx1CFpn0Ao0XDBev0YmPIATz16n-ae52",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_056_Venus",
                         "name": "Tendril",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Rooted in fierce competition."
                     }
@@ -993,11 +1097,13 @@
                 "variants": []
             },
             {
-                "id": "bDCiBRMsrad4JISoeOC7odkzY8NLKNx2wWTq5Jzn",
+                "id": "Jtgz5bidEJquzI-hqNTg0Bi5EAJ4KxizYoxze7OM",
                 "items": [
                     {
                         "item": "AthenaGlider:Glider_ID_039_Venus",
                         "name": "Venus Flyer",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Pretty fly."
                     }
@@ -1014,7 +1120,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "YMGwuI4Q1HDMMYzozg2653lsBp7WLQ7WmJ5rb4g-",
+                "id": "EoHjja6fP-Kjl0zJF3tPNQxos73LkCQ8ozn-CqVJ",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_280_DemonHunterFemale",
@@ -1023,6 +1129,8 @@
                     {
                         "item": "AthenaCharacter:CID_426_Athena_Commando_F_DemonHunter",
                         "name": "Callisto",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Demons, creeps, and monsters beware."
                     }
@@ -1032,7 +1140,7 @@
                 "variants": []
             },
             {
-                "id": "Sw3GcN8HTYyXoojqETkhIMBqTwDi7RA3sk156hef",
+                "id": "UC-qol6VgAGQAARQKmDQtItI9xNJbQjAjIVgjX1z",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_281_DemonHunterMale",
@@ -1041,6 +1149,8 @@
                     {
                         "item": "AthenaCharacter:CID_427_Athena_Commando_M_DemonHunter",
                         "name": "Asmodeus",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Stare down your enemies."
                     }
@@ -1050,11 +1160,13 @@
                 "variants": []
             },
             {
-                "id": "cpPEELvrGtKVn9GRq4P65oaIQ0sNswc-cZwpSgfv",
+                "id": "A4GtOHYKvOPN8rjSjvtON9dBIJoNSnUqPltvGJV4",
                 "items": [
                     {
                         "item": "AthenaPickaxe:Pickaxe_ID_216_DemonHunter1H",
                         "name": "Foul Play",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Nailed it!"
                     }
@@ -1066,11 +1178,13 @@
                 "variants": []
             },
             {
-                "id": "-c5ZvWh4DmXeI3DuNhCQyAITMmYiAe4zhA0BsRHR",
+                "id": "NFbvJWE-416dRyWPl5TaNdXozBUgNuf-xlCYuPFC",
                 "items": [
                     {
                         "item": "AthenaGlider:Glider_ID_152_DemonHunter",
                         "name": "Batso",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Be afraid, be slightly afraid!"
                     }
@@ -1087,7 +1201,7 @@
         "Daily": [],
         "Weekly": [
             {
-                "id": "hpthAfB0w6P-yR7LIBLEGfprTjXGGaqFspmmF1-C",
+                "id": "jDDoY624FEhaPUqtw3YpphJFSk0MmSOu1M3evXV4",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_226_BandageNinjaFemale",
@@ -1096,6 +1210,8 @@
                     {
                         "item": "AthenaCharacter:CID_362_Athena_Commando_F_BandageNinja",
                         "name": "Kuno",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Master the art of deception."
                     }
@@ -1107,7 +1223,7 @@
                 "variants": []
             },
             {
-                "id": "6wNyzkb58MtTuYG5rQRilRM01qp9ROYt6QNTkjj6",
+                "id": "jIZMKRwlNuWLBG-q0d6J0LT90aEKQC6AgJre7ypX",
                 "items": [
                     {
                         "item": "AthenaBackpack:BID_225_BandageNinjaMale",
@@ -1116,6 +1232,8 @@
                     {
                         "item": "AthenaCharacter:CID_361_Athena_Commando_M_BandageNinja",
                         "name": "Kenji",
+                        "singleprice": -1,
+                        "price": -1,
                         "variants": [],
                         "description": "Strike from the shadows."
                     }

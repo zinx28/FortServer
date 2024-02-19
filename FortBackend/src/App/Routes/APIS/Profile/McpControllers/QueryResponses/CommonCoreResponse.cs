@@ -55,9 +55,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                 
                 Mcp CommonCoreClass = new Mcp()
                 {
-                    profileRevision = AccountDataParsed.athena.RVN,
+                    profileRevision = AccountDataParsed.commoncore.RVN,
                     profileId = ProfileId,
-                    profileChangesBaseRevision = AccountDataParsed.athena.RVN,
+                    profileChangesBaseRevision = AccountDataParsed.commoncore.RVN,
                     profileChanges = new List<dynamic>
                     {
                         new ProfileChange
@@ -70,7 +70,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                                 Update = "",
                                 Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
                                 Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
-                                rvn = AccountDataParsed.athena.RVN,
+                                rvn = AccountDataParsed.commoncore.RVN,
                                 WipeNumber = 1,
                                 accountId = AccountId,
                                 profileId = ProfileId,
@@ -103,12 +103,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                                     }
                                 },
                                 items = new Dictionary<string, object>(),
-                                commandRevision = AccountDataParsed.athena.CommandRevision,
+                                commandRevision = AccountDataParsed.commoncore.CommandRevision,
                             }
 
                             }
                     },
-                    profileCommandRevision = AccountDataParsed.athena.CommandRevision,
+                    profileCommandRevision = AccountDataParsed.commoncore.CommandRevision,
                     serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     responseVersion = 1,
                 };

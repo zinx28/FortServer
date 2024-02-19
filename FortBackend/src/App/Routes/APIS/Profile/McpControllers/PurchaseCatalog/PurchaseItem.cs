@@ -45,6 +45,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
             Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
             List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
             int BaseRev = AccountDataParsed.commoncore.RVN;
+            int BaseRev2 = AccountDataParsed.athena.RVN;
 
             foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
             {
@@ -303,7 +304,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                         {
                             profileRevision = AccountDataParsed.athena.RVN,
                             profileId = "athena",
-                            profileChangesBaseRevision = BaseRev,
+                            profileChangesBaseRevision = BaseRev2,
                             profileChanges = MultiUpdates,
                             profileCommandRevision = AccountDataParsed.athena.CommandRevision,
                         }

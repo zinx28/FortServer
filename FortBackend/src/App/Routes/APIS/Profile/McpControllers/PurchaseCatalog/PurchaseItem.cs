@@ -243,13 +243,18 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 }
 
                 UpdatedData.Add($"commoncore.items.{GrabPlacement}.Currency.quantity", Price);
-                //if (MultiUpdates.Count > 0)
-                //{
-                //    UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
-                //    UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision + 1);
-                //}
+                if (MultiUpdates.Count > 0)
+                {
+                    AccountDataParsed.athena.RVN += 1;
+                    AccountDataParsed.athena.CommandRevision += 1;
+                    UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN);
+                    UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision);
+                }
+
                 if (ApplyProfileChanges.Count > 0)
                 {
+                    AccountDataParsed.commoncore.RVN += 1;
+                    AccountDataParsed.commoncore.CommandRevision += 1;
                     UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN + 1);
                     UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision + 1);
                 }
@@ -263,10 +268,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                     }
                 });
 
-                var AthenaNew = await Handlers.FindOne<Account>("accountId", AccountDataParsed.AccountId);
-
-                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AthenaNew)?[0];
-
+         
                 Console.WriteLine("TEST");
 
                 List<dynamic> BigA = new List<dynamic>();

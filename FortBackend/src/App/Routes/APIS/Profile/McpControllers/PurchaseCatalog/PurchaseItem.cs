@@ -255,8 +255,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 {
                     AccountDataParsed.commoncore.RVN += 1;
                     AccountDataParsed.commoncore.CommandRevision += 1;
-                    UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN + 1);
-                    UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision + 1);
+                    UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN);
+                    UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision);
                 }
               
                 await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
@@ -271,7 +271,6 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
          
                 Console.WriteLine("TEST");
 
-                List<dynamic> BigA = new List<dynamic>();
                 if (Season.SeasonFull >= 12.20)
                 {
                     Mcp test = await CommonCoreResponse.Grab(AccountDataParsed.AccountId, ProfileId, Season, AccountDataParsed.commoncore.RVN, AccountDataParsed);
@@ -280,9 +279,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
 
                 Mcp mcp = new Mcp()
                 {
-                    profileRevision = AccountDataParsed.commoncore.RVN + 1,
+                    profileRevision = AccountDataParsed.commoncore.RVN,
                     profileId = ProfileId,
-                    profileChangesBaseRevision = BaseRev + 1,
+                    profileChangesBaseRevision = BaseRev,
                     profileChanges = ApplyProfileChanges,
                     notifications = new List<McpNotifications>()
                     {
@@ -296,17 +295,17 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                             }
                         }
                     },
-                    profileCommandRevision = AccountDataParsed.commoncore.CommandRevision + 1,
+                    profileCommandRevision = AccountDataParsed.commoncore.CommandRevision,
                     serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     multiUpdate = new List<object>()
                     {
                         new
                         {
-                            profileRevision = AccountDataParsed.athena.RVN + 1,
+                            profileRevision = AccountDataParsed.athena.RVN,
                             profileId = "athena",
-                            profileChangesBaseRevision = BaseRev + 1,
+                            profileChangesBaseRevision = BaseRev,
                             profileChanges = MultiUpdates,
-                            profileCommandRevision = AccountDataParsed.athena.CommandRevision + 1,
+                            profileCommandRevision = AccountDataParsed.athena.CommandRevision,
                         }
                     },
                     responseVersion = 1

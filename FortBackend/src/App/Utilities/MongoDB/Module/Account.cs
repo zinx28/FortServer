@@ -84,9 +84,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
         [BsonElement("Season")]
         [BsonIgnoreIfNull]
-        public Season[] Seasons { get; set; } = new Season[]
+        public SeasonClass[] Seasons { get; set; } = new SeasonClass[]
         {
-            new Season {
+            new SeasonClass {
                 SeasonNumber = 12,
                 Level = 1,
                 BookLevel = 1,
@@ -199,7 +199,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [JsonProperty("dailyQuestRerolls")]
         public int Rerolls { get; set; } = 1;
     }
-    public class Season
+    public class SeasonClass
     {
         [BsonElement("season")]
         [JsonProperty("season")]

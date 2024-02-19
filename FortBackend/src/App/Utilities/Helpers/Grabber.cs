@@ -1,10 +1,18 @@
-﻿namespace FortBackend.src.App.Utilities.Helpers
+﻿using FortBackend.src.App.Utilities.MongoDB.Module;
+using System.IO;
+
+namespace FortBackend.src.App.Utilities.Helpers
 {
     public class Grabber
     {
-        public static async Task<int> SeasonUserAgent(HttpRequest Request)
+        public class VersionClass
         {
-            int season = 2;
+            public int Season { get; set; } = 2;
+            public float SeasonFull { get; set; } = 2;
+        }
+        public static async Task<VersionClass> SeasonUserAgent(HttpRequest Request)
+        {
+            VersionClass VersionIG = new VersionClass();
             try
             {
                 var userAgent = Request.Headers["User-Agent"].ToString();
@@ -18,9 +26,17 @@
                     {
                         string[] seasonParts = userAgentParts[1].Split('.');
 
-                        if (seasonParts.Length > 0 && int.TryParse(seasonParts[0], out int parsedSeason))
+                        if(seasonParts.Length > 0)
                         {
-                            season = parsedSeason;
+                            if (float.TryParse(seasonParts[0], out float parsedSeason1) && float.TryParse(seasonParts[1], out float parsedSeason2))
+                            {
+                                VersionIG.SeasonFull = float.Parse($"{parsedSeason1}.{parsedSeason2}");
+                            }
+
+                            if (int.TryParse(seasonParts[0], out int parsedSeason))
+                            {
+                                VersionIG.Season = parsedSeason;
+                            }
                         }
                     }
                 }
@@ -29,7 +45,7 @@
             {
                 Logger.Error("[Grabber:SeasonUserAgent] -> " + ex.Message);
             }
-            return season;
+            return VersionIG;
         }
     }
 }

@@ -10,6 +10,7 @@ using FortBackend.src.App.Routes.APIS.Profile.McpControllers;
 using System.Text;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.Profile
 {
@@ -41,8 +42,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             var requestbody = await reader.ReadToEndAsync();
-                            var Season = await Grabber.SeasonUserAgent(Request);
-       
+                            VersionClass Season = await Grabber.SeasonUserAgent(Request);
                             if (string.IsNullOrEmpty(requestbody))
                             {
                                 throw new BaseError

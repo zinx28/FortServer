@@ -10,22 +10,23 @@ using MongoDB.Driver;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Security.Claims;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
 {
     public class AthenaResponse
     {
-        public static async Task<Mcp> Grab(string AccountId, string ProfileId, int Season, int RVN, Account AccountDataParsed)
+        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed)
         {
             try
             {
-                bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
+                bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 if (!FoundSeasonDataInProfile)
                 {
-                    string seasonJson = JsonConvert.SerializeObject(new Season
+                    string seasonJson = JsonConvert.SerializeObject(new SeasonClass
                     {
-                        SeasonNumber = Season,
+                        SeasonNumber = Season.Season,
                         BookLevel = 1,
                         BookXP = 0,
                         BookPurchased = false,
@@ -53,14 +54,26 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                     return new Mcp();
                 }
 
-                Season[] Seasons = AccountDataParsed.commoncore.Seasons;
+                SeasonClass[] Seasons = AccountDataParsed.commoncore.Seasons;
 
                 if (AccountDataParsed.commoncore.Seasons != null)
                 {
-                    Season seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
+                    SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season);
 
                     if (seasonObject != null)
                     {
+                        if(AccountDataParsed.athena.RVN == AccountDataParsed.athena.CommandRevision)
+                        {
+                            AccountDataParsed.athena.RVN = +1;
+                            //.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
+                            await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>()
+                            {
+                                {
+                                    $"athena.RVN", AccountDataParsed.athena.RVN + 1
+                                }
+                            });
+
+                        }
                         Console.WriteLine("CORRECT SEASON!");
                         DailyQuests quest_manager = seasonObject.DailyQuests;
                         DateTime inputDateTime1;
@@ -137,7 +150,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                                 level = seasonObject.Level,
                                                 book_purchased = seasonObject.BookPurchased,
                                                 book_xp = seasonObject.BattleStars,
-                                                season_num = Season,
+                                                season_num = Season.Season,
                                                 book_level = seasonObject.BookLevel
                                             }
                                         },

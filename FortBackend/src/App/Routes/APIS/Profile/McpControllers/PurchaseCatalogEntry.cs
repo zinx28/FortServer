@@ -5,21 +5,22 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Http.HttpResults;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 {
     public class PurchaseCatalogEntry
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, int Season, int RVN, Account AccountDataParsed, PurchaseCatalogEntryRequest Body)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed, PurchaseCatalogEntryRequest Body)
         {
             Console.WriteLine(ProfileId);
             if (ProfileId == "common_core")
             {
-                Season[] Seasons = AccountDataParsed.commoncore.Seasons;
+                SeasonClass[] Seasons = AccountDataParsed.commoncore.Seasons;
 
                 if (AccountDataParsed.commoncore.Seasons != null)
                 {
-                    Season seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
+                    SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season);
 
                     if (seasonObject != null)
                     {
@@ -47,7 +48,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 
                                 if (OfferId.Contains(":/"))
                                 {
-                                    Mcp mcp = await PurchaseItem.Init(ProfileId, Body, AccountDataParsed);
+                                    Mcp mcp = await PurchaseItem.Init(Season, ProfileId, Body, AccountDataParsed);
                                     return mcp;
                                 }
                             }

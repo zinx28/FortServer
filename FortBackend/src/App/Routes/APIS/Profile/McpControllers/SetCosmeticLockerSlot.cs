@@ -5,13 +5,15 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+//using MongoDB.Bson.IO;
 using Newtonsoft.Json;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 {
     public class SetCosmeticLockerSlot
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, int Season, int RVN, Account AccountDataParsed, SetCosmeticLockerSlotRequest Body)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed, SetCosmeticLockerSlotRequest Body)
         {
 
             Console.WriteLine(Body);
@@ -68,13 +70,14 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
                 UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision + 1);
                 await Handlers.UpdateOne<Account>("accountId", AccountId, UpdatedData);
-
-                return new Mcp()
+                List<dynamic> BigA = new List<dynamic>();
+                if (Season.SeasonFull >= 12.20)
                 {
-                    profileRevision = AccountDataParsed.athena.RVN + 1,
-                    profileId = "athena",
-                    profileChangesBaseRevision = BaseRev + 1,
-                    profileChanges = new List<object>()
+                    Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
+                    BigA = test.profileChanges;
+                }else
+                {
+                    BigA = new List<object>()
                     {
                         new
                         {
@@ -82,7 +85,27 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             name = $"favorite_{Body.category.ToLower()}",
                             value = Body.itemToSlot
                         }
-                    },
+                    };
+                }
+                //var test2 = 
+                //if(AccountDataParsed.athena.RVN)
+
+                //AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
+                return new Mcp()
+                {
+                    profileRevision = AccountDataParsed.athena.RVN + 1,
+                    profileId = "athena",
+                    profileChangesBaseRevision = BaseRev + 1,
+                    profileChanges = BigA,
+                    //new List<object>()
+                    //{
+                    //    //new
+                    //    //{
+                    //    //    changeType = "statModified",
+                    //    //    name = $"favorite_{Body.category.ToLower()}",
+                    //    //    value = Body.itemToSlot
+                    //    //}
+                    //},
                     profileCommandRevision = AccountDataParsed.athena.CommandRevision + 1,
                     serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     responseVersion = 1

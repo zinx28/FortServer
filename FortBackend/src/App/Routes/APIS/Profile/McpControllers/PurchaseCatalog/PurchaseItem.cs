@@ -1,4 +1,6 @@
 ﻿using Discord;
+using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
+using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
@@ -8,12 +10,13 @@ using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Shop.Helpers.Class;
 using FortBackend.src.App.Utilities.Shop.Helpers.Data;
 using Newtonsoft.Json;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
 {
     public class PurchaseItem
     {
-        public static async Task<Mcp> Init(string ProfileId, PurchaseCatalogEntryRequest Body, Account AccountDataParsed)
+        public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, Account AccountDataParsed)
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "shop.json");
             string json = System.IO.File.ReadAllText(filePath);
@@ -41,7 +44,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
             var ApplyProfileChanges = new List<object>();
             Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
             List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
-            int BaseRev = AccountDataParsed.athena.RVN;
+            int BaseRev = AccountDataParsed.commoncore.RVN;
 
             foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
             {
@@ -247,8 +250,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 //}
                 if (ApplyProfileChanges.Count > 0)
                 {
-                    UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
-                    UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision + 1);
+                    UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN + 1);
+                    UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision + 1);
                 }
               
                 await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
@@ -265,9 +268,17 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AthenaNew)?[0];
 
                 Console.WriteLine("TEST");
+
+                List<dynamic> BigA = new List<dynamic>();
+                if (Season.SeasonFull >= 12.20)
+                {
+                    Mcp test = await CommonCoreResponse.Grab(AccountDataParsed.AccountId, ProfileId, Season, AccountDataParsed.commoncore.RVN, AccountDataParsed);
+                    ApplyProfileChanges = test.profileChanges;
+                }
+
                 Mcp mcp = new Mcp()
                 {
-                    profileRevision = AccountDataParsed.athena.RVN + 1,
+                    profileRevision = AccountDataParsed.commoncore.RVN + 1,
                     profileId = ProfileId,
                     profileChangesBaseRevision = BaseRev + 1,
                     profileChanges = ApplyProfileChanges,
@@ -283,7 +294,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                             }
                         }
                     },
-                    profileCommandRevision = AccountDataParsed.athena.CommandRevision + 1,
+                    profileCommandRevision = AccountDataParsed.commoncore.CommandRevision + 1,
                     serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     multiUpdate = new List<object>()
                     {

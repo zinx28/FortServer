@@ -8,22 +8,23 @@ using System.Globalization;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
 using FortBackend.src.App.Utilities;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
 {
     public class CommonCoreResponse
     {
-        public static async Task<Mcp> Grab(string AccountId, string ProfileId, int Season, int RVN, Account AccountDataParsed)
+        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed)
         {
             try
             {
-                bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
+                bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 if (!FoundSeasonDataInProfile)
                 {
-                    string seasonJson = JsonConvert.SerializeObject(new Season
+                    string seasonJson = JsonConvert.SerializeObject(new SeasonClass
                     {
-                        SeasonNumber = Season,
+                        SeasonNumber = Season.Season,
                         BookLevel = 1,
                         BookXP = 0,
                         BookPurchased = false,

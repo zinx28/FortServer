@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.Storefront
 {
@@ -26,7 +27,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                 }
                 dynamic shopData = JsonConvert.DeserializeObject(Json);
 
-                int season = await Grabber.SeasonUserAgent(Request);
+                VersionClass season = await Grabber.SeasonUserAgent(Request);
 
                 var Response = new
                 {
@@ -51,13 +52,13 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                         {
                                             new
                                             {
-                                                eventType = $"EventFlag.Season{season}",
+                                                eventType = $"EventFlag.Season{season.Season}",
                                                 activeUntil = "9999-12-31T23:59:59.999Z",
                                                 activeSince = "2020-01-010T23:59:59.999Z"
                                             },
                                             new
                                             {
-                                                eventType = $"EventFlag.LobbySeason{season}",
+                                                eventType = $"EventFlag.LobbySeason{season.Season}",
                                                 activeUntil = "9999-12-31T23:59:59.999Z",
                                                 activeSince = "2020-01-01T23:59:59.999Z"
                                             }
@@ -66,8 +67,8 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                                         {
                                             activeStorefronts = new object[] { },
                                             eventNamedWeights = new object { },
-                                            seasonNumber = season,
-                                            seasonTemplateId = $"AthenaSeason:athenaseason{season}",
+                                            seasonNumber = season.Season,
+                                            seasonTemplateId = $"AthenaSeason:athenaseason{season.Season}",
                                             matchXpBonusPoints = 0,
                                             seasonBegin = "2020-01-01T00:00:00Z",
                                             seasonEnd = "2067-01-01T00:00:00Z",

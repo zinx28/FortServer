@@ -6,6 +6,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System.Net;
 using ZstdSharp.Unsafe;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.APIS.API
 {
@@ -21,9 +22,8 @@ namespace FortBackend.src.App.Routes.APIS.API
             try
             {
                 var userAgent = Request.Headers["User-Agent"].ToString();
-                string season = "2";
-
-                season = (await Grabber.SeasonUserAgent(Request)).ToString();
+                string season = "";
+                season = (await Grabber.SeasonUserAgent(Request)).Season.ToString();
                 if (season == "10")
                 {
                     season = "x";

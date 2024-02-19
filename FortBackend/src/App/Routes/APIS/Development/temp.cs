@@ -197,6 +197,162 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                 FortBackend.src.App.Utilities.MongoDB.Module.Account AccountData = new FortBackend.src.App.Utilities.MongoDB.Module.Account
                                 {
                                     AccountId = AccountId,
+                                    athena = new Athena()
+                                    {
+                                        Items = new List<Dictionary<string, object>>()
+                                        {
+                                            new Dictionary<string, object>
+                                            {
+                                                ["sandbox_loadout"] = new
+                                                {
+                                                    templateId = "CosmeticLocker:cosmeticlocker_athena",
+                                                    attributes = new
+                                                    {
+                                                        locker_slots_data = new
+                                                        {
+                                                            slots = new
+                                                            {
+                                                                musicpack = new
+                                                                {
+                                                                    items = new List<string> { "" }
+                                                                },
+                                                                character = new
+                                                                {
+                                                                    items = new List<string> { "" },
+                                                                    ActiveVariants = new string[0]
+                                                                },
+                                                                backpack = new
+                                                                {
+                                                                    items = new List<string> { "" }
+                                                                },
+                                                                pickaxe = new
+                                                                {
+                                                                    items = new List<string> { "" }
+                                                                },
+                                                                skydivecontrail = new
+                                                                {
+                                                                    items = new List<string> { "" }
+                                                                },
+                                                                dance = new
+                                                                {
+                                                                    items = new string[]
+                                                                    {
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        ""
+                                                                    }
+                                                                },
+                                                                loadingscreen = new
+                                                                {
+                                                                    items = new List<string> { "" }
+                                                                },
+                                                                glider = new
+                                                                {
+                                                                    items = new List<string> { "" }
+                                                                },
+                                                                itemwrap = new
+                                                                {
+                                                                   items = new string[]
+                                                                    {
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        "",
+                                                                        ""
+                                                                    }
+                                                                }
+                                                            },
+                                                        },
+                                                        use_count = 0,
+                                                        banner_color_template = "",
+                                                        banner_icon_template = "",
+                                                        locker_name = "",
+                                                        item_seen = false,
+                                                        favorite = false
+                                                    },
+                                                    quantity = 1
+                                                }
+                                            },
+                                            new Dictionary<string, object>
+                                            {
+                                                ["AthenaPickaxe:DefaultPickaxe"] = new
+                                                {
+                                                    attributes = new
+                                                    {
+                                                        favorite = false,
+                                                        item_seen = true,
+                                                        level = 0,
+                                                        max_level_bonus = 0,
+                                                        rnd_sel_cnt = 0,
+                                                        variants = new List<object>(),
+                                                        xp = 0,
+                                                    },
+                                                    templateId = "AthenaPickaxe:DefaultPickaxe",
+                                                    quantity = 1
+                                                }
+                                            },
+                                            new Dictionary<string, object>
+                                            {
+                                                ["AthenaGlider:DefaultGlider"] = new
+                                                {
+                                                    attributes = new
+                                                    {
+                                                        favorite = false,
+                                                        item_seen = true,
+                                                        level = 0,
+                                                        max_level_bonus = 0,
+                                                        rnd_sel_cnt = 0,
+                                                        variants = new List<object>(),
+                                                        xp = 0,
+                                                    },
+                                                    templateId = "AthenaGlider:DefaultGlider",
+                                                    quantity = 1
+                                                }
+                                            },
+                                            new Dictionary<string, object>
+                                            {
+                                                ["AthenaDance:EID_DanceMoves"] = new
+                                                {
+                                                    attributes = new
+                                                    {
+                                                        favorite = false,
+                                                        item_seen = true,
+                                                        level = 0,
+                                                        max_level_bonus = 0,
+                                                        rnd_sel_cnt = 0,
+                                                        variants = new List<object>(),
+                                                        xp = 0,
+                                                    },
+                                                    templateId = "AthenaDance:EID_DanceMoves",
+                                                    quantity = 1
+                                                }
+                                            }
+                                        }
+                                    },
+                                    commoncore = new CommonCore()
+                                    {
+                                        Items = new List<Dictionary<string, object>>()
+                                        {
+                                            new Dictionary<string, object>
+                                            {
+                                                ["Currency"] = new
+                                                {
+                                                    templateId = "Currency:MtxPurchased",
+                                                    attributes = new
+                                                    {
+                                                        platform = "EpicPC"
+                                                    },
+                                                    quantity = 1000
+                                                }
+                                            }
+                                        }
+                                    },
                                     DiscordId = id
                                 };
 

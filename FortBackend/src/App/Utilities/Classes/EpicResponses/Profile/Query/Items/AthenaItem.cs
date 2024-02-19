@@ -1,4 +1,6 @@
-﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items
+﻿using Microsoft.Extensions.Primitives;
+
+namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items
 {
 
     public class AthenaItem
@@ -10,12 +12,19 @@
     }
     public class AthenaItemAttributes
     {
-        public bool favorite { get; set; }
-        public bool item_seen { get; set; }
-        public int level { get; set; }
-        public int max_level_bonus { get; set; }
-        public int rnd_sel_cnt { get; set; }
-        public List<object> variants { get; set; } = new List<object>();
-        public int xp { get; set; }
+        public bool favorite { get; set; } = false;
+        public bool item_seen { get; set; } = false;
+        public int level { get; set; } = 1;
+        public int max_level_bonus { get; set; } = 0;
+        public int rnd_sel_cnt { get; set; } = 0;
+        public List<AthenaItemVariants> variants { get; set; } = new List<AthenaItemVariants>();
+        public int xp { get; set; } = 0;
+    }
+
+    public class AthenaItemVariants
+    {
+        public string channel { get; set; } = string.Empty;
+        public string active { get; set; } = string.Empty;
+        public string[] owned { get; set; } = { };
     }
 }

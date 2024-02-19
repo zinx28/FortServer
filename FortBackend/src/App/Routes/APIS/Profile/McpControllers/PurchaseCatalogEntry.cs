@@ -2,6 +2,7 @@
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Http.HttpResults;
 
@@ -46,7 +47,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 
                                 if (OfferId.Contains(":/"))
                                 {
-                                    Mcp mcp = await PurchaseItem.Init(Body, AccountDataParsed);
+                                    Mcp mcp = await PurchaseItem.Init(ProfileId, Body, AccountDataParsed);
                                     return mcp;
                                 }
                             }

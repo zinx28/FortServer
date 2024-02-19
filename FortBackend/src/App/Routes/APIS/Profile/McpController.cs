@@ -9,6 +9,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers;
 using System.Text;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 
 namespace FortBackend.src.App.Routes.APIS.Profile
 {

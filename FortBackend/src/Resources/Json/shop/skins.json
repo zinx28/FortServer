@@ -1534,24 +1534,15 @@
         "variants": [
             {
                 "channel": "Parts",
-                "type": "STYLE",
-                "options": [
-                    {
-                        "tag": "Stage1",
-                        "name": "DEFAULT"
-                    },
-                    {
-                        "tag": "Stage2",
-                        "name": "GLASSES"
-                    }
-                ]
+                "active": "Stage1",
+                "owned": [ "Stage1", "Stage2" ]
             }
         ],
         "description": "Ride a new wave to victory.",
         "categories": [],
         "items": [
             {
-                "item": "AthenaBAckpack:BID_107_GarageBandFemale",
+                "item": "AthenaBackpack:BID_107_GarageBandFemale",
                 "name": "Keytar",
                 "variants": []
             }

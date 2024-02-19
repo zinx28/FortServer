@@ -1,4 +1,4 @@
-﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile
+﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases
 {
     public class PurchaseCatalogEntryRequest
     {

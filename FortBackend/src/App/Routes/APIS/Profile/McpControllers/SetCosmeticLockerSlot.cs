@@ -21,6 +21,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
             {
                 Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
                 int BaseRev = AccountDataParsed.athena.RVN;
+                int GrabPlacement = GrabPlacement = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
+                .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
+
                 if (Body.category == "ItemWrap" || Body.category == "Dance")
                 {
                     // emote, wraps soon upcoming
@@ -37,7 +40,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             var ItemsCount = SandBoxLoadout.attributes.locker_slots_data.slots.itemwrap.items.Count();
                             string[] ReplacedItems = Enumerable.Repeat(Body.itemToSlot.ToLower(), ItemsCount).ToArray();
 
-                            UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", ReplacedItems);
+                            UpdatedData.Add($"athena.items.{GrabPlacement}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", ReplacedItems);
                         }
                     }
                     else
@@ -45,23 +48,23 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                         // emotes
                         if (Body.itemToSlot == "")
                         {
-                            UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", "");
+                            UpdatedData.Add($"athena.items.{GrabPlacement}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", "");
                         }else
                         {
-                            UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", Body.itemToSlot.ToLower());
+                            UpdatedData.Add($"athena.items.{GrabPlacement}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", Body.itemToSlot.ToLower());
                         }
                     }
                 }else
                 {
                     if(Body.itemToSlot == "")
                     {
-                        UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> {
+                        UpdatedData.Add($"athena.items.{GrabPlacement}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> {
                             ""
                         });
                     }
                     else
                     {
-                        UpdatedData.Add($"athena.items.0.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> { 
+                        UpdatedData.Add($"athena.items.{GrabPlacement}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> { 
                             Body.itemToSlot.ToLower() 
                         });
                     }

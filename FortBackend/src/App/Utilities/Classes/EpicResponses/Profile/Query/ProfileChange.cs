@@ -3,7 +3,6 @@
     public class ProfileChange
     {
         public string ChangeType { get; set; } = "fullProfileUpdate";
-        public string _id { get; set; } = "RANDOM";
         public ProfileData Profile { get; set; }
     }
 }

@@ -62,14 +62,13 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                     {
                         new ProfileChange
                         {
-                                ChangeType = "fullProfileUpdate",
-                            _id = "RANDOM",
+                            ChangeType = "fullProfileUpdate",
                             Profile = new ProfileData
                             {
-                                _id = "RANDOM",
+                                _id = AccountDataParsed.AccountId,
                                 Update = "",
                                 Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
+                                Updated = AccountDataParsed.commoncore.Updated,
                                 rvn = AccountDataParsed.commoncore.RVN,
                                 WipeNumber = 1,
                                 accountId = AccountId,

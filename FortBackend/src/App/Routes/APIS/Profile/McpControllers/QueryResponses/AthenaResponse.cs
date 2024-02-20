@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
@@ -87,14 +88,13 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                             {
                                 new ProfileChange
                                 {
-                                        ChangeType = "fullProfileUpdate",
-                                    _id = "RANDOM",
+                                    ChangeType = "fullProfileUpdate",
                                     Profile = new ProfileData
                                     {
-                                        _id = "RANDOM",
+                                        _id = AccountDataParsed.AccountId,
                                         Update = "",
                                         Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                        Updated = DateTime.Parse("2021-05-20T14:57:29.907Z"),
+                                        Updated = AccountDataParsed.athena.Updated,
                                         rvn = AccountDataParsed.athena.RVN,
                                         WipeNumber = 1,
                                         accountId = AccountId,
@@ -165,6 +165,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                             responseVersion = 1,
                         };
 
+                     
                         List<Dictionary<string, object>> items = AccountDataParsed.athena.Items;
 
                         foreach (Dictionary<string, object> item in items)

@@ -12,11 +12,11 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile
         public List<dynamic> profileChanges { get; set; } = new List<dynamic>();
      
         public List<McpNotifications> notifications { get; set; } = new List<McpNotifications>();
+
+        public int profileCommandRevision { get; set; } = 1;
         public DateTime serverTime { get; set; }
 
         public List<object> multiUpdate { get; set; } = new List<object>();
-
-        public int profileCommandRevision { get; set; } = 1;
         public int responseVersion { get; set; } = 1;
     }
 

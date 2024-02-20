@@ -85,7 +85,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 NotificationsItems.Add(new NotificationsItemsClass
                 {
                     itemType = ShopContent.item,
-                    itemGuid = ShopContent.id,
+                    itemGuid = ShopContent.item,
                     itemProfile = "athena"
                 });
 

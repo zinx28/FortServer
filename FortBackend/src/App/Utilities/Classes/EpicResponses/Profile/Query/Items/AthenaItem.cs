@@ -5,8 +5,8 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
 
     public class AthenaItem
     {
-        public AthenaItemAttributes attributes { get; set; } = new AthenaItemAttributes();
         public string templateId { get; set; } = string.Empty;
+        public AthenaItemAttributes attributes { get; set; } = new AthenaItemAttributes();
         public int quantity { get; set; } = 1;
 
     }

@@ -71,13 +71,14 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                                     response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
                                     break;
                                 default:
+                                    
                                     response = new Mcp
                                     {
-                                        profileRevision = RVN,
-                                        profileId = ProfileID,
-                                        profileChangesBaseRevision = RVN,
+                                        profileRevision = (ProfileID == "common_core" || ProfileID == "common_public") ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
+                                        profileId = ProfileID ,
+                                        profileChangesBaseRevision = (ProfileID == "common_core" || ProfileID == "common_public") ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
                                         //profileChanges = /,
-                                        profileCommandRevision = RVN,
+                                        profileCommandRevision = (ProfileID == "common_core" || ProfileID == "common_public") ? AccountDataParsed.commoncore.CommandRevision : AccountDataParsed.athena.CommandRevision,
                                         serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                                         responseVersion = 1
                                     };

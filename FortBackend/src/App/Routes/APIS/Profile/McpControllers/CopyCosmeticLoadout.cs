@@ -51,6 +51,29 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 if (Body.targetIndex < AccountDataParsed.athena.loadouts.Length && !string.IsNullOrEmpty(AccountDataParsed.athena.loadouts[Body.targetIndex]))
                 {
                     Console.WriteLine("WOAHG");
+                    string[] loadouts = AccountDataParsed.athena.loadouts;
+                    object objectToModify = AccountDataParsed.athena.Items.FirstOrDefault(item => item.ContainsKey(loadouts[Body.sourceIndex]));
+
+                    if(objectToModify != null)
+                    {
+                        Console.WriteLine("HI");
+                        if (string.IsNullOrEmpty(Body.optNewNameForTarget)) { }
+
+                        UpdatedData.Add("athena.last_applied_loadout", loadouts[Body.sourceIndex]);
+                    }
+                    else
+                    {
+                        throw new BaseError
+                        {
+                            errorCode = "errors.com.epicgames.modules.item_not_found",
+                            errorMessage = "Couldnt find loadout | FR",
+                            messageVars = new List<string> { "CopyCosmeticLoadout" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Couldnt find loadout | FR",
+                        };
+                    }
                     //if(!string.IsNullOrEmpty(Body.optNewNameForTarget))
                     //{
                     //    GrabPlacement = GrabPlacement = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
@@ -59,10 +82,14 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     //    SandboxLoadout test = AccountDataParsed.athena.Items[GrabPlacement][AccountDataParsed.athena.loadouts[Body.targetIndex]] as SandboxLoadout;
                     //    test.attributes.locker_name = Body.optNewNameForTarget;
                     //}
+
+                    await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
                 }
                 else
                 {
                     string RandomNewId = Guid.NewGuid().ToString();
+
+                    
                     //Console.WriteLine("Okey");
                     //foreach (var kvp in GrabbedPlaceMent)
                     //{
@@ -214,6 +241,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     //         $"athena.loadouts", RandomNewId
                     //    }
                     //}, false);
+
+               
 
                     await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
                     {

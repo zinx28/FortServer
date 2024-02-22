@@ -130,7 +130,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                                 rested_xp_cumulative = 0,
                                                 rested_xp_mult = 0,
                                                 season_friend_match_boost = seasonObject.season_friend_match_boost,
-                                                active_loadout_index = 0,
+                                                active_loadout_index = Array.IndexOf(AccountDataParsed.athena.loadouts, AccountDataParsed.athena.last_applied_loadout),
                                                 purchased_bp_offers = new List<object> { },
                                                 last_applied_loadout = AccountDataParsed.athena.last_applied_loadout?.ToString() ?? "",
                                                 //favorite_musicpack = AthenaDataParsed.athena.MusicPack.Items?.ToString() ?? "",
@@ -180,7 +180,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                
                                     if (itemAttributes1.templateId != null || value != null)
                                     {
-                                        Console.WriteLine(itemAttributes1);
+                                        //Console.WriteLine(itemAttributes1);
                                         if (itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
                                         {
                                            

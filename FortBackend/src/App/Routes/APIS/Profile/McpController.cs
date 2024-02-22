@@ -42,6 +42,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             var requestbody = await reader.ReadToEndAsync();
+                            Console.WriteLine(requestbody);
                             VersionClass Season = await Grabber.SeasonUserAgent(Request);
                             if (string.IsNullOrEmpty(requestbody))
                             {
@@ -69,6 +70,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                                     break;
                                 case "PurchaseCatalogEntry":
                                     response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
+                                    break;
+                                case "CopyCosmeticLoadout":
+                                    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
                                     break;
                                 default:
                                     

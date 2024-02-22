@@ -1,5 +1,6 @@
 ﻿using Amazon.Runtime.Internal.Transform;
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
+using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
@@ -35,6 +36,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                         error_description = "OutOfBounds | FR",
                     };
                 }
+                int BaseRev = AccountDataParsed.athena.RVN;
+
+
                 int GrabPlacement2 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                     .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
                 Console.WriteLine("PENIS");
@@ -58,8 +62,11 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     {
                         Console.WriteLine("HI");
                         if (string.IsNullOrEmpty(Body.optNewNameForTarget)) { }
-
+                        AccountDataParsed.athena.RVN += 1;
+                        AccountDataParsed.athena.CommandRevision += 1;
                         UpdatedData.Add("athena.last_applied_loadout", loadouts[Body.sourceIndex]);
+                        UpdatedData.Add("athena.RVN", AccountDataParsed.athena.RVN);
+                        UpdatedData.Add("athena.CommandRevision", AccountDataParsed.athena.RVN);
                     }
                     else
                     {
@@ -263,10 +270,17 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 }
 
                 //int GrabPlacement = GrabPlacement = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
-                //.TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
-
+                ////.TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
+                //if (Season.SeasonFull >= 12.20)
+                //{
+                //    Mcp test = await CommonCoreResponse.Grab(AccountDataParsed.AccountId, ProfileId, Season, AccountDataParsed.commoncore.RVN, AccountDataParsed);
+                //    ApplyProfileChanges = test.profileChanges;
+                //}
 
                 Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
+                response.profileRevision = AccountDataParsed.athena.RVN;
+                response.profileChangesBaseRevision = BaseRev;
+                response.profileCommandRevision = AccountDataParsed.athena.CommandRevision;
                 return response;
             }
 

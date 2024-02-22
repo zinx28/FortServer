@@ -172,16 +172,18 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                         {
                             try
                             {
-                                string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || k.Contains("loadout")) ?? "";
+                                string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || AccountDataParsed.athena.loadouts.Any(x => k.Contains(x))) ?? "";
                                 if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
                                 {
                                     dynamic itemAttributes1 = JsonConvert.DeserializeObject(value.ToString());
                                     var ProfileChange = AthenaClass.profileChanges[0] as ProfileChange;
-
+                               
                                     if (itemAttributes1.templateId != null || value != null)
                                     {
+                                        Console.WriteLine(itemAttributes1);
                                         if (itemAttributes1.templateId == "CosmeticLocker:cosmeticlocker_athena")
                                         {
+                                           
                                             Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
 
                                             if (ProfileChange != null && itemAttributes != null)

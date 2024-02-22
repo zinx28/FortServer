@@ -89,9 +89,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             {
                             RandomNewId, new Dictionary<string, object>
                             {
-                                { "TemplateId", $"CosmeticLocker:cosmeticlocker_athena" },
+                                { "templateId", $"CosmeticLocker:cosmeticlocker_athena" },
                                 {
-                                 "Attributes", new Dictionary<string, object>
+                                 "attributes", new Dictionary<string, object>
                                 {
 
                                     { "locker_slots_data", new Dictionary<string, object>

@@ -62,11 +62,13 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     {
                         Console.WriteLine("HI");
                         if (string.IsNullOrEmpty(Body.optNewNameForTarget)) { }
+                        Console.WriteLine(AccountDataParsed.athena.RVN);
+                        Console.WriteLine(AccountDataParsed.athena.CommandRevision);
                         AccountDataParsed.athena.RVN += 1;
                         AccountDataParsed.athena.CommandRevision += 1;
                         UpdatedData.Add("athena.last_applied_loadout", loadouts[Body.sourceIndex]);
                         UpdatedData.Add("athena.RVN", AccountDataParsed.athena.RVN);
-                        UpdatedData.Add("athena.CommandRevision", AccountDataParsed.athena.RVN);
+                        UpdatedData.Add("athena.CommandRevision", AccountDataParsed.athena.CommandRevision);
                     }
                     else
                     {

@@ -193,7 +193,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                     accesstoken = NewAccessToken,
                                     Password = GenerateRandomString(15)
                                 };
-                                string RandomNewId = Guid.NewGuid().ToString();
+                                //string RandomNewId = Guid.NewGuid().ToString();
                                 FortBackend.src.App.Utilities.MongoDB.Module.Account AccountData = new FortBackend.src.App.Utilities.MongoDB.Module.Account
                                 {
                                     AccountId = AccountId,
@@ -203,7 +203,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                         {
                                             new Dictionary<string, object>
                                             {
-                                                [RandomNewId] = new
+                                                ["sandbox_loadout"] = new
                                                 {
                                                     templateId = "CosmeticLocker:cosmeticlocker_athena",
                                                     attributes = new

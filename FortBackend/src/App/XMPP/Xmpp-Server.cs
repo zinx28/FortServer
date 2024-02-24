@@ -41,7 +41,13 @@ namespace FortBackend.src.App.XMPP
 
             app.Use(async (context, next) =>
             {
-                await next();
+                if(context.Request.Path == "//" && context.WebSockets.IsWebSocketRequest)
+                {
+                    Console.WriteLine("XMPP IS BEING CLALED");
+                }else
+                {
+                    await next();
+                }
             });
 
             app.Run();

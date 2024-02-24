@@ -24,13 +24,13 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 {
                     Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
 
-                    Console.WriteLine("fas");
+                    //Console.WriteLine("fas");
                     List<AthenaItem> contentconfig = JsonConvert.DeserializeObject<List<AthenaItem>>(jsonData); //dynamicbackgrounds.news
-                    Console.WriteLine("GR");
+                    //Console.WriteLine("GR");
                     ProfileChange test1 = response.profileChanges[0] as ProfileChange;
                     foreach (AthenaItem test in contentconfig)
                     {
-                        Console.WriteLine("TET");
+                        //Console.WriteLine("TET");
                         test1.Profile.items.Add(test.templateId, test);
                     }
                     return response;

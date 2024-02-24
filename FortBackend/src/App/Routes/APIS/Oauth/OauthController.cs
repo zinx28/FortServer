@@ -241,8 +241,8 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     token = $"eg1~{AccessToken}",
                     accountId = AccountId, // YPP!P
                 };
-                //GlobalData.AccessToken.Add(AccessTokenClient);
-                //GlobalData.RefreshToken.Add(RefreshTokenClient);
+                GlobalData.AccessToken.Add(AccessTokenClient);
+                GlobalData.RefreshToken.Add(RefreshTokenClient);
 
                 await Handlers.UpdateOne<Account>("accountId", AccountId, new Dictionary<string, object>
                 {

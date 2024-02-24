@@ -40,7 +40,7 @@ namespace FortBackend.src.App.XMPP
                 app.UseHttpsRedirection();
             #endif
 
-            app.UseRouting();
+            app.UseWebSockets();
 
             app.Use(async (context, next) =>
             {
@@ -76,6 +76,7 @@ namespace FortBackend.src.App.XMPP
                 }
             });
 
+            Logger.Log("XMPP STARTING", "XMPP");
             app.Run();
         }
      }

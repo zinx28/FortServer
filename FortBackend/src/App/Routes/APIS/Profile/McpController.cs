@@ -42,7 +42,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             var requestbody = await reader.ReadToEndAsync();
-                            Console.WriteLine(requestbody);
+                            //Console.WriteLine(requestbody);
                             VersionClass Season = await Grabber.SeasonUserAgent(Request);
                             if (string.IsNullOrEmpty(requestbody))
                             {

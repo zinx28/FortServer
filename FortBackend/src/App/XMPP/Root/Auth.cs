@@ -33,6 +33,7 @@ namespace FortBackend.src.App.XMPP.Root
 
                 if (authElementContent != null)
                 {
+                    //Console.WriteLine("YO");
                     byte[] decodedBytes = Convert.FromBase64String(authElementContent);
                     string decodedContent = Encoding.UTF8.GetString(decodedBytes);
                     string[] splitContent = decodedContent.Split('\u0000');

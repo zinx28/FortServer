@@ -12,7 +12,7 @@ namespace FortBackend.src.App.Routes.APIS.API
     {
         [HttpGet("receipts/v1/account/{accountId}/receipts")]
         public IActionResult Receipts(string accountId)
-        {   
+        {
             return Ok(new List<object>()
             {
                 new
@@ -73,6 +73,19 @@ namespace FortBackend.src.App.Routes.APIS.API
 
             return Content("true");
         }
+
+        //socialban/api/public/v1/
+        [HttpGet("/socialban/api/public/v1/{accountId}")]
+        public async Task<IActionResult> SocialBan(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return Ok(new
+            {
+                bans = Array.Empty<string>(),
+                warnings = Array.Empty<string>(),
+            });
+        }
+
         // gold
         [HttpGet("game/v2/br-inventory/account/{accountId}")]
         public async Task<IActionResult> Accinventory(string accountId)
@@ -83,8 +96,10 @@ namespace FortBackend.src.App.Routes.APIS.API
             if (AccountData != "Error")
             {
                 Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
-
-                globalcash = AccountDataParsed.athena.Gold;
+                if(AccountDataParsed != null)
+                {
+                    globalcash = AccountDataParsed.athena.Gold;
+                }
             }
 
             return Ok(new

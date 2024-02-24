@@ -42,19 +42,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                            .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
                 int GrabPlacement2 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                     .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
-                Console.WriteLine("PENIS");
-                
-                //foreach(var tesas in s)
-                //{
-                //    Console.WriteLine(tesas.Key + "    " +  tesas.Value);
-                //}
-                //Console.WriteLine(AccountDataParsed.athena.Items[GrabPlacement2]);
-                //var LoadOUtIG = AccountDataParsed.athena.Items[GrabPlacement2][AccountDataParsed.athena.last_applied_loadout];
-                int GrabPlacement;
-                Console.WriteLine("fds");
+ 
                 if (Body.targetIndex < AccountDataParsed.athena.loadouts.Length && !string.IsNullOrEmpty(AccountDataParsed.athena.loadouts[Body.targetIndex]))
                 {
-                    Console.WriteLine("WOAHG");
                     string[] loadouts = AccountDataParsed.athena.loadouts;
                     object objectToModify = AccountDataParsed.athena.Items.FirstOrDefault(item => item.ContainsKey(loadouts[Body.sourceIndex]));
                     Dictionary<string, object> GrabbedPlaceMent = AccountDataParsed.athena.Items[GrabPlacement2] as Dictionary<string, object>;
@@ -62,25 +52,15 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 
                     if (objectToModify != null)
                     {
-                        int GrabPlacement1 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
-                          .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
-                        Console.WriteLine("HI");
                         if (!string.IsNullOrEmpty(Body.optNewNameForTarget)) {
                           
 
-                            UpdatedData.Add($"athena.Items.{GrabPlacement1}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_name", Body.optNewNameForTarget);
+                            UpdatedData.Add($"athena.Items.{GrabPlacement2}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_name", Body.optNewNameForTarget);
                         }
 
-                       
-
-                        Console.WriteLine("FGS " + GrabPlacement3);
                         object objectToModify1 = GrabbedPlaceMent[AccountDataParsed.athena.last_applied_loadout];
                         if (objectToModify1 is JObject jsonLockerObject)
                         {
-                            //foreach (var kvp in GrabbedPlaceMent)
-                            //{
-                            //    Console.WriteLine($"Key1: {kvp.Key}, Value1: {kvp.Value}");
-                            //}
                             UpdatedData.Add($"athena.Items.{GrabPlacement3}.sandbox_loadout.attributes.locker_slots_data", new Dictionary<string, object>
                             {
                                 {
@@ -183,14 +163,6 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             error_description = "Couldnt find loadout | FR",
                         };
                     }
-                    //if(!string.IsNullOrEmpty(Body.optNewNameForTarget))
-                    //{
-                    //    GrabPlacement = GrabPlacement = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
-                    //    .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.loadouts[Body.targetIndex])).Count();
-                    //    AccountDataParsed.athena.loadouts[Body.targetIndex] = Body.optNewNameForTarget;
-                    //    SandboxLoadout test = AccountDataParsed.athena.Items[GrabPlacement][AccountDataParsed.athena.loadouts[Body.targetIndex]] as SandboxLoadout;
-                    //    test.attributes.locker_name = Body.optNewNameForTarget;
-                    //}
 
                     await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
                 }
@@ -198,27 +170,13 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 {
                     string RandomNewId = Guid.NewGuid().ToString();
                     Dictionary<string, object> GrabbedPlaceMent = AccountDataParsed.athena.Items[GrabPlacement3] as Dictionary<string, object>;
-            
-                    //Console.WriteLine("Okey");
-                    //foreach (var kvp in GrabbedPlaceMent)
-                    //{
-                    //    Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
-                    //}
-                    ////GrabbedPlaceMent.Keys
-                    //SandboxLoadout SomeThingIg = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(GrabbedPlaceMent[AccountDataParsed.athena.last_applied_loadout]));
-                    //Console.WriteLine();
                     object objectToModify = GrabbedPlaceMent["sandbox_loadout"];
-                    //Console.WriteLine($"Object Type: {objectToModify?.GetType().FullName}");
-                    //Console.WriteLine($"Object Content: {JsonConvert.SerializeObject(objectToModify)}");
-
-                    //
+             
                     List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
                     if (objectToModify is JObject jsonLockerObject)
                     {
                         //GrabbedPlaceMent.Remove(AccountDataParsed.athena.last_applied_loadout);
                         //GrabbedPlaceMent[RandomNewId] = jsonLockerObject;
-
-
 
                         Dictionary<string, object> NewThingy = new Dictionary<string, object>
                         {
@@ -332,27 +290,6 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                         Console.WriteLine($"Modified Locker: {JsonConvert.SerializeObject(jsonLockerObject)}");
                     }
 
-                    //foreach (var kvp in GrabbedPlaceMent)
-                    //{
-                    //    Console.WriteLine($"Key1: {kvp.Key}, Value1: {kvp.Value}");
-                    //}
-                    //List<Dictionary<string, object>> Temp = new List<Dictionary<string, object>>();
-                    //string json2 = JsonConvert.SerializeObject(GrabbedPlaceMent);
-                    //var jsonDeserialized2 = JsonConvert.DeserializeObject<Dictionary<string, object>>(json2);
-                    //Temp.Add(jsonDeserialized2);
-                    //;
-                    //await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
-                    //{
-                    //    //{
-                    //    //    $"athena.items", BsonValue.Create(Temp)
-                    //    //},
-                    //    {
-                    //         $"athena.loadouts", RandomNewId
-                    //    }
-                    //}, false);
-
-               
-
                     await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
                     {
                         {
@@ -367,17 +304,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             $"athena.loadouts", RandomNewId
                         }
                     }, false);
-
-                    // 
                 }
-
-                //int GrabPlacement = GrabPlacement = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
-                ////.TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
-                //if (Season.SeasonFull >= 12.20)
-                //{
-                //    Mcp test = await CommonCoreResponse.Grab(AccountDataParsed.AccountId, ProfileId, Season, AccountDataParsed.commoncore.RVN, AccountDataParsed);
-                //    ApplyProfileChanges = test.profileChanges;
-                //}
 
                 Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
                 response.profileRevision = AccountDataParsed.athena.RVN;

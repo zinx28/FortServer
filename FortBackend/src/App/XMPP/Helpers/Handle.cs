@@ -5,6 +5,8 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 using FortBackend.src.App.XMPP.Root;
+using FortBackend.src.App.Utilities;
+using FortBackend.src.App.XMPP.Helpers.Send;
 
 namespace FortBackend.src.App.XMPP.Helpers
 {
@@ -66,7 +68,7 @@ namespace FortBackend.src.App.XMPP.Helpers
                                 default: break;
                             }
 
-                            //smth else
+                            ClientFix.Init(webSocket, dataSaved, clientId);
                             dataSaved.receivedMessage = "";
                         }
                         break;
@@ -106,7 +108,87 @@ namespace FortBackend.src.App.XMPP.Helpers
                 {
                     Console.WriteLine(ex.ToString());
                 }
-            }
+                try
+                {
+                    DataSaved.connectedClients.TryRemove(clientId, out _);
+                    //DataSaved..TryRemove(clientId, out _);
+                    await XmppFriend.UpdatePresenceForFriends(webSocket, "{}", false, true);
+
+                    Clients client = GlobalData.Clients.FirstOrDefault(c => c.Client == webSocket);
+                    if (client != null)
+                    {
+
+
+                        int ClientIndex = GlobalData.Clients.FindIndex(e => e.Client == webSocket);
+                        var ClientData = GlobalData.Clients[ClientIndex];
+                        Console.WriteLine(ClientData);
+                        if (ClientIndex != -1)
+                        {
+                            object ParsedPresence = "";
+                            try
+                            {
+                                ParsedPresence = JsonConvert.DeserializeObject(ClientData.lastPresenceUpdate.presence);
+
+
+                                GlobalData.Clients.Remove(client);
+
+                                foreach (var woah in dataSaved.Rooms)
+                                {
+                                    if (Array.IndexOf(dataSaved.Rooms, woah) != -1)
+                                    {
+                                        var MemberIndex = GlobalData.Rooms[woah].members.FindIndex(i => i.accountId == client.accountId);
+
+                                        if (MemberIndex != -1)
+                                        {
+                                            GlobalData.Rooms[woah]?.members.RemoveAt(MemberIndex);
+                                        }
+                                    }
+                                    //  dataSaved.Rooms.Remove(woah);
+                                }
+
+                                var PartyChecks = "";
+
+                                try
+                                {
+                                    if (ParsedPresence != null)
+                                    {
+                                        //var ParsedPresence = JsonConvert.DeserializeObject(client.lastPresenceUpdate.presence);
+
+                                        Console.WriteLine($"YOO TEST TEST {ParsedPresence}"); // onmly for testing
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Logger.Error(ex.Message); // Average Erro! 
+                                }
+
+                                // what?
+                            }
+                            catch (JsonReaderException ex)
+                            {
+
+                                GlobalData.Clients.Remove(client);
+                                //return; // wow
+                            }
+
+ 
+                        }
+                        else
+                        {
+                            // return;
+                        }
+
+
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+        }
         }
     }
 }

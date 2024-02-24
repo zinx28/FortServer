@@ -175,6 +175,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
                     if (objectToModify is JObject jsonLockerObject)
                     {
+
                         //GrabbedPlaceMent.Remove(AccountDataParsed.athena.last_applied_loadout);
                         //GrabbedPlaceMent[RandomNewId] = jsonLockerObject;
 
@@ -185,109 +186,110 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             {
                                 { "templateId", $"CosmeticLocker:cosmeticlocker_athena" },
                                 {
-                                 "attributes", new Dictionary<string, object>
-                                {
+                                     "attributes", new Dictionary<string, object>
+                                     {
 
-                                    { "locker_slots_data", new Dictionary<string, object>
-                                        {
+                                        { "locker_slots_data", new Dictionary<string, object>
                                             {
-                                                "slots", new Dictionary<string, object>
                                                 {
+                                                    "slots", new Dictionary<string, object>
                                                     {
-                                                        "musicpack", new Dictionary<string, object>
                                                         {
+                                                            "musicpack", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["musicpack"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["musicpack"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "character", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "character", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["character"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["character"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "backpack", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "backpack", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["backpack"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["backpack"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "pickaxe", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "pickaxe", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["pickaxe"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["pickaxe"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "skydivecontrail", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "skydivecontrail", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["skydivecontrail"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["skydivecontrail"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "dance", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "dance", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["dance"]["items"].ToObject<string[]>() ?? new string[] { "", "", "", "", "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["dance"]["items"].ToObject<string[]>() ?? new string[] { "", "", "", "", "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "loadingscreen", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "loadingscreen", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["loadingscreen"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["loadingscreen"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "glider", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "glider", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["glider"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["glider"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                                }
                                                             }
-                                                        }
-                                                    },
-                                                    {
-                                                        "itemwrap", new Dictionary<string, object>
+                                                        },
                                                         {
+                                                            "itemwrap", new Dictionary<string, object>
                                                             {
-                                                                "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["itemwrap"]["items"].ToObject<string[]>() ?? new string[] { "", "", "", "", "", "" }
+                                                                {
+                                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["itemwrap"]["items"].ToObject<string[]>() ?? new string[] { "", "", "", "", "", "" }
+                                                                }
                                                             }
                                                         }
                                                     }
                                                 }
                                             }
-                                        }
-                                    },
-                                    { "use_count", 0 },
-                                    { "banner_color_template", ""},
-                                    { "banner_icon_template", ""},
-                                    { "locker_name", Body.optNewNameForTarget ?? $"FortBackend~{RandomNewId}" },
-                                    { "item_seen", false},
-                                    { "favorite", false},
-                                }
+                                        },
+                                        { "use_count", 0 },
+                                        { "banner_color_template", ""},
+                                        { "banner_icon_template", ""},
+                                        { "locker_name", Body.optNewNameForTarget ?? $"FortBackend~{RandomNewId}" },
+                                        { "item_seen", false},
+                                        { "favorite", false},
+                                    }
                                 },
                                 {  "quantity", 1 }
                             }
-                        }
-                    };
+                            }
+                        };
 
                       
-                        GrabbedPlaceMent[RandomNewId] = jsonLockerObject;
+                        //GrabbedPlaceMent[RandomNewId] = jsonLockerObject;
 
                         itemList.Add(NewThingy);
 
-                        Console.WriteLine($"Modified Locker: {JsonConvert.SerializeObject(jsonLockerObject)}");
+                        
+                        //Console.WriteLine($"Modified Locker: {JsonConvert.SerializeObject(jsonLockerObject)}");
                     }
 
                     await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>

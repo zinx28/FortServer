@@ -71,11 +71,14 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 
                         int GrabPlacement3 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                             .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
+
+                        Console.WriteLine("FGS " + GrabPlacement3);
+
                         Dictionary<string, object> GrabbedPlaceMent3 = AccountDataParsed.athena.Items[GrabPlacement1] as Dictionary<string, object>;
                         object objectToModify2 = GrabbedPlaceMent3["sandbox_loadout"];
                         if (objectToModify2 is JObject jsonLockerObject)
                         {
-                            UpdatedData.Add($"athena.Items.{GrabPlacement3}.sandbox_loadout.attributes", jsonLockerObject["attributes"].ToObject<object>());
+                            UpdatedData.Add($"athena.Items.{GrabPlacement3}.sandbox_loadout.attributes", jsonLockerObject["attributes"].ToObject<SandboxLoadoutAttributes>());
                         }
                         Console.WriteLine(AccountDataParsed.athena.RVN);
                         Console.WriteLine(AccountDataParsed.athena.CommandRevision);

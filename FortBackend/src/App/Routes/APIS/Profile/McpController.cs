@@ -132,7 +132,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
             }
             catch (Exception ex)
             {
-                Logger.Error($"QueryProfile: {ex.Message}");
+                Logger.Error($"McpController: {ex.Message}");
             }
 
             return Ok(new Mcp

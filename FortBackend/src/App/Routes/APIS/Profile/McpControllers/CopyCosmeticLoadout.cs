@@ -74,7 +74,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 
                         Console.WriteLine("FGS " + GrabPlacement3);
 
-                        Dictionary<string, object> GrabbedPlaceMent3 = AccountDataParsed.athena.Items[GrabPlacement1] as Dictionary<string, object>;
+                        Dictionary<string, object> GrabbedPlaceMent3 = AccountDataParsed.athena.Items[GrabPlacement3] as Dictionary<string, object>;
                         object objectToModify2 = GrabbedPlaceMent3["sandbox_loadout"];
                         if (objectToModify2 is JObject jsonLockerObject)
                         {

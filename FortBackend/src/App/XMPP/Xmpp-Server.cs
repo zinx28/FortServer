@@ -1,5 +1,8 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.XMPP.Helpers;
+using FortBackend.src.App.XMPP.Helpers.Resources;
+using System.Net.WebSockets;
 
 namespace FortBackend.src.App.XMPP
 {
@@ -41,10 +44,33 @@ namespace FortBackend.src.App.XMPP
 
             app.Use(async (context, next) =>
             {
-                if(context.Request.Path == "//" && context.WebSockets.IsWebSocketRequest)
+                if (context.Request.Path == "//" && context.WebSockets.IsWebSocketRequest)
                 {
                     Console.WriteLine("XMPP IS BEING CLALED");
-                }else
+                    try
+                    {
+                        string clientId = Guid.NewGuid().ToString();
+                        WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                        await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("OH SUGAR :/ it crashed why -> " + ex.Message);
+                    }
+                }
+                else if (context.Request.Path == "/clients" && !context.WebSockets.IsWebSocketRequest)
+                {
+                    var responseObj = new
+                    {
+                        Amount = DataSaved.connectedClients.Count,
+                        Clients = GlobalData.Clients.ToList(),
+                        Rooms = GlobalData.Rooms.ToList(),
+                    };
+                    var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(jsonResponse);
+                }
+                else
                 {
                     await next();
                 }

@@ -8,11 +8,11 @@ using Newtonsoft.Json;
 
 using System.Security.Claims;
 using System.Text;
-using FortBackend.src.App.XMPP;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Oauth;
 using System.IdentityModel.Tokens.Jwt;
+using FortBackend.src.App.XMPP.Helpers.Resources;
 
 
 namespace FortBackend.src.App.Routes.APIS.Oauth

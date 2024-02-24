@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Shop;
+using FortBackend.src.App.XMPP;
 namespace FortBackend.src.App
 {
     public class Service
@@ -81,6 +82,12 @@ namespace FortBackend.src.App
             startup.Configure(app, app.Environment);
             //Setup.Initialize(app);
             DiscordBot.Start(); // dont away... app.run does it for you
+
+            var XmppServer = new Thread(async () =>
+            {
+                await Xmpp_Server.Intiliazation(args);
+            });
+            XmppServer.Start();
 
             //var ItemShopGenThread = new Thread(async () =>
             //{

@@ -1,12 +1,13 @@
 {
-  "//": "FortBackend Config",
-  "BackendPort": 1111,
-  "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
-  "MongoDBConnectionName": "FortBackend",
-  "DiscordToken": "",
-  "ServerID": 0,
-  "ApplicationClientID": "",
-  "ApplicationSecret": "",
-  "ApplicationURI": "",
-  "ShopWebhookUrl": ""
+    "//": "FortBackend Config",
+    "BackendPort": 1111,
+    "XmppPort": 443,
+    "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
+    "MongoDBConnectionName": "FortBackend",
+    "DiscordToken": "",
+    "ServerID": 0,
+    "ApplicationClientID": "",
+    "ApplicationSecret": "",
+    "ApplicationURI": "",
+    "ShopWebhookUrl": ""
 }

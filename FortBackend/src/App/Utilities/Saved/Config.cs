@@ -14,6 +14,8 @@ namespace FortBackend.src.App.Utilities.Saved
 
         public int BackendPort { get; set; } = 1111; // 1111 default ig
 
+        public int XmppPort { get; set; } = 443; // 443 default ig
+
         // MongoDBConnectionString is set to the default local host port for mongodbserver you may change this to your needs!
         // Make sure that the string has read and write perms (owner or what)
         public string MongoDBConnectionString { get; set; } = "mongodb://localhost:27017/?retryWrites=true&w=majority";

@@ -38,12 +38,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 }
                 int BaseRev = AccountDataParsed.athena.RVN;
 
-
+                int GrabPlacement3 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
+                           .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
                 int GrabPlacement2 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                     .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
                 Console.WriteLine("PENIS");
-                Dictionary<string, object> GrabbedPlaceMent = AccountDataParsed.athena.Items[GrabPlacement2] as Dictionary<string, object>;
-                Console.WriteLine(AccountDataParsed.athena.last_applied_loadout);
+                
                 //foreach(var tesas in s)
                 //{
                 //    Console.WriteLine(tesas.Key + "    " +  tesas.Value);
@@ -57,8 +57,10 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     Console.WriteLine("WOAHG");
                     string[] loadouts = AccountDataParsed.athena.loadouts;
                     object objectToModify = AccountDataParsed.athena.Items.FirstOrDefault(item => item.ContainsKey(loadouts[Body.sourceIndex]));
+                    Dictionary<string, object> GrabbedPlaceMent = AccountDataParsed.athena.Items[GrabPlacement2] as Dictionary<string, object>;
+                    Console.WriteLine(AccountDataParsed.athena.last_applied_loadout);
 
-                    if(objectToModify != null)
+                    if (objectToModify != null)
                     {
                         int GrabPlacement1 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                           .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
@@ -69,16 +71,96 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             UpdatedData.Add($"athena.Items.{GrabPlacement1}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_name", Body.optNewNameForTarget);
                         }
 
-                        int GrabPlacement3 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
-                            .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
+                       
 
                         Console.WriteLine("FGS " + GrabPlacement3);
-
-                        Dictionary<string, object> GrabbedPlaceMent3 = AccountDataParsed.athena.Items[GrabPlacement3] as Dictionary<string, object>;
-                        object objectToModify2 = GrabbedPlaceMent3["sandbox_loadout"];
-                        if (objectToModify2 is JObject jsonLockerObject)
+                        object objectToModify1 = GrabbedPlaceMent[AccountDataParsed.athena.last_applied_loadout];
+                        if (objectToModify1 is JObject jsonLockerObject)
                         {
-                            UpdatedData.Add($"athena.Items.{GrabPlacement3}.sandbox_loadout.attributes", jsonLockerObject["attributes"].ToObject<SandboxLoadoutAttributes>());
+                            //foreach (var kvp in GrabbedPlaceMent)
+                            //{
+                            //    Console.WriteLine($"Key1: {kvp.Key}, Value1: {kvp.Value}");
+                            //}
+                            UpdatedData.Add($"athena.Items.{GrabPlacement3}.sandbox_loadout.attributes.locker_slots_data", new Dictionary<string, object>
+                            {
+                                {
+                                    "slots", new Dictionary<string, object>
+                                    {
+                                        {
+                                            "musicpack", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["musicpack"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "character", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["character"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "backpack", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["backpack"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "pickaxe", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["pickaxe"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "skydivecontrail", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["skydivecontrail"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "dance", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["dance"]["items"].ToObject<string[]>() ?? new string[] { "", "", "", "", "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "loadingscreen", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["loadingscreen"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "glider", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["glider"]["items"].ToObject<string[]>() ?? new string[] { "" }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "itemwrap", new Dictionary<string, object>
+                                            {
+                                                {
+                                                    "items", jsonLockerObject["attributes"]["locker_slots_data"]["slots"]["itemwrap"]["items"].ToObject<string[]>() ?? new string[] { "", "", "", "", "", "" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
                         }
                         Console.WriteLine(AccountDataParsed.athena.RVN);
                         Console.WriteLine(AccountDataParsed.athena.CommandRevision);
@@ -115,8 +197,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 else
                 {
                     string RandomNewId = Guid.NewGuid().ToString();
-
-                    
+                    Dictionary<string, object> GrabbedPlaceMent = AccountDataParsed.athena.Items[GrabPlacement3] as Dictionary<string, object>;
+            
                     //Console.WriteLine("Okey");
                     //foreach (var kvp in GrabbedPlaceMent)
                     //{
@@ -125,7 +207,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     ////GrabbedPlaceMent.Keys
                     //SandboxLoadout SomeThingIg = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(GrabbedPlaceMent[AccountDataParsed.athena.last_applied_loadout]));
                     //Console.WriteLine();
-                    object objectToModify = GrabbedPlaceMent[AccountDataParsed.athena.last_applied_loadout];
+                    object objectToModify = GrabbedPlaceMent["sandbox_loadout"];
                     //Console.WriteLine($"Object Type: {objectToModify?.GetType().FullName}");
                     //Console.WriteLine($"Object Content: {JsonConvert.SerializeObject(objectToModify)}");
 

@@ -11,8 +11,21 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
 
         public static List<Clients> Clients { get; set; } = new List<Clients>();
         public static Dictionary<string, RoomsLessDyanmic> Rooms { get; set; } = new Dictionary<string, RoomsLessDyanmic>();
+
+        public List<Parties> parties { get; set; } = new List<Parties>();
     }
 
+    public class Parties
+    {
+        public string id { get; set; } = string.Empty;
+        public string privacy { get; set; } = "PUBLIC";
+        public List<dynamic> members { get; set; } = new List<dynamic>();
+        public Party party { get; set; } = new Party();
+    }
+
+    public class Party {
+
+    }
     public class AccessToken
     {
         public string token { get; set; } = string.Empty;

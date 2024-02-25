@@ -2,6 +2,7 @@
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.XMPP.Helpers.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
@@ -18,10 +19,14 @@ namespace FortBackend.src.App.Routes.APIS.Friends
 
             if (UserData != "Error")
             {
-                   
 
+                var CurrentParty = GlobalData.parties.Find(e => e.members.Any(a => a == accountId));
 
-
+                if(CurrentParty != null)
+                {
+                    
+                }
+                
                 return Ok(new
                 {
                     current = Array.Empty<object>(),

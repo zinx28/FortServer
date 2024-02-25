@@ -18,20 +18,17 @@ namespace FortBackend.src.App.Routes.APIS.Friends
 
             if (UserData != "Error")
             {
+                   
 
 
-                using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
+
+                return Ok(new
                 {
-                    var requestbody = await reader.ReadToEndAsync();
-                    Console.WriteLine("Party " + requestbody);
-
-
-
-                    return Ok(new
-                    {
-
-                    });
-                }
+                    current = Array.Empty<object>(),
+                    pending = Array.Empty<object>(),
+                    invites = Array.Empty<object>(),
+                    pings = Array.Empty<object>()
+                });
             }
             /*
              * 

@@ -5,18 +5,18 @@
 - Universal Backend (aiming for season 3 - 15/?!?! but expand after hitting to a basic state)
 - STW is aimed at the very end and might never actually be implemented
 
-# Http and https
-- Supports http and https!
-- FortBackend/src/resource/cert/yourcert.pfx eh it works trust... i've tried with cosmos
-- if you have the cert and key then just search to make it a pfx not hard
-- Build on https if https duh  
+# HTTP
+- Just build on Release or Debug
 
-# Devers and devers!
-- Build on x64 (Release or debug NOT https on http)
-- DO not update the config.json instead build the project do to the x64... resources/config and change it there then restart the backend after! :) if you ever need to clean the solution then just backup the file~ discord bot tokens, secrets are so secret kiddo
+# HTTPS
+- First go to [FortBackend/src/resources/certificates](https://github.com/zinx28/FortBackend/tree/main/FortBackend/src/Resources/Certificates)
+- Remove .temp from the file then replace it with your .pfx (If you have cert and the key just look up how to make it a pfx)
+- Before you run the project make sure you change the build type from (Debug or Release) to HTTPS
 
 # Added/Not Added 
 - MCP (QueryProfle, Equiping and useless things) [!]
 - Timeline [+]
-- CloudStorage and Saving [X]
-- 24/7 Shop (WIP - could be so random, items in wrong places)
+- Cloudstorage, ClientSaving [+]
+- 24/7 Shop (WIP - could be so random, items in wrong places) [!]
+- XMPP (WIP PartyV2) [!]
+- Friends [-]

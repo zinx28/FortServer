@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using System.Net;
 
 
 namespace FortBackend.src.App.Utilities
@@ -83,7 +84,19 @@ namespace FortBackend.src.App.Utilities
 
             app.UseStatusCodePages(async (StatusCodeContext context) =>
             {
+                var response = context.HttpContext.Response;
                 Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}?{context.HttpContext.Request.Query}");
+                if (response.StatusCode == (int)HttpStatusCode.NotFound)
+                {
+                    await response.WriteAsJsonAsync(new
+                    {
+                        errorCode = "errors.com.epicgames.common.not_found",
+                        errorMessage = "Sorry the resource you were trying to find could not be found",
+                        numericErrorCode = 0,
+                        originatingService = "Fortnite",
+                        intent = "prod"
+                    });
+                }
             });
         }
     }

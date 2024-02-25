@@ -11,8 +11,8 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
 
         public static List<Clients> Clients { get; set; } = new List<Clients>();
         public static Dictionary<string, RoomsLessDyanmic> Rooms { get; set; } = new Dictionary<string, RoomsLessDyanmic>();
-        public List<Members> members { get; set; } = new List<Members>();
-        public List<Parties> parties { get; set; } = new List<Parties>();
+        public static List<Members> members { get; set; } = new List<Members>();
+        public static List<Parties> parties { get; set; } = new List<Parties>();
     }
 
     public class Members
@@ -29,7 +29,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
     {
         public string id { get; set; } = string.Empty;
         public string privacy { get; set; } = "PUBLIC";
-        public List<dynamic> members { get; set; } = new List<dynamic>();
+        public List<string> members { get; set; } = new List<string>();
         public Party party { get; set; } = new Party();
     }
 

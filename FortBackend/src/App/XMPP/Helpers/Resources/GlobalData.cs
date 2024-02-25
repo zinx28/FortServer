@@ -38,7 +38,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
     }
 
     public class Clients
-    {
+    { 
         public WebSocket Client { get; set; }
         public string displayName { get; set; } = string.Empty;
         public string token { get; set; } = string.Empty;

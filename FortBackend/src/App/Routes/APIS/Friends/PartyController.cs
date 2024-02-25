@@ -21,15 +21,10 @@ namespace FortBackend.src.App.Routes.APIS.Friends
             {
 
                 var CurrentParty = GlobalData.parties.Find(e => e.members.Any(a => a == accountId));
-
-                if(CurrentParty != null)
-                {
-                    
-                }
                 
                 return Ok(new
                 {
-                    current = Array.Empty<object>(),
+                    current = CurrentParty != null ? new List<Parties> { CurrentParty } : new List<Parties>(),
                     pending = Array.Empty<object>(),
                     invites = Array.Empty<object>(),
                     pings = Array.Empty<object>()

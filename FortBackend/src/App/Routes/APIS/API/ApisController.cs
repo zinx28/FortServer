@@ -19,6 +19,22 @@ namespace FortBackend.src.App.Routes.APIS.API
             return Ok();
         }
 
+        //statsproxy/api/statsv2/account/
+        [HttpGet("/statsproxy/api/statsv2/account/{accountId}")]
+        public IActionResult StatsProxy(string accountId)
+        {
+            return Ok(new
+            {
+                startTime = 0,
+                endTime = 9223372036854776000,
+                accountId = accountId,
+                stats = new
+                {
+
+                }
+            });
+        }
+
         ///api/v1/events/Fortnite/download/644812f9-5e5e-4fd4-a670-b306e5956fd9
         [HttpGet("v1/events/Fortnite/download/{accountId}")]
         public IActionResult DownloadEndpoint(string accountId)

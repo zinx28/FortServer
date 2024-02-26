@@ -28,10 +28,7 @@ namespace FortBackend.src.App.Routes.APIS.API
                 startTime = 0,
                 endTime = 9223372036854776000,
                 accountId = accountId,
-                stats = new
-                {
-
-                }
+                stats = new { } // stats like "smth": number
             });
         }
 
@@ -60,9 +57,69 @@ namespace FortBackend.src.App.Routes.APIS.API
                     new
                     {
                         gameId = "Fortnite",
-                        eventTemplateId = "epicgames_Arena_S15_Solo",
+                        eventId = "epicgames_Arena_S15_Solo",
                         playlistId = "Playlist_ShowdownAlt_Solo",
-                        regions = new string[] { "EU", "NAE" }
+                        regions = new string[] { "EU", "NAE" },
+                        regionMapping = new { },
+                        platforms = new string[]
+                        {
+                            "Windows"
+                        },
+                        platformMappings = new { },
+                        displayDateId = "Arena_S15_Solo",
+                        eventGroup = "Season15Solo",
+                        announcementTime = "2019-01-29T08:00:00.000Z",
+                        appId = "",
+                        environment = "",
+                        link = "",
+                        metadata = new
+                        {
+                            AccountLockType = "Window",
+                            TeamLockType = "None",
+                            DisqualityType = "Window",
+                            minimumAccountLevel = 0
+                        },
+                        eventWindow = new List<object>()
+                        {
+                            new
+                            {
+                                eventWindowId = "Arena_S15_Solo",
+                                eventTemplateId = "epicgames_Arena_S15_Solo",
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                round = 0,
+                                payoutDelay = 30,
+                                isTBD = false,
+                                canLiveSpectate = false,
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                requireAllTokens = new string[0],
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[0],
+                                requireAllTokensCaller = new string[0],
+                                additionalRequiremenets = new string[]
+                                {},
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                                metadata = new
+                                {
+                                    ServerReplays = false
+                                }
+                            }
+                        },
+                        beginTime = "2000-00-00T00:00:00.000Z",
+                        endTime = "9999-00-00T00:00:000Z"
+
                     }
                 },
                 templates = new List<object>(),

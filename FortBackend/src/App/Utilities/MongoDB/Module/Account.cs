@@ -58,13 +58,13 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public string last_applied_loadout { get; set; } = "sandbox_loadout";
 
         [BsonElement("battlestars")]
-        public int BattleStars { get; set; } = 500;
+        public int BattleStars { get; set; } = 0;
 
         [BsonElement("gold")]
-        public int Gold { get; set; } = 500;
+        public int Gold { get; set; } = 0;
 
         [BsonElement("omnichips")]
-        public int OmniChips { get; set; } = 500;
+        public int OmniChips { get; set; } = 0;
 
         [BsonElement("RVN")]
         public int RVN { get; set; } = 1;

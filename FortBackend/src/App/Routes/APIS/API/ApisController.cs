@@ -1,9 +1,11 @@
-﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
+﻿using Discord;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using System.Numerics;
 
 namespace FortBackend.src.App.Routes.APIS.API
 {
@@ -21,7 +23,38 @@ namespace FortBackend.src.App.Routes.APIS.API
         [HttpGet("v1/events/Fortnite/download/{accountId}")]
         public IActionResult DownloadEndpoint(string accountId)
         {
-            return Ok(new { });
+            return Ok(new
+            {
+                player = new
+                {
+                    gameId = "Fortnite",
+                    accountId = accountId,
+                    token = new List<string>()
+                    {
+                        "ARENA_S15_Division1"
+                    },
+                    teams = new { },
+                    pendingPayouts = new List<string>(),
+                    pendingPenalties = new { },
+                    persistentScores = new { },
+                    groupIdentity = new { },
+                },
+                events = new List<object>()
+                {
+                    new
+                    {
+                        gameId = "Fortnite",
+                        eventTemplateId = "epicgames_Arena_S15_Solo",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        regions = new string[] { "EU", "NAE" }
+                    }
+                },
+                templates = new List<object>(),
+                leaderboardDefs = new List<object>(),
+                scoringRuleSets = new { },
+                payoutTables = new { },
+                scores = new { }
+            });
         }
 
         //api/v1/user/setting

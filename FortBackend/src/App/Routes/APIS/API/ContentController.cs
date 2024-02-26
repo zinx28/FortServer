@@ -112,6 +112,10 @@ namespace FortBackend.src.App.Routes.APIS.API
                             landingPriority = x.landingPriority,
                         });
                     });
+
+                    contentconfig.tournamentinformation.ForEach(x => {
+                        ContentJsonResponse.tournamentinformation.tournament_info.tournaments.Add(x);
+                    });
                 }
 
                 memoryCache.Set(cacheKey, ContentJsonResponse, new MemoryCacheEntryOptions

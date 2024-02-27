@@ -38,12 +38,12 @@
         public string last_applied_loadout { get; set; } = string.Empty;
         public string favorite_musicpack { get; set; } = string.Empty;
         public string banner_icon { get; set; } = string.Empty;
-        public string[] favorite_itemwraps { get; set; } = new string[0];
+        public List<string> favorite_itemwraps { get; set; } = new List<string>();
         public string favorite_skydivecontrail { get; set; } = string.Empty;
         public string favorite_pickaxe { get; set; } = string.Empty;
         public string favorite_glider { get; set; } = string.Empty;
         public string favorite_backpack { get; set; } = string.Empty;
-        public string[] favorite_dance { get; set; } = new string[0];
+        public List<string> favorite_dance { get; set; } = new List<string>();
         public string favorite_loadingscreen { get; set; } = string.Empty;
         public string banner_color { get; set; } = string.Empty;
         public string favorite_character { get; set; } = string.Empty;

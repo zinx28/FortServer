@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities.Saved;
 using System.IO;
 
 namespace FortBackend.src.App.Utilities.Helpers
@@ -15,6 +16,7 @@ namespace FortBackend.src.App.Utilities.Helpers
             VersionClass VersionIG = new VersionClass();
             try
             {
+                Config saved = Saved.Saved.DeserializeConfig;
                 var userAgent = Request.Headers["User-Agent"].ToString();
 
 
@@ -35,7 +37,14 @@ namespace FortBackend.src.App.Utilities.Helpers
 
                             if (int.TryParse(seasonParts[0], out int parsedSeason))
                             {
-                                VersionIG.Season = parsedSeason;
+                                if (saved.ForceSeason == false)
+                                {
+                                    VersionIG.Season = parsedSeason;
+                                }
+                                else
+                                {
+                                    VersionIG.Season = saved.Season;
+                                }
                             }
                         }
                     }

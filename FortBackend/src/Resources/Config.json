@@ -9,5 +9,7 @@
     "ApplicationClientID": "",
     "ApplicationSecret": "",
     "ApplicationURI": "",
-    "ShopWebhookUrl": ""
+    "ShopWebhookUrl": "",
+    "ForceSeason": false,
+    "Season": 0
 }

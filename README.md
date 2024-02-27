@@ -1,9 +1,11 @@
-# FortBackend (WIP)
+# FortBackend
+
+FortBackend is a Universal Fortnite Private Server Backend writen in C#
 
 # About
-- Supports http and https!
-- Universal Backend (aiming for season 3 - 15/?!?! but expand after hitting to a basic state)
-- STW is aimed at the very end and might never actually be implemented
+- Supports HTTP and HTTPS!
+- Aiming to support S3 - S15
+- Save the world (STW) is aimed at the very end and might never actually be implemented
 
 # HTTP
 - Just build on Release or Debug

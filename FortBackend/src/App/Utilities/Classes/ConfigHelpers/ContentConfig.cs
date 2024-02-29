@@ -5,7 +5,7 @@
         public Battleroyalenewscontent battleroyalenews { get; set; } = new Battleroyalenewscontent();
         public List<Emergencynoticecontent> emergencynotice { get; set; } = new List<Emergencynoticecontent>();
         public List<shopSectionsItems> shopSections { get; set; } = new List<shopSectionsItems>();
-        public List<TournamentInformation> tournamentinformation { get; set; } = new List<TournamentInformation>();
+        public List<object> tournamentinformation { get; set; } = new List<object>();
     }
 
     public class TournamentInformation

@@ -24,7 +24,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Content
 
     public class TournamentInfo
     {
-        public List<TournamentInformation> tournaments { get; set; } = new List<TournamentInformation>();
+        public List<object> tournaments { get; set; } = new List<object>();
         public string _type { get; set; } = "Tournaments Info";
         //TournamentInformation
     }

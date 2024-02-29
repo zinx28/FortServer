@@ -35,30 +35,12 @@
     ],
     "tournamentinformation": [
         {
-            "title_color": "FFFFFF",
-            "loading_screen_image": "https://cdn2.unrealengine.com/25comp-evergreens-in-game-zb-tile-1920x1080-1920x1080-6726a8dfe74f.jpg",
-            "background_text_color": "161616",
-            "background_right_color": "0054D3",
-            "poster_back_image": "https://cdn2.unrealengine.com/25comp-evergreens-in-game-zb-poster-back-750x1080-37635a8e35f4.jpg",
-            "_type": "Tournament Display Info",
-            "pin_earned_text": "Winner!",
-            "tournament_display_id": "epicgames_Arena_S15_Solo",
-            "highlight_color": "F7FF00",
-            "schedule_info": "",
-            "primary_color": "FFFFFF",
-            "flavor_description": "Prove your skill in this competitive mode!  During each match, you'll earn Hype by either achieving high placements or eliminating opponents.  As you gain Hype, you'll compete against tougher opponents with similar skill level.",
-            "poster_front_image": "https://cdn2.unrealengine.com/25comp-evergreens-in-game-zb-poster-front-option2-750x1080-7f697cd877c1.jpg",
-            "short_format_title": "Arena",
-            "title_line_2": "Arena",
             "title_line_1": "Arena",
-            "shadow_color": "161616",
-            "details_description": "Prove your skill in this competitive mode!  During each match, you'll earn Hype by either achieving high placements or eliminating opponents.  As you gain Hype, you'll compete against tougher opponents with similar skill level.",
-            "background_left_color": "00265F",
-            "long_format_title": "Arena",
-            "poster_fade_color": "001A41",
-            "secondary_color": "161616",
-            "playlist_tile_image": "https://cdn2.unrealengine.com/25comp-evergreens-in-game-zb-tile-1920x1080-1920x1080-6726a8dfe74f.jpg",
-            "base_color": "FFFFFF"
+            "loading_screen_image": "https://cdn2.unrealengine.com/s18-br-lategame2-discoverytile-1920x1080-1920x1080-b20ef1db94fb.jpg",
+            "_type": "Tournament Display Info",
+            "tournament_display_id": "Playlist_ShowdownAlt_Solo",
+            "playlist_tile_image": "https://cdn2.unrealengine.com/s18-br-lategame2-discoverytile-1920x1080-1920x1080-b20ef1db94fb.jpg",
+            "title_color": "FFFFFF"
         }
     ]
 }

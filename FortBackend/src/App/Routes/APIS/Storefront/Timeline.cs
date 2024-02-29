@@ -1,5 +1,8 @@
-﻿using FortBackend.src.App.Utilities.Helpers;
+﻿using Amazon.Runtime.Internal.Transform;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
+using FortBackend.src.App.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing.Matching;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
@@ -37,6 +40,87 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                             "client-matchmaking", new
                             {
                                 states = new object[] { },
+                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                            }
+                        },
+                        {
+                            "standalone-store", new
+                            {
+                                states = new object[]
+                                {
+                                    new
+                                    {
+                                        validFrom = "2019-01-21T18:36:38.383Z",
+                                        activeEvents = new string[0],
+                                        state = new
+                                        {
+                                            activePurchaseLimitingEventIds = new string[0],
+                                            storefront = new { },
+                                            rmtPromotionConfig = new string[0],
+                                            storeEnd = "9999-12-31T23:59:59.999Z"
+                                        }
+                                    }
+                                },
+                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                            }
+                        },
+                        {
+                            "tk", new
+                            {
+                                states = new object[]
+                                {
+                                    new
+                                    {
+                                         validFrom = "2019-01-21T18:36:38.383Z",
+                                         activeEvents = new string[0],
+                                         state = new
+                                         {
+                                             k = new string[0]
+                                         }
+                                    }
+                                },
+                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                            }
+                        },
+                        {
+                            "community-votes", new
+                            {
+                                states = new object[]
+                                {
+                                    new
+                                    {
+                                        validFrom = "2019-01-21T18:36:38.383Z",
+                                        activeEvents = new string[0],
+                                        state = new
+                                        {
+                                            electionId = "",
+                                            candidates = new string[0],
+                                            electionEnds = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}",
+                                            numWinnners = 1
+                                        }
+                                    }
+                                },
+                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                            }
+                        },
+                        {
+                            "featured-islands", new
+                            {
+                                states = new object[]
+                                {
+                                    new
+                                    {
+                                         validFrom = "2019-01-21T18:36:38.383Z",
+                                         activeEvents = new string[0],
+                                         state = new
+                                         {
+                                             islandCodes = new string[0],
+                                             playlistCuratedContent = new { },
+                                             playlistCuratedHub = new { },
+                                             islandTemplates = new string[0]
+                                         }
+                                    }
+                                },
                                 cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                             }
                         },

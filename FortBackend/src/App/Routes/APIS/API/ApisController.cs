@@ -14,8 +14,33 @@ namespace FortBackend.src.App.Routes.APIS.API
     public class ApisController : ControllerBase
     {
         [HttpPost("/datarouter/api/v1/public/data")]
-        public IActionResult DataRouter()
+        public async Task<IActionResult> DataRouter()
         {
+            var queryParameters = HttpContext.Request.Query;
+            Console.WriteLine("Query Parameters:");
+            foreach (var (key, value) in queryParameters)
+            {
+                Console.WriteLine($"{key}: {value}");
+            }
+            var headers = HttpContext.Request.Headers;
+            Console.WriteLine("\nHeaders:");
+            foreach (var (key, value) in headers)
+            {
+                Console.WriteLine($"{key}: {value}");
+            }
+
+            using (var reader = new StreamReader(HttpContext.Request.Body))
+            {
+                try
+                {
+                    var requestBody = await reader.ReadToEndAsync();
+                    Console.WriteLine($"Request Body: {requestBody}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error reading request body: {ex.Message}");
+                }
+            }
             return Ok();
         }
 
@@ -57,7 +82,7 @@ namespace FortBackend.src.App.Routes.APIS.API
                     new
                     {
                         gameId = "Fortnite",
-                        eventId = "epicgames_Arena_S15_Solo",
+                        eventId = "Playlist_ShowdownAlt_Solo",
                         playlistId = "Playlist_ShowdownAlt_Solo",
                         regions = new string[] { "EU", "NAE" },
                         regionMapping = new { },
@@ -66,8 +91,8 @@ namespace FortBackend.src.App.Routes.APIS.API
                             "Windows"
                         },
                         platformMappings = new { },
-                        displayDateId = "Arena_S15_Solo",
-                        eventGroup = "Season15Solo",
+                        displayDateId = "Playlist_ShowdownAlt_Solo",
+                        eventGroup = "Playlist_ShowdownAlt_Solo",
                         announcementTime = "2019-01-29T08:00:00.000Z",
                         appId = "",
                         environment = "",
@@ -78,44 +103,6 @@ namespace FortBackend.src.App.Routes.APIS.API
                             TeamLockType = "None",
                             DisqualityType = "Window",
                             minimumAccountLevel = 0
-                        },
-                        eventWindow = new List<object>()
-                        {
-                            new
-                            {
-                                eventWindowId = "Arena_S15_Solo",
-                                eventTemplateId = "epicgames_Arena_S15_Solo",
-                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
-                                beginTime = "2000-00-00T00:00:00.000Z",
-                                endTime = "9999-00-00T00:00:000Z",
-                                blackoutPeriods = new string[0],
-                                round = 0,
-                                payoutDelay = 30,
-                                isTBD = false,
-                                canLiveSpectate = false,
-                                storeLocations = new List<object>()
-                                {
-                                    new
-                                    {
-                                        storeMode = "winsow",
-                                        leaderboardId = "Fortnite_EU",
-                                        useIndividualScores = false
-                                    }
-                                },
-                                visibility = "public",
-                                requireAllTokens = new string[0],
-                                requireAnyTokens = new string[0],
-                                requireNoneTokensCaller = new string[0],
-                                requireAllTokensCaller = new string[0],
-                                additionalRequiremenets = new string[]
-                                {},
-                                teammateEligibility = "all",
-                                regionMappings = new { },
-                                metadata = new
-                                {
-                                    ServerReplays = false
-                                }
-                            }
                         },
                         beginTime = "2000-00-00T00:00:00.000Z",
                         endTime = "9999-00-00T00:00:000Z"

@@ -23,7 +23,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Content
 
         public ShopCarousel shopCarousel { get; set; } = new ShopCarousel();
         public ShopSections shopSections { get; set; } = new ShopSections();
-
+        public PlaylistInformation playlistinformation { get; set; } = new PlaylistInformation();
         public Tournamentinformation tournamentinformation { get; set; } = new Tournamentinformation();
     }
 }

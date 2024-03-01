@@ -1,11 +1,15 @@
-﻿namespace FortBackend.src.App.Utilities.Classes.ConfigHelpers
+﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
+
+namespace FortBackend.src.App.Utilities.Classes.ConfigHelpers
 {
     class ContentConfig
     {
         public Battleroyalenewscontent battleroyalenews { get; set; } = new Battleroyalenewscontent();
         public List<Emergencynoticecontent> emergencynotice { get; set; } = new List<Emergencynoticecontent>();
         public List<shopSectionsItems> shopSections { get; set; } = new List<shopSectionsItems>();
-        public List<object> tournamentinformation { get; set; } = new List<object>();
+
+        public List<PlayListObject> playlistinformation { get; set; } = new List<PlayListObject>();
+        public List<TournamentInformation> tournamentinformation { get; set; } = new List<TournamentInformation>();
     }
 
     public class TournamentInformation

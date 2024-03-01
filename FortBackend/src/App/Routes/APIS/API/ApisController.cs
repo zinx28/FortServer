@@ -5,6 +5,7 @@ using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using System;
 using System.Numerics;
 
 namespace FortBackend.src.App.Routes.APIS.API
@@ -67,49 +68,1560 @@ namespace FortBackend.src.App.Routes.APIS.API
                 {
                     gameId = "Fortnite",
                     accountId = accountId,
-                    token = new List<string>()
+                    tokens = new List<string>()
                     {
                         "ARENA_S15_Division1"
                     },
                     teams = new { },
                     pendingPayouts = new List<string>(),
                     pendingPenalties = new { },
-                    persistentScores = new { },
+                    persistentScores = new {
+                        Hype = 69
+                    },
                     groupIdentity = new { },
                 },
                 events = new List<object>()
                 {
                     new
                     {
-                        gameId = "Fortnite",
-                        eventId = "Playlist_ShowdownAlt_Solo",
-                        playlistId = "Playlist_ShowdownAlt_Solo",
-                        regions = new string[] { "EU", "NAE" },
-                        regionMapping = new { },
-                        platforms = new string[]
-                        {
-                            "Windows"
-                        },
-                        platformMappings = new { },
-                        displayDateId = "Playlist_ShowdownAlt_Solo",
-                        eventGroup = "Playlist_ShowdownAlt_Solo",
-                        announcementTime = "2019-01-29T08:00:00.000Z",
+                        announcementTime = "2000-01-29T08:00:00.000Z",
                         appId = "",
+                        gameId = "Fortnite",
+                        beginTime = "2000-00-00T00:00:00.000Z",
+                        endTime = "9999-00-00T00:00:000Z",
+                        displayDataId = "arena_solo",
                         environment = "",
+                        eventId = "epicgames_Arena_S15_Solo",
+                        eventGroup = "",
+                        eventWindows = new List<object>()
+                        {
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division1_Solo",
+                                eventWindowId = "Arena_S15_Division1_Solo",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 25,
+                                    divisionRank = 0
+                                },
+                                payoutDelay = 30,
+                                round = 0,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division1"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division2_Solo",
+                                eventWindowId = "Arena_S15_Division2_Solo",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 75,
+                                    divisionRank = 1
+                                },
+                                payoutDelay = 30,
+                                round = 1,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division2"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division3_Solo",
+                                eventWindowId = "Arena_S15_Division3_Solo",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 125,
+                                    divisionRank = 2
+                                },
+                                payoutDelay = 30,
+                                round = 2,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division3"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division4_Solo",
+                                eventWindowId = "Arena_S15_Division4_Solo",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 175,
+                                    divisionRank = 3
+                                },
+                                payoutDelay = 30,
+                                round = 3,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division4"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division5_Solo",
+                                eventWindowId = "Arena_S15_Division5_Solo",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 225,
+                                    divisionRank = 4
+                                },
+                                payoutDelay = 30,
+                                round = 4,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division5"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division6_Solo",
+                                eventWindowId = "Arena_S15_Division6_Solo",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 300,
+                                    divisionRank = 5
+                                },
+                                payoutDelay = 30,
+                                round = 5,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division6"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division7_Solo",
+                                eventWindowId = "Arena_S15_Division7_Solo",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 9999999999,
+                                    divisionRank = 6
+                                },
+                                payoutDelay = 30,
+                                round = 6,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             }
+                        },
                         link = "",
                         metadata = new
                         {
-                            AccountLockType = "Window",
-                            TeamLockType = "None",
-                            DisqualityType = "Window",
-                            minimumAccountLevel = 0
+                            TrackedStats = new string[]
+                            {
+                                "PLACEMENT_STAT_INDEX",
+                                "TEAM_ELIMS_STAT_INDEX",
+                                "MATCH_PLAYED_STAT"
+                            },
+                            minimumAccountLevel = 0,
                         },
+                        platformMappings = new { },
+                        platforms = new string[]
+                        {
+                            "PS4",
+                            "XboxOne",
+                            "Switch",
+                            "Android",
+                            "IOS",
+                            "Windows"
+                        },
+                        regionMapping = new { },
+                        regions = new string[] {
+                            "NAE",
+                            "ME",
+                            "NAW",
+                            "OCE",
+                            "ASIA",
+                            "EU",
+                            "BR"
+                        },
+
+                    },
+                    new
+                    {
+                        announcementTime = "2000-01-29T08:00:00.000Z",
+                        appId = "",
+                        gameId = "Fortnite",
                         beginTime = "2000-00-00T00:00:00.000Z",
-                        endTime = "9999-00-00T00:00:000Z"
+                        endTime = "9999-00-00T00:00:000Z",
+                        displayDataId = "arena_duos",
+                        environment = "",
+                        eventId = "epicgames_Arena_S15_Duos",
+                        eventGroup = "",
+                        eventWindows = new List<object>()
+                        {
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division1_Duos",
+                                eventWindowId = "Arena_S15_Division1_Duos",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 25,
+                                    divisionRank = 0
+                                },
+                                payoutDelay = 30,
+                                round = 0,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division1"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division2_Duos",
+                                eventWindowId = "Arena_S15_Division2_Duos",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 75,
+                                    divisionRank = 1
+                                },
+                                payoutDelay = 30,
+                                round = 1,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division2"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division3_Duos",
+                                eventWindowId = "Arena_S15_Division3_Duos",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 125,
+                                    divisionRank = 2
+                                },
+                                payoutDelay = 30,
+                                round = 2,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division3"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division4_Duos",
+                                eventWindowId = "Arena_S15_Division4_Duos",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 175,
+                                    divisionRank = 3
+                                },
+                                payoutDelay = 30,
+                                round = 3,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division4"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division5_Duos",
+                                eventWindowId = "Arena_S15_Division5_Duos",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 225,
+                                    divisionRank = 4
+                                },
+                                payoutDelay = 30,
+                                round = 4,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division5"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division6",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division6_Duos",
+                                eventWindowId = "Arena_S15_Division6_Duos",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 300,
+                                    divisionRank = 5
+                                },
+                                payoutDelay = 30,
+                                round = 5,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division6"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             },
+                             new
+                             {
+                                additionalRequiremenets = new string[] {},
+                                beginTime = "2000-00-00T00:00:00.000Z",
+                                endTime = "9999-00-00T00:00:000Z",
+                                blackoutPeriods = new string[0],
+                                canLiveSpectate = false,
+                                countdownBeginTime = "2000-00-00T00:00:00.000Z",
+                                eventTemplateId = "eventTemplate_Arena_S15_Division7_Duos",
+                                eventWindowId = "Arena_S15_Division7_Duos",
+                                isTBD = false,
+                                metadata = new
+                                {
+                                    RoundType = "Arena",
+                                    ThresholdToAdvanceDivision = 9999999999,
+                                    divisionRank = 6
+                                },
+                                payoutDelay = 30,
+                                round = 6,
+                                requireAllTokens = new string[]
+                                {
+                                    "ARENA_S15_Division7"
+                                },
+                                requireAnyTokens = new string[0],
+                                requireNoneTokensCaller = new string[]
+                                {
+                                    "ARENA_S15_Division1",
+                                    "ARENA_S15_Division2",
+                                    "ARENA_S15_Division3",
+                                    "ARENA_S15_Division4",
+                                    "ARENA_S15_Division5",
+                                    "ARENA_S15_Division6"
+                                },
+                                requireAllTokensCaller = new string[0],
+                                storeLocations = new List<object>()
+                                {
+                                    new
+                                    {
+                                        storeMode = "winsow",
+                                        leaderboardId = "Fortnite_EU",
+                                        useIndividualScores = false
+                                    }
+                                },
+                                visibility = "public",
+                                teammateEligibility = "all",
+                                regionMappings = new { },
+                             }
+                        },
+                        link = "",
+                        metadata = new
+                        {
+                            TrackedStats = new string[]
+                            {
+                                "PLACEMENT_STAT_INDEX",
+                                "TEAM_ELIMS_STAT_INDEX",
+                                "MATCH_PLAYED_STAT"
+                            },
+                            minimumAccountLevel = 0,
+                        },
+                        platformMappings = new { },
+                        platforms = new string[]
+                        {
+                            "PS4",
+                            "XboxOne",
+                            "Switch",
+                            "Android",
+                            "IOS",
+                            "Windows"
+                        },
+                        regionMapping = new { },
+                        regions = new string[] {
+                            "NAE",
+                            "ME",
+                            "NAW",
+                            "OCE",
+                            "ASIA",
+                            "EU",
+                            "BR"
+                        },
 
                     }
                 },
-                templates = new List<object>(),
+                templates = new List<object>()
+                {
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division1_Solo",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division2_Solo",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division3_Solo",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division4_Solo",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division5_Solo",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division6_Solo",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division7_Solo",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Solo",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division1_Duos",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Duos",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division2_Duos",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Duos",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division3_Duos",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Duos",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division4_Duos",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Duos",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division5_Duos",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Duos",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division6_Duos",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Duos",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    },
+                    new {
+                        eventTemplateId = "eventTemplate_Arena_S15_Division7_Duos",
+                        gameId = "Fortnite",
+                        matchCap = 100,
+                        persistentScoreId = "Hype",
+                        playlistId = "Playlist_ShowdownAlt_Duos",
+                        scoringRules = new List<object>
+                        {
+                            new
+                            {
+                                matchRule = "lte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                         keyValue = 1,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    },
+                                    new
+                                    {
+                                         keyValue = 3,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 7,
+                                         multiplicative = false,
+                                         pointsEarned = 2
+                                    },
+                                    new
+                                    {
+                                         keyValue = 12,
+                                         multiplicative = false,
+                                         pointsEarned = 3
+                                    }
+                                },
+                                trackedStat = "PLACEMENT_STAT_INDEX"
+                            },
+                            new
+                            {
+                                matchRule = "gte",
+                                rewardTiers = new List<object>()
+                                {
+                                    new
+                                    {
+                                        keyValue = 1,
+                                        multiplicative = true,
+                                        pointsEarned = 1
+                                    }
+                                },
+                                trackedStat = "TEAM_ELIMS_STAT_INDEX"
+                            }
+                        }
+                    }
+                },
                 leaderboardDefs = new List<object>(),
                 scoringRuleSets = new { },
                 payoutTables = new { },

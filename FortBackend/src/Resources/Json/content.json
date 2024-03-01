@@ -65,39 +65,27 @@
         {
             "hidden": false,
             "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
-            "playlist_name": "Playlist_ShowdownAlt_Solo",
-            "description": "something interesting!",
-            "display_name": "Arena - Solo"
+            "playlist_name": "Playlist_ShowdownAlt_Solo"
         },
         {
             "hidden": false,
             "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
-            "playlist_name": "Playlist_ShowdownAlt_Duos",
-            "description": "something interesting!",
-            "display_name": "Arena - Duos"
+            "playlist_name": "Playlist_ShowdownAlt_Duos"
         },
         {
             "hidden": false,
             "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
-            "playlist_name": "Playlist_ShowdownAlt_Trios",
-            "description": "something interesting!",
-            "display_name": "Arena - Trios"
+            "playlist_name": "Playlist_ShowdownAlt_Trios"
         }
     ],
     "tournamentinformation": [
             {
-                "title_line_1": "BATTLE ROYALE - DUOS",
-                "loading_screen_image": "https://cdn2.unrealengine.com/tile-1920x1080-duos-1920x1080-5d72d7fe8881.jpg",
-                "_type": "Tournament Display Info",
-                "details_description": "",
+                "title_line_2": "ARENA",
                 "tournament_display_id": "arena_duos",
-                "playlist_tile_image": "https://cdn2.unrealengine.com/tile-1920x1080-duos-1920x1080-5d72d7fe8881.jpg",
-                "flavor_description": ""
+                "playlist_tile_image": "https://cdn2.unrealengine.com/tile-1920x1080-duos-1920x1080-5d72d7fe8881.jpg"
             },
             {
-                "title_line_1": "BATTLE ROYALE - SOLO",
-                "loading_screen_image": "https://cdn2.unrealengine.com/tile-1920x1080-solo-1920x1080-f0f52a7583e6.jpg",
-                "_type": "Tournament Display Info",
+                "title_line_2": "ARENA",
                 "tournament_display_id": "arena_solo",
                 "playlist_tile_image": "https://cdn2.unrealengine.com/tile-1920x1080-solo-1920x1080-f0f52a7583e6.jpg"
             }

@@ -31,8 +31,8 @@
         public string playlist_name { get; set; } = string.Empty;
         public bool hidden { get; set; } = false;
         public string _type { get; set; } = "FortPlaylistInfo";
-        public string description { get; set; } = "FortBackend is the cutiest backend";
-        public string display_name { get; set; } = "Blank~ check config";
+        public string description { get; set; }
+        public string display_name { get; set; }
     }
 
     public class conversionconfig

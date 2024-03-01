@@ -1622,10 +1622,6 @@ namespace FortBackend.src.App.Routes.APIS.API
                         }
                     }
                 },
-                leaderboardDefs = new List<object>(),
-                scoringRuleSets = new { },
-                payoutTables = new { },
-                scores = new { }
             });
         }
 

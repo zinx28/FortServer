@@ -132,8 +132,12 @@ namespace FortBackend.src.App.Routes.APIS.API
                 //ContentJson contentconfig1 = JsonConvert.DeserializeObject<ContentJson>(jsonData); //dynamicbackgrounds.news
 
                 //return Ok(contentconfig1);
+                var jsonResponse = JsonConvert.SerializeObject(ContentJsonResponse, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
 
-                return ContentJsonResponse;
+                return Content(jsonResponse, "application/json");
             }
             catch (Exception ex)
             {

@@ -11,6 +11,7 @@ using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Dynamic;
 using System.Numerics;
 
 namespace FortBackend.src.App.Routes.APIS.API
@@ -161,9 +162,9 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                             if (seasonObject != null)
                             {
-
-
-
+                                dynamic persistentScores = new ExpandoObject();
+                                persistentScores.Hype = seasonObject.arena.persistentScores.Hype;
+                                ((IDictionary<string, object>)persistentScores)[$"Hype_{Season}"] = seasonObject.arena.persistentScores.Hype;
                                 return Content(JsonConvert.SerializeObject(new
                                 {
                                     events = jsonResponse,
@@ -176,7 +177,8 @@ namespace FortBackend.src.App.Routes.APIS.API
                                         pendingPenalties = new { },
                                         persistentScores = new
                                         {
-                                            Hype = seasonObject.arena.persistentScores.Hype
+                                            Hype = seasonObject.arena.persistentScores.Hype,
+                                            Hype_S15 = 69
                                         },
                                         teams = new { },
                                         tokens = seasonObject.arena.tokens,

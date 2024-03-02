@@ -37,6 +37,7 @@
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\templates\" />
     <Folder Include="src\Resources\Json\shop\" />
+    <Folder Include="src\Resources\Image\" />
   </ItemGroup>
 
   <ItemGroup>

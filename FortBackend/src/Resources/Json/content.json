@@ -82,22 +82,31 @@
     "tournamentinformation": [
         {
             "title_line_2": "ARENA",
+            "loading_screen_image": "https://cdn2.unrealengine.com/s18-br-lategame2-discoverytile-1920x1080-1920x1080-b20ef1db94fb.jpg",
             "tournament_display_id": "arena_solo",
+            "_type": "Tournament Display Info",
             "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
         },
         {
             "title_line_2": "ARENA",
+            "loading_screen_image": "https://cdn2.unrealengine.com/s18-br-lategame2-discoverytile-1920x1080-1920x1080-b20ef1db94fb.jpg",
             "tournament_display_id": "arena_duos",
+            "_type": "Tournament Display Info",
             "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
         },
         {
             "title_line_2": "ARENA",
+            "loading_screen_image": "https://cdn2.unrealengine.com/s18-br-lategame2-discoverytile-1920x1080-1920x1080-b20ef1db94fb.jpg",
             "tournament_display_id": "arena_trios",
+            "_type": "Tournament Display Info",
             "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
         },
         {
-            "title_line_2": "ARENA",
+            "title_line_1": "ARENA",
+            "loading_screen_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
+            "poster_back_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
             "tournament_display_id": "arena_squads",
+            "_type": "Tournament Display Info",
             "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
         }
     ]

@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
@@ -205,6 +206,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [JsonProperty("season")]
         public int SeasonNumber { get; set; } = 12;
 
+        [BsonElement("arena")]
+        [JsonProperty("arena")]
+        public Arena arena { get; set; } = new Arena();
+
         [BsonElement("season_match_boost")]
         [JsonProperty("season_match_boost")]
         public int season_match_boost = 0;
@@ -263,5 +268,13 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonElement("intro_game_played")]
         [JsonProperty("intro_game_played")]
         public bool intro_game_played { get; set; } = false;
+    }
+
+    public class Arena
+    {
+        public object persistentScores { get; set; } = new
+        {
+            Hype = 0,
+        };
     }
 }

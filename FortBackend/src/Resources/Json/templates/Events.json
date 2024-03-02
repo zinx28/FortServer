@@ -7,6 +7,293 @@
         "endTime": "9999-12-31T23:59:59.000Z",
         "environment": null,
         "eventGroup": "",
+        "eventId": "epicgames_Arena_S15_Solo",
+        "eventWindows": [
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division1_Solo",
+                "eventWindowId": "Arena_S15_Division1_Solo",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 25,
+                    "divisionRank": 0
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division1"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 0,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division2_Solo",
+                "eventWindowId": "Arena_S15_Division2_Solo",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 75,
+                    "divisionRank": 1
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division2"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 1,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division3_Solo",
+                "eventWindowId": "Arena_S15_Division3_Solo",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 125,
+                    "divisionRank": 2
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division3"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 2,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division4_Solo",
+                "eventWindowId": "Arena_S15_Division4_Solo",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 175,
+                    "divisionRank": 3
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division4"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 3,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division5_Solo",
+                "eventWindowId": "Arena_S15_Division5_Solo",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 225,
+                    "divisionRank": 4
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division5"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 4,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division6_Solo",
+                "eventWindowId": "Arena_S15_Division6_Solo",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 300,
+                    "divisionRank": 5
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division6"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 5,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division7_Solo",
+                "eventWindowId": "Arena_S15_Division7_Solo",
+                "isTBD": true,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 9999999999,
+                    "divisionRank": 6
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division7"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6"
+                ],
+                "round": 6,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            }
+        ],
+        "gameId": "Fortnite",
+        "link": null,
+        "metadata": {
+            "TrackedStats": [
+                "PLACEMENT_STAT_INDEX",
+                "TEAM_ELIMS_STAT_INDEX",
+                "MATCH_PLAYED_STAT"
+            ],
+            "minimumAccountLevel": 0
+        },
+        "platformMappings": {},
+        "platforms": [
+            "PS4",
+            "XboxOne",
+            "Switch",
+            "Android",
+            "IOS",
+            "Windows"
+        ],
+        "regionMappings": {},
+        "regions": [
+            "NAE",
+            "ME",
+            "NAW",
+            "OCE",
+            "ASIA",
+            "EU",
+            "BR"
+        ]
+    },
+
+    {
+        "announcementTime": "2024-03-01T21:56:59Z",
+        "appId": null,
+        "beginTime": "2024-02-29T21:56:59Z",
+        "displayDataId": "arena_solo",
+        "endTime": "9999-12-31T23:59:59.000Z",
+        "environment": null,
+        "eventGroup": "",
         "eventId": "epicgames_Arena_S15_Duos",
         "eventWindows": [
             {
@@ -285,15 +572,16 @@
             "BR"
         ]
     },
+
     {
         "announcementTime": "2024-03-01T21:56:59Z",
         "appId": null,
         "beginTime": "2024-02-29T21:56:59Z",
-        "displayDataId": "arena_solo",
+        "displayDataId": "arena_trios",
         "endTime": "9999-12-31T23:59:59.000Z",
         "environment": null,
         "eventGroup": "",
-        "eventId": "epicgames_Arena_S15_Solo",
+        "eventId": "epicgames_Arena_S15_Trios",
         "eventWindows": [
             {
                 "additionalRequirements": [],
@@ -302,8 +590,8 @@
                 "canLiveSpectate": false,
                 "countdownBeginTime": "2023-06-15T15:00:00.000Z",
                 "endTime": "9999-12-31T23:59:59.000Z",
-                "eventTemplateId": "eventTemplate_Arena_S15_Division1_Solo",
-                "eventWindowId": "Arena_S15_Division1_Solo",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division1_Trios",
+                "eventWindowId": "Arena_S15_Division1_Trios",
                 "isTBD": false,
                 "metadata": {
                     "RoundType": "Arena",
@@ -337,8 +625,8 @@
                 "canLiveSpectate": false,
                 "countdownBeginTime": "2023-06-15T15:00:00.000Z",
                 "endTime": "9999-12-31T23:59:59.000Z",
-                "eventTemplateId": "eventTemplate_Arena_S15_Division2_Solo",
-                "eventWindowId": "Arena_S15_Division2_Solo",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division2_Trios",
+                "eventWindowId": "Arena_S15_Division2_Trios",
                 "isTBD": false,
                 "metadata": {
                     "RoundType": "Arena",
@@ -372,8 +660,8 @@
                 "canLiveSpectate": false,
                 "countdownBeginTime": "2023-06-15T15:00:00.000Z",
                 "endTime": "9999-12-31T23:59:59.000Z",
-                "eventTemplateId": "eventTemplate_Arena_S15_Division3_Solo",
-                "eventWindowId": "Arena_S15_Division3_Solo",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division3_Trios",
+                "eventWindowId": "Arena_S15_Division3_Trios",
                 "isTBD": false,
                 "metadata": {
                     "RoundType": "Arena",
@@ -407,8 +695,8 @@
                 "canLiveSpectate": false,
                 "countdownBeginTime": "2023-06-15T15:00:00.000Z",
                 "endTime": "9999-12-31T23:59:59.000Z",
-                "eventTemplateId": "eventTemplate_Arena_S15_Division4_Solo",
-                "eventWindowId": "Arena_S15_Division4_Solo",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division4_Trios",
+                "eventWindowId": "Arena_S15_Division4_Trios",
                 "isTBD": false,
                 "metadata": {
                     "RoundType": "Arena",
@@ -442,8 +730,8 @@
                 "canLiveSpectate": false,
                 "countdownBeginTime": "2023-06-15T15:00:00.000Z",
                 "endTime": "9999-12-31T23:59:59.000Z",
-                "eventTemplateId": "eventTemplate_Arena_S15_Division5_Solo",
-                "eventWindowId": "Arena_S15_Division5_Solo",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division5_Trios",
+                "eventWindowId": "Arena_S15_Division5_Trios",
                 "isTBD": false,
                 "metadata": {
                     "RoundType": "Arena",
@@ -477,8 +765,8 @@
                 "canLiveSpectate": false,
                 "countdownBeginTime": "2023-06-15T15:00:00.000Z",
                 "endTime": "9999-12-31T23:59:59.000Z",
-                "eventTemplateId": "eventTemplate_Arena_S15_Division6_Solo",
-                "eventWindowId": "Arena_S15_Division6_Solo",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division6_Trios",
+                "eventWindowId": "Arena_S15_Division6_Trios",
                 "isTBD": false,
                 "metadata": {
                     "RoundType": "Arena",
@@ -512,8 +800,295 @@
                 "canLiveSpectate": false,
                 "countdownBeginTime": "2023-06-15T15:00:00.000Z",
                 "endTime": "9999-12-31T23:59:59.000Z",
-                "eventTemplateId": "eventTemplate_Arena_S15_Division7_Solo",
-                "eventWindowId": "Arena_S15_Division7_Solo",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division7_Trios",
+                "eventWindowId": "Arena_S15_Division7_Trios",
+                "isTBD": true,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 9999999999,
+                    "divisionRank": 6
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division7"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6"
+                ],
+                "round": 6,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            }
+        ],
+        "gameId": "Fortnite",
+        "link": null,
+        "metadata": {
+            "TrackedStats": [
+                "PLACEMENT_STAT_INDEX",
+                "TEAM_ELIMS_STAT_INDEX",
+                "MATCH_PLAYED_STAT"
+            ],
+            "minimumAccountLevel": 0
+        },
+        "platformMappings": {},
+        "platforms": [
+            "PS4",
+            "XboxOne",
+            "Switch",
+            "Android",
+            "IOS",
+            "Windows"
+        ],
+        "regionMappings": {},
+        "regions": [
+            "NAE",
+            "ME",
+            "NAW",
+            "OCE",
+            "ASIA",
+            "EU",
+            "BR"
+        ]
+    },
+
+    {
+        "announcementTime": "2024-03-01T21:56:59Z",
+        "appId": null,
+        "beginTime": "2024-02-29T21:56:59Z",
+        "displayDataId": "arena_squads",
+        "endTime": "9999-12-31T23:59:59.000Z",
+        "environment": null,
+        "eventGroup": "",
+        "eventId": "epicgames_Arena_S15_Squads",
+        "eventWindows": [
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division1_Squads",
+                "eventWindowId": "Arena_S15_Division1_Squads",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 25,
+                    "divisionRank": 0
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division1"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 0,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division2_Squads",
+                "eventWindowId": "Arena_S15_Division2_Squads",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 75,
+                    "divisionRank": 1
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division2"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 1,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division3_Squads",
+                "eventWindowId": "Arena_S15_Division3_Squads",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 125,
+                    "divisionRank": 2
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division3"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 2,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division4_Squads",
+                "eventWindowId": "Arena_S15_Division4_Squads",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 175,
+                    "divisionRank": 3
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division4"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 3,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division5_Squads",
+                "eventWindowId": "Arena_S15_Division5_Squads",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 225,
+                    "divisionRank": 4
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division5"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division6",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 4,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division6_Squads",
+                "eventWindowId": "Arena_S15_Division6_Squads",
+                "isTBD": false,
+                "metadata": {
+                    "RoundType": "Arena",
+                    "ThresholdToAdvanceDivision": 300,
+                    "divisionRank": 5
+                },
+                "payoutDelay": 30,
+                "requireAllTokens": [
+                    "ARENA_S15_Division6"
+                ],
+                "requireAllTokensCaller": [],
+                "requireAnyTokens": [],
+                "requireAnyTokensCaller": [],
+                "requireNoneTokensCaller": [
+                    "ARENA_S15_Division1",
+                    "ARENA_S15_Division2",
+                    "ARENA_S15_Division3",
+                    "ARENA_S15_Division4",
+                    "ARENA_S15_Division5",
+                    "ARENA_S15_Division7"
+                ],
+                "round": 5,
+                "scoreLocations": [],
+                "teammateEligibility": "any",
+                "visibility": "public"
+            },
+            {
+                "additionalRequirements": [],
+                "beginTime": "2024-02-29T21:56:59Z",
+                "blackoutPeriods": [],
+                "canLiveSpectate": false,
+                "countdownBeginTime": "2023-06-15T15:00:00.000Z",
+                "endTime": "9999-12-31T23:59:59.000Z",
+                "eventTemplateId": "eventTemplate_Arena_S15_Division7_Squads",
+                "eventWindowId": "Arena_S15_Division7_Squads",
                 "isTBD": true,
                 "metadata": {
                     "RoundType": "Arena",

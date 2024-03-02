@@ -82,12 +82,22 @@
     "tournamentinformation": [
         {
             "title_line_2": "ARENA",
+            "tournament_display_id": "arena_solo",
+            "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
+        },
+        {
+            "title_line_2": "ARENA",
             "tournament_display_id": "arena_duos",
             "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
         },
         {
             "title_line_2": "ARENA",
-            "tournament_display_id": "arena_solo",
+            "tournament_display_id": "arena_trios",
+            "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
+        },
+        {
+            "title_line_2": "ARENA",
+            "tournament_display_id": "arena_squads",
             "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
         }
     ]

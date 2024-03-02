@@ -34,165 +34,167 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                 };
             }
             ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
-
-            string[] SplitOfferId = Body.offerId.Split(":/");
-            string SecondSplitOfferId = SplitOfferId[1];
-            ItemsSaved ShopContent = new ItemsSaved();
-            var NotificationsItems = new List<NotificationsItemsClass>();
-            var MultiUpdates = new List<object>();
-            var ApplyProfileChanges = new List<object>();
-            Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
-            List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
-            int BaseRev = AccountDataParsed.commoncore.RVN;
-            int BaseRev2 = AccountDataParsed.athena.RVN;
-
-            foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
+            
+            if(shopData != null)
             {
-                if (storefront.id == SecondSplitOfferId)
-                {
-                    ShopContent = storefront;
-                }
-            }
+                string[] SplitOfferId = Body.offerId.Split(":/");
+                string SecondSplitOfferId = SplitOfferId[1];
+                ItemsSaved ShopContent = new ItemsSaved();
+                var NotificationsItems = new List<NotificationsItemsClass>();
+                var MultiUpdates = new List<object>();
+                var ApplyProfileChanges = new List<object>();
+                Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
+                List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
+                int BaseRev = AccountDataParsed.commoncore.RVN;
+                int BaseRev2 = AccountDataParsed.athena.RVN;
 
-            foreach (ItemsSaved storefront in shopData.ShopItems.Weekly)
-            {
-                if (storefront.id == SecondSplitOfferId)
+                foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
                 {
-                    ShopContent = storefront;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(ShopContent.id))
-            {
-                bool HasUserHaveItem = AccountDataParsed.athena.Items.Any(item => item.ContainsKey(ShopContent.id));
-
-                if (HasUserHaveItem)
-                {
-                    throw new BaseError()
+                    if (storefront.id == SecondSplitOfferId)
                     {
-                        errorCode = "errors.com.epicgames.modules.catalog",
-                        errorMessage = "You already own the item",
-                        messageVars = new List<string> { "PurchaseCatalogEntry" },
-                        numericErrorCode = 12801,
-                        originatingService = "any",
-                        intent = "prod",
-                        error_description = "You already own the item",
-                    };
-                }
-
-                Console.WriteLine(HasUserHaveItem);
-
-                NotificationsItems.Add(new NotificationsItemsClass
-                {
-                    itemType = ShopContent.item,
-                    itemGuid = ShopContent.item,
-                    itemProfile = "athena"
-                });
-
-                MultiUpdates.Add(new MultiUpdateClass
-                {
-                    changeType = "itemAdded",
-                    itemId = ShopContent.item,
-                    item = new AthenaItem
-                    {
-                        templateId = ShopContent.item,
-                        attributes = new AthenaItemAttributes
-                        {
-                            item_seen = false,
-                            variants = ShopContent.variants,
-                        },
-                        quantity = 1
+                        ShopContent = storefront;
                     }
-                });
+                }
 
-                foreach (Item ItemShopItem in ShopContent.items)
+                foreach (ItemsSaved storefront in shopData.ShopItems.Weekly)
                 {
+                    if (storefront.id == SecondSplitOfferId)
+                    {
+                        ShopContent = storefront;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(ShopContent.id))
+                {
+                    bool HasUserHaveItem = AccountDataParsed.athena.Items.Any(item => item.ContainsKey(ShopContent.id));
+
+                    if (HasUserHaveItem)
+                    {
+                        throw new BaseError()
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "You already own the item",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "You already own the item",
+                        };
+                    }
+
+                    Console.WriteLine(HasUserHaveItem);
+
                     NotificationsItems.Add(new NotificationsItemsClass
                     {
-                        itemType = ItemShopItem.item,
-                        itemGuid = ItemShopItem.item,
+                        itemType = ShopContent.item,
+                        itemGuid = ShopContent.item,
                         itemProfile = "athena"
                     });
 
                     MultiUpdates.Add(new MultiUpdateClass
                     {
                         changeType = "itemAdded",
-                        itemId = ItemShopItem.item,
+                        itemId = ShopContent.item,
                         item = new AthenaItem
                         {
-                            templateId = ItemShopItem.item,
+                            templateId = ShopContent.item,
                             attributes = new AthenaItemAttributes
                             {
                                 item_seen = false,
-                                variants = ItemShopItem.variants,
+                                variants = ShopContent.variants,
                             },
                             quantity = 1
                         }
                     });
-                }
-                //AthenaItem test = AccountDataParsed.commoncore.Items.FirstOrDefault(e => e.ContainsKey("Currency"))["Currency"] as AthenaItem;
 
-                // I need to work on this
-
-                int GrabPlacement = -1;
-                GrabPlacement = AccountDataParsed.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
-                .TakeWhile(pair => !pair.Item.ContainsKey("Currency"))
-                .Count();
-                //Console.WriteLine(JsonConvert.SerializeObject(AccountDataParsed, Formatting.Indented));
-                var currencyItem = AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"] as dynamic;
-
-                try
-                {
-                    // AthenaItem currencyItem2 = currencyItem as AthenaItem;
-                    Console.WriteLine(currencyItem);
-                    // Console.WriteLine(currencyItem2.quantity);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                //Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"]);
-                if (currencyItem.quantity == 0)
-                {
-                    throw new BaseError()
+                    foreach (Item ItemShopItem in ShopContent.items)
                     {
-                        errorCode = "errors.com.epicgames.modules.catalog",
-                        errorMessage = "Your Poor",
-                        messageVars = new List<string> { "PurchaseCatalogEntry" },
-                        numericErrorCode = 12801,
-                        originatingService = "any",
-                        intent = "prod",
-                        error_description = "Your Poor",
-                    };
-                }
+                        NotificationsItems.Add(new NotificationsItemsClass
+                        {
+                            itemType = ItemShopItem.item,
+                            itemGuid = ItemShopItem.item,
+                            itemProfile = "athena"
+                        });
 
-                Console.WriteLine($"Currency Item Quantity: {currencyItem.quantity}");
+                        MultiUpdates.Add(new MultiUpdateClass
+                        {
+                            changeType = "itemAdded",
+                            itemId = ItemShopItem.item,
+                            item = new AthenaItem
+                            {
+                                templateId = ItemShopItem.item,
+                                attributes = new AthenaItemAttributes
+                                {
+                                    item_seen = false,
+                                    variants = ItemShopItem.variants,
+                                },
+                                quantity = 1
+                            }
+                        });
+                    }
+                    //AthenaItem test = AccountDataParsed.commoncore.Items.FirstOrDefault(e => e.ContainsKey("Currency"))["Currency"] as AthenaItem;
 
-                if (ShopContent.price > int.Parse(currencyItem.quantity.ToString()))
-                {
-                    throw new BaseError()
+                    // I need to work on this
+
+                    int GrabPlacement = -1;
+                    GrabPlacement = AccountDataParsed.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
+                    .TakeWhile(pair => !pair.Item.ContainsKey("Currency"))
+                    .Count();
+                    //Console.WriteLine(JsonConvert.SerializeObject(AccountDataParsed, Formatting.Indented));
+                    var currencyItem = AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"] as dynamic;
+
+                    try
                     {
-                        errorCode = "errors.com.epicgames.modules.catalog",
-                        errorMessage = "Item is higher price",
-                        messageVars = new List<string> { "PurchaseCatalogEntry" },
-                        numericErrorCode = 12801,
-                        originatingService = "any",
-                        intent = "prod",
-                        error_description = "Item is higher price",
-                    };
-                }
+                        // AthenaItem currencyItem2 = currencyItem as AthenaItem;
+                        Console.WriteLine(currencyItem);
+                        // Console.WriteLine(currencyItem2.quantity);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    //Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"]);
+                    if (currencyItem.quantity == 0)
+                    {
+                        throw new BaseError()
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "Your Poor",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Your Poor",
+                        };
+                    }
 
-                int Price = currencyItem.quantity - ShopContent.price;
+                    Console.WriteLine($"Currency Item Quantity: {currencyItem.quantity}");
 
-                ApplyProfileChanges.Add(new ApplyProfileChangesClass
-                {
-                    changeType = "itemQuantityChanged",
-                    itemId = "Currency",
-                    quantity = Price
-                });
+                    if (ShopContent.price > int.Parse(currencyItem.quantity.ToString()))
+                    {
+                        throw new BaseError()
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "Item is higher price",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Item is higher price",
+                        };
+                    }
+
+                    int Price = currencyItem.quantity - ShopContent.price;
+
+                    ApplyProfileChanges.Add(new ApplyProfileChangesClass
+                    {
+                        changeType = "itemQuantityChanged",
+                        itemId = "Currency",
+                        quantity = Price
+                    });
 
 
-                var newItem699 = new Dictionary<string, object>
+                    var newItem699 = new Dictionary<string, object>
                 {
                     {
                         $"{ShopContent.item}", new Dictionary<string, object>
@@ -215,11 +217,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                     }
                 };
 
-                itemList.Add(newItem699);
+                    itemList.Add(newItem699);
 
-                foreach (Item ItemInItems in ShopContent.items)
-                {
-                    itemList.Add(new Dictionary<string, object>
+                    foreach (Item ItemInItems in ShopContent.items)
+                    {
+                        itemList.Add(new Dictionary<string, object>
                     {
                         {
                             $"{ItemInItems.item}", new Dictionary<string, object>
@@ -241,28 +243,28 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             }
                         }
                     });
-                }
+                    }
 
-                UpdatedData.Add($"commoncore.items.{GrabPlacement}.Currency.quantity", Price);
-                if (MultiUpdates.Count > 0)
-                {
-                    AccountDataParsed.athena.RVN += 1;
-                    AccountDataParsed.athena.CommandRevision += 1;
-                    UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN);
-                    UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision);
-                }
+                    UpdatedData.Add($"commoncore.items.{GrabPlacement}.Currency.quantity", Price);
+                    if (MultiUpdates.Count > 0)
+                    {
+                        AccountDataParsed.athena.RVN += 1;
+                        AccountDataParsed.athena.CommandRevision += 1;
+                        UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN);
+                        UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision);
+                    }
 
-                if (ApplyProfileChanges.Count > 0)
-                {
-                    AccountDataParsed.commoncore.RVN += 1;
-                    AccountDataParsed.commoncore.CommandRevision += 1;
-                    UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN);
-                    UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision);
-                }
+                    if (ApplyProfileChanges.Count > 0)
+                    {
+                        AccountDataParsed.commoncore.RVN += 1;
+                        AccountDataParsed.commoncore.CommandRevision += 1;
+                        UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN);
+                        UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision);
+                    }
 
-                await Handlers.UpdateOne<Account_Module>("accountId", AccountDataParsed.AccountId, UpdatedData);
+                    await Handlers.UpdateOne<Account_Module>("accountId", AccountDataParsed.AccountId, UpdatedData);
 
-                await Handlers.PushOne<Account_Module>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
+                    await Handlers.PushOne<Account_Module>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
                 {
                     {
                         $"athena.items", itemList
@@ -270,21 +272,21 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                 });
 
 
-                Console.WriteLine("TEST");
+                    Console.WriteLine("TEST");
 
-                if (Season.SeasonFull >= 12.20)
-                {
-                    Mcp test = await CommonCoreResponse.Grab(AccountDataParsed.AccountId, ProfileId, Season, AccountDataParsed.commoncore.RVN, AccountDataParsed);
-                    ApplyProfileChanges = test.profileChanges;
-                }
+                    if (Season.SeasonFull >= 12.20)
+                    {
+                        Mcp test = await CommonCoreResponse.Grab(AccountDataParsed.AccountId, ProfileId, Season, AccountDataParsed.commoncore.RVN, AccountDataParsed);
+                        ApplyProfileChanges = test.profileChanges;
+                    }
 
-                Mcp mcp = new Mcp()
-                {
-                    profileRevision = AccountDataParsed.commoncore.RVN,
-                    profileId = ProfileId,
-                    profileChangesBaseRevision = BaseRev,
-                    profileChanges = ApplyProfileChanges,
-                    notifications = new List<McpNotifications>()
+                    Mcp mcp = new Mcp()
+                    {
+                        profileRevision = AccountDataParsed.commoncore.RVN,
+                        profileId = ProfileId,
+                        profileChangesBaseRevision = BaseRev,
+                        profileChanges = ApplyProfileChanges,
+                        notifications = new List<McpNotifications>()
                     {
                         new McpNotifications
                         {
@@ -296,9 +298,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             }
                         }
                     },
-                    profileCommandRevision = AccountDataParsed.commoncore.CommandRevision,
-                    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-                    multiUpdate = new List<object>()
+                        profileCommandRevision = AccountDataParsed.commoncore.CommandRevision,
+                        serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                        multiUpdate = new List<object>()
                     {
                         new
                         {
@@ -309,12 +311,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             profileCommandRevision = AccountDataParsed.athena.CommandRevision,
                         }
                     },
-                    responseVersion = 1
+                        responseVersion = 1
+                    };
+                    string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
+                    Console.WriteLine(mcpJson);
+                    return mcp;
                 };
-                string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
-                Console.WriteLine(mcpJson);
-                return mcp;
-            };
+            }
 
             return new Mcp();
         }

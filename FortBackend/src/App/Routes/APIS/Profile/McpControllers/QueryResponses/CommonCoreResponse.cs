@@ -34,6 +34,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                         {
                             Interval = "0001-01-01T00:00:00.000Z",
                             Rerolls = 1
+                        },
+                        arena = new Arena
+                        {
+                            tokens = new string[] {
+                                $"ARENA_S{Season}_Division1"
+                            }
                         }
                     });
 

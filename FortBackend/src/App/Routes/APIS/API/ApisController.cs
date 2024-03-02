@@ -80,7 +80,7 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                     string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Events.json");
                     string json1 = System.IO.File.ReadAllText(filePath1);
-                    var jsonResponse = JsonConvert.DeserializeObject(json1);
+                    var jsonResponse = JsonConvert.DeserializeObject<List<EventC>>(json1);
 
                     string filePath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Arena.json");
                     string json2 = System.IO.File.ReadAllText(filePath2);
@@ -94,8 +94,31 @@ namespace FortBackend.src.App.Routes.APIS.API
                         }
                     }
 
-                  
-                    if(Season < 23)
+                    foreach (EventC templateC in jsonResponse)
+                    {
+                        if (templateC.eventId.Contains("S15"))
+                        {
+                            templateC.eventId = templateC.eventId.Replace("S15", $"S{Season}");
+                        }
+
+                        foreach (EventWindowC EventWindowOb in templateC.eventWindows)
+                        {
+                            if (EventWindowOb.eventTemplateId.Contains("S15"))
+                            {
+                                EventWindowOb.eventTemplateId = EventWindowOb.eventTemplateId.Replace("S15", $"S{Season}");
+                            }
+                            if (EventWindowOb.eventWindowId.Contains("S15"))
+                            {
+                                EventWindowOb.eventWindowId = EventWindowOb.eventWindowId.Replace("S15", $"S{Season}");
+                            }
+                            EventWindowOb.requireAllTokens = EventWindowOb.requireAllTokens.Select(s => s.Contains("S15") ? s.Replace("S15", $"S{Season}") : s).ToArray();
+                            EventWindowOb.requireNoneTokensCaller = EventWindowOb.requireNoneTokensCaller.Select(s => s.Contains("S15") ? s.Replace("S15", $"S{Season}") : s).ToArray();
+
+                        }
+                    }
+
+
+                    if (Season < 23)
                     {
                         Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
                         if(AccountDataParsed != null)

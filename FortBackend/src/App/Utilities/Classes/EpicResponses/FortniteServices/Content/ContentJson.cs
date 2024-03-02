@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Content
+namespace FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content
 {
     public class ContentJson
     {

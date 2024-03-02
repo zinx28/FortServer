@@ -1,4 +1,4 @@
-﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
+﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content;
 using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Utilities.Classes.ConfigHelpers

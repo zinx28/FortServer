@@ -1,6 +1,7 @@
 ﻿using Discord;
 using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Events;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
@@ -72,19 +73,28 @@ namespace FortBackend.src.App.Routes.APIS.API
                 var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if(AccountData != "Error")
                 {
+                    var userAgent = Request.Headers["User-Agent"].ToString();
+                    int Season;
+                    Season = (await Grabber.SeasonUserAgent(Request)).Season;
+
+
                     string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Events.json");
                     string json1 = System.IO.File.ReadAllText(filePath1);
                     var jsonResponse = JsonConvert.DeserializeObject(json1);
 
                     string filePath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Arena.json");
                     string json2 = System.IO.File.ReadAllText(filePath2);
-                    var jsonResponse2 = JsonConvert.DeserializeObject(json2);
+                    var jsonResponse2 = JsonConvert.DeserializeObject<List<TemplateC>>(json2);
 
+                    foreach (var templateC in jsonResponse2)
+                    {
+                        if (templateC.eventTemplateId.Contains("S15"))
+                        {                            
+                            templateC.eventTemplateId = templateC.eventTemplateId.Replace("S15", $"S{Season}");
+                        }
+                    }
 
-                    var userAgent = Request.Headers["User-Agent"].ToString();
-                    int Season;
-                    Season = (await Grabber.SeasonUserAgent(Request)).Season;
-
+                  
                     if(Season < 23)
                     {
                         Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];

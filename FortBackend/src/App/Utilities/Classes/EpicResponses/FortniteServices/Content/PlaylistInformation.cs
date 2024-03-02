@@ -1,4 +1,4 @@
-﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Content
+﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content
 {
     public class PlaylistInformation
     {
@@ -9,7 +9,7 @@
         public string _title { get; set; } = "playlistinformation";
         public string frontend_matchmaking_header_text_description { get; set; } = "Watch @ Legends Landing";
         public string frontend_matchmaking_header_text { get; set; } = "FNCS Last Chance Major";
-        
+
         public playlistinfo playlist_info { get; set; } = new playlistinfo();
 
         public bool _noIndex { get; set; } = false;

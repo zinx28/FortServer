@@ -272,11 +272,18 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
     public class Arena
     {
+        [BsonElement("persistentScores")]
+        [JsonProperty("persistentScores")]
         public PersistentScores persistentScores { get; set; } = new PersistentScores();
+        [BsonElement("tokens")]
+        [JsonProperty("tokens")]
+        public string[] tokens { get; set; } = new string[0];
     }
 
     public class PersistentScores
     {
+        [BsonElement("Hype")]
+        [JsonProperty("Hype")]
         public int Hype { get; set; } = 0;
     }
 }

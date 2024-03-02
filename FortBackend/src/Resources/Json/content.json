@@ -2,14 +2,14 @@
     "battleroyalenews": {
         "motds": [
             {
-                "image": "https://cdn2.unrealengine.com/ch4s2-lobbyupdate-4-20-2022-lifted-copy-3840x2160-d3a138f5f9e7.jpg",
+                "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
                 "title": "Orion",
                 "body": "Fortnite Kittens :3"
             }
         ],
         "messages": [
             {
-                "image": "https://cdn2.unrealengine.com/ch4s2-lobbyupdate-4-20-2022-lifted-copy-3840x2160-d3a138f5f9e7.jpg",
+                "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
                 "title": "Orion",
                 "body": "Fortnite Kittens :3"
             }
@@ -65,7 +65,8 @@
         {
             "hidden": false,
             "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
-            "playlist_name": "Playlist_ShowdownAlt_Solo"
+            "playlist_name": "Playlist_ShowdownAlt_Solo",
+            "description": "something interesting!"
         },
         {
             "hidden": false,
@@ -79,15 +80,15 @@
         }
     ],
     "tournamentinformation": [
-            {
-                "title_line_2": "ARENA",
-                "tournament_display_id": "arena_duos",
-                "playlist_tile_image": "https://cdn2.unrealengine.com/tile-1920x1080-duos-1920x1080-5d72d7fe8881.jpg"
-            },
-            {
-                "title_line_2": "ARENA",
-                "tournament_display_id": "arena_solo",
-                "playlist_tile_image": "https://cdn2.unrealengine.com/tile-1920x1080-solo-1920x1080-f0f52a7583e6.jpg"
-            }
-        ]
+        {
+            "title_line_2": "ARENA",
+            "tournament_display_id": "arena_duos",
+            "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
+        },
+        {
+            "title_line_2": "ARENA",
+            "tournament_display_id": "arena_solo",
+            "playlist_tile_image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&"
+        }
+    ]
 }

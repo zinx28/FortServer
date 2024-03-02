@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 namespace FortBackend.src.App.Routes.Friends
 {
     [ApiController]
-    [Route("friend")]
+    [Route("friends")]
     public class FriendController : ControllerBase
     {
         [HttpGet("v1/{accountId}/blocklist")]

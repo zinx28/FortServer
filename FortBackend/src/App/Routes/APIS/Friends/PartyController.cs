@@ -6,7 +6,7 @@ using FortBackend.src.App.XMPP.Helpers.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
-namespace FortBackend.src.App.Routes.APIS.Friends
+namespace FortBackend.src.App.Routes.APIS.FriendsController
 {
     [ApiController]
     [Route("party")]

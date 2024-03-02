@@ -73,10 +73,10 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                         {
                             response.friends.Add(new
                             {
-                                accountId = AcceptedList.accountId.ToString(),
+                                accountId = AcceptedList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
-                                alias = AcceptedList.alias != null ? AcceptedList.alias.ToString() : "",
+                                alias = AcceptedList.alias != null ? AcceptedList.alias : "",
                                 note = "",
                                 created = DateTime.Parse(AcceptedList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 favorite = false
@@ -87,10 +87,10 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                         {
                             response.incoming.Add(new
                             {
-                                accountId = IncomingList.accountId.ToString(),
+                                accountId = IncomingList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
-                                alias = IncomingList.alias != null ? IncomingList.alias.ToString() : "",
+                                alias = IncomingList.alias != null ? IncomingList.alias : "",
                                 note = "",
                                 created = DateTime.Parse(IncomingList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 favorite = false
@@ -101,10 +101,10 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                         {
                             response.outgoing.Add(new
                             {
-                                accountId = OutgoingList.accountId.ToString(),
+                                accountId = OutgoingList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
-                                alias = OutgoingList.alias != null ? OutgoingList.alias.ToString() : "",
+                                alias = OutgoingList.alias != null ? OutgoingList.alias : "",
                                 note = "",
                                 created = DateTime.Parse(OutgoingList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 favorite = false
@@ -115,10 +115,10 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                         {
                             response.blocklist.Add(new
                             {
-                                accountId = BLockedList.accountId.ToString(),
+                                accountId = BLockedList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
-                                alias = BLockedList.alias != null ? BLockedList.alias.ToString() : "",
+                                alias = BLockedList.alias != null ? BLockedList.alias : "",
                                 note = "",
                                 created = DateTime.Parse(BLockedList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 favorite = false

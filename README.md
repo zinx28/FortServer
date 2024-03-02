@@ -5,6 +5,7 @@ FortBackend is a Universal Fortnite Private Server Backend writen in C#
 # About
 - Supports HTTP and HTTPS!
 - Aiming to support S3 - S15
+- Arena UI/Playlists! S8 - S23 (Working.... Not For Prod)
 - Save the world (STW) is aimed at the very end and might never actually be implemented
 
 # HTTP

@@ -119,12 +119,12 @@ namespace FortBackend.src.App.Routes.Development
                             return Ok(new { test = "why is the response wrong" });
                         }
 
-                        var FindDiscordID = await Handlers.FindOne<User_Module>("DiscordId", id);
+                        var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
                         if (FindDiscordID != "Error")
                         {
                             string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
 
-                            var UpdateResponse = await Handlers.UpdateOne<User_Module>("DiscordId", id, new Dictionary<string, object>()
+                            var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", id, new Dictionary<string, object>()
                             {
                                 { "accesstoken", NewAccessToken }
                             });
@@ -140,10 +140,10 @@ namespace FortBackend.src.App.Routes.Development
                         }
                         else
                         {
-                            var FindUserId = await Handlers.FindOne<User_Module>("username", GlobalName);
+                            var FindUserId = await Handlers.FindOne<User>("username", GlobalName);
                             if (FindUserId != "Error")
                             {
-                                FindUserId = await Handlers.FindOne<User_Module>("username", GlobalName);
+                                FindUserId = await Handlers.FindOne<User>("username", GlobalName);
                                 if (FindUserId != "Error")
                                 {
                                     // Create the account
@@ -151,13 +151,13 @@ namespace FortBackend.src.App.Routes.Development
                                 }
                                 else
                                 {
-                                    IMongoCollection<User_Module> Usercollection = _database.GetCollection<User_Module>("User");
-                                    IMongoCollection<Account_Module> Accountcollection = _database.GetCollection<Account_Module>("Account");
+                                    IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
+                                    IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
 
 
                                     string AccountId = Guid.NewGuid().ToString();
                                     string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
-                                    User_Module UserData = new User_Module
+                                    User UserData = new User
                                     {
                                         AccountId = AccountId,
                                         DiscordId = id,
@@ -167,7 +167,7 @@ namespace FortBackend.src.App.Routes.Development
                                         Password = GenerateRandomString(15)
                                     };
 
-                                    Account_Module AccountData = new Account_Module
+                                    Account AccountData = new Account
                                     {
                                         AccountId = AccountId,
                                         DiscordId = id
@@ -181,13 +181,13 @@ namespace FortBackend.src.App.Routes.Development
                             }
                             else
                             {
-                                IMongoCollection<User_Module> Usercollection = _database.GetCollection<User_Module>("User");
-                                IMongoCollection<Account_Module> Accountcollection = _database.GetCollection<Account_Module>("Account");
+                                IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
+                                IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
 
 
                                 string AccountId = Guid.NewGuid().ToString();
                                 string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
-                                User_Module UserData = new User_Module
+                                User UserData = new User
                                 {
                                     AccountId = AccountId,
                                     DiscordId = id,
@@ -197,7 +197,7 @@ namespace FortBackend.src.App.Routes.Development
                                     Password = GenerateRandomString(15)
                                 };
                                 //string RandomNewId = Guid.NewGuid().ToString();
-                                Account_Module AccountData = new Account_Module
+                                Account AccountData = new Account
                                 {
                                     AccountId = AccountId,
                                     athena = new Athena()

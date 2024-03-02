@@ -13,7 +13,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class SetCosmeticLockerSlot
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account_Module AccountDataParsed, SetCosmeticLockerSlotRequest Body)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed, SetCosmeticLockerSlotRequest Body)
         {
 
             Console.WriteLine(Body);
@@ -74,7 +74,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                 UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
                 UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision + 1);
-                await Handlers.UpdateOne<Account_Module>("accountId", AccountId, UpdatedData);
+                await Handlers.UpdateOne<Account>("accountId", AccountId, UpdatedData);
                 List<dynamic> BigA = new List<dynamic>();
                 if (Season.SeasonFull >= 12.20)
                 {

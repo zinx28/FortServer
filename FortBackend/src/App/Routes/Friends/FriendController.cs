@@ -18,10 +18,10 @@ namespace FortBackend.src.App.Routes.Friends
             var FriendList = new List<dynamic>();
             try
             {
-                var FriendsData = await Handlers.FindOne<Friends_Module>("accountId", accountId);
+                var FriendsData = await Handlers.FindOne<UserFriends>("accountId", accountId);
                 if (FriendsData != "Error")
                 {
-                    Friends_Module FriendsDataParsed = JsonConvert.DeserializeObject<Friends_Module[]>(FriendsData)?[0];
+                    UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)?[0];
 
                     if (FriendsDataParsed != null)
                     {
@@ -63,10 +63,10 @@ namespace FortBackend.src.App.Routes.Friends
             };
             try
             {
-                var FriendsData = await Handlers.FindOne<Friends_Module>("accountId", accountId);
+                var FriendsData = await Handlers.FindOne<UserFriends>("accountId", accountId);
                 if (FriendsData != "Error")
                 {
-                    Friends_Module FriendsDataParsed = JsonConvert.DeserializeObject<Friends_Module[]>(FriendsData)[0];
+                    UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)[0];
                     if (FriendsDataParsed != null)
                     {
                         foreach (FriendsObject AcceptedList in FriendsDataParsed.Accepted)

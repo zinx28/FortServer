@@ -10,7 +10,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class PurchaseCatalogEntry
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account_Module AccountDataParsed, PurchaseCatalogEntryRequest Body)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed, PurchaseCatalogEntryRequest Body)
         {
             Console.WriteLine(ProfileId);
             if (ProfileId == "common_core")

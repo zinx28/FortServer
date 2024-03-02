@@ -30,10 +30,10 @@ namespace FortBackend.src.App.Routes.Profile
             {
                 var RVN = int.Parse(Request.Query["rvn"].FirstOrDefault() ?? "-1");
                 var ProfileID = Request.Query["profileId"].ToString() ?? "athena";
-                var AccountData = await Handlers.FindOne<Account_Module>("accountId", accountId);
+                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if (AccountData != "Error")
                 {
-                    Account_Module AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(AccountData)?[0];
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
 
                     var response = new Mcp();
                     if (AccountDataParsed != null)

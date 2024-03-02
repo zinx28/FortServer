@@ -111,7 +111,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
                     Directory.CreateDirectory(folderPath);
                 }
 
-                var UserData = await Handlers.FindOne<User_Module>("accountId", accountId);
+                var UserData = await Handlers.FindOne<User>("accountId", accountId);
                 if (UserData != "Error")
                 {
                     System.IO.File.WriteAllText(Path.Combine(folderPath, $"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);

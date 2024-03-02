@@ -71,7 +71,7 @@ namespace FortBackend.src.App.Routes.API
             Response.ContentType = "application/json";
             try
             {
-                var AccountData = await Handlers.FindOne<Account_Module>("accountId", accountId);
+                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if (AccountData != "Error")
                 {
                     var userAgent = Request.Headers["User-Agent"].ToString();
@@ -121,7 +121,7 @@ namespace FortBackend.src.App.Routes.API
 
                     if (Season < 23)
                     {
-                        Account_Module AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(AccountData)?[0];
+                        Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
                         if (AccountDataParsed != null)
                         {
                             bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
@@ -149,14 +149,14 @@ namespace FortBackend.src.App.Routes.API
                                     }
                                 });
 
-                                await Handlers.PushOne<Account_Module>("accountId", accountId, new Dictionary<string, object>
+                                await Handlers.PushOne<Account>("accountId", accountId, new Dictionary<string, object>
                                 {
                                     {
                                         "commoncore.Season", BsonDocument.Parse(seasonJson)
                                     }
                                 });
 
-                                AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(await Handlers.FindOne<Account_Module>("accountId", accountId))[0];
+                                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", accountId))[0];
                             }
 
                             SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
@@ -232,10 +232,10 @@ namespace FortBackend.src.App.Routes.API
 
 
                 Console.WriteLine(accountId);
-                var AccountData = await Handlers.FindOne<Account_Module>("accountId", accountId);
+                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if (AccountData != "Error")
                 {
-                    Account_Module AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(AccountData)?[0];
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
                     if (AccountDataParsed != null)
                     {
                         //return Ok(new List<object>() {

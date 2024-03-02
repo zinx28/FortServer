@@ -32,13 +32,13 @@ namespace FortBackend.src.App.Routes.Oauth
 
                 var handler = new JwtSecurityTokenHandler();
                 var decodedToken = handler.ReadJwtToken(accessToken);
-                var AccountData = await Handlers.FindOne<Account_Module>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
-                var UserData = await Handlers.FindOne<User_Module>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+                var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+                var UserData = await Handlers.FindOne<User>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
 
                 if (AccountData != "Error" || UserData != "Error")
                 {
-                    Account_Module AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(AccountData)?[0];
-                    User_Module UserDataParsed = JsonConvert.DeserializeObject<User_Module[]>(UserData)?[0];
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
 
                     if (AccountDataParsed != null && UserDataParsed != null)
                     {
@@ -174,10 +174,10 @@ namespace FortBackend.src.App.Routes.Oauth
                             });
                         }
 
-                        var UserData1 = await Handlers.FindOne<User_Module>("accesstoken", exchange_token);
+                        var UserData1 = await Handlers.FindOne<User>("accesstoken", exchange_token);
                         if (UserData1 != "Error")
                         {
-                            User_Module UserDataParsed = JsonConvert.DeserializeObject<User_Module[]>(UserData1)?[0];
+                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
 
                             if (UserDataParsed != null)
                             {
@@ -244,7 +244,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 GlobalData.AccessToken.Add(AccessTokenClient);
                 GlobalData.RefreshToken.Add(RefreshTokenClient);
 
-                await Handlers.UpdateOne<Account_Module>("accountId", AccountId, new Dictionary<string, object>
+                await Handlers.UpdateOne<Account>("accountId", AccountId, new Dictionary<string, object>
                 {
                     {
                         "refreshToken", new string[] { RefreshToken }

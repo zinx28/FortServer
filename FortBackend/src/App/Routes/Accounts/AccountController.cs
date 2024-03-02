@@ -15,10 +15,10 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         [HttpGet("public/account/{accountId}")]
         public async Task<IActionResult> AccountAcc(string accountId)
         {
-            var UserData1 = await Handlers.FindOne<User_Module>("accountId", accountId);
+            var UserData1 = await Handlers.FindOne<User>("accountId", accountId);
             if (UserData1 != "Error")
             {
-                User_Module UserDataParsed = JsonConvert.DeserializeObject<User_Module[]>(UserData1)?[0];
+                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
 
                 if(UserDataParsed != null)
                 {
@@ -76,11 +76,11 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
 
                     foreach (var AccountId in accountIds)
                     {
-                        var UserData = await Handlers.FindOne<User_Module>("accountId", AccountId);
+                        var UserData = await Handlers.FindOne<User>("accountId", AccountId);
 
                         if (UserData != "Error")
                         {
-                            User_Module UserDataParsed = JsonConvert.DeserializeObject<User_Module[]>(UserData)?[0];
+                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
                             if (UserDataParsed != null)
                             {
                                 if (UserDataParsed.AccountId.ToString() == AccountId)
@@ -98,11 +98,11 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                 }
                 else
                 {
-                    var UserData = await Handlers.FindOne<User_Module>("accountId", RequestQuery);
+                    var UserData = await Handlers.FindOne<User>("accountId", RequestQuery);
 
                     if (UserData != "Error")
                     {
-                        User_Module UserDataParsed = JsonConvert.DeserializeObject<User_Module[]>(UserData)?[0];
+                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
                         if (UserDataParsed != null && UserDataParsed.AccountId == RequestQuery)
                         {
                             ResponseList.Add(new

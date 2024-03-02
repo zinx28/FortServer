@@ -15,7 +15,7 @@ namespace FortBackend.src.App.Routes.Friends
         [HttpGet("api/v1/Fortnite/user/{accountId}")]
         public async Task<IActionResult> FortnitePartyUser(string accountId)
         {
-            var UserData = await Handlers.FindOne<User_Module>("accountId", accountId);
+            var UserData = await Handlers.FindOne<User>("accountId", accountId);
 
             if (UserData != "Error")
             {

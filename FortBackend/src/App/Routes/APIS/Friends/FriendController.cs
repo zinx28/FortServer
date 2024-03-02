@@ -2,6 +2,7 @@
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace FortBackend.src.App.Routes.APIS.FriendsController
@@ -20,15 +21,18 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                 var FriendsData = await Handlers.FindOne<Friends>("accountId", accountId);
                 if (FriendsData != "Error")
                 {
-                    dynamic FriendsDataParsed = JArray.Parse(FriendsData)[0];
+                    Friends FriendsDataParsed = JsonConvert.DeserializeObject<Friends[]>(FriendsData)?[0];
 
-                    foreach (dynamic BLockedList in FriendsDataParsed.Blocked)
+                    if(FriendsDataParsed != null)
                     {
-                        FriendList.Add(new
+                        foreach (dynamic BLockedList in FriendsDataParsed.Blocked)
                         {
-                            accountId = BLockedList.accountId.ToString(),
-                            created = DateTime.Parse(BLockedList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"), // skunky
-                        });
+                            FriendList.Add(new
+                            {
+                                accountId = BLockedList.accountId.ToString(),
+                                created = DateTime.Parse(BLockedList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"), // skunky
+                            });
+                        }
                     }
                 }
             }

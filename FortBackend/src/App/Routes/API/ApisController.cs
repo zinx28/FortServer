@@ -23,31 +23,31 @@ namespace FortBackend.src.App.Routes.API
         [HttpPost("/datarouter/api/v1/public/data")]
         public async Task<IActionResult> DataRouter()
         {
-            var queryParameters = HttpContext.Request.Query;
-            Console.WriteLine("Query Parameters:");
-            foreach (var (key, value) in queryParameters)
-            {
-                Console.WriteLine($"{key}: {value}");
-            }
-            var headers = HttpContext.Request.Headers;
-            Console.WriteLine("\nHeaders:");
-            foreach (var (key, value) in headers)
-            {
-                Console.WriteLine($"{key}: {value}");
-            }
+            //var queryParameters = HttpContext.Request.Query;
+            //Console.WriteLine("Query Parameters:");
+            //foreach (var (key, value) in queryParameters)
+            //{
+            //    Console.WriteLine($"{key}: {value}");
+            //}
+            //var headers = HttpContext.Request.Headers;
+            //Console.WriteLine("\nHeaders:");
+            //foreach (var (key, value) in headers)
+            //{
+            //    Console.WriteLine($"{key}: {value}");
+            //}
 
-            using (var reader = new StreamReader(HttpContext.Request.Body))
-            {
-                try
-                {
-                    var requestBody = await reader.ReadToEndAsync();
-                    Console.WriteLine($"Request Body: {requestBody}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error reading request body: {ex.Message}");
-                }
-            }
+            //using (var reader = new StreamReader(HttpContext.Request.Body))
+            //{
+            //    try
+            //    {
+            //        var requestBody = await reader.ReadToEndAsync();
+            //        Console.WriteLine($"Request Body: {requestBody}");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine($"Error reading request body: {ex.Message}");
+            //    }
+            //}
             return Ok();
         }
 

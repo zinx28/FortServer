@@ -51,10 +51,10 @@ namespace FortBackend.src.App.XMPP.Root
                         return;
                     }
 
-                    var UserData = await Handlers.FindOne<User>("accountId", foundClient.accountId);
+                    var UserData = await Handlers.FindOne<User_Module>("accountId", foundClient.accountId);
                     if (UserData != "Error")
                     {
-                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
+                        User_Module UserDataParsed = JsonConvert.DeserializeObject<User_Module[]>(UserData)?[0];
                         if (UserDataParsed == null)
                         {
                             await Client.CloseClient(webSocket);

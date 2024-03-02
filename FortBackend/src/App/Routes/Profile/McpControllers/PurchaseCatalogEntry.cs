@@ -1,5 +1,4 @@
-﻿using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog;
+﻿using FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
@@ -7,11 +6,11 @@ using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Http.HttpResults;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
+namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class PurchaseCatalogEntry
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed, PurchaseCatalogEntryRequest Body)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account_Module AccountDataParsed, PurchaseCatalogEntryRequest Body)
         {
             Console.WriteLine(ProfileId);
             if (ProfileId == "common_core")
@@ -26,7 +25,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     {
                         int PurchaseQuantity = Body.purchaseQuantity;
 
-                        if(PurchaseQuantity < 1 )
+                        if (PurchaseQuantity < 1)
                         {
                             throw new BaseError
                             {
@@ -40,9 +39,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             };
                         }
 
-                        if(Body.currency == "MtxCurrency")
+                        if (Body.currency == "MtxCurrency")
                         {
-                            if(Body.offerId != null)
+                            if (Body.offerId != null)
                             {
                                 string OfferId = Body.offerId;
 

@@ -81,8 +81,8 @@ namespace FortBackend.src.App.XMPP.Root
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
                         await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                        var UserData = await Handlers.FindOne<User>("accountId", dataSaved.AccountId);
-                        var FriendsData = await Handlers.FindOne<Friends>("accountId", dataSaved.AccountId);
+                        var UserData = await Handlers.FindOne<User_Module>("accountId", dataSaved.AccountId);
+                        var FriendsData = await Handlers.FindOne<Friends_Module>("accountId", dataSaved.AccountId);
                         if (UserData == "Error")
                         {
                             await Client.CloseClient(webSocket);
@@ -90,8 +90,8 @@ namespace FortBackend.src.App.XMPP.Root
                         }
                         else
                         {
-                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
-                            Friends FriendsDataParsed = JsonConvert.DeserializeObject<Friends[]>(UserData)?[0];
+                            User_Module UserDataParsed = JsonConvert.DeserializeObject<User_Module[]>(UserData)?[0];
+                            Friends_Module FriendsDataParsed = JsonConvert.DeserializeObject<Friends_Module[]>(UserData)?[0];
 
                             List<FriendsObject> accepted = FriendsDataParsed.Accepted;
 

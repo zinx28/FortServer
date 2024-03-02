@@ -8,7 +8,7 @@ using System;
 namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
     [BsonIgnoreExtraElements]
-    public class Account
+    public class Account_Module
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

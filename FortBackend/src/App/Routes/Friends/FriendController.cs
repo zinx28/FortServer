@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace FortBackend.src.App.Routes.APIS.FriendsController
+namespace FortBackend.src.App.Routes.Friends
 {
     [ApiController]
     [Route("friend")]
@@ -18,12 +18,12 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
             var FriendList = new List<dynamic>();
             try
             {
-                var FriendsData = await Handlers.FindOne<Friends>("accountId", accountId);
+                var FriendsData = await Handlers.FindOne<Friends_Module>("accountId", accountId);
                 if (FriendsData != "Error")
                 {
-                    Friends FriendsDataParsed = JsonConvert.DeserializeObject<Friends[]>(FriendsData)?[0];
+                    Friends_Module FriendsDataParsed = JsonConvert.DeserializeObject<Friends_Module[]>(FriendsData)?[0];
 
-                    if(FriendsDataParsed != null)
+                    if (FriendsDataParsed != null)
                     {
                         foreach (dynamic BLockedList in FriendsDataParsed.Blocked)
                         {
@@ -63,17 +63,17 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
             };
             try
             {
-                var FriendsData = await Handlers.FindOne<Friends>("accountId", accountId);
+                var FriendsData = await Handlers.FindOne<Friends_Module>("accountId", accountId);
                 if (FriendsData != "Error")
                 {
-                    Friends FriendsDataParsed = JsonConvert.DeserializeObject<Friends[]>(FriendsData)[0];
-                    if(FriendsDataParsed != null)
+                    Friends_Module FriendsDataParsed = JsonConvert.DeserializeObject<Friends_Module[]>(FriendsData)[0];
+                    if (FriendsDataParsed != null)
                     {
                         foreach (FriendsObject AcceptedList in FriendsDataParsed.Accepted)
                         {
                             response.friends.Add(new
                             {
-                                accountId = AcceptedList.accountId,
+                                AcceptedList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
                                 alias = AcceptedList.alias != null ? AcceptedList.alias : "",
@@ -87,7 +87,7 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                         {
                             response.incoming.Add(new
                             {
-                                accountId = IncomingList.accountId,
+                                IncomingList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
                                 alias = IncomingList.alias != null ? IncomingList.alias : "",
@@ -101,7 +101,7 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                         {
                             response.outgoing.Add(new
                             {
-                                accountId = OutgoingList.accountId,
+                                OutgoingList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
                                 alias = OutgoingList.alias != null ? OutgoingList.alias : "",
@@ -115,7 +115,7 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
                         {
                             response.blocklist.Add(new
                             {
-                                accountId = BLockedList.accountId,
+                                BLockedList.accountId,
                                 groups = Array.Empty<string>(),
                                 mutual = 0,
                                 alias = BLockedList.alias != null ? BLockedList.alias : "",

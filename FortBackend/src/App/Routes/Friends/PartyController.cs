@@ -6,7 +6,7 @@ using FortBackend.src.App.XMPP.Helpers.Resources;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
-namespace FortBackend.src.App.Routes.APIS.FriendsController
+namespace FortBackend.src.App.Routes.Friends
 {
     [ApiController]
     [Route("party")]
@@ -15,13 +15,13 @@ namespace FortBackend.src.App.Routes.APIS.FriendsController
         [HttpGet("api/v1/Fortnite/user/{accountId}")]
         public async Task<IActionResult> FortnitePartyUser(string accountId)
         {
-            var UserData = await Handlers.FindOne<User>("accountId", accountId);
+            var UserData = await Handlers.FindOne<User_Module>("accountId", accountId);
 
             if (UserData != "Error")
             {
 
                 var CurrentParty = GlobalData.parties.Find(e => e.members.Any(a => a == accountId));
-                
+
                 return Ok(new
                 {
                     current = CurrentParty != null ? new List<Parties> { CurrentParty } : new List<Parties>(),

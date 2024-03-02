@@ -29,7 +29,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Send
                 GlobalData.Clients[ClientIndex].lastPresenceUpdate.away = away;
                 GlobalData.Clients[ClientIndex].lastPresenceUpdate.presence = status;
 
-                var FriendsData = await Handlers.FindOne<Friends>("accountId", ClientData.accountId);
+                var FriendsData = await Handlers.FindOne<Friends_Module>("accountId", ClientData.accountId);
                 if (FriendsData != "Error")
                 {
                     dynamic FriendsDataParsed = JArray.Parse(FriendsData)[0];

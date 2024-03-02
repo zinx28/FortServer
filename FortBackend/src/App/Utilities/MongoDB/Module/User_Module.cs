@@ -6,7 +6,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
     //[BsonCollectionName("User")]
     [BsonIgnoreExtraElements]
-    public class User
+    public class User_Module
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

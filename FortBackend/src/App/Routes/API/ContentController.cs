@@ -8,7 +8,7 @@ using System.Net;
 using ZstdSharp.Unsafe;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.API
+namespace FortBackend.src.App.Routes.API
 {
     [ApiController]
     [Route("content/api/pages/fortnite-game")]
@@ -23,7 +23,7 @@ namespace FortBackend.src.App.Routes.APIS.API
             {
                 var userAgent = Request.Headers["User-Agent"].ToString();
                 string season = "";
-                season = (await Grabber.SeasonUserAgent(Request)).Season.ToString();
+                season = (await SeasonUserAgent(Request)).Season.ToString();
                 if (season == "10")
                 {
                     season = "x";
@@ -54,12 +54,12 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                         }
                     }
-                }; 
+                };
 
                 var jsonData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\content.json"));
                 ContentConfig contentconfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData); //dynamicbackgrounds.news
 
-                if(contentconfig != null)
+                if (contentconfig != null)
                 {
                     contentconfig.battleroyalenews.motds.ForEach(x =>
                     {
@@ -113,7 +113,8 @@ namespace FortBackend.src.App.Routes.APIS.API
                         });
                     });
 
-                    contentconfig.tournamentinformation.ForEach(x => {
+                    contentconfig.tournamentinformation.ForEach(x =>
+                    {
                         ContentJsonResponse.tournamentinformation.tournament_info.tournaments.Add(x);
                     });
 

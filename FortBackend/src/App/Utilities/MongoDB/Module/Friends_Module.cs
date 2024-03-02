@@ -6,7 +6,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
     [BsonCollectionName("Friends")]
     [BsonIgnoreExtraElements]
-    public class Friends
+    public class Friends_Module
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

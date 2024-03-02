@@ -14,7 +14,7 @@ using System;
 using System.Dynamic;
 using System.Numerics;
 
-namespace FortBackend.src.App.Routes.APIS.API
+namespace FortBackend.src.App.Routes.API
 {
     [ApiController]
     [Route("api")]
@@ -59,7 +59,7 @@ namespace FortBackend.src.App.Routes.APIS.API
             {
                 startTime = 0,
                 endTime = 9223372036854776000,
-                accountId = accountId,
+                accountId,
                 stats = new { } // stats like "smth": number
             });
         }
@@ -71,8 +71,8 @@ namespace FortBackend.src.App.Routes.APIS.API
             Response.ContentType = "application/json";
             try
             {
-                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
-                if(AccountData != "Error")
+                var AccountData = await Handlers.FindOne<Account_Module>("accountId", accountId);
+                if (AccountData != "Error")
                 {
                     var userAgent = Request.Headers["User-Agent"].ToString();
                     int Season;
@@ -90,7 +90,7 @@ namespace FortBackend.src.App.Routes.APIS.API
                     foreach (var templateC in jsonResponse2)
                     {
                         if (templateC.eventTemplateId.Contains("S15"))
-                        {                            
+                        {
                             templateC.eventTemplateId = templateC.eventTemplateId.Replace("S15", $"S{Season}");
                         }
                     }
@@ -121,8 +121,8 @@ namespace FortBackend.src.App.Routes.APIS.API
 
                     if (Season < 23)
                     {
-                        Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
-                        if(AccountDataParsed != null)
+                        Account_Module AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(AccountData)?[0];
+                        if (AccountDataParsed != null)
                         {
                             bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
 
@@ -141,21 +141,22 @@ namespace FortBackend.src.App.Routes.APIS.API
                                         Interval = "0001-01-01T00:00:00.000Z",
                                         Rerolls = 1
                                     },
-                                    arena = new Arena {
+                                    arena = new Arena
+                                    {
                                         tokens = new string[] {
                                             $"ARENA_S{Season}_Division1"
                                         }
                                     }
                                 });
 
-                                await Handlers.PushOne<Account>("accountId", accountId, new Dictionary<string, object>
+                                await Handlers.PushOne<Account_Module>("accountId", accountId, new Dictionary<string, object>
                                 {
                                     {
                                         "commoncore.Season", BsonDocument.Parse(seasonJson)
                                     }
                                 });
 
-                                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", accountId))[0];
+                                AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(await Handlers.FindOne<Account_Module>("accountId", accountId))[0];
                             }
 
                             SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
@@ -170,18 +171,18 @@ namespace FortBackend.src.App.Routes.APIS.API
                                     events = jsonResponse,
                                     player = new
                                     {
-                                        accountId = accountId,
+                                        accountId,
                                         gameId = "Fortnite",
                                         groupIdentity = new { },
                                         pendingPayouts = new List<string>(),
                                         pendingPenalties = new { },
                                         persistentScores = new
                                         {
-                                            Hype = seasonObject.arena.persistentScores.Hype,
+                                            seasonObject.arena.persistentScores.Hype,
                                             Hype_S15 = 69
                                         },
                                         teams = new { },
-                                        tokens = seasonObject.arena.tokens,
+                                        seasonObject.arena.tokens,
                                     },
                                     templates = jsonResponse2,
                                 }));
@@ -199,7 +200,7 @@ namespace FortBackend.src.App.Routes.APIS.API
                 events = new List<object>(),
                 player = new
                 {
-                    accountId = accountId,
+                    accountId,
                     gameId = "Fortnite",
                     groupIdentity = new { },
                     pendingPayouts = new List<string>(),
@@ -231,11 +232,11 @@ namespace FortBackend.src.App.Routes.APIS.API
 
 
                 Console.WriteLine(accountId);
-                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
+                var AccountData = await Handlers.FindOne<Account_Module>("accountId", accountId);
                 if (AccountData != "Error")
                 {
-                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
-                    if(AccountDataParsed != null)
+                    Account_Module AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(AccountData)?[0];
+                    if (AccountDataParsed != null)
                     {
                         //return Ok(new List<object>() {
                         //    new

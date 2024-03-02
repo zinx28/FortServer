@@ -1,5 +1,4 @@
 ﻿using Discord;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
 using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
@@ -16,7 +15,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
     public class PurchaseItem
     {
-        public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, Account AccountDataParsed)
+        public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, Account_Module AccountDataParsed)
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "shop.json");
             string json = File.ReadAllText(filePath);
@@ -261,9 +260,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                     UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision);
                 }
 
-                await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
+                await Handlers.UpdateOne<Account_Module>("accountId", AccountDataParsed.AccountId, UpdatedData);
 
-                await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
+                await Handlers.PushOne<Account_Module>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
                 {
                     {
                         $"athena.items", itemList

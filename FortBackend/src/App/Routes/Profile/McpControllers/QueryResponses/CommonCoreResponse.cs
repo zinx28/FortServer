@@ -14,7 +14,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
     public class CommonCoreResponse
     {
-        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed)
+        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, Account_Module AccountDataParsed)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         }
                     });
 
-                    await Handlers.PushOne<Account>("accountId", AccountId, new Dictionary<string, object>
+                    await Handlers.PushOne<Account_Module>("accountId", AccountId, new Dictionary<string, object>
                     {
                         {
                             "commoncore.Season", BsonDocument.Parse(seasonJson)
@@ -51,7 +51,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                     });
                 }
 
-                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
+                AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(await Handlers.FindOne<Account_Module>("accountId", AccountId))[0];
 
                 if (AccountDataParsed == null)
                 {

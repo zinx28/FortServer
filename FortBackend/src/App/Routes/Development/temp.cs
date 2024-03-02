@@ -11,7 +11,7 @@ using FortBackend.src.App.Utilities.Classes;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using System.Text.RegularExpressions;
 
-namespace FortBackend.src.App.Routes.APIS.Development
+namespace FortBackend.src.App.Routes.Development
 {
     [ApiController]
     [Route("temp")]
@@ -79,9 +79,9 @@ namespace FortBackend.src.App.Routes.APIS.Development
                     var responseContent2 = await response2.Content.ReadAsStringAsync();
 
 
-                    List<DiscordAuth.Server> responseData2 = JsonConvert.DeserializeObject<List<DiscordAuth.Server>>(responseContent2);
+                    List<Server> responseData2 = JsonConvert.DeserializeObject<List<Server>>(responseContent2);
                     bool IsInServer = false;
-                    foreach (DiscordAuth.Server item in responseData2)
+                    foreach (Server item in responseData2)
                     {
                         //Console.WriteLine(item);
                         if (item.id == "1204461240882307123")
@@ -119,12 +119,12 @@ namespace FortBackend.src.App.Routes.APIS.Development
                             return Ok(new { test = "why is the response wrong" });
                         }
 
-                        var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
+                        var FindDiscordID = await Handlers.FindOne<User_Module>("DiscordId", id);
                         if (FindDiscordID != "Error")
                         {
                             string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
 
-                            var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", id, new Dictionary<string, object>()
+                            var UpdateResponse = await Handlers.UpdateOne<User_Module>("DiscordId", id, new Dictionary<string, object>()
                             {
                                 { "accesstoken", NewAccessToken }
                             });
@@ -140,10 +140,10 @@ namespace FortBackend.src.App.Routes.APIS.Development
                         }
                         else
                         {
-                            var FindUserId = await Handlers.FindOne<User>("username", GlobalName);
+                            var FindUserId = await Handlers.FindOne<User_Module>("username", GlobalName);
                             if (FindUserId != "Error")
                             {
-                                FindUserId = await Handlers.FindOne<User>("username", GlobalName);
+                                FindUserId = await Handlers.FindOne<User_Module>("username", GlobalName);
                                 if (FindUserId != "Error")
                                 {
                                     // Create the account
@@ -151,13 +151,13 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                 }
                                 else
                                 {
-                                    IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
-                                    IMongoCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account> Accountcollection = _database.GetCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account>("Account");
+                                    IMongoCollection<User_Module> Usercollection = _database.GetCollection<User_Module>("User");
+                                    IMongoCollection<Account_Module> Accountcollection = _database.GetCollection<Account_Module>("Account");
 
 
                                     string AccountId = Guid.NewGuid().ToString();
                                     string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
-                                    User UserData = new User
+                                    User_Module UserData = new User_Module
                                     {
                                         AccountId = AccountId,
                                         DiscordId = id,
@@ -167,7 +167,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                         Password = GenerateRandomString(15)
                                     };
 
-                                    FortBackend.src.App.Utilities.MongoDB.Module.Account AccountData = new FortBackend.src.App.Utilities.MongoDB.Module.Account
+                                    Account_Module AccountData = new Account_Module
                                     {
                                         AccountId = AccountId,
                                         DiscordId = id
@@ -181,13 +181,13 @@ namespace FortBackend.src.App.Routes.APIS.Development
                             }
                             else
                             {
-                                IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
-                                IMongoCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account> Accountcollection = _database.GetCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account>("Account");
+                                IMongoCollection<User_Module> Usercollection = _database.GetCollection<User_Module>("User");
+                                IMongoCollection<Account_Module> Accountcollection = _database.GetCollection<Account_Module>("Account");
 
 
                                 string AccountId = Guid.NewGuid().ToString();
                                 string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
-                                User UserData = new User
+                                User_Module UserData = new User_Module
                                 {
                                     AccountId = AccountId,
                                     DiscordId = id,
@@ -197,7 +197,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                     Password = GenerateRandomString(15)
                                 };
                                 //string RandomNewId = Guid.NewGuid().ToString();
-                                FortBackend.src.App.Utilities.MongoDB.Module.Account AccountData = new FortBackend.src.App.Utilities.MongoDB.Module.Account
+                                Account_Module AccountData = new Account_Module
                                 {
                                     AccountId = AccountId,
                                     athena = new Athena()
@@ -407,7 +407,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
             }
             catch (Exception ex)
             {
-              
+
                 return StatusCode(500, "Internal Server Error");
             }
         }

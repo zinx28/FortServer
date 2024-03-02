@@ -1,5 +1,4 @@
 ﻿using Amazon.Runtime.Internal.Transform;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
@@ -17,7 +16,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class CopyCosmeticLoadout
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed, CopyCosmeticLoadoutResponse Body)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account_Module AccountDataParsed, CopyCosmeticLoadoutResponse Body)
         {
             Console.WriteLine(ProfileId);
             if (ProfileId == "athena" || ProfileId == "profile0")
@@ -165,7 +164,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         };
                     }
 
-                    await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
+                    await Handlers.UpdateOne<Account_Module>("accountId", AccountDataParsed.AccountId, UpdatedData);
                 }
                 else
                 {
@@ -293,7 +292,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         //Console.WriteLine($"Modified Locker: {JsonConvert.SerializeObject(jsonLockerObject)}");
                     }
 
-                    await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
+                    await Handlers.PushOne<Account_Module>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
                     {
                         {
                             $"athena.items", itemList
@@ -301,7 +300,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     });
 
 
-                    await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
+                    await Handlers.PushOne<Account_Module>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
                     {
                         {
                             $"athena.loadouts", RandomNewId

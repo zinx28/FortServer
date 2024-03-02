@@ -91,11 +91,11 @@ namespace FortBackend.src.App.Routes.API
         public async Task<IActionResult> Accinventory(string accountId)
         {
             Response.ContentType = "application/json";
-            var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
+            var AccountData = await Handlers.FindOne<Account_Module>("accountId", accountId);
             int globalcash = 0;
             if (AccountData != "Error")
             {
-                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                Account_Module AccountDataParsed = JsonConvert.DeserializeObject<Account_Module[]>(AccountData)?[0];
                 if (AccountDataParsed != null)
                 {
                     globalcash = AccountDataParsed.athena.Gold;

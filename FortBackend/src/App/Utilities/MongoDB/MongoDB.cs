@@ -43,7 +43,7 @@ namespace FortBackend.src.App.Utilities.MongoDB
 
             Logger.Log("Attempting Blank Files", "MongoDB");
 
-            CreateBlank.Module<User>(database);
+            CreateBlank.Module<User_Module>(database);
 
             Logger.Log("MongoDB has fully loaded", "MongoDB");
         }

@@ -14,7 +14,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class QueryProfile
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account_Module AccountDataParsed)
         {
             if (ProfileId == "athena" || ProfileId == "profile0")
             {

@@ -1,11 +1,14 @@
 ﻿using Discord;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
+using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Numerics;
 
@@ -77,29 +80,79 @@ namespace FortBackend.src.App.Routes.APIS.API
                     string json2 = System.IO.File.ReadAllText(filePath2);
                     var jsonResponse2 = JsonConvert.DeserializeObject(json2);
 
-                    //return Content(jsonResponse);
-                    return Content(JsonConvert.SerializeObject(new
+
+                    var userAgent = Request.Headers["User-Agent"].ToString();
+                    int Season;
+                    Season = (await Grabber.SeasonUserAgent(Request)).Season;
+
+                    if(Season < 23)
                     {
-                        events = jsonResponse,
-                        player = new
+                        Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                        if(AccountDataParsed != null)
                         {
-                            accountId = accountId,
-                            gameId = "Fortnite",
-                            groupIdentity = new { },
-                            pendingPayouts = new List<string>(),
-                            pendingPenalties = new { },
-                            persistentScores = new
+                            bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
+
+                            if (!FoundSeasonDataInProfile)
                             {
-                                Hype = 0
-                            },
-                            teams = new { },
-                            tokens = new string[]
+                                string seasonJson = JsonConvert.SerializeObject(new SeasonClass
+                                {
+                                    SeasonNumber = Season,
+                                    BookLevel = 1,
+                                    BookXP = 0,
+                                    BookPurchased = false,
+                                    Quests = new List<Dictionary<string, object>>(),
+                                    BattleStars = 0,
+                                    DailyQuests = new DailyQuests
+                                    {
+                                        Interval = "0001-01-01T00:00:00.000Z",
+                                        Rerolls = 1
+                                    },
+                                    arena = new Arena {
+                                        tokens = new string[] {
+                                            $"ARENA_S{Season}_Division1"
+                                        }
+                                    }
+                                });
+
+                                await Handlers.PushOne<Account>("accountId", accountId, new Dictionary<string, object>
+                                {
+                                    {
+                                        "commoncore.Season", BsonDocument.Parse(seasonJson)
+                                    }
+                                });
+
+                                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", accountId))[0];
+                            }
+
+                            SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
+
+                            if (seasonObject != null)
                             {
-                        "ARENA_S15_Division1"
-                            },
-                        },
-                        templates = jsonResponse2,
-                    }));
+
+
+
+                                return Content(JsonConvert.SerializeObject(new
+                                {
+                                    events = jsonResponse,
+                                    player = new
+                                    {
+                                        accountId = accountId,
+                                        gameId = "Fortnite",
+                                        groupIdentity = new { },
+                                        pendingPayouts = new List<string>(),
+                                        pendingPenalties = new { },
+                                        persistentScores = new
+                                        {
+                                            Hype = seasonObject.arena.persistentScores.Hype
+                                        },
+                                        teams = new { },
+                                        tokens = seasonObject.arena.tokens,
+                                    },
+                                    templates = jsonResponse2,
+                                }));
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)

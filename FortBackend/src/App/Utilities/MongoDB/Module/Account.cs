@@ -272,9 +272,11 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
     public class Arena
     {
-        public object persistentScores { get; set; } = new
-        {
-            Hype = 0,
-        };
+        public PersistentScores persistentScores { get; set; } = new PersistentScores();
+    }
+
+    public class PersistentScores
+    {
+        public int Hype { get; set; } = 0;
     }
 }

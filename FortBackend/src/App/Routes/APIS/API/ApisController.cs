@@ -1,4 +1,5 @@
 ﻿using Discord;
+using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Content;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
@@ -60,21 +61,54 @@ namespace FortBackend.src.App.Routes.APIS.API
 
         ///api/v1/events/Fortnite/download/644812f9-5e5e-4fd4-a670-b306e5956fd9
         [HttpGet("v1/events/Fortnite/download/{accountId}")]
-        public IActionResult DownloadEndpoint(string accountId)
+        public async Task<IActionResult> DownloadEndpoint(string accountId)
         {
             Response.ContentType = "application/json";
-            string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Events.json");
-            string json1 = System.IO.File.ReadAllText(filePath1);
-            var jsonResponse = JsonConvert.DeserializeObject(json1);
+            try
+            {
+                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
+                if(AccountData != "Error")
+                {
+                    string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Events.json");
+                    string json1 = System.IO.File.ReadAllText(filePath1);
+                    var jsonResponse = JsonConvert.DeserializeObject(json1);
 
-            string filePath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Arena.json");
-            string json2 = System.IO.File.ReadAllText(filePath2);
-            var jsonResponse2 = JsonConvert.DeserializeObject(json2);
+                    string filePath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Arena.json");
+                    string json2 = System.IO.File.ReadAllText(filePath2);
+                    var jsonResponse2 = JsonConvert.DeserializeObject(json2);
 
-            //return Content(jsonResponse);
+                    //return Content(jsonResponse);
+                    return Content(JsonConvert.SerializeObject(new
+                    {
+                        events = jsonResponse,
+                        player = new
+                        {
+                            accountId = accountId,
+                            gameId = "Fortnite",
+                            groupIdentity = new { },
+                            pendingPayouts = new List<string>(),
+                            pendingPenalties = new { },
+                            persistentScores = new
+                            {
+                                Hype = 0
+                            },
+                            teams = new { },
+                            tokens = new string[]
+                            {
+                        "ARENA_S15_Division1"
+                            },
+                        },
+                        templates = jsonResponse2,
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log("DownloadEnpoint: " + ex.Message);
+            }
             return Content(JsonConvert.SerializeObject(new
             {
-                events = jsonResponse,
+                events = new List<object>(),
                 player = new
                 {
                     accountId = accountId,
@@ -82,17 +116,11 @@ namespace FortBackend.src.App.Routes.APIS.API
                     groupIdentity = new { },
                     pendingPayouts = new List<string>(),
                     pendingPenalties = new { },
-                    persistentScores = new
-                    {
-                        Hype = 0
-                    },
+                    persistentScores = new { },
                     teams = new { },
-                    tokens = new string[]
-                    {
-                        "ARENA_S15_Division1"
-                    },
+                    tokens = new string[0],
                 },
-                templates = jsonResponse2,
+                templates = new List<object>(),
             }));
         }
 

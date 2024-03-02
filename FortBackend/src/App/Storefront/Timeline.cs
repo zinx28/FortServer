@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Routing.Matching;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Storefront
+namespace FortBackend.src.App.Storefront
 {
     [ApiController]
     [Route("fortnite/api/calendar/v1/timeline")]
@@ -25,12 +25,13 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
             try
             {
                 string Json = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/shop/shop.json"));
-                if(Json == null) {
-                    return BadRequest(new {});
+                if (Json == null)
+                {
+                    return BadRequest(new { });
                 }
                 dynamic shopData = JsonConvert.DeserializeObject(Json);
 
-                VersionClass season = await Grabber.SeasonUserAgent(Request);
+                VersionClass season = await SeasonUserAgent(Request);
 
                 var Response = new
                 {

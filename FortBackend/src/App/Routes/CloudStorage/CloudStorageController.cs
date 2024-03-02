@@ -9,7 +9,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace FortBackend.src.App.Routes.APIS.CloudStorage
+namespace FortBackend.src.App.Routes.CloudStorage
 {
     [ApiController]
     [Route("fortnite/api/cloudstorage")]
@@ -83,7 +83,7 @@ namespace FortBackend.src.App.Routes.APIS.CloudStorage
             if (System.IO.File.Exists(filePath))
             {
                 byte[] fileContent = System.IO.File.ReadAllBytes(filePath);
-                
+
                 return File(fileContent, "application/octet-stream");
             }
 

@@ -7,11 +7,10 @@ using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
+namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class QueryProfile
     {

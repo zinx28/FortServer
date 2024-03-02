@@ -1,5 +1,5 @@
-﻿using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
+﻿using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
+namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class ClientQuestLogin
     {
@@ -19,8 +19,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
         {
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
-                var jsonData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\default.json"));
-                if(!string.IsNullOrEmpty(jsonData))
+                var jsonData = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\default.json"));
+                if (!string.IsNullOrEmpty(jsonData))
                 {
                     Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
 
@@ -34,7 +34,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                         test1.Profile.items.Add(test.templateId, test);
                     }
                     return response;
-                }else
+                }
+                else
                 {
                     Logger.Error("ClientQuestLogin might not function well");
                 }

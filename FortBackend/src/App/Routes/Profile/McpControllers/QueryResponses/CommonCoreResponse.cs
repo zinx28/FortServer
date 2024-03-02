@@ -10,7 +10,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attribut
 using FortBackend.src.App.Utilities;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
+namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
     public class CommonCoreResponse
     {
@@ -58,7 +58,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                     return new Mcp();
                 }
 
-                
+
                 Mcp CommonCoreClass = new Mcp()
                 {
                     profileRevision = AccountDataParsed.commoncore.RVN,
@@ -141,12 +141,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
 
                                         ProfileChange.Profile.items.Add(key, new
                                         {
-                                            templateId = itemAttributes.templateId,
+                                            itemAttributes.templateId,
                                             attributes = new
                                             {
                                                 platform = "EpicPC"
                                             },
-                                            quantity = itemAttributes.quantity,
+                                            itemAttributes.quantity,
                                         });
                                     }
                                 }
@@ -163,7 +163,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses
                     }
                 }
 
-                return CommonCoreClass; 
+                return CommonCoreClass;
             }
             catch (Exception ex)
             {

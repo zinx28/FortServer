@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 
-namespace FortBackend.src.App.Routes.APIS.API
+namespace FortBackend.src.App.Routes.API
 {
     [ApiController]
     [Route("fortnite/api")]
@@ -96,7 +96,7 @@ namespace FortBackend.src.App.Routes.APIS.API
             if (AccountData != "Error")
             {
                 Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
-                if(AccountDataParsed != null)
+                if (AccountDataParsed != null)
                 {
                     globalcash = AccountDataParsed.athena.Gold;
                 }

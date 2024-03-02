@@ -1,6 +1,6 @@
 ﻿using Amazon.Runtime.Internal.Transform;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
+namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class CopyCosmeticLoadout
     {
@@ -42,7 +42,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                            .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
                 int GrabPlacement2 = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                     .TakeWhile(pair => !pair.Item.ContainsKey(AccountDataParsed.athena.last_applied_loadout)).Count();
- 
+
                 if (Body.targetIndex < AccountDataParsed.athena.loadouts.Length && !string.IsNullOrEmpty(AccountDataParsed.athena.loadouts[Body.targetIndex]))
                 {
                     string[] loadouts = AccountDataParsed.athena.loadouts;
@@ -52,8 +52,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
 
                     if (objectToModify != null)
                     {
-                        if (!string.IsNullOrEmpty(Body.optNewNameForTarget)) {
-                          
+                        if (!string.IsNullOrEmpty(Body.optNewNameForTarget))
+                        {
+
 
                             UpdatedData.Add($"athena.Items.{GrabPlacement2}.{AccountDataParsed.athena.last_applied_loadout}.attributes.locker_name", Body.optNewNameForTarget);
                         }
@@ -171,7 +172,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     string RandomNewId = Guid.NewGuid().ToString();
                     Dictionary<string, object> GrabbedPlaceMent = AccountDataParsed.athena.Items[GrabPlacement3] as Dictionary<string, object>;
                     object objectToModify = GrabbedPlaceMent["sandbox_loadout"];
-             
+
                     List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
                     if (objectToModify is JObject jsonLockerObject)
                     {
@@ -283,12 +284,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             }
                         };
 
-                      
+
                         //GrabbedPlaceMent[RandomNewId] = jsonLockerObject;
 
                         itemList.Add(NewThingy);
 
-                        
+
                         //Console.WriteLine($"Modified Locker: {JsonConvert.SerializeObject(jsonLockerObject)}");
                     }
 

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
-namespace FortBackend.src.App.Routes.APIS.Storefront
+namespace FortBackend.src.App.Storefront
 {
     [ApiController]
     [Route("fortnite/api/storefront/v2/catalog")]
@@ -22,7 +22,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
                 string json = System.IO.File.ReadAllText(filePath);
 
-                if(string.IsNullOrEmpty(json))
+                if (string.IsNullOrEmpty(json))
                 {
                     Logger.Error("Catalog is null -> weird issue");
                     return Ok(new Catalog());
@@ -57,14 +57,14 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                         }
                     }
                 };
-               
+
                 // NEED A RECODE RN
                 int SortPriority = 20;
                 int LargeSortPriority = -10;
 
                 foreach (var WeeklyItems in shopData.ShopItems.Weekly)
                 {
-                  
+
                     SortPriority += 1;
                     LargeSortPriority += 1;
                     List<object> requirements = new List<object>();
@@ -91,7 +91,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
 
                     foreach (dynamic d in WeeklyItems.items)
                     {
-                        
+
                         itemGrants.Add(new
                         {
                             templateId = d.item,
@@ -104,7 +104,7 @@ namespace FortBackend.src.App.Routes.APIS.Storefront
                             minQuantity = 1,
                         });
                     }
-                   
+
                     if (!WeeklyItems.name.ToString().ToLower().Contains("bundle"))
                     {
                         var WeeklyItem = new catalogEntrie

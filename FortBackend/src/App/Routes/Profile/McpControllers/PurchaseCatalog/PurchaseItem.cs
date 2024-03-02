@@ -1,6 +1,6 @@
 ﻿using Discord;
 using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.QueryResponses;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
@@ -12,16 +12,16 @@ using FortBackend.src.App.Utilities.Shop.Helpers.Data;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
+namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
     public class PurchaseItem
     {
         public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, Account AccountDataParsed)
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "shop.json");
-            string json = System.IO.File.ReadAllText(filePath);
+            string json = File.ReadAllText(filePath);
 
-            if(string.IsNullOrEmpty(json))
+            if (string.IsNullOrEmpty(json))
             {
                 throw new BaseError()
                 {
@@ -49,7 +49,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
 
             foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
             {
-                if(storefront.id == SecondSplitOfferId)
+                if (storefront.id == SecondSplitOfferId)
                 {
                     ShopContent = storefront;
                 }
@@ -63,10 +63,11 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 }
             }
 
-            if(!string.IsNullOrEmpty(ShopContent.id)) {
+            if (!string.IsNullOrEmpty(ShopContent.id))
+            {
                 bool HasUserHaveItem = AccountDataParsed.athena.Items.Any(item => item.ContainsKey(ShopContent.id));
 
-                if(HasUserHaveItem)
+                if (HasUserHaveItem)
                 {
                     throw new BaseError()
                     {
@@ -143,9 +144,9 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
 
                 try
                 {
-                   // AthenaItem currencyItem2 = currencyItem as AthenaItem;
+                    // AthenaItem currencyItem2 = currencyItem as AthenaItem;
                     Console.WriteLine(currencyItem);
-                   // Console.WriteLine(currencyItem2.quantity);
+                    // Console.WriteLine(currencyItem2.quantity);
                 }
                 catch (Exception ex)
                 {
@@ -185,12 +186,12 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                 int Price = currencyItem.quantity - ShopContent.price;
 
                 ApplyProfileChanges.Add(new ApplyProfileChangesClass
-                { 
+                {
                     changeType = "itemQuantityChanged",
                     itemId = "Currency",
                     quantity = Price
                 });
-                
+
 
                 var newItem699 = new Dictionary<string, object>
                 {
@@ -259,7 +260,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                     UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN);
                     UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision);
                 }
-              
+
                 await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
 
                 await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
@@ -269,7 +270,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.PurchaseCatalog
                     }
                 });
 
-         
+
                 Console.WriteLine("TEST");
 
                 if (Season.SeasonFull >= 12.20)

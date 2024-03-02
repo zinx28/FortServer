@@ -15,7 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using FortBackend.src.App.XMPP.Helpers.Resources;
 
 
-namespace FortBackend.src.App.Routes.APIS.Oauth
+namespace FortBackend.src.App.Routes.Oauth
 {
     [ApiController]
     [Route("account/api")]
@@ -97,7 +97,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                 {
                     grant_type = GrantType;
                 }
-    
+
                 if (FormRequest.TryGetValue("username", out var username))
                 {
                     Email = username;
@@ -156,7 +156,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                         error = "invalid_client"
                     });
                 }
-              
+
                 switch (grant_type)
                 {
                     case "exchange_code":
@@ -208,7 +208,7 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     new Claim("sub", AccountId),
                     new Claim("t", "r"),
                     new Claim("clid", clientId),
-                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + (1920 * 1920)).ToString()),
+                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
                     new Claim("am", grant_type),
                     new Claim("jti", Hex.GenerateRandomHexString(32)),
                 }, 24);
@@ -226,8 +226,8 @@ namespace FortBackend.src.App.Routes.APIS.Oauth
                     new Claim("clsvc", "fortnite"),
                     new Claim("t", "s"),
                     new Claim("ic", "true"),
-                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + (480 * 480)).ToString()),
-                    new Claim("iat", (DateTimeOffset.UtcNow.ToUnixTimeSeconds()).ToString()),
+                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 480 * 480).ToString()),
+                    new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
                     new Claim("jti", Hex.GenerateRandomHexString(32)),
                 }, 8);
 

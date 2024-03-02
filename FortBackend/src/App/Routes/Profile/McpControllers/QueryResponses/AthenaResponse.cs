@@ -14,7 +14,7 @@ using System.Globalization;
 using System.Security.Claims;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
+namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
     public class AthenaResponse
     {
@@ -76,7 +76,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
 
                     if (seasonObject != null)
                     {
-                        if(AccountDataParsed.athena.RVN == AccountDataParsed.athena.CommandRevision)
+                        if (AccountDataParsed.athena.RVN == AccountDataParsed.athena.CommandRevision)
                         {
                             AccountDataParsed.athena.RVN = +1;
                             //.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
@@ -166,7 +166,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                             responseVersion = 1,
                         };
 
-                       
+
 
 
                         List<Dictionary<string, object>> items = AccountDataParsed.athena.Items;
@@ -178,7 +178,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses
                                 string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || AccountDataParsed.athena.loadouts.Any(x => k.Contains(x))) ?? "";
                                 if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
                                 {
-                                    if(value.ToString() != null)
+                                    if (value.ToString() != null)
                                     {
                                         var ValueAsString = value.ToString();
                                         ItemThingygyydsf itemAttributes1 = JsonConvert.DeserializeObject<ItemThingygyydsf>(ValueAsString.ToLower());

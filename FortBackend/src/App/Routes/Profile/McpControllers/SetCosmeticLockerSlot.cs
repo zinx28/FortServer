@@ -1,5 +1,5 @@
 ﻿using Discord;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers.AthenaResponses;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
@@ -9,7 +9,7 @@ using FortBackend.src.App.Utilities.MongoDB.Module;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
+namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class SetCosmeticLockerSlot
     {
@@ -34,8 +34,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                             return new Mcp();
                         }
                         var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(AccountDataParsed.athena.Items[GrabPlacement]["sandbox_loadout"]));
-                     
-                        if(SandBoxLoadout != null)
+
+                        if (SandBoxLoadout != null)
                         {
                             var ItemsCount = SandBoxLoadout.attributes.locker_slots_data.slots.itemwrap.items.Count();
                             string[] ReplacedItems = Enumerable.Repeat(Body.itemToSlot.ToLower(), ItemsCount).ToArray();
@@ -49,14 +49,16 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                         if (Body.itemToSlot == "")
                         {
                             UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", "");
-                        }else
+                        }
+                        else
                         {
                             UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items.{Body.slotIndex}", Body.itemToSlot.ToLower());
                         }
                     }
-                }else
+                }
+                else
                 {
-                    if(Body.itemToSlot == "")
+                    if (Body.itemToSlot == "")
                     {
                         UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> {
                             ""
@@ -64,8 +66,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                     }
                     else
                     {
-                        UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> { 
-                            Body.itemToSlot.ToLower() 
+                        UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", new List<string> {
+                            Body.itemToSlot.ToLower()
                         });
                     }
                 }
@@ -78,7 +80,8 @@ namespace FortBackend.src.App.Routes.APIS.Profile.McpControllers
                 {
                     Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
                     BigA = test.profileChanges;
-                }else
+                }
+                else
                 {
                     BigA = new List<object>()
                     {

@@ -6,13 +6,13 @@ using FortBackend.src.App.Utilities;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
-using FortBackend.src.App.Routes.APIS.Profile.McpControllers;
 using System.Text;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortBackend.src.App.Routes.Profile.McpControllers;
 
-namespace FortBackend.src.App.Routes.APIS.Profile
+namespace FortBackend.src.App.Routes.Profile
 {
     [ApiController]
     [Route("fortnite/api/game/v2/profile")]
@@ -43,7 +43,7 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                         {
                             var requestbody = await reader.ReadToEndAsync();
                             //Console.WriteLine(requestbody);
-                            VersionClass Season = await Grabber.SeasonUserAgent(Request);
+                            VersionClass Season = await SeasonUserAgent(Request);
                             if (string.IsNullOrEmpty(requestbody))
                             {
                                 throw new BaseError
@@ -75,14 +75,14 @@ namespace FortBackend.src.App.Routes.APIS.Profile
                                     response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
                                     break;
                                 default:
-                                    
+
                                     response = new Mcp
                                     {
-                                        profileRevision = (ProfileID == "common_core" || ProfileID == "common_public") ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
-                                        profileId = ProfileID ,
-                                        profileChangesBaseRevision = (ProfileID == "common_core" || ProfileID == "common_public") ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
+                                        profileRevision = ProfileID == "common_core" || ProfileID == "common_public" ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
+                                        profileId = ProfileID,
+                                        profileChangesBaseRevision = ProfileID == "common_core" || ProfileID == "common_public" ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
                                         //profileChanges = /,
-                                        profileCommandRevision = (ProfileID == "common_core" || ProfileID == "common_public") ? AccountDataParsed.commoncore.CommandRevision : AccountDataParsed.athena.CommandRevision,
+                                        profileCommandRevision = ProfileID == "common_core" || ProfileID == "common_public" ? AccountDataParsed.commoncore.CommandRevision : AccountDataParsed.athena.CommandRevision,
                                         serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                                         responseVersion = 1
                                     };

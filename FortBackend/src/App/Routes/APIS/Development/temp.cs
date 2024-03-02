@@ -9,6 +9,7 @@ using System.Text;
 using MongoDB.Driver;
 using FortBackend.src.App.Utilities.Classes;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
+using System.Text.RegularExpressions;
 
 namespace FortBackend.src.App.Routes.APIS.Development
 {
@@ -45,7 +46,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
             {
                 Config config = Saved.DeserializeConfig;
 
-                if(string.IsNullOrEmpty(config.ApplicationClientID) || string.IsNullOrEmpty(config.ApplicationURI) || string.IsNullOrEmpty(config.ApplicationSecret))
+                if (string.IsNullOrEmpty(config.ApplicationClientID) || string.IsNullOrEmpty(config.ApplicationURI) || string.IsNullOrEmpty(config.ApplicationSecret))
                 {
                     return Ok(new { test = "Blank Application Info" });
                 }
@@ -63,21 +64,21 @@ namespace FortBackend.src.App.Routes.APIS.Development
                 var responseContent = await response.Content.ReadAsStringAsync();
 
                 var responseData = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseContent);
-                if(responseData == null)
+                if (responseData == null)
                 {
                     return Ok(new { test = "Null!" });
                 }
 
                 if (responseData.TryGetValue("access_token", out var accessToken))
                 {
-                  
+
 
                     var client2 = new HttpClient();
                     client2.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
                     var response2 = await client2.GetAsync("https://discord.com/api/users/@me/guilds");
                     var responseContent2 = await response2.Content.ReadAsStringAsync();
 
-                  
+
                     List<DiscordAuth.Server> responseData2 = JsonConvert.DeserializeObject<List<DiscordAuth.Server>>(responseContent2);
                     bool IsInServer = false;
                     foreach (DiscordAuth.Server item in responseData2)
@@ -97,14 +98,14 @@ namespace FortBackend.src.App.Routes.APIS.Development
                         response = await client.GetAsync("https://discord.com/api/users/@me");
                         responseContent = await response.Content.ReadAsStringAsync();
 
-                        if(responseContent == null)
+                        if (responseContent == null)
                         {
                             return Ok(new { test = "Server Sided Error" });
                         }
                         //Console.WriteLine(responseContent);
                         UserInfo responseData1 = JsonConvert.DeserializeObject<UserInfo>(responseContent);
 
-                        if(responseData1 == null)
+                        if (responseData1 == null)
                         {
                             return Ok(new { test = "Server Sided Error -> 2" });
                         }
@@ -113,7 +114,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                         var id = responseData1.id;
                         var email = responseData1.email;
 
-                        if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(id))
+                        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(id))
                         {
                             return Ok(new { test = "why is the response wrong" });
                         }
@@ -128,10 +129,11 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                 { "accesstoken", NewAccessToken }
                             });
 
-                            if(UpdateResponse != "Error")
+                            if (UpdateResponse != "Error")
                             {
                                 return Ok(new { test = NewAccessToken });
-                            }else
+                            }
+                            else
                             {
                                 return Ok(new { test = "error!! couldnt login" });
                             }
@@ -146,7 +148,8 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                 {
                                     // Create the account
                                     return Ok(new { test = "username is in use but lkets make you a acc" });
-                                }else
+                                }
+                                else
                                 {
                                     IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
                                     IMongoCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account> Accountcollection = _database.GetCollection<FortBackend.src.App.Utilities.MongoDB.Module.Account>("Account");
@@ -362,7 +365,8 @@ namespace FortBackend.src.App.Routes.APIS.Development
                                 return Ok(new { test = NewAccessToken });
                             }
                         }
-                    }else
+                    }
+                    else
                     {
                         // user is not in the server!
                     }
@@ -371,7 +375,7 @@ namespace FortBackend.src.App.Routes.APIS.Development
                     //https://discord.com/api/users/@me
                     //Console.WriteLine(responseContent);
                 }
-             
+
             }
             catch (Exception ex)
             {
@@ -381,7 +385,31 @@ namespace FortBackend.src.App.Routes.APIS.Development
             return Ok(new { test = "ngl" });
         }
 
-      
-
+        [HttpGet("/image/{image}")]
+        public async Task<IActionResult> ImageEnd(string image)
+        {
+            try
+            {
+                // Prevent Weird Characters
+                if (!Regex.IsMatch(image, "^[a-zA-Z\\-\\._]+$"))
+                {
+                    return BadRequest("Invalid image parameter");
+                }
+                var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Image", image);
+                if (System.IO.File.Exists(imagePath))
+                {
+                    return PhysicalFile(imagePath, "image/jpeg");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+              
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
     }
 }

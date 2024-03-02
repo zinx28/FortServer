@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\Resources\Image\test.png" />
+    <None Remove="src\Resources\Image\Trans_Boykisser.png" />
     <None Remove="src\Resources\Ini\DefaultEngine.ini" />
     <None Remove="src\Resources\Ini\DefaultGame.ini" />
     <None Remove="src\Resources\Ini\DefaultInput.ini" />
@@ -16,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="src\Resources\Image\Trans_Boykisser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\Resources\Ini\DefaultEngine.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -37,7 +42,6 @@
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\templates\" />
     <Folder Include="src\Resources\Json\shop\" />
-    <Folder Include="src\Resources\Image\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +51,12 @@
 	<PackageReference Include="MongoDB.Driver" Version="2.23.1" />
 	<PackageReference Include="SkiaSharp" Version="2.88.7" />
 	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="src\Resources\Image\test.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

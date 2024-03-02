@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ using System;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
+    [BsonCollectionName("Account")]
     [BsonIgnoreExtraElements]
     public class Account_Module
     {

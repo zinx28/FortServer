@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
-    //[BsonCollectionName("User")]
+    [BsonCollectionName("User")]
     [BsonIgnoreExtraElements]
     public class User_Module
     {

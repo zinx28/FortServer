@@ -133,5 +133,12 @@ namespace FortBackend.src.App.Routes.Friends
             }
             return Ok(response);
         }
+
+        [HttpGet("v1/{accountId}/recent/fortnite")]
+        public async Task<ActionResult> RecentFriends(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return Ok(Array.Empty<string>());
+        }
     }
 }

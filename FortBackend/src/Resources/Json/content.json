@@ -3,21 +3,21 @@
         "motds": [
             {
                 "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
-                "title": "Orion",
+                "title": "FortBackend",
                 "body": "Fortnite Kittens :3"
             }
         ],
         "messages": [
             {
                 "image": "https://cdn.discordapp.com/attachments/1092149852235890688/1163923147683287060/Trans_Boykisser.png?ex=65f0ae67&is=65de3967&hm=61b5dc665349380649d3210e2f466e5da8037dd19bd6ee215c22ea4f1112c99f&",
-                "title": "Orion",
+                "title": "FortBackend",
                 "body": "Fortnite Kittens :3"
             }
         ]
     },
     "emergencynotice": [
         {
-            "title": "Orion",
+            "title": "FortBackend",
             "body": "Fortnite Kittens :3"
         }
     ],

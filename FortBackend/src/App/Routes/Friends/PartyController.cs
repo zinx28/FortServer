@@ -297,7 +297,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         revision = 0,
                                         updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                         joined_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
-                                        role = "MEMBER"
+                                        role = "CAPTAIN"
                                     }
                                 },
                                 applicants = new List<object>(),

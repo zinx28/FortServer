@@ -39,8 +39,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
     {
         [BsonRepresentation(BsonType.String)]
         public string accountId { get; set; } = string.Empty;
+
         [BsonRepresentation(BsonType.String)]
         public string alias { get; set; } = string.Empty;
+
         [BsonRepresentation(BsonType.String)]
         public string created { get; set; }
     }

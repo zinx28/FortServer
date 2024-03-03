@@ -265,6 +265,7 @@ namespace FortBackend.src.App.Routes.Friends
                             var ResponseParty = new Parties
                             {
                                 id = foundClient.id,
+                                privacy = "PUBLIC",
                                 created_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                 updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                 config = Parties.config,
@@ -291,7 +292,12 @@ namespace FortBackend.src.App.Routes.Friends
                                             { "joined_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") },
                                             { "updated_at", DateTime.Now.ToString("yyyy -MM-ddTHH:mm:ss.fffffffK") },
                                             { "role", "CAPTAIN" }
-                                        }
+                                        },
+                                        connections = new List<Dictionary<string, object>>(),
+                                        revision = 0,
+                                        updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                        joined_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                        role = "MEMBER"
                                     }
                                 },
                                 applicants = new List<object>(),

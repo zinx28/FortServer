@@ -63,6 +63,44 @@ namespace FortBackend.src.App.Routes.Friends
             });
         }
 
+        /*
+         * 
+         *  
+         {
+            "config":{
+                "discoverability":"INVITED_ONLY",
+                "join_confirmation":true,
+                "joinability":"INVITE_AND_FORMER",
+                "max_size":16
+            },
+            "join_info":
+            {
+                "connection":{
+                    "id":"644812f9-5e5e-4fd4-a670-b306e5956fd9@prod.ol.epicgames.com/V2:Fortnite:WIN::B9CF5D384BD5B481651C10BBC694F713",
+                    "meta":{
+                        "urn:epic:conn:platform_s":"WIN",
+                        "urn:epic:conn:type_s":"game"
+                    },
+                    "yield_leadership":false
+                },
+                "meta":{
+                    "urn:epic:member:dn_s":"Femboy Ozf"
+                }
+            },
+            "meta":{
+                "urn:epic:cfg:party-type-id_s":"default",
+                "urn:epic:cfg:build-id_s":"1:3:15301536",
+                "urn:epic:cfg:can-join_b":"true",
+                "urn:epic:cfg:join-request-action_s":"Manual",
+                "urn:epic:cfg:presence-perm_s":"Noone",
+                "urn:epic:cfg:invite-perm_s":"Noone",
+                "urn:epic:cfg:chat-enabled_b":"true",
+                "urn:epic:cfg:accepting-members_b":"false",
+                "urn:epic:cfg:not-accepting-members-reason_i":"0"
+            }
+        }
+         * */
+
         [HttpPost("api/v1/Fortnite/parties")]
         public async Task<IActionResult> FortniteParty()
         {
@@ -71,7 +109,7 @@ namespace FortBackend.src.App.Routes.Friends
                 using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                 {
                     string requestBody = await reader.ReadToEndAsync();
-                    Console.WriteLine(requestBody);
+                    Console.WriteLine("TEST " + requestBody);
                 }
 
             }

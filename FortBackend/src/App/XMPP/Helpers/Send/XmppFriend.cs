@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace FortBackend.src.App.XMPP.Helpers.Send
 {
-    public class XmppFriendContent
+    public class XmppFriend
     {
         public static async Task UpdatePresenceForFriends(WebSocket webSocket, string status, bool away, bool offline)
         {

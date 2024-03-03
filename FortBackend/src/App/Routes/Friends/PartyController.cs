@@ -25,6 +25,7 @@ namespace FortBackend.src.App.Routes.Friends
         {
             try
             {
+                Response.ContentType = "application/json";
                 var UserData = await Handlers.FindOne<User>("accountId", accountId);
 
                 if (UserData != "Error")
@@ -113,6 +114,7 @@ namespace FortBackend.src.App.Routes.Friends
         {
             try
             {
+                Response.ContentType = "application/json";
                 using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                 {
                     string requestBody = await reader.ReadToEndAsync();
@@ -304,8 +306,8 @@ namespace FortBackend.src.App.Routes.Friends
                             {
                                 GlobalData.parties[index] = ResponseParty;
                             }
-
-                            return Ok(ResponseParty);
+                            Console.WriteLine(JsonConvert.SerializeObject(ResponseParty));
+                            return Content(JsonConvert.SerializeObject(ResponseParty));
                         }
                     }
                 }

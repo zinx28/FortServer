@@ -40,6 +40,42 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             return "Error";
         }
 
+        public static async Task<string> FindSimilar<T>(string FindData, object valueData, int howmany, string CustomRegex = "")
+        {
+            try
+            {
+                var collection = _database.GetCollection<T>(typeof(T).Name);
+                var filterBuilder = Builders<T>.Filter;
+               
+                var regexPattern = (BsonRegularExpression)null;
+                if (!string.IsNullOrEmpty(CustomRegex))
+                {
+                    Console.WriteLine("T");
+                    regexPattern = new BsonRegularExpression(CustomRegex, "i");
+                }
+                else
+                {
+                    var exactValue = Regex.Escape(valueData.ToString());
+                    regexPattern = new BsonRegularExpression($"{exactValue}", "i");
+                }
+                
+
+                var filter = filterBuilder.Regex(FindData, regexPattern);
+                var result = await collection.Find(filter).Limit(howmany).ToListAsync();
+
+                if (result != null && result.Any())
+                {
+                    return JsonConvert.SerializeObject(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("FindSimilar -> " + ex.Message);
+            }
+
+            return "Error";
+        }
+
         public static async Task<string> UpdateOne<T>(string FindValue, object valueData, Dictionary<string, object> updateFields, bool PullFromArray = false)
         {
             try

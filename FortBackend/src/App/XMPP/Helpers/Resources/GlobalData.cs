@@ -1,4 +1,5 @@
-﻿using System.Net.WebSockets;
+﻿using Newtonsoft.Json;
+using System.Net.WebSockets;
 using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace FortBackend.src.App.XMPP.Helpers.Resources
@@ -24,6 +25,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
         public int revision { get; set; } = 0;
         public string updated_at { get; set; } = string.Empty;
         public string joined_at { get; set; } = string.Empty;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string role { get; set; } = string.Empty;
     }
 

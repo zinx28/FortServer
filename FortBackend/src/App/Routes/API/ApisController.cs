@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Events;
+using FortBackend.src.App.Utilities.Discord.Helpers.command;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
@@ -8,6 +9,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using System.Dynamic;
+using System.Text.RegularExpressions;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -217,6 +219,53 @@ namespace FortBackend.src.App.Routes.API
             }));
         }
 
+        [HttpGet("v1/search/{accountId}")]
+        public async Task<IActionResult> SearchPlayer(string accountId, [FromQuery] string prefix)
+        {
+            var Search = new List<object>();
+            try
+            {
+                if (!string.IsNullOrEmpty(prefix))
+                {
+                    var Users = await Handlers.FindSimilar<User>("Username", prefix, 5, $".*{Regex.Escape(prefix)}\\d*.*");
+                    Console.WriteLine("TEST");
+                    if (Users != "Error")
+                    {
+                        Console.WriteLine(Users);
+                        List<User> FortniteList = JsonConvert.DeserializeObject<List<User>>(Users);
+                        Console.WriteLine("TEST2");
+                        if (FortniteList != null)
+                        {
+                            foreach (User user in FortniteList)
+                            {
+                                Search.Add(new
+                                {
+                                    accountId = user.AccountId,
+                                    matches = new List<object>()
+                                    {
+                                        new
+                                        {
+                                            value = user.Username,
+                                            platform = "epic"
+                                        }
+                                    },
+                                    matchType = prefix.ToLower() == user.Username.ToLower() ? "exact" : "prefix",
+                                    epicMutuals = 0, // check other friends ig?
+                                    sortPosition = Search.Count
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("SearchPlayers -> " + ex.Message);
+            }
+            
+            return Ok(Search);
+        }
+
         //api/v1/user/setting
 
         [HttpPost("v1/user/setting")]
@@ -288,7 +337,7 @@ namespace FortBackend.src.App.Routes.API
 
         // /api/v1/assets/Fortnite/++Fortnite+Release-15.50/15526472?
 
-        [HttpPost("/v1/assets/Fortnite/{version}/{number}")]
+        [HttpPost("v1/assets/Fortnite/{version}/{number}")]
         public IActionResult AssetsV1(string version, string number)
         {
             Response.ContentType = "application/json";

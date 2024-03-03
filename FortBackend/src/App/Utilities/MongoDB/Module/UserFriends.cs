@@ -44,6 +44,6 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public string alias { get; set; } = string.Empty;
 
         [BsonRepresentation(BsonType.String)]
-        public string created { get; set; }
+        public DateTime created { get; set; }
     }
 }

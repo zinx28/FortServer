@@ -6,6 +6,7 @@ using FortBackend.src.App.XMPP.Helpers.Send;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Xml.Linq;
 
@@ -243,7 +244,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     var newFriend3 = new FriendsObject
                                     {
                                         accountId = friendID,
-                                        created = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                        created = DateTime.UtcNow
                                     };
                                     string json2 = JsonConvert.SerializeObject(newFriend3);
                                     var jsonDeserialized2 = JsonConvert.DeserializeObject<Dictionary<string, object>>(json2);
@@ -275,7 +276,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     var newFriend4 = new FriendsObject
                                     {
                                         accountId = accountId.ToString(),
-                                        created = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                        created = DateTime.UtcNow
                                     };
                                     string json3 = JsonConvert.SerializeObject(newFriend4);
                                     var jsonDeserialized3 = JsonConvert.DeserializeObject<Dictionary<string, object>>(json3);
@@ -365,7 +366,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         {
                                             accountId = FriendsAccountDataParsed.AccountId.ToString(),
                                             alias = "", // idk
-                                            created = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                            created = DateTime.UtcNow
                                         };
 
                                         string json = JsonConvert.SerializeObject(newFriend);
@@ -381,7 +382,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         {
                                             accountId = accountId1,
                                             alias = "",
-                                            created = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                            created = DateTime.UtcNow
                                         };
                                         string json1 = JsonConvert.SerializeObject(newFriend2);
                                         var jsonDeserialized1 = JsonConvert.DeserializeObject<Dictionary<string, object>>(json1);

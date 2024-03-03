@@ -35,11 +35,13 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonIgnoreIfNull]
         public List<FriendsObject> Blocked { get; set; } = new List<FriendsObject>();
     }
-
     public class FriendsObject
     {
+        [BsonRepresentation(BsonType.String)]
         public string accountId { get; set; } = string.Empty;
+        [BsonRepresentation(BsonType.String)]
         public string alias { get; set; } = string.Empty;
-        public DateTime created { get; set; }
+        [BsonRepresentation(BsonType.String)]
+        public string created { get; set; }
     }
 }

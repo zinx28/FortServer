@@ -115,6 +115,35 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
         }
 
+
+        public static async Task<string> PullFromArray<T>(string FindData, string valueData, string arrayField, string pullField, string pullValue)
+        {
+            try
+            {
+                var collection = _database.GetCollection<T>(typeof(T).Name);
+                var filter = Builders<T>.Filter.Eq(FindData, valueData);
+
+
+                var updateResult = await collection.UpdateOneAsync(
+                   filter,
+                   Builders<T>.Update.PullFilter(arrayField, Builders<BsonDocument>.Filter.Eq(pullField, pullValue))
+                );
+                if (updateResult.ModifiedCount > 0)
+                {
+                    return "Updated";
+                }
+                else
+                {
+                    return "No documents matched the filter criteria.";
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("[MongoDB:PullFromArray] -> " + ex.Message);
+                return "Error";
+            }
+        }
+
         public static async Task<string> PushOne<T>(string FindValue, object valueData, Dictionary<string, object> updateFields, bool ForceThingy = true)
         {
             try

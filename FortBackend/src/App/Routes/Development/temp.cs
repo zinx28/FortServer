@@ -182,6 +182,7 @@ namespace FortBackend.src.App.Routes.Development
                             else
                             {
                                 IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
+                                IMongoCollection<UserFriends> UserFriendscollection = _database.GetCollection<UserFriends>("UserFriends");
                                 IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
 
 
@@ -195,6 +196,12 @@ namespace FortBackend.src.App.Routes.Development
                                     Email = GenerateRandomString(10) + "@fortbackend.com",
                                     accesstoken = NewAccessToken,
                                     Password = GenerateRandomString(15)
+                                };
+
+                                UserFriends UserFriendsData = new UserFriends
+                                {
+                                    AccountId = AccountId,
+                                    DiscordId = id
                                 };
                                 //string RandomNewId = Guid.NewGuid().ToString();
                                 Account AccountData = new Account
@@ -361,6 +368,7 @@ namespace FortBackend.src.App.Routes.Development
 
                                 Accountcollection.InsertOne(AccountData);
                                 Usercollection.InsertOne(UserData);
+                                UserFriendscollection.InsertOne(UserFriendsData);
 
                                 return Ok(new { test = NewAccessToken });
                             }

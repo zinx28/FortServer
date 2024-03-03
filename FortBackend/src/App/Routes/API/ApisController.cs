@@ -1,6 +1,4 @@
-﻿using Discord;
-using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content;
+﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Events;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
@@ -9,10 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
 using System.Dynamic;
-using System.Numerics;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -61,6 +56,15 @@ namespace FortBackend.src.App.Routes.API
                 endTime = 9223372036854776000,
                 accountId,
                 stats = new { } // stats like "smth": number
+            });
+        }
+
+        [HttpGet("v1/Fortnite/get")]
+        public IActionResult FortniteGet()
+        {
+            return Ok(new
+            {
+                interactions = new List<object>()
             });
         }
 

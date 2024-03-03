@@ -369,6 +369,8 @@ namespace FortBackend.src.App.Routes.Development
                     else
                     {
                         // user is not in the server!
+
+                        return Ok(new { test = "User is not in discord server!" });
                     }
 
 
@@ -382,7 +384,7 @@ namespace FortBackend.src.App.Routes.Development
                 Logger.Error(ex.Message);
             }
 
-            return Ok(new { test = "ngl" });
+            return Ok(new { test = "Unknown Issue!" });
         }
 
         [HttpGet("/image/{image}")]

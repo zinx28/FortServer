@@ -230,7 +230,15 @@ namespace FortBackend.src.App.Routes.Friends
 
                                             foreach (var prop in PartiesGR.meta.update)
                                             {
-                                                Parties.meta[prop.Key] = prop.Value;
+                                                if (!Parties.meta.ContainsKey(prop.Key))
+                                                {
+                                                    Logger.Warn("ADDING !!! YOO!");
+                                                    Parties.meta.Add(prop.Key, prop.Value);
+                                                }
+                                                else
+                                                {
+                                                    Parties.meta[prop.Key] = prop.Value;
+                                                }
                                             }
                                         }
 
@@ -365,7 +373,15 @@ namespace FortBackend.src.App.Routes.Friends
                             {
                                 foreach (var prop in PartiesGR.update)
                                 {
-                                    Parties.members[members].meta[prop.Key] = prop.Value;
+                                    if (!Parties.members[members].meta.ContainsKey(prop.Key))
+                                    {
+                                        Logger.Warn("ADDING !!! YOO!");
+                                        Parties.members[members].meta.Add(prop.Key, prop.Value);
+                                    }
+                                    else
+                                    {
+                                        Parties.members[members].meta[prop.Key] = prop.Value;
+                                    }
                                 }
                             }
 
@@ -783,6 +799,7 @@ namespace FortBackend.src.App.Routes.Friends
 
                                             if (Party.meta.TryGetValue(v, out var metaValue) && metaValue is string stringValue)
                                             {
+                                                Console.WriteLine(stringValue);
                                                 var rsa = JsonConvert.DeserializeObject<List<RawSquadAssignment>>(stringValue);
 
                                                 rsa.Add(new RawSquadAssignment

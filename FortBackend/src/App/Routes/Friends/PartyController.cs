@@ -800,9 +800,10 @@ namespace FortBackend.src.App.Routes.Friends
                                             if (Party.meta.TryGetValue(v, out var metaValue) && metaValue is string stringValue)
                                             {
                                                 Console.WriteLine(stringValue);
-                                                var rsa = JsonConvert.DeserializeObject<List<RawSquadAssignment>>(stringValue);
-
-                                                rsa.Add(new RawSquadAssignment
+                                                //{"RawSquadAssignments":[{"memberId":"88e30971-b97d-451d-ba55-e6322bcfe31f","absoluteMemberIdx":0}]}
+                                                var rsa = JsonConvert.DeserializeObject<RawSquadAssignmentsWrapper>(stringValue);
+                                                rsa.RawSquadAssignments ??= new List<RawSquadAssignment>();
+                                                rsa.RawSquadAssignments.Add(new RawSquadAssignment
                                                 {
                                                     memberId = JoinParty.connection.id.Split("@prod")[0],
                                                     absoluteMemberIdx = Party.members.Count - 1

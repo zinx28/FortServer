@@ -202,7 +202,19 @@ namespace FortBackend.src.App.Routes.Oauth
                         error_description = "You have been permanently banned from FortBackend."
                     });
                 }
-
+                if(AccountId == null)
+                {
+                    return BadRequest(new BaseError
+                    {
+                        errorCode = "errors.com.epicgames.common.oauth.invalid_request",
+                        errorMessage = "Server Issue",
+                        messageVars = new List<string>(),
+                        numericErrorCode = 18057,
+                        originatingService = "any",
+                        intent = "prod",
+                        error_description = "Server Issue"
+                    });
+                }
                 string RefreshToken = JWT.GenerateJwtToken(new[]
                    {
                     new Claim("sub", AccountId),

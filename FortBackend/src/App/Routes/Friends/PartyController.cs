@@ -810,7 +810,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                     absoluteMemberIdx = Party.members.Count - 1
                                                 });
 
-                                                Party.meta[v] = metaValue;
+                                                Party.meta[v] = JsonConvert.SerializeObject(metaValue);
                                                 //Party.meta[v]
                                                 Party.revision += 1;
                                                 Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");

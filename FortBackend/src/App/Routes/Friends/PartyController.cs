@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
+using System.Linq.Expressions;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Linq;
@@ -783,7 +784,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                         { "id", JoinParty.connection.id },
                                                         { "connected_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") },
                                                         { "updated_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")},
-                                                        { "yield_leadership", false },
+                                                        { "yield_leadership", JoinParty.connection.yield_leadership ? true : false },
                                                         { "meta", JoinParty.connection.meta }
                                                     }
                                                 },
@@ -816,6 +817,7 @@ namespace FortBackend.src.App.Routes.Friends
 
 
                                                 var Captain = Party.members.Find(x => x.role == "CAPTAIN");
+
                                                 Party.members.ForEach(async x =>
                                                 {
                                                     var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
@@ -844,7 +846,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                         ""sent"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""", 
                                                         ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_JOINED"",
                                                         ""updated_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @"""                                                 
-                                                    }")
+                                                        }")
                                                         );
 
                                                         await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);

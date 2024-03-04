@@ -261,10 +261,8 @@ namespace FortBackend.src.App.Routes.Friends
                                                 {
                                                     XElement message;
                                                     XNamespace clientNs = "jabber:client";
-                                                    message = new XElement(clientNs + "message",
-                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                        new XAttribute("to", foundClient.accountId),
-                                                        new XElement("body", @"{
+                                                    /*
+                                                     * @"{
                                                             ""captain_id"": """ + captain.account_id + @""",
                                                             ""created_at"": """ + Parties.created_at + @""",
                                                             ""invite_ttl_seconds"": " + 14400 + @",
@@ -281,7 +279,30 @@ namespace FortBackend.src.App.Routes.Friends
                                                             ""sent"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
                                                             ""type"": ""com.epicgames.social.party.notification.v0.PARTY_UPDATED"",
                                                             ""updated_at"": """ + Parties.updated_at + @"""
-                                                        }")
+                                                        }"
+                                                    *
+                                                    */
+                                                    message = new XElement(clientNs + "message",
+                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                        new XAttribute("to", foundClient.accountId),
+                                                        new XElement("body", JsonConvert.SerializeObject(new {
+                                                            captain_id = captain.account_id,
+                                                            created_at = Parties.created_at,
+                                                            invite_ttl_seconds = 14400,
+                                                            max_number_of_members = 16,
+                                                            ns = "Fortnite",
+                                                            party_id = Parties.id,
+                                                            party_privacy_type = "PUBLIC",
+                                                            party_state_overriden = new { },
+                                                            party_state_removed = PartiesGR.meta.delete,
+                                                            party_state_updated = PartiesGR.meta.update,
+                                                            party_sub_type = "default",
+                                                            party_type = "DEFAULT",
+                                                            revision = Parties.revision,
+                                                            sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                                            type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
+                                                            updated_at = Parties.updated_at
+                                                        }))
                                                     );
 
                                                     await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
@@ -323,7 +344,7 @@ namespace FortBackend.src.App.Routes.Friends
      {"delete":[],"revision":0,"update":{"internal:voicechatmuted_b":"false"}}
 
             */
-    [HttpPatch("api/v1/Fortnite/parties/{partyId}/members/{accountId}/meta")]
+                                                    [HttpPatch("api/v1/Fortnite/parties/{partyId}/members/{accountId}/meta")]
     public async Task<IActionResult> FortnitePartyPatch(string partyId, string accountId)
     {
         try
@@ -398,10 +419,7 @@ namespace FortBackend.src.App.Routes.Friends
                                 {
                                     XElement message;
                                     XNamespace clientNs = "jabber:client";
-                                    message = new XElement(clientNs + "message",
-                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                        new XAttribute("to", foundClient.accountId),
-                                        new XElement("body", @"{
+                                    /*@"{
                                             ""account_id"": """ + accountId + @""",
                                             ""account_dn"": """ + Parties.members[members].meta["urn:epic:member:dn_s"] + @""",
                                             ""member_state_updated"": " + PartiesGR.update + @",
@@ -413,7 +431,23 @@ namespace FortBackend.src.App.Routes.Friends
                                             ""revision"": " + Parties.members[members].revision + @""",
                                             ""ns"": ""Fortnite"",
                                             ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_STATE_UPDATED""
-                                        }")
+                                        }"
+                                    */
+                                    message = new XElement(clientNs + "message",
+                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                        new XAttribute("to", foundClient.accountId),
+                                        new XElement("body", JsonConvert.SerializeObject(new {
+                                            account_id = accountId,
+                                            account_dn = Parties.members[members].meta["urn:epic:member:dn_s"],
+                                            member_state_updated = PartiesGR.update,
+                                            member_state_removed = PartiesGR.delete,
+                                            member_state_overridden = new { },
+                                            updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                            sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                            revision = Parties.members[members].revision,
+                                            ns = "Fortnite",
+                                            type = "com.epicgames.social.party.notification.v0.MEMBER_STATE_UPDATED"
+                                        }))
                                     );
 
                                     await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
@@ -569,14 +603,14 @@ namespace FortBackend.src.App.Routes.Friends
                     var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == Parties.join_info.connection.id.Split('@')[0]);
                     if (foundClient != null)
                     {
-                        var AccountId = Parties.join_info.connection.id.Split('@')[0];
+                        var AccountId = Parties.join_info.connection.id.Split("@prod")[0];
                         foundClient.id = Guid.NewGuid().ToString().Replace("-", "");
                         foundClient.meta = Parties.meta;
 
                         var ResponseParty = new Parties
                         {
                             id = foundClient.id,
-                            privacy = "PUBLIC",
+                            //privacy = "PUBLIC",
                             created_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                             updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                             config = Parties.config,
@@ -592,7 +626,7 @@ namespace FortBackend.src.App.Routes.Friends
                                             { "id", Parties.join_info.connection.id },
                                             { "connected_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") },
                                             { "updated_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")},
-                                            { "yield_leadership", false },
+                                            { "yield_leadership", Parties.join_info.connection.yield_leadership },
                                             { "meta", Parties.join_info.connection.meta }
                                         }
                                     },
@@ -602,7 +636,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     role = "CAPTAIN"
                                 }
                             },
-                            applicants = new List<object>(),
+                         //   applicants = new List<object>(),
                             meta = foundClient.meta,
                             invites = new List<object>(),
                             revision = 0,
@@ -673,10 +707,8 @@ namespace FortBackend.src.App.Routes.Friends
                             {
                                 XElement message;
                                 XNamespace clientNs = "jabber:client";
-                                message = new XElement(clientNs + "message",
-                                    new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                    new XAttribute("to", foundClient.accountId),
-                                    new XElement("body", @"{
+                                /*
+                                 * @"{
                                             ""account_id"": """ + accountId + @""",
                                             ""party_id"": """ + Party.id + @""",
                                             ""kicked"": " + true + @",
@@ -685,7 +717,21 @@ namespace FortBackend.src.App.Routes.Friends
                                             ""revision"": """ + Party.revision + @""",
                                             ""ns"": ""Fortnite"",
                                             ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_KICKED""
-                                        }")
+                                        }"
+                                */
+                                    message = new XElement(clientNs + "message",
+                                    new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                    new XAttribute("to", foundClient.accountId),
+                                    new XElement("body", JsonConvert.SerializeObject(new { 
+                                        account_id = accountId,
+                                        party_id = Party.id,
+                                        kicked = true,
+                                        updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                        sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                        revision = Party.revision,
+                                        ns = "Fortnite",
+                                        type = "com.epicgames.social.party.notification.v0.MEMBER_KICKED"
+                                    }))
                                 );
 
                                 await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
@@ -826,10 +872,8 @@ namespace FortBackend.src.App.Routes.Friends
                                                     {
                                                         XElement message;
                                                         XNamespace clientNs = "jabber:client";
-                                                        message = new XElement(clientNs + "message",
-                                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                            new XAttribute("to", foundClient.accountId),
-                                                            new XElement("body", @"{
+                                                        /*
+                                                         * @"{
                                                         ""account_id"": """ + JoinParty.connection.meta["urn:epic:member:dn_s"] + @""",
                                                         ""account_dn"": """ + JoinParty.connection.id.Split("@prod")[0] + @""",
                                                         ""connection"": {
@@ -846,15 +890,36 @@ namespace FortBackend.src.App.Routes.Friends
                                                         ""sent"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""", 
                                                         ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_JOINED"",
                                                         ""updated_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @"""                                                 
-                                                        }")
+                                                        }"
+                                                        */
+                                //JsonConvert.SerializeObject(
+                                message = new XElement(clientNs + "message",
+                                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                            new XAttribute("to", foundClient.accountId),
+                                                            new XElement("body", JsonConvert.SerializeObject(new {
+                                                                account_id = JoinParty.connection.meta["urn:epic:member:dn_s"],
+                                                                account_dn = JoinParty.connection.id.Split("@prod")[0],
+                                                                connection = new
+                                                                {
+                                                                    connected_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                                                    id = JoinParty.connection.id,
+                                                                    meta = JoinParty.connection.meta,
+                                                                    updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
+                                                                },
+                                                                joined_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                                                member_state_updated = JoinParty.meta,
+                                                                ns = "Fortnite",
+                                                                party_id = Party.id,
+                                                                revision = Party.revision,
+                                                                send = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                                                type = "com.epicgames.social.party.notification.v0.MEMBER_JOINED",
+                                                                updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
+                                                            }))
                                                         );
 
                                                         await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
-
-                                                        message = new XElement(clientNs + "message",
-                                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                            new XAttribute("to", foundClient.accountId),
-                                                            new XElement("body", @"{
+                                                        /*
+                                                         * @"{
                                                             ""captain_id"": """ + Captain.account_id + @""",
                                                             ""created_at"": """ + Party.created_at + @""",
                                                             ""invite_ttl_seconds"": " + 14400 + @",
@@ -871,7 +936,29 @@ namespace FortBackend.src.App.Routes.Friends
                                                             ""sent"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
                                                             ""type"": ""com.epicgames.social.party.notification.v0.PARTY_UPDATED"",
                                                             ""updated_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @"""
-                                                        }")
+                                                        }"*/
+                                                        message = new XElement(clientNs + "message",
+                                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                            new XAttribute("to", foundClient.accountId),
+                                                            new XElement("body", JsonConvert.SerializeObject(new
+                                                            {
+                                                                captain_id = Captain.account_id,
+                                                                created_at = Party.created_at,
+                                                                invite_ttl_seconds = 14400,
+                                                                max_number_of_members = 16,
+                                                                ns = "Fortnite",
+                                                                party_id = Party.id,
+                                                                party_privacy_type = "PUBLIC",
+                                                                party_state_overriden = new { },
+                                                                party_state_removed = new List<string>(),
+                                                                party_state_updated = rsa,
+                                                                party_sub_type = "default",
+                                                                party_type = "DEFAULT",
+                                                                revision = Party.revision,
+                                                                sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                                                type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
+                                                                updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
+                                                            }))
                                                         );
 
                                                         await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);

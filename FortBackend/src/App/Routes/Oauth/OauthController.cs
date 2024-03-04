@@ -156,7 +156,10 @@ namespace FortBackend.src.App.Routes.Oauth
                         error = "invalid_client"
                     });
                 }
-
+                if(grant_type == "refresh_token")
+                {
+                    Console.WriteLine("refresh token");
+                }
                 switch (grant_type)
                 {
                     case "exchange_code":

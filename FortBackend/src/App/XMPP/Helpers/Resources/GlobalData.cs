@@ -88,6 +88,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
     public class RefreshToken
     {
         public string token { get; set; } = string.Empty;
+        public string creation_date { get; set; } = string.Empty;
         public string accountId { get; set; } = string.Empty;
     }
 

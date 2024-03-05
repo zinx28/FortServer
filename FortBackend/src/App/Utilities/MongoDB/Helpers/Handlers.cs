@@ -18,7 +18,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         {
             try
             {
-                if(string.IsNullOrEmpty(FindData) || string.IsNullOrEmpty(valueData.ToString())) 
+                if (string.IsNullOrEmpty(FindData) || valueData == null || string.IsNullOrEmpty(valueData.ToString()))
                 {
                     Logger.Error("FindOne Blank Data");
                     return "Error";

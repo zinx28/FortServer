@@ -284,7 +284,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                     */
                                                     message = new XElement(clientNs + "message",
                                                         new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                        new XAttribute("to", foundClient.accountId),
+                                                        new XAttribute("to", foundClient.jid),
                                                         new XElement("body", JsonConvert.SerializeObject(new {
                                                             captain_id = captain.account_id,
                                                             created_at = Parties.created_at,
@@ -435,7 +435,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     */
                                     message = new XElement(clientNs + "message",
                                         new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                        new XAttribute("to", foundClient.accountId),
+                                        new XAttribute("to", foundClient.jid),
                                         new XElement("body", JsonConvert.SerializeObject(new {
                                             account_id = accountId,
                                             account_dn = Parties.members[members].meta["urn:epic:member:dn_s"],
@@ -721,7 +721,7 @@ namespace FortBackend.src.App.Routes.Friends
                                 */
                                     message = new XElement(clientNs + "message",
                                     new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                    new XAttribute("to", foundClient.accountId),
+                                    new XAttribute("to", foundClient.jid),
                                     new XElement("body", JsonConvert.SerializeObject(new { 
                                         account_id = accountId,
                                         party_id = Party.id,
@@ -895,7 +895,7 @@ namespace FortBackend.src.App.Routes.Friends
                                 //JsonConvert.SerializeObject(
                                 message = new XElement(clientNs + "message",
                                                             new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                            new XAttribute("to", foundClient.accountId),
+                                                            new XAttribute("to", foundClient.jid),
                                                             new XElement("body", JsonConvert.SerializeObject(new {
                                                                 account_id = JoinParty.connection.meta["urn:epic:member:dn_s"],
                                                                 account_dn = JoinParty.connection.id.Split("@prod")[0],
@@ -939,7 +939,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                         }"*/
                                                         message = new XElement(clientNs + "message",
                                                             new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                            new XAttribute("to", foundClient.accountId),
+                                                            new XAttribute("to", foundClient.jid),
                                                             new XElement("body", JsonConvert.SerializeObject(new
                                                             {
                                                                 captain_id = Captain.account_id,

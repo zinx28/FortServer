@@ -35,7 +35,7 @@ namespace FortBackend.src.App.Routes.API
         }
 
 
-        [HttpGet("_/{accountId}/subscriptions/broadcast")]
+        [HttpPost("_/{accountId}/subscriptions/broadcast")]
         public async Task<ActionResult> Subscriptionsbroadcast(string accountId)
         {
             Response.ContentType = "application/json";

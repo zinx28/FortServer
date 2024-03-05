@@ -32,19 +32,17 @@ namespace FortBackend.src.App.Routes.Oauth
 
                 var handler = new JwtSecurityTokenHandler();
                 var decodedToken = handler.ReadJwtToken(accessToken);
-                var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+                //var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
                 var UserData = await Handlers.FindOne<User>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
 
-                if (AccountData != "Error" || UserData != "Error")
+                if (/*AccountData != "Error"* ||*/ UserData != "Error")
                 {
-                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                    //Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
                     User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
 
-                    if (AccountDataParsed != null && UserDataParsed != null)
+                    if (UserDataParsed != null)
                     {
-                        if (AccountData.ToString().Contains(accessToken))
-                        {
-                            if (UserDataParsed.banned != true)
+                        if (UserDataParsed.banned != true)
                             {
                                 return Ok(new
                                 {
@@ -66,7 +64,7 @@ namespace FortBackend.src.App.Routes.Oauth
                             }
                         }
                     }
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -90,6 +88,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 string Email = "";
                 string AccountId = "";
                 string Password = "";
+                string refresh_token = "";
                 string exchange_token = "";
                 bool IsMyFavUserBanned = false;
 
@@ -106,6 +105,11 @@ namespace FortBackend.src.App.Routes.Oauth
                 if (FormRequest.TryGetValue("exchange_code", out var ExchangeCode))
                 {
                     exchange_token = ExchangeCode;
+                }
+
+                if (FormRequest.TryGetValue("refresh_code", out var Refresh_code))
+                {
+                    refresh_token = Refresh_code;
                 }
 
                 if (FormRequest.TryGetValue("password", out var password))
@@ -156,10 +160,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         error = "invalid_client"
                     });
                 }
-                if(grant_type == "refresh_token")
-                {
-                    Console.WriteLine("refresh token");
-                }
+               
                 switch (grant_type)
                 {
                     case "exchange_code":
@@ -190,6 +191,63 @@ namespace FortBackend.src.App.Routes.Oauth
                             }
                         }
                         break;
+
+                    case "refresh_token":
+                        Logger.Error("THIS IS UNFINISHED SO YOU MAY HAVE LOGIN ISSUES");
+                        if (string.IsNullOrEmpty(refresh_token))
+                        {
+                            return BadRequest(new BaseError
+                            {
+                                errorCode = "errors.com.epicgames.common.oauth.invalid_request",
+                                errorMessage = "Refresh token is required.",
+                                messageVars = new List<string>(),
+                                numericErrorCode = 18057,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "Refresh token is required."
+                            });
+                        }
+
+                        var refreshTokenIndex = GlobalData.RefreshToken.FindIndex(x => x.token == refresh_token);
+                        if(refreshTokenIndex != -1)
+                        {
+                            var handler = new JwtSecurityTokenHandler();
+                            var decodedRefreshToken = handler.ReadJwtToken(GlobalData.RefreshToken[refreshTokenIndex].token.Replace("eg1~", ""));
+             
+                            if (decodedRefreshToken != null)
+                            {
+                                var creationDateClaim = decodedRefreshToken.Claims.FirstOrDefault(claim => claim.Type == "creation_date");
+
+                                if (creationDateClaim != null)
+                                {
+                                    DateTime creationDate = DateTime.Parse(creationDateClaim.Value);
+                                    int hoursToExpire = 1920; 
+
+                                    DateTime expirationDate = creationDate.AddHours(hoursToExpire);
+
+                                    if (expirationDate <= DateTime.UtcNow)
+                                    {
+                                        return BadRequest(new BaseError
+                                        {
+                                            errorCode = "errors.com.epicgames.common.oauth.invalid_request",
+                                            errorMessage = "EXPIED",
+                                            messageVars = new List<string>(),
+                                            numericErrorCode = 18057,
+                                            originatingService = "any",
+                                            intent = "prod",
+                                            error_description = "EXPIED."
+                                        });
+                                    }
+
+                                    GlobalData.RefreshToken[refreshTokenIndex].creation_date = expirationDate.ToString("yyyy-MM-ddTHH:mm:ss.fffK");
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception("Failed to decode refresh token.");
+                            }
+                        }
+                        break;
                 }
 
                 if (IsMyFavUserBanned)
@@ -205,7 +263,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         error_description = "You have been permanently banned from FortBackend."
                     });
                 }
-                if(AccountId == null)
+                if(string.IsNullOrEmpty(AccountId))
                 {
                     return BadRequest(new BaseError
                     {
@@ -251,23 +309,25 @@ namespace FortBackend.src.App.Routes.Oauth
                     token = $"eg1~{AccessToken}",
                     accountId = AccountId, // YPP!P
                 };
+                //new Claim("creation_date", DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"))
                 RefreshToken RefreshTokenClient = new RefreshToken
                 {
-                    token = $"eg1~{AccessToken}",
+                    token = $"eg1~{RefreshToken}",
+                    creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
                     accountId = AccountId, // YPP!P
                 };
                 GlobalData.AccessToken.Add(AccessTokenClient);
                 GlobalData.RefreshToken.Add(RefreshTokenClient);
 
-                await Handlers.UpdateOne<Account>("accountId", AccountId, new Dictionary<string, object>
-                {
-                    {
-                        "refreshToken", new string[] { RefreshToken }
-                    },
-                    {
-                        "accessToken", new string[] { AccessToken }
-                    }
-                });
+                //await Handlers.UpdateOne<Account>("accountId", AccountId, new Dictionary<string, object>
+                //{
+                //    {
+                //        "refreshToken", new string[] { RefreshToken }
+                //    },
+                //    {
+                //        "accessToken", new string[] { AccessToken }
+                //    }
+                //});
 
                 return Ok(new OauthToken
                 {

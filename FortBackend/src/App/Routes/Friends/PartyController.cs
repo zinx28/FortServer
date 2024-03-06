@@ -37,20 +37,20 @@ namespace FortBackend.src.App.Routes.Friends
                 if (UserData != "Error")
                 {
                     var CurrentParty = GlobalData.parties.Find(e => e.members.Any(a => a.account_id == accountId));
-                    List<Pings> CurrentPartysPing = new List<Pings>();
-                    List<Pings> CurrentPartysPending = new List<Pings>();
+                   // List<Pings> CurrentPartysPing = new List<Pings>();
+                   // List<Pings> CurrentPartysPending = new List<Pings>();
                     if (CurrentParty != null)
                     {
-                        CurrentPartysPing = GlobalData.pings.FindAll(e => e.sent_to == accountId);
-                        CurrentPartysPending = GlobalData.pings.FindAll(e => e.sent_by == accountId);
+                       //CurrentPartysPing = GlobalData.pings.FindAll(e => e.sent_to == accountId);
+                       // CurrentPartysPending = GlobalData.pings.FindAll(e => e.sent_by == accountId);
                     }
 
                     return Ok(new
                     {
                         current = CurrentParty != null ? new List<Parties> { CurrentParty } : new List<Parties>(),
-                        pending = CurrentPartysPending,
+                        pending = Array.Empty<object>(),
                         invites = Array.Empty<object>(),
-                        pings = CurrentPartysPing
+                        pings = Array.Empty<object>()
                     });
                 }else
                 {
@@ -257,7 +257,7 @@ namespace FortBackend.src.App.Routes.Friends
                                             {
                                                 var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
 
-                                                if (foundClient != null && foundClient.Client.CloseStatus == 0)
+                                                if (foundClient != null /*&& foundClient.Client.CloseStatus == 0*/)
                                                 {
                                                     XElement message;
                                                     XNamespace clientNs = "jabber:client";
@@ -344,7 +344,7 @@ namespace FortBackend.src.App.Routes.Friends
      {"delete":[],"revision":0,"update":{"internal:voicechatmuted_b":"false"}}
 
             */
-                                                    [HttpPatch("api/v1/Fortnite/parties/{partyId}/members/{accountId}/meta")]
+    [HttpPatch("api/v1/Fortnite/parties/{partyId}/members/{accountId}/meta")]
     public async Task<IActionResult> FortnitePartyPatch(string partyId, string accountId)
     {
         try
@@ -415,7 +415,7 @@ namespace FortBackend.src.App.Routes.Friends
                             {
                                 var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
 
-                                if (foundClient != null && foundClient.Client.CloseStatus == 0)
+                                if (foundClient != null /*&& foundClient.Client.CloseStatus == 0*/)
                                 {
                                     XElement message;
                                     XNamespace clientNs = "jabber:client";
@@ -433,15 +433,17 @@ namespace FortBackend.src.App.Routes.Friends
                                             ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_STATE_UPDATED""
                                         }"
                                     */
+                                    Console.WriteLine(Parties.members[members].meta);
                                     message = new XElement(clientNs + "message",
                                         new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
                                         new XAttribute("to", foundClient.jid),
                                         new XElement("body", JsonConvert.SerializeObject(new {
                                             account_id = accountId,
-                                            account_dn = Parties.members[members].meta["urn:epic:member:dn_s"],
+                                            account_dn = Parties.members[members].meta?["urn:epic:member:dn_s"].ToString() ?? "",
                                             member_state_updated = PartiesGR.update,
                                             member_state_removed = PartiesGR.delete,
                                             member_state_overridden = new { },
+                                            party_id = Parties.id,
                                             updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                             sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                             revision = Parties.members[members].revision,
@@ -618,7 +620,7 @@ namespace FortBackend.src.App.Routes.Friends
                                 new Members
                                 {
                                     account_id = AccountId,
-                                    meta = Parties.meta,
+                                    meta = Parties.join_info.meta,
                                     connections = new List<Dictionary<string, object>>()
                                     {
                                         new Dictionary<string, object>
@@ -649,7 +651,7 @@ namespace FortBackend.src.App.Routes.Friends
                             GlobalData.parties.Add(ResponseParty);
                         }
                         Console.WriteLine(JsonConvert.SerializeObject(ResponseParty));
-                        return Content(JsonConvert.SerializeObject(ResponseParty));
+                        return Content(JsonConvert.SerializeObject(ResponseParty), "application/json");
                     }
                 }
             }
@@ -703,7 +705,7 @@ namespace FortBackend.src.App.Routes.Friends
                         {
                             var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
 
-                            if (foundClient != null && foundClient.Client.CloseStatus == 0)
+                            if (foundClient != null /*&& foundClient.Client.CloseStatus == 0*/)
                             {
                                 XElement message;
                                 XNamespace clientNs = "jabber:client";
@@ -808,9 +810,10 @@ namespace FortBackend.src.App.Routes.Friends
 
                                     var ClientIndex = GlobalData.Clients.FindIndex(x => x.accountId == AccountId);
 
-                                    if (ClientIndex != null)
+                                    if (ClientIndex != -1)
                                     {
                                         var Client = GlobalData.Clients[ClientIndex];
+                                        
 
                                         var MemberIndex = Party.members.FindIndex(x => x.account_id == accountId);
 
@@ -868,7 +871,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                 {
                                                     var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
 
-                                                    if (foundClient != null && foundClient.Client.CloseStatus == 0)
+                                                    if (foundClient != null /*&& foundClient.Client.CloseStatus == 0*/)
                                                     {
                                                         XElement message;
                                                         XNamespace clientNs = "jabber:client";
@@ -893,7 +896,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                         }"
                                                         */
                                 //JsonConvert.SerializeObject(
-                                message = new XElement(clientNs + "message",
+                                                            message = new XElement(clientNs + "message",
                                                             new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
                                                             new XAttribute("to", foundClient.jid),
                                                             new XElement("body", JsonConvert.SerializeObject(new {
@@ -910,7 +913,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                                 member_state_updated = JoinParty.meta,
                                                                 ns = "Fortnite",
                                                                 party_id = Party.id,
-                                                                revision = Party.revision,
+                                                                revision = 0,
                                                                 send = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                                                 type = "com.epicgames.social.party.notification.v0.MEMBER_JOINED",
                                                                 updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
@@ -962,6 +965,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                         );
 
                                                         await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
+                                                        Console.WriteLine("joined PARTY");
                                                     }
                                                 });
 
@@ -970,12 +974,27 @@ namespace FortBackend.src.App.Routes.Friends
                                                     status = "JOINED",
                                                     party_id = Party.id
                                                 });
+                                            }else
+                                            {
+                                                Console.WriteLine("WTF");
                                             }
                                         }
+                                    } else
+                                    {
+                                        Console.WriteLine("IT IS -1");
                                     }
+                                }else
+                                {
+                                    Console.WriteLine("JOIN PARTY IS NULL");
                                 }
                             }
+                        }else
+                        {
+                            Console.WriteLine("ACCOUNT ISNT FOUND");
                         }
+                    }else
+                    {
+                        Console.WriteLine("ACCOUNT NULL");
                     }
                     //var MemberIndex = Party.members.FindIndex(x => x.account_id == accountId);
 

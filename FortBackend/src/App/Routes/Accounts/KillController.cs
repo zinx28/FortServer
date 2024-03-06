@@ -77,22 +77,22 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                             GlobalData.ClientToken.RemoveAt(ClientTokenIndex);
                         }
 
-                        if (AccessTokenIndex != -1 || ClientTokenIndex != -1) // in the future i'll implement
-                        {
-                            Console.WriteLine("WOAH");
-                            await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
-                            {
-                                {
-                                    "refreshToken", new string[] { }
-                                },
-                                {
-                                    "accessToken", new string[] { }
-                                },
-                                {
-                                    "clientToken", new string[] {}
-                                }
-                            });
-                        }
+                        //if (AccessTokenIndex != -1 || ClientTokenIndex != -1) // in the future i'll implement
+                        //{
+                        //    Console.WriteLine("WOAH");
+                        //    await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
+                        //    {
+                        //        {
+                        //            "refreshToken", new string[] { }
+                        //        },
+                        //        {
+                        //            "accessToken", new string[] { }
+                        //        },
+                        //        {
+                        //            "clientToken", new string[] {}
+                        //        }
+                        //    });
+                        //}
                     }
                 }
             }

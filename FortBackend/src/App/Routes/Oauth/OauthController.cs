@@ -32,45 +32,59 @@ namespace FortBackend.src.App.Routes.Oauth
 
                 var handler = new JwtSecurityTokenHandler();
                 var decodedToken = handler.ReadJwtToken(accessToken);
-                //var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
-                var UserData = await Handlers.FindOne<User>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
 
-                if (/*AccountData != "Error"* ||*/ UserData != "Error")
+                Console.WriteLine(decodedToken);
+                string[] tokenParts = decodedToken.ToString().Split('.');
+
+                if (tokenParts.Length == 2)
                 {
-                    //Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
-                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
-
-                    if (UserDataParsed != null)
+                    var payloadJson = tokenParts[1];
+                    dynamic payload = JsonConvert.DeserializeObject(payloadJson);
+                    Console.WriteLine(payload);
+                    if(payload == null)
                     {
-                        if (UserDataParsed.banned != true)
+                        return BadRequest(new { });
+                    }
+                    //var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+                    var UserData = await Handlers.FindOne<User>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+
+                    if (/*AccountData != "Error"* ||*/ UserData != "Error")
+                    {
+                        //Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
+
+                        if (UserDataParsed != null)
+                        {
+                            if (UserDataParsed.banned != true)
                             {
                                 return Ok(new
                                 {
                                     token = $"{token}",
-                                    session_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "jti")?.Value,
+                                    session_id = payload.jti.ToString(),
                                     token_type = "bearer",
-                                    client_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value,
+                                    client_id = payload.clid.ToString(),
                                     internal_client = true,
                                     client_service = "fortnite",
-                                    account_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value,
+                                    account_id = payload.sub.ToString(),
                                     expires_in = 28800,
                                     expires_at = DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    auth_method = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "am")?.Value,
-                                    display_name = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dn")?.Value,
+                                    auth_method = payload.am.ToString(),
+                                    display_name = payload.dn.ToString(),
                                     app = "fortnite",
-                                    in_app_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value,
-                                    device_id = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dvid")?.Value
+                                    in_app_id = payload.sub.ToString(),
+                                    device_id = payload.dvid.ToString()
                                 });
                             }
                         }
                     }
-                //}
+                    //}
+                }
             }
             catch (Exception ex)
             {
                 Logger.Error($"[OauthApi:Verify] -> {ex.Message}");
             }
-            return Ok(new { });
+            return BadRequest(new { });
 
         }
 
@@ -241,9 +255,26 @@ namespace FortBackend.src.App.Routes.Oauth
 
                                     GlobalData.RefreshToken[refreshTokenIndex].creation_date = expirationDate.ToString("yyyy-MM-ddTHH:mm:ss.fffK");
                                 }
+
+                                return Ok(new OauthToken
+                                {
+                                    token_type = "bearer",
+                                    account_id = AccountId,
+                                    client_id = clientId,
+                                    internal_client = true,
+                                    client_service = "fortnite",
+                                    refresh_token = $"{GlobalData.RefreshToken[refreshTokenIndex].token}",
+                                    refresh_expires = 115200,
+                                    refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    displayName = DisplayName,
+                                    app = "fortnite",
+                                    in_app_id = AccountId,
+                                    device_id = Hex.GenerateRandomHexString(16)
+                                });
                             }
                             else
                             {
+                                Console.WriteLine("FAILED TO DECODE TOEK");
                                 throw new Exception("Failed to decode refresh token.");
                             }
                         }
@@ -276,10 +307,12 @@ namespace FortBackend.src.App.Routes.Oauth
                         error_description = "Server Issue"
                     });
                 }
+                var DeviceID = Hex.GenerateRandomHexString(16);
                 string RefreshToken = JWT.GenerateJwtToken(new[]
                    {
                     new Claim("sub", AccountId),
                     new Claim("t", "r"),
+                    new Claim("dvid", DeviceID),
                     new Claim("clid", clientId),
                     new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
                     new Claim("am", grant_type),
@@ -290,10 +323,12 @@ namespace FortBackend.src.App.Routes.Oauth
                 {
                     new Claim("app", "fortnite"),
                     new Claim("sub", AccountId),
+                    new Claim("dvid", DeviceID),
                     new Claim("mver", "false"),
                     new Claim("clid", clientId),
                     new Claim("dn", DisplayName),
                     new Claim("am", grant_type),
+                    new Claim("sec", "1"),
                     new Claim("p", Hex.GenerateRandomHexString(256)),
                     new Claim("iai", AccountId),
                     new Claim("clsvc", "fortnite"),
@@ -319,16 +354,6 @@ namespace FortBackend.src.App.Routes.Oauth
                 GlobalData.AccessToken.Add(AccessTokenClient);
                 GlobalData.RefreshToken.Add(RefreshTokenClient);
 
-                //await Handlers.UpdateOne<Account>("accountId", AccountId, new Dictionary<string, object>
-                //{
-                //    {
-                //        "refreshToken", new string[] { RefreshToken }
-                //    },
-                //    {
-                //        "accessToken", new string[] { AccessToken }
-                //    }
-                //});
-
                 return Ok(new OauthToken
                 {
                     access_token = $"eg1~{AccessToken}",
@@ -345,7 +370,7 @@ namespace FortBackend.src.App.Routes.Oauth
                     displayName = DisplayName,
                     app = "fortnite",
                     in_app_id = AccountId,
-                    device_id = Hex.GenerateRandomHexString(16)
+                    device_id = DeviceID
                 });
             }
             catch (Exception ex)

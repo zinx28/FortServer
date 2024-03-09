@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Routing.Matching;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-namespace FortBackend.src.App.Storefront
+namespace FortBackend.src.App.Routes.Storefront
 {
     [ApiController]
     [Route("fortnite/api/calendar/v1/timeline")]

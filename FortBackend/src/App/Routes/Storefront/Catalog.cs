@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
-namespace FortBackend.src.App.Storefront
+namespace FortBackend.src.App.Routes.Storefront
 {
     [ApiController]
     [Route("fortnite/api/storefront/v2/catalog")]

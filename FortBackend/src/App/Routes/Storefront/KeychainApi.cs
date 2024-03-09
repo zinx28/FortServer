@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
-namespace FortBackend.src.App.Storefront
+namespace FortBackend.src.App.Routes.Storefront
 {
     [ApiController]
     [Route("fortnite/api/storefront/v2")]

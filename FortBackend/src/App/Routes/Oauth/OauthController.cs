@@ -46,7 +46,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         return BadRequest(new { });
                     }
                     //var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
-                    var UserData = await Handlers.FindOne<User>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
+                    var UserData = await Handlers.FindOne<User>("accountId", payload.sub.ToString());
 
                     if (/*AccountData != "Error"* ||*/ UserData != "Error")
                     {

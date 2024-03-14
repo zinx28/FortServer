@@ -23,3 +23,4 @@ FortBackend is a Universal Fortnite Private Server Backend writen in C#
 - 24/7 Shop (WIP - could be so random, items in wrong places) [!]
 - XMPP (WIP PartyV2) [!]
 - Friends [-]
+- Matchmaker (Won't connect as i havent coded the ws server) [-]

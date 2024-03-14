@@ -12,12 +12,20 @@ namespace FortBackend.src.App.Utilities.Saved
         [JsonPropertyName("//")] // just bc yeah hahah
         public string Uh { get; set; } = "";
 
+        // BACKEND WILL AUTO CHANGE THE PROTOCOL
+        public string DefaultProtocol { get; set; } = "http://";
+
+
         public int BackendPort { get; set; } = 1111; // 1111 default ig
+
+        public int MatchmakerPort { get; set; } = 2121; // 2121 default ig
+        public string MatchmakerIP { get; set; } = "127.0.0.1"; // Don't change unless its hosted on a different ip
+
 
         public int XmppPort { get; set; } = 443; // 443 default ig
 
         // MongoDBConnectionString is set to the default local host port for mongodbserver you may change this to your needs!
-        // Make sure that the string has read and write perms (owner or what)
+        // Make sure that the string has read/write perms (owner or what)
         public string MongoDBConnectionString { get; set; } = "mongodb://localhost:27017/?retryWrites=true&w=majority";
 
         // MongoDBConnectionName by default set to FortBackend this just creates the database "FortBackend"
@@ -26,12 +34,14 @@ namespace FortBackend.src.App.Utilities.Saved
         public string DiscordToken { get; set; } = "";
 
         public ulong ServerID { get; set; } = 0;
-
         public string ApplicationClientID = "";
         public string ApplicationSecret = "";
         public string ApplicationURI = "";
 
+        // CURRENTLY SHOP WON'T SEND NOTHING AS ITS A SKUNKY IMAGE THAT ISNT WORKED ON
         public string ShopWebhookUrl = "";
+
+        // SEASON YOU'RE HOSTING
         public bool ForceSeason = false;
         public int Season = 0;
     }

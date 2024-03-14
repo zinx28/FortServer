@@ -34,23 +34,23 @@ namespace FortBackend.src.App
             var ReadConfig = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "config.json"));
             if (ReadConfig == null)
             {
-                Logger.Error("Couldn't find config");
+                Logger.Error("Couldn't find config", "CONFIG");
                 throw new Exception("Couldn't find config");
             }
 
             Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<Config>(ReadConfig);
             if (Saved.DeserializeConfig == null)
             {
-                Logger.Error("Couldn't deserialize config");
+                Logger.Error("Couldn't deserialize config", "CONFIG");
                 throw new Exception("Couldn't deserialize config");
             }else
             {
-                Logger.Log("Loaded Config");
+                Logger.Log("Loaded Config", "CONFIG");
             }
             
             startup.ConfigureServices(builder.Services);
-
-            #if HTTPS
+        #if HTTPS
+                Saved.DeserializeConfig.DefaultProtocol = "https://";
                 builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
@@ -58,7 +58,7 @@ namespace FortBackend.src.App
                     {
                         var certPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx");
                         if(!File.Exists(certPath)) {
-                            Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
+                            Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", CERTIFICATES);
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
                         listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
@@ -67,6 +67,7 @@ namespace FortBackend.src.App
                     });
                 });
             #else
+                Saved.DeserializeConfig.DefaultProtocol = "http://";
                 builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
             #endif
 

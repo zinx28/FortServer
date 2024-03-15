@@ -131,6 +131,8 @@ namespace FortBackend.src.App.Routes.Oauth
                     Password = password;
                 }
 
+                Console.WriteLine(grant_type);
+
                 string clientId = "";
                 try
                 {

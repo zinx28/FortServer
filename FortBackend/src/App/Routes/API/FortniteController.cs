@@ -51,6 +51,12 @@ namespace FortBackend.src.App.Routes.API
             return Ok();
         }
 
+        [HttpGet("game/v2/world/info")]
+        public IActionResult WorldInfo()
+        {
+            return Ok(new { });
+        }
+
         [HttpGet("game/v2/privacy/account/{accountId}")]
         public IActionResult PrivacyAcc(string accountId)
         {

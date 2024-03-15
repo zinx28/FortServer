@@ -1,0 +1,6 @@
+{
+    "//": "FortMatchmaker Config",
+    "MatchmakerPort": 2121,
+    "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
+    "MongoDBConnectionName": "FortBackend"
+}

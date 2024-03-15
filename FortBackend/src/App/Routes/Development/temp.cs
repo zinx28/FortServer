@@ -39,6 +39,20 @@ namespace FortBackend.src.App.Routes.Development
             return randomString.ToString();
         }
 
+      /* [HttpGet("/skin/{accountId}")]
+        public async Task<IActionResult> ReturnPlayerSkin(string accountId)
+        {
+            try
+            {
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }*/
+
         [HttpGet("/callback")]
         public async Task<IActionResult> CallBack([FromQuery] string code)
         {

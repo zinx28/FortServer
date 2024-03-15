@@ -55,8 +55,20 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
             return Ok(Array.Empty<string>());
         }
 
+        [HttpGet("epicdomains/ssodomains")]
+        public IActionResult SSODomains()
+        {
+            return Ok(new string[]
+            {
+                "unrealengine.com",
+                "unrealtournament.com",
+                "fortnite.com",
+                "epicgames.com"
+            });
+        }
 
-        [HttpGet("public/account")]
+
+            [HttpGet("public/account")]
         public async Task<IActionResult> PublicAccount()
         {
             try

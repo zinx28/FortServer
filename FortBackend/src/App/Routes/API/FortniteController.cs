@@ -25,9 +25,20 @@ namespace FortBackend.src.App.Routes.API
             });
         }
 
+        [HttpGet("versioncheck")]
+        public IActionResult VersionCheck()
+        {
+            Response.ContentType = "application/json";
+
+            return Ok(new
+            {
+                type = "NO_UPDATE"
+            });
+        }
+
 
         [HttpGet("v2/versioncheck/{version}")]
-        public IActionResult CheckToken(string version)
+        public IActionResult VersionCheckV2(string version)
         {
             Response.ContentType = "application/json";
 

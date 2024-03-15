@@ -80,8 +80,7 @@ namespace FortBackend.src.App.Routes.API
             });
         }
 
-        ///fortnite/api/game/v2/tryPlayOnPlatform/account/ <summary>
-        /// fortnite/api/game/v2/tryPlayOnPlatform/account/
+        //fortnite/api/game/v2/tryPlayOnPlatform/account/
 
         [HttpPost("game/v2/tryPlayOnPlatform/account/{accountId}")]
         public IActionResult TryPlayOnPlatform(string accountId)

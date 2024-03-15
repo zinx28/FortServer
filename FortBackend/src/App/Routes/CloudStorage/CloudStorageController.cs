@@ -75,7 +75,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
         }
 
         [HttpGet("user/{id}/{file}")]
-        public async Task<IActionResult> UserApi(string id, string file)
+        public IActionResult UserApi(string id, string file)
         {
             Response.ContentType = "application/octet-stream";
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FortBackend", "ClientSettings", $"ClientSettings-{id}.sav");

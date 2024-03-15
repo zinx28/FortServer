@@ -10,7 +10,7 @@ namespace FortBackend.src.App.Utilities.Saved
     public class Config
     {
         [JsonPropertyName("//")] // just bc yeah hahah
-        public string Uh { get; set; } = "";
+        public string FortBackend { get; set; } = "";
 
         // BACKEND WILL AUTO CHANGE THE PROTOCOL
         public string DefaultProtocol { get; set; } = "http://";

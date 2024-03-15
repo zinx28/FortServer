@@ -208,6 +208,56 @@ namespace FortBackend.src.App.Routes.Oauth
                         }
                         break;
 
+                    case "client_credentials":
+                        if (string.IsNullOrEmpty(clientId))
+                        {
+                            return BadRequest(new BaseError
+                            {
+                                errorCode = "errors.com.epicgames.account.invalid_client",
+                                errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                                messageVars = new List<string>(),
+                                numericErrorCode = 1011,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                                error = "invalid_client"
+                            });
+                        }
+
+                        string ClientToken = JWT.GenerateJwtToken(new[]
+                        {
+                            new Claim("p", Base64.GenerateRandomString(128)),
+                            new Claim("clsvc", "fortnite"),
+                            new Claim("t", "s"),
+                            new Claim("mver", false.ToString()),
+                            new Claim("clid", clientId),
+                            new Claim("ic", "true"),
+                            new Claim("exp", DateTimeOffset.UtcNow.AddMinutes(240).ToUnixTimeSeconds().ToString()),
+                            new Claim("am", "client_credentials"),
+                            new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
+                            new Claim("jti", Hex.GenerateRandomHexString(32).ToLower()),
+                        }, 24);
+
+                        GlobalData.ClientToken.Add(new ClientToken
+                        {
+                            accountId = AccountId,
+                            token = $"eg1~{ClientToken}"
+                        });
+
+                        return Ok(new
+                        {
+                            access_token = $"eg1~{ClientToken}",
+                            expires_in = 28800,
+                            expires_at = DateTimeOffset.UtcNow.AddHours(4).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                            token_type = "bearer",
+                            client_id = clientId,
+                            internal_client = true,
+                            client_service = "fortnite"
+                        });
+
+                        
+                    break;
+
                     case "refresh_token":
                         Logger.Error("THIS IS UNFINISHED SO YOU MAY HAVE LOGIN ISSUES");
                         if (string.IsNullOrEmpty(refresh_token))

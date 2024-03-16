@@ -49,6 +49,21 @@ namespace FortBackend.src.App.Routes.Friends
             return Ok(FriendList);
         }
 
+        [HttpGet("public/list/fortnite/{accountId}/recentPlayers")]
+        public async Task<ActionResult> GrabChapter1RecentPlayers(string accountId)
+        {
+            return Ok(new List<object>());
+        }
+
+        [HttpGet("v1/{accountId}/settings")]
+        public async Task<ActionResult> GrabChapter1Settings(string accountId)
+        {
+            return Ok(new 
+            {
+                acceptInvites = "public"
+            });
+        }
+
         [HttpGet("public/blocklist/{accountId}")]
         public async Task<ActionResult> GrabChapter1BlockList(string accountId)
         {

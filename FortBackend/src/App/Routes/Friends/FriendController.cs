@@ -49,6 +49,111 @@ namespace FortBackend.src.App.Routes.Friends
             return Ok(FriendList);
         }
 
+        [HttpGet("public/blocklist/{accountId}")]
+        public async Task<ActionResult> GrabChapter1BlockList(string accountId)
+        {
+            Response.ContentType = "application/json";
+            var FriendList = new List<dynamic>();
+            try
+            {
+                var FriendsData = await Handlers.FindOne<UserFriends>("accountId", accountId);
+                if (FriendsData != "Error")
+                {
+                    UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)?[0];
+
+                    if (FriendsDataParsed != null)
+                    {
+                        foreach (dynamic BLockedList in FriendsDataParsed.Blocked)
+                        {
+                            FriendList.Add(new
+                            {
+                                accountId = BLockedList.accountId.ToString(),
+                                created = DateTime.Parse(BLockedList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"), // skunky
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("FriendController: " + ex.Message);
+            }
+
+            return Ok(FriendList);
+        }
+
+        [HttpGet("public/friends/{accountId}")]
+        public async Task<ActionResult> Chapter1FriendList(string accountId)
+        {
+            Response.ContentType = "application/json";
+            // List that only changes when needed to shouldnt have errors
+            var response = new List<object>(); ;
+            try
+            {
+                var FriendsData = await Handlers.FindOne<UserFriends>("accountId", accountId);
+                if (FriendsData != "Error")
+                {
+                    UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)[0];
+                    if (FriendsDataParsed != null)
+                    {
+                        foreach (FriendsObject AcceptedList in FriendsDataParsed.Accepted)
+                        {
+                            response.Add(new
+                            {
+                                AcceptedList.accountId,
+                                status = "ACCEPTED",
+                                direction = "INBOUND",
+                                created = DateTime.Parse(AcceptedList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                favorite = false
+                            });
+                        }
+
+                        foreach (FriendsObject IncomingList in FriendsDataParsed.Incoming)
+                        {
+                            response.Add(new
+                            {
+                                accountId = IncomingList.accountId,
+                                status = "PENDING",
+                                direction = "INBOUND",
+                                groups = Array.Empty<string>(),
+                                created = DateTime.Parse(IncomingList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                favorite = false
+                            });
+                        }
+
+                        foreach (FriendsObject OutgoingList in FriendsDataParsed.Outgoing)
+                        {
+                            response.Add(new
+                            {
+                                OutgoingList.accountId,
+                                status = "PENDING",
+                                direction = "OUTBOUND",
+                                created = DateTime.Parse(OutgoingList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                favorite = false
+                            });
+                        }
+
+                        foreach (FriendsObject BLockedList in FriendsDataParsed.Blocked)
+                        {
+                            response.Add(new
+                            {
+                                BLockedList.accountId,
+                                status = "BLOCKED",
+                                direction = "INBOUND",
+                                created = DateTime.Parse(BLockedList.created.ToString()).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                favorite = false
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("[Friends:Chapter1Friendlist] ->" + ex.Message);
+            }
+            return Ok(response);
+        }
+
         [HttpGet("v1/{accountId}/summary")]
         public async Task<ActionResult> SummaryList(string accountId)
         {

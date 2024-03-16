@@ -8,8 +8,8 @@ namespace FortBackend.src.App.Utilities.Helpers
     {
         public class VersionClass
         {
-            public int Season { get; set; } = 2;
-            public float SeasonFull { get; set; } = 2;
+            public int Season { get; set; } = 1;
+            public float SeasonFull { get; set; } = 1;
         }
         public static async Task<VersionClass> SeasonUserAgent(HttpRequest Request)
         {

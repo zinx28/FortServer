@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.Storefront
 {
@@ -14,11 +15,18 @@ namespace FortBackend.src.App.Routes.Storefront
     public class CatalogController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<Catalog> Catalog()
+        public async Task<ActionResult<Catalog>> Catalog()
         {
             Response.ContentType = "application/json";
             try
             {
+
+                VersionClass season = await SeasonUserAgent(Request);
+                if(season.Season == 1)
+                {
+                    Console.WriteLine("SHOP HAS BEEN DISABLED FOR LOGIN CRASHES!");
+                    return BadRequest(new Catalog()); // as this is just for now!
+                }
                 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
                 string json = System.IO.File.ReadAllText(filePath);
 

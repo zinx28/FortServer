@@ -5,6 +5,9 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using Newtonsoft.Json;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
+using MongoDB.Driver.Core.Servers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -20,7 +23,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 int BaseRev = AccountDataParsed.athena.RVN;
                 int GrabPlacement = GrabPlacement = AccountDataParsed.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                 .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
-
+                List<object> ProfileChanges = new List<object>();
                 if (Body.slotName == "ItemWrap" || Body.slotName == "Dance")
                 {
                     // emote, wraps soon upcoming
@@ -38,6 +41,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             string[] ReplacedItems = Enumerable.Repeat(Body.itemToSlot.ToLower(), ItemsCount).ToArray();
 
                             UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.slotName.ToLower()}.items", ReplacedItems);
+                            ProfileChanges.Add(new List<object>()
+                            {
+                                new
+                                {
+                                    changeType = "statModified",
+                                    name = $"favorite_{Body.slotName.ToLower()}",
+                                    value = ReplacedItems
+                                }
+                            });
                         }
                     }
                     else
@@ -46,10 +58,38 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         if (Body.itemToSlot == "")
                         {
                             UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.slotName.ToLower()}.items.{Body.indexWithinSlot}", "");
+                            var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(AccountDataParsed.athena.Items[GrabPlacement]["sandbox_loadout"]));
+                            if(SandBoxLoadout != null)
+                            {
+                                SandBoxLoadout.attributes.locker_slots_data.slots.dance.items[Body.indexWithinSlot] = "";
+                                ProfileChanges.Add(new List<object>()
+                                {
+                                    new
+                                    {
+                                        changeType = "statModified",
+                                        name = $"favorite_{Body.slotName.ToLower()}",
+                                        value =  SandBoxLoadout.attributes.locker_slots_data.slots.dance.items
+                                    }
+                                });
+                            }
                         }
                         else
                         {
                             UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.slotName.ToLower()}.items.{Body.indexWithinSlot}", Body.itemToSlot.ToLower());
+                            var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(AccountDataParsed.athena.Items[GrabPlacement]["sandbox_loadout"]));
+                            if (SandBoxLoadout != null)
+                            {
+                                SandBoxLoadout.attributes.locker_slots_data.slots.dance.items[Body.indexWithinSlot] = Body.itemToSlot.ToLower();
+                                ProfileChanges.Add(new List<object>()
+                                {
+                                    new
+                                    {
+                                        changeType = "statModified",
+                                        name = $"favorite_{Body.slotName.ToLower()}",
+                                        value =  SandBoxLoadout.attributes.locker_slots_data.slots.dance.items
+                                    }
+                                });
+                            }
                         }
                     }
                 }
@@ -60,46 +100,59 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.slotName.ToLower()}.items", new List<string> {
                             ""
                         });
+                        ProfileChanges.Add(new List<object>()
+                        {
+                            new
+                            {
+                                changeType = "statModified",
+                                name = $"favorite_{Body.slotName.ToLower()}",
+                                value = Body.itemToSlot
+                            }
+                        });
                     }
                     else
                     {
                         UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.slotName.ToLower()}.items", new List<string> {
                             Body.itemToSlot.ToLower()
                         });
+                        ProfileChanges.Add(new List<object>()
+                        {
+                            new
+                            {
+                                changeType = "statModified",
+                                name = $"favorite_{Body.slotName.ToLower()}",
+                                value = Body.itemToSlot
+                            }
+                        });
                     }
                 }
+                if (ProfileChanges.Count > 0)
+                {
+                    AccountDataParsed.athena.RVN += 1;
+                    AccountDataParsed.athena.CommandRevision += 1;
+                    UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN);
+                    UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision);
 
-                UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
-                UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision + 1);
-                await Handlers.UpdateOne<Account>("accountId", AccountId, UpdatedData);
-                List<dynamic> BigA = new List<dynamic>();
-                if (Season.SeasonFull >= 12.20)
+                    await Handlers.UpdateOne<Account>("accountId", AccountId, UpdatedData);
+                }
+             
+                if (BaseRev != RVN)
                 {
                     Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
-                    BigA = test.profileChanges;
-                }
-                else
-                {
-                    BigA = new List<object>()
-                    {
-                        new
-                        {
-                            changeType = "statModified",
-                            name = $"favorite_{Body.slotName.ToLower()}",
-                            value = Body.itemToSlot
-                        }
-                    };
-                }
+                    ProfileChanges = test.profileChanges;
+                } 
+
+
                 //var test2 = 
                 //if(AccountDataParsed.athena.RVN)
 
                 //AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
-                return new Mcp()
+                Console.WriteLine(JsonConvert.SerializeObject(new
                 {
-                    profileRevision = AccountDataParsed.athena.RVN + 1,
-                    profileId = "athena",
-                    profileChangesBaseRevision = BaseRev + 1,
-                    profileChanges = BigA,
+                    profileRevision = AccountDataParsed.athena.RVN,
+                    profileId = ProfileId,
+                    profileChangesBaseRevision = BaseRev,
+                    profileChanges = ProfileChanges,
                     //new List<object>()
                     //{
                     //    //new
@@ -109,7 +162,26 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     //    //    value = Body.itemToSlot
                     //    //}
                     //},
-                    profileCommandRevision = AccountDataParsed.athena.CommandRevision + 1,
+                    profileCommandRevision = AccountDataParsed.athena.CommandRevision,
+                    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                    responseVersion = 1
+                }));
+                return new Mcp()
+                {
+                    profileRevision = AccountDataParsed.athena.RVN,
+                    profileId = ProfileId,
+                    profileChangesBaseRevision = BaseRev,
+                    profileChanges = ProfileChanges,
+                    //new List<object>()
+                    //{
+                    //    //new
+                    //    //{
+                    //    //    changeType = "statModified",
+                    //    //    name = $"favorite_{Body.category.ToLower()}",
+                    //    //    value = Body.itemToSlot
+                    //    //}
+                    //},
+                    profileCommandRevision = AccountDataParsed.athena.CommandRevision,
                     serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     responseVersion = 1
                 };

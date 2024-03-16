@@ -18,14 +18,18 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
         {
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
+            
                 var jsonData = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\default.json"));
                 if (!string.IsNullOrEmpty(jsonData))
                 {
                     Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
 
+
+                    return response;
                     //Console.WriteLine("fas");
                     List<AthenaItem> contentconfig = JsonConvert.DeserializeObject<List<AthenaItem>>(jsonData); //dynamicbackgrounds.news
                     //Console.WriteLine("GR");
+
                     ProfileChange test1 = response.profileChanges[0] as ProfileChange;
                     foreach (AthenaItem test in contentconfig)
                     {

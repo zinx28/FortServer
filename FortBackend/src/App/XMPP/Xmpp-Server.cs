@@ -44,6 +44,7 @@ namespace FortBackend.src.App.XMPP
 
             app.Use(async (context, next) =>
             {
+                Console.WriteLine("TEST");
                 if (context.Request.Path == "//")
                 {
                     if (context.WebSockets.IsWebSocketRequest)

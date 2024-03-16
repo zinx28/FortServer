@@ -270,7 +270,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
 
                             string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
                             string encryptedData = GenerateAES.EncryptAES256(jsonData, "pleasework");
-                            string WssConnection = config.DefaultProtocol == "http" ? "ws" : "wss";
+                            string WssConnection = config.DefaultProtocol == "http://" ? "ws://" : "wss://";
                             Console.WriteLine(new
                             {
                                 serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",

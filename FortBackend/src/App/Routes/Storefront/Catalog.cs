@@ -25,7 +25,14 @@ namespace FortBackend.src.App.Routes.Storefront
                 if(season.Season == 1)
                 {
                     Console.WriteLine("SHOP HAS BEEN DISABLED FOR LOGIN CRASHES!");
-                    return BadRequest(new Catalog()); // as this is just for now!
+                    return BadRequest(new
+                    {
+                        errorCode = "errors.com.epicgames.common.not_found",
+                        errorMessage = "Sorry the resource you were trying to find could not be found",
+                        numericErrorCode = 0,
+                        originatingService = "Fortnite",
+                        intent = "prod"
+                    }); // as this is just for now!
                 }
                 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
                 string json = System.IO.File.ReadAllText(filePath);
@@ -33,7 +40,14 @@ namespace FortBackend.src.App.Routes.Storefront
                 if (string.IsNullOrEmpty(json))
                 {
                     Logger.Error("Catalog is null -> weird issue");
-                    return Ok(new Catalog());
+                    return Ok(new
+                    {
+                        errorCode = "errors.com.epicgames.common.not_found",
+                        errorMessage = "Sorry the resource you were trying to find could not be found",
+                        numericErrorCode = 0,
+                        originatingService = "Fortnite",
+                        intent = "prod"
+                    });
                 }
                 ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
 

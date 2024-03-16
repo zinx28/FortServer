@@ -44,19 +44,40 @@ namespace FortBackend.src.App.XMPP
 
             app.Use(async (context, next) =>
             {
-                if (context.Request.Path == "//" && context.WebSockets.IsWebSocketRequest)
+                if (context.Request.Path == "//")
                 {
-                    Console.WriteLine("XMPP IS BEING CLALED");
-                    try
+                    if (context.WebSockets.IsWebSocketRequest)
                     {
-                        string clientId = Guid.NewGuid().ToString();
-                        WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                        await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId);
-                    }
-                    catch (Exception ex)
+                        Console.WriteLine("XMPP IS BEING CLALED");
+                        try
+                        {
+                            string clientId = Guid.NewGuid().ToString();
+                            WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                            await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("OH SUGAR :/ it crashed why -> " + ex.Message);
+                        }
+                    }else
                     {
-                        Console.WriteLine("OH SUGAR :/ it crashed why -> " + ex.Message);
+                        if (context.Request.Headers.TryGetValue("Upgrade", out var upgradeHeader) &&
+                        string.Equals(upgradeHeader, "websocket", StringComparison.OrdinalIgnoreCase) &&
+                        context.Request.Headers.TryGetValue("Connection", out var connectionHeader) &&
+                        string.Equals(connectionHeader, "Upgrade", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Logger.Error("XMPP CONNECTION");
+                        }
+                        else
+                        {
+                            Logger.Error("TCP CONNECTION");
+                        }
                     }
+                  
+                }
+                else if(context.Request.Path == "/")
+                {
+                    Console.WriteLine("IDK");
                 }
                 else if (context.Request.Path == "/clients" && !context.WebSockets.IsWebSocketRequest)
                 {

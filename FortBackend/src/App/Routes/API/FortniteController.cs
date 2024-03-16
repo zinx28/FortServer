@@ -3,6 +3,7 @@ using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -23,6 +24,12 @@ namespace FortBackend.src.App.Routes.API
                   receiptInfo = "ENTITLEMENT"
                 }
             });
+        }
+
+        [HttpGet("game/v2/friendcodes/{accountId}/epic")]
+        public IActionResult FriendsCode(string accountId)
+        {
+            return Ok(new List<object>());
         }
 
         [HttpGet("versioncheck")]
@@ -125,6 +132,12 @@ namespace FortBackend.src.App.Routes.API
                     globalcash,
                 }
             });
+        }
+
+        [HttpPost("feedback/{random}")]
+        public async Task<IActionResult> PostBug()
+        {
+            return Ok(new {});
         }
     }
 }

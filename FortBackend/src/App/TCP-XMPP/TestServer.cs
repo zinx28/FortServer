@@ -13,6 +13,9 @@ using FortBackend.src.App.TCP_XMPP.Helpers;
 using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.App.Utilities;
 using SharpCompress.Writers;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Security.Authentication;
 
 namespace FortBackend.src.App.XMPP
 {
@@ -20,17 +23,18 @@ namespace FortBackend.src.App.XMPP
     {
         private TcpListener tcpListener;
         private CancellationTokenSource cancellationTokenSource;
-
+        private X509Certificate2 certificate;
         public TcpServer(int port)
         {
             tcpListener = new TcpListener(IPAddress.Any, port);
             cancellationTokenSource = new CancellationTokenSource();
+            certificate = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx"), "");
         }
 
         public async Task Start()
         {
             tcpListener.Start();
-            Logger.Log($"TCP server started on port {Saved.DeserializeConfig.TCPXmppPort}", "TCP");
+            Logger.Log($"TCP server started on port {((IPEndPoint)tcpListener.LocalEndpoint).Port}", "TCP");
 
             while (true)
             {
@@ -66,19 +70,23 @@ namespace FortBackend.src.App.XMPP
                 string logFilePath = "test.txt";
                 using (StreamWriter sw = File.AppendText(logFilePath))
                 {
-                    using (NetworkStream stream = client.GetStream())
+                    using (SslStream sslStream = new SslStream(client.GetStream(), false))
                     {
+                        await sslStream.AuthenticateAsServerAsync(certificate, false, SslProtocols.Tls, true);
+
                         byte[] buffer = new byte[1024];
                         int totalBytesRead = 0;
                         while (true)
                         {
-                            int bytesRead = await stream.ReadAsync(buffer, totalBytesRead, buffer.Length - totalBytesRead);
+                            int bytesRead = await sslStream.ReadAsync(buffer, totalBytesRead, buffer.Length - totalBytesRead);
                             if (bytesRead == 0)
                             {
                                 break;
                             }
                             totalBytesRead += bytesRead;
                             string receivedMessage = Encoding.UTF8.GetString(buffer, 0, totalBytesRead);
+                            Console.WriteLine($"Received message: {receivedMessage}");
+
                             //receivedMessageBuilder.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
                             if (receivedMessage.EndsWith(">"))
                             {
@@ -94,7 +102,7 @@ namespace FortBackend.src.App.XMPP
 
 
                                     byte[] responseBytes1 = Encoding.UTF8.GetBytes(responseXml1);
-                                    await stream.WriteAsync(responseBytes1, 0, responseBytes1.Length);
+                                    await sslStream.WriteAsync(responseBytes1, 0, responseBytes1.Length);
                                     Console.WriteLine("Response sent");
                                     await Task.Delay(100);
                                     string responseXml2 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" +
@@ -102,14 +110,14 @@ namespace FortBackend.src.App.XMPP
 
 
                                     byte[] responseBytes2 = Encoding.UTF8.GetBytes(responseXml2);
-                                    await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
+                                    await sslStream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
                                     Console.WriteLine("Response sent");
                                 }
                                 else if (receivedMessage.Contains("starttls"))
                                 {
                                     string proceedXml = "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
                                     byte[] proceedBytes = Encoding.UTF8.GetBytes(proceedXml);
-                                    await stream.WriteAsync(proceedBytes, 0, proceedBytes.Length);
+                                    await sslStream.WriteAsync(proceedBytes, 0, proceedBytes.Length);
                                     Console.WriteLine("Response sent");
 
                                 }

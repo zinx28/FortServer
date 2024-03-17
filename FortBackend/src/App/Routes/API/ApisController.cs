@@ -1,10 +1,12 @@
-﻿using FortBackend.src.App.Utilities;
+﻿using Amazon.Runtime;
+using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Events;
 using FortBackend.src.App.Utilities.Discord.Helpers.command;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
@@ -126,74 +128,76 @@ namespace FortBackend.src.App.Routes.API
                     }
 
 
-                    if (Season < 23)
+
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                        
+                    if (AccountDataParsed != null)
                     {
-                        Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
-                        if (AccountDataParsed != null)
+                        bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
+                        string[] tokens = new string[0];
+                        if (Season >= 8 && Season < 23)
                         {
-                            bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
-
-                            if (!FoundSeasonDataInProfile)
+                            tokens = new string[] {
+                                $"ARENA_S{Season}_Division1"
+                            };
+                        }
+                        if (!FoundSeasonDataInProfile)
+                        {
+                            string seasonJson = JsonConvert.SerializeObject(new SeasonClass
                             {
-                                string seasonJson = JsonConvert.SerializeObject(new SeasonClass
+                                SeasonNumber = Season,
+                                BookLevel = 1,
+                                BookXP = 0,
+                                BookPurchased = false,
+                                Quests = new List<Dictionary<string, object>>(),
+                                BattleStars = 0,
+                                DailyQuests = new DailyQuests
                                 {
-                                    SeasonNumber = Season,
-                                    BookLevel = 1,
-                                    BookXP = 0,
-                                    BookPurchased = false,
-                                    Quests = new List<Dictionary<string, object>>(),
-                                    BattleStars = 0,
-                                    DailyQuests = new DailyQuests
-                                    {
-                                        Interval = "0001-01-01T00:00:00.000Z",
-                                        Rerolls = 1
-                                    },
-                                    arena = new Arena
-                                    {
-                                        tokens = new string[] {
-                                            $"ARENA_S{Season}_Division1"
-                                        }
-                                    }
-                                });
-
-                                await Handlers.PushOne<Account>("accountId", accountId, new Dictionary<string, object>
+                                    Interval = "0001-01-01T00:00:00.000Z",
+                                    Rerolls = 1
+                                },
+                                events = new Events
                                 {
-                                    {
-                                        "commoncore.Season", BsonDocument.Parse(seasonJson)
-                                    }
-                                });
+                                    tokens = tokens
+                                }
+                            });
 
-                                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", accountId))[0];
-                            }
-
-                            SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
-
-                            if (seasonObject != null)
+                            await Handlers.PushOne<Account>("accountId", accountId, new Dictionary<string, object>
                             {
-                                dynamic persistentScores = new ExpandoObject();
-                                persistentScores.Hype = seasonObject.arena.persistentScores.Hype;
-                                ((IDictionary<string, object>)persistentScores)[$"Hype_{Season}"] = seasonObject.arena.persistentScores.Hype;
-                                return Content(JsonConvert.SerializeObject(new
                                 {
-                                    events = jsonResponse,
-                                    player = new
+                                    "commoncore.Season", BsonDocument.Parse(seasonJson)
+                                }
+                            });
+
+                            AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", accountId))[0];
+                        }
+
+                        SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
+
+                        if (seasonObject != null)
+                        {
+                            dynamic persistentScores = new ExpandoObject();
+                            persistentScores.Hype = seasonObject.events.persistentScores.Hype;
+                            ((IDictionary<string, object>)persistentScores)[$"Hype_{Season}"] = seasonObject.events.persistentScores.Hype;
+                            return Content(JsonConvert.SerializeObject(new
+                            {
+                                events = jsonResponse,
+                                player = new
+                                {
+                                    accountId,
+                                    gameId = "Fortnite",
+                                    groupIdentity = new { },
+                                    pendingPayouts = new List<string>(),
+                                    pendingPenalties = new { },
+                                    persistentScores = new
                                     {
-                                        accountId,
-                                        gameId = "Fortnite",
-                                        groupIdentity = new { },
-                                        pendingPayouts = new List<string>(),
-                                        pendingPenalties = new { },
-                                        persistentScores = new
-                                        {
-                                            seasonObject.arena.persistentScores.Hype,
-                                            Hype_S15 = 69
-                                        },
-                                        teams = new { },
-                                        seasonObject.arena.tokens,
+                                        seasonObject.events.persistentScores.Hype,
                                     },
-                                    templates = jsonResponse2,
-                                }));
-                            }
+                                    teams = new { },
+                                    seasonObject.events.tokens,
+                                },
+                                templates = jsonResponse2,
+                            }));
                         }
                     }
                 }

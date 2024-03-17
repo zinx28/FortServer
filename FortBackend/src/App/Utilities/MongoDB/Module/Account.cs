@@ -207,9 +207,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [JsonProperty("season")]
         public int SeasonNumber { get; set; } = 12;
 
-        [BsonElement("arena")]
-        [JsonProperty("arena")]
-        public Arena arena { get; set; } = new Arena();
+        [BsonElement("events")]
+        [JsonProperty("events")]
+        public Events events { get; set; } = new Events();
 
         [BsonElement("season_match_boost")]
         [JsonProperty("season_match_boost")]
@@ -271,7 +271,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public bool intro_game_played { get; set; } = false;
     }
 
-    public class Arena
+    public class Events
     {
         [BsonElement("persistentScores")]
         [JsonProperty("persistentScores")]

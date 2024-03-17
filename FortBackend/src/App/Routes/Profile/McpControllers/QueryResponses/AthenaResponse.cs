@@ -9,6 +9,7 @@ using FortBackend.src.App.Utilities.MongoDB.Module;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Globalization;
 using System.Security.Claims;
@@ -33,6 +34,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                 if (!FoundSeasonDataInProfile)
                 {
+                    string[] tokens = new string[0];
+                    if (Season.Season >= 8 && Season.Season < 23)
+                    {
+                        tokens = new string[] {
+                            $"ARENA_S{Season}_Division1"
+                        };
+                    }
                     string seasonJson = JsonConvert.SerializeObject(new SeasonClass
                     {
                         SeasonNumber = Season.Season,
@@ -46,11 +54,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             Interval = "0001-01-01T00:00:00.000Z",
                             Rerolls = 1
                         },
-                        arena = new Arena
+                        events = new Events
                         {
-                            tokens = new string[] {
-                                $"ARENA_S{Season.Season}_Division1"
-                            }
+                            tokens = tokens
                         }
                     });
 

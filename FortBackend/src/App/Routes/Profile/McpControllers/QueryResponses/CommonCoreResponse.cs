@@ -20,36 +20,36 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
             {
                 bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
-                if (!FoundSeasonDataInProfile)
-                {
-                    string seasonJson = JsonConvert.SerializeObject(new SeasonClass
-                    {
-                        SeasonNumber = Season.Season,
-                        BookLevel = 1,
-                        BookXP = 0,
-                        BookPurchased = false,
-                        Quests = new List<Dictionary<string, object>>(),
-                        BattleStars = 0,
-                        DailyQuests = new DailyQuests
-                        {
-                            Interval = "0001-01-01T00:00:00.000Z",
-                            Rerolls = 1
-                        },
-                        arena = new Arena
-                        {
-                            tokens = new string[] {
-                                $"ARENA_S{Season.Season}_Division1"
-                            }
-                        }
-                    });
+                //if (!FoundSeasonDataInProfile)
+                //{
+                //    string seasonJson = JsonConvert.SerializeObject(new SeasonClass
+                //    {
+                //        SeasonNumber = Season.Season,
+                //        BookLevel = 1,
+                //        BookXP = 0,
+                //        BookPurchased = false,
+                //        Quests = new List<Dictionary<string, object>>(),
+                //        BattleStars = 0,
+                //        DailyQuests = new DailyQuests
+                //        {
+                //            Interval = "0001-01-01T00:00:00.000Z",
+                //            Rerolls = 1
+                //        },
+                //        arena = new Arena
+                //        {
+                //            tokens = new string[] {
+                //                $"ARENA_S{Season.Season}_Division1"
+                //            }
+                //        }
+                //    });
 
-                    await Handlers.PushOne<Account>("accountId", AccountId, new Dictionary<string, object>
-                    {
-                        {
-                            "commoncore.Season", BsonDocument.Parse(seasonJson)
-                        }
-                    });
-                }
+                //    await Handlers.PushOne<Account>("accountId", AccountId, new Dictionary<string, object>
+                //    {
+                //        {
+                //            "commoncore.Season", BsonDocument.Parse(seasonJson)
+                //        }
+                //    });
+                //}
 
                 AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
 

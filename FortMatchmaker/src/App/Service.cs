@@ -84,6 +84,7 @@ namespace FortMatchmaker.src.App
 
                             using (webSocket)
                             {
+                                Console.WriteLine("CONNECTED!");
                                 await NewConnection.Init(webSocket, context.Request, clientId);
                             }
                         }

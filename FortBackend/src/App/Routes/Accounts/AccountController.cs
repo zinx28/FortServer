@@ -49,6 +49,88 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
             return Ok(new { });
         }
 
+        // THIS IS WIP
+        //persona/api/public/account/lookup
+        [HttpGet("/persona/api/public/account/lookup")]
+        public async Task<IActionResult> DisplayNameSearch()
+        {
+            string RequestQuery = Request.Query["q"];
+
+            if (!RequestQuery.Contains(","))
+            {
+                var UserData1 = await Handlers.FindOne<User>("Username", RequestQuery);
+                if (UserData1 != "Error")
+                {
+                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
+
+                    if (UserDataParsed != null)
+                    {
+
+                        return Ok(new
+                        {
+                            id = UserDataParsed.AccountId,
+                            displayName = UserDataParsed.Username,
+                            name = UserDataParsed.Username,
+                            lastName = UserDataParsed.Username,
+                            email = UserDataParsed.Email,
+                            failedLoginAttempts = 0,
+                            lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                            numberOfDisplayNameChanges = 0,
+                            ageGroup = "UNKNOWN",
+                            headless = false,
+                            country = "US",
+                            canUpdateDisplayName = false,
+                            tfaEnabled = false,
+                            emailVerified = true,
+                            minorVerified = false,
+                            minorExpected = false,
+                            minorStatus = "UNKOWN"
+                        });
+                    }
+                }
+            }
+
+            return Ok(new { });
+        }
+
+        // this works
+        [HttpGet("public/account/displayName/{displayName}")]
+        public async Task<IActionResult> DisplayNameSearch(string displayName)
+        {
+            var UserData1 = await Handlers.FindOne<User>("Username", displayName);
+            if (UserData1 != "Error")
+            {
+                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
+
+                if (UserDataParsed != null)
+                {
+
+                    return Ok(new
+                    {
+                        id = UserDataParsed.AccountId,
+                        displayName = UserDataParsed.Username,
+                        name = UserDataParsed.Username,
+                        lastName = UserDataParsed.Username,
+                        email = UserDataParsed.Email,
+                        failedLoginAttempts = 0,
+                        lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        numberOfDisplayNameChanges = 0,
+                        ageGroup = "UNKNOWN",
+                        headless = false,
+                        country = "US",
+                        canUpdateDisplayName = false,
+                        tfaEnabled = false,
+                        emailVerified = true,
+                        minorVerified = false,
+                        minorExpected = false,
+                        minorStatus = "UNKOWN"
+                    });
+                }
+            }
+
+            return Ok(new { });
+        }
+
         [HttpGet("public/account/{accountId}/externalAuths")]
         public IActionResult ExternalAccountAcc(string accountId)
         {

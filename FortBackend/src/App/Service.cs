@@ -90,6 +90,13 @@ namespace FortBackend.src.App
             });
             XmppServer.Start();
 
+            var TCPXmppServer = new Thread(async () =>
+            { 
+                TcpServer testserver = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
+                Task tcpServerTask = testserver.Start();
+            });
+            TCPXmppServer.Start();
+
             //var ItemShopGenThread = new Thread(async () =>
             //{
             //    await GenerateItemShop(0);

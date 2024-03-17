@@ -11,6 +11,8 @@ namespace FortBackend.src.App.XMPP
         public static async Task Intiliazation(string[] args)
         {
             Logger.Log("Initializing Xmpp", "Xmpp");
+           
+
             var builder = WebApplication.CreateBuilder(args);
 
             #if HTTPS
@@ -41,10 +43,11 @@ namespace FortBackend.src.App.XMPP
             #endif
 
             app.UseWebSockets();
+           
 
             app.Use(async (context, next) =>
             {
-                Console.WriteLine("TEST");
+                Console.WriteLine("TEST!! THIS COULD BE NEW CONNECTION BUT IDK");
                 if (context.Request.Path == "//")
                 {
                     if (context.WebSockets.IsWebSocketRequest)

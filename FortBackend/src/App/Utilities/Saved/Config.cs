@@ -21,7 +21,10 @@ namespace FortBackend.src.App.Utilities.Saved
         public int MatchmakerPort { get; set; } = 2121; // 2121 default ig
         public string MatchmakerIP { get; set; } = "127.0.0.1"; // Don't change unless its hosted on a different ip
 
+        // OLD XMPP
+        public int TCPXmppPort { get; set; } = 20123;
 
+        // NEW XMPP
         public int XmppPort { get; set; } = 443; // 443 default ig
 
         // MongoDBConnectionString is set to the default local host port for mongodbserver you may change this to your needs!

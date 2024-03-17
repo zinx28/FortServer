@@ -179,25 +179,49 @@ namespace FortBackend.src.App.Routes.API
                             dynamic persistentScores = new ExpandoObject();
                             persistentScores.Hype = seasonObject.events.persistentScores.Hype;
                             ((IDictionary<string, object>)persistentScores)[$"Hype_{Season}"] = seasonObject.events.persistentScores.Hype;
-                            return Content(JsonConvert.SerializeObject(new
+                            if (Season >= 8 && Season < 23)
                             {
-                                events = jsonResponse,
-                                player = new
+                                return Content(JsonConvert.SerializeObject(new
                                 {
-                                    accountId,
-                                    gameId = "Fortnite",
-                                    groupIdentity = new { },
-                                    pendingPayouts = new List<string>(),
-                                    pendingPenalties = new { },
-                                    persistentScores = new
+                                    events = jsonResponse,
+                                    player = new
                                     {
-                                        seasonObject.events.persistentScores.Hype,
+                                        accountId,
+                                        gameId = "Fortnite",
+                                        groupIdentity = new { },
+                                        pendingPayouts = new List<string>(),
+                                        pendingPenalties = new { },
+                                        persistentScores = new
+                                        {
+                                            seasonObject.events.persistentScores.Hype,
+                                        },
+                                        teams = new { },
+                                        seasonObject.events.tokens,
                                     },
-                                    teams = new { },
-                                    seasonObject.events.tokens,
-                                },
-                                templates = jsonResponse2,
-                            }));
+                                    templates = jsonResponse2,
+                                }));
+                            }else
+                            {
+                                return Content(JsonConvert.SerializeObject(new
+                                {
+                                    events = new List<object>(),
+                                    player = new
+                                    {
+                                        accountId,
+                                        gameId = "Fortnite",
+                                        groupIdentity = new { },
+                                        pendingPayouts = new List<string>(),
+                                        pendingPenalties = new { },
+                                        persistentScores = new
+                                        {
+                                            seasonObject.events.persistentScores.Hype,
+                                        },
+                                        teams = new { },
+                                        seasonObject.events.tokens,
+                                    },
+                                    templates = new List<object>(),
+                                }));
+                            }
                         }
                     }
                 }

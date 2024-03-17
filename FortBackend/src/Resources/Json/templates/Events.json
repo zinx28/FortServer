@@ -391,34 +391,7 @@
             }
         ],
         "gameId": "Fortnite",
-        "link": null,
-        "metadata": {
-            "TrackedStats": [
-                "PLACEMENT_STAT_INDEX",
-                "TEAM_ELIMS_STAT_INDEX",
-                "MATCH_PLAYED_STAT"
-            ],
-            "minimumAccountLevel": 0
-        },
-        "platformMappings": {},
-        "platforms": [
-            "PS4",
-            "XboxOne",
-            "Switch",
-            "Android",
-            "IOS",
-            "Windows"
-        ],
-        "regionMappings": {},
-        "regions": [
-            "NAE",
-            "ME",
-            "NAW",
-            "OCE",
-            "ASIA",
-            "EU",
-            "BR"
-        ]
+        "link": null
     },
 
     {
@@ -813,34 +786,7 @@
             }
         ],
         "gameId": "Fortnite",
-        "link": null,
-        "metadata": {
-            "TrackedStats": [
-                "PLACEMENT_STAT_INDEX",
-                "TEAM_ELIMS_STAT_INDEX",
-                "MATCH_PLAYED_STAT"
-            ],
-            "minimumAccountLevel": 0
-        },
-        "platformMappings": {},
-        "platforms": [
-            "PS4",
-            "XboxOne",
-            "Switch",
-            "Android",
-            "IOS",
-            "Windows"
-        ],
-        "regionMappings": {},
-        "regions": [
-            "NAE",
-            "ME",
-            "NAW",
-            "OCE",
-            "ASIA",
-            "EU",
-            "BR"
-        ]
+        "link": null
     },
 
     {
@@ -1235,34 +1181,7 @@
             }
         ],
         "gameId": "Fortnite",
-        "link": null,
-        "metadata": {
-            "TrackedStats": [
-                "PLACEMENT_STAT_INDEX",
-                "TEAM_ELIMS_STAT_INDEX",
-                "MATCH_PLAYED_STAT"
-            ],
-            "minimumAccountLevel": 0
-        },
-        "platformMappings": {},
-        "platforms": [
-            "PS4",
-            "XboxOne",
-            "Switch",
-            "Android",
-            "IOS",
-            "Windows"
-        ],
-        "regionMappings": {},
-        "regions": [
-            "NAE",
-            "ME",
-            "NAW",
-            "OCE",
-            "ASIA",
-            "EU",
-            "BR"
-        ]
+        "link": null
     },
 
     {
@@ -1657,33 +1576,6 @@
             }
         ],
         "gameId": "Fortnite",
-        "link": null,
-        "metadata": {
-            "TrackedStats": [
-                "PLACEMENT_STAT_INDEX",
-                "TEAM_ELIMS_STAT_INDEX",
-                "MATCH_PLAYED_STAT"
-            ],
-            "minimumAccountLevel": 0
-        },
-        "platformMappings": {},
-        "platforms": [
-            "PS4",
-            "XboxOne",
-            "Switch",
-            "Android",
-            "IOS",
-            "Windows"
-        ],
-        "regionMappings": {},
-        "regions": [
-            "NAE",
-            "ME",
-            "NAW",
-            "OCE",
-            "ASIA",
-            "EU",
-            "BR"
-        ]
+        "link": null
     }
 ]

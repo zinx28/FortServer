@@ -34,15 +34,15 @@ namespace FortBackend.src.App.XMPP
 
             while (true)
             {
-                while (!cancellationTokenSource.Token.IsCancellationRequested)
-                {
+              //  while (!cancellationTokenSource.Token.IsCancellationRequested)
+                //{
                     TcpClient client = await tcpListener.AcceptTcpClientAsync();
                     try
                     {
                         Console.WriteLine("NEW CONNECTION!!");
                         string clientId = Guid.NewGuid().ToString(); // GENERATES A NEW CLIENTID
-
-                        await HandleTcpClientAsync(client, clientId);
+                        _ = Task.Run(() => HandleTcpClientAsync(client, clientId));
+                       // await HandleTcpClientAsync(client, clientId);
 
                         //Task.Run(() => HandleClientAsync(client));
                     }
@@ -50,7 +50,7 @@ namespace FortBackend.src.App.XMPP
                     {
                         Console.WriteLine(ex.ToString());
                     }
-                }
+               // }
             }
         }
 
@@ -60,100 +60,21 @@ namespace FortBackend.src.App.XMPP
             try
             {
                 DataSaved.connectedClients.TryAdd(clientId, client);
-                byte[] buffer = new byte[0];
+                //byte[] buffer = new byte[0];
                 XDocument xmlDoc;
-                NetworkStream stream = client.GetStream();
+                // NetworkStream stream = client.GetStream();
 
-                buffer = new byte[1024];
-                while (!cancellationTokenSource.Token.IsCancellationRequested)
+                using (NetworkStream stream = client.GetStream())
                 {
-                    StringBuilder receivedData = new StringBuilder();
-                    while (true)
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+
+                    while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
-                        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                        if (bytesRead == 0)
-                        {
-                           // Console.WriteLine("Client disconnected!");
-                            break;
-                        }
-                        Console.WriteLine("Received BYTE: " + buffer);
-                        string data = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                        receivedData.Append(data);
+                        string receivedMessage = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                        Console.WriteLine($"Received message: {receivedMessage}");
 
-
-                        Console.WriteLine("Received TCP message: " + data);
-                        if (data.EndsWith(">"))
-                        {
-                            Console.WriteLine("TRUEW");
-                        }
-
-                        if (data.EndsWith(">"))
-                        {
-                            string completeMessage = receivedData.ToString();
-                            Console.WriteLine("Received TCP message: " + completeMessage);
-
-                            JToken test = "";
-                            try
-                            {
-                                test = JToken.Parse(receivedData.ToString());
-                                Console.WriteLine("DISCONNETING USER AS FAKE RESPONSE // JSON");
-                                //dataSaved.receivedMessage = "";
-                                return;
-                            }
-                            catch (JsonReaderException ex)
-                            {
-                                //return; // wow
-                            }
-                            if (data.Contains("stream:stream"))
-                            {
-                                string responseXml1 = "<?xml version='1.0' encoding='UTF-8'?>" +
-                        "<stream:stream xmlns:stream='http://etherx.jabber.org/streams' " +
-                        $"xmlns='jabber:client' from='127.0.0.1'  id='{clientId}' " +
-                        "xml:lang='und' version='1.0'>";
-
-
-                                byte[] responseBytes1 = Encoding.UTF8.GetBytes(responseXml1);
-                                await stream.WriteAsync(responseBytes1, 0, responseBytes1.Length);
-                                Console.WriteLine("Response sent");
-                                await Task.Delay(100);
-                                string responseXml2 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" +
-                                    "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
-
-
-                                byte[] responseBytes2 = Encoding.UTF8.GetBytes(responseXml2);
-                                await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
-                                Console.WriteLine("Response sent");
-
-
-                                //stream.Write(responseBytes, 0, responseBytes.Length);
-                            }
-                            if (!completeMessage.Contains("stream:stream"))
-                            {
-                                xmlDoc = XDocument.Parse(completeMessage);
-                                Console.WriteLine($"Value of 'to' attribute: {xmlDoc.Root?.Name.LocalName}");
-                                switch (xmlDoc.Root?.Name.LocalName)
-                                {
-                                    case "starttls":
-                                        string proceedXml = "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
-                                        byte[] proceedBytes = Encoding.UTF8.GetBytes(proceedXml);
-                                        await stream.WriteAsync(proceedBytes, 0, proceedBytes.Length);
-                                        Console.WriteLine("Proceed sent");
-                                        break;
-                                    case "iq":
-                                        Iq.Init(client, xmlDoc, clientId, dataSaved);
-                                        break;
-                                    default: break;
-                                }
-
-                                ClientFix.Init(client, dataSaved, clientId);
-
-                            }
-                          
-                            receivedData.Clear();
-                        }
-                    else
-                    {
-                        if (data.Contains("stream:stream"))
+                        if (receivedMessage.Contains("stream:stream"))
                         {
                             string responseXml1 = "<?xml version='1.0' encoding='UTF-8'?>" +
                         "<stream:stream xmlns:stream='http://etherx.jabber.org/streams' " +
@@ -172,23 +93,144 @@ namespace FortBackend.src.App.XMPP
                             byte[] responseBytes2 = Encoding.UTF8.GetBytes(responseXml2);
                             await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
                             Console.WriteLine("Response sent");
-                                //string startTlsXml = "<starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
-                                //byte[] responseBytes = Encoding.UTF8.GetBytes(startTlsXml);
-                                //Console.WriteLine("SENDING BACK");
-                                //await client.Client.SendAsync(responseBytes, SocketFlags.None);
-                                // client.Client.SendAsync
-                                //string streamOpeningResponse = "<stream:stream to=\"127.0.0.1\" xmlns:stream=\"http://etherx.jabber.org/streams\" xmlns=\"jabber:client\" version=\"1.0\">";
-                                //byte[] responseBytes = Encoding.UTF8.GetBytes(streamOpeningResponse);
-                                // Console.WriteLine("SENDING BACK");
-                                // await client.Client.SendAsync(responseBytes, SocketFlags.None);
-                                receivedData.Clear();
-                            }
+                        }
+                        else if (receivedMessage.Contains("starttls"))
+                        {
+                            string proceedXml = "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
+                            byte[] proceedBytes = Encoding.UTF8.GetBytes(proceedXml);
+                            await stream.WriteAsync(proceedBytes, 0, proceedBytes.Length);
+                            Console.WriteLine("Proceed sent");
+                        }
                     }
-                        Array.Clear(buffer, 0, buffer.Length);
-                    }
-                    Console.WriteLine("Client disconnected.");
-                    break;
                 }
+
+        //        using (NetworkStream stream = client.GetStream())
+        //{
+        //    byte[] buffer = new byte[1024];
+        //    int bytesRead;
+
+        //    while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+        //    {
+        //                buffer = new byte[1024];
+        //                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+        //                if (bytesRead == 0)
+        //                {
+        //                   // Console.WriteLine("Client disconnected!");
+        //                    break;
+        //                }
+        //                Console.WriteLine("Received BYTE: " + buffer);
+        //                string data = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+        //                receivedData.Append(data);
+
+
+        //                Console.WriteLine("Received TCP message: " + data);
+        //                if (data.EndsWith(">"))
+        //                {
+        //                    Console.WriteLine("TRUEW");
+        //                }
+
+        //                if (data.EndsWith(">"))
+        //                {
+        //                    string completeMessage = receivedData.ToString();
+        //                    Console.WriteLine("Received TCP message: " + completeMessage);
+
+        //                    JToken test = "";
+        //                    try
+        //                    {
+        //                        test = JToken.Parse(receivedData.ToString());
+        //                        Console.WriteLine("DISCONNETING USER AS FAKE RESPONSE // JSON");
+        //                        //dataSaved.receivedMessage = "";
+        //                        return;
+        //                    }
+        //                    catch (JsonReaderException ex)
+        //                    {
+        //                        //return; // wow
+        //                    }
+        //                    if (data.Contains("stream:stream"))
+        //                    {
+        //                        string responseXml1 = "<?xml version='1.0' encoding='UTF-8'?>" +
+        //                "<stream:stream xmlns:stream='http://etherx.jabber.org/streams' " +
+        //                $"xmlns='jabber:client' from='127.0.0.1'  id='{clientId}' " +
+        //                "xml:lang='und' version='1.0'>";
+
+
+        //                        byte[] responseBytes1 = Encoding.UTF8.GetBytes(responseXml1);
+        //                        await stream.WriteAsync(responseBytes1, 0, responseBytes1.Length);
+        //                        Console.WriteLine("Response sent");
+        //                        await Task.Delay(100);
+        //                        string responseXml2 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" +
+        //                            "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
+
+
+        //                        byte[] responseBytes2 = Encoding.UTF8.GetBytes(responseXml2);
+        //                        await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
+        //                        Console.WriteLine("Response sent");
+
+
+        //                        //stream.Write(responseBytes, 0, responseBytes.Length);
+        //                    }
+        //                    if (!completeMessage.Contains("stream:stream"))
+        //                    {
+        //                        xmlDoc = XDocument.Parse(completeMessage);
+        //                        Console.WriteLine($"Value of 'to' attribute: {xmlDoc.Root?.Name.LocalName}");
+        //                        switch (xmlDoc.Root?.Name.LocalName)
+        //                        {
+        //                            case "starttls":
+        //                                string proceedXml = "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
+        //                                byte[] proceedBytes = Encoding.UTF8.GetBytes(proceedXml);
+        //                                await stream.WriteAsync(proceedBytes, 0, proceedBytes.Length);
+        //                                Console.WriteLine("Proceed sent");
+        //                                break;
+        //                            case "iq":
+        //                                Iq.Init(client, xmlDoc, clientId, dataSaved);
+        //                                break;
+        //                            default: break;
+        //                        }
+
+        //                        ClientFix.Init(client, dataSaved, clientId);
+
+        //                    }
+                          
+        //                    receivedData.Clear();
+        //                }
+        //            else
+        //            {
+        //                if (data.Contains("stream:stream"))
+        //                {
+        //                    string responseXml1 = "<?xml version='1.0' encoding='UTF-8'?>" +
+        //                "<stream:stream xmlns:stream='http://etherx.jabber.org/streams' " +
+        //                $"xmlns='jabber:client' from='127.0.0.1'  id='{clientId}' " +
+        //                "xml:lang='und' version='1.0'>";
+
+
+        //                    byte[] responseBytes1 = Encoding.UTF8.GetBytes(responseXml1);
+        //                    await stream.WriteAsync(responseBytes1, 0, responseBytes1.Length);
+        //                    Console.WriteLine("Response sent");
+        //                    await Task.Delay(100);
+        //                    string responseXml2 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" +
+        //                        "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
+
+
+        //                    byte[] responseBytes2 = Encoding.UTF8.GetBytes(responseXml2);
+        //                    await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
+        //                    Console.WriteLine("Response sent");
+        //                        //string startTlsXml = "<starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
+        //                        //byte[] responseBytes = Encoding.UTF8.GetBytes(startTlsXml);
+        //                        //Console.WriteLine("SENDING BACK");
+        //                        //await client.Client.SendAsync(responseBytes, SocketFlags.None);
+        //                        // client.Client.SendAsync
+        //                        //string streamOpeningResponse = "<stream:stream to=\"127.0.0.1\" xmlns:stream=\"http://etherx.jabber.org/streams\" xmlns=\"jabber:client\" version=\"1.0\">";
+        //                        //byte[] responseBytes = Encoding.UTF8.GetBytes(streamOpeningResponse);
+        //                        // Console.WriteLine("SENDING BACK");
+        //                        // await client.Client.SendAsync(responseBytes, SocketFlags.None);
+        //                        receivedData.Clear();
+        //                    }
+        //            }
+        //                Array.Clear(buffer, 0, buffer.Length);
+        //            }
+        //            Console.WriteLine("Client disconnected.");
+        //            break;
+        //        }
 
 
                 
@@ -198,11 +240,12 @@ namespace FortBackend.src.App.XMPP
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"TCP error: {ex.Message}");
+                Console.WriteLine($"Error handling client: {ex.Message}");
             }
             finally
             {
                 client.Close();
+                Console.WriteLine("Client disconnected.");
             }
         }
     }

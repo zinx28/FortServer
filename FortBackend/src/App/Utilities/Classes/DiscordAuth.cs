@@ -5,7 +5,7 @@
 
         public class Server
         {
-            public string id { get; set; }
+            public ulong id { get; set; }
             public string name { get; set; }
             public string icon { get; set; }
             public bool owner { get; set; }

@@ -97,10 +97,9 @@ namespace FortBackend.src.App.Routes.Development
                     bool IsInServer = false;
                     foreach (Server item in responseData2)
                     {
-                        //Console.WriteLine(item);
-                        if (item.id == "1204461240882307123")
+                        Console.WriteLine(item.id);
+                        if (item.id == Saved.DeserializeConfig.ServerID)
                         {
-                            //Console.WriteLine("IS IN CHAPTER DEV SERVER");
                             IsInServer = true;
                         }
                     }
@@ -145,7 +144,8 @@ namespace FortBackend.src.App.Routes.Development
 
                             if (UpdateResponse != "Error")
                             {
-                                return Ok(new { test = NewAccessToken });
+                                return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
+                                //return Ok(new { test = NewAccessToken });
                             }
                             else
                             {
@@ -189,8 +189,8 @@ namespace FortBackend.src.App.Routes.Development
 
                                     Accountcollection.InsertOne(AccountData);
                                     Usercollection.InsertOne(UserData);
-
-                                    return Ok(new { test = NewAccessToken });
+                                    return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
+                                    //return Ok(new { test = NewAccessToken });
                                 }
                             }
                             else
@@ -383,8 +383,8 @@ namespace FortBackend.src.App.Routes.Development
                                 Accountcollection.InsertOne(AccountData);
                                 Usercollection.InsertOne(UserData);
                                 UserFriendscollection.InsertOne(UserFriendsData);
-
-                                return Ok(new { test = NewAccessToken });
+                                return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
+                                //return Ok(new { test = NewAccessToken });
                             }
                         }
                     }

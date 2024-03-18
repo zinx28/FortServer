@@ -97,7 +97,7 @@ namespace FortBackend.src.App.Routes.Development
                     bool IsInServer = false;
                     foreach (Server item in responseData2)
                     {
-                        Console.WriteLine(item.id);
+                        //Console.WriteLine(item.id);
                         if (item.id == Saved.DeserializeConfig.ServerID)
                         {
                             IsInServer = true;

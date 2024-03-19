@@ -22,26 +22,26 @@ namespace FortBackend.src.App.Routes.Storefront
             {
 
                 VersionClass season = await SeasonUserAgent(Request);
-                if(season.Season == 1)
-                {
-                    return NotFound(new
-                    {
-                        errorCode = "errors.com.epicgames.common.not_found",
-                        errorMessage = "Sorry the resource you were trying to find could not be found",
-                        numericErrorCode = 4002,
-                        originatingService = "Fortnite",
-                        intent = "prod"
-                    });
-                    Console.WriteLine("SHOP HAS BEEN DISABLED FOR LOGIN CRASHES!");
-                    return BadRequest(new
-                    {
-                        errorCode = "errors.com.epicgames.common.not_found",
-                        errorMessage = "Sorry the resource you were trying to find could not be found",
-                        numericErrorCode = 0,
-                        originatingService = "Fortnite",
-                        intent = "prod"
-                    }); // as this is just for now!
-                }
+                //if(season.Season == 1)
+                //{
+                //    return NotFound(new
+                //    {
+                //        errorCode = "errors.com.epicgames.common.not_found",
+                //        errorMessage = "Sorry the resource you were trying to find could not be found",
+                //        numericErrorCode = 4002,
+                //        originatingService = "Fortnite",
+                //        intent = "prod"
+                //    });
+                //    Console.WriteLine("SHOP HAS BEEN DISABLED FOR LOGIN CRASHES!");
+                //    return BadRequest(new
+                //    {
+                //        errorCode = "errors.com.epicgames.common.not_found",
+                //        errorMessage = "Sorry the resource you were trying to find could not be found",
+                //        numericErrorCode = 0,
+                //        originatingService = "Fortnite",
+                //        intent = "prod"
+                //    }); // as this is just for now!
+                //}
                 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
                 string json = System.IO.File.ReadAllText(filePath);
 
@@ -88,8 +88,36 @@ namespace FortBackend.src.App.Routes.Storefront
                     }
                 };
 
-                // NEED A RECODE RN
-                int SortPriority = 20;
+                if (season.Season == 1)
+                {
+                    string SeasonShopPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/special/OgShop.json");
+                    string OGJson = System.IO.File.ReadAllText(SeasonShopPath);
+
+                    if (string.IsNullOrEmpty(OGJson))
+                    {
+                        Logger.Error("SEASON SHOP ISNT FOUND PLEASE MAKE SURE YOU DIDNT DELETE IT");
+                        return Ok(new
+                        {
+                            errorCode = "errors.com.epicgames.common.not_found",
+                            errorMessage = "Sorry the resource you were trying to find could not be found",
+                            numericErrorCode = 0,
+                            originatingService = "Fortnite",
+                            intent = "prod"
+                        });
+                    }
+                    List<catalogEntrie> OgShopJson = JsonConvert.DeserializeObject<List<catalogEntrie>>(OGJson);
+
+                    ShopObject.storefronts.Add(new
+                    {
+                        name = "BRSeasonStorefront",
+                        catalogEntries = OgShopJson
+                    });
+
+                    return Ok(ShopObject);
+                }
+
+                    // NEED A RECODE RN
+                    int SortPriority = 20;
                 int LargeSortPriority = -10;
 
                 foreach (var WeeklyItems in shopData.ShopItems.Weekly)
@@ -97,8 +125,8 @@ namespace FortBackend.src.App.Routes.Storefront
 
                     SortPriority += 1;
                     LargeSortPriority += 1;
-                    List<object> requirements = new List<object>();
-                    List<object> itemGrants = new List<object>();
+                    List<CatalogRequirements> requirements = new List<CatalogRequirements>();
+                    List<itemGrants> itemGrants = new List<itemGrants>();
                     //Item itemIg = WeeklyItems.items.FirstOrDefault(item => !string.IsNullOrEmpty(item.description));
                     var DisplayAsset = $"DA_Daily_{WeeklyItems.item}";
                     if (!string.IsNullOrEmpty(WeeklyItems.BundlePath))
@@ -107,12 +135,12 @@ namespace FortBackend.src.App.Routes.Storefront
                     }
 
 
-                    itemGrants.Add(new
+                    itemGrants.Add(new itemGrants
                     {
                         templateId = WeeklyItems.item,
                         quantity = 1
                     });
-                    requirements.Add(new
+                    requirements.Add(new CatalogRequirements
                     {
                         requirementType = "DenyOnItemOwnership",
                         requiredId = WeeklyItems.item,
@@ -122,12 +150,12 @@ namespace FortBackend.src.App.Routes.Storefront
                     foreach (dynamic d in WeeklyItems.items)
                     {
 
-                        itemGrants.Add(new
+                        itemGrants.Add(new itemGrants
                         {
                             templateId = d.item,
                             quantity = 1
                         });
-                        requirements.Add(new
+                        requirements.Add(new CatalogRequirements
                         {
                             requirementType = "DenyOnItemOwnership",
                             requiredId = d.item,
@@ -142,9 +170,9 @@ namespace FortBackend.src.App.Routes.Storefront
                             devName = $"{WeeklyItems.id}",
                             offerId = $"v2:/{WeeklyItems.id}",
                             categories = WeeklyItems.categories,
-                            prices = new List<dynamic>
+                            prices = new List<CatalogPrices>
                             {
-                                new
+                                new CatalogPrices
                                 {
                                     currencyType = "MtxCurrency",
                                     currencySubType = "",
@@ -195,8 +223,8 @@ namespace FortBackend.src.App.Routes.Storefront
                 {
                     SortPriority += 1;
                     LargeSortPriority += 1;
-                    List<object> requirements = new List<object>();
-                    List<object> itemGrants = new List<object>();
+                    List<CatalogRequirements> requirements = new List<CatalogRequirements>();
+                    List<itemGrants> itemGrants = new List<itemGrants>();
                     //Item itemIg = WeeklyItems.items.FirstOrDefault(item => !string.IsNullOrEmpty(item.description));
                     var DisplayAsset = $"DA_Daily_{WeeklyItems.item}";
                     if (!string.IsNullOrEmpty(WeeklyItems.BundlePath))
@@ -205,12 +233,12 @@ namespace FortBackend.src.App.Routes.Storefront
                     }
 
 
-                    itemGrants.Add(new
+                    itemGrants.Add(new itemGrants
                     {
                         templateId = WeeklyItems.item,
                         quantity = 1
                     });
-                    requirements.Add(new
+                    requirements.Add(new CatalogRequirements
                     {
                         requirementType = "DenyOnItemOwnership",
                         requiredId = WeeklyItems.item,
@@ -219,12 +247,12 @@ namespace FortBackend.src.App.Routes.Storefront
 
                     foreach (dynamic d in WeeklyItems.items)
                     {
-                        itemGrants.Add(new
+                        itemGrants.Add(new itemGrants
                         {
                             templateId = d.item,
                             quantity = 1
                         });
-                        requirements.Add(new
+                        requirements.Add(new CatalogRequirements
                         {
                             requirementType = "DenyOnItemOwnership",
                             requiredId = d.item,
@@ -239,9 +267,9 @@ namespace FortBackend.src.App.Routes.Storefront
                             devName = $"{WeeklyItems.id}",
                             offerId = $"v2:/{WeeklyItems.id}",
                             categories = WeeklyItems.categories,
-                            prices = new List<dynamic>
+                            prices = new List<CatalogPrices>
                             {
-                                new
+                                new CatalogPrices
                                 {
                                     currencyType = "MtxCurrency",
                                     currencySubType = "",

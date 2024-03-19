@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="src\Resources\Json\shop\OgShop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="src\Resources\Image\test.png" />
     <None Remove="src\Resources\Image\Trans_Boykisser.png" />
     <None Remove="src\Resources\Ini\DefaultEngine.ini" />
@@ -41,7 +45,6 @@
   <ItemGroup>
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\templates\" />
-    <Folder Include="src\Resources\Json\shop\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,6 +60,10 @@
     <Content Include="src\Resources\Image\test.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="src\Resources\Json\shop\special\OgShop.json" />
   </ItemGroup>
 
   <ItemGroup>

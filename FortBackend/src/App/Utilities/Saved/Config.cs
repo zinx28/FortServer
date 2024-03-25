@@ -34,26 +34,27 @@ namespace FortBackend.src.App.Utilities.Saved
         // MongoDBConnectionName by default set to FortBackend this just creates the database "FortBackend"
         public string MongoDBConnectionName { get; set; } = "FortBackend"; // 
 
-        public string DiscordToken { get; set; } = "";
-
-        public ulong ServerID { get; set; } = 0;
-        public ulong RoleID { get; set; } = 0; // who ever has this role will be able to use commands
 
         // ---  YOU MAY ADD THIS TO YOUR CONFIG
         public bool bShowBotMessage { get; set; } = true; // just add this to your config like "bShowBotMessage": false;
         public string DiscordBotMessage { get; set; } = "FortBackend";
 
         // --- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-        public string ApplicationClientID = "";
-        public string ApplicationSecret = "";
-        public string ApplicationURI = "";
+        public string DiscordToken { get; set; } = "";
+        public ulong ServerID { get; set; } = 0;
+        public ulong RoleID { get; set; } = 0; // who ever has this role will be able to use commands
+        public string ApplicationClientID { get; set; } = "";
+        public string ApplicationSecret { get; set; } = "";
+        public string ApplicationURI { get; set; } = "";
 
         // CURRENTLY SHOP WON'T SEND NOTHING AS ITS A SKUNKY IMAGE THAT ISNT WORKED ON
-        public string ShopWebhookUrl = "";
+        public string ShopWebhookUrl { get; set; } = "";
+
+        public string DetectedWebhookUrl { get; set; } = "";
+        public bool EnableDetections { get; set; } = true;
 
         // SEASON YOU'RE HOSTING
-        public bool ForceSeason = false;
-        public int Season = 0;
+        public bool ForceSeason { get; set; } = false;
+        public int Season { get; set; } = 0;
     }
 }

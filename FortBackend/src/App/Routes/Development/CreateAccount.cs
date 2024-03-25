@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using MongoDB.Driver;
+using System.Net;
 using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 
 namespace FortBackend.src.App.Routes.Development
@@ -14,8 +15,8 @@ namespace FortBackend.src.App.Routes.Development
             var username = responseData1.username;
             var GlobalName = responseData1.global_name;
             var id = responseData1.id;
-            var email = responseData1.email;
 
+            //var email = responseData1.email;
             IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
             IMongoCollection<UserFriends> UserFriendscollection = _database.GetCollection<UserFriends>("UserFriends");
             IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
@@ -25,6 +26,18 @@ namespace FortBackend.src.App.Routes.Development
             string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
             string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress?.ToString() };
 
+
+            IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
+            var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, httpContext.Connection.RemoteIpAddress?.ToString());
+            var count = await StoreInfocollection.CountDocumentsAsync(filter);
+            bool BanUser = false;
+            if(count > 0)
+            {
+                BanUser = true;
+
+                
+            }
+         
             User UserData = new User
             {
                 AccountId = AccountId,
@@ -33,6 +46,7 @@ namespace FortBackend.src.App.Routes.Development
                 Email = Generate.RandomString(10) + "@fortbackend.com",
                 accesstoken = NewAccessToken,
                 UserIps = UserIp,
+                banned = BanUser,
                 Password = Generate.RandomString(15)
             };
 
@@ -41,7 +55,7 @@ namespace FortBackend.src.App.Routes.Development
                 AccountId = AccountId,
                 DiscordId = id
             };
-            //string RandomNewId = Guid.NewGuid().ToString();
+
             Account AccountData = new Account
             {
                 AccountId = AccountId,

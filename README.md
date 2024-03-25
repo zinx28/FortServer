@@ -7,6 +7,14 @@ FortBackend is a Universal Fortnite Private Server Backend writen in C#
 - Aiming to support S3 - S15
 - Arena UI/Playlists! S8 - S23 (Working.... Not For Prod)
 - Save the world (STW) is aimed at the very end and might never actually be implemented
+- You may use added/unfished config stuff [FortBackend/src/App/Utilities/Saved/Config.cs](https://github.com/zinx28/FortBackend/blob/main/FortBackend/src/App/Utilities/Saved/Config.cs)
+
+# Discord Bot
+- Make sure you setup the bot in the configs... and /test command works
+
+### Commands
+- /test
+- /who (this command only works if the user has a role... lets say helpers.. ig)
 
 # HTTP
 - Just build on Release or Debug

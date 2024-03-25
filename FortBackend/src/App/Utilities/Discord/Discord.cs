@@ -43,7 +43,10 @@ namespace FortBackend.src.App.Utilities.Discord
 
             await Client.LoginAsync(TokenType.Bot, DeserializeConfig.DiscordToken);
             await Client.StartAsync();
-            await Client.SetActivityAsync(new Game($"FortBackend", ActivityType.Playing));
+            if(DeserializeConfig.bShowBotMessage)
+            {
+                await Client.SetActivityAsync(new Game(DeserializeConfig.DiscordBotMessage, ActivityType.Playing));
+            }
         }
     }
 }

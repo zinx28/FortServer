@@ -38,6 +38,13 @@ namespace FortBackend.src.App.Utilities.Saved
 
         public ulong ServerID { get; set; } = 0;
         public ulong RoleID { get; set; } = 0; // who ever has this role will be able to use commands
+
+        // ---  YOU MAY ADD THIS TO YOUR CONFIG
+        public bool bShowBotMessage { get; set; } = true; // just add this to your config like "bShowBotMessage": false;
+        public string DiscordBotMessage { get; set; } = "FortBackend";
+
+        // --- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
         public string ApplicationClientID = "";
         public string ApplicationSecret = "";
         public string ApplicationURI = "";

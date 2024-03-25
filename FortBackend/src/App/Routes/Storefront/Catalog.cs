@@ -22,26 +22,26 @@ namespace FortBackend.src.App.Routes.Storefront
             {
 
                 VersionClass season = await SeasonUserAgent(Request);
-                //if(season.Season == 1)
-                //{
-                //    return NotFound(new
-                //    {
-                //        errorCode = "errors.com.epicgames.common.not_found",
-                //        errorMessage = "Sorry the resource you were trying to find could not be found",
-                //        numericErrorCode = 4002,
-                //        originatingService = "Fortnite",
-                //        intent = "prod"
-                //    });
-                //    Console.WriteLine("SHOP HAS BEEN DISABLED FOR LOGIN CRASHES!");
-                //    return BadRequest(new
-                //    {
-                //        errorCode = "errors.com.epicgames.common.not_found",
-                //        errorMessage = "Sorry the resource you were trying to find could not be found",
-                //        numericErrorCode = 0,
-                //        originatingService = "Fortnite",
-                //        intent = "prod"
-                //    }); // as this is just for now!
-                //}
+                if (season.Season == 1)
+                {
+                    return NotFound(new
+                    {
+                        errorCode = "errors.com.epicgames.common.not_found",
+                        errorMessage = "Sorry the resource you were trying to find could not be found",
+                        numericErrorCode = 4002,
+                        originatingService = "Fortnite",
+                        intent = "prod"
+                    });
+                    Console.WriteLine("SHOP HAS BEEN DISABLED FOR LOGIN CRASHES!");
+                    return BadRequest(new
+                    {
+                        errorCode = "errors.com.epicgames.common.not_found",
+                        errorMessage = "Sorry the resource you were trying to find could not be found",
+                        numericErrorCode = 0,
+                        originatingService = "Fortnite",
+                        intent = "prod"
+                    }); // as this is just for now!
+                }
                 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
                 string json = System.IO.File.ReadAllText(filePath);
 

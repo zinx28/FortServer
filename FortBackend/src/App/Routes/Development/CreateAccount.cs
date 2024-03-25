@@ -36,9 +36,18 @@ namespace FortBackend.src.App.Routes.Development
             {
                 BanUser = true;
 
-                if (Saved.DeserializeConfig.DetectedWebhookUrl != null)
+                var update = Builders<StoreInfo>.Update
+                    .PushEach(e => e.UserIps, new[] { httpContext.Connection.RemoteIpAddress?.ToString() })
+                    .PushEach(e => e.UserIds, new[] { AccountId });
+
+                var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);
+
+                if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
                 {
-                    BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+                    if (Saved.DeserializeConfig.DetectedWebhookUrl != null)
+                    {
+                        await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+                    }
                 }
             }
          

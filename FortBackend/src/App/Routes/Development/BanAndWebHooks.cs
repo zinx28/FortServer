@@ -12,7 +12,7 @@ namespace FortBackend.src.App.Routes.Development
 {
     public class BanAndWebHooks
     {
-        public static async void Init(Config DeserializeConfig, UserInfo userinfo)
+        public static async Task Init(Config DeserializeConfig, UserInfo userinfo)
         {
             string webhookUrl = DeserializeConfig.DetectedWebhookUrl;
 

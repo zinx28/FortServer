@@ -140,8 +140,20 @@ namespace FortBackend.src.App.Routes.Development
 
                             if (UpdateResponse != "Error")
                             {
-                                return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
-                                //return Ok(new { test = NewAccessToken });
+                                User UserData = JsonConvert.DeserializeObject<User[]>(FindDiscordID)?[0];
+                                if (UserData != null)
+                                {
+                                    string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress?.ToString() };
+                                    if (UserData.UserIps.Contains(UserIp[0]))
+                                    {
+                                        await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
+                                        {
+                                            { "UserIps", UserIp }
+                                        });
+                                    }
+
+                                    return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
+                                }
                             }
                             else
                             {

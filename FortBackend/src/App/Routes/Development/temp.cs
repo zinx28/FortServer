@@ -144,11 +144,11 @@ namespace FortBackend.src.App.Routes.Development
                                 if (UserData != null)
                                 {
                                     string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress?.ToString() };
-                                    if (UserData.UserIps.Contains(UserIp[0]))
+                                    if (!UserData.UserIps.Contains(UserIp[0]))
                                     {
                                         await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
                                         {
-                                            { "UserIps", UserIp }
+                                            { "UserIps", httpContext.Connection.RemoteIpAddress?.ToString() }
                                         });
                                     }
 

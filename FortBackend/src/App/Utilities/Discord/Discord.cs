@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using FortBackend.src.App.Utilities.Discord.Helpers;
 using FortBackend.src.App.Utilities.Saved;
+using System;
 
 namespace FortBackend.src.App.Utilities.Discord
 {
@@ -10,7 +11,7 @@ namespace FortBackend.src.App.Utilities.Discord
     {
         public static DiscordSocketClient Client { get; private set; }
         private static CommandService CommandService;
-
+        private static SocketGuild guild;
         public static async Task Start()
         {
             Logger.Log("Initializing Discord", "Discord");
@@ -33,11 +34,12 @@ namespace FortBackend.src.App.Utilities.Discord
             Client.Ready += async () =>
             {
                 Logger.Log("Discord Bot is connected", "Discord");
-                await RegisterCommands.Connect(DeserializeConfig);
+                guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
+                await RegisterCommands.Connect(DeserializeConfig, guild);
                 //return Task.CompletedTask;
             };
 
-            Client.SlashCommandExecuted += SlashCommand.Handler;
+            Client.SlashCommandExecuted += async (command) => await SlashCommand.Handler(DeserializeConfig, command, guild);
 
             await Client.LoginAsync(TokenType.Bot, DeserializeConfig.DiscordToken);
             await Client.StartAsync();

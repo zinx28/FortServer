@@ -37,6 +37,7 @@ namespace FortBackend.src.App.Utilities.Saved
         public string DiscordToken { get; set; } = "";
 
         public ulong ServerID { get; set; } = 0;
+        public ulong RoleID { get; set; } = 0; // who ever has this role will be able to use commands
         public string ApplicationClientID = "";
         public string ApplicationSecret = "";
         public string ApplicationURI = "";

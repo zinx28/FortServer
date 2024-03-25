@@ -25,10 +25,20 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                 .WithDescription("Find a user who has a account on FortBackend!")
                 .WithDMPermission(false)
                 .AddOption(new SlashCommandOptionBuilder()
-                    .WithName("user")
+                    .WithName("mention")
                     .WithDescription("Mention a user you need to search up")
-                    .WithRequired(true)
-                    .WithType(ApplicationCommandOptionType.Mentionable));
+                    .WithRequired(false)
+                    .WithType(ApplicationCommandOptionType.Mentionable))
+                .AddOption(new SlashCommandOptionBuilder()
+                    .WithName("id")
+                    .WithDescription("discord id")
+                    .WithRequired(false)
+                    .WithType(ApplicationCommandOptionType.String))
+                .AddOption(new SlashCommandOptionBuilder()
+                    .WithName("ign")
+                    .WithDescription("ingame name")
+                    .WithRequired(false)
+                    .WithType(ApplicationCommandOptionType.String));
 
             await guild.CreateApplicationCommandAsync(TempCommand.Build());
             await guild.CreateApplicationCommandAsync(WhoCommand.Build());

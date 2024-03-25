@@ -11,7 +11,7 @@ namespace FortBackend.src.App.Utilities.Discord
     {
         public static DiscordSocketClient Client { get; private set; }
         private static CommandService CommandService;
-        private static SocketGuild guild;
+        public static SocketGuild guild;
         public static async Task Start()
         {
             Logger.Log("Initializing Discord", "Discord");

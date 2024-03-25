@@ -10,6 +10,7 @@ using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Shop;
 using FortBackend.src.App.XMPP;
+using Microsoft.AspNetCore.HttpOverrides;
 namespace FortBackend.src.App
 {
     public class Service
@@ -74,10 +75,17 @@ namespace FortBackend.src.App
 
             var app = builder.Build();
 
-            #if HTTPS
+            // Fix ips not showing
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor |
+                ForwardedHeaders.XForwardedProto
+            });
+
+#if HTTPS
                 app.UseHttpsRedirection();
-            #endif
-          
+#endif
+
             app.UseRouting();
 
             startup.Configure(app, app.Environment);

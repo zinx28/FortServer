@@ -149,7 +149,7 @@ namespace FortBackend.src.App.Routes.Development
                                         await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
                                         {
                                             { "UserIps", httpContext.Connection.RemoteIpAddress?.ToString() }
-                                        });
+                                        }, false);
                                     }
 
                                     return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);

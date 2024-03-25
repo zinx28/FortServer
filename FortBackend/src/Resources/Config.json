@@ -7,11 +7,13 @@
     "MongoDBConnectionName": "FortBackend",
     "DiscordToken": "",
     "ServerID": 0,
-    "RoleID":  0,
+    "RoleID": 0,
     "ApplicationClientID": "",
     "ApplicationSecret": "",
     "ApplicationURI": "",
     "ShopWebhookUrl": "",
     "ForceSeason": false,
-    "Season": 0
+    "Season": 0,
+    "DetectedWebhookUrl": "",
+    "EnableDetections": false
 }

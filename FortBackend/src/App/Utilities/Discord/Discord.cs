@@ -36,7 +36,6 @@ namespace FortBackend.src.App.Utilities.Discord
                 Logger.Log("Discord Bot is connected", "Discord");
                 guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
                 await RegisterCommands.Connect(DeserializeConfig, guild);
-                //return Task.CompletedTask;
             };
 
             Client.SlashCommandExecuted += async (command) => await SlashCommand.Handler(DeserializeConfig, command, guild);

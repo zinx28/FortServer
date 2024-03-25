@@ -46,6 +46,7 @@ namespace FortBackend.src.App.Utilities.MongoDB
             CreateBlank.Module<User>(database);
             CreateBlank.Module<UserFriends>(database);
             CreateBlank.Module<Account>(database);
+            CreateBlank.Module<StoreInfo>(database);
 
             Logger.Log("MongoDB has fully loaded", "MongoDB");
         }

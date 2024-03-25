@@ -32,6 +32,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonElement("password")]
         public string Password { get; set; } = string.Empty;
 
+        [BsonElement("UserIps")]
+        public string[] UserIps { get; set; } = new string[0];
+
         [BsonElement("banned")]
         public bool banned { get; set; } = false; // idk this might not be used if theres a better system
 

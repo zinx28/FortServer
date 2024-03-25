@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities.Saved;
 using MongoDB.Driver;
 using System.Net;
 using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
@@ -35,7 +36,10 @@ namespace FortBackend.src.App.Routes.Development
             {
                 BanUser = true;
 
-                
+                if (Saved.DeserializeConfig.DetectedWebhookUrl != null)
+                {
+                    BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+                }
             }
          
             User UserData = new User

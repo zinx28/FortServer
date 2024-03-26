@@ -75,13 +75,10 @@ namespace FortBackend.src.App.Routes.Development
 
                 if (responseData.TryGetValue("access_token", out var accessToken))
                 {
-
-
                     var client2 = new HttpClient();
                     client2.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
                     var response2 = await client2.GetAsync("https://discord.com/api/users/@me/guilds");
                     var responseContent2 = await response2.Content.ReadAsStringAsync();
-
 
                     List<Server> responseData2 = JsonConvert.DeserializeObject<List<Server>>(responseContent2);
                     bool IsInServer = false;
@@ -111,7 +108,7 @@ namespace FortBackend.src.App.Routes.Development
                         {
                             return Ok(new { test = "Server Sided Error" });
                         }
-                        //Console.WriteLine(responseContent);
+
                         UserInfo responseData1 = JsonConvert.DeserializeObject<UserInfo>(responseContent);
 
                         if (responseData1 == null)
@@ -131,6 +128,7 @@ namespace FortBackend.src.App.Routes.Development
                         var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
                         if (FindDiscordID != "Error")
                         {
+                            Console.WriteLine("li");
                             string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
 
                             var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", id, new Dictionary<string, object>()
@@ -224,8 +222,6 @@ namespace FortBackend.src.App.Routes.Development
                     }
                     else
                     {
-                        // user is not in the server!
-
                         return Ok(new { test = "User is not in discord server!" });
                     }
 

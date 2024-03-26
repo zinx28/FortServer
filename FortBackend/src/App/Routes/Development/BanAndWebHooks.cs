@@ -29,7 +29,6 @@ namespace FortBackend.src.App.Routes.Development
                     var guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
                     if (ulong.TryParse(userinfo.id, out ulong userId))
                     {
-                        //Console.WriteLine(userId);
                         var user = await DiscordBot.Client.GetUserAsync(userId);
 
                         if (user != null)
@@ -43,7 +42,11 @@ namespace FortBackend.src.App.Routes.Development
 
                             try
                             {
-                                await user.SendMessageAsync(embed: embed);
+                                var dmChannel = await user.CreateDMChannelAsync();
+                                if (dmChannel != null)
+                                {
+                                    await dmChannel.SendMessageAsync(embed: embed);
+                                }
                             }
                             catch { }
                             try
@@ -54,7 +57,6 @@ namespace FortBackend.src.App.Routes.Development
                             {
                                 Logger.Error(ex.Message);
                             }
-
                         }
                         else
                         {

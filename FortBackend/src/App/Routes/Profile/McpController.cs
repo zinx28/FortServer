@@ -11,6 +11,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Routes.Profile.McpControllers;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 
 namespace FortBackend.src.App.Routes.Profile
 {
@@ -33,10 +34,11 @@ namespace FortBackend.src.App.Routes.Profile
                 var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if (AccountData != "Error")
                 {
-                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                    //Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
 
                     var response = new Mcp();
-                    if (AccountDataParsed != null)
+                    if (profileCacheEntry != null)
                     {
 
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
@@ -60,32 +62,32 @@ namespace FortBackend.src.App.Routes.Profile
                             switch (mcp)
                             {
                                 case "QueryProfile":
-                                    response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                                    response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
                                 case "ClientQuestLogin":
-                                    response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, AccountDataParsed);
+                                    response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
                                 case "SetCosmeticLockerSlot":
-                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
+                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
                                     break;
                                 case "EquipBattleRoyaleCustomization":
-                                    response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody));
+                                    response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody));
                                     break;
-                                case "PurchaseCatalogEntry":
-                                    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
-                                    break;
-                                case "CopyCosmeticLoadout":
-                                    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, AccountDataParsed, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
-                                    break;
+                                //case "PurchaseCatalogEntry":
+                                //    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
+                                //    break;
+                                //case "CopyCosmeticLoadout":
+                                //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
+                                //    break;
                                 default:
 
                                     response = new Mcp
                                     {
-                                        profileRevision = ProfileID == "common_core" || ProfileID == "common_public" ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
+                                        profileRevision = ProfileID == "common_core" || ProfileID == "common_public" ? profileCacheEntry.AccountData.commoncore.RVN : profileCacheEntry.AccountData.athena.RVN,
                                         profileId = ProfileID,
-                                        profileChangesBaseRevision = ProfileID == "common_core" || ProfileID == "common_public" ? AccountDataParsed.commoncore.RVN : AccountDataParsed.athena.RVN,
+                                        profileChangesBaseRevision = ProfileID == "common_core" || ProfileID == "common_public" ? profileCacheEntry.AccountData.commoncore.RVN : profileCacheEntry.AccountData.athena.RVN,
                                         //profileChanges = /,
-                                        profileCommandRevision = ProfileID == "common_core" || ProfileID == "common_public" ? AccountDataParsed.commoncore.CommandRevision : AccountDataParsed.athena.CommandRevision,
+                                        profileCommandRevision = ProfileID == "common_core" || ProfileID == "common_public" ? profileCacheEntry.AccountData.commoncore.CommandRevision : profileCacheEntry.AccountData.athena.CommandRevision,
                                         serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                                         responseVersion = 1
                                     };

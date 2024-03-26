@@ -4,6 +4,7 @@ using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
     public class ClientQuestLogin
     {
         // This IS TEMP code
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry)
         {
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
@@ -22,8 +23,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 var jsonData = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\default.json"));
                 if (!string.IsNullOrEmpty(jsonData))
                 {
-                    Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, AccountDataParsed);
-
+                    Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
 
                     return response;
                     //Console.WriteLine("fas");

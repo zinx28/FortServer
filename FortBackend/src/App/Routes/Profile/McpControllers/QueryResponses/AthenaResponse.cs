@@ -5,6 +5,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
@@ -27,12 +28,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
             public object attributes { get; set; } = new object();
             public int quantity { get; set; } = 0;
         }
-        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed)
+        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry)
         {
             try
             {
                 
-                bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
+                bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 if (!FoundSeasonDataInProfile)
                 {
@@ -43,7 +44,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             $"ARENA_S{Season}_Division1"
                         };
                     }
-                    string seasonJson = JsonConvert.SerializeObject(new SeasonClass
+
+                    SeasonClass seasonJson = new SeasonClass
                     {
                         SeasonNumber = Season.Season,
                         BookLevel = 1,
@@ -60,41 +62,36 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         {
                             tokens = tokens
                         }
-                    });
+                    };
 
-                    await Handlers.PushOne<Account>("accountId", AccountId, new Dictionary<string, object>
-                    {
-                        {
-                            "commoncore.Season", BsonDocument.Parse(seasonJson)
-                        }
-                    });
+                    profileCacheEntry.AccountData.commoncore.Seasons.Add(seasonJson);
                 }
 
-                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
+                //AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
 
-                if (AccountDataParsed == null)
+                //if (AccountDataParsed == null)
+                //{
+                //    return new Mcp();
+                //}
+
+                List<SeasonClass> Seasons = profileCacheEntry.AccountData.commoncore.Seasons;
+
+                if (profileCacheEntry.AccountData.commoncore.Seasons != null)
                 {
-                    return new Mcp();
-                }
-
-                SeasonClass[] Seasons = AccountDataParsed.commoncore.Seasons;
-
-                if (AccountDataParsed.commoncore.Seasons != null)
-                {
-                    SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season);
+                    SeasonClass seasonObject = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season);
 
                     if (seasonObject != null)
                     {
-                        if (AccountDataParsed.athena.RVN == AccountDataParsed.athena.CommandRevision)
+                        if (profileCacheEntry.AccountData.athena.RVN == profileCacheEntry.AccountData.athena.CommandRevision)
                         {
-                            AccountDataParsed.athena.RVN = +1;
+                            profileCacheEntry.AccountData.athena.RVN = +1;
                             //.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
-                            await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>()
-                            {
-                                {
-                                    $"athena.RVN", AccountDataParsed.athena.RVN + 1
-                                }
-                            });
+                            //await Handlers.UpdateOne<Account>("accountId", profileCacheEntry.AccountData.AccountId, new Dictionary<string, object>()
+                            //{
+                            //    {
+                            //        $"athena.RVN", profileCacheEntry.AccountData.athena.RVN + 1
+                            //    }
+                            //});
 
                         }
                         Console.WriteLine("CORRECT SEASON!");
@@ -103,9 +100,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         if (DateTime.TryParseExact(quest_manager.Interval, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out inputDateTime1)) { }
                         Mcp AthenaClass = new Mcp()
                         {
-                            profileRevision = AccountDataParsed.athena.RVN,
+                            profileRevision = profileCacheEntry.AccountData.athena.RVN,
                             profileId = ProfileId,
-                            profileChangesBaseRevision = AccountDataParsed.athena.RVN,
+                            profileChangesBaseRevision = profileCacheEntry.AccountData.athena.RVN,
                             profileChanges = new List<object>()
                             {
                                 new ProfileChange
@@ -113,11 +110,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     ChangeType = "fullProfileUpdate",
                                     Profile = new ProfileData
                                     {
-                                        _id = AccountDataParsed.AccountId,
+                                        _id = profileCacheEntry.AccountData.AccountId,
                                         Update = "",
                                         Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                        Updated = AccountDataParsed.athena.Updated,
-                                        rvn = AccountDataParsed.athena.RVN,
+                                        Updated = profileCacheEntry.AccountData.athena.Updated,
+                                        rvn = profileCacheEntry.AccountData.athena.RVN,
                                         WipeNumber = 1,
                                         accountId = AccountId,
                                         profileId = ProfileId,
@@ -129,7 +126,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 use_random_loadout = false,
                                                 past_seasons = new List<object>(),
                                                 season_match_boost = seasonObject.season_match_boost,
-                                                loadouts =  AccountDataParsed.athena.loadouts,
+                                                loadouts =  profileCacheEntry.AccountData.athena.loadouts,
                                                 mfa_reward_claimed = false,
                                                 rested_xp_overflow = 0,
                                                 last_xp_interaction = "9999-12-10T22:14:37.647Z",
@@ -152,9 +149,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 rested_xp_cumulative = 0,
                                                 rested_xp_mult = 0,
                                                 season_friend_match_boost = seasonObject.season_friend_match_boost,
-                                                active_loadout_index = Array.IndexOf(AccountDataParsed.athena.loadouts, AccountDataParsed.athena.last_applied_loadout),
+                                                active_loadout_index = Array.IndexOf(profileCacheEntry.AccountData.athena.loadouts, profileCacheEntry.AccountData.athena.last_applied_loadout),
                                                 purchased_bp_offers = new List<object> { },
-                                                last_applied_loadout = AccountDataParsed.athena.last_applied_loadout?.ToString() ?? "",
+                                                last_applied_loadout = profileCacheEntry.AccountData.athena.last_applied_loadout?.ToString() ?? "",
                                                 xp = seasonObject.BookXP,
                                                 rested_xp = seasonObject.BookXP,
                                                 accountLevel = seasonObject.Level,
@@ -166,23 +163,23 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             }
                                         },
                                         items = new Dictionary<string, object>(),
-                                        commandRevision = AccountDataParsed.athena.CommandRevision,
+                                        commandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                                     }
                                 }
                             },
-                            profileCommandRevision = AccountDataParsed.athena.CommandRevision,
+                            profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                             serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                             responseVersion = 1,
                         };
 
                         var ProfileChange = AthenaClass.profileChanges[0] as ProfileChange;
-                        List<Dictionary<string, object>> items = AccountDataParsed.athena.Items;
+                        List<Dictionary<string, object>> items = profileCacheEntry.AccountData.athena.Items;
                             
                         foreach (Dictionary<string, object> item in items)
                         {
                             try
                             {
-                                string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || AccountDataParsed.athena.loadouts.Any(x => k.Contains(x))) ?? "";
+                                string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || profileCacheEntry.AccountData.athena.loadouts.Any(x => k.Contains(x))) ?? "";
                                 if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
                                 {
                                     if (value.ToString() != null)
@@ -243,12 +240,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                         if(ProfileChange != null )
                         {
-                            int GrabPlacement3 = AccountDataParsed.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
+                            int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                             .TakeWhile(pair => !pair.Item.ContainsKey("Currency")).Count();
 
                             if(GrabPlacement3 != -1)
                             {
-                                var Value = AccountDataParsed.commoncore.Items[GrabPlacement3]["Currency"];
+                                var Value = profileCacheEntry.AccountData.commoncore.Items[GrabPlacement3]["Currency"];
                                 dynamic itemAttributes1 = JsonConvert.DeserializeObject(Value.ToString());
                                 if (itemAttributes1.templateId != null || Value != null)
                                 {
@@ -256,7 +253,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     {
 
                                         Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(Value.ToString());
-                                        Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement3]);
+                                        Console.WriteLine(profileCacheEntry.AccountData.commoncore.Items[GrabPlacement3]);
                                         ProfileChange.Profile.items.Add("Currency", new
                                         {
                                             templateId = "Currency:MtxPurchased",

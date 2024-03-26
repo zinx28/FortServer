@@ -86,7 +86,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
         [BsonElement("Season")]
         [BsonIgnoreIfNull]
-        public SeasonClass[] Seasons { get; set; } = new SeasonClass[]
+        public List<SeasonClass> Seasons { get; set; } = new List<SeasonClass>()
         {
             new SeasonClass {
                 SeasonNumber = 12,

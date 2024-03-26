@@ -9,16 +9,17 @@ using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
 using FortBackend.src.App.Utilities;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
     public class CommonCoreResponse
     {
-        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, Account AccountDataParsed)
+        public static async Task<Mcp> Grab(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry)
         {
             try
             {
-                bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
+                bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 //if (!FoundSeasonDataInProfile)
                 //{
@@ -51,19 +52,19 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                 //    });
                 //}
 
-                AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
+                //AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
 
-                if (AccountDataParsed == null)
-                {
-                    return new Mcp();
-                }
+                //if (AccountDataParsed == null)
+                //{
+                //    return new Mcp();
+                //}
 
 
                 Mcp CommonCoreClass = new Mcp()
                 {
-                    profileRevision = AccountDataParsed.commoncore.RVN,
+                    profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
                     profileId = ProfileId,
-                    profileChangesBaseRevision = AccountDataParsed.commoncore.RVN,
+                    profileChangesBaseRevision = profileCacheEntry.AccountData.commoncore.RVN,
                     profileChanges = new List<dynamic>
                     {
                         new ProfileChange
@@ -71,11 +72,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             ChangeType = "fullProfileUpdate",
                             Profile = new ProfileData
                             {
-                                _id = AccountDataParsed.AccountId,
+                                _id = profileCacheEntry.AccountData.AccountId,
                                 Update = "",
                                 Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                Updated = AccountDataParsed.commoncore.Updated,
-                                rvn = AccountDataParsed.commoncore.RVN,
+                                Updated = profileCacheEntry.AccountData.commoncore.Updated,
+                                rvn = profileCacheEntry.AccountData.commoncore.RVN,
                                 WipeNumber = 1,
                                 accountId = AccountId,
                                 profileId = ProfileId,
@@ -87,38 +88,38 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         personal_offers = new object[0],
                                         intro_game_played = true,
                                         import_friends_played = new object[0],
-                                        mtx_affiliate = AccountDataParsed.commoncore.mtx_affiliate,
+                                        mtx_affiliate = profileCacheEntry.AccountData.commoncore.mtx_affiliate,
                                         undo_cooldowns = new List<string>(),
                                         mtx_affiliate_set_time = "",
                                         import_friends_claimed = new object[0],
-                                        mtx_purchase_history = AccountDataParsed.commoncore.mtx_purchase_history,
+                                        mtx_purchase_history = profileCacheEntry.AccountData.commoncore.mtx_purchase_history,
                                         inventory_limit_bonus = 0,
-                                        current_mtx_platform = AccountDataParsed.commoncore.current_mtx_platform,
-                                        weekly_purchases = AccountDataParsed.commoncore.weekly_purchases,
-                                        daily_purchases = AccountDataParsed.commoncore.daily_purchases,
+                                        current_mtx_platform = profileCacheEntry.AccountData.commoncore.current_mtx_platform,
+                                        weekly_purchases = profileCacheEntry.AccountData.commoncore.weekly_purchases,
+                                        daily_purchases = profileCacheEntry.AccountData.commoncore.daily_purchases,
                                         ban_history = new object[0],
                                         in_app_purchases = new object[0],
                                         permissions = new List<Dictionary<string, object>>(),
                                         undo_timeout = "min",
                                         monthly_purchases = new object[0],
-                                        allowed_to_send_gifts = AccountDataParsed.commoncore.allowed_to_send_gifts,
+                                        allowed_to_send_gifts = profileCacheEntry.AccountData.commoncore.allowed_to_send_gifts,
                                         mfa_enabled = false,
-                                        allowed_to_receive_gifts = AccountDataParsed.commoncore.allowed_to_receive_gifts,
+                                        allowed_to_receive_gifts = profileCacheEntry.AccountData.commoncore.allowed_to_receive_gifts,
                                         gift_history = new object[0],
                                     }
                                 },
                                 items = new Dictionary<string, object>(),
-                                commandRevision = AccountDataParsed.commoncore.CommandRevision,
+                                commandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                             }
 
                             }
                     },
-                    profileCommandRevision = AccountDataParsed.commoncore.CommandRevision,
+                    profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                     serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     responseVersion = 1,
                 };
 
-                List<Dictionary<string, object>> items = AccountDataParsed.commoncore.Items;
+                List<Dictionary<string, object>> items = profileCacheEntry.AccountData.commoncore.Items;
 
                 foreach (Dictionary<string, object> item in items)
                 {

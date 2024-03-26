@@ -9,6 +9,7 @@ namespace FortBackend.src.App.Utilities.Discord
 {
     public class DiscordBot
     {
+        
         public static DiscordSocketClient Client { get; private set; }
         private static CommandService CommandService;
         public static SocketGuild guild;

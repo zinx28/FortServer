@@ -38,6 +38,33 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
         public Slots loadingscreen { get; set; } = new Slots();
         public Slots glider { get; set; } = new Slots();
         public Slots itemwrap { get; set; } = new Slots();
+
+        public Slots GetSlotName(string input)
+        {
+            switch (input.ToLower())
+            {
+                case "musicpack":
+                    return musicpack;
+                case "character":
+                    return character;
+                case "backpack":
+                    return backpack;
+                case "pickaxe":
+                    return pickaxe;
+                case "skydivecontrail":
+                    return skydivecontrail;
+                case "dance":
+                    return dance;
+                case "loadingscreen":
+                    return loadingscreen;
+                case "glider":
+                    return glider;
+                case "itemwrap":
+                    return itemwrap;
+                default:
+                    throw new ArgumentException($"Slot '{input}' not found.");
+            }
+        }
     }
 
     public class Slots

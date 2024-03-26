@@ -10,6 +10,7 @@ using MongoDB.Driver.Core.Servers;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 
+
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class EquipBattleRoyaleCustomization
@@ -97,39 +98,22 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 }
                 else
                 {
-                    dynamic SandBoxLoadout = JsonConvert.DeserializeObject<dynamic>(JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"]));
-                    Console.WriteLine(Body.slotName.ToString());
+                    var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"]));
                     if (SandBoxLoadout != null)
                     {
-                        var slotsData = SandBoxLoadout.attributes.locker_slots_data.slots as IDictionary<string, object>;
                         var slotName = Body.slotName.ToLower();
                         var itemToSlot = Body.itemToSlot.ToLower() ?? "";
-
-                        if (slotsData != null && slotsData.ContainsKey(slotName))
+                        SandBoxLoadout.attributes.locker_slots_data.slots.GetSlotName(slotName).items[0] = itemToSlot;
+                        ProfileChanges.Add(new List<object>()
                         {
-                            Console.WriteLine("TEST");
-                            //dynamic slot = slotsData[slotName];
-                            //var items = slot["items"];
-
-                            //if (items != null)
-                            //{
-                            // slot["items"] = new string[] { itemToSlot };
-                            SandBoxLoadout.attributes.locker_slots_data.slots[slotName].items[0] = itemToSlot;
-                                
-                           // }
-                        }
-                        Console.WriteLine("TEST");
-                      
+                            new
+                            {
+                                changeType = "statModified",
+                                name = $"favorite_{slotName}",
+                                value = itemToSlot
+                            }
+                        });
                     }
-                    ProfileChanges.Add(new List<object>()
-                    {
-                        new
-                        {
-                            changeType = "statModified",
-                            name = $"favorite_{Body.slotName.ToLower()}",
-                            value = Body.itemToSlot.ToLower() ?? ""
-                        }
-                    });
                     profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"] = SandBoxLoadout;
                 }
 

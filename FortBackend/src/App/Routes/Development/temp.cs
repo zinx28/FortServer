@@ -10,6 +10,8 @@ using MongoDB.Driver;
 using FortBackend.src.App.Utilities.Classes;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Linq;
 
 namespace FortBackend.src.App.Routes.Development
 {
@@ -156,26 +158,52 @@ namespace FortBackend.src.App.Routes.Development
                                     if (count > 0)
                                     {
                                         BanUser = true;
+                                     
+                                        var update = Builders<StoreInfo>.Update.Combine();
 
-                                        var update = Builders<StoreInfo>.Update
-                                            .PushEach(e => e.UserIds, new[] { UserData.AccountId });
-
-                                        var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);
-                                        Console.WriteLine("TEST1");
-                                        if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
+                                        var existingIPs = await StoreInfocollection.Find(filter).Project(b => b.UserIps).FirstOrDefaultAsync();
+                                        var newIps = UserData.UserIps.Except(existingIPs).ToArray();
+                                        if(newIps.Count() > 0)
                                         {
-                                            Console.WriteLine("TEST2");
-                                            Console.WriteLine(responseData1.id);
-                                            await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+                                            update = update.PushEach(b => b.UserIps, newIps);
+                                        }
 
-                                            await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
+                                        var existingIds = await StoreInfocollection.Find(filter).Project(b => b.UserIds).FirstOrDefaultAsync();
+                                        string[] SoReal = new string[] { UserData.AccountId };
+                                        var newIds = SoReal.Except(existingIds).ToArray();
+
+                                        if (newIds.Count() > 0)
+                                        {
+                                            update = update.PushEach(b => b.UserIds, newIds);
+                                        }
+
+                                        if (!update.Equals(Builders<StoreInfo>.Update.Combine()))
+                                        {
+
+                                            var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);
+
+                                            if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
+                                            {
+                                                await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+
+                                                await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
                                             {
                                                { "banned", true }
                                             });
 
-                                            return Ok(new { test = "Banned" });
+                                                return Ok(new { test = "Banned" });
+                                            }
+                                            else
+                                            {
+                                                return Ok(new { test = "Server Issue" });
+                                            }
                                         }
-                                    }else
+                                        else
+                                        {
+                                            return Ok(new { test = "Server Issue: Already Banned! YOU NAUGHTY BOY!" });
+                                        }
+                                    }
+                                    else
                                     {
                                         if (!UserData.UserIps.Contains(UserIp[0]))
                                         {

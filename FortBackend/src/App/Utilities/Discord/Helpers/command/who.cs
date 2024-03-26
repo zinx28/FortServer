@@ -156,8 +156,10 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     {
                             if (unbanInteraction.Message != null)
                             {
-                                    List<SocketMessageComponentData> components = unbanInteraction.Data.Components.ToList();
-                                    if (components.First(e => e.CustomId == "reasontouban").Value != null)
+                                List<SocketMessageComponentData> components = unbanInteraction.Data.Components.ToList();
+                                if (components.First(e => e.CustomId == "reasontouban").Value != null)
+                                {
+                                    try
                                     {
                                         IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database.GetCollection<StoreInfo>("StoreInfo");
                                         var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIds, RespondBack.AccountId);
@@ -167,18 +169,21 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                         {
                                             await StoreInfocollection.DeleteOneAsync(filter);
                                         }
-                                        await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
-                                        {
-                                           { "banned", false }
-                                        });
-
-                                        await unbanAndWebhooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
-                                        {
-                                            id = RespondBack.DiscordId,
-                                            username = RespondBack.Username
-                                        }, components.First(e => e.CustomId == "reasontouban").Value, $"<@{command.User.Id}>");
-                                        await interaction.RespondAsync($"Unbanned User :)", ephemeral: true);
                                     }
+                                    catch (Exception ex) { Logger.Error(ex.Message); }
+
+                                    await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
+                                    {
+                                        { "banned", false }
+                                    });
+
+                                    await unbanAndWebhooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
+                                    {
+                                        id = RespondBack.DiscordId,
+                                        username = RespondBack.Username
+                                    }, components.First(e => e.CustomId == "reasontouban").Value, $"<@{command.User.Id}>");
+                                    await interaction.RespondAsync($"Unbanned User :)", ephemeral: true);
+                                }
                             }
                      }
                 };

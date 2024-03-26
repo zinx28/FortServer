@@ -1,7 +1,9 @@
 ﻿using Discord;
 using Discord.WebSocket;
+using FortBackend.src.App.Routes.Development;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.XMPP.Root;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 
@@ -52,6 +54,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     return;
                 }
 
+                var banButton = new ComponentBuilder().WithButton("Ban", "ban", ButtonStyle.Danger).Build();
+
                 var WhoIsField = new EmbedFieldBuilder()
                     .WithName("Banned")
                     .WithValue(RespondBack.banned.ToString())
@@ -68,8 +72,47 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     .AddField(MentionUserField)
                     .WithColor(Color.Blue)
                     .WithCurrentTimestamp();
+                
+                await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: banButton);
+                //var messages = await command.Channel.GetMessagesAsync(1).FlattenAsync();
+                DiscordBot.Client.InteractionCreated += async (interaction) =>
+                {
+                    if (interaction is SocketMessageComponent componentInteraction &&
+                        componentInteraction.Data.CustomId == "ban" &&
+                        componentInteraction.User.Id == command.User.Id)
+                         {
+                        ulong messageId = componentInteraction.Message.Id;
 
-                await command.RespondAsync(embed: embed.Build(), ephemeral: true);
+                        var modalBuilder = new ModalBuilder()
+                        .WithTitle("Reason")
+                        .WithCustomId("reasontoban")
+                        .AddTextInput("Reason to ban the user", "reasontoban", placeholder: "Reason to ban the user");
+                        Console.WriteLine("TE");
+                        await interaction.RespondWithModalAsync(modalBuilder.Build());
+                        
+                    }
+                    else if (interaction is SocketModal componentInteraction1 &&
+                    componentInteraction1.Data.CustomId == "reasontoban" &&
+                    componentInteraction1.User.Id == command.User.Id)
+                    {
+                        if(componentInteraction1.Message != null)
+                        {
+                            List<SocketMessageComponentData> components = componentInteraction1.Data.Components.ToList();
+                            if (components.First(e => e.CustomId == "reasontoban").Value != null)
+                            {
+                                await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
+                                {
+                                    id = RespondBack.DiscordId,
+                                    username = RespondBack.Username
+                                }, components.First(e => e.CustomId == "reasontoban").Value, $"<@{command.User.Id}>");
+                                await interaction.RespondAsync($"Banned :)", ephemeral: true);
+                            }
+                        }
+                        await interaction.RespondAsync($"test");
+                    }
+                };
+
+                //await command.RespondAsync(embed: embed.Build(), component: banButton, ephemeral: true);
             }
             else
             {

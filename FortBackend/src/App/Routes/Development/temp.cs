@@ -143,13 +143,49 @@ namespace FortBackend.src.App.Routes.Development
                                 User UserData = JsonConvert.DeserializeObject<User[]>(FindDiscordID)?[0];
                                 if (UserData != null)
                                 {
-                                    string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress?.ToString() };
-                                    if (!UserData.UserIps.Contains(UserIp[0]))
+                                    if (UserData.banned)
                                     {
-                                        await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
+                                        return Ok(new { test = "Banned" });
+                                    }
+
+                                    Console.WriteLine("TEST");
+                                    string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress?.ToString() };
+
+                                    IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
+                                    var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, httpContext.Connection.RemoteIpAddress?.ToString());
+                                    var count = await StoreInfocollection.CountDocumentsAsync(filter);
+                                    bool BanUser = false;
+                                    if (count > 0)
+                                    {
+                                        BanUser = true;
+
+                                        var update = Builders<StoreInfo>.Update
+                                            .PushEach(e => e.UserIds, new[] { UserData.AccountId });
+
+                                        var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);
+                                        Console.WriteLine("TEST1");
+                                        if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
                                         {
-                                            { "UserIps", httpContext.Connection.RemoteIpAddress?.ToString() }
-                                        }, false);
+                                            Console.WriteLine("TEST2");
+                                            Console.WriteLine(responseData1.id);
+                                            await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+
+                                            await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
+                                            {
+                                               { "banned", true }
+                                            });
+
+                                            return Ok(new { test = "Banned" });
+                                        }
+                                    }else
+                                    {
+                                        if (!UserData.UserIps.Contains(UserIp[0]))
+                                        {
+                                            await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
+                                            {
+                                                { "UserIps", httpContext.Connection.RemoteIpAddress?.ToString() }
+                                            }, false);
+                                        }
                                     }
 
                                     return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);

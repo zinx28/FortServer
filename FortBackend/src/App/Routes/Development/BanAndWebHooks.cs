@@ -14,84 +14,98 @@ namespace FortBackend.src.App.Routes.Development
     {
         public static async Task Init(Config DeserializeConfig, UserInfo userinfo, string Message = "attemping to bypass ban.", string BodyMessage = "Auto Banned")
         {
-            string webhookUrl = DeserializeConfig.DetectedWebhookUrl;
-
-            if (webhookUrl == "")
+            try
             {
-                Logger.Error($"Webhook is null", "BanAndWebhook");
-                return;
-            }
+                string webhookUrl = DeserializeConfig.DetectedWebhookUrl;
 
-            if (DiscordBot.guild != null)
-            {
-                var guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
-                if (ulong.TryParse(userinfo.id, out ulong userId))
+                if (webhookUrl == "")
                 {
-                    var user = guild.GetUser(userId);
+                    Logger.Error($"Webhook is null", "BanAndWebhook");
+                    return;
+                }
 
-                    if (user != null)
+                if (DiscordBot.guild != null)
+                {
+                    var guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
+                    if (ulong.TryParse(userinfo.id, out ulong userId))
                     {
-                        var embed = new EmbedBuilder
-                        {
-                            Title = "You have been banned!",
-                            Description = $"You were banned from Luna for {Message}",
-                            Color = Color.Red
-                        }.Build();
+                        //Console.WriteLine(userId);
+                        var user = await DiscordBot.Client.GetUserAsync(userId);
 
-                        try
+                        if (user != null)
                         {
-                            await user.SendMessageAsync(embed: embed);
-                        }
-                        catch { }
-                        try
-                        {
-                            await guild.AddBanAsync(user, reason: Message);
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Error(ex.Message);
-                        }
+                            var embed = new EmbedBuilder
+                            {
+                                Title = "You have been banned!",
+                                Description = $"You were banned from Luna for {Message}",
+                                Color = Color.Red
+                            }.Build();
 
-                    }
-                    else
-                    {
-                        return;
+                            try
+                            {
+                                await user.SendMessageAsync(embed: embed);
+                            }
+                            catch { }
+                            try
+                            {
+                                await guild.AddBanAsync(user, reason: Message);
+                            }
+                            catch (Exception ex)
+                            {
+                                Logger.Error(ex.Message);
+                            }
+
+                        }
+                        else
+                        {
+                            Logger.Error("Returning id is false");
+                            return;
+                        }
                     }
                 }
-            }
-            var embed2 = new
-            {
-                title = "Banned",
-                footer = new { text = userinfo.username + " Has Been Banned!" },
-                fields = new[]
+                else
                 {
+                    Console.WriteLine("Why is this null");
+                }
+
+                var embed2 = new
+                {
+                    title = "Banned",
+                    footer = new { text = userinfo.username + " Has Been Banned!" },
+                    fields = new[]
+                    {
                     new { name = "UserId", value = userinfo.id.ToString(), inline = false },
                     new { name = "Reason", value = Message, inline = false },
                     new { name = "Banned By", value = BodyMessage, inline = false }
                 },
-                color = 0x00FFFF
-            };
+                    color = 0x00FFFF
+                };
 
-            string jsonPayload2 = JsonConvert.SerializeObject(new { embeds = new[] { embed2 } });
+                string jsonPayload2 = JsonConvert.SerializeObject(new { embeds = new[] { embed2 } });
 
-            using (var httpClient = new HttpClient())
-            {
-
-                HttpContent httpContent2 = new StringContent(jsonPayload2, Encoding.UTF8, "application/json");
-                try
+                using (var httpClient = new HttpClient())
                 {
-                    HttpResponseMessage response2 = await httpClient.PostAsync(webhookUrl, httpContent2);
 
-                    if (!response2.IsSuccessStatusCode)
+                    HttpContent httpContent2 = new StringContent(jsonPayload2, Encoding.UTF8, "application/json");
+                    try
                     {
-                        Logger.Error($"Failed to send message. Status code: {response2.StatusCode}", "BanAndWebhook");
+                        HttpResponseMessage response2 = await httpClient.PostAsync(webhookUrl, httpContent2);
+
+                        if (!response2.IsSuccessStatusCode)
+                        {
+                            Logger.Error($"Failed to send message. Status code: {response2.StatusCode}", "BanAndWebhook");
+                        }
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        Logger.Error($"Error sending request: {ex.Message}", "BanAndWebhook");
                     }
                 }
-                catch (HttpRequestException ex)
-                {
-                    Logger.Error($"Error sending request: {ex.Message}", "BanAndWebhook");
-                }
             }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "BanAndWebhooks");
+            }          
         }
     }
 }

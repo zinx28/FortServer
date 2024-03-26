@@ -58,7 +58,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                 }
 
                 var banButton = new ComponentBuilder().WithButton("Ban", "ban", ButtonStyle.Danger).Build();
-                var unbanButton = new ComponentBuilder().WithButton("UnBan", "unban", ButtonStyle.Danger).Build();
+                var unbanButton = new ComponentBuilder().WithButton("Unban", "unban", ButtonStyle.Danger).Build();
 
                 var WhoIsField = new EmbedFieldBuilder()
                     .WithName("Banned")

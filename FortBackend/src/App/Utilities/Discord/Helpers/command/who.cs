@@ -58,6 +58,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                 }
 
                 var banButton = new ComponentBuilder().WithButton("Ban", "ban", ButtonStyle.Danger).Build();
+                var unbanButton = new ComponentBuilder().WithButton("UnBan", "unban", ButtonStyle.Danger).Build();
 
                 var WhoIsField = new EmbedFieldBuilder()
                     .WithName("Banned")
@@ -75,9 +76,14 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     .AddField(MentionUserField)
                     .WithColor(Color.Blue)
                     .WithCurrentTimestamp();
-                
-                await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: banButton);
-                //var messages = await command.Channel.GetMessagesAsync(1).FlattenAsync();
+                if (!RespondBack.banned)
+                {
+                    await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: banButton);
+                }else
+                {
+                    await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: unbanButton);
+                }
+                    //var messages = await command.Channel.GetMessagesAsync(1).FlattenAsync();
                 DiscordBot.Client.InteractionCreated += async (interaction) =>
                 {
                     if (interaction is SocketMessageComponent componentInteraction &&

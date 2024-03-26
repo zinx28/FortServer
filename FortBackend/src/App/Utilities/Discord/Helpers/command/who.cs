@@ -8,6 +8,7 @@ using FortBackend.src.App.XMPP.Root;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using System.Net.Http;
 using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 
 namespace FortBackend.src.App.Utilities.Discord.Helpers.command
@@ -104,6 +105,20 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             await interaction.RespondAsync($"Ill add this at some point.. tomorrow prob", ephemeral: true);
                         }
                     }
+                    else if (interaction is SocketMessageComponent componentInteraction69 &&
+                        componentInteraction69.Data.CustomId == "unban" &&
+                        componentInteraction69.User.Id == command.User.Id)
+                    {
+                        ulong messageId = componentInteraction69.Message.Id;
+
+                      
+                        var modalBuilder = new ModalBuilder()
+                        .WithTitle("Reason")
+                        .WithCustomId("reasontouban")
+                        .AddTextInput("Reason to uban the user", "reasontouban", placeholder: "Reason to uban the user");
+                        await interaction.RespondWithModalAsync(modalBuilder.Build());
+                       
+                    }
                     else if (interaction is SocketModal componentInteraction1 &&
                     componentInteraction1.Data.CustomId == "reasontoban" &&
                     componentInteraction1.User.Id == command.User.Id)
@@ -135,7 +150,37 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                 await interaction.RespondAsync($"Banned :)", ephemeral: true);
                             }
                         }
-                    }
+                    }else if  (interaction is SocketModal unbanInteraction &&
+                    unbanInteraction.Data.CustomId == "reasontouban" &&
+                    unbanInteraction.User.Id == command.User.Id)
+                    {
+                            if (unbanInteraction.Message != null)
+                            {
+                                    List<SocketMessageComponentData> components = unbanInteraction.Data.Components.ToList();
+                                    if (components.First(e => e.CustomId == "reasontouban").Value != null)
+                                    {
+                                        IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database.GetCollection<StoreInfo>("StoreInfo");
+                                        var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIds, RespondBack.AccountId);
+                                        var count = await StoreInfocollection.CountDocumentsAsync(filter);
+                                        bool BanUser = false;
+                                        if (count > 0)
+                                        {
+                                            await StoreInfocollection.DeleteOneAsync(filter);
+                                        }
+                                        await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
+                                        {
+                                           { "banned", false }
+                                        });
+
+                                        await unbanAndWebhooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
+                                        {
+                                            id = RespondBack.DiscordId,
+                                            username = RespondBack.Username
+                                        }, components.First(e => e.CustomId == "reasontouban").Value, $"<@{command.User.Id}>");
+                                        await interaction.RespondAsync($"Unbanned User :)", ephemeral: true);
+                                    }
+                            }
+                     }
                 };
 
                 //await command.RespondAsync(embed: embed.Build(), component: banButton, ephemeral: true);

@@ -36,6 +36,9 @@ namespace FortBackend.src.App.Utilities
             //});
 
             MongoDBStart.Initialize(services, Configuration);
+            // app.UseMiddleware<CacheMiddleware>();
+            services.AddSingleton<CacheMiddleware>();
+            services.AddHostedService<CacheMiddleware>();
 
             services.AddHttpContextAccessor();
             services.AddMemoryCache();
@@ -52,6 +55,8 @@ namespace FortBackend.src.App.Utilities
             #if DEBUG
                 app.UseMiddleware<LoggingMiddleware>();
             #endif
+
+           
 
             app.UseRouting();
 

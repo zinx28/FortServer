@@ -15,7 +15,7 @@ namespace FortBackend.src.App
 {
     public class Service
     {
-        public static void Intiliazation(string[] args)
+        public static async void Intiliazation(string[] args)
         {
             Console.WriteLine(@"  ______         _   ____             _                  _ 
  |  ____|       | | |  _ \           | |                | |
@@ -112,9 +112,17 @@ namespace FortBackend.src.App
             //ItemShopGenThread.Start();
 
             //GenerateShop.Init();
+            await app.StartAsync();
 
-            app.Run();
+            var shutdownTask = app.WaitForShutdownAsync();
 
+            AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
+            {
+                CacheMiddleware.ShutDown().Wait();
+                Console.WriteLine("Done");
+            };
+            //app.Run();
+            await shutdownTask;
         }
 
         async static Task GenerateItemShop(int i)

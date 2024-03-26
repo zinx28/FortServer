@@ -187,9 +187,9 @@ namespace FortBackend.src.App.Routes.Development
                                                 await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
 
                                                 await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
-                                            {
-                                               { "banned", true }
-                                            });
+                                                {
+                                                   { "banned", true }
+                                                });
 
                                                 return Ok(new { test = "Banned" });
                                             }

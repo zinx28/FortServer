@@ -65,7 +65,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     }
                     else
                     {
-                        profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots.GetSlotName(slotName).items[0] = itemToSlot;
+                        profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots.GetSlotName(slotName).items = new List<string>() { itemToSlot };
                         ProfileChanges.Add(new List<object>()
                         {
                             new

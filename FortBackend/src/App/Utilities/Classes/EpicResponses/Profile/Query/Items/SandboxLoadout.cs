@@ -11,7 +11,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
         [JsonProperty("attributes")]
         public SandboxLoadoutAttributes attributes { get; set; } = new SandboxLoadoutAttributes();
         [JsonProperty("quantity")]
-        public int quantity { get; set; } = 0;
+        public int quantity { get; set; } = 1;
     }
 
     public class SandboxLoadoutSlots

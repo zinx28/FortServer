@@ -11,8 +11,8 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             try
             {
                 Console.WriteLine("GRABBING DATA!");
-                var GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
-                if (GrabData.Equals(default(KeyValuePair<string, ProfileCacheEntry>)))
+                var GrabData = CacheMiddleware.GlobalCacheProfiles.Any(e => e.Key == AccountId);
+                if (GrabData)
                 {
                     var UserData = await Handlers.FindOne<User>(Auth ? "accesstoken" : "accountId", Auth ? AuthToken : AccountId);
                     if (UserData != "Error")
@@ -55,7 +55,11 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 }
                 else
                 {
-                    return GrabData.Value;
+                    var FoundData = CacheMiddleware.GlobalCacheProfiles[AccountId];
+                    if (FoundData != null)
+                    {
+                        return FoundData;
+                    }
                 }
             }
             catch (Exception ex)

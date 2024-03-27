@@ -134,6 +134,55 @@ namespace FortBackend.src.App.Routes.Development
                                     {
                                         slots = new LockerSlotsData
                                         {
+                                            character = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                }
+                                            },
+                                            musicpack = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                }
+                                            },
+                                            backpack = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                }
+                                            },
+                                            pickaxe = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                }
+                                            },
+                                            skydivecontrail = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                }
+                                            },
+                                            loadingscreen = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                }
+                                            },
+                                            glider = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                }
+                                            },
                                             dance = new Slots
                                             {
                                                 items = new List<string>

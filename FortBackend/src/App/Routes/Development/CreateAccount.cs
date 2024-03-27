@@ -212,18 +212,18 @@ namespace FortBackend.src.App.Routes.Development
                 },
                 commoncore = new CommonCore()
                 {
-                    Items = new List<Dictionary<string, object>>()
+                    Items = new List<Dictionary<string, ProfileItem>>()
                     {
-                        new Dictionary<string, object>
+                        new Dictionary<string, ProfileItem>
                         {
-                            ["Currency"] = new
+                            ["Currency"] = new ProfileItem
                             {
-                                templateId = "Currency:MtxPurchased",
-                                attributes = new
+                                TemplateId = "Currency:MtxPurchased",
+                                Attributes = new
                                 {
                                     platform = "EpicPC"
                                 },
-                                quantity = 1000
+                                Quantity = 1000
                             }
                         }
                     }

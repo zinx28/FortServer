@@ -81,7 +81,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public DateTime Updated { get; set; } = DateTime.UtcNow;
 
         [BsonElement("items")]
-        public List<Dictionary<string, object>> Items { get; set; } = new List<Dictionary<string, object>>();
+        public List<Dictionary<string, ProfileItem>> Items { get; set; } = new List<Dictionary<string, ProfileItem>>();
 
 
         [BsonElement("Season")]
@@ -140,6 +140,21 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
         [BsonElement("CommandRevision")]
         public int CommandRevision { get; set; } = 0;
+    }
+
+    public class ProfileItem
+    {
+        [JsonProperty("templateId")]
+        [BsonElement("templateId")]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("attributes")]
+        [BsonElement("attributes")]
+        public object Attributes { get; set; }
+
+        [JsonProperty("quantity")]
+        [BsonElement("quantity")]
+        public int Quantity { get; set; }
     }
 
     public class MtxPurchaseHistory

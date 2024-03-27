@@ -119,14 +119,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                     responseVersion = 1,
                 };
 
-                List<Dictionary<string, object>> items = profileCacheEntry.AccountData.commoncore.Items;
+                List<Dictionary<string, ProfileItem>> items = profileCacheEntry.AccountData.commoncore.Items;
 
-                foreach (Dictionary<string, object> item in items)
+                foreach (Dictionary<string, ProfileItem> item in items)
                 {
                     try
                     {
                         string key = item.Keys.FirstOrDefault(k => k.Contains("Currency")) ?? "";
-                        if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
+                        if (item.TryGetValue(key, out ProfileItem value) && value is Newtonsoft.Json.Linq.JObject)
                         {
                             dynamic itemAttributes1 = JsonConvert.DeserializeObject(value.ToString());
                             if (itemAttributes1.templateId != null || value != null)

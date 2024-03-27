@@ -240,7 +240,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                         if(ProfileChange != null )
                         {
-                            int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
+                            int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, ProfileItem> Item, int Index)> { (Item: item, Index: index) })
                             .TakeWhile(pair => !pair.Item.ContainsKey("Currency")).Count();
 
                             if(GrabPlacement3 != -1)

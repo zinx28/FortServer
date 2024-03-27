@@ -20,7 +20,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 int GrabPlacement = GrabPlacement = profileCacheEntry.AccountData.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
                 .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
                 List<object> ProfileChanges = new List<object>();
-                var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadout>(JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"]));
+                var test1 = profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"];
+                Console.WriteLine("R " + test1.GetType());
+                var json = JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"]);
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore 
+                };
+                var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadout>(json, settings); 
                 var slotName = Body.slotName.ToLower();
                 var itemToSlot = Body.itemToSlot.ToLower() ?? "";
                 if (SandBoxLoadout != null)
@@ -37,8 +44,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                          
                             var ItemsCount = SandBoxLoadout.attributes.locker_slots_data.slots.itemwrap.items.Count();
                             string[] ReplacedItems = Enumerable.Repeat(itemToSlot, ItemsCount).ToArray();
-
-                            profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"] = SandBoxLoadout;
                             ProfileChanges.Add(new List<object>()
                             {
                                 new
@@ -62,7 +67,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                     value =  SandBoxLoadout.attributes.locker_slots_data.slots.dance.items
                                 }
                             });
-                            profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"] = SandBoxLoadout;
                         }
                     }
                     else
@@ -83,7 +87,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     {
                         profileCacheEntry.AccountData.athena.RVN += 1;
                         profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                        profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"] = SandBoxLoadout;
+                        //profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"] = JsonConvert.DeserializeObject<object>(JsonConvert.SerializeObject(SandBoxLoadout));
                     }
 
                     if (BaseRev != RVN)

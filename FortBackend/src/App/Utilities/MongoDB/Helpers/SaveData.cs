@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {
@@ -20,7 +21,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 var collection2 = MongoDBStart.Database.GetCollection<Account>("Account");
                 var collection3 = MongoDBStart.Database.GetCollection<UserFriends>("UserFriends");
 
-                Console.WriteLine(GrabData.Value.AccountData.athena.Items);
+                Console.WriteLine(JsonConvert.SerializeObject(GrabData.Value.AccountData.athena.Items));
 
 
                 collection.ReplaceOne(filter1, GrabData.Value.UserData);

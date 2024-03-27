@@ -9,8 +9,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         public static async Task SaveToDB(string AccountId)
         {
             var GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
-            if (GrabData.Equals(default(KeyValuePair<string, ProfileCacheEntry>)))
+            if (!GrabData.Equals(default(KeyValuePair<string, ProfileCacheEntry>)))
             {
+                Console.WriteLine("SAVING DATA");
                 var filter1 = Builders<User>.Filter.Eq(x => x.AccountId, AccountId);
                 var filter2 = Builders<Account>.Filter.Eq(x => x.AccountId, AccountId);
                 var filter3 = Builders<UserFriends>.Filter.Eq(x => x.AccountId, AccountId);

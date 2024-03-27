@@ -58,11 +58,8 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
                 var profileId = kvp.Key;
                 var profile = kvp.Value;
 
-                //if (profile.LastUpdated < now)
-                //{
                 await MongoSaveData.SaveToDB(profileId);
                 GlobalCacheProfiles.Remove(profileId);
-                //}
             }
 
             Console.WriteLine("Waiting ");

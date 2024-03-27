@@ -38,7 +38,7 @@ namespace FortBackend.src.App.XMPP.Root
                     string decodedContent = Encoding.UTF8.GetString(decodedBytes);
                     string[] splitContent = decodedContent.Split('\u0000');
 
-                    AccessToken foundClient = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2]);
+                    TokenData foundClient = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2]);
                     if (foundClient == null)
                     {
                         await Client.CloseClient(webSocket);

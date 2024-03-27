@@ -1,9 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Classes.EpicResponses;
-using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.Utilities.MongoDB.Helpers;
+﻿using FortBackend.src.App.Utilities;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
 using Newtonsoft.Json;
 
 using System.Security.Claims;
@@ -13,6 +9,8 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Oauth;
 using System.IdentityModel.Tokens.Jwt;
 using FortBackend.src.App.XMPP.Helpers.Resources;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 
 
 namespace FortBackend.src.App.Routes.Oauth
@@ -27,35 +25,42 @@ namespace FortBackend.src.App.Routes.Oauth
             Response.ContentType = "application/json";
             try
             {
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
+                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
+                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
 
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
+                bool FoundAccount = false;
+                if (GlobalData.AccessToken.Any(e => e.token == token))
+                    FoundAccount = true;
+                else if (GlobalData.ClientToken.Any(e => e.token == token))
+                    FoundAccount = true;
+                else if (GlobalData.RefreshToken.Any(e => e.token == token))
+                    FoundAccount = true;
 
-                Console.WriteLine(decodedToken);
-                string[] tokenParts = decodedToken.ToString().Split('.');
-
-                if (tokenParts.Length == 2)
+                if (FoundAccount)
                 {
-                    var payloadJson = tokenParts[1];
-                    dynamic payload = JsonConvert.DeserializeObject(payloadJson);
-                    Console.WriteLine(payload);
-                    if(payload == null)
-                    {
-                        return BadRequest(new { });
-                    }
-                    //var AccountData = await Handlers.FindOne<Account>("accountId", decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString());
-                    var UserData = await Handlers.FindOne<User>("accountId", payload.sub.ToString());
+                    var accessToken = token.Replace("eg1~", "");
 
-                    if (/*AccountData != "Error"* ||*/ UserData != "Error")
-                    {
-                        //Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
-                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
+                    var handler = new JwtSecurityTokenHandler();
+                    var decodedToken = handler.ReadJwtToken(accessToken);
 
-                        if (UserDataParsed != null)
+                    Console.WriteLine(decodedToken);
+                    string[] tokenParts = decodedToken.ToString().Split('.');
+
+                    if (tokenParts.Length == 2)
+                    {
+                        var payloadJson = tokenParts[1];
+                        dynamic payload = JsonConvert.DeserializeObject(payloadJson);
+                        Console.WriteLine(payload);
+                        if (payload == null)
                         {
-                            if (UserDataParsed.banned != true)
+                            return BadRequest(new { });
+                        }
+ 
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(payload.sub.ToString());
+
+                        if (profileCacheEntry != null)
+                        {
+                            if (profileCacheEntry.UserData.banned != true)
                             {
                                 return Ok(new
                                 {
@@ -65,19 +70,18 @@ namespace FortBackend.src.App.Routes.Oauth
                                     client_id = payload.clid.ToString(),
                                     internal_client = true,
                                     client_service = "fortnite",
-                                    account_id = payload.sub.ToString(),
+                                    account_id = profileCacheEntry.UserData.AccountId,
                                     expires_in = 28800,
                                     expires_at = DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                     auth_method = payload.am.ToString(),
-                                    display_name = payload.dn.ToString(),
+                                    display_name = profileCacheEntry.UserData.Username,
                                     app = "fortnite",
                                     in_app_id = payload.sub.ToString(),
                                     device_id = payload.dvid.ToString()
                                 });
-                            }
+                            }                           
                         }
                     }
-                    //}
                 }
             }
             catch (Exception ex)
@@ -193,19 +197,15 @@ namespace FortBackend.src.App.Routes.Oauth
                                 error_description = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid"
                             });
                         }
-
-                        var UserData1 = await Handlers.FindOne<User>("accesstoken", exchange_token);
-                        if (UserData1 != "Error")
+                        
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, exchange_token);
+                        if (profileCacheEntry.UserData != null)
                         {
-                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
-
-                            if (UserDataParsed != null)
-                            {
-                                DisplayName = UserDataParsed.Username;
-                                AccountId = UserDataParsed.AccountId;
-                                IsMyFavUserBanned = bool.Parse(UserDataParsed.banned.ToString() ?? "false");
-                            }
-                        }
+                            DisplayName = profileCacheEntry.UserData.Username;
+                            AccountId = profileCacheEntry.UserData.AccountId;
+                            IsMyFavUserBanned = profileCacheEntry.UserData.banned;
+                        }                       
+                        
                         break;
 
                     case "client_credentials":
@@ -238,7 +238,7 @@ namespace FortBackend.src.App.Routes.Oauth
                             new Claim("jti", Hex.GenerateRandomHexString(32).ToLower()),
                         }, 24);
 
-                        GlobalData.ClientToken.Add(new ClientToken
+                        GlobalData.ClientToken.Add(new TokenData
                         {
                             accountId = AccountId,
                             token = $"eg1~{ClientToken}"
@@ -391,13 +391,14 @@ namespace FortBackend.src.App.Routes.Oauth
                     new Claim("jti", Hex.GenerateRandomHexString(32)),
                 }, 8);
 
-                AccessToken AccessTokenClient = new AccessToken
+                TokenData AccessTokenClient = new TokenData
                 {
                     token = $"eg1~{AccessToken}",
+                    creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
                     accountId = AccountId, // YPP!P
                 };
                 //new Claim("creation_date", DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"))
-                RefreshToken RefreshTokenClient = new RefreshToken
+                TokenData RefreshTokenClient = new TokenData
                 {
                     token = $"eg1~{RefreshToken}",
                     creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),

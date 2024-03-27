@@ -6,10 +6,10 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
 {
     public class GlobalData
     {
-        public static List<AccessToken> AccessToken { get; set; } = new List<AccessToken>();
-        public static List<RefreshToken> RefreshToken { get; set; } = new List<RefreshToken>();
+        public static List<TokenData> AccessToken { get; set; } = new List<TokenData>();
+        public static List<TokenData> RefreshToken { get; set; } = new List<TokenData>();
         public static List<ExchangeCode> ExchangeCode { get; set; } = new List<ExchangeCode>();
-        public static List<ClientToken> ClientToken { get; set; } = new List<ClientToken>();
+        public static List<TokenData> ClientToken { get; set; } = new List<TokenData>();
 
         public static List<Clients> Clients { get; set; } = new List<Clients>();
         public static Dictionary<string, RoomsLessDyanmic> Rooms { get; set; } = new Dictionary<string, RoomsLessDyanmic>();
@@ -73,11 +73,6 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
     public class Party {
 
     }
-    public class AccessToken
-    {
-        public string token { get; set; } = string.Empty;
-        public string accountId { get; set; } = string.Empty;
-    }
 
     public class ExchangeCode
     {
@@ -85,16 +80,10 @@ namespace FortBackend.src.App.XMPP.Helpers.Resources
         public string accountId { get; set; } = string.Empty;
     }
 
-    public class RefreshToken
+    public class TokenData
     {
         public string token { get; set; } = string.Empty;
         public string creation_date { get; set; } = string.Empty;
-        public string accountId { get; set; } = string.Empty;
-    }
-
-    public class ClientToken
-    {
-        public string token { get; set; } = string.Empty;
         public string accountId { get; set; } = string.Empty;
     }
 

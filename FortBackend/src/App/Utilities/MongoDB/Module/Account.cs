@@ -74,13 +74,13 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
         [BsonElement("items")]
         //[BsonIgnoreIfNull]
-        public Dictionary<string, AthenaItem> Items { get; set; } = new Dictionary<string, AthenaItem>();
+        public Dictionary<string, AthenaItem> Items { get; set; }
         //public List<ProfileItem> Items { get; set; } = new List<ProfileItem>();
 
 
         [BsonElement("loadouts_data")]
-        [JsonProperty("loadouts_data")] // we will now use loadouts for this.. this will be 
-        public Dictionary<string, SandboxLoadout> loadouts_data { get; set; } = new Dictionary<string, SandboxLoadout>();
+        //[JsonProperty("loadouts_data")] // we will now use loadouts for this.. this will be 
+        public Dictionary<string, SandboxLoadout> loadouts_data { get; set; }
 
 
         [BsonElement("loadouts")]
@@ -117,7 +117,6 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public DateTime Updated { get; set; } = DateTime.UtcNow;
 
         [BsonElement("items")]
-        [JsonProperty("items")]
         public Dictionary<string, CommonCoreItem> Items { get; set; } = new Dictionary<string, CommonCoreItem>();
 
         [BsonElement("Season")]

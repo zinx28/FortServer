@@ -22,7 +22,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 var collection2 = MongoDBStart.Database.GetCollection<Account>("Account");
                 var collection3 = MongoDBStart.Database.GetCollection<UserFriends>("UserFriends");
 
-                Console.WriteLine(JsonConvert.SerializeObject(GrabData.Value.AccountData.athena.Items));
+                Console.WriteLine(JsonConvert.SerializeObject(GrabData.Value.AccountData.athena));
 
 
                 collection.ReplaceOne(filter1, GrabData.Value.UserData);

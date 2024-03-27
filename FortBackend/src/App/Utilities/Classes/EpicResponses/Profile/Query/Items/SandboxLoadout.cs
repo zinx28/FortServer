@@ -93,7 +93,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
     public class Slots
     {
         [JsonProperty("items")]
-        public List<string> items { get; set; } = new List<string>() { "" };
+        public List<string> items { get; set; } = new List<string>();
         [JsonProperty("activeVariants")]
         public List<object> activeVariants { get; set; } = new List<object>();
     }

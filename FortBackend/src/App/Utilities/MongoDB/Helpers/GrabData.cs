@@ -6,19 +6,26 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {
     public class GrabData
     {
-        public static async Task<ProfileCacheEntry> Profile(string AccountId, bool Auth = false, string AuthToken = "N")
+        public static async Task<ProfileCacheEntry> Profile(string AccountId = "pp", bool Auth = false, string AuthToken = "N")
         {
             try
             {
                 Console.WriteLine("GRABBING DATA!");
-                var GrabData = CacheMiddleware.GlobalCacheProfiles.Any(e => e.Key == AccountId);
-                if (GrabData)
+                var GrabData = new KeyValuePair<string, ProfileCacheEntry>();
+                if (Auth)
+                {
+                    GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Value.UserData.accesstoken == AuthToken);
+                }else
+                {
+                    GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
+                }
+                if (GrabData.Value != null)
                 {
                     var UserData = await Handlers.FindOne<User>(Auth ? "accesstoken" : "accountId", Auth ? AuthToken : AccountId);
                     if (UserData != "Error")
                     {
                         User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
-                        if(UserDataParsed != null)
+                        if (UserDataParsed != null)
                         {
                             var AccountData = await Handlers.FindOne<Account>("accountId", UserDataParsed.AccountId);
                             var FriendsData = await Handlers.FindOne<UserFriends>("accountId", UserDataParsed.AccountId);
@@ -41,7 +48,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                                         UserFriends = FriendsDataParsed,
                                         LastUpdated = DateTime.Now,
                                     };
-                                   // Console.WriteLine(AccountData);
+                                    // Console.WriteLine(AccountData);
                                     string json = JsonConvert.SerializeObject(ProfileCacheEntry.AccountData.athena);
                                     Console.WriteLine(json);
 
@@ -51,7 +58,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                                 }
                             }
                         }
-                    }               
+                    }
                 }
                 else
                 {

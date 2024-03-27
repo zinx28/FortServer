@@ -6,20 +6,24 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {
     public class GrabData
     {
-        public static async Task<ProfileCacheEntry> Profile(string AccountId = "pp", bool Auth = false, string AuthToken = "N")
+        public static async Task<ProfileCacheEntry> Profile(string AccountId, bool Auth = false, string AuthToken = "N")
         {
             try
             {
                 Console.WriteLine("GRABBING DATA!");
                 var GrabData = new KeyValuePair<string, ProfileCacheEntry>();
-                if (Auth)
+                if (CacheMiddleware.GlobalCacheProfiles.Any())
                 {
-                    GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Value.UserData.accesstoken == AuthToken);
-                }else
-                {
-                    GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
+                    if (Auth)
+                    {
+                        GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Value.UserData.accesstoken == AuthToken);
+                    }
+                    else
+                    {
+                        GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
+                    }
                 }
-                if (GrabData.Value != null)
+                if (GrabData.Value == null)
                 {
                     var UserData = await Handlers.FindOne<User>(Auth ? "accesstoken" : "accountId", Auth ? AuthToken : AccountId);
                     if (UserData != "Error")
@@ -48,9 +52,6 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                                         UserFriends = FriendsDataParsed,
                                         LastUpdated = DateTime.Now,
                                     };
-                                    // Console.WriteLine(AccountData);
-                                    string json = JsonConvert.SerializeObject(ProfileCacheEntry.AccountData.athena);
-                                    Console.WriteLine(json);
 
                                     CacheMiddleware.GlobalCacheProfiles.Add(UserDataParsed.AccountId, ProfileCacheEntry);
 

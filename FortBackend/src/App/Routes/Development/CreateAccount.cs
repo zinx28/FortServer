@@ -128,6 +128,7 @@ namespace FortBackend.src.App.Routes.Development
                         {
                             ["sandbox_loadout"] = new SandboxLoadout() // dont need much just the default obj
                             {
+                                templateId = "CosmeticLocker:cosmeticlocker_athena",
                                 attributes = new SandboxLoadoutAttributes
                                 {
                                     locker_slots_data = new SandboxLoadoutSlots

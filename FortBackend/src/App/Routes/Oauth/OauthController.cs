@@ -197,7 +197,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                 error_description = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid"
                             });
                         }
-                        
+                        Console.WriteLine(exchange_token);
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, exchange_token);
                         if (profileCacheEntry.UserData != null)
                         {

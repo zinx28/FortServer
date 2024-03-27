@@ -30,16 +30,11 @@ namespace FortBackend.src.App.Utilities
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
-            //services.AddControllers().AddNewtonsoftJson(options =>
-            //{
-            //    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            //});
 
-            MongoDBStart.Initialize(services, Configuration);
-            // app.UseMiddleware<CacheMiddleware>();
+            MongoDBStart.Initialize(services, Configuration); // better if this was a new MongoDBStart();
+
             services.AddSingleton<CacheMiddleware>();
             services.AddHostedService<CacheMiddleware>();
-
             services.AddHttpContextAccessor();
             services.AddMemoryCache();
             services.AddControllers();

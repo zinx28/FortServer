@@ -1,10 +1,12 @@
 ﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Xml.Linq;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Module
 {
@@ -40,14 +42,46 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public string[] ClientToken { get; set; } = new string[0];
     }
 
+    public class LockerSlotData
+    {
+        public Slots musicpack { get; set; } = new Slots();
+        public Slots character { get; set; } = new Slots();
+        public Slots backpack { get; set; } = new Slots();
+        public Slots pickaxe { get; set; } = new Slots();
+        public Slots skydivecontrail { get; set; } = new Slots();
+        public Slots dance { get; set; } = new Slots();
+        public Slots loadingscreen { get; set; } = new Slots();
+        public Slots glider { get; set; } = new Slots();
+        public Slots itemwrap { get; set; } = new Slots();
+    }
+
+    public class Loadouts
+    {
+        public SandboxLoadoutSlots locker_slots_data { get; set; } = new SandboxLoadoutSlots();
+        public string banner_icon_template { get; set; } = string.Empty;
+        public string banner_color_template { get; set; } = string.Empty;
+        public string locker_name { get; set; } = string.Empty;
+        public bool favorite { get; set; } = false;
+        public int use_count { get; set; } = 1;
+
+        public bool item_seen { get; set; } = false;
+    }
+
     public class Athena
     {
         [BsonElement("Updated")]
         public DateTime Updated { get; set; } = DateTime.UtcNow;
 
         [BsonElement("items")]
-        [BsonIgnoreIfNull]
-        public List<Dictionary<string, object>> Items { get; set; } = new List<Dictionary<string, object>>();
+        //[BsonIgnoreIfNull]
+        public Dictionary<string, AthenaItem> Items { get; set; } = new Dictionary<string, AthenaItem>();
+        //public List<ProfileItem> Items { get; set; } = new List<ProfileItem>();
+
+
+        [BsonElement("loadouts_data")]
+        [JsonProperty("loadouts_data")] // we will now use loadouts for this.. this will be 
+        public Dictionary<string, SandboxLoadout> loadouts_data { get; set; } = new Dictionary<string, SandboxLoadout>();
+
 
         [BsonElement("loadouts")]
         public string[] loadouts { get; set; } = new string[]
@@ -75,14 +109,16 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public int CommandRevision { get; set; } = 0;
     }
 
+
+
     public class CommonCore
     {
         [BsonElement("Updated")]
         public DateTime Updated { get; set; } = DateTime.UtcNow;
 
         [BsonElement("items")]
-        public List<Dictionary<string, ProfileItem>> Items { get; set; } = new List<Dictionary<string, ProfileItem>>();
-
+        [JsonProperty("items")]
+        public Dictionary<string, CommonCoreItem> Items { get; set; } = new Dictionary<string, CommonCoreItem>();
 
         [BsonElement("Season")]
         [BsonIgnoreIfNull]
@@ -145,16 +181,18 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
     public class ProfileItem
     {
         [JsonProperty("templateId")]
-        [BsonElement("templateId")]
-        public string TemplateId { get; set; }
+        public string templateId { get; set; } = "NOTOWRKING";
 
         [JsonProperty("attributes")]
-        [BsonElement("attributes")]
-        public object Attributes { get; set; }
+        public object attributes { get; set; } = new object { };
 
         [JsonProperty("quantity")]
-        [BsonElement("quantity")]
-        public int Quantity { get; set; }
+        public int quantity { get; set; } = 0;
+
+        //public ProfileItem()
+        //{
+        //    attributes = new object();
+        //}
     }
 
     public class MtxPurchaseHistory

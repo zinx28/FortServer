@@ -236,14 +236,20 @@ namespace FortBackend.src.App.Routes.Development
                                 else
                                 {
                                     string NewAccessToken = await CreateAccount.Init(httpContext, _database, responseData1, true);
-
+                                    if(NewAccessToken == "ERROR")
+                                    {
+                                        return Ok(new { test = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
+                                    }
                                     return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
                                 }
                             }
                             else
                             {
                                 string NewAccessToken = await CreateAccount.Init(httpContext, _database, responseData1);
-                                
+                                if (NewAccessToken == "ERROR")
+                                {
+                                    return Ok(new { test = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
+                                }
                                 return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
                             }
                         }

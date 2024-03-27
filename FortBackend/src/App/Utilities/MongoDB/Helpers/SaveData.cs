@@ -10,6 +10,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         public static async Task SaveToDB(string AccountId)
         {
             var GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
+            Console.WriteLine("SAVING DATA2");
             if (!GrabData.Equals(default(KeyValuePair<string, ProfileCacheEntry>)))
             {
                 Console.WriteLine("SAVING DATA");

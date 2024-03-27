@@ -1,4 +1,6 @@
-﻿namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query
+﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+
+namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query
 {
     public class ProfileData
     {
@@ -12,7 +14,7 @@
         public string profileId { get; set; } = "notproper";
         public string version { get; set; } = "no_version";
         public Stats stats { get; set; } = new Stats();
-        public Dictionary<string, object> items { get; set; } = new Dictionary<string, object>();
+        public Dictionary<string, dynamic> items { get; set; } = new Dictionary<string, dynamic>();
         public int commandRevision { get; set; } = 5;
     }
 }

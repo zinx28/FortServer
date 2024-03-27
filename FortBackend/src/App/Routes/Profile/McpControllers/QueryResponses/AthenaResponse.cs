@@ -8,6 +8,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities.Shop.Helpers.Class;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -32,7 +33,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
         {
             try
             {
-                
+
                 bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 if (!FoundSeasonDataInProfile)
@@ -67,13 +68,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                     profileCacheEntry.AccountData.commoncore.Seasons.Add(seasonJson);
                 }
 
-                //AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
-
-                //if (AccountDataParsed == null)
-                //{
-                //    return new Mcp();
-                //}
-
                 List<SeasonClass> Seasons = profileCacheEntry.AccountData.commoncore.Seasons;
 
                 if (profileCacheEntry.AccountData.commoncore.Seasons != null)
@@ -85,14 +79,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         if (profileCacheEntry.AccountData.athena.RVN == profileCacheEntry.AccountData.athena.CommandRevision)
                         {
                             profileCacheEntry.AccountData.athena.RVN = +1;
-                            //.Add($"athena.RVN", AccountDataParsed.athena.RVN + 1);
-                            //await Handlers.UpdateOne<Account>("accountId", profileCacheEntry.AccountData.AccountId, new Dictionary<string, object>()
-                            //{
-                            //    {
-                            //        $"athena.RVN", profileCacheEntry.AccountData.athena.RVN + 1
-                            //    }
-                            //});
-
                         }
                         Console.WriteLine("CORRECT SEASON!");
                         DailyQuests quest_manager = seasonObject.DailyQuests;
@@ -173,87 +159,29 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         };
 
                         var ProfileChange = AthenaClass.profileChanges[0] as ProfileChange;
-                        List<Dictionary<string, object>> items = profileCacheEntry.AccountData.athena.Items;
-                            
-                        foreach (Dictionary<string, object> item in items)
+                        if (ProfileChange != null)
                         {
-                            try
+                            foreach (var kvp in profileCacheEntry.AccountData.athena.Items)
                             {
-                                string key = item.Keys.FirstOrDefault(k => k.Contains("Athena") || profileCacheEntry.AccountData.athena.loadouts.Any(x => k.Contains(x))) ?? "";
-                                if (item.TryGetValue(key, out object value) && value is Newtonsoft.Json.Linq.JObject)
-                                {
-                                    if (value.ToString() != null)
-                                    {
-                                        var ValueAsString = value.ToString();
-                                        ItemThingygyydsf itemAttributes1 = JsonConvert.DeserializeObject<ItemThingygyydsf>(ValueAsString.ToLower());
-
-                                        if (itemAttributes1 != null)
-                                        {
-                                              
-                                            if (itemAttributes1.templateId == "cosmeticlocker:cosmeticlocker_athena")
-                                            {
-
-                                                Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(ValueAsString);
-
-                                                if (ProfileChange != null && itemAttributes != null)
-                                                {
-                                                    ProfileChange.Profile.items.Add(key, itemAttributes);
-
-                                                    if (key == "sandbox_loadout")
-                                                    {
-                                                        AthenaStatsAttributes AttributesFr = ProfileChange.Profile.stats.attributes as AthenaStatsAttributes;
-                                                        if (AttributesFr != null)
-                                                        {
-                                                            AttributesFr.favorite_backpack = itemAttributes.attributes.locker_slots_data.slots.backpack.items[0];
-                                                            AttributesFr.favorite_character = itemAttributes.attributes.locker_slots_data.slots.character.items[0];
-                                                            AttributesFr.favorite_dance = itemAttributes.attributes.locker_slots_data.slots.dance.items;
-                                                            AttributesFr.favorite_glider = itemAttributes.attributes.locker_slots_data.slots.glider.items[0];
-                                                            AttributesFr.favorite_itemwraps = itemAttributes.attributes.locker_slots_data.slots.itemwrap.items;
-                                                            AttributesFr.favorite_loadingscreen = itemAttributes.attributes.locker_slots_data.slots.loadingscreen.items[0];
-                                                            AttributesFr.favorite_musicpack = itemAttributes.attributes.locker_slots_data.slots.musicpack.items[0];
-                                                            AttributesFr.favorite_pickaxe = itemAttributes.attributes.locker_slots_data.slots.pickaxe.items[0];
-                                                            AttributesFr.favorite_skydivecontrail = itemAttributes.attributes.locker_slots_data.slots.skydivecontrail.items[0];
-                                                            AttributesFr.banner_color = itemAttributes.attributes.banner_color_template;
-                                                            AttributesFr.banner_icon = itemAttributes.attributes.banner_icon_template;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            else
-                                            {
-                                                AthenaItem itemAttributes = JsonConvert.DeserializeObject<AthenaItem>(ValueAsString);
-
-                                                if (ProfileChange != null && itemAttributes != null)
-                                                {
-                                                    ProfileChange.Profile.items.Add(key, itemAttributes);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
                             }
-                            catch (Exception ex)
+
+                            foreach (var kvp in profileCacheEntry.AccountData.athena.loadouts_data)
                             {
-                                Logger.Error(ex.Message);
+                                ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
                             }
-                        }
 
-                        if(ProfileChange != null )
-                        {
-                            int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, ProfileItem> Item, int Index)> { (Item: item, Index: index) })
-                            .TakeWhile(pair => !pair.Item.ContainsKey("Currency")).Count();
+                            int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.Select((pair, index) => (pair.Key, pair.Value, index))
+                            .TakeWhile(pair => !pair.Key.Equals("Currency")).Count();
 
-                            if(GrabPlacement3 != -1)
+                            if (GrabPlacement3 != -1)
                             {
-                                var Value = profileCacheEntry.AccountData.commoncore.Items[GrabPlacement3]["Currency"];
-                                dynamic itemAttributes1 = JsonConvert.DeserializeObject(Value.ToString());
-                                if (itemAttributes1.templateId != null || Value != null)
+                                var Value = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+                         
+                                if (Value.templateId != null || Value != null)
                                 {
-                                    if (itemAttributes1.templateId == "Currency:MtxPurchased")
+                                    if (Value.templateId == "Currency:MtxPurchased")
                                     {
-
-                                        Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(Value.ToString());
-                                        Console.WriteLine(profileCacheEntry.AccountData.commoncore.Items[GrabPlacement3]);
                                         ProfileChange.Profile.items.Add("Currency", new
                                         {
                                             templateId = "Currency:MtxPurchased",
@@ -261,12 +189,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             {
                                                 platform = "Shared"
                                             },
-                                            quantity = itemAttributes.quantity,
+                                            quantity = Value.quantity,
                                         });
                                     }
                                 }
                             }
                         }
+                    
 
 
                         return AthenaClass;

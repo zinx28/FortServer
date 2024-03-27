@@ -31,16 +31,16 @@ namespace FortBackend.src.App.Routes.Profile
             {
                 var RVN = int.Parse(Request.Query["rvn"].FirstOrDefault() ?? "-1");
                 var ProfileID = Request.Query["profileId"].ToString() ?? "athena";
+                Console.WriteLine("TEST");
                 var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if (AccountData != "Error")
                 {
+                    Console.WriteLine("TEST");
                     ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
-                    //Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
 
                     var response = new Mcp();
                     if (profileCacheEntry != null)
                     {
-
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             var requestbody = await reader.ReadToEndAsync();
@@ -64,12 +64,12 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "QueryProfile":
                                     response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
-                                case "ClientQuestLogin":
-                                    response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
-                                    break;
-                                case "SetCosmeticLockerSlot":
-                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
-                                    break;
+                                //            case "ClientQuestLogin":
+                                //                response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
+                                //                break;
+                                // case "SetCosmeticLockerSlot":
+                                //response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
+                                // break;
                                 case "EquipBattleRoyaleCustomization":
                                     response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody));
                                     break;
@@ -137,7 +137,7 @@ namespace FortBackend.src.App.Routes.Profile
             }
             catch (Exception ex)
             {
-                Logger.Error($"McpController: {ex.Message}");
+                Logger.Error($"McpController: {ex.Message}", "MCP");
             }
 
             return Ok(new Mcp

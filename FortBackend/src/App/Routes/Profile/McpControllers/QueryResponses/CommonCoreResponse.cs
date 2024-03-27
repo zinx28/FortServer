@@ -108,63 +108,25 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         gift_history = new object[0],
                                     }
                                 },
-                                items = new Dictionary<string, object>(),
+                                items = new Dictionary<string, object>(), //profileCacheEntry.AccountData.commoncore.Items,
                                 commandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                             }
-
-                            }
+                        }
                     },
                     profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                     serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     responseVersion = 1,
                 };
-
-                List<Dictionary<string, ProfileItem>> items = profileCacheEntry.AccountData.commoncore.Items;
-
-                foreach (Dictionary<string, ProfileItem> item in items)
+                var ProfileChange = CommonCoreClass.profileChanges[0] as ProfileChange;
+                if (ProfileChange != null)
                 {
-                    try
+                    foreach (var profileChange in profileCacheEntry.AccountData.commoncore.Items)
                     {
-                        string key = item.Keys.FirstOrDefault(k => k.Contains("Currency")) ?? "";
-                        if (item.TryGetValue(key, out ProfileItem value) && value is Newtonsoft.Json.Linq.JObject)
-                        {
-                            dynamic itemAttributes1 = JsonConvert.DeserializeObject(value.ToString());
-                            if (itemAttributes1.templateId != null || value != null)
-                            {
-                                if (itemAttributes1.templateId == "Currency:MtxPurchased")
-                                {
-
-                                    Loadout itemAttributes = JsonConvert.DeserializeObject<Loadout>(value.ToString());
-                                    var ProfileChange = CommonCoreClass.profileChanges[0] as ProfileChange;
-
-                                    if (itemAttributes != null)
-                                    {
-
-                                        ProfileChange.Profile.items.Add(key, new
-                                        {
-                                            itemAttributes.templateId,
-                                            attributes = new
-                                            {
-                                                platform = "EpicPC"
-                                            },
-                                            itemAttributes.quantity,
-                                        });
-                                    }
-                                }
-                                else
-                                {
-                                    //idk
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex.Message);
+                        ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
                     }
                 }
 
-                return CommonCoreClass;
+                    return CommonCoreClass;
             }
             catch (Exception ex)
             {

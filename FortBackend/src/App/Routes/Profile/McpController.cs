@@ -12,6 +12,8 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Routes.Profile.McpControllers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.XMPP.Helpers.Resources;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace FortBackend.src.App.Routes.Profile
 {
@@ -31,11 +33,19 @@ namespace FortBackend.src.App.Routes.Profile
             {
                 var RVN = int.Parse(Request.Query["rvn"].FirstOrDefault() ?? "-1");
                 var ProfileID = Request.Query["profileId"].ToString() ?? "athena";
-                Console.WriteLine("TEST");
-                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
-                if (AccountData != "Error")
+                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
+                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
+
+                bool FoundAccount = false;
+                if (GlobalData.AccessToken.Any(e => e.token == token))
+                    FoundAccount = true;
+                else if (GlobalData.ClientToken.Any(e => e.token == token))
+                    FoundAccount = true;
+                else if (GlobalData.RefreshToken.Any(e => e.token == token))
+                    FoundAccount = true;
+
+                if (FoundAccount)
                 {
-                    Console.WriteLine("TEST");
                     ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
 
                     var response = new Mcp();
@@ -112,16 +122,6 @@ namespace FortBackend.src.App.Routes.Profile
                     };
                 }
 
-                //return Ok(new Mcp
-                //{
-                //    profileRevision = RVN,
-                //    profileId = ProfileID,
-                //    profileChangesBaseRevision = RVN,
-                //    //profileChanges = new object[0],
-                //    profileCommandRevision = RVN,
-                //    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-                //    responseVersion = 1
-                //});
             }
             catch (BaseError ex)
             {

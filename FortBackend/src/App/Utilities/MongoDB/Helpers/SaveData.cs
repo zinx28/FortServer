@@ -23,18 +23,6 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 Console.WriteLine(GrabData.Value.AccountData.athena.Items);
 
 
-                foreach (var item in GrabData.Value.AccountData.athena.Items)
-                {
-                    foreach (var kvp in item)
-                    {
-                        Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
-                    }
-                }
-                /*
-                 * System.AggregateException: 'One or more errors occurred. (An error occurred while serializing the athena property of class FortBackend.src.App.Utilities.MongoDB.Module.Account: An error occurred while serializing the Items property of class FortBackend.src.App.Utilities.MongoDB.Module.Athena: Type Newtonsoft.Json.Linq.JObject is not configured as a type that is allowed to be serialized for this instance of ObjectSerializer.)'
-
-                */
-
                 collection.ReplaceOne(filter1, GrabData.Value.UserData);
                 collection2.ReplaceOne(filter2, GrabData.Value.AccountData);
                 collection3.ReplaceOne(filter3, GrabData.Value.UserFriends);

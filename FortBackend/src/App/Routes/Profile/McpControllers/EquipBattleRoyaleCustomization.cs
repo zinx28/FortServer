@@ -24,8 +24,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 {
                     IndexWithinSlot = 6;
                 }
-               
-                Console.WriteLine(JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena));
 
                 if (UpdatedData != null)
                 {

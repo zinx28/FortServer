@@ -14,6 +14,7 @@ using FortBackend.src.App.Routes.Profile.McpControllers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.XMPP.Helpers.Resources;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 
 namespace FortBackend.src.App.Routes.Profile
 {
@@ -36,13 +37,9 @@ namespace FortBackend.src.App.Routes.Profile
                 var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
                 var token = tokenArray.Length > 1 ? tokenArray[1] : "";
 
-                bool FoundAccount = false;
-                if (GlobalData.AccessToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.ClientToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.RefreshToken.Any(e => e.token == token))
-                    FoundAccount = true;
+                bool FoundAccount = GlobalData.AccessToken.Any(e => e.token == token) ||
+                    GlobalData.ClientToken.Any(e => e.token == token) ||
+                    GlobalData.RefreshToken.Any(e => e.token == token);
 
                 if (FoundAccount)
                 {

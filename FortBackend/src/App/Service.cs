@@ -52,7 +52,7 @@ namespace FortBackend.src.App
             startup.ConfigureServices(builder.Services);
         #if HTTPS
                 Saved.DeserializeConfig.DefaultProtocol = "https://";
-                builder.WebHost.UseUrls($"https://{Saved.DeserializeConfig.HostedUrl}:{Saved.DeserializeConfig.BackendPort}");
+                builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.BackendPort, listenOptions =>

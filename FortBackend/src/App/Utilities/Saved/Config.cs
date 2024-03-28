@@ -17,7 +17,6 @@ namespace FortBackend.src.App.Utilities.Saved
 
 
         public int BackendPort { get; set; } = 1111; // 1111 default ig
-        public string HostedUrl { get; set; } = "0.0.0.0"; // most cases ~ all ig.. not recommended to change this
 
         public int MatchmakerPort { get; set; } = 2121; // 2121 default ig
         public string MatchmakerIP { get; set; } = "127.0.0.1"; // Don't change unless its hosted on a different ip

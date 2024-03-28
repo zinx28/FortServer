@@ -9,7 +9,7 @@ namespace FortBackend.src.App.Utilities.MongoDB
 {
     public class MongoDBStart
     {
-        public static IMongoDatabase Database { get; private set; }
+        public static IMongoDatabase? Database { get; private set; }
 
         public static void Initialize(IServiceCollection services, IConfiguration Configuration)
         {

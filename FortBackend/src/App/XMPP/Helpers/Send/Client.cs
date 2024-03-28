@@ -24,7 +24,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Send
             {
                 await client.Client.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(xElement.ToString())), WebSocketMessageType.Text, true, CancellationToken.None);
             }
-            catch (Exception ex)
+            catch /*(Exception ex)*/
             {
                 //Console.WriteLine(ex.Message);
             }

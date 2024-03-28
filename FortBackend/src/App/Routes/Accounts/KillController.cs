@@ -32,7 +32,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         }
         // all work on this soon
         [HttpDelete("oauth/sessions/kill/{accesstoken}")]
-        public async Task<IActionResult> KillAccessSessions(string accesstoken)
+        public IActionResult KillAccessSessions(string accesstoken)
         {
             try
             {

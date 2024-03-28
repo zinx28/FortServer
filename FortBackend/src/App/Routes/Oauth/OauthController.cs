@@ -49,8 +49,7 @@ namespace FortBackend.src.App.Routes.Oauth
                     if (tokenParts.Length == 2)
                     {
                         var payloadJson = tokenParts[1];
-                        dynamic payload = JsonConvert.DeserializeObject(payloadJson);
-                        Console.WriteLine(payload);
+                        dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
                         if (payload == null)
                         {
                             return BadRequest(new { });
@@ -112,27 +111,32 @@ namespace FortBackend.src.App.Routes.Oauth
 
                 if (FormRequest.TryGetValue("grant_type", out var GrantType))
                 {
-                    grant_type = GrantType;
+                    if(!string.IsNullOrEmpty(GrantType))
+                        grant_type = GrantType!;
                 }
 
                 if (FormRequest.TryGetValue("username", out var username))
                 {
-                    Email = username;
+                    if (!string.IsNullOrEmpty(username))
+                        Email = username!;
                 }
 
                 if (FormRequest.TryGetValue("exchange_code", out var ExchangeCode))
                 {
-                    exchange_token = ExchangeCode;
+                    if (!string.IsNullOrEmpty(ExchangeCode))
+                        exchange_token = ExchangeCode!;
                 }
 
                 if (FormRequest.TryGetValue("refresh_code", out var Refresh_code))
                 {
-                    refresh_token = Refresh_code;
+                    if (!string.IsNullOrEmpty(Refresh_code))
+                        refresh_token = Refresh_code!;
                 }
 
                 if (FormRequest.TryGetValue("password", out var password))
                 {
-                    Password = password;
+                    if (!string.IsNullOrEmpty(password))
+                        Password = password!;
                 }
 
                 Console.WriteLine(grant_type);
@@ -140,7 +144,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 string clientId = "";
                 try
                 {
-                    string AuthorizationToken = Request.Headers["Authorization"];
+                    string AuthorizationToken = Request.Headers["Authorization"]!;
 
                     if (string.IsNullOrEmpty(AuthorizationToken))
                     {
@@ -238,6 +242,8 @@ namespace FortBackend.src.App.Routes.Oauth
                             new Claim("jti", Hex.GenerateRandomHexString(32).ToLower()),
                         }, 24);
 
+                        Console.WriteLine(ClientToken);
+
                         GlobalData.ClientToken.Add(new TokenData
                         {
                             accountId = AccountId,
@@ -254,8 +260,6 @@ namespace FortBackend.src.App.Routes.Oauth
                             internal_client = true,
                             client_service = "fortnite"
                         });
-
-                        
                     break;
 
                     case "refresh_token":

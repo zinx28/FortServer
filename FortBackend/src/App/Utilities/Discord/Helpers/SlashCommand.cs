@@ -60,7 +60,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             {
                 if(CheckIfRole(config, command, guild))
                 {
-                    await who.Respond(command);
+                    await Who.Respond(command);
                 }
             }
         }

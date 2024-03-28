@@ -22,7 +22,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile
 
     public class McpNotifications
     {
-        public string type { get; set; }
+        public string type { get; set; } = string.Empty;
         public bool primary { get; set; }
         public LootResultClass lootResult { get; set; } = new LootResultClass();
     }

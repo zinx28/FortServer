@@ -42,10 +42,7 @@ namespace FortBackend.src.App.XMPP.Helpers
                                 dataSaved.receivedMessage = "";
                                 return;
                             }
-                            catch (JsonReaderException ex)
-                            {
-                                //return; // wow
-                            }
+                            catch { }
                             xmlDoc = XDocument.Parse(dataSaved.receivedMessage);
 
                             switch (xmlDoc.Root?.Name.LocalName)
@@ -114,7 +111,7 @@ namespace FortBackend.src.App.XMPP.Helpers
                     //DataSaved..TryRemove(clientId, out _);
                     await XmppFriend.UpdatePresenceForFriends(webSocket, "{}", false, true);
 
-                    Clients client = GlobalData.Clients.FirstOrDefault(c => c.Client == webSocket);
+                    Clients client = GlobalData.Clients.FirstOrDefault(c => c.Client == webSocket)!;
                     if (client != null)
                     {
 
@@ -127,7 +124,7 @@ namespace FortBackend.src.App.XMPP.Helpers
                             object ParsedPresence = "";
                             try
                             {
-                                ParsedPresence = JsonConvert.DeserializeObject(ClientData.lastPresenceUpdate.presence);
+                                ParsedPresence = JsonConvert.DeserializeObject(ClientData.lastPresenceUpdate.presence)!;
 
 
                                 GlobalData.Clients.Remove(client);
@@ -146,8 +143,6 @@ namespace FortBackend.src.App.XMPP.Helpers
                                     //  dataSaved.Rooms.Remove(woah);
                                 }
 
-                                var PartyChecks = "";
-
                                 try
                                 {
                                     if (ParsedPresence != null)
@@ -164,7 +159,7 @@ namespace FortBackend.src.App.XMPP.Helpers
 
                                 // what?
                             }
-                            catch (JsonReaderException ex)
+                            catch
                             {
 
                                 GlobalData.Clients.Remove(client);

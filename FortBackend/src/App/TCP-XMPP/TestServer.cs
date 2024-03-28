@@ -65,14 +65,14 @@ namespace FortBackend.src.App.XMPP
             {
                 DataSaved.connectedClients.TryAdd(clientId, client);
                 //byte[] buffer = new byte[0];
-                XDocument xmlDoc;
+                //XDocument xmlDoc;
                 // NetworkStream stream = client.GetStream();
                 string logFilePath = "test.txt";
                 using (StreamWriter sw = File.AppendText(logFilePath))
                 {
                     using (SslStream sslStream = new SslStream(client.GetStream(), false))
                     {
-                        await sslStream.AuthenticateAsServerAsync(certificate, false, SslProtocols.Tls, true);
+                        await sslStream.AuthenticateAsServerAsync(certificate, false, SslProtocols.Tls12, true);
 
                         byte[] buffer = new byte[1024];
                         int totalBytesRead = 0;

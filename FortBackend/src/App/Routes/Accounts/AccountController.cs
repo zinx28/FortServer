@@ -18,7 +18,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
             var UserData1 = await Handlers.FindOne<User>("accountId", accountId);
             if (UserData1 != "Error")
             {
-                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
+                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)![0];
 
                 if(UserDataParsed != null)
                 {
@@ -54,14 +54,14 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         [HttpGet("/persona/api/public/account/lookup")]
         public async Task<IActionResult> DisplayNameSearch()
         {
-            string RequestQuery = Request.Query["q"];
+            string RequestQuery = Request.Query["q"]!;
 
-            if (!RequestQuery.Contains(","))
+            if (RequestQuery != null && !RequestQuery.Contains(","))
             {
                 var UserData1 = await Handlers.FindOne<User>("Username", RequestQuery);
                 if (UserData1 != "Error")
                 {
-                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
+                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0]!;
 
                     if (UserDataParsed != null)
                     {
@@ -100,7 +100,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
             var UserData1 = await Handlers.FindOne<User>("Username", displayName);
             if (UserData1 != "Error")
             {
-                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0];
+                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0]!;
 
                 if (UserDataParsed != null)
                 {
@@ -155,7 +155,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         {
             try
             {
-                string RequestQuery = Request.Query["accountId"];
+                string RequestQuery = Request.Query["accountId"]!;
                 ArrayList ResponseList = new ArrayList();
 
                 if (RequestQuery == null)
@@ -174,7 +174,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
 
                         if (UserData != "Error")
                         {
-                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
+                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0]!;
                             if (UserDataParsed != null)
                             {
                                 if (UserDataParsed.AccountId.ToString() == AccountId)
@@ -196,7 +196,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
 
                     if (UserData != "Error")
                     {
-                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
+                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0]!;
                         if (UserDataParsed != null && UserDataParsed.AccountId == RequestQuery)
                         {
                             ResponseList.Add(new

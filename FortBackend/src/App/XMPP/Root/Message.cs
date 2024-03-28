@@ -23,14 +23,14 @@ namespace FortBackend.src.App.XMPP.Root
                     return;
                 }
 
-                XElement findBody = xmlDoc.Root.Descendants().FirstOrDefault(i => i.Name == "body");
+                XElement findBody = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name == "body")!;
 
                 if (findBody == null || string.IsNullOrEmpty(findBody.Value))
                     return;
 
                 string body = findBody.Value;
-                Console.WriteLine("TYPE " + xmlDoc.Root.Attribute("type")?.Value);
-                switch (xmlDoc.Root.Attribute("type")?.Value)
+                Console.WriteLine("TYPE " + xmlDoc.Root?.Attribute("type")?.Value);
+                switch (xmlDoc.Root?.Attribute("type")?.Value)
                 {
                     case "chat":
                         Console.WriteLine("CGAT");
@@ -43,7 +43,7 @@ namespace FortBackend.src.App.XMPP.Root
                             break;
                         }
 
-                        Clients Friend = GlobalData.Clients.Find(test => test.jid.Split("/")[0] == xmlDoc.Root?.Attribute("to")?.Value);
+                        Clients Friend = GlobalData.Clients.Find(test => test.jid.Split("/")[0] == xmlDoc.Root?.Attribute("to")?.Value)!;
 
                         if (Friend == null || Friend.accountId == dataSaved.AccountId) break;
 
@@ -74,7 +74,7 @@ namespace FortBackend.src.App.XMPP.Root
                             break;
                         }
 
-                        string RoomName = xmlDoc.Root.Attribute("to")?.Value.Split("@")[0];
+                        string RoomName = xmlDoc.Root?.Attribute("to")?.Value.Split("@")[0]!;
                         var RoomsFound = GlobalData.Rooms[RoomName];
                         if (RoomsFound == null)
                         {
@@ -99,7 +99,7 @@ namespace FortBackend.src.App.XMPP.Root
 
                             XElement featuresElement = new XElement(clientNs + "message",
                                 new XAttribute("to", ClientData.jid),
-                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeUriString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
                                 new XAttribute("type", "groupchat"),
                                 new XElement("body", body)
                             );
@@ -118,14 +118,14 @@ namespace FortBackend.src.App.XMPP.Root
                 {
                     test = JToken.Parse(body);
                 }
-                catch (JsonReaderException ex)
+                catch
                 {
                     return; // wow
                 }
 
                 if (test is JObject)
                 {
-                    if (test["type"] == null || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("to")) || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("id")))
+                    if (test["type"] == null || string.IsNullOrEmpty((string)xmlDoc.Root?.Attribute("to")!) || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("id")!))
                         return;
 
                     await XmppFriend.SendMessageToClient(dataSaved.JID, xmlDoc, body);

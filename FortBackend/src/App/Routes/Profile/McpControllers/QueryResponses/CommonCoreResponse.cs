@@ -126,7 +126,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                     }
                 }
 
-                    return CommonCoreClass;
+                return CommonCoreClass;
             }
             catch (Exception ex)
             {

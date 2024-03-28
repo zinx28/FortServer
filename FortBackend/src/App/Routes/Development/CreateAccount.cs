@@ -16,10 +16,10 @@ namespace FortBackend.src.App.Routes.Development
         public CreateAccount() { }
         public class SandboxLoadoutAttributes1
         {
-            public object locker_slots_data { get; set; }
-            public string banner_color_template { get; set; }
-            public string banner_icon_template { get; set; }
-            public string locker_name { get; set; }
+            public object locker_slots_data { get; set; } = new object();
+            public string banner_color_template { get; set; } = string.Empty;
+            public string banner_icon_template { get; set; } = string.Empty;
+            public string locker_name { get; set; } = string.Empty;
 
             public int use_count { get; set; }
             public bool item_seen { get; set; }
@@ -28,8 +28,8 @@ namespace FortBackend.src.App.Routes.Development
 
         public class ProfileItem1
         {
-            public string templateId { get; set; }
-            public SandboxLoadoutAttributes1 attributes { get; set; }
+            public string templateId { get; set; } = string.Empty;
+            public SandboxLoadoutAttributes1 attributes { get; set; } = new SandboxLoadoutAttributes1();
             public int quantity { get; set; }
         }
         public static async Task<string> Init(HttpContext httpContext, IMongoDatabase _database, UserInfo responseData1, bool Global = false)
@@ -48,7 +48,7 @@ namespace FortBackend.src.App.Routes.Development
 
                 string AccountId = Guid.NewGuid().ToString();
                 string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
-                string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress?.ToString() };
+                string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress!.ToString() };
 
 
                 IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
@@ -135,13 +135,6 @@ namespace FortBackend.src.App.Routes.Development
                                     {
                                         slots = new LockerSlotsData
                                         {
-                                            character = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                }
-                                            },
                                             musicpack = new Slots
                                             {
                                                 items = new List<string>
@@ -149,24 +142,47 @@ namespace FortBackend.src.App.Routes.Development
                                                     ""
                                                 }
                                             },
+                                            character = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    ""
+                                                },
+                                                activevariants = new List<object>()
+                                            },
                                             backpack = new Slots
                                             {
                                                 items = new List<string>
                                                 {
                                                     ""
-                                                }
+                                                },
+                                                activevariants = new List<object>()
                                             },
                                             pickaxe = new Slots
                                             {
                                                 items = new List<string>
                                                 {
                                                     ""
-                                                }
+                                                },
+                                                activevariants = new List<object>()
                                             },
                                             skydivecontrail = new Slots
                                             {
                                                 items = new List<string>
                                                 {
+                                                    ""
+                                                }
+                                            },
+                                            dance = new Slots
+                                            {
+                                                items = new List<string>
+                                                {
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    "",
                                                     ""
                                                 }
                                             },
@@ -184,23 +200,29 @@ namespace FortBackend.src.App.Routes.Development
                                                     ""
                                                 }
                                             },
-                                            dance = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    "", "", "", "", "", ""
-                                                }
-                                            },
                                             itemwrap = new Slots
                                             {
                                                 items = new List<string>
                                                 {
-                                                    "", "", "", "", "", "", ""
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    "",
+                                                    ""
                                                 }
                                             }
                                         }
-                                    }
-                                }
+                                    },
+                                    use_count = 0,
+                                    banner_color_template = "",
+                                    banner_icon_template = "",
+                                    locker_name = "",
+                                    item_seen = false,
+                                    favorite = false
+                                },
+                                quantity = 1
                             }
                         }
                     },

@@ -49,7 +49,7 @@ namespace FortBackend.src.App.Routes.Profile
                     ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
 
                     var response = new Mcp();
-                    if (profileCacheEntry != null)
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
@@ -74,9 +74,9 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "QueryProfile":
                                     response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
-                                //            case "ClientQuestLogin":
-                                //                response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
-                                //                break;
+                                case "ClientQuestLogin":
+                                    response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
+                                    break;
                                 // case "SetCosmeticLockerSlot":
                                 //response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
                                 // break;
@@ -96,7 +96,6 @@ namespace FortBackend.src.App.Routes.Profile
                                         profileRevision = ProfileID == "common_core" || ProfileID == "common_public" ? profileCacheEntry.AccountData.commoncore.RVN : profileCacheEntry.AccountData.athena.RVN,
                                         profileId = ProfileID,
                                         profileChangesBaseRevision = ProfileID == "common_core" || ProfileID == "common_public" ? profileCacheEntry.AccountData.commoncore.RVN : profileCacheEntry.AccountData.athena.RVN,
-                                        //profileChanges = /,
                                         profileCommandRevision = ProfileID == "common_core" || ProfileID == "common_public" ? profileCacheEntry.AccountData.commoncore.CommandRevision : profileCacheEntry.AccountData.athena.CommandRevision,
                                         serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                                         responseVersion = 1

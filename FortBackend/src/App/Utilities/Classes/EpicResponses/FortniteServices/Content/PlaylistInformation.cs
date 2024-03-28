@@ -2,7 +2,7 @@
 {
     public class PlaylistInformation
     {
-        public conversionconfig conversion_config { get; set; } = new conversionconfig();
+        public Conversionconfig conversion_config { get; set; } = new Conversionconfig();
 
         public bool is_tile_hidden { get; set; } = false;
         public string frontend_matchmaking_header_style { get; set; } = "Basic";
@@ -10,7 +10,7 @@
         public string frontend_matchmaking_header_text_description { get; set; } = "Watch @ Legends Landing";
         public string frontend_matchmaking_header_text { get; set; } = "FNCS Last Chance Major";
 
-        public playlistinfo playlist_info { get; set; } = new playlistinfo();
+        public Playlistinfo playlist_info { get; set; } = new Playlistinfo();
 
         public bool _noIndex { get; set; } = false;
         public string _activeDate { get; set; } = "2020-00-00T00:00:00.336Z";
@@ -19,7 +19,7 @@
         public string _templateName { get; set; } = "FortniteGameMOTD";
     }
 
-    public class playlistinfo
+    public class Playlistinfo
     {
         public string _type { get; set; } = "Playlist Information";
         public List<PlayListObject> playlists { get; set; } = new List<PlayListObject>();
@@ -31,11 +31,11 @@
         public string playlist_name { get; set; } = string.Empty;
         public bool hidden { get; set; } = false;
         public string _type { get; set; } = "FortPlaylistInfo";
-        public string description { get; set; }
-        public string display_name { get; set; }
+        public string description { get; set; } = string.Empty ;
+        public string display_name { get; set; } = string.Empty;
     }
 
-    public class conversionconfig
+    public class Conversionconfig
     {
         public string containerName { get; set; } = "playlist_info";
         public string _type { get; set; } = "Conversion Config";

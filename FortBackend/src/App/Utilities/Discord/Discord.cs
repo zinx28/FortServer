@@ -10,9 +10,9 @@ namespace FortBackend.src.App.Utilities.Discord
     public class DiscordBot
     {
         
-        public static DiscordSocketClient Client { get; private set; }
-        private static CommandService CommandService;
-        public static SocketGuild guild;
+        public static DiscordSocketClient Client { get; private set; } = new DiscordSocketClient();
+        private static CommandService CommandService = new CommandService();
+        public static SocketGuild guild { get; set; } = null!;
         public static async Task Start()
         {
             Logger.Log("Initializing Discord", "Discord");

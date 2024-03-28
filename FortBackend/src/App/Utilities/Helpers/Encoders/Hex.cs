@@ -16,7 +16,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Encoders
         {
             byte[] data = Encoding.UTF8.GetBytes(hexString);
             string hexHash = "";
-            using (SHA1 sha1 = new SHA1CryptoServiceProvider())
+            using (SHA1 sha1 = SHA1.Create())
             {
                 byte[] hashBytes = sha1.ComputeHash(data);
                 hexHash = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();

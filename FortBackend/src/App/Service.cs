@@ -39,7 +39,7 @@ namespace FortBackend.src.App
                 throw new Exception("Couldn't find config");
             }
 
-            Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<Config>(ReadConfig);
+            Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<Config>(ReadConfig)!;
             if (Saved.DeserializeConfig == null)
             {
                 Logger.Error("Couldn't deserialize config", "CONFIG");
@@ -90,15 +90,20 @@ namespace FortBackend.src.App
 
             startup.Configure(app, app.Environment);
             //Setup.Initialize(app);
-            DiscordBot.Start(); // dont away... app.run does it for you
-
-            var XmppServer = new Thread(async () =>
+            var DiscordBotServer = new Thread(async () =>
             {
-                await Xmpp_Server.Intiliazation(args);
+                await DiscordBot.Start(); // dont away... app.run does it for you
+            });
+            DiscordBotServer.Start();
+
+
+            var XmppServer = new Thread(() =>
+            {
+                Xmpp_Server.Intiliazation(args);
             });
             XmppServer.Start();
 
-            var TCPXmppServer = new Thread(async () =>
+            var TCPXmppServer = new Thread(() =>
             { 
                 TcpServer testserver = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
                 Task tcpServerTask = testserver.Start();
@@ -141,7 +146,7 @@ namespace FortBackend.src.App
                     GeneraterShocked.Start();
                 }
             }
-            GenerateItemShop(++i);
+            await GenerateItemShop(++i);
         }
     }
 }

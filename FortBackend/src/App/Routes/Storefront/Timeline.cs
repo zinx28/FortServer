@@ -29,7 +29,9 @@ namespace FortBackend.src.App.Routes.Storefront
                 {
                     return BadRequest(new { });
                 }
-                dynamic shopData = JsonConvert.DeserializeObject(Json);
+                dynamic shopData = JsonConvert.DeserializeObject(Json)!;
+
+                if(shopData == null) { return BadRequest(new { }); } // if null return
 
                 VersionClass season = await SeasonUserAgent(Request);
 
@@ -41,7 +43,7 @@ namespace FortBackend.src.App.Routes.Storefront
                             "client-matchmaking", new
                             {
                                 states = new object[] { },
-                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                             }
                         },
                         {
@@ -62,7 +64,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                         }
                                     }
                                 },
-                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                             }
                         },
                         {
@@ -80,7 +82,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                          }
                                     }
                                 },
-                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                             }
                         },
                         {
@@ -96,12 +98,12 @@ namespace FortBackend.src.App.Routes.Storefront
                                         {
                                             electionId = "",
                                             candidates = new string[0],
-                                            electionEnds = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}",
+                                            electionEnds = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}",
                                             numWinnners = 1
                                         }
                                     }
                                 },
-                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                             }
                         },
                         {
@@ -122,7 +124,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                          }
                                     }
                                 },
-                                cacheExpire = $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                             }
                         },
                         {
@@ -158,14 +160,14 @@ namespace FortBackend.src.App.Routes.Storefront
                                             seasonBegin = "2020-01-01T00:00:00Z",
                                             seasonEnd = "2067-01-01T00:00:00Z",
                                             seasonDisplayedEnd = "2067-01-01T00:00:00Z",
-                                            weeklyStoreEnd =  $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}",
+                                            weeklyStoreEnd =  $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}",
                                             stwEventStoreEnd = "9999-12-31T23:59:59.999Z",
                                             stwWeeklyStoreEnd = "9999-12-31T23:59:59.999Z",
-                                            dailyStoreEnd =  $"{shopData.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                            dailyStoreEnd =  $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                                         }
                                     }
                                 },
-                                cacheExpire = $"{shopData.cacheExpire.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = $"{shopData?.cacheExpire.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
                             }
                         }
                     },

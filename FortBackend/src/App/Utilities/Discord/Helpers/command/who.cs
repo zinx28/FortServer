@@ -13,7 +13,7 @@ using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 
 namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 {
-    public class who
+    public class Who
     {
 
         public static async void CheckAccount(SocketSlashCommand command, SocketGuildUser user, string ign, string id)
@@ -44,18 +44,22 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     UserName = user.Username;
                 }
                 var FindDiscordID = string.Empty;
-                if (UserId == null || ign != null)
+                if (UserId == null && ign != null)
                 {
                     FindDiscordID = await Handlers.FindOne<User>("Username", ign);
                 }
                 else
                 {
+                    if (UserId == null)
+                    {
+                        return;
+                    }
                     FindDiscordID = await Handlers.FindOne<User>("DiscordId", UserId);
                 }
 
                 if (FindDiscordID != "Error")
                 {
-                    User RespondBack = JsonConvert.DeserializeObject<User[]>(FindDiscordID)?[0];
+                    User RespondBack = JsonConvert.DeserializeObject<User[]>(FindDiscordID)![0];
                     if (RespondBack == null)
                     {
                         await command.RespondAsync("Backend issue ;(((", ephemeral: true);
@@ -118,7 +122,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                 List<SocketMessageComponentData> components = BanComponent.Data.Components.ToList();
                                 if (components.First(e => e.CustomId == "reasontoban").Value != null)
                                 {
-                                    IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database.GetCollection<StoreInfo>("StoreInfo");
+                                    IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
                                     StoreInfo storeinfo = new StoreInfo
                                     {
                                         UserIds = new string[] { RespondBack.AccountId },
@@ -152,7 +156,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                 {
                                     try
                                     {
-                                        IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database.GetCollection<StoreInfo>("StoreInfo");
+                                        IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
                                         var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIds, RespondBack.AccountId);
                                         var count = await StoreInfocollection.CountDocumentsAsync(filter);
                                         if (count > 0)
@@ -203,7 +207,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     var username = command.Data.Options.FirstOrDefault(o => o.Name == "mention")?.Value as SocketGuildUser;
                     if (username != null)
                     {
-                        CheckAccount(command, username, null, null);
+                        CheckAccount(command, username, null!, null!);
                     }
                     else
                     {
@@ -212,11 +216,11 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                 }
                 else if (command.Data.Options.FirstOrDefault(o => o.Name == "id")?.Value != null)
                 {
-                    CheckAccount(command, null, null, command.Data.Options.FirstOrDefault(o => o.Name == "id")?.Value?.ToString());
+                    CheckAccount(command, null!, null!, command.Data.Options.FirstOrDefault(o => o.Name == "id")?.Value?.ToString()!);
                 }
                 else if (command.Data.Options.FirstOrDefault(o => o.Name == "ign")?.Value != null)
                 {
-                    CheckAccount(command, null, command.Data.Options.FirstOrDefault(o => o.Name == "ign")?.Value?.ToString(), null);
+                    CheckAccount(command, null!, command.Data.Options.FirstOrDefault(o => o.Name == "ign")?.Value?.ToString()!, null!);
                 }
                 else
                 {

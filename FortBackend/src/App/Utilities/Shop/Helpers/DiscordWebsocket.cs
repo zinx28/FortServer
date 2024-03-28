@@ -11,8 +11,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
         public class DailyField
         {
-            public string name { get; set; }
-            public string value { get; set; }
+            public string name { get; set; } = string.Empty;
+            public string value { get; set; } = string.Empty;
         }
 
         public async static Task SendEmbed(/*SavedData dataSaved*/)

@@ -4,7 +4,7 @@ namespace FortBackend.src.App.Utilities.Saved
 {
     public class Saved
     {
-        public static Config DeserializeConfig;
+        public static Config DeserializeConfig = new Config();
     }
     // Since we parse the config this basicalyl needs to be 1:1 else it be dynamic huh
     public class Config

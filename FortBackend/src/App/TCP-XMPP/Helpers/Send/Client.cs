@@ -29,7 +29,7 @@ namespace FortBackend.src.App.TCP_XMPP.Helpers.Send
                 //await client.Client.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(xElement.ToString())), WebSocketMessageType.Text, true, CancellationToken.None);
                 //await webSocket.Client.SendAsync(new ArraySegment<byte>(buffer69), SocketFlags.None);
             }
-            catch (Exception ex)
+            catch /*(Exception ex)*/
             {
                 //Console.WriteLine(ex.Message);
             }

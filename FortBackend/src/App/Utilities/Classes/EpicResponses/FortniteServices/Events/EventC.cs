@@ -3,7 +3,7 @@
     public class EventC
     {
         public string announcementTime { get; set; } = string.Empty;
-        public string appId { get; set; }
+        public string appId { get; set; } = string.Empty;
         public string beginTime { get; set; } = string.Empty;
         public string displayDataId { get; set; } = string.Empty;
         public string endTime { get; set; } = string.Empty;
@@ -52,7 +52,7 @@
 
     public class EventWindowC
     {
-        public string[] additionalRequirements { get; set; }
+        public string[] additionalRequirements { get; set; } = new string[0];
         public string beginTime { get; set; } = string.Empty;
         public string[] blackoutPeriods { get; set; } = new string[0];
         public bool canLiveSpectate { get; set; } = false;

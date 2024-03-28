@@ -82,14 +82,17 @@ namespace FortBackend.src.App.Routes.Development
                     var response2 = await client2.GetAsync("https://discord.com/api/users/@me/guilds");
                     var responseContent2 = await response2.Content.ReadAsStringAsync();
 
-                    List<Server> responseData2 = JsonConvert.DeserializeObject<List<Server>>(responseContent2);
+                    List<Server> responseData2 = JsonConvert.DeserializeObject<List<Server>>(responseContent2)!;
                     bool IsInServer = false;
-                    foreach (Server item in responseData2)
+                    if (responseData2 != null && responseData2.Count > 0)
                     {
-                        //Console.WriteLine(item.id);
-                        if (item.id == Saved.DeserializeConfig.ServerID)
+                        foreach (Server item in responseData2)
                         {
-                            IsInServer = true;
+                            //Console.WriteLine(item.id);
+                            if (item.id == Saved.DeserializeConfig.ServerID)
+                            {
+                                IsInServer = true;
+                            }
                         }
                     }
                     HttpContext httpContext = HttpContext;
@@ -111,7 +114,7 @@ namespace FortBackend.src.App.Routes.Development
                             return Ok(new { test = "Server Sided Error" });
                         }
 
-                        UserInfo responseData1 = JsonConvert.DeserializeObject<UserInfo>(responseContent);
+                        UserInfo responseData1 = JsonConvert.DeserializeObject<UserInfo>(responseContent)!;
 
                         if (responseData1 == null)
                         {
@@ -140,7 +143,7 @@ namespace FortBackend.src.App.Routes.Development
 
                             if (UpdateResponse != "Error")
                             {
-                                User UserData = JsonConvert.DeserializeObject<User[]>(FindDiscordID)?[0];
+                                User UserData = JsonConvert.DeserializeObject<User[]>(FindDiscordID)?[0]!;
                                 if (UserData != null)
                                 {
                                     if (UserData.banned)
@@ -149,15 +152,13 @@ namespace FortBackend.src.App.Routes.Development
                                     }
 
                                     Console.WriteLine("TEST");
-                                    string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress?.ToString() };
+                                    string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress!.ToString() };
 
                                     IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
                                     var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, httpContext.Connection.RemoteIpAddress?.ToString());
                                     var count = await StoreInfocollection.CountDocumentsAsync(filter);
-                                    bool BanUser = false;
                                     if (count > 0)
                                     {
-                                        BanUser = true;
                                      
                                         var update = Builders<StoreInfo>.Update.Combine();
 
@@ -293,7 +294,7 @@ namespace FortBackend.src.App.Routes.Development
                     return NotFound();
                 }
             }
-            catch (Exception ex)
+            catch /*(Exception ex)*/
             {
 
                 return StatusCode(500, "Internal Server Error");

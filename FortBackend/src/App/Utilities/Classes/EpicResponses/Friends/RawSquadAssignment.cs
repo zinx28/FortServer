@@ -8,7 +8,7 @@
     }
     public class RawSquadAssignment
     {
-        public string memberId { get; set; }
+        public string memberId { get; set; } = string.Empty;
         public int absoluteMemberIdx { get; set; }
     }
 }

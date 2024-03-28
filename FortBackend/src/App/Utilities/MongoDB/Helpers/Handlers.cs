@@ -7,7 +7,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {
     public class Handlers
     {
-        private static IMongoDatabase _database;
+        private static IMongoDatabase? _database;
 
         public static void LaunchDataBase(IMongoDatabase database)
         {
@@ -24,14 +24,19 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     return "Error";
                 }
 
-                var collection = _database.GetCollection<T>(typeof(T).Name);
-                var filterBuilder = Builders<T>.Filter;
-                var exactValue = Regex.Escape(valueData.ToString());
-                var regexPattern = $"^{exactValue}$";
-                var filter = filterBuilder.Regex(FindData, new BsonRegularExpression(regexPattern));
-                var result = await collection.Find(filter).ToListAsync();
+                if(_database != null)
+                {
+                    var collection = _database.GetCollection<T>(typeof(T).Name);
+                    var filterBuilder = Builders<T>.Filter;
+                    var exactValue = Regex.Escape(valueData?.ToString()!);
+                    var regexPattern = $"^{exactValue}$";
+                    var filter = filterBuilder.Regex(FindData, new BsonRegularExpression(regexPattern));
+                    var result = await collection.Find(filter).ToListAsync();
 
-                if (result != null && result.Any()) return JsonConvert.SerializeObject(result);
+                    if (result != null && result.Any()) return JsonConvert.SerializeObject(result);
+                }
+
+               
             }
             catch (Exception ex)
             {

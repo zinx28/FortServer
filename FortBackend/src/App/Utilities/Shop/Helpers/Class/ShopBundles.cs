@@ -6,8 +6,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Class
 {
     public class ShopBundles
     {
-        public List<ShopBundlesItem> Daily { get; set; } 
-        public List<ShopBundlesItem> Weekly { get; set; }
+        public List<ShopBundlesItem> Daily { get; set; } = new List<ShopBundlesItem>();
+        public List<ShopBundlesItem> Weekly { get; set; } = new List<ShopBundlesItem>();
         public string LastShownDate { get; set; } = string.Empty;
     }
 

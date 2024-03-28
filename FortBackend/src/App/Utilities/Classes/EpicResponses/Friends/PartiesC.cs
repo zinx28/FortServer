@@ -2,8 +2,8 @@
 {
     public class PartiesC
     {
-        public ConfigObject config { get; set; }
-        public JoinInfo join_info { get; set; }
+        public ConfigObject config { get; set; } = new ConfigObject();
+        public JoinInfo join_info { get; set; } = new JoinInfo();
         public Dictionary<string, object> meta { get; set; } = new Dictionary<string, object>();
     }
 
@@ -17,7 +17,7 @@
 
     public class JoinInfo 
     {
-        public JoinInfoConnection connection { get; set; }
+        public JoinInfoConnection connection { get; set; } = new JoinInfoConnection();
         public Dictionary<string, object> meta { get; set; } = new Dictionary<string, object>();
     }
 

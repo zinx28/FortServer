@@ -203,7 +203,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public Dictionary<string, int> BanCount { get; set; } = new Dictionary<string, int>();
 
         [BsonElement("banTier")]
-        public object BanTier { get; set; }
+        public object BanTier { get; set; } = new object();
     }
 
     public class BanStatus

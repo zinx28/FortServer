@@ -19,7 +19,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots;
                 var slotName = Body.slotName.ToLower();
                 var itemToSlot = Body.itemToSlot.ToLower() ?? "";
-                var IndexWithinSlot = Body.indexWithinSlot = 1;
+                var IndexWithinSlot = Body.indexWithinSlot;
+                if (IndexWithinSlot > 6)
+                {
+                    IndexWithinSlot = 6;
+                }
+               
                 Console.WriteLine(JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena));
 
                 if (UpdatedData != null)
@@ -72,9 +77,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             }
                         });
                     }
-
-                    Console.WriteLine(JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena));
-
 
                     if (ProfileChanges.Count > 0)
                     {

@@ -10,24 +10,23 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         public static async Task SaveToDB(string AccountId)
         {
             var GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
-            Console.WriteLine("SAVING DATA2");
+
             if (!GrabData.Equals(default(KeyValuePair<string, ProfileCacheEntry>)))
             {
-                Console.WriteLine("SAVING DATA");
                 var filter1 = Builders<User>.Filter.Eq(x => x.AccountId, AccountId);
                 var filter2 = Builders<Account>.Filter.Eq(x => x.AccountId, AccountId);
                 var filter3 = Builders<UserFriends>.Filter.Eq(x => x.AccountId, AccountId);
 
-                var collection = MongoDBStart.Database.GetCollection<User>("User");
-                var collection2 = MongoDBStart.Database.GetCollection<Account>("Account");
-                var collection3 = MongoDBStart.Database.GetCollection<UserFriends>("UserFriends");
+                var collection = MongoDBStart.Database?.GetCollection<User>("User");
+                var collection2 = MongoDBStart.Database?.GetCollection<Account>("Account");
+                var collection3 = MongoDBStart.Database?.GetCollection<UserFriends>("UserFriends");
 
-                Console.WriteLine(JsonConvert.SerializeObject(GrabData.Value.AccountData.athena));
-
-
-                collection.ReplaceOne(filter1, GrabData.Value.UserData);
-                collection2.ReplaceOne(filter2, GrabData.Value.AccountData);
-                collection3.ReplaceOne(filter3, GrabData.Value.UserFriends);
+                if (collection != null && collection2 != null && collection3 != null)
+                {
+                    await collection.ReplaceOneAsync(filter1, GrabData.Value.UserData);
+                    await collection2.ReplaceOneAsync(filter2, GrabData.Value.AccountData);
+                    await collection3.ReplaceOneAsync(filter3, GrabData.Value.UserFriends);
+                }
             }
 
             return;

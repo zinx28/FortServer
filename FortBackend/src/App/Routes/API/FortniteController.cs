@@ -99,7 +99,7 @@ namespace FortBackend.src.App.Routes.API
 
         //socialban/api/public/v1/
         [HttpGet("/socialban/api/public/v1/{accountId}")]
-        public async Task<IActionResult> SocialBan(string accountId)
+        public IActionResult SocialBan(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(new
@@ -118,7 +118,7 @@ namespace FortBackend.src.App.Routes.API
             int globalcash = 0;
             if (AccountData != "Error")
             {
-                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
                 if (AccountDataParsed != null)
                 {
                     globalcash = AccountDataParsed.athena.Gold;
@@ -135,7 +135,7 @@ namespace FortBackend.src.App.Routes.API
         }
 
         [HttpPost("feedback/{random}")]
-        public async Task<IActionResult> PostBug()
+        public IActionResult PostBug()
         {
             return Ok(new {});
         }

@@ -21,7 +21,7 @@ namespace FortBackend.src.App.Routes.API
     public class ApisController : ControllerBase
     {
         [HttpPost("/datarouter/api/v1/public/data")]
-        public async Task<IActionResult> DataRouter()
+        public IActionResult DataRouter()
         {
             //var queryParameters = HttpContext.Request.Query;
             //Console.WriteLine("Query Parameters:");
@@ -80,8 +80,8 @@ namespace FortBackend.src.App.Routes.API
             Response.ContentType = "application/json";
             try
             {
-                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
-                if (AccountData != "Error")
+                var profileCacheEntry = await GrabData.Profile(accountId);
+                if (profileCacheEntry != null)
                 {
                     var userAgent = Request.Headers["User-Agent"].ToString();
                     int Season;
@@ -96,132 +96,123 @@ namespace FortBackend.src.App.Routes.API
                     string json2 = System.IO.File.ReadAllText(filePath2);
                     var jsonResponse2 = JsonConvert.DeserializeObject<List<TemplateC>>(json2);
 
-                    foreach (var templateC in jsonResponse2)
+                    if (jsonResponse2 != null)
                     {
-                        if (templateC.eventTemplateId.Contains("S15"))
+                        foreach (var templateC in jsonResponse2)
                         {
-                            templateC.eventTemplateId = templateC.eventTemplateId.Replace("S15", $"S{Season}");
+                            if (templateC.eventTemplateId.Contains("S15"))
+                            {
+                                templateC.eventTemplateId = templateC.eventTemplateId.Replace("S15", $"S{Season}");
+                            }
                         }
                     }
 
-                    foreach (EventC templateC in jsonResponse)
+                    if (jsonResponse != null)
                     {
-                        if (templateC.eventId.Contains("S15"))
+                        foreach (EventC templateC in jsonResponse)
                         {
-                            templateC.eventId = templateC.eventId.Replace("S15", $"S{Season}");
-                        }
-
-                        foreach (EventWindowC EventWindowOb in templateC.eventWindows)
-                        {
-                            if (EventWindowOb.eventTemplateId.Contains("S15"))
+                            if (templateC.eventId.Contains("S15"))
                             {
-                                EventWindowOb.eventTemplateId = EventWindowOb.eventTemplateId.Replace("S15", $"S{Season}");
+                                templateC.eventId = templateC.eventId.Replace("S15", $"S{Season}");
                             }
-                            if (EventWindowOb.eventWindowId.Contains("S15"))
-                            {
-                                EventWindowOb.eventWindowId = EventWindowOb.eventWindowId.Replace("S15", $"S{Season}");
-                            }
-                            EventWindowOb.requireAllTokens = EventWindowOb.requireAllTokens.Select(s => s.Contains("S15") ? s.Replace("S15", $"S{Season}") : s).ToArray();
-                            EventWindowOb.requireNoneTokensCaller = EventWindowOb.requireNoneTokensCaller.Select(s => s.Contains("S15") ? s.Replace("S15", $"S{Season}") : s).ToArray();
 
+                            foreach (EventWindowC EventWindowOb in templateC.eventWindows)
+                            {
+                                if (EventWindowOb.eventTemplateId.Contains("S15"))
+                                {
+                                    EventWindowOb.eventTemplateId = EventWindowOb.eventTemplateId.Replace("S15", $"S{Season}");
+                                }
+                                if (EventWindowOb.eventWindowId.Contains("S15"))
+                                {
+                                    EventWindowOb.eventWindowId = EventWindowOb.eventWindowId.Replace("S15", $"S{Season}");
+                                }
+                                EventWindowOb.requireAllTokens = EventWindowOb.requireAllTokens.Select(s => s.Contains("S15") ? s.Replace("S15", $"S{Season}") : s).ToArray();
+                                EventWindowOb.requireNoneTokensCaller = EventWindowOb.requireNoneTokensCaller.Select(s => s.Contains("S15") ? s.Replace("S15", $"S{Season}") : s).ToArray();
+
+                            }
                         }
                     }
-
-
-
-                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
                         
-                    if (AccountDataParsed != null)
+
+                    bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
+                    string[] tokens = new string[0];
+                    if (Season >= 8 && Season < 23)
                     {
-                        bool FoundSeasonDataInProfile = AccountDataParsed.commoncore.Seasons.Any(season => season.SeasonNumber == Season);
-                        string[] tokens = new string[0];
+                        tokens = new string[] {
+                            $"ARENA_S{Season}_Division1"
+                        };
+                    }
+                    if (!FoundSeasonDataInProfile)
+                    {
+                        profileCacheEntry.AccountData.commoncore.Seasons.Add(new SeasonClass
+                        {
+                            SeasonNumber = Season,
+                            BookLevel = 1,
+                            BookXP = 0,
+                            BookPurchased = false,
+                            Quests = new List<Dictionary<string, object>>(),
+                            BattleStars = 0,
+                            DailyQuests = new DailyQuests
+                            {
+                                Interval = "0001-01-01T00:00:00.000Z",
+                                Rerolls = 1
+                            },
+                            events = new Events
+                            {
+                                tokens = tokens
+                            }
+                        });
+                    }
+
+                    SeasonClass seasonObject = profileCacheEntry.AccountData.commoncore.Seasons!.FirstOrDefault(season => season.SeasonNumber == Season)!;
+
+                    if (seasonObject != null)
+                    {
+                        dynamic persistentScores = new ExpandoObject();
+                        persistentScores.Hype = seasonObject.events.persistentScores.Hype;
+                        ((IDictionary<string, object>)persistentScores)[$"Hype_{Season}"] = seasonObject.events.persistentScores.Hype;
                         if (Season >= 8 && Season < 23)
                         {
-                            tokens = new string[] {
-                                $"ARENA_S{Season}_Division1"
-                            };
-                        }
-                        if (!FoundSeasonDataInProfile)
-                        {
-                            string seasonJson = JsonConvert.SerializeObject(new SeasonClass
+                            return Content(JsonConvert.SerializeObject(new
                             {
-                                SeasonNumber = Season,
-                                BookLevel = 1,
-                                BookXP = 0,
-                                BookPurchased = false,
-                                Quests = new List<Dictionary<string, object>>(),
-                                BattleStars = 0,
-                                DailyQuests = new DailyQuests
+                                events = jsonResponse,
+                                player = new
                                 {
-                                    Interval = "0001-01-01T00:00:00.000Z",
-                                    Rerolls = 1
+                                    accountId,
+                                    gameId = "Fortnite",
+                                    groupIdentity = new { },
+                                    pendingPayouts = new List<string>(),
+                                    pendingPenalties = new { },
+                                    persistentScores = new
+                                    {
+                                        seasonObject.events.persistentScores.Hype,
+                                    },
+                                    teams = new { },
+                                    seasonObject.events.tokens,
                                 },
-                                events = new Events
-                                {
-                                    tokens = tokens
-                                }
-                            });
-
-                            await Handlers.PushOne<Account>("accountId", accountId, new Dictionary<string, object>
-                            {
-                                {
-                                    "commoncore.Season", BsonDocument.Parse(seasonJson)
-                                }
-                            });
-
-                            AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", accountId))[0];
-                        }
-
-                        SeasonClass seasonObject = AccountDataParsed.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season);
-
-                        if (seasonObject != null)
+                                templates = jsonResponse2,
+                            }));
+                        }else
                         {
-                            dynamic persistentScores = new ExpandoObject();
-                            persistentScores.Hype = seasonObject.events.persistentScores.Hype;
-                            ((IDictionary<string, object>)persistentScores)[$"Hype_{Season}"] = seasonObject.events.persistentScores.Hype;
-                            if (Season >= 8 && Season < 23)
+                            return Content(JsonConvert.SerializeObject(new
                             {
-                                return Content(JsonConvert.SerializeObject(new
+                                events = new List<object>(),
+                                player = new
                                 {
-                                    events = jsonResponse,
-                                    player = new
+                                    accountId,
+                                    gameId = "Fortnite",
+                                    groupIdentity = new { },
+                                    pendingPayouts = new List<string>(),
+                                    pendingPenalties = new { },
+                                    persistentScores = new
                                     {
-                                        accountId,
-                                        gameId = "Fortnite",
-                                        groupIdentity = new { },
-                                        pendingPayouts = new List<string>(),
-                                        pendingPenalties = new { },
-                                        persistentScores = new
-                                        {
-                                            seasonObject.events.persistentScores.Hype,
-                                        },
-                                        teams = new { },
-                                        seasonObject.events.tokens,
+                                        seasonObject.events.persistentScores.Hype,
                                     },
-                                    templates = jsonResponse2,
-                                }));
-                            }else
-                            {
-                                return Content(JsonConvert.SerializeObject(new
-                                {
-                                    events = new List<object>(),
-                                    player = new
-                                    {
-                                        accountId,
-                                        gameId = "Fortnite",
-                                        groupIdentity = new { },
-                                        pendingPayouts = new List<string>(),
-                                        pendingPenalties = new { },
-                                        persistentScores = new
-                                        {
-                                            seasonObject.events.persistentScores.Hype,
-                                        },
-                                        teams = new { },
-                                        seasonObject.events.tokens,
-                                    },
-                                    templates = new List<object>(),
-                                }));
-                            }
+                                    teams = new { },
+                                    seasonObject.events.tokens,
+                                },
+                                templates = new List<object>(),
+                            }));
                         }
                     }
                 }
@@ -261,7 +252,7 @@ namespace FortBackend.src.App.Routes.API
                     if (Users != "Error")
                     {
                         Console.WriteLine(Users);
-                        List<User> FortniteList = JsonConvert.DeserializeObject<List<User>>(Users);
+                        List<User> FortniteList = JsonConvert.DeserializeObject<List<User>>(Users)!;
                         Console.WriteLine("TEST2");
                         if (FortniteList != null)
                         {
@@ -309,15 +300,14 @@ namespace FortBackend.src.App.Routes.API
 
                 if (FormRequest.TryGetValue("accountId", out var accountId1))
                 {
-                    accountId = accountId1;
+                    if(!string.IsNullOrEmpty(accountId1)) 
+                         accountId = accountId1!;
                 }
 
-
-                Console.WriteLine(accountId);
                 var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
                 if (AccountData != "Error")
                 {
-                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)?[0];
+                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
                     if (AccountDataParsed != null)
                     {
                         //return Ok(new List<object>() {

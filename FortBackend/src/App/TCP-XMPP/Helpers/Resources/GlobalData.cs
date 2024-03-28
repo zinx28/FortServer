@@ -39,33 +39,33 @@ namespace FortBackend.src.App.TCP_XMPP.Helpers.Resources
 
     public class Connection
     {
-        public string id { get; set; }
-        public Dictionary<string, object> meta { get; set; }
+        public string id { get; set; } = string.Empty;
+        public Dictionary<string, object> meta { get; set; } = new Dictionary<string, object>();
     }
 
     public class Meta
     {
-        public Dictionary<string, object> meta { get; set; }
-        public List<Connection> connections { get; set; }
+        public Dictionary<string, object> meta { get; set; } = new Dictionary<string, object>();
+        public List<Connection> connections { get; set; } = new List<Connection>();
         public int revision { get; set; }
-        public string updated_at { get; set; }
-        public string joined_at { get; set; }
-        public string role { get; set; }
+        public string updated_at { get; set; } = string.Empty;
+        public string joined_at { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
     }
 
     public class Parties
     {
         public string id { get; set; } = string.Empty;
         public string privacy { get; set; } = "PUBLIC";
-        public string created_at { get; set; }
-        public string updated_at { get; set; }
-        public object config { get; set; }
-        public List<Members> members { get; set; }
-        public List<object> applicants { get; set; }
-        public Dictionary<string, object> meta { get; set; }
-        public List<object> invites { get; set; }
+        public string created_at { get; set; } = string.Empty;
+        public string updated_at { get; set; } = string.Empty;
+        public object config { get; set; } = new object();
+        public List<Members> members { get; set; } = new List<Members>();
+        public List<object> applicants { get; set; } = new List<object>();
+        public Dictionary<string, object> meta { get; set; } = new Dictionary<string, object>();
+        public List<object> invites { get; set; } = new List<object>();
         public int revision { get; set; }
-        public List<object> intentions { get; set; }
+        public List<object> intentions { get; set; } = new List<object>();
 
 
     }
@@ -101,12 +101,12 @@ namespace FortBackend.src.App.TCP_XMPP.Helpers.Resources
 
     public class Clients
     {
-        public Socket Client { get; set; }
+        public Socket Client { get; set; } = null!;
         public string displayName { get; set; } = string.Empty;
         public string token { get; set; } = string.Empty;
         public string jid { get; set; } = string.Empty;
         public string resource { get; set; } = string.Empty;
-        public lastPresenceUpdate lastPresenceUpdate { get; set; }
+        public lastPresenceUpdate lastPresenceUpdate { get; set; } = new lastPresenceUpdate();
         public string accountId { get; set; } = string.Empty;
 
         // PARTY V2? stuff i think~

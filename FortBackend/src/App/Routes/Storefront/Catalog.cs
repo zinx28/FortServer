@@ -57,7 +57,7 @@ namespace FortBackend.src.App.Routes.Storefront
                         intent = "prod"
                     });
                 }
-                ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
+                ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json)!;
 
                 //string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/test.json");
                 //string json1 = System.IO.File.ReadAllText(filePath1);
@@ -105,13 +105,16 @@ namespace FortBackend.src.App.Routes.Storefront
                             intent = "prod"
                         });
                     }
-                    List<catalogEntrie> OgShopJson = JsonConvert.DeserializeObject<List<catalogEntrie>>(OGJson);
+                    List<catalogEntrie> OgShopJson = JsonConvert.DeserializeObject<List<catalogEntrie>>(OGJson)!;
 
-                    ShopObject.storefronts.Add(new
+                    if (OgShopJson != null)
                     {
-                        name = "BRSeasonStorefront",
-                        catalogEntries = OgShopJson
-                    });
+                        ShopObject.storefronts.Add(new
+                        {
+                            name = "BRSeasonStorefront",
+                            catalogEntries = OgShopJson
+                        });
+                    }
 
                     return Ok(ShopObject);
                 }

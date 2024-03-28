@@ -80,7 +80,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         {
                             profileCacheEntry.AccountData.athena.RVN = +1;
                         }
-                        Console.WriteLine("CORRECT SEASON!");
+
                         DailyQuests quest_manager = seasonObject.DailyQuests;
                         DateTime inputDateTime1;
                         if (DateTime.TryParseExact(quest_manager.Interval, "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out inputDateTime1)) { }
@@ -161,16 +161,37 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         var ProfileChange = AthenaClass.profileChanges[0] as ProfileChange;
                         if (ProfileChange != null)
                         {
+                            Console.WriteLine(JsonConvert.SerializeObject(profileCacheEntry));
+                            foreach (var kvp in profileCacheEntry.AccountData.athena.loadouts_data)
+                            {
+                                ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
+
+                                if (kvp.Key == "sandbox_loadout" && ProfileChange.Profile.stats.attributes != null)
+                                {
+                                    AthenaStatsAttributes LoadoutAttributes = ProfileChange.Profile.stats.attributes as AthenaStatsAttributes;
+                                    if (LoadoutAttributes != null)
+                                    {
+                                        LoadoutAttributes.favorite_backpack = kvp.Value.attributes.locker_slots_data.slots.backpack.items[0];
+                                        LoadoutAttributes.favorite_character = kvp.Value.attributes.locker_slots_data.slots.character.items[0];
+                                        LoadoutAttributes.favorite_dance = kvp.Value.attributes.locker_slots_data.slots.dance.items;
+                                        LoadoutAttributes.favorite_glider = kvp.Value.attributes.locker_slots_data.slots.glider.items[0];
+                                        LoadoutAttributes.favorite_itemwraps = kvp.Value.attributes.locker_slots_data.slots.itemwrap.items;
+                                        LoadoutAttributes.favorite_loadingscreen = kvp.Value.attributes.locker_slots_data.slots.loadingscreen.items[0];
+                                        LoadoutAttributes.favorite_musicpack = kvp.Value.attributes.locker_slots_data.slots.musicpack.items[0];
+                                        LoadoutAttributes.favorite_pickaxe = kvp.Value.attributes.locker_slots_data.slots.pickaxe.items[0];
+                                        LoadoutAttributes.favorite_skydivecontrail = kvp.Value.attributes.locker_slots_data.slots.skydivecontrail.items[0];
+                                        LoadoutAttributes.banner_color = kvp.Value.attributes.banner_color_template;
+                                        LoadoutAttributes.banner_icon = kvp.Value.attributes.banner_icon_template;
+                                    }
+                                }
+                            }
+
                             foreach (var kvp in profileCacheEntry.AccountData.athena.Items)
                             {
                                 ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
                             }
 
-                            foreach (var kvp in profileCacheEntry.AccountData.athena.loadouts_data)
-                            {
-                                ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
-                            }
-
+                            Console.WriteLine(JsonConvert.SerializeObject(AthenaClass));
                             int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.Select((pair, index) => (pair.Key, pair.Value, index))
                             .TakeWhile(pair => !pair.Key.Equals("Currency")).Count();
 
@@ -194,8 +215,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     }
                                 }
                             }
+                        }else
+                        {
+                            Logger.Error("WHY IS THIS NULL WTFFFFFFFFFFF");
                         }
-                    
+
+                       
+
+
+
 
 
                         return AthenaClass;

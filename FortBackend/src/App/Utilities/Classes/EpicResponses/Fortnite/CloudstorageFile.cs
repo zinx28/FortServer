@@ -10,7 +10,7 @@
         public string contentType { get; set; } = "application/octet-stream";
         public DateTime uploaded { get; set; }
         public string storageType { get; set; } = string.Empty;
-        public object storageIds { get; set; }
+        public object storageIds { get; set; } = new object();
         public string accountId { get; set; } = string.Empty;
         public bool doNotCache { get; set; }
     }

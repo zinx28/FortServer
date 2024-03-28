@@ -3,6 +3,7 @@ using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.XMPP.Helpers.Resources;
 using FortBackend.src.App.XMPP.Helpers.Send;
 using Newtonsoft.Json;
+using System;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
@@ -34,7 +35,7 @@ namespace FortBackend.src.App.XMPP.Root
                         Console.WriteLine(xmlDoc.Root?.Attribute("type")?.Value);
                         XNamespace mucNamespace = "http://jabber.org/protocol/muc";
                         //XNamespace mucNamespace = "http://jabber.org/protocol/muc#user";
-                        XElement MUCX = xmlDoc.Root.Descendants().FirstOrDefault(i => i.Name == mucNamespace + "x" || i.Name == "x");
+                        XElement MUCX = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name == mucNamespace + "x" || i.Name == "x")!;
                         if (MUCX == null)
                         {
                             Console.WriteLine("Blank");
@@ -84,10 +85,10 @@ namespace FortBackend.src.App.XMPP.Root
 
                         XElement featuresElement = new XElement(clientNs + "presence",
                             new XAttribute("to", dataSaved.JID),
-                            new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeUriString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                            new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
                             new XElement(fdsfdsdsfds + "x",
                                 new XElement("item",
-                                    new XAttribute("nick", $"{Uri.EscapeUriString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                    new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
                                     new XAttribute("jid", dataSaved.JID),
                                     new XAttribute("role", "participant"),
                                     new XAttribute("affiliation", "none")
@@ -103,19 +104,19 @@ namespace FortBackend.src.App.XMPP.Root
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
                         await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                        if (GlobalData.Rooms.TryGetValue(RoomName, out RoomsLessDyanmic RoomData))
+                        if (GlobalData.Rooms.TryGetValue(RoomName, out RoomsLessDyanmic? RoomData))
                         {
                             Console.WriteLine("TEST  " + RoomData);
                             foreach (var member in RoomData.members)
                             {
-                                Clients ClientData = GlobalData.Clients.Find(i => i.accountId == member.accountId);
+                                Clients ClientData = GlobalData.Clients.Find(i => i.accountId == member.accountId)!;
                                 if (ClientData == null) { return; }
                                 XElement presenceElement = new XElement(clientNs + "presence",
-                                    new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeUriString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
+                                    new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
                                     new XAttribute("to", ClientData.jid),
                                     new XElement(fdsfdsdsfds + "x",
                                             new XElement("item",
-                                            new XAttribute("nick", $"{Uri.EscapeUriString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
+                                            new XAttribute("nick", $"{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
                                             new XAttribute("jid", ClientData.jid),
                                             new XAttribute("role", "participant"),
                                             new XAttribute("affiliation", "none")
@@ -133,11 +134,11 @@ namespace FortBackend.src.App.XMPP.Root
                                 }
 
                                 presenceElement = new XElement(clientNs + "presence",
-                                    new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeUriString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                    new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
                                     new XAttribute("to", dataSaved.JID),
                                      new XElement(fdsfdsdsfds + "x",
                                         new XElement("item",
-                                            new XAttribute("nick", $"{Uri.EscapeUriString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                            new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
                                             new XAttribute("jid", dataSaved.JID),
                                             new XAttribute("role", "participant"),
                                             new XAttribute("affiliation", "none")
@@ -172,7 +173,7 @@ namespace FortBackend.src.App.XMPP.Root
                         break;
 
                 }
-                XElement findStatus = xmlDoc.Root.Descendants().FirstOrDefault(i => i.Name == "status");
+                XElement findStatus = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name == "status")!;
 
                 if (findStatus == null || string.IsNullOrEmpty(findStatus.Value))
                 {
@@ -181,8 +182,7 @@ namespace FortBackend.src.App.XMPP.Root
                 object GrabbedStatus = "";
                 try
                 {
-                    GrabbedStatus = JsonConvert.DeserializeObject(findStatus.Value);
-                    Console.WriteLine("TEST TEST2 " + GrabbedStatus);
+                    GrabbedStatus = JsonConvert.DeserializeObject(findStatus.Value)!;
                 }
                 catch (JsonReaderException ex)
                 {
@@ -193,7 +193,7 @@ namespace FortBackend.src.App.XMPP.Root
                 if (GrabbedStatus != null)
                 {
                     string status = findStatus.Value;
-                    bool away = xmlDoc.Root.Descendants().Any(i => i.Name == "show") ? true : false;
+                    bool away = xmlDoc.Root?.Descendants().Any(i => i.Name == "show") ?? false ? true : false;
                     Console.WriteLine("TEST + " + findStatus);
 
                     await XmppFriend.UpdatePresenceForFriends(webSocket, status, away, false);

@@ -125,7 +125,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Send
                 var receiver = GlobalData.Clients.FirstOrDefault(i =>
                 {
                     string[] jidParts = i.jid.Split('/');
-                    return jidParts[0] == (string)xmlDoc.Root.Attribute("to") || i.jid == (string)xmlDoc.Root.Attribute("to");
+                    return jidParts[0] == (string)xmlDoc.Root?.Attribute("to")! || i.jid == (string)xmlDoc.Root?.Attribute("to")!;
                 });
                 if (receiver != null)
                 {
@@ -133,7 +133,7 @@ namespace FortBackend.src.App.XMPP.Helpers.Send
                     XNamespace clientNs1 = "jabber:client";
                     XElement message = new XElement(clientNs1 + "message",
                         new XAttribute("from", JID),
-                        new XAttribute("id", (string)xmlDoc.Root.Attribute("id")),
+                        new XAttribute("id", (string)xmlDoc.Root?.Attribute("id")!),
                         new XAttribute("to", receiver.jid),
                         new XElement("body", body)
                     );

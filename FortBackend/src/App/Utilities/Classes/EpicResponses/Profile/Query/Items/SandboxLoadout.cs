@@ -1,5 +1,6 @@
 ﻿
 
+using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items
@@ -24,6 +25,10 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
     {
         [JsonProperty("locker_slots_data")]
         public SandboxLoadoutSlots locker_slots_data { get; set; } = new SandboxLoadoutSlots();
+        
+        [JsonProperty("use_count")]
+        public int use_count { get; set; } = 0;
+
         [JsonProperty("banner_icon_template")]
         public string banner_icon_template { get; set; } = string.Empty;
         [JsonProperty("banner_color_template")]
@@ -32,10 +37,9 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
         public string locker_name { get; set; } = string.Empty;
         [JsonProperty("favorite")]
         public bool favorite { get; set; } = false;
-        [JsonProperty("use_count")]
-        public int use_count { get; set; } = 1;
+
         [JsonProperty("item_seen")]
-        public bool item_seen { get; set; } = true;
+        public bool item_seen { get; set; } = false;
 
 
     }
@@ -93,9 +97,10 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
     public class Slots
     {
         [JsonProperty("items")]
-        public List<string> items { get; set; } = new List<string>();
-        [JsonProperty("activeVariants")]
-        public List<object> activeVariants { get; set; } = new List<object>();
+        public List<string> items { get; set; } = new List<string>(); 
+
+        [JsonProperty("activevariants")]
+        public List<object> activevariants { get; set; } = new List<object>();
     }
 
     public class Loadout

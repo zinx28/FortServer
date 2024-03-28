@@ -13,10 +13,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         public string Id { get; set; }
 
         [BsonElement("DiscordId")]
-        public string DiscordId { get; set; }
+        public string DiscordId { get; set; } = string.Empty;
 
         [BsonElement("accountId")]
-        public string AccountId { get; set; }
+        public string AccountId { get; set; } = string.Empty;
 
 
         [BsonElement("incoming")]

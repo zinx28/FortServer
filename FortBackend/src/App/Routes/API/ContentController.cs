@@ -30,7 +30,7 @@ namespace FortBackend.src.App.Routes.API
                 }
 
                 var cacheKey = $"ContentEndpointKey-{season}";
-                if (memoryCache.TryGetValue(cacheKey, out ContentJson cachedResult))
+                if (memoryCache.TryGetValue(cacheKey, out ContentJson? cachedResult))
                 {
                     return cachedResult;
                 }

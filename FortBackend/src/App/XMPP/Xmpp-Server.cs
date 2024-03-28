@@ -11,7 +11,7 @@ namespace FortBackend.src.App.XMPP
 {
     public class Xmpp_Server
     {
-        public static async Task Intiliazation(string[] args)
+        public static void Intiliazation(string[] args)
         {
             Logger.Log("Initializing Xmpp", "Xmpp");
            

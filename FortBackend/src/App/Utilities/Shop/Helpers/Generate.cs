@@ -26,7 +26,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
 
 
-            List<ShopBundles> skinItems = JsonConvert.DeserializeObject<List<ShopBundles>>(jsonContent);
+            List<ShopBundles> skinItems = JsonConvert.DeserializeObject<List<ShopBundles>>(jsonContent)!;
             if (skinItems != null)
             {
                 int randomIndex = random.Next(skinItems.Count);
@@ -291,7 +291,13 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/shop/{ChosenItem}.json");
             string jsonContent = File.ReadAllText(filePath);
 
-            List<ShopItems> skinItems = JsonConvert.DeserializeObject<List<ShopItems>>(jsonContent);
+            if(jsonContent == null)
+            {
+                Logger.Error("Chosen Item: " + ChosenItem + " Path isnt found :(");
+                return;
+            }
+
+            List<ShopItems> skinItems = JsonConvert.DeserializeObject<List<ShopItems>>(jsonContent)!;
 
             if (skinItems != null)
             {

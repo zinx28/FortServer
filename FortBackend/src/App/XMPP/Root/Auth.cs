@@ -38,13 +38,13 @@ namespace FortBackend.src.App.XMPP.Root
                     string decodedContent = Encoding.UTF8.GetString(decodedBytes);
                     string[] splitContent = decodedContent.Split('\u0000');
 
-                    TokenData foundClient = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2]);
+                    TokenData foundClient = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2])!;
                     if (foundClient == null)
                     {
                         await Client.CloseClient(webSocket);
                         return;
                     }
-                    Clients wow = GlobalData.Clients.FirstOrDefault(i => i.accountId == foundClient.accountId);
+                    Clients wow = GlobalData.Clients.FirstOrDefault(i => i.accountId == foundClient.accountId)!;
                     if (wow != null)
                     {
                         await Client.CloseClient(webSocket);
@@ -54,7 +54,7 @@ namespace FortBackend.src.App.XMPP.Root
                     var UserData = await Handlers.FindOne<User>("accountId", foundClient.accountId);
                     if (UserData != "Error")
                     {
-                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0];
+                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
                         if (UserDataParsed == null)
                         {
                             await Client.CloseClient(webSocket);

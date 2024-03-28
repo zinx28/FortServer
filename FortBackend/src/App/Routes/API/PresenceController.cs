@@ -7,28 +7,28 @@ namespace FortBackend.src.App.Routes.API
     public class PresenceController : ControllerBase
     {
         [HttpGet("_/{accountId}/settings/subscriptions")]
-        public async Task<ActionResult> GrabSettings(string accountId)
+        public ActionResult GrabSettings(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());
         }
 
         [HttpGet("_/{accountId}/last-online")]
-        public async Task<ActionResult> GrabLastOnline(string accountId)
+        public ActionResult GrabLastOnline(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());
         }
 
         [HttpGet("_/{accountId}/subscriptions")]
-        public async Task<ActionResult> SubWow(string accountId)
+        public ActionResult SubWow(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());
         }
 
         [HttpGet("_/{accountId}/subscriptions/nudged")]
-        public async Task<ActionResult> GrabNudged(string accountId)
+        public ActionResult GrabNudged(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());
@@ -36,7 +36,7 @@ namespace FortBackend.src.App.Routes.API
 
 
         [HttpPost("{accountId}/subscriptions/broadcast")]
-        public async Task<ActionResult> Subscriptionsbroadcast(string accountId)
+        public ActionResult Subscriptionsbroadcast(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());

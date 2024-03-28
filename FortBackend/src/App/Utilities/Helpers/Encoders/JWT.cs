@@ -11,8 +11,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Encoders
         public static string GenerateJwtToken(Claim[] claims, int expires)
         {
             var GrabBytes = new byte[32];
-            new RNGCryptoServiceProvider().GetBytes(GrabBytes);
-            // var GrabBytes = Encoding.UTF8.GetBytes(Key);
+            RandomNumberGenerator.Fill(GrabBytes);
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateJwtSecurityToken(new SecurityTokenDescriptor
@@ -30,8 +29,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Encoders
         public static string GenerateRandomJwtToken(int expires, string secret)
         {
             var GrabBytes = new byte[32];
-            new RNGCryptoServiceProvider().GetBytes(GrabBytes);
-            // var GrabBytes = Encoding.UTF8.GetBytes(Key);
+            RandomNumberGenerator.Fill(GrabBytes);
 
             var signingCredentials = Encoding.UTF8.GetBytes(secret);
 
@@ -53,9 +51,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Encoders
             // var key = Convert.FromBase64String(secret);
 
             var GrabBytes = new byte[32];
-            new RNGCryptoServiceProvider().GetBytes(GrabBytes);
-
-            // var signingCredentials = Encoding.UTF8.GetBytes(secret);
+            RandomNumberGenerator.Fill(GrabBytes);
 
             var parameters = new TokenValidationParameters
             {

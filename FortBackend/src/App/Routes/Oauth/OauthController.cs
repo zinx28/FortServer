@@ -201,9 +201,9 @@ namespace FortBackend.src.App.Routes.Oauth
                                 error_description = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid"
                             });
                         }
-                        Console.WriteLine(exchange_token);
+
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, exchange_token);
-                        if (profileCacheEntry.UserData != null)
+                        if (string.IsNullOrEmpty(profileCacheEntry.UserData.AccountId))
                         {
                             DisplayName = profileCacheEntry.UserData.Username;
                             AccountId = profileCacheEntry.UserData.AccountId;
@@ -242,24 +242,25 @@ namespace FortBackend.src.App.Routes.Oauth
                             new Claim("jti", Hex.GenerateRandomHexString(32).ToLower()),
                         }, 24);
 
-                        Console.WriteLine(ClientToken);
-
-                        GlobalData.ClientToken.Add(new TokenData
+                        if(ClientToken != null) // this is never null BUT fixes a warning
                         {
-                            accountId = AccountId,
-                            token = $"eg1~{ClientToken}"
-                        });
+                            GlobalData.ClientToken.Add(new TokenData
+                            {
+                                accountId = AccountId,
+                                token = $"eg1~{ClientToken}"
+                            });
 
-                        return Ok(new
-                        {
-                            access_token = $"eg1~{ClientToken}",
-                            expires_in = 28800,
-                            expires_at = DateTimeOffset.UtcNow.AddHours(4).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                            token_type = "bearer",
-                            client_id = clientId,
-                            internal_client = true,
-                            client_service = "fortnite"
-                        });
+                            return Ok(new
+                            {
+                                access_token = $"eg1~{ClientToken}",
+                                expires_in = 28800,
+                                expires_at = DateTimeOffset.UtcNow.AddHours(4).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                token_type = "bearer",
+                                client_id = clientId,
+                                internal_client = true,
+                                client_service = "fortnite"
+                            });
+                        }
                     break;
 
                     case "refresh_token":

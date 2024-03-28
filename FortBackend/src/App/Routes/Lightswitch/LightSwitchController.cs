@@ -10,14 +10,16 @@ namespace FortBackend.src.App.Routes.Lightswitch
     public class LightSwitchApiController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<List<LightSwitchData>>> LightSwitch()
+        public ActionResult<List<LightSwitchData>> LightSwitch()
         {
             Response.ContentType = "application/json";
 
-            return new List<LightSwitchData>
+            var lightSwitchData = new List<LightSwitchData>
             {
                 new LightSwitchData()
             };
+
+            return Ok(lightSwitchData);
         }
     }
 }

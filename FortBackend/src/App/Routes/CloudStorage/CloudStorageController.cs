@@ -1,13 +1,16 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Fortnite;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.XMPP.Helpers.Resources;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace FortBackend.src.App.Routes.CloudStorage
 {
@@ -16,30 +19,57 @@ namespace FortBackend.src.App.Routes.CloudStorage
     public class CloudStorageApiController : ControllerBase
     {
         [HttpGet("system")]
-        public IActionResult SystemApi()
+        public async Task<IActionResult> SystemApi()
         {
             Response.ContentType = "application/json";
-            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src\\Resources\\ini");
             List<object> files = new List<object>();
-
-            foreach (string filePath in Directory.EnumerateFiles(directoryPath).Where(f => f.EndsWith(".ini")))
+            try
             {
-                FileInfo fileInfo = new FileInfo(filePath);
-                fileInfo.GetHashCode();
-                files.Add(new CloudstorageFile
-                {
-                    uniqueFilename = fileInfo.Name,
-                    filename = fileInfo.Name,
-                    hash = Hex.MakeHexWithString(fileInfo.Name),
-                    hash256 = Hex.MakeHexWithString2(fileInfo.Name),
-                    length = fileInfo.Length,
-                    contentType = "text/plain",
-                    uploaded = fileInfo.CreationTimeUtc,
-                    storageType = "S3",
-                    doNotCache = false
-                });
-            }
+                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
+                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
 
+                var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
+                if (FoundAccount == null)
+                {
+                    FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
+                    if (FoundAccount == null)
+                    {
+                        FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
+                    }
+                }
+
+                if (FoundAccount != null)
+                {
+                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                    {
+                        string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src\\Resources\\ini");
+
+
+                        foreach (string filePath in Directory.EnumerateFiles(directoryPath).Where(f => f.EndsWith(".ini")))
+                        {
+                            FileInfo fileInfo = new FileInfo(filePath);
+                            fileInfo.GetHashCode();
+                            files.Add(new CloudstorageFile
+                            {
+                                uniqueFilename = fileInfo.Name,
+                                filename = fileInfo.Name,
+                                hash = Hex.MakeHexWithString(fileInfo.Name),
+                                hash256 = Hex.MakeHexWithString2(fileInfo.Name),
+                                length = fileInfo.Length,
+                                contentType = "text/plain",
+                                uploaded = fileInfo.CreationTimeUtc,
+                                storageType = "S3",
+                                doNotCache = false
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "Cloudstorage | SystemApi");
+            }
 
             return new JsonResult(files);
         }
@@ -51,27 +81,52 @@ namespace FortBackend.src.App.Routes.CloudStorage
         }
 
         [HttpGet("system/{filename}")]
-        public IActionResult SystemFileApi(string filename)
+        public async Task<IActionResult> SystemFileApi(string filename)
         {
             Response.ContentType = "application/octet-stream";
             try
             {
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\{filename}");
+                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
+                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
 
-                if (!System.IO.File.Exists(filePath))
+                var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
+                if (FoundAccount == null)
                 {
-                    return NotFound();
+                    FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
+                    if (FoundAccount == null)
+                    {
+                        FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
+                    }
                 }
 
-                string fileContents = System.IO.File.ReadAllText(filePath);
+                if (FoundAccount != null)
+                {
+                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                    {
+                        if (!Regex.IsMatch(filename, "^[a-zA-Z\\-\\._]+$")) // copied from image api but should prevent people doing stupid things
+                        {
+                            return BadRequest("Invalid parameters");
+                        }
 
-                return Content(fileContents, "text/plain");
+                        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\{filename}");
+
+                        if (!System.IO.File.Exists(filePath))
+                        {
+                            return NotFound();
+                        }
+
+                        string fileContents = System.IO.File.ReadAllText(filePath);
+
+                        return Content(fileContents, "text/plain");
+                    }
+                }
             }
             catch (Exception ex)
             {
                 Logger.Error("CloudStorage FileName -> " + ex.Message);
-                return StatusCode(500);
             }
+            return StatusCode(500);
         }
 
         [HttpGet("user/{id}/{file}")]
@@ -100,59 +155,95 @@ namespace FortBackend.src.App.Routes.CloudStorage
                 return StatusCode(403);
             }
 
-            using (StreamReader reader = new StreamReader(Request.Body, Encoding.Latin1))
+            var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
+            var token = tokenArray.Length > 1 ? tokenArray[1] : "";
+
+            var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
+            if(FoundAccount == null)
             {
-                string requestBody = await reader.ReadToEndAsync();
-
-                string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FortBackend", "ClientSettings");
-
-                if (!Directory.Exists(folderPath))
+                FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
+                if(FoundAccount == null )
                 {
-                    Directory.CreateDirectory(folderPath);
+                    FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
                 }
+            }
 
-                var UserData = await Handlers.FindOne<User>("accountId", accountId);
-                if (UserData != "Error")
+            if (FoundAccount != null)
+            {
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
-                    System.IO.File.WriteAllText(Path.Combine(folderPath, $"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
-                    StatusCode(204);
-                }
+                    using (StreamReader reader = new StreamReader(Request.Body, Encoding.Latin1))
+                    {
+                        string requestBody = await reader.ReadToEndAsync();
 
-                reader.Close();
+                        string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FortBackend", "ClientSettings");
+
+                        if (!Directory.Exists(folderPath))
+                        {
+                            Directory.CreateDirectory(folderPath);
+                        }
+                        
+                        System.IO.File.WriteAllText(Path.Combine(folderPath, $"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
+                        StatusCode(204);
+
+                        reader.Close();
+                    }
+                }
             }
             return NoContent();
         }
 
         [HttpGet("user/{accountId}")]
-        public IActionResult IdUserApi(string accountId)
+        public async Task<IActionResult> IdUserApi(string accountId)
         {
             Response.ContentType = "application/json";
             try
             {
-                string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FortBackend", "ClientSettings", $"ClientSettings-{accountId}.sav");
+                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
+                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
 
-                if (System.IO.File.Exists(filePath))
+                var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
+                if (FoundAccount == null)
                 {
-                    string fileContents = System.IO.File.ReadAllText(filePath);
-                    var fileInfo = new FileInfo(filePath);
-
-                    return Ok(new[]
+                    FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
+                    if (FoundAccount == null)
                     {
-                        new CloudstorageFile
+                        FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
+                    }
+                }
+
+                if (FoundAccount != null)
+                {
+                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                    {
+                        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FortBackend", "ClientSettings", $"ClientSettings-{profileCacheEntry.AccountId}.sav");
+
+                        if (System.IO.File.Exists(filePath))
                         {
-                            uniqueFilename = $"ClientSettings.Sav",
-                            filename = $"ClientSettings.Sav",
-                            hash = Hex.MakeHexWithString(fileInfo.Name),
-                            hash256 = Hex.MakeHexWithString(fileInfo.Name),
-                            length = fileContents.Length,
-                            contentType = "application/octet-stream",
-                            uploaded = fileInfo.LastWriteTime,
-                            storageType = "S3",
-                            storageIds = new { },
-                            accountId = accountId,
-                            doNotCache = false
+                            string fileContents = System.IO.File.ReadAllText(filePath);
+                            var fileInfo = new FileInfo(filePath);
+
+                            return Ok(new[]
+                            {
+                                new CloudstorageFile
+                                {
+                                    uniqueFilename = $"ClientSettings.Sav",
+                                    filename = $"ClientSettings.Sav",
+                                    hash = Hex.MakeHexWithString(fileInfo.Name),
+                                    hash256 = Hex.MakeHexWithString(fileInfo.Name),
+                                    length = fileContents.Length,
+                                    contentType = "application/octet-stream",
+                                    uploaded = fileInfo.LastWriteTime,
+                                    storageType = "S3",
+                                    storageIds = new { },
+                                    accountId = profileCacheEntry.AccountId,
+                                    doNotCache = false
+                                }
+                            });
                         }
-                    });
+                    }
                 }
             }
             catch (Exception ex)

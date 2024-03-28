@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
+﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content;
 using FortBackend.src.App.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -57,7 +58,15 @@ namespace FortBackend.src.App.Routes.API
                 };
 
                 var jsonData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\content.json"));
-                ContentConfig contentconfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData); //dynamicbackgrounds.news
+                if(string.IsNullOrEmpty(jsonData)) {
+                    Logger.Error("CONTENT FILE IS NULL OR EMPTY");
+
+                    return Content(JsonConvert.SerializeObject(ContentJsonResponse, new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore
+                    }), "application/json");
+                }
+                ContentConfig contentconfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData)!; //dynamicbackgrounds.news
 
                 if (contentconfig != null)
                 {

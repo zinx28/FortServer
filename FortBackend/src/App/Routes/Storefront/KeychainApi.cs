@@ -1,5 +1,7 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using MongoDB.Driver;
 
 namespace FortBackend.src.App.Routes.Storefront
@@ -9,7 +11,7 @@ namespace FortBackend.src.App.Routes.Storefront
     public class KeychainApiController : ControllerBase
     {
         [HttpGet("keychain")]
-        public IActionResult GrabKeychain()
+        public IActionResult GrabKeychain([FromServices] IMemoryCache memoryCache)
         {
             Response.ContentType = "application/json";
             try
@@ -22,6 +24,17 @@ namespace FortBackend.src.App.Routes.Storefront
                 }
 
                 string json = System.IO.File.ReadAllText(filePath);
+
+                var cacheKey = $"KeychainEndpointKey";
+                if (memoryCache.TryGetValue(cacheKey, out string? cachedResult))
+                {
+                    if (cachedResult != null) { return Content(cachedResult); }
+                }
+
+                memoryCache.Set(cacheKey, json, new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+                });
 
                 return Content(json);
             }

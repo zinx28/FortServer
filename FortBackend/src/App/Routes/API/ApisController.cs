@@ -7,8 +7,6 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MongoDB.Bson;
-using MongoDB.Driver;
 using Newtonsoft.Json;
 using System.Dynamic;
 using System.IdentityModel.Tokens.Jwt;
@@ -248,12 +246,11 @@ namespace FortBackend.src.App.Routes.API
                 if (!string.IsNullOrEmpty(prefix))
                 {
                     var Users = await Handlers.FindSimilar<User>("Username", prefix, 5, $".*{Regex.Escape(prefix)}\\d*.*");
-                    Console.WriteLine("TEST");
+
                     if (Users != "Error")
                     {
-                        Console.WriteLine(Users);
                         List<User> FortniteList = JsonConvert.DeserializeObject<List<User>>(Users)!;
-                        Console.WriteLine("TEST2");
+
                         if (FortniteList != null)
                         {
                             foreach (User user in FortniteList)
@@ -303,27 +300,22 @@ namespace FortBackend.src.App.Routes.API
                     if(!string.IsNullOrEmpty(accountId1)) 
                          accountId = accountId1!;
                 }
-
-                var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
-                if (AccountData != "Error")
+                var profileCacheEntry = await GrabData.Profile(accountId);
+                if (profileCacheEntry != null)
                 {
-                    Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                    if (AccountDataParsed != null)
-                    {
-                        //return Ok(new List<object>() {
-                        //    new
-                        //    {
-                        //        accountId = accountId,
-                        //        key = "avatar",
-                        //        value = $"{AccountDataParsed.athena.Items[AccountDataParsed.athena.last_applied_loadout]["attributes"]["locker_slots_data"]["slots"]["character"]["items"][0]}"
-                        //    },
-                        //    new {
-                        //        accountId = accountId,
-                        //        key = "avatarBackground",
-                        //        value = "[\"#B4F2FE\",\"#00ACF2\",\"#005679\"]" // TEMP DON't WRRORY!
-                        //    }
-                        //});
-                    }
+                    //return Ok(new List<object>() {
+                    //    new
+                    //    {
+                    //        accountId = accountId,
+                    //        key = "avatar",
+                    //        value = $"{AccountDataParsed.athena.Items[AccountDataParsed.athena.last_applied_loadout]["attributes"]["locker_slots_data"]["slots"]["character"]["items"][0]}"
+                    //    },
+                    //    new {
+                    //        accountId = accountId,
+                    //        key = "avatarBackground",
+                    //        value = "[\"#B4F2FE\",\"#00ACF2\",\"#005679\"]" // TEMP DON't WRRORY!
+                    //    }
+                    //});
                 }
             }
             catch (Exception ex)

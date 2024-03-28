@@ -18,6 +18,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
     [Route("fortnite/api/cloudstorage")]
     public class CloudStorageApiController : ControllerBase
     {
+        // this api doesnt need auth well it sends a auth but not the one we need :)
         [HttpGet("system")]
         public async Task<IActionResult> SystemApi()
         {
@@ -25,45 +26,24 @@ namespace FortBackend.src.App.Routes.CloudStorage
             List<object> files = new List<object>();
             try
             {
-                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
-                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
+                string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src\\Resources\\ini");
 
-                var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
-                if (FoundAccount == null)
+                foreach (string filePath in Directory.EnumerateFiles(directoryPath).Where(f => f.EndsWith(".ini")))
                 {
-                    FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
-                    if (FoundAccount == null)
+                    FileInfo fileInfo = new FileInfo(filePath);
+                    fileInfo.GetHashCode();
+                    files.Add(new CloudstorageFile
                     {
-                        FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
-                    }
-                }
-
-                if (FoundAccount != null)
-                {
-                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
-                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
-                    {
-                        string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src\\Resources\\ini");
-
-
-                        foreach (string filePath in Directory.EnumerateFiles(directoryPath).Where(f => f.EndsWith(".ini")))
-                        {
-                            FileInfo fileInfo = new FileInfo(filePath);
-                            fileInfo.GetHashCode();
-                            files.Add(new CloudstorageFile
-                            {
-                                uniqueFilename = fileInfo.Name,
-                                filename = fileInfo.Name,
-                                hash = Hex.MakeHexWithString(fileInfo.Name),
-                                hash256 = Hex.MakeHexWithString2(fileInfo.Name),
-                                length = fileInfo.Length,
-                                contentType = "text/plain",
-                                uploaded = fileInfo.CreationTimeUtc,
-                                storageType = "S3",
-                                doNotCache = false
-                            });
-                        }
-                    }
+                        uniqueFilename = fileInfo.Name,
+                        filename = fileInfo.Name,
+                        hash = Hex.MakeHexWithString(fileInfo.Name),
+                        hash256 = Hex.MakeHexWithString2(fileInfo.Name),
+                        length = fileInfo.Length,
+                        contentType = "text/plain",
+                        uploaded = fileInfo.CreationTimeUtc,
+                        storageType = "S3",
+                        doNotCache = false
+                    });
                 }
             }
             catch (Exception ex)

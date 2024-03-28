@@ -203,7 +203,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         }
 
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, exchange_token);
-                        if (string.IsNullOrEmpty(profileCacheEntry.UserData.AccountId))
+                        if (!string.IsNullOrEmpty(profileCacheEntry.UserData.AccountId))
                         {
                             DisplayName = profileCacheEntry.UserData.Username;
                             AccountId = profileCacheEntry.UserData.AccountId;

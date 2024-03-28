@@ -49,10 +49,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         {
             try
             {
-                var collection = _database.GetCollection<T>(typeof(T).Name);
+                var collection = _database?.GetCollection<T>(typeof(T).Name);
                 var filterBuilder = Builders<T>.Filter;
                
-                var regexPattern = (BsonRegularExpression)null;
+                var regexPattern = (BsonRegularExpression)null!;
                 if (!string.IsNullOrEmpty(CustomRegex))
                 {
                     Console.WriteLine("T");
@@ -60,7 +60,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 }
                 else
                 {
-                    var exactValue = Regex.Escape(valueData.ToString());
+                    var exactValue = Regex.Escape(valueData.ToString()!);
                     regexPattern = new BsonRegularExpression($"{exactValue}", "i");
                 }
                 
@@ -85,7 +85,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         {
             try
             {
-                var collection = _database.GetCollection<T>(typeof(T).Name);
+                var collection = _database?.GetCollection<T>(typeof(T).Name);
                 var filter = Builders<T>.Filter.Eq(FindValue, valueData);
 
                 var updateDefinitions = new List<UpdateDefinition<T>>();
@@ -108,7 +108,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 }
                 else
                 {
-                    await collection.UpdateOneAsync(filter, combinedUpdate);
+                    await collection?.UpdateOneAsync(filter, combinedUpdate)!;
                     return "Updated";
                 }
 
@@ -125,14 +125,14 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         {
             try
             {
-                var collection = _database.GetCollection<T>(typeof(T).Name);
+                var collection = _database?.GetCollection<T>(typeof(T).Name);
                 var filter = Builders<T>.Filter.Eq(FindData, valueData);
 
 
-                var updateResult = await collection.UpdateOneAsync(
+                var updateResult = await collection?.UpdateOneAsync(
                    filter,
                    Builders<T>.Update.PullFilter(arrayField, Builders<BsonDocument>.Filter.Eq(pullField, pullValue))
-                );
+                )!;
                 if (updateResult.ModifiedCount > 0)
                 {
                     return "Updated";
@@ -153,7 +153,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
         {
             try
             {
-                var collection = _database.GetCollection<T>(typeof(T).Name);
+                var collection = _database?.GetCollection<T>(typeof(T).Name);
                 var filter = Builders<T>.Filter.Eq(FindValue, valueData);
                 var updateDefinitions = new List<UpdateDefinition<T>>();
 
@@ -199,7 +199,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 }
                 else
                 {
-                    await collection.UpdateOneAsync(filter, combinedUpdate);
+                    await collection?.UpdateOneAsync(filter, combinedUpdate)!;
 
                     return "Updated";
                 }

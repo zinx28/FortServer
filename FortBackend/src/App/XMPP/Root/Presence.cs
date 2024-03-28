@@ -48,128 +48,131 @@ namespace FortBackend.src.App.XMPP.Root
                         }
 
                         var RoomName = xmlDoc.Root?.Attribute("to")?.Value.Split("@")[0];
-                        Console.WriteLine("dfsfs");
-                        if (!GlobalData.Rooms.ContainsKey(RoomName))
+                        if (!string.IsNullOrEmpty(RoomName))
                         {
                             Console.WriteLine("dfsfs");
-                            GlobalData.Rooms[RoomName] = new RoomsLessDyanmic();
-                        }
-                        Console.WriteLine("kfopdsfdsdfs");
-                        var currentMembers = GlobalData.Rooms[RoomName].members;
-                        Console.WriteLine("gdsgfds");
-                        if (GlobalData.Rooms.ContainsKey(RoomName))
-                        {
-                            Console.WriteLine("fdsfdsfdsf");
-                            foreach (var member in currentMembers)
+                            if (!GlobalData.Rooms.ContainsKey(RoomName))
                             {
-                                if (member.accountId == dataSaved.AccountId)
+                                Console.WriteLine("dfsfs");
+                                GlobalData.Rooms[RoomName] = new RoomsLessDyanmic();
+                            }
+                            Console.WriteLine("kfopdsfdsdfs");
+                            var currentMembers = GlobalData.Rooms[RoomName].members;
+                            Console.WriteLine("gdsgfds");
+                            if (GlobalData.Rooms.ContainsKey(RoomName))
+                            {
+                                Console.WriteLine("fdsfdsfdsf");
+                                foreach (var member in currentMembers)
                                 {
-                                    return;
+                                    if (member.accountId == dataSaved.AccountId)
+                                    {
+                                        return;
+                                    }
                                 }
                             }
-                        }
 
-                        Console.WriteLine("fdsfdsfdsfU");
-                        currentMembers.Add(new MoreINfoINsideMembers { accountId = dataSaved.AccountId });
-
-
-                        dataSaved.Rooms.Append(RoomName); // so we know what room they are in for future stuff!
-                        Console.WriteLine("fdskfskopkfpodsfdsfds");
-                        GlobalData.Rooms[RoomName].members = currentMembers;
-                        //GlobalData.Rooms[RoomName]["Members"] = currentMembers;
-                        Console.WriteLine("MUCX NOT NULL");
+                            Console.WriteLine("fdsfdsfdsfU");
+                            currentMembers.Add(new MoreINfoINsideMembers { accountId = dataSaved.AccountId });
 
 
-                        XNamespace clientNs = "jabber:client";
-                        XNamespace fdsfdsdsfds = "http://jabber.org/protocol/muc#user";
+                            dataSaved.Rooms.Append(RoomName); // so we know what room they are in for future stuff!
+                            Console.WriteLine("fdskfskopkfpodsfdsfds");
+                            GlobalData.Rooms[RoomName].members = currentMembers;
+                            //GlobalData.Rooms[RoomName]["Members"] = currentMembers;
+                            Console.WriteLine("MUCX NOT NULL");
 
-                        XElement featuresElement = new XElement(clientNs + "presence",
-                            new XAttribute("to", dataSaved.JID),
-                            new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
-                            new XElement(fdsfdsdsfds + "x",
-                                new XElement("item",
-                                    new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
-                                    new XAttribute("jid", dataSaved.JID),
-                                    new XAttribute("role", "participant"),
-                                    new XAttribute("affiliation", "none")
-                                )
-                            ),
-                            new XElement("status", new XAttribute("code", "110")),
-                            new XElement("status", new XAttribute("code", "100")),
-                            new XElement("status", new XAttribute("code", "170")),
-                            new XElement("status", new XAttribute("code", "201"))
-                        );
 
-                        xmlMessage = featuresElement.ToString();
-                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                            XNamespace clientNs = "jabber:client";
+                            XNamespace fdsfdsdsfds = "http://jabber.org/protocol/muc#user";
 
-                        if (GlobalData.Rooms.TryGetValue(RoomName, out RoomsLessDyanmic? RoomData))
-                        {
-                            Console.WriteLine("TEST  " + RoomData);
-                            foreach (var member in RoomData.members)
+                            XElement featuresElement = new XElement(clientNs + "presence",
+                                new XAttribute("to", dataSaved.JID),
+                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                new XElement(fdsfdsdsfds + "x",
+                                    new XElement("item",
+                                        new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                        new XAttribute("jid", dataSaved.JID),
+                                        new XAttribute("role", "participant"),
+                                        new XAttribute("affiliation", "none")
+                                    )
+                                ),
+                                new XElement("status", new XAttribute("code", "110")),
+                                new XElement("status", new XAttribute("code", "100")),
+                                new XElement("status", new XAttribute("code", "170")),
+                                new XElement("status", new XAttribute("code", "201"))
+                            );
+
+                            xmlMessage = featuresElement.ToString();
+                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+
+                            if (GlobalData.Rooms.TryGetValue(RoomName, out RoomsLessDyanmic? RoomData))
                             {
-                                Clients ClientData = GlobalData.Clients.Find(i => i.accountId == member.accountId)!;
-                                if (ClientData == null) { return; }
-                                XElement presenceElement = new XElement(clientNs + "presence",
-                                    new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
-                                    new XAttribute("to", ClientData.jid),
-                                    new XElement(fdsfdsdsfds + "x",
+                                Console.WriteLine("TEST  " + RoomData);
+                                foreach (var member in RoomData.members)
+                                {
+                                    Clients ClientData = GlobalData.Clients.Find(i => i.accountId == member.accountId)!;
+                                    if (ClientData == null) { return; }
+                                    XElement presenceElement = new XElement(clientNs + "presence",
+                                        new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
+                                        new XAttribute("to", ClientData.jid),
+                                        new XElement(fdsfdsdsfds + "x",
+                                                new XElement("item",
+                                                new XAttribute("nick", $"{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
+                                                new XAttribute("jid", ClientData.jid),
+                                                new XAttribute("role", "participant"),
+                                                new XAttribute("affiliation", "none")
+                                            )
+                                        )
+                                    );
+
+                                    xmlMessage = presenceElement.ToString();
+                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+
+                                    if (dataSaved.AccountId == ClientData.accountId)
+                                    {
+                                        return; // not normal user! well the person who owns the party
+                                    }
+
+                                    presenceElement = new XElement(clientNs + "presence",
+                                        new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                        new XAttribute("to", dataSaved.JID),
+                                         new XElement(fdsfdsdsfds + "x",
                                             new XElement("item",
-                                            new XAttribute("nick", $"{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
-                                            new XAttribute("jid", ClientData.jid),
-                                            new XAttribute("role", "participant"),
-                                            new XAttribute("affiliation", "none")
+                                                new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                                new XAttribute("jid", dataSaved.JID),
+                                                new XAttribute("role", "participant"),
+                                                new XAttribute("affiliation", "none")
+                                            )
                                         )
-                                    )
-                                );
+                                    );
 
-                                xmlMessage = presenceElement.ToString();
-                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                                await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                    xmlMessage = presenceElement.ToString();
+                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                    await ClientData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                                if (dataSaved.AccountId == ClientData.accountId)
-                                {
-                                    return; // not normal user! well the person who owns the party
                                 }
-
-                                presenceElement = new XElement(clientNs + "presence",
-                                    new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
-                                    new XAttribute("to", dataSaved.JID),
-                                     new XElement(fdsfdsdsfds + "x",
-                                        new XElement("item",
-                                            new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
-                                            new XAttribute("jid", dataSaved.JID),
-                                            new XAttribute("role", "participant"),
-                                            new XAttribute("affiliation", "none")
-                                        )
-                                    )
-                                );
-
-                                xmlMessage = presenceElement.ToString();
-                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                                await ClientData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-
                             }
+
+                            // bool bindElement = xmlDoc.Root.Descendants().Any(i => i.Name == mucNamespace + "muc:x" || i.Name == mucNamespace +"x");
+                            Console.WriteLine("TEST DEFECT");
+                            //Console.WriteLine(xmlDoc.Root?.Descendants().ToLookup());
+                            //   Console.WriteLine(bindElement);
+                            // if (bindElement == null) return;
+
+
+
+                            //GlobalData.Rooms.FirstOrDefault(test => test.Key == "");
+                            //  if (hasMucXOrXChild)
+                            // {
+                            //  if (xmlDoc.Root.Attribute("to") == null)
+                            //  {
+                            //     return;
+                            // }
+                            //     Console.WriteLine("YEAH");
+                            // }
                         }
-
-                        // bool bindElement = xmlDoc.Root.Descendants().Any(i => i.Name == mucNamespace + "muc:x" || i.Name == mucNamespace +"x");
-                        Console.WriteLine("TEST DEFECT");
-                        //Console.WriteLine(xmlDoc.Root?.Descendants().ToLookup());
-                        //   Console.WriteLine(bindElement);
-                        // if (bindElement == null) return;
-
-
-
-                        //GlobalData.Rooms.FirstOrDefault(test => test.Key == "");
-                        //  if (hasMucXOrXChild)
-                        // {
-                        //  if (xmlDoc.Root.Attribute("to") == null)
-                        //  {
-                        //     return;
-                        // }
-                        //     Console.WriteLine("YEAH");
-                        // }
                         break;
 
                 }

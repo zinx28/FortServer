@@ -210,7 +210,7 @@ namespace FortBackend.src.App.Routes.Development
                                         {
                                             await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
                                             {
-                                                { "UserIps", httpContext.Connection.RemoteIpAddress?.ToString() }
+                                                { "UserIps", httpContext.Connection.RemoteIpAddress?.ToString()! }
                                             }, false);
                                         }
                                     }
@@ -275,7 +275,7 @@ namespace FortBackend.src.App.Routes.Development
         }
 
         [HttpGet("/image/{image}")]
-        public async Task<IActionResult> ImageEnd(string image)
+        public IActionResult ImageEnd(string image)
         {
             try
             {

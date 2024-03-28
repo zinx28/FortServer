@@ -7,7 +7,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile
     public class Mcp
     {
         public int profileRevision { get; set; } = 0;
-        public string profileId { get; set; }
+        public string profileId { get; set; } = string.Empty;
         public int profileChangesBaseRevision { get; set; } = 1;
         public List<dynamic> profileChanges { get; set; } = new List<dynamic>();
      

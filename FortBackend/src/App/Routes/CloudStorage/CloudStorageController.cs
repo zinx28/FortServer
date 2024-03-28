@@ -66,41 +66,21 @@ namespace FortBackend.src.App.Routes.CloudStorage
             Response.ContentType = "application/octet-stream";
             try
             {
-                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
-                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
-
-                var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
-                if (FoundAccount == null)
+                if (!Regex.IsMatch(filename, "^[a-zA-Z\\-\\._]+$")) // copied from image api but should prevent people doing stupid things
                 {
-                    FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
-                    if (FoundAccount == null)
-                    {
-                        FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
-                    }
+                    return BadRequest("Invalid parameters");
                 }
 
-                if (FoundAccount != null)
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\{filename}");
+
+                if (!System.IO.File.Exists(filePath))
                 {
-                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
-                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
-                    {
-                        if (!Regex.IsMatch(filename, "^[a-zA-Z\\-\\._]+$")) // copied from image api but should prevent people doing stupid things
-                        {
-                            return BadRequest("Invalid parameters");
-                        }
-
-                        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\{filename}");
-
-                        if (!System.IO.File.Exists(filePath))
-                        {
-                            return NotFound();
-                        }
-
-                        string fileContents = System.IO.File.ReadAllText(filePath);
-
-                        return Content(fileContents, "text/plain");
-                    }
+                    return NotFound();
                 }
+
+                string fileContents = System.IO.File.ReadAllText(filePath);
+
+                return Content(fileContents, "text/plain");
             }
             catch (Exception ex)
             {

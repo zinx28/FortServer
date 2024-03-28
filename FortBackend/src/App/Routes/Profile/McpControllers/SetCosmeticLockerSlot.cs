@@ -1,120 +1,120 @@
-﻿//using Discord;
-//using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
-//using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
-//using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
-//using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
-//using FortBackend.src.App.Utilities.Helpers.Middleware;
-//using FortBackend.src.App.Utilities.MongoDB.Helpers;
-//using FortBackend.src.App.Utilities.MongoDB.Module;
-////using MongoDB.Bson.IO;
-//using Newtonsoft.Json;
-//using static FortBackend.src.App.Utilities.Helpers.Grabber;
+﻿using Discord;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.Utilities.MongoDB.Module;
+//using MongoDB.Bson.IO;
+using Newtonsoft.Json;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-//namespace FortBackend.src.App.Routes.Profile.McpControllers
-//{
-//    public class SetCosmeticLockerSlot
-//    {
-//        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, SetCosmeticLockerSlotRequest Body)
-//        {
+namespace FortBackend.src.App.Routes.Profile.McpControllers
+{
+    public class SetCosmeticLockerSlot
+    {
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, SetCosmeticLockerSlotRequest Body)
+        {
+            if (ProfileId == "athena" || ProfileId == "profile0")
+            {
+                int BaseRev = profileCacheEntry.AccountData.athena.RVN;
+                List<object> ProfileChanges = new List<object>();
+                var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data;
+                var slotName = Body.category.ToLower();
+                var itemToSlot = Body.itemToSlot.ToLower() ?? "";
+                var IndexWithinSlot = Body.slotIndex;
+                if (IndexWithinSlot > 6)
+                {
+                    IndexWithinSlot = 6;
+                }
 
-//            Console.WriteLine(Body);
-//            if (ProfileId == "athena" || ProfileId == "profile0")
-//            {
-//                Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
-//                int BaseRev = profileCacheEntry.AccountData.athena.RVN;
-//                int GrabPlacement = GrabPlacement = profileCacheEntry.AccountData.athena.Items.SelectMany((item, index) => new List<(Dictionary<string, ProfileItem> Item, int Index)> { (Item: item, Index: index) })
-//                .TakeWhile(pair => !pair.Item.ContainsKey("sandbox_loadout")).Count();
+                if (slotName == "itemwrap" || slotName == "dance")
+                {
+                    // emote, wraps soon upcoming
+                    if (IndexWithinSlot == -1)
+                    {
+                        if (slotName == "Dance")
+                        {
+                            return new Mcp();
+                        }
 
-//                if (Body.category == "ItemWrap" || Body.category == "Dance")
-//                {
-//                    // emote, wraps soon upcoming
-//                    if (Body.slotIndex == -1)
-//                    {
-//                        if (Body.category == "Dance")
-//                        {
-//                            return new Mcp();
-//                        }
-//                        var SandBoxLoadout = JsonConvert.DeserializeObject<SandboxLoadoutAttributes>(JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"].Attributes));
+                        List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
+                        UpdatedData.slots.itemwrap.items = ReplacedItems;
+                        ProfileChanges.Add(new List<object>()
+                        {
+                            new
+                            {
+                                 changeType = "itemAttrChanged",
+                                 itemId = Body.lockerItem,
+                                 attributeName = "locker_slots_data",
+                                 attributeValue = UpdatedData
+                            }
+                        });
+                    }
+                    else
+                    {
+                        UpdatedData.slots.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
+                        ProfileChanges.Add(new List<object>()
+                        {
+                            new
+                            {
+                                 changeType = "itemAttrChanged",
+                                 itemId = Body.lockerItem,
+                                 attributeName = "locker_slots_data",
+                                 attributeValue = UpdatedData
+                            }
+                        });
+                    }
+                }
+                else
+                {
+                    UpdatedData.slots.GetSlotName(slotName).items = new List<string>() { itemToSlot };
+                    ProfileChanges.Add(new List<object>()
+                    {
+                        new
+                        {
+                                changeType = "itemAttrChanged",
+                                itemId = Body.lockerItem,
+                                attributeName = "locker_slots_data",
+                                attributeValue = UpdatedData
+                        }
+                    });
+                }
 
-//                        if (SandBoxLoadout != null)
-//                        {
-//                            var ItemsCount = SandBoxLoadout.locker_slots_data.slots.itemwrap.items.Count();
-//                            string[] ReplacedItems = Enumerable.Repeat(Body.itemToSlot.ToLower(), ItemsCount).ToArray();
+                if (ProfileChanges.Count > 0)
+                {
+                    profileCacheEntry.LastUpdated = DateTime.Now;
+                    profileCacheEntry.AccountData.athena.RVN += 1;
+                    profileCacheEntry.AccountData.athena.CommandRevision += 1;
+                    profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data = UpdatedData;
+                }
+                
+                List<dynamic> ProfileChangesV2 = new List<dynamic>();
+                if (Season.SeasonFull >= 12.20)
+                {
+                    Mcp AthenaData = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
+                    ProfileChangesV2 = AthenaData.profileChanges;
+                }
+                else
+                {
+                    ProfileChangesV2 = ProfileChanges;
+                }
 
-//                            profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"].Attributes = SandBoxLoadout;//["attributes"];//.locker_slots_data.slots[Body.category.ToLower()].items = ReplacedItems;
-//                            //UpdatedData.Add($"athena.items.{GrabPlacement}.sandbox_loadout.attributes.locker_slots_data.slots.{Body.category.ToLower()}.items", ReplacedItems);
-//                        }
-//                    }
-//                    else
-//                    {
-//                        dynamic SandBoxLoadout = JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"].Attributes);
+                return new Mcp()
+                {
+                    profileRevision = profileCacheEntry.AccountData.athena.RVN + 1,
+                    profileId = ProfileId,
+                    profileChangesBaseRevision = BaseRev + 1,
+                    profileChanges = ProfileChangesV2,
+                    profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision + 1,
+                    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                    responseVersion = 1
+                };
+            }
 
-//                        // emotes
-//                        if (Body.itemToSlot == "")
-//                        {
-//                            SandBoxLoadout.attributes.locker_slots_data.slots[Body.category.ToLower()].items[Body.slotIndex] = "";
-//                            profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"].Attributes = SandBoxLoadout;
-//                        }
-//                        else
-//                        {
-//                            SandBoxLoadout.attributes.locker_slots_data.slots[Body.category.ToLower()].items[Body.slotIndex] = Body.itemToSlot.ToLower();
-//                            profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"].Attributes = SandBoxLoadout;
-//                        }
-//                    }
-//                }
-//                else
-//                {
-//                    dynamic SandBoxLoadout = JsonConvert.SerializeObject(profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"]);
-
-//                    if (Body.itemToSlot == "")
-//                    {
-//                        SandBoxLoadout.attributes.locker_slots_data.slots[Body.category.ToLower()].items = new List<string> { "" };
-//                        profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"] = SandBoxLoadout;
-//                    }
-//                    else
-//                    {
-//                        SandBoxLoadout.attributes.locker_slots_data.slots[Body.category.ToLower()].items = new List<string> {
-//                            Body.itemToSlot.ToLower()
-//                        };
-//                        profileCacheEntry.AccountData.athena.Items[GrabPlacement]["sandbox_loadout"] = SandBoxLoadout;
-//                    }
-//                }
-//                profileCacheEntry.AccountData.athena.RVN += 1;
-//                profileCacheEntry.AccountData.athena.CommandRevision += 1;
-//                //UpdatedData.Add($"athena.CommandRevision", profileCacheEntry.AccountData.athena.CommandRevision + 1);
-//               // await Handlers.UpdateOne<Account>("accountId", AccountId, UpdatedData);
-//                List<dynamic> BigA = new List<dynamic>();
-//                if (Season.SeasonFull >= 12.20)
-//                {
-//                    Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
-//                    BigA = test.profileChanges;
-//                }
-//                else
-//                {
-//                    BigA = new List<object>()
-//                    {
-//                        new
-//                        {
-//                            changeType = "statModified",
-//                            name = $"favorite_{Body.category.ToLower()}",
-//                            value = Body.itemToSlot
-//                        }
-//                    };
-//                }
-
-//                return new Mcp()
-//                {
-//                    profileRevision = profileCacheEntry.AccountData.athena.RVN + 1,
-//                    profileId = ProfileId,
-//                    profileChangesBaseRevision = BaseRev + 1,
-//                    profileChanges = BigA,
-//                    profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision + 1,
-//                    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-//                    responseVersion = 1
-//                };
-//            }
-
-//            return new Mcp();
-//        }
-//    }
-//}
+            return new Mcp();
+        }
+    }
+}

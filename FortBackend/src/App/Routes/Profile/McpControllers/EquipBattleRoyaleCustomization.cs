@@ -50,14 +50,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         }
                         else
                         {
-                            UpdatedData.dance.items[IndexWithinSlot] = itemToSlot;
+                            UpdatedData.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
                             ProfileChanges.Add(new List<object>()
                             {
                                 new
                                 {
                                     changeType = "statModified",
                                     name = $"favorite_{slotName}",
-                                    value =  UpdatedData.dance.items
+                                    value =  UpdatedData.GetSlotName(slotName).items
                                 }
                             });
                         }

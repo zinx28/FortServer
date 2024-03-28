@@ -51,7 +51,7 @@ namespace FortBackend.src.App.Routes.Profile
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             var requestbody = await reader.ReadToEndAsync();
-                            Console.WriteLine(requestbody);
+                            //Console.WriteLine(requestbody);
                             VersionClass Season = await SeasonUserAgent(Request);
                             if (string.IsNullOrEmpty(requestbody))
                             {
@@ -74,9 +74,9 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "ClientQuestLogin":
                                     response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
-                                // case "SetCosmeticLockerSlot":
-                                //response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody));
-                                // break;
+                                case "SetCosmeticLockerSlot":
+                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody)!);
+                                    break;
                                 case "EquipBattleRoyaleCustomization":
                                     response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);
                                     break;

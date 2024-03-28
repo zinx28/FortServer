@@ -191,7 +191,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
                             }
 
-                            Console.WriteLine(JsonConvert.SerializeObject(AthenaClass));
                             int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.Select((pair, index) => (pair.Key, pair.Value, index))
                             .TakeWhile(pair => !pair.Key.Equals("Currency")).Count();
 

@@ -18,12 +18,19 @@ namespace FortBackend.src.App.XMPP_Server.TCP
         {
             tcpListener = new TcpListener(IPAddress.Any, port);
             cancellationTokenSource = new CancellationTokenSource();
-            certificate = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx"), "");
+            //certificate = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx"), "");
         }
 
         public async Task Start()
         {
             tcpListener.Start();
+            var FindPfxPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx");
+            if(!File.Exists(FindPfxPath))
+            {
+                Logger.Log($"Couldn't find FortBackend.pfx" , "TCP");
+                tcpListener.Stop();
+            }
+            certificate = new X509Certificate2(FindPfxPath, "");
             Logger.Log($"TCP server started on port {((IPEndPoint)tcpListener.LocalEndpoint).Port}", "TCP");
 
             while (true)

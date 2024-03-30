@@ -51,7 +51,7 @@ namespace FortBackend.src.App.Routes.Profile
                         using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             var requestbody = await reader.ReadToEndAsync();
-                            Console.WriteLine(requestbody);
+                            //Console.WriteLine(requestbody);
                             VersionClass Season = await SeasonUserAgent(Request);
                             if (string.IsNullOrEmpty(requestbody))
                             {
@@ -81,10 +81,10 @@ namespace FortBackend.src.App.Routes.Profile
                                     response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);
                                     break;
                                 case "PurchaseCatalogEntry":
-                                    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
+                                    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody)!);
                                     break;
                                 case "BulkEquipBattleRoyaleCustomization":
-                                    response = await BulkEquipBattleRoyaleCustomization
+                                    response = await BulkEquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<BulkEquipBattleRoyaleCustomizationResponse>(requestbody)!);
                                     break; // not proper
                                 //case "CopyCosmeticLoadout":
                                 //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));

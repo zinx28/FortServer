@@ -161,7 +161,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         var ProfileChange = AthenaClass.profileChanges[0] as ProfileChange;
                         if (ProfileChange != null)
                         {
-                            Console.WriteLine(JsonConvert.SerializeObject(profileCacheEntry));
                             foreach (var kvp in profileCacheEntry.AccountData.athena.loadouts_data)
                             {
                                 ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
@@ -218,12 +217,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         {
                             Logger.Error("WHY IS THIS NULL WTFFFFFFFFFFF");
                         }
-
-                       
-
-
-
-
 
                         return AthenaClass;
                     }

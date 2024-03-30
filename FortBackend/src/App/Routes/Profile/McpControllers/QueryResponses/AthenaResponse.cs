@@ -41,7 +41,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                     if (Season.Season >= 8 && Season.Season < 23)
                     {
                         tokens = new string[] {
-                            $"ARENA_S{Season}_Division1"
+                            $"ARENA_S{Season.Season}_Division1"
                         };
                     }
 

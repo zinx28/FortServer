@@ -44,16 +44,16 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     }
                     else
                     {
-                        UpdatedData.GetSlotName(item.slotName.ToLower()).items = new List<string>
+                        UpdatedData.GetSlotName(SlotName).items = new List<string>
                         {
                             item.itemToSlot.ToLower(),
                         };
                     }
 
                     // sets item seen to true <3
-                    if(profileCacheEntry.AccountData.athena.Items[item.slotName.ToLower()] != null)
+                    if(profileCacheEntry.AccountData.athena.Items.ContainsKey(item.itemToSlot))
                     {
-                        profileCacheEntry.AccountData.athena.Items[item.slotName.ToLower()].attributes.item_seen = true;
+                        profileCacheEntry.AccountData.athena.Items[item.itemToSlot].attributes.item_seen = true;
                     }
                  
 

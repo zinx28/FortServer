@@ -9,7 +9,6 @@ using System.Runtime.InteropServices;
 using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Shop;
-using FortBackend.src.App.XMPP;
 using Microsoft.AspNetCore.HttpOverrides;
 using FortBackend.src.App.XMPP_V2;
 namespace FortBackend.src.App

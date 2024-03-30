@@ -2,9 +2,9 @@
 using System.Net.Sockets;
 using System.Net.WebSockets;
 
-namespace FortBackend.src.App.TCP_XMPP.Helpers.Resources
+namespace FortBackend.src.App.XMPP_Server.Helpers.Globals.Data
 {
-    public class DataSaved
+    public class DataSaved_TCP
     {
         public bool DidUserLoginNotSure = false;
         public string AccountId = string.Empty;

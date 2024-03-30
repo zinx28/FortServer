@@ -1,4 +1,6 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.XMPP_Server.TCP;
 using FortBackend.src.App.XMPP_Server.XMPP;
 
 namespace FortBackend.src.App.XMPP_V2
@@ -14,6 +16,12 @@ namespace FortBackend.src.App.XMPP_V2
             new Thread(() =>
             {
                 XmppServer.Intiliazation(args);
+            }).Start();
+
+            new Thread(() =>
+            {
+                TcpServer tcpServer = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
+                Task tcpServerTask = tcpServer.Start();
             }).Start();
             /*
              * var TCPXmppServer = new Thread(() =>

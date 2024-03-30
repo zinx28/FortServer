@@ -20,7 +20,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                 if (profileCacheEntry.AccountData.commoncore.Seasons != null)
                 {
-                    SeasonClass seasonObject = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season);
+                    SeasonClass seasonObject = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season)!;
 
                     if (seasonObject != null)
                     {

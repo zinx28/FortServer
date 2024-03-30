@@ -1,325 +1,275 @@
-﻿//using Discord;
-//using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
-//using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
-//using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
-//using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
-//using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
-//using FortBackend.src.App.Utilities.MongoDB.Helpers;
-//using FortBackend.src.App.Utilities.MongoDB.Module;
-//using FortBackend.src.App.Utilities.Shop.Helpers.Class;
-//using FortBackend.src.App.Utilities.Shop.Helpers.Data;
-//using Newtonsoft.Json;
-//using static FortBackend.src.App.Utilities.Helpers.Grabber;
+﻿using Discord;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities.Shop.Helpers.Class;
+using FortBackend.src.App.Utilities.Shop.Helpers.Data;
+using Newtonsoft.Json;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
-//namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
-//{
-//    public class PurchaseItem
-//    {
-//        public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, Account AccountDataParsed)
-//        {
-//            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "shop.json");
-//            string json = File.ReadAllText(filePath);
+namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
+{
+    public class PurchaseItem
+    {
+        public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, ProfileCacheEntry profileCacheEntry)
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "shop.json");
+            string json = File.ReadAllText(filePath);
 
-//            if (string.IsNullOrEmpty(json))
-//            {
-//                throw new BaseError()
-//                {
-//                    errorCode = "errors.com.epicgames.modules.catalog",
-//                    errorMessage = "Server Sided Issue",
-//                    messageVars = new List<string> { "PurchaseCatalogEntry" },
-//                    numericErrorCode = 12801,
-//                    originatingService = "any",
-//                    intent = "prod",
-//                    error_description = "Server Sided Issue",
-//                };
-//            }
-//            ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
-            
-//            if(shopData != null)
-//            {
-//                string[] SplitOfferId = Body.offerId.Split(":/");
-//                string SecondSplitOfferId = SplitOfferId[1];
-//                ItemsSaved ShopContent = new ItemsSaved();
-//                var NotificationsItems = new List<NotificationsItemsClass>();
-//                var MultiUpdates = new List<object>();
-//                var ApplyProfileChanges = new List<object>();
-//                Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
-//                List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
-//                int BaseRev = AccountDataParsed.commoncore.RVN;
-//                int BaseRev2 = AccountDataParsed.athena.RVN;
+            if (string.IsNullOrEmpty(json))
+            {
+                throw new BaseError()
+                {
+                    errorCode = "errors.com.epicgames.modules.catalog",
+                    errorMessage = "Server Sided Issue",
+                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                    numericErrorCode = 12801,
+                    originatingService = "any",
+                    intent = "prod",
+                    error_description = "Server Sided Issue",
+                };
+            }
+            ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
 
-//                foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
-//                {
-//                    if (storefront.id == SecondSplitOfferId)
-//                    {
-//                        ShopContent = storefront;
-//                    }
-//                }
+            if (shopData != null)
+            {
+                string[] SplitOfferId = Body.offerId.Split(":/");
+                string SecondSplitOfferId = SplitOfferId[1];
+                ItemsSaved ShopContent = new ItemsSaved();
+                var NotificationsItems = new List<NotificationsItemsClass>();
+                var MultiUpdates = new List<object>();
+                var ApplyProfileChanges = new List<object>();
+                //Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
+                List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
+                int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
+                int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
 
-//                foreach (ItemsSaved storefront in shopData.ShopItems.Weekly)
-//                {
-//                    if (storefront.id == SecondSplitOfferId)
-//                    {
-//                        ShopContent = storefront;
-//                    }
-//                }
+                foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
+                {
+                    if (storefront.id == SecondSplitOfferId)
+                    {
+                        ShopContent = storefront;
+                    }
+                }
 
-//                if (!string.IsNullOrEmpty(ShopContent.id))
-//                {
-//                    bool HasUserHaveItem = AccountDataParsed.athena.Items.Any(item => item.ContainsKey(ShopContent.id));
+                foreach (ItemsSaved storefront in shopData.ShopItems.Weekly)
+                {
+                    if (storefront.id == SecondSplitOfferId)
+                    {
+                        ShopContent = storefront;
+                    }
+                }
 
-//                    if (HasUserHaveItem)
-//                    {
-//                        throw new BaseError()
-//                        {
-//                            errorCode = "errors.com.epicgames.modules.catalog",
-//                            errorMessage = "You already own the item",
-//                            messageVars = new List<string> { "PurchaseCatalogEntry" },
-//                            numericErrorCode = 12801,
-//                            originatingService = "any",
-//                            intent = "prod",
-//                            error_description = "You already own the item",
-//                        };
-//                    }
+                if (!string.IsNullOrEmpty(ShopContent.id))
+                {
+                    bool HasUserHaveItem = profileCacheEntry.AccountData.athena.Items.Any(item => item.Key.Contains(ShopContent.id));
 
-//                    Console.WriteLine(HasUserHaveItem);
+                    if (HasUserHaveItem)
+                    {
+                        throw new BaseError()
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "You already own the item",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "You already own the item",
+                        };
+                    }
 
-//                    NotificationsItems.Add(new NotificationsItemsClass
-//                    {
-//                        itemType = ShopContent.item,
-//                        itemGuid = ShopContent.item,
-//                        itemProfile = "athena"
-//                    });
+                    Console.WriteLine(HasUserHaveItem);
 
-//                    MultiUpdates.Add(new MultiUpdateClass
-//                    {
-//                        changeType = "itemAdded",
-//                        itemId = ShopContent.item,
-//                        item = new AthenaItem
-//                        {
-//                            templateId = ShopContent.item,
-//                            attributes = new AthenaItemAttributes
-//                            {
-//                                item_seen = false,
-//                                variants = ShopContent.variants,
-//                            },
-//                            quantity = 1
-//                        }
-//                    });
+                    NotificationsItems.Add(new NotificationsItemsClass
+                    {
+                        itemType = ShopContent.item,
+                        itemGuid = ShopContent.item,
+                        itemProfile = "athena"
+                    });
 
-//                    foreach (Item ItemShopItem in ShopContent.items)
-//                    {
-//                        NotificationsItems.Add(new NotificationsItemsClass
-//                        {
-//                            itemType = ItemShopItem.item,
-//                            itemGuid = ItemShopItem.item,
-//                            itemProfile = "athena"
-//                        });
+                    MultiUpdates.Add(new MultiUpdateClass
+                    {
+                        changeType = "itemAdded",
+                        itemId = ShopContent.item,
+                        item = new AthenaItem
+                        {
+                            templateId = ShopContent.item,
+                            attributes = new AthenaItemAttributes
+                            {
+                                item_seen = false,
+                                variants = ShopContent.variants,
+                            },
+                            quantity = 1
+                        }
+                    });
 
-//                        MultiUpdates.Add(new MultiUpdateClass
-//                        {
-//                            changeType = "itemAdded",
-//                            itemId = ItemShopItem.item,
-//                            item = new AthenaItem
-//                            {
-//                                templateId = ItemShopItem.item,
-//                                attributes = new AthenaItemAttributes
-//                                {
-//                                    item_seen = false,
-//                                    variants = ItemShopItem.variants,
-//                                },
-//                                quantity = 1
-//                            }
-//                        });
-//                    }
-//                    //AthenaItem test = AccountDataParsed.commoncore.Items.FirstOrDefault(e => e.ContainsKey("Currency"))["Currency"] as AthenaItem;
+                    foreach (Item ItemShopItem in ShopContent.items)
+                    {
+                        NotificationsItems.Add(new NotificationsItemsClass
+                        {
+                            itemType = ItemShopItem.item,
+                            itemGuid = ItemShopItem.item,
+                            itemProfile = "athena"
+                        });
 
-//                    // I need to work on this
+                        MultiUpdates.Add(new MultiUpdateClass
+                        {
+                            changeType = "itemAdded",
+                            itemId = ItemShopItem.item,
+                            item = new AthenaItem
+                            {
+                                templateId = ItemShopItem.item,
+                                attributes = new AthenaItemAttributes
+                                {
+                                    item_seen = false,
+                                    variants = ItemShopItem.variants,
+                                },
+                                quantity = 1
+                            }
+                        });
+                    }
+                    //AthenaItem test = AccountDataParsed.commoncore.Items.FirstOrDefault(e => e.ContainsKey("Currency"))["Currency"] as AthenaItem;
 
-//                    int GrabPlacement = -1;
-//                    GrabPlacement = AccountDataParsed.commoncore.Items.SelectMany((item, index) => new List<(Dictionary<string, object> Item, int Index)> { (Item: item, Index: index) })
-//                    .TakeWhile(pair => !pair.Item.ContainsKey("Currency"))
-//                    .Count();
-//                    //Console.WriteLine(JsonConvert.SerializeObject(AccountDataParsed, Formatting.Indented));
-//                    var currencyItem = AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"] as dynamic;
+                    // I need to work on this
+                    var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"] as dynamic;
 
-//                    try
-//                    {
-//                        // AthenaItem currencyItem2 = currencyItem as AthenaItem;
-//                        Console.WriteLine(currencyItem);
-//                        // Console.WriteLine(currencyItem2.quantity);
-//                    }
-//                    catch (Exception ex)
-//                    {
-//                        Console.WriteLine(ex.Message);
-//                    }
-//                    //Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"]);
-//                    if (currencyItem.quantity == 0)
-//                    {
-//                        throw new BaseError()
-//                        {
-//                            errorCode = "errors.com.epicgames.modules.catalog",
-//                            errorMessage = "Your Poor",
-//                            messageVars = new List<string> { "PurchaseCatalogEntry" },
-//                            numericErrorCode = 12801,
-//                            originatingService = "any",
-//                            intent = "prod",
-//                            error_description = "Your Poor",
-//                        };
-//                    }
+                    try
+                    {
+                        // AthenaItem currencyItem2 = currencyItem as AthenaItem;
+                        Console.WriteLine(currencyItem);
+                        // Console.WriteLine(currencyItem2.quantity);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    //Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"]);
+                    if (currencyItem.quantity == 0)
+                    {
+                        throw new BaseError()
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "Your Poor",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Your Poor",
+                        };
+                    }
 
-//                    Console.WriteLine($"Currency Item Quantity: {currencyItem.quantity}");
+                    Console.WriteLine($"Currency Item Quantity: {currencyItem.quantity}");
 
-//                    if (ShopContent.price > int.Parse(currencyItem.quantity.ToString()))
-//                    {
-//                        throw new BaseError()
-//                        {
-//                            errorCode = "errors.com.epicgames.modules.catalog",
-//                            errorMessage = "Item is higher price",
-//                            messageVars = new List<string> { "PurchaseCatalogEntry" },
-//                            numericErrorCode = 12801,
-//                            originatingService = "any",
-//                            intent = "prod",
-//                            error_description = "Item is higher price",
-//                        };
-//                    }
+                    if (ShopContent.price > int.Parse(currencyItem.quantity.ToString()))
+                    {
+                        throw new BaseError()
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "Item is higher price",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Item is higher price",
+                        };
+                    }
 
-//                    int Price = currencyItem.quantity - ShopContent.price;
+                    int Price = currencyItem.quantity - ShopContent.price;
 
-//                    ApplyProfileChanges.Add(new ApplyProfileChangesClass
-//                    {
-//                        changeType = "itemQuantityChanged",
-//                        itemId = "Currency",
-//                        quantity = Price
-//                    });
+                    ApplyProfileChanges.Add(new ApplyProfileChangesClass
+                    {
+                        changeType = "itemQuantityChanged",
+                        itemId = "Currency",
+                        quantity = Price
+                    });
 
 
-//                    var newItem699 = new Dictionary<string, object>
-//                {
-//                    {
-//                        $"{ShopContent.item}", new Dictionary<string, object>
-//                        {
-//                            { "TemplateId", $"{ShopContent.item}" },
-//                            {
-//                                "Attributes", new Dictionary<string, object>
-//                                {
-//                                    { "favorite", false },
-//                                    { "item_seen", false },
-//                                    { "level", 1 },
-//                                    { "max_level_bonus", 0 },
-//                                    { "rnd_sel_cnt", 0 },
-//                                    { "variants", ShopContent.variants },
-//                                    { "xp", 0 }
-//                                }
-//                            },
-//                            {  "Quantity", 1 }
-//                        }
-//                    }
-//                };
+                    profileCacheEntry.AccountData.athena.Items.Add($"{ShopContent.item}", new AthenaItem
+                    {
+                        templateId = $"{ShopContent.item}",
+                        attributes = new AthenaItemAttributes
+                        {
+                            variants = ShopContent.variants // variants
+                        }
+                    });
 
-//                    itemList.Add(newItem699);
+                    foreach (Item ItemInItems in ShopContent.items)
+                    {
 
-//                    foreach (Item ItemInItems in ShopContent.items)
-//                    {
-//                        itemList.Add(new Dictionary<string, object>
-//                    {
-//                        {
-//                            $"{ItemInItems.item}", new Dictionary<string, object>
-//                            {
-//                                { "TemplateId", $"{ItemInItems.item}" },
-//                                {
-//                                    "Attributes", new Dictionary<string, object>
-//                                    {
-//                                        { "favorite", false },
-//                                        { "item_seen", false },
-//                                        { "level", 1 },
-//                                        { "max_level_bonus", 0 },
-//                                        { "rnd_sel_cnt", 0 },
-//                                        { "variants", ItemInItems.variants },
-//                                        { "xp", 0 }
-//                                    }
-//                                },
-//                                {  "Quantity", 1 }
-//                            }
-//                        }
-//                    });
-//                    }
+                        profileCacheEntry.AccountData.athena.Items.Add($"{ItemInItems.item}", new AthenaItem
+                        {
+                            templateId = $"{ItemInItems.item}",
+                            attributes = new AthenaItemAttributes
+                            {
+                                variants = ItemInItems.variants // variants
+                            }
+                        });
+                    }
 
-//                    UpdatedData.Add($"commoncore.items.{GrabPlacement}.Currency.quantity", Price);
-//                    if (MultiUpdates.Count > 0)
-//                    {
-//                        AccountDataParsed.athena.RVN += 1;
-//                        AccountDataParsed.athena.CommandRevision += 1;
-//                        UpdatedData.Add($"athena.RVN", AccountDataParsed.athena.RVN);
-//                        UpdatedData.Add($"athena.CommandRevision", AccountDataParsed.athena.CommandRevision);
-//                    }
+                    profileCacheEntry.AccountData.commoncore.Items["Currency"].quantity = Price;
+                    if (MultiUpdates.Count > 0)
+                    {
+                        profileCacheEntry.AccountData.athena.RVN += 1;
+                        profileCacheEntry.AccountData.athena.CommandRevision += 1;
+                    }
 
-//                    if (ApplyProfileChanges.Count > 0)
-//                    {
-//                        AccountDataParsed.commoncore.RVN += 1;
-//                        AccountDataParsed.commoncore.CommandRevision += 1;
-//                        UpdatedData.Add($"commoncore.RVN", AccountDataParsed.commoncore.RVN);
-//                        UpdatedData.Add($"commoncore.CommandRevision", AccountDataParsed.commoncore.CommandRevision);
-//                    }
+                    if (ApplyProfileChanges.Count > 0)
+                    {
+                        profileCacheEntry.AccountData.commoncore.RVN += 1;
+                        profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                    }
 
-//                    await Handlers.UpdateOne<Account>("accountId", AccountDataParsed.AccountId, UpdatedData);
+                    if (Season.SeasonFull >= 12.20)
+                    {
+                        Mcp test = await CommonCoreResponse.Grab(profileCacheEntry.AccountId, ProfileId, Season, profileCacheEntry.AccountData.commoncore.RVN, profileCacheEntry);
+                        ApplyProfileChanges = test.profileChanges;
+                    }
 
-//                    await Handlers.PushOne<Account>("accountId", AccountDataParsed.AccountId, new Dictionary<string, object>
-//                {
-//                    {
-//                        $"athena.items", itemList
-//                    }
-//                });
+                    Mcp mcp = new Mcp()
+                    {
+                        profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
+                        profileId = ProfileId,
+                        profileChangesBaseRevision = BaseRev,
+                        profileChanges = ApplyProfileChanges,
+                        notifications = new List<McpNotifications>()
+                        {
+                            new McpNotifications
+                            {
+                                type = "CatalogPurchase",
+                                primary =  true,
+                                lootResult = new LootResultClass
+                                {
+                                    items = NotificationsItems
+                                }
+                            }
+                        },
+                        profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
+                        serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                        multiUpdate = new List<object>()
+                        {
+                            new
+                            {
+                                profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                                profileId = "athena",
+                                profileChangesBaseRevision = BaseRev2,
+                                profileChanges = MultiUpdates,
+                                profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                            }
+                        },
+                        responseVersion = 1
+                    };
+                    string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
+                    Console.WriteLine(mcpJson);
+                    return mcp;
+                };
+            }
 
-
-//                    Console.WriteLine("TEST");
-
-//                    if (Season.SeasonFull >= 12.20)
-//                    {
-//                        Mcp test = await CommonCoreResponse.Grab(AccountDataParsed.AccountId, ProfileId, Season, AccountDataParsed.commoncore.RVN, AccountDataParsed);
-//                        ApplyProfileChanges = test.profileChanges;
-//                    }
-
-//                    Mcp mcp = new Mcp()
-//                    {
-//                        profileRevision = AccountDataParsed.commoncore.RVN,
-//                        profileId = ProfileId,
-//                        profileChangesBaseRevision = BaseRev,
-//                        profileChanges = ApplyProfileChanges,
-//                        notifications = new List<McpNotifications>()
-//                    {
-//                        new McpNotifications
-//                        {
-//                            type = "CatalogPurchase",
-//                            primary =  true,
-//                            lootResult = new LootResultClass
-//                            {
-//                                items = NotificationsItems
-//                            }
-//                        }
-//                    },
-//                        profileCommandRevision = AccountDataParsed.commoncore.CommandRevision,
-//                        serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-//                        multiUpdate = new List<object>()
-//                    {
-//                        new
-//                        {
-//                            profileRevision = AccountDataParsed.athena.RVN,
-//                            profileId = "athena",
-//                            profileChangesBaseRevision = BaseRev2,
-//                            profileChanges = MultiUpdates,
-//                            profileCommandRevision = AccountDataParsed.athena.CommandRevision,
-//                        }
-//                    },
-//                        responseVersion = 1
-//                    };
-//                    string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
-//                    Console.WriteLine(mcpJson);
-//                    return mcp;
-//                };
-//            }
-
-//            return new Mcp();
-//        }
-//    }
-//}
+            return new Mcp();
+        }
+    }
+}

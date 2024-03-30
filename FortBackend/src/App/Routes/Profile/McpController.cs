@@ -80,9 +80,9 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "EquipBattleRoyaleCustomization":
                                     response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);
                                     break;
-                                //case "PurchaseCatalogEntry":
-                                //    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
-                                //    break;
+                                case "PurchaseCatalogEntry":
+                                    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody));
+                                    break;
                                 //case "CopyCosmeticLoadout":
                                 //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
                                 //    break;

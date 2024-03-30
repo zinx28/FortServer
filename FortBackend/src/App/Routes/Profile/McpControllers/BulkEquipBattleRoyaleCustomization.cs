@@ -60,7 +60,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     ProfileChanges.Add(new {
                         changeType ="statModified",
                         name = $"favorite_${item.slotName.ToLower()}",
-                        value = UpdatedData.GetSlotName(item.slotName.ToLower()),
+                        value = UpdatedData.GetSlotName(item.slotName.ToLower()).items,
                     });
                 }
 

@@ -18,7 +18,6 @@ namespace FortBackend.src.App.XMPP_Server.TCP
         {
             tcpListener = new TcpListener(IPAddress.Any, port);
             cancellationTokenSource = new CancellationTokenSource();
-            //certificate = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx"), "");
         }
 
         public async Task Start()

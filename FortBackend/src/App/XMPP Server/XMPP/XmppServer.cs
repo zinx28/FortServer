@@ -1,20 +1,19 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Saved;
-using FortBackend.src.App.XMPP.Helpers;
-using FortBackend.src.App.XMPP.Helpers.Resources;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Net;
+using FortBackend.src.App.XMPP_Server.Globals;
+using FortBackend.src.App.XMPP_Server.Helpers;
+using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
+using FortBackend.src.App.XMPP_Server.XMPP.Helpers;
 using System.Net.WebSockets;
-using System.Security.Cryptography.X509Certificates;
 
-namespace FortBackend.src.App.XMPP
+namespace FortBackend.src.App.XMPP_Server.XMPP
 {
-    public class Xmpp_Server
+    public class XmppServer
     {
         public static void Intiliazation(string[] args)
         {
             Logger.Log("Initializing Xmpp", "Xmpp");
-           
+
 
             var builder = WebApplication.CreateBuilder(args);
 
@@ -46,7 +45,7 @@ namespace FortBackend.src.App.XMPP
             #endif
 
             app.UseWebSockets();
-           
+
 
             app.Use(async (context, next) =>
             {
@@ -66,7 +65,8 @@ namespace FortBackend.src.App.XMPP
                         {
                             Console.WriteLine("OH SUGAR :/ it crashed why -> " + ex.Message);
                         }
-                    }else
+                    }
+                    else
                     {
                         if (context.Request.Headers.TryGetValue("Upgrade", out var upgradeHeader) &&
                         string.Equals(upgradeHeader, "websocket", StringComparison.OrdinalIgnoreCase) &&
@@ -80,9 +80,9 @@ namespace FortBackend.src.App.XMPP
                             Logger.Error("TCP CONNECTION");
                         }
                     }
-                  
+
                 }
-                else if(context.Request.Path == "/")
+                else if (context.Request.Path == "/")
                 {
                     Console.WriteLine("IDK");
                 }
@@ -90,7 +90,7 @@ namespace FortBackend.src.App.XMPP
                 {
                     var responseObj = new
                     {
-                        Amount = DataSaved.connectedClients.Count,
+                        Amount = DataSaved_XMPP.connectedClients.Count,
                         Clients = GlobalData.Clients.ToList(),
                         Rooms = GlobalData.Rooms.ToList(),
                     };
@@ -107,5 +107,5 @@ namespace FortBackend.src.App.XMPP
             Logger.Log("XMPP STARTING", "XMPP");
             app.Run();
         }
-     }
+    }
 }

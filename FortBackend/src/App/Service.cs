@@ -11,6 +11,7 @@ using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Shop;
 using FortBackend.src.App.XMPP;
 using Microsoft.AspNetCore.HttpOverrides;
+using FortBackend.src.App.XMPP_V2;
 namespace FortBackend.src.App
 {
     public class Service
@@ -103,12 +104,12 @@ namespace FortBackend.src.App
             });
             XmppServer.Start();
 
-            var TCPXmppServer = new Thread(() =>
-            { 
-                TcpServer testserver = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
-                Task tcpServerTask = testserver.Start();
-            });
-            TCPXmppServer.Start();
+            //var TCPXmppServer = new Thread(() =>
+            //{ 
+            //    TcpServer testserver = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
+            //    Task tcpServerTask = testserver.Start();
+            //});
+            //TCPXmppServer.Start();
 
             //var ItemShopGenThread = new Thread(async () =>
             //{

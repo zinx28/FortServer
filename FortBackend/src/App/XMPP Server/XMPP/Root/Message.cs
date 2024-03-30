@@ -1,17 +1,18 @@
-﻿using FortBackend.src.App.XMPP.Helpers.Resources;
-using FortBackend.src.App.XMPP.Helpers.Send;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 using FortBackend.src.App.Utilities;
+using FortBackend.src.App.XMPP_Server.Globals;
+using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
+using FortBackend.src.App.XMPP_Server.XMPP.Helpers.Send;
 
-namespace FortBackend.src.App.XMPP.Root
+namespace FortBackend.src.App.XMPP_Server.XMPP.Root
 {
     public class Message
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved dataSaved)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved_XMPP dataSaved)
         {
             try
             {

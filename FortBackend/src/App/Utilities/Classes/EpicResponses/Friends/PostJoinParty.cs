@@ -1,5 +1,4 @@
-﻿using FortBackend.src.App.XMPP.Helpers.Resources;
-
+﻿
 namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Friends
 {
     public class PostJoinParty

@@ -6,8 +6,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Shop.Helpers.Data;
-using FortBackend.src.App.XMPP.Helpers.Resources;
-using FortBackend.src.App.XMPP.Helpers.Send;
+using FortBackend.src.App.XMPP_Server.Globals;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json;
@@ -307,7 +306,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                         }))
                                                     );
                                                     Console.WriteLine("SEND A XMPP MESSAGE");
-                                                    await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
+                                                    await XMPP_Server.XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
                                                     
                                                 }
 
@@ -455,7 +454,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         }))
                                     );
 
-                                    await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
+                                    await XMPP_Server.XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
                                 }
 
                             });
@@ -739,7 +738,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     }))
                                 );
 
-                                await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
+                                await XMPP_Server.XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
                             }
                         });
                         return StatusCode(204);
@@ -926,7 +925,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                                         }))
                                                          );
 
-                                                            await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
+                                                            await XMPP_Server.XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
                                                             // }
 
                                                             /*
@@ -972,7 +971,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                                 }))
                                                             );
 
-                                                            await XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
+                                                            await XMPP_Server.XMPP.Helpers.Send.Client.SendClientMessage(foundClient, message);
                                                             Console.WriteLine("joined PARTY");
                                                         }
                                                     });

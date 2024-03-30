@@ -8,9 +8,9 @@ using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Oauth;
 using System.IdentityModel.Tokens.Jwt;
-using FortBackend.src.App.XMPP.Helpers.Resources;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.XMPP_Server.Globals;
 
 
 namespace FortBackend.src.App.Routes.Oauth

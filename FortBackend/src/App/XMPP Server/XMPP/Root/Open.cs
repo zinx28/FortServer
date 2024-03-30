@@ -3,7 +3,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortBackend.src.App.XMPP.Root
+namespace FortBackend.src.App.XMPP_Server.XMPP.Root
 {
     public class Open
     {

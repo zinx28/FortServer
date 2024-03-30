@@ -1,7 +1,7 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.XMPP.Helpers.Resources;
+using FortBackend.src.App.XMPP_Server.Globals;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Newtonsoft.Json;

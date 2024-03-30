@@ -1,18 +1,19 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.XMPP.Helpers.Resources;
-using FortBackend.src.App.XMPP.Helpers.Send;
+using FortBackend.src.App.XMPP_Server.Globals;
+using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
+using FortBackend.src.App.XMPP_Server.XMPP.Helpers.Send;
 using Newtonsoft.Json;
 using System;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortBackend.src.App.XMPP.Root
+namespace FortBackend.src.App.XMPP_Server.XMPP.Root
 {
     public class Presence
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved dataSaved)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved_XMPP dataSaved)
         {
             try
             {
@@ -54,7 +55,7 @@ namespace FortBackend.src.App.XMPP.Root
                             if (!GlobalData.Rooms.ContainsKey(RoomName))
                             {
                                 Console.WriteLine("dfsfs");
-                                GlobalData.Rooms[RoomName] = new RoomsLessDyanmic();
+                                GlobalData.Rooms[RoomName] = new RoomsData();
                             }
                             Console.WriteLine("kfopdsfdsdfs");
                             var currentMembers = GlobalData.Rooms[RoomName].members;
@@ -72,11 +73,10 @@ namespace FortBackend.src.App.XMPP.Root
                             }
 
                             Console.WriteLine("fdsfdsfdsfU");
-                            currentMembers.Add(new MoreINfoINsideMembers { accountId = dataSaved.AccountId });
+                            currentMembers.Add(new MembersData { accountId = dataSaved.AccountId });
 
 
                             dataSaved.Rooms.Append(RoomName); // so we know what room they are in for future stuff!
-                            Console.WriteLine("fdskfskopkfpodsfdsfds");
                             GlobalData.Rooms[RoomName].members = currentMembers;
                             //GlobalData.Rooms[RoomName]["Members"] = currentMembers;
                             Console.WriteLine("MUCX NOT NULL");
@@ -106,7 +106,7 @@ namespace FortBackend.src.App.XMPP.Root
                             buffer = Encoding.UTF8.GetBytes(xmlMessage);
                             await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                            if (GlobalData.Rooms.TryGetValue(RoomName, out RoomsLessDyanmic? RoomData))
+                            if (GlobalData.Rooms.TryGetValue(RoomName, out RoomsData? RoomData))
                             {
                                 Console.WriteLine("TEST  " + RoomData);
                                 foreach (var member in RoomData.members)

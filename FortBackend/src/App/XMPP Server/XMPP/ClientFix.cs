@@ -1,11 +1,12 @@
-﻿using FortBackend.src.App.XMPP.Helpers.Resources;
+﻿using FortBackend.src.App.XMPP_Server.Globals;
+using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
 using System.Net.WebSockets;
 
-namespace FortBackend.src.App.XMPP.Helpers
+namespace FortBackend.src.App.XMPP_Server.XMPP.Helpers
 {
     public class ClientFix
     {
-        public static void Init(WebSocket webSocket, DataSaved dataSaved, string clientId)
+        public static void Init(WebSocket webSocket, DataSaved_XMPP dataSaved, string clientId)
         {
             if (!dataSaved.clientExists && webSocket.State == WebSocketState.Open)
             {

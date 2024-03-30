@@ -1,9 +1,9 @@
 ﻿using System.Collections.Concurrent;
 using System.Net.WebSockets;
 
-namespace FortBackend.src.App.XMPP.Helpers.Resources
+namespace FortBackend.src.App.XMPP_Server.Helpers.Globals.Data
 {
-    public class DataSaved
+    public class DataSaved_XMPP
     {
         public bool DidUserLoginNotSure = false;
         public string AccountId = string.Empty;

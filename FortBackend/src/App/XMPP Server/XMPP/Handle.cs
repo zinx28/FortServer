@@ -1,14 +1,15 @@
-﻿using FortBackend.src.App.XMPP.Helpers.Resources;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
-using FortBackend.src.App.XMPP.Root;
 using FortBackend.src.App.Utilities;
-using FortBackend.src.App.XMPP.Helpers.Send;
+using FortBackend.src.App.XMPP_Server.XMPP.Helpers.Send;
+using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
+using FortBackend.src.App.XMPP_Server.Globals;
+using FortBackend.src.App.XMPP_Server.XMPP.Root;
 
-namespace FortBackend.src.App.XMPP.Helpers
+namespace FortBackend.src.App.XMPP_Server.XMPP.Helpers
 {
     public class Handle
     {
@@ -16,10 +17,10 @@ namespace FortBackend.src.App.XMPP.Helpers
         public static async Task HandleWebSocketConnection(WebSocket webSocket, HttpRequest context, string clientId)
         {
 
-            DataSaved dataSaved = new DataSaved(); // outside the try wow!
+            DataSaved_XMPP dataSaved = new DataSaved_XMPP(); // outside the try wow!
             try
             {
-                DataSaved.connectedClients.TryAdd(clientId, webSocket); // Adds The data inside the handlewebsocekt!
+                DataSaved_XMPP.connectedClients.TryAdd(clientId, webSocket); // Adds The data inside the handlewebsocekt!
                 var buffer = new byte[0];
                 XDocument xmlDoc;
 
@@ -107,7 +108,7 @@ namespace FortBackend.src.App.XMPP.Helpers
                 }
                 try
                 {
-                    DataSaved.connectedClients.TryRemove(clientId, out _);
+                    DataSaved_XMPP.connectedClients.TryRemove(clientId, out _);
                     //DataSaved..TryRemove(clientId, out _);
                     await XmppFriend.UpdatePresenceForFriends(webSocket, "{}", false, true);
 

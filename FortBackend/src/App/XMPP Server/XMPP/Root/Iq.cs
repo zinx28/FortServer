@@ -1,19 +1,20 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.XMPP.Helpers.Resources;
-using FortBackend.src.App.XMPP.Helpers.Send;
+using FortBackend.src.App.XMPP_Server.Globals;
+using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
+using FortBackend.src.App.XMPP_Server.XMPP.Helpers.Send;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortBackend.src.App.XMPP.Root
+namespace FortBackend.src.App.XMPP_Server.XMPP.Root
 {
     public class Iq
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved dataSaved)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved_XMPP dataSaved)
         {
             try
             {

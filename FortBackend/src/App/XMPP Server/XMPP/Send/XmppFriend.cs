@@ -1,13 +1,13 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.XMPP.Helpers.Resources;
+using FortBackend.src.App.XMPP_Server.Globals;
 using Newtonsoft.Json.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortBackend.src.App.XMPP.Helpers.Send
+namespace FortBackend.src.App.XMPP_Server.XMPP.Helpers.Send
 {
     public class XmppFriend
     {

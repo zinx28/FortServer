@@ -33,7 +33,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
         {
             try
             {
-
                 bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 if (!FoundSeasonDataInProfile)

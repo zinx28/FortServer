@@ -110,24 +110,24 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
         [BsonElement("Season")]
         [BsonIgnoreIfNull]
-        public List<SeasonClass> Seasons { get; set; } = new List<SeasonClass>()
-        {
-            new SeasonClass {
-                SeasonNumber = 12,
-                Level = 1,
-                BookLevel = 1,
-                BattleStars = 0,
-                BookXP = 0,
-                BookPurchased = false,
-                Quests = new List<Dictionary<string, object>>(),
-                PinnedQuests = new List<Dictionary<string, object>>(),
-                DailyQuests = new DailyQuests(),
-                season_friend_match_boost = 0,
-                season_match_boost = 0,
-                intro_game_played = false,
-                battlestars_currency = 0
-            }
-        };
+        public List<SeasonClass> Seasons { get; set; } = new List<SeasonClass>();
+        //{
+        //    new SeasonClass {
+        //        SeasonNumber = 12,
+        //        Level = 1,
+        //        BookLevel = 1,
+        //        BattleStars = 0,
+        //        BookXP = 0,
+        //        BookPurchased = false,
+        //        Quests = new List<Dictionary<string, object>>(),
+        //        PinnedQuests = new List<Dictionary<string, object>>(),
+        //        DailyQuests = new DailyQuests(),
+        //        season_friend_match_boost = 0,
+        //        season_match_boost = 0,
+        //        intro_game_played = false,
+        //        battlestars_currency = 0
+        //    }
+        //};
 
         [BsonElement("ban_status")]
         [BsonIgnoreIfNull]

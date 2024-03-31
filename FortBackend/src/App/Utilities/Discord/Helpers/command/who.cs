@@ -140,13 +140,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     await interaction.RespondAsync($"Banned :)", ephemeral: true);
 
 
-                                    bool FoundAccount = false;
-                                    if (GlobalData.AccessToken.Any(e => e.accountId == RespondBack.AccountId))
-                                        FoundAccount = true;
-                                   // else if (GlobalData.ClientToken.Any(e => e.accountId == RespondBack.AccountId))
-                                       // FoundAccount = true;
-                                    else if (GlobalData.RefreshToken.Any(e => e.accountId == RespondBack.AccountId))
-                                        FoundAccount = true;
+                                    bool FoundAccount = GlobalData.AccessToken.Any(e => e.accountId == RespondBack.AccountId);
 
                                     if (FoundAccount)
                                     {
@@ -163,19 +157,11 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 XmppClient.Client.Dispose();
                                             }
 
-                                            // grab account id from this instead <3 But uh clienttokenindex is not proepr
-                                            // well it doesnt contain acc ids
                                             var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == RespondBack.AccountId);
                                             if (RefreshTokenIndex != -1)
                                             {
                                                 GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
                                             }
-
-                                            //var ClientTokenIndex = GlobalData.ClientToken.FindIndex(i => i.accountId == AccessToken.accountId);
-                                            //if (ClientTokenIndex != -1)
-                                            //{
-                                            //    GlobalData.ClientToken.RemoveAt(ClientTokenIndex);
-                                            //}
                                         }
                                         await MongoSaveData.SaveToDB(RespondBack.AccountId);
                                         CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId);

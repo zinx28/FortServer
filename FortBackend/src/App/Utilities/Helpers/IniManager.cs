@@ -1,4 +1,6 @@
 ﻿using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Fortnite;
+using FortBackend.src.App.Utilities.Helpers.Encoders;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using System.Text;
@@ -109,6 +111,53 @@ namespace FortBackend.src.App.Utilities.Helpers
             }
 
             return iniBuilder.ToString();
+        }
+
+
+        public static List<CloudstorageFile> CloudStorageArrayData()
+        {
+            var list = new List<CloudstorageFile>();
+            string filePath = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\IniConfig.json"));
+
+            if (string.IsNullOrEmpty(filePath))
+            {
+                return list;
+            }
+
+            IniConfig contentconfig = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
+
+            if (contentconfig != null)
+            {
+                contentconfig.FileData.ForEach(file =>
+                {
+                    long retardedfilecal = 0;
+                    foreach(IniConfigData iniConfigFiles in file.Data)
+                    {
+                        retardedfilecal += iniConfigFiles.Title.Length;
+                        foreach(IniConfigValues e in iniConfigFiles.Data)
+                        {
+                            retardedfilecal += e.Value.ToString().Length;
+                            retardedfilecal += e.Name.Length;
+                        }
+                    }
+
+                    list.Add(new CloudstorageFile
+                    {
+                        uniqueFilename = file.Name,
+                        filename = file.Name,
+                        hash = Hex.MakeHexWithString(file.Name),
+                        hash256 = Hex.MakeHexWithString2(file.Name),
+                        length = retardedfilecal,
+                        contentType = "text/plain",
+                        uploaded = file.UploadedTime,
+                        storageType = "S3",
+                        doNotCache = false
+                    });
+                });
+            }
+
+
+            return list;
         }
     }
 }

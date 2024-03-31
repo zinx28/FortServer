@@ -27,25 +27,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
             List<object> files = new List<object>();
             try
             {
-                string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src\\Resources\\ini");
-
-                foreach (string filePath in Directory.EnumerateFiles(directoryPath).Where(f => f.EndsWith(".ini")))
-                {
-                    FileInfo fileInfo = new FileInfo(filePath);
-                    fileInfo.GetHashCode();
-                    files.Add(new CloudstorageFile
-                    {
-                        uniqueFilename = fileInfo.Name,
-                        filename = fileInfo.Name,
-                        hash = Hex.MakeHexWithString(fileInfo.Name),
-                        hash256 = Hex.MakeHexWithString2(fileInfo.Name),
-                        length = fileInfo.Length,
-                        contentType = "text/plain",
-                        uploaded = fileInfo.CreationTimeUtc,
-                        storageType = "S3",
-                        doNotCache = false
-                    });
-                }
+                return new JsonResult(IniManager.CloudStorageArrayData());
             }
             catch (Exception ex)
             {

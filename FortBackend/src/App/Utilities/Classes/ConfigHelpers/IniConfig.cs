@@ -18,6 +18,10 @@ namespace FortBackend.src.App.Utilities.Classes.ConfigHelpers
         
         public string Name { get; set; } = string.Empty;
         public List<IniConfigData> Data { get; set; } = new List<IniConfigData>();
+
+        // change with a different method
+        public long FileSize { get; set; } = 0;
+        public DateTime UploadedTime { get; set; } = DateTime.Now;
     }
 
     public class IniConfigData

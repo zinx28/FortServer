@@ -351,6 +351,68 @@
                     ]
                 }
             ]
+        },
+        {
+            "Name": "DefaultRuntimeOptions.ini",
+            "Data": [
+                {
+                    "Title": "/Script/FortniteGame.FortRuntimeOptions",
+                    "Data": [
+                        {
+                            "Name": "CheckStatusURL",
+                            "Value": "\"http://127.0.0.1:1111/discord\""
+                        },
+                        {
+                            "Name": "ListOfCreatorsURL",
+                            "Value": "\"http://127.0.0.1:1111/discord\""
+                        },
+                        {
+                            "Name": "TurnOnMfaURL",
+                            "Value": "\"http://127.0.0.1:1111/discord\""
+                        },
+                        {
+                            "Name": "!DisabledTabsForOutOfSeason",
+                            "Value": "ClearArray"
+                        },
+                        {
+                            "Name": "bMOTDSameNewsForCreative",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bEnableCatabaDynamicBackground",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bShowStoreBanner",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bEnableGlobalChat",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bEnableInGameMatchmaking",
+                            "Value": true
+                        },
+                        {
+                            "Name": "!ExperimentalCohortPercent",
+                            "Value": "ClearArray"
+                        },
+                        {
+                            "Name": "bHabaneroEnabled",
+                            "Value": false
+                        },
+                        {
+                            "Name": "+ExperimentalCohortPercent",
+                            "Value": "(CohortPercent=100,ExperimentNum=20)"
+                        },
+                        {
+                            "Name": "MinimumAccountLevelForTournamentPlay",
+                            "Value": 0
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

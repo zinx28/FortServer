@@ -11,6 +11,8 @@ using System.IdentityModel.Tokens.Jwt;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.XMPP_Server.Globals;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
+using FortBackend.src.App.Utilities.MongoDB.Module;
 
 
 namespace FortBackend.src.App.Routes.Oauth
@@ -31,8 +33,8 @@ namespace FortBackend.src.App.Routes.Oauth
                 bool FoundAccount = false;
                 if (GlobalData.AccessToken.Any(e => e.token == token))
                     FoundAccount = true;
-                else if (GlobalData.ClientToken.Any(e => e.token == token))
-                    FoundAccount = true;
+              //  else if (GlobalData.ClientToken.Any(e => e.token == token))
+                   // FoundAccount = true;
                 else if (GlobalData.RefreshToken.Any(e => e.token == token))
                     FoundAccount = true;
 
@@ -82,13 +84,36 @@ namespace FortBackend.src.App.Routes.Oauth
                         }
                     }
                 }
+
+                throw new BaseError
+                {
+                    errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                    errorMessage = $"Authentication failed for /account/api/oauth/verify",
+                    messageVars = new List<string> { $"/account/api/oauth/verify" },
+                    numericErrorCode = 1032,
+                    originatingService = "any",
+                    intent = "prod",
+                    error_description = $"Authentication failed for /account/api/oauth/verify",
+                };
+            }
+            catch (BaseError ex)
+            {
+                var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+                StatusCode(500);
+                return new ContentResult()
+                {
+                    Content = jsonResult,
+                    ContentType = "application/json",
+                    StatusCode = 500
+                };
             }
             catch (Exception ex)
             {
                 Logger.Error($"[OauthApi:Verify] -> {ex.Message}");
             }
+     
+            // shouldn't never call this
             return BadRequest(new { });
-
         }
 
         [HttpPost("oauth/token")]

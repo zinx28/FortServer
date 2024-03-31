@@ -4,7 +4,10 @@ using FortBackend.src.App.XMPP_Server.Globals;
 using FortBackend.src.App.XMPP_Server.Helpers;
 using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
 using FortBackend.src.App.XMPP_Server.XMPP.Helpers;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System.Net;
 using System.Net.WebSockets;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FortBackend.src.App.XMPP_Server.XMPP
 {

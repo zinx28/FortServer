@@ -365,7 +365,7 @@ namespace FortBackend.src.App.Routes.Oauth
 
                 if (IsMyFavUserBanned)
                 {
-                    return BadRequest(new BaseError
+                    var jsonResult = JsonConvert.SerializeObject(new BaseError
                     {
                         errorCode = "errors.com.epicgames.account.account_not_active",
                         errorMessage = "You have been permanently banned from FortBackend.",
@@ -375,6 +375,14 @@ namespace FortBackend.src.App.Routes.Oauth
                         intent = "prod",
                         error_description = "You have been permanently banned from FortBackend."
                     });
+
+                    StatusCode(500);
+                    return new ContentResult()
+                    {
+                        Content = jsonResult,
+                        ContentType = "application/json",
+                        StatusCode = 500
+                    };
                 }
                 if(string.IsNullOrEmpty(AccountId))
                 {

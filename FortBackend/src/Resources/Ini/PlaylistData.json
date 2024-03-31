@@ -1,0 +1,98 @@
+[
+    {
+        "PlaylistName": "Playlist_DefaultSolo",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 0,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 0
+        }
+    },
+    {
+        "PlaylistName": "Playlist_DefaultDuo",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 0,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 1
+        }
+    },
+    {
+        "PlaylistName": "Playlist_DefaultSquad",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 0,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 2
+        }
+    },
+    {
+        "PlaylistName": "Playlist_PlaygroundV2",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 1,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 2
+        }
+    },
+    {
+        "PlaylistName": "Playlist_ShowdownAlt_Solo",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 2,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 0
+        }
+    },
+    {
+        "PlaylistName": "Playlist_ShowdownAlt_Duos",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 2,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 1
+        }
+    },
+    {
+        "PlaylistName": "Playlist_ShowdownAlt_Trios",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 2,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 2
+        }
+    },
+    {
+        "PlaylistName": "Playlist_ShowdownAlt_Squads",
+        "PlaylistAccess": {
+            "bEnabled": true,
+            "bIsDefaultPlaylist": true,
+            "bVisibleWhenDisabled": true,
+            "bDisplayAsNew": false,
+            "CategoryIndex": 2,
+            "bDisplayAsLimitedTime": false,
+            "DisplayPriority": 3
+        }
+    }
+]

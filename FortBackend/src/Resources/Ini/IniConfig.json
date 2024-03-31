@@ -1,0 +1,356 @@
+﻿{
+    "//": "FORTBACKEND INI MANAGER",
+    "FileData": [
+        {
+            "Name": "DefaultGame.ini",
+            "Data": [
+                {
+                    "Title": "/Script/FortniteGame.FortChatManage",
+                    "Data": [
+                        {
+                            "Name": "bShouldRequestGeneralChatRooms",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bShouldJoinGlobalChat",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bShouldJoinFounderChat",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bIsAthenaGlobalChatEnabled",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "/Script/FortniteGame.FortOnlineAccount",
+                    "Data": [
+                        {
+                            "Name": "bShouldRequestGeneralChatRooms",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bShouldJoinGlobalChat",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bShouldJoinFounderChat",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bShouldGrantFreeAccess",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bEnableEulaCheck",
+                            "Value": false
+                        }
+                    ]
+                },
+                {
+                    "Title": "/Script/FortniteGame.FortGlobals",
+                    "Data": [
+                        {
+                            "Name": "bAllowLogout",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "VoiceChatManager",
+                    "Data": [
+                        {
+                            "Name": "bEnabled",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "Vivox",
+                    "Data": [
+                        {
+                            "Name": "bEnabled",
+                            "Value": true
+                        },
+                        {
+                            "Name": "ServerUrl",
+                            "Value": "\"https://mt1s.www.vivox.com/api2/\""
+                        },
+                        {
+                            "Name": "ServiceUrl",
+                            "Value": "\"https://mt1s.www.vivox.com/api2/\""
+                        },
+                        {
+                            "Name": "Domain",
+                            "Value": "\"mt1s.vivox.com\""
+                        },
+                        {
+                            "Name": "Issuer",
+                            "Value": "\"martin9374-fo28-dev\""
+                        },
+                        {
+                            "Name": "Domain",
+                            "Value": "\"mt1s.vivox.com\""
+                        }
+                    ]
+                }
+
+            ]
+        },
+        {
+            "Name": "DefaultEngine.ini",
+            "Data": [
+                {
+                    "Title": "SocketSubsystemEpic",
+                    "Data": [
+                        {
+                            "Name": "bLocalAddrUsesGameSessionId",
+                            "Value": true
+                        }
+
+                    ]
+                },
+                {
+                    "Title": "XMPP",
+                    "Data": [
+                        {
+                            "Name": "bEnableWebsockets",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bEnabled",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystemMcp",
+                    "Data": [
+                        {
+                            "Name": "bEnabled",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bEnableXmpp",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bUsePartySystemV2",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystemMcp.Xmpp",
+                    "Data": [
+                        {
+                            "Name": "bPrivateChatFriendsOnly",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bResetPingTimeoutOnReceiveStanza",
+                            "Value": true
+                        },
+                        {
+                            "Name": "Domain",
+                            "Value": "\"127.0.0.1\""
+                        },
+                        {
+                            "Name": "ServerAddr",
+                            "Value": "\"127.0.0.1\""
+                        },
+                        {
+                            "Name": "bUsePlainTextAuth",
+                            "Value": true
+                        },
+                        {
+                            "Name": "ServerPort",
+                            "Value": 20123
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystemMcp.Xmpp Prod",
+                    "Data": [
+                        {
+                            "Name": "bUseSSL",
+                            "Value": false
+                        },
+                        {
+                            "Name": "Domain",
+                            "Value": "\"127.0.0.1\""
+                        },
+                        {
+                            "Name": "ServerAddr",
+                            "Value": "\"ws://127.0.0.1:443\""
+                        },
+                        {
+                            "Name": "ServerPort",
+                            "Value": 443
+                        }
+                    ]
+                },
+                {
+                    "Title": "LwsWebSocket",
+                    "Data": [
+                        {
+                            "Name": "bDisableCertValidation",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bDisableDomainWhitelist",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "/Script/Engine.NetworkSettings",
+                    "Data": [
+                        {
+                            "Name": "n.VerifyPeer",
+                            "Value": false
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystem",
+                    "Data": [
+                        {
+                            "Name": "bEnabled",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bEnableXmpp",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bHasVoiceEnabled",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystemMcp.OnlineIdentityMcp",
+                    "Data": [
+                        {
+                            "Name": "bAutoLoginToXmpp",
+                            "Value": false
+                        },
+                        {
+                            "Name": "bShouldReconnectXmpp",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bOfflineAccountToken",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bOfflineClientToken",
+                            "Value": true
+                        },
+                        {
+                            "Name": "bVerifyAuthIncludesPermissions",
+                            "Value": false
+                        },
+                        {
+                            "Name": "+HttpRetryResponseCodes",
+                            "Value": 408
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystemMcp.OnlinePartySystemMcpAdapter",
+                    "Data": [
+                        {
+                            "Name": "bUsePartySystemV2",
+                            "Value": true
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystemTwitch",
+                    "Data": [
+                        {
+                            "Name": "bEnabled",
+                            "Value": false
+                        }
+                    ]
+                },
+                {
+                    "Title": "OnlineSubsystemTwitch.OnlineIdentityTwitch",
+                    "Data": [
+                        {
+                            "Name": "LoginRedirectUrl",
+                            "Value": "\"http://127.0.0.1:1111/login/getTwitchToken\""
+                        }
+                    ]
+                },
+                {
+                    "Title": "ConsoleVariables",
+                    "Data": [
+                        {
+                            "Name": "n.VerifyPeer",
+                            "Value": 0
+                        },
+                        {
+                            "Name": "FortMatchmakingV2.ContentBeaconFailureCancelsMatchmaking",
+                            "Value": 0
+                        },
+                        {
+                            "Name": "Fort.ShutdownWhenContentBeaconFails",
+                            "Value": 0
+                        },
+                        {
+                            "Name": "FortMatchmakingV2.EnableContentBeacon",
+                            "Value": 0
+                        }
+                    ]
+                },
+                {
+                    "Title": "Voice",
+                    "Data": [
+                        {
+                            "Name": "bEnabled",
+                            "Value": true
+                        }
+                    ]
+                }
+
+            ]
+        },
+        {
+            "Name": "DefaultInput.ini",
+            "Data": [
+                {
+                    "Title": "/Script/Engine.InputSettings",
+                    "Data": [
+                        {
+                            "Name": "bEnableFOVScaling",
+                            "Value": true
+                        },
+                        {
+                            "Name": "!ConsoleKey",
+                            "Value": "ClearArray"
+                        },
+                        {
+                            "Name": "+ConsoleKey",
+                            "Value": "None"
+                        }
+                    ]
+                },
+                {
+                    "Title": "/Script/EngineSettings.ConsoleSettings",
+                    "Data": [
+                        {
+                            "Name": "!AutoCompleteMapPaths",
+                            "Value": "ClearArray"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

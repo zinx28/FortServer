@@ -1,0 +1,48 @@
+{
+    "RegionDefinitions": [
+        {
+            "Region": "Europe",
+            "RegionId": "EU",
+            "bEnabled": true,
+            "bVisible": true,
+            "bAutoAssignable": true
+        },
+        {
+            "Region": "NA-East",
+            "RegionId": "NAE",
+            "bEnabled": true,
+            "bVisible": true,
+            "bAutoAssignable": true
+        },
+        {
+            "Region": "Undefined",
+            "RegionId": "UND",
+            "bEnabled": true,
+            "bVisible": false,
+            "bAutoAssignable": true
+        }
+    ],
+    "DatacenterDefinitions": [
+        {
+            "Id": "VA",
+            "RegionId": "NAE",
+            "bEnabled": true,
+            "Address": "127.0.0.1",
+            "Port": 0
+        },
+        {
+            "Id": "FR",
+            "RegionId": "EU",
+            "bEnabled": true,
+            "Address": "127.0.0.1",
+            "Port": 0
+        },
+        {
+            "Id": "BE",
+            "RegionId": "BE",
+            "bEnabled": true,
+            "Address": "127.0.0.1",
+            "Port": 0
+        }
+    ]
+}

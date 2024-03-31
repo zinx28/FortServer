@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Fortnite;
+using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
@@ -71,16 +72,14 @@ namespace FortBackend.src.App.Routes.CloudStorage
                     return BadRequest("Invalid parameters");
                 }
 
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\{filename}");
+                string IniManagerFile = IniManager.GrabIniFile(filename);
 
-                if (!System.IO.File.Exists(filePath))
+                if (IniManagerFile == "NotFound")
                 {
                     return NotFound();
                 }
 
-                string fileContents = System.IO.File.ReadAllText(filePath);
-
-                return Content(fileContents, "text/plain");
+                return Content(IniManagerFile, "application/octet-stream"); // why was this text plain ;(
             }
             catch (Exception ex)
             {

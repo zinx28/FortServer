@@ -4,3 +4,76 @@ Received message: <?xml version="1.0"?><stream:stream to="127.0.0.1" xml:lang="e
 Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
 Received message: <?xml version="1.0"?><stream:stream to="127.0.0.1" xml:lang="en" version="1.0" xmlns="jabber:client" xmlns:stream="http://etherx.jabber.org/streams">
 Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Error reading data: This operation is only allowed using a successfully authenticated context.
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+Received message: <stream:stream to="127.0.0.1" xml:lang="*" version="1.0" xmlns:stream="http://etherx.jabber.org/streams" xmlns="jabber:client">
+
+Received message: <starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>

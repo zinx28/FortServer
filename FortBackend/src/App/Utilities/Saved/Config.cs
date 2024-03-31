@@ -22,7 +22,7 @@ namespace FortBackend.src.App.Utilities.Saved
         public string MatchmakerIP { get; set; } = "127.0.0.1"; // Don't change unless its hosted on a different ip
 
         // OLD XMPP
-        public int TCPXmppPort { get; set; } = 20123;
+        public int TCPXmppPort { get; set; } = 8443; // https for cloudflare
 
         // NEW XMPP
         public int XmppPort { get; set; } = 443; // 443 default ig

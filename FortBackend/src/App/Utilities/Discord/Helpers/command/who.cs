@@ -143,8 +143,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     bool FoundAccount = false;
                                     if (GlobalData.AccessToken.Any(e => e.accountId == RespondBack.AccountId))
                                         FoundAccount = true;
-                                    else if (GlobalData.ClientToken.Any(e => e.accountId == RespondBack.AccountId))
-                                        FoundAccount = true;
+                                   // else if (GlobalData.ClientToken.Any(e => e.accountId == RespondBack.AccountId))
+                                       // FoundAccount = true;
                                     else if (GlobalData.RefreshToken.Any(e => e.accountId == RespondBack.AccountId))
                                         FoundAccount = true;
 

@@ -1,9 +1,11 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using FortBackend.src.App.Routes.Development;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.XMPP_Server.Globals;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using Newtonsoft.Json;
@@ -86,7 +88,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         .WithCurrentTimestamp();
 
                     await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: RespondBack.banned ? unbanButton : banButton);
-
+                    bool Banned = RespondBack.banned;
                     DiscordBot.Client.InteractionCreated += async (interaction) =>
                     {
                         if (interaction is SocketMessageComponent componentInteraction &&
@@ -130,23 +132,66 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     };
                                     StoreInfocollection.InsertOne(storeinfo);
 
-                                    await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
-                                    {
-                                       { "banned", true }
-                                    });
-
                                     await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
                                     {
                                         id = RespondBack.DiscordId,
                                         username = RespondBack.Username
                                     }, components.First(e => e.CustomId == "reasontoban").Value, $"<@{command.User.Id}>");
                                     await interaction.RespondAsync($"Banned :)", ephemeral: true);
+
+
+                                    bool FoundAccount = false;
+                                    if (GlobalData.AccessToken.Any(e => e.accountId == RespondBack.AccountId))
+                                        FoundAccount = true;
+                                    else if (GlobalData.ClientToken.Any(e => e.accountId == RespondBack.AccountId))
+                                        FoundAccount = true;
+                                    else if (GlobalData.RefreshToken.Any(e => e.accountId == RespondBack.AccountId))
+                                        FoundAccount = true;
+
+                                    if (FoundAccount)
+                                    {
+                                        var AccessTokenIndex = GlobalData.AccessToken.FindIndex(i => i.accountId == RespondBack.AccountId);
+
+                                        if (AccessTokenIndex != -1)
+                                        {
+                                            var AccessToken = GlobalData.AccessToken[AccessTokenIndex];
+                                            GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
+
+                                            var XmppClient = GlobalData.Clients.Find(i => i.accountId == RespondBack.AccountId);
+                                            if (XmppClient != null)
+                                            {
+                                                XmppClient.Client.Dispose();
+                                            }
+
+                                            // grab account id from this instead <3 But uh clienttokenindex is not proepr
+                                            // well it doesnt contain acc ids
+                                            var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == RespondBack.AccountId);
+                                            if (RefreshTokenIndex != -1)
+                                            {
+                                                GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
+                                            }
+
+                                            //var ClientTokenIndex = GlobalData.ClientToken.FindIndex(i => i.accountId == AccessToken.accountId);
+                                            //if (ClientTokenIndex != -1)
+                                            //{
+                                            //    GlobalData.ClientToken.RemoveAt(ClientTokenIndex);
+                                            //}
+                                        }
+                                        await MongoSaveData.SaveToDB(RespondBack.AccountId);
+                                        CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId);
+                                    }
+
+                                    // Ban user after deleting token and killing cached data
+                                    await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
+                                    {
+                                       { "banned", true }
+                                    });
                                 }
                             }
                         }
                         else if (interaction is SocketModal unbanInteraction &&
                         unbanInteraction.Data.CustomId == "reasontouban" &&
-                        unbanInteraction.User.Id == command.User.Id)
+                        unbanInteraction.User.Id == command.User.Id && Banned)
                         {
                             if (unbanInteraction.Message != null)
                             {
@@ -155,6 +200,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                 {
                                     try
                                     {
+                                        Banned = false; // temp valiue
                                         IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
                                         var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIds, RespondBack.AccountId);
                                         var count = await StoreInfocollection.CountDocumentsAsync(filter);

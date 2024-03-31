@@ -35,7 +35,6 @@ namespace FortBackend.src.App.Routes.Development
                             NoWay.AuditLogReason = Message;
 
                             await guild.RemoveBanAsync(userId, NoWay);
-                            //await guild.AddBanAsync(user, reason: Message);
                         }
                         catch (Exception ex)
                         {

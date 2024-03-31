@@ -13,6 +13,7 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.XMPP_Server.Globals;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities.Saved;
 
 
 namespace FortBackend.src.App.Routes.Oauth
@@ -33,8 +34,6 @@ namespace FortBackend.src.App.Routes.Oauth
                 bool FoundAccount = false;
                 if (GlobalData.AccessToken.Any(e => e.token == token))
                     FoundAccount = true;
-              //  else if (GlobalData.ClientToken.Any(e => e.token == token))
-                   // FoundAccount = true;
                 else if (GlobalData.RefreshToken.Any(e => e.token == token))
                     FoundAccount = true;
 
@@ -368,20 +367,20 @@ namespace FortBackend.src.App.Routes.Oauth
                     var jsonResult = JsonConvert.SerializeObject(new BaseError
                     {
                         errorCode = "errors.com.epicgames.account.account_not_active",
-                        errorMessage = "You have been permanently banned from FortBackend.",
+                        errorMessage = $"You have been permanently banned from {Saved.DeserializeConfig.DiscordBotMessage}.", // why not use this
                         messageVars = new List<string>(),
                         numericErrorCode = -1,
                         originatingService = "any",
                         intent = "prod",
-                        error_description = "You have been permanently banned from FortBackend."
+                        error_description = $"You have been permanently banned from {Saved.DeserializeConfig.DiscordBotMessage}."
                     });
 
-                    StatusCode(500);
+                    StatusCode(400);
                     return new ContentResult()
                     {
                         Content = jsonResult,
                         ContentType = "application/json",
-                        StatusCode = 500
+                        StatusCode = 400
                     };
                 }
                 if(string.IsNullOrEmpty(AccountId))

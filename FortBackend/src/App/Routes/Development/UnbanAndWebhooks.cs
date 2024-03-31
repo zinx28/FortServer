@@ -49,14 +49,15 @@ namespace FortBackend.src.App.Routes.Development
 
                 var embed2 = new
                 {
-                    title = "Unbanned",
+                    title = "Ban Revoked",
                     footer = new { text = userinfo.username + " Has Been Unbanned!" },
                     fields = new[]
                     {
-                    new { name = "UserId", value = userinfo.id.ToString(), inline = false },
-                    new { name = "Reason", value = Message, inline = false },
-                    new { name = "Unbanned By", value = BodyMessage, inline = false }
-                },
+                        new { name = "Display Name", value = userinfo.username ?? "Couldn't find username?", inline = false },
+                        new { name = "User Id", value = userinfo.id.ToString(), inline = false },
+                        new { name = "Reason", value = Message, inline = false },
+                        new { name = "Staff", value = BodyMessage, inline = false }
+                    },
                     color = 0x00FFFF
                 };
 

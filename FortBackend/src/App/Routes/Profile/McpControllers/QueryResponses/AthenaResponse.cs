@@ -8,7 +8,9 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.App.Utilities.Shop.Helpers.Class;
+using FortBackend.src.App.Utilities.Shop.Helpers.Data;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -160,6 +162,19 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         var ProfileChange = AthenaClass.profileChanges[0] as ProfileChange;
                         if (ProfileChange != null)
                         {
+
+                            if (Saved.DeserializeConfig.FullLockerForEveryone)
+                            {
+                                ProfileChange.Profile.items = Saved.DeserializeConfig.FullLocker_AthenaItems;
+                            }
+                            else
+                            {
+                                foreach (var kvp in profileCacheEntry.AccountData.athena.Items)
+                                {
+                                    ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
+                                }
+                            }
+
                             foreach (var kvp in profileCacheEntry.AccountData.athena.loadouts_data)
                             {
                                 ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
@@ -184,10 +199,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 }
                             }
 
-                            foreach (var kvp in profileCacheEntry.AccountData.athena.Items)
-                            {
-                                ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
-                            }
+                          
+
+                           
 
                             int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.Select((pair, index) => (pair.Key, pair.Value, index))
                             .TakeWhile(pair => !pair.Key.Equals("Currency")).Count();

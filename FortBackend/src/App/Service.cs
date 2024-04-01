@@ -11,6 +11,8 @@ using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Shop;
 using Microsoft.AspNetCore.HttpOverrides;
 using FortBackend.src.App.XMPP_V2;
+using Newtonsoft.Json;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 namespace FortBackend.src.App
 {
     public class Service
@@ -48,7 +50,20 @@ namespace FortBackend.src.App
             {
                 Logger.Log("Loaded Config", "CONFIG");
             }
-            
+
+            string FullLockerJson = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/FullLocker.json"));
+            if (FullLockerJson == null)
+            {
+                Logger.Error("FULL LOCKER JSON IS NULL", "Services");
+            }
+            // if errors or someone skunks the file it won't crash on startup
+            try
+            {
+                Saved.DeserializeConfig.FullLocker_AthenaItems = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(FullLockerJson)!;
+                Logger.Log("Full locker is loaded", "Services");
+            }
+            catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message);  }
+
             startup.ConfigureServices(builder.Services);
         #if HTTPS
                 Saved.DeserializeConfig.DefaultProtocol = "https://";

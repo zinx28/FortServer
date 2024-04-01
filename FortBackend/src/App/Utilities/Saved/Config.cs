@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using System.Text.Json.Serialization;
 
 namespace FortBackend.src.App.Utilities.Saved
 {
@@ -56,5 +57,10 @@ namespace FortBackend.src.App.Utilities.Saved
         // SEASON YOU'RE HOSTING
         public bool ForceSeason { get; set; } = false;
         public int Season { get; set; } = 0;
+
+        // ENABLE FULL LOCKER FOR EVERYONE <3
+        public bool FullLockerForEveryone { get; set; } = false;
+        // THIS AUTO GENERATES DURING RUNTIME TO REDUCE LAG
+        public Dictionary<string, dynamic> FullLocker_AthenaItems { get; set; } = new Dictionary<string, dynamic>();
     }
 }

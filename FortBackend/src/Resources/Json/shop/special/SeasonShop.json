@@ -1,0 +1,82 @@
+[
+    {
+        "id": "a327fdedd4463b643c69e64be75a3233a34c23",
+        "item": "AthenaGlider:Glider_ID_001",
+        "name": "Aerial Assault One",
+        "description": "Fly into battle on the wings of victory.",
+        "items": [],
+        "price": 500,
+        "singleprice": 500,
+        "metaInfo": [
+            {
+                "key": "SeasonLevel",
+                "value": 3
+            }
+        ],
+        "variants": [],
+        "BundlePath": "",
+        "rarity": "uncommon",
+        "sortPriority": -1,
+        "catalogGroupPriority": 0
+    },
+    {
+        "id": "82c02a6031e8a8b06e62fe17ee34603529f903",
+        "item": "AthenaCharacter:CID_017_Athena_Commando_M",
+        "name": "Aerial Assault Trooper",
+        "description": "Rare aerial assault trooper outfit.",
+        "items": [],
+        "price": 1200,
+        "singleprice": 1200,
+        "metaInfo": [
+            {
+                "key": "SeasonLevel",
+                "value": 3
+            }
+        ],
+        "variants": [],
+        "BundlePath": "",
+        "rarity": "rare",
+        "sortPriority": -1,
+        "catalogGroupPriority": 0
+    },
+    {
+        "id": "e260f23da46ec0b0a9734742879d521d802022",
+        "item": "AthenaCharacter:CID_028_Athena_Commando_F",
+        "name": "Renegade Raider",
+        "description": "Rare renegade raider outfit.",
+        "items": [],
+        "price": 1200,
+        "singleprice": 1200,
+        "metaInfo": [
+            {
+                "key": "SeasonLevel",
+                "value": 3
+            }
+        ],
+        "variants": [],
+        "BundlePath": "",
+        "rarity": "rare",
+        "sortPriority": -1,
+        "catalogGroupPriority": 0
+    },
+    {
+        "id": "192f53821088625393485c078f7dfed3df8dcd",
+        "item": "AthenaPickaxe:Pickaxe_Lockjaw",
+        "name": "Raider's Revenge",
+        "description": "Wrapped in rusty barbed wire, and ready to settle the score.",
+        "items": [],
+        "price": 1500,
+        "singleprice": 1500,
+        "metaInfo": [
+            {
+                "key": "SeasonLevel",
+                "value": 3
+            }
+        ],
+        "variants": [],
+        "BundlePath": "",
+        "rarity": "epic",
+        "sortPriority": -1,
+        "catalogGroupPriority": 0
+    }
+]

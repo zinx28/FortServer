@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using FortBackend.src.App.Utilities.Shop.Helpers.Data;
+using System.Net;
 
 namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Storefront
 {
@@ -20,7 +21,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Storefront
         public string offerType { get; set; } = "StaticPrice";
         public object giftInfo { get; set; } = new object();
         public bool refundable { get; set; } = true;
-        public List<object> metaInfo { get; set; } = new List<object>();
+        public List<MetaInfo> metaInfo { get; set; } = new List<MetaInfo>();
         public string displayAssetPath { get; set; } = string.Empty;
         public List<itemGrants> itemGrants { get; set; } = new List<itemGrants>();
         public int sortPriority { get; set; } = 0;

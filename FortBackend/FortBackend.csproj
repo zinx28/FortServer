@@ -44,10 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="src\Resources\Json\shop\special\OgShop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="src\Resources\Certificates\FortBackend.pfx.temp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

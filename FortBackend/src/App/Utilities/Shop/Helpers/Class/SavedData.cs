@@ -21,9 +21,19 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Data
         public int singleprice { get; set; } = -1;
         public List<AthenaItemVariants> variants { get; set; } = new List<AthenaItemVariants>();
 
+        public List<MetaInfo> metaInfo { get; set; } = new List<MetaInfo>();
         public string BundlePath { get; set; } = string.Empty;
         public string rarity { get; set; } = string.Empty;
         public string type = string.Empty;
         public string[] categories { get; set; } = new string[0];
+
+        public int sortPriority { get; set; } = 0;
+        public int catalogGroupPriority { get; set; } = 0;
+    }
+
+    public class MetaInfo
+    {
+        public string key { get; set; } = string.Empty;
+        public dynamic value { get; set; }
     }
 }

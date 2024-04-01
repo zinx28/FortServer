@@ -5,6 +5,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Text.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
@@ -14,7 +15,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
         public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, PurchaseCatalogEntryRequest Body)
         {
             Console.WriteLine(ProfileId);
-            if (ProfileId == "common_core")
+            if (ProfileId == "common_core" || ProfileId == "profile0")
             {
                 List<SeasonClass> Seasons = profileCacheEntry.AccountData.commoncore.Seasons;
 
@@ -39,7 +40,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 error_description = "Catalog Limit is at least 1!",
                             };
                         }
-
+                     
                         if (Body.currency == "MtxCurrency")
                         {
                             if (Body.offerId != null)
@@ -63,6 +64,18 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             originatingService = "any",
                             intent = "prod",
                             error_description = "Error trying to purchase item",
+                        };
+                    }else
+                    {
+                        throw new BaseError
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "Backend Issue",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Backend Issue",
                         };
                     }
                 }

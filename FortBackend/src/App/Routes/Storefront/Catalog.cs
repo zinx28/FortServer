@@ -71,7 +71,7 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 if (season.Season == 1)
                 {
-                    string SeasonShopPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/special/OgShop.json");
+                    string SeasonShopPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/special/SeasonShop.json");
                     string OGJson = System.IO.File.ReadAllText(SeasonShopPath);
 
                     if (string.IsNullOrEmpty(OGJson))
@@ -86,14 +86,67 @@ namespace FortBackend.src.App.Routes.Storefront
                             intent = "prod"
                         });
                     }
-                    List<catalogEntrie> OgShopJson = JsonConvert.DeserializeObject<List<catalogEntrie>>(OGJson)!;
+                    List<ItemsSaved> SeasonShopJson = JsonConvert.DeserializeObject<List<ItemsSaved>>(OGJson)!;
 
-                    if (OgShopJson != null)
+                    if (SeasonShopJson != null)
                     {
+                        List<catalogEntrie> SeasonShopEntrie = new List<catalogEntrie>();
+
+                        foreach (var item in SeasonShopJson) {
+                            List<CatalogRequirements> requirements = new List<CatalogRequirements>();
+                            List<itemGrants> itemGrants = new List<itemGrants>();
+
+                            itemGrants.Add(new itemGrants
+                            {
+                                templateId = item.item,
+                                quantity = 1
+                            });
+                            requirements.Add(new CatalogRequirements
+                            {
+                                requirementType = "DenyOnItemOwnership",
+                                requiredId = item.item,
+                                minQuantity = 1,
+                            });
+
+                            SeasonShopEntrie.Add(new catalogEntrie
+                            {
+                                devName = $"{item.id}",
+                                offerId = $"v2:/{item.id}",
+                                categories = item.categories,
+                                prices = new List<CatalogPrices>
+                                {
+                                    new CatalogPrices
+                                    {
+                                        currencyType = "MtxCurrency",
+                                        currencySubType = "",
+                                        regularPrice = item.singleprice,
+                                        finalPrice = item.price,
+                                        saleExpiration = DateTime.MaxValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        basePrice = item.price,
+                                    }
+                                },
+                                requirements = requirements,
+                                offerType = "StaticPrice",
+                                giftInfo = new
+                                {
+                                    bIsEnabled = true,
+                                    forcedGiftBoxTemplateId = "",
+                                    purchaseRequirements = new List<dynamic>(),
+                                    giftRecordIds = new List<dynamic>()
+                                },
+                                metaInfo = item.metaInfo,
+                                //displayAssetPath = $"/Game/Catalog/DisplayAssets/{DisplayAsset}.{DisplayAsset}",
+                                itemGrants = itemGrants,
+                                sortPriority = item.sortPriority,
+                                catalogGroupPriority = item.catalogGroupPriority,
+                            }); 
+                            
+                        }
+
                         ShopObject.storefronts.Add(new
                         {
                             name = "BRSeasonStorefront",
-                            catalogEntries = OgShopJson
+                            catalogEntries = SeasonShopEntrie
                         });
                     }
 
@@ -175,19 +228,19 @@ namespace FortBackend.src.App.Routes.Storefront
                                 purchaseRequirements = new List<dynamic>(),
                                 giftRecordIds = new List<dynamic>()
                             },
-                            metaInfo = new List<object>()
+                            metaInfo = new List<MetaInfo>()
                             {
-                                new
+                                new MetaInfo
                                 {
                                     key = "SectionId",
                                     value = "Featured"
                                 },
-                                new
+                                new MetaInfo
                                 {
                                     key = "TileSize",
                                     value = WeeklyItems.type
                                 },
-                                new
+                                new MetaInfo
                                 {
                                     key = "sectionPriority",
                                     value = WeeklyItems.type == "Normal" ? LargeSortPriority.ToString() : SortPriority.ToString()
@@ -272,19 +325,19 @@ namespace FortBackend.src.App.Routes.Storefront
                                 purchaseRequirements = new List<dynamic>(),
                                 giftRecordIds = new List<dynamic>()
                             },
-                            metaInfo = new List<object>()
+                            metaInfo = new List<MetaInfo>()
                             {
-                                new
+                                new MetaInfo
                                 {
                                     key = "SectionId",
                                     value = "Daily"
                                 },
-                                new
+                                new MetaInfo
                                 {
                                     key = "TileSize",
                                     value = WeeklyItems.type
                                 },
-                                new
+                                new MetaInfo
                                 {
                                     key = "sectionPriority",
                                     value = WeeklyItems.type == "Normal" ? LargeSortPriority.ToString() : SortPriority.ToString()

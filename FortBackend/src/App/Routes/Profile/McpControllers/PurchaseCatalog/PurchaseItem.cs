@@ -42,7 +42,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                 var NotificationsItems = new List<NotificationsItemsClass>();
                 var MultiUpdates = new List<object>();
                 var ApplyProfileChanges = new List<object>();
-                //Dictionary<string, object> UpdatedData = new Dictionary<string, object>();
                 List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
                 int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
                 int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
@@ -264,7 +263,29 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                     string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
                     Console.WriteLine(mcpJson);
                     return mcp;
-                };
+                }
+                else
+                {
+                    // This should be season shop
+                    string SeasonShopFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "special", "SeasonShop.json");
+                    string SeasonShopJson = File.ReadAllText(SeasonShopFilePath);
+
+                    if (string.IsNullOrEmpty(SeasonShopJson))
+                    {
+                        throw new BaseError()
+                        {
+                            errorCode = "errors.com.epicgames.modules.catalog",
+                            errorMessage = "Server Sided Issue",
+                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                            numericErrorCode = 12801,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "Server Sided Issue",
+                        };
+                    }
+
+                    // code
+                }
             }
 
             return new Mcp();

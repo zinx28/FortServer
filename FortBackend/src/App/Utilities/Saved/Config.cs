@@ -61,6 +61,6 @@ namespace FortBackend.src.App.Utilities.Saved
         // ENABLE FULL LOCKER FOR EVERYONE <3
         public bool FullLockerForEveryone { get; set; } = false;
         // THIS AUTO GENERATES DURING RUNTIME TO REDUCE LAG
-        public Dictionary<string, dynamic> FullLocker_AthenaItems { get; set; } = new Dictionary<string, dynamic>();
+        public Dictionary<string, AthenaItem> FullLocker_AthenaItems { get; set; } = new Dictionary<string, AthenaItem>();
     }
 }

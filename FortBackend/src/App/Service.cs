@@ -59,7 +59,7 @@ namespace FortBackend.src.App
             // if errors or someone skunks the file it won't crash on startup
             try
             {
-                Saved.DeserializeConfig.FullLocker_AthenaItems = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(FullLockerJson)!;
+                Saved.DeserializeConfig.FullLocker_AthenaItems = JsonConvert.DeserializeObject<Dictionary<string, AthenaItem>>(FullLockerJson)!;
                 Logger.Log("Full locker is loaded", "Services");
             }
             catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message);  }

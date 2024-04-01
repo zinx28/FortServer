@@ -15,5 +15,6 @@
     "ForceSeason": false,
     "Season": 0,
     "DetectedWebhookUrl": "",
-    "EnableDetections": false
+    "EnableDetections": false,
+    "FullLockerForEveryone": false
 }

@@ -17,7 +17,8 @@
         "BundlePath": "",
         "rarity": "uncommon",
         "sortPriority": -1,
-        "catalogGroupPriority": 0
+        "catalogGroupPriority": 0,
+        "MinLevel": 5
     },
     {
         "id": "82c02a6031e8a8b06e62fe17ee34603529f903",
@@ -37,7 +38,8 @@
         "BundlePath": "",
         "rarity": "rare",
         "sortPriority": -1,
-        "catalogGroupPriority": 0
+        "catalogGroupPriority": 0,
+        "MinLevel": 15
     },
     {
         "id": "e260f23da46ec0b0a9734742879d521d802022",
@@ -57,7 +59,8 @@
         "BundlePath": "",
         "rarity": "rare",
         "sortPriority": -1,
-        "catalogGroupPriority": 0
+        "catalogGroupPriority": 0,
+        "MinLevel": 20
     },
     {
         "id": "192f53821088625393485c078f7dfed3df8dcd",
@@ -77,6 +80,7 @@
         "BundlePath": "",
         "rarity": "epic",
         "sortPriority": -1,
-        "catalogGroupPriority": 0
+        "catalogGroupPriority": 0,
+        "MinLevel": 35
     }
 ]

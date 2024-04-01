@@ -5,6 +5,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Shop.Helpers.Class;
 using FortBackend.src.App.Utilities.Shop.Helpers.Data;
 using Newtonsoft.Json;
@@ -284,7 +285,153 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
                     }
 
-                    // code
+                    List<ItemsSaved> SeasonShopData = JsonConvert.DeserializeObject<List<ItemsSaved>>(SeasonShopJson)!;
+
+                    foreach (ItemsSaved storefront in SeasonShopData)
+                    {
+                        if (storefront.id == SecondSplitOfferId)
+                        {
+                            ShopContent = storefront;
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(ShopContent.id))
+                    {
+                        bool HasUserHaveItem = profileCacheEntry.AccountData.athena.Items.Any(item => item.Key.Contains(ShopContent.id));
+
+                        if (HasUserHaveItem)
+                        {
+                            throw new BaseError()
+                            {
+                                errorCode = "errors.com.epicgames.modules.catalog",
+                                errorMessage = "You already own the item",
+                                messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                numericErrorCode = 12801,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "You already own the item",
+                            };
+                        }
+
+                        SeasonClass SeasonData = profileCacheEntry.AccountData.commoncore.Seasons.FirstOrDefault(e => e.SeasonNumber == Season.Season);
+
+                        if(SeasonData != null)
+                        {
+                            if (SeasonData.Level < ShopContent.MinLevel)
+                            {
+                                throw new BaseError()
+                                {
+                                    errorCode = "errors.com.epicgames.modules.catalog",
+                                    errorMessage = "Required To Be Level " + ShopContent.MinLevel,
+                                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                    numericErrorCode = 12801,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "You already own the item",
+                                };
+                            }
+
+                            var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+
+                            if (currencyItem.quantity == 0)
+                            {
+                                throw new BaseError()
+                                {
+                                    errorCode = "errors.com.epicgames.modules.catalog",
+                                    errorMessage = "Your Poor",
+                                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                    numericErrorCode = 12801,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "Your Poor",
+                                };
+                            }
+
+                            if (ShopContent.price > currencyItem.quantity)
+                            {
+                                throw new BaseError()
+                                {
+                                    errorCode = "errors.com.epicgames.modules.catalog",
+                                    errorMessage = "Item is higher price",
+                                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                    numericErrorCode = 12801,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "Item is higher price",
+                                };
+                            }
+
+                            int Price = currencyItem.quantity - ShopContent.price;
+
+                            ApplyProfileChanges.Add(new ApplyProfileChangesClass
+                            {
+                                changeType = "itemQuantityChanged",
+                                itemId = "Currency",
+                                quantity = Price
+                            });
+
+
+                            profileCacheEntry.AccountData.athena.Items.Add($"{ShopContent.item}", new AthenaItem
+                            {
+                                templateId = $"{ShopContent.item}",
+                                attributes = new AthenaItemAttributes
+                                {
+                                    variants = ShopContent.variants // variants
+                                }
+                            });
+
+
+                            profileCacheEntry.AccountData.commoncore.Items["Currency"].quantity = Price;
+                            if (MultiUpdates.Count > 0)
+                            {
+                                profileCacheEntry.AccountData.athena.RVN += 1;
+                                profileCacheEntry.AccountData.athena.CommandRevision += 1;
+                            }
+
+                            if (ApplyProfileChanges.Count > 0)
+                            {
+                                profileCacheEntry.AccountData.commoncore.RVN += 1;
+                                profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                            }
+
+                            Mcp mcp = new Mcp()
+                            {
+                                profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
+                                profileId = ProfileId,
+                                profileChangesBaseRevision = BaseRev,
+                                profileChanges = ApplyProfileChanges,
+                                notifications = new List<McpNotifications>()
+                                {
+                                    new McpNotifications
+                                    {
+                                        type = "CatalogPurchase",
+                                        primary =  true,
+                                        lootResult = new LootResultClass
+                                        {
+                                            items = NotificationsItems
+                                        }
+                                    }
+                                },
+                                profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
+                                serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                                multiUpdate = new List<object>()
+                                {
+                                    new
+                                    {
+                                        profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                                        profileId = "athena",
+                                        profileChangesBaseRevision = BaseRev2,
+                                        profileChanges = MultiUpdates,
+                                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                                    }
+                                },
+                                responseVersion = 1
+                            };
+                            string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
+                            return mcp;
+                        }
+                       
+                    }
                 }
             }
 

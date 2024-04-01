@@ -29,6 +29,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Data
 
         public int sortPriority { get; set; } = 0;
         public int catalogGroupPriority { get; set; } = 0;
+
+        public int MinLevel { get; set; } = 0;
     }
 
     public class MetaInfo

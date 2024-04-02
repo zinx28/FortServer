@@ -28,6 +28,29 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 var jsonData = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\default.json"));
                 if (!string.IsNullOrEmpty(jsonData))
                 {
+                    // adds stats shocked
+                    List<string> StatsGive = new List<string>()
+                    {
+                        "br_placetop1_pc_m0_p2",
+                        "br_placetop10_pc_m0_p2",
+                        "br_placetop25_pc_m0_p2",
+                        "br_placetop1_pc_m0_p10",
+                        "br_placetop5_pc_m0_p10",
+                        "br_placetop12_pc_m0_p10",
+                        "br_placetop1_pc_m0_p9",
+                        "br_placetop3_pc_m0_p9",
+                        "br_placetop6_pc_m0_p9"
+                    };
+                    //pc_m0_p2 ~ solos
+                    //pc_m0_p10 ~ duos
+                    //pc_m0_p9 ~ squads
+                    foreach (var item in StatsGive)
+                    {
+                        if (!profileCacheEntry.StatsData.stats.Keys.Contains(item))
+                        {
+                            profileCacheEntry.StatsData.stats.Add(item, 0);
+                        }
+                    }
                     // Daily Quests WIP
                   
                     if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == Season.Season))

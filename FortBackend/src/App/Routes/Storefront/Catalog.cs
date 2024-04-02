@@ -104,9 +104,9 @@ namespace FortBackend.src.App.Routes.Storefront
 
                             //requirements.Add(new CatalogRequirements
                             //{
-                            //    requirementType = "DenyOnItemOwnership",
-                            //    requiredId = item.item,
-                            //    minQuantity = 1,
+                            //    requirementType = "ECatalogRequirementType_MAX",
+                            //    requiredId = "level",
+                            //    minQuantity = 5,
                             //});
 
                             SeasonShopEntrie.Add(new catalogEntrie

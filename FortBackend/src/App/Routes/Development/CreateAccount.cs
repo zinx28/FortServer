@@ -44,6 +44,7 @@ namespace FortBackend.src.App.Routes.Development
                 IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
                 IMongoCollection<UserFriends> UserFriendscollection = _database.GetCollection<UserFriends>("UserFriends");
                 IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
+                IMongoCollection<StatsInfo> Statscollection = _database.GetCollection<StatsInfo>("StatsInfo");
 
 
                 string AccountId = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12) + DiscordId;
@@ -244,9 +245,39 @@ namespace FortBackend.src.App.Routes.Development
                     DiscordId = DiscordId
                 };
 
+                StatsInfo statsData = new StatsInfo()
+                {
+                    AccountId = AccountId,
+                    DiscordId = DiscordId,
+                    Gamemodes = new List<GamemodeStatsData>()
+                    {
+                        new GamemodeStatsData
+                        {
+                            Gamemode = "solo"
+                        },
+                        new GamemodeStatsData
+                        {
+                            Gamemode = "duos"
+                        },
+                        new GamemodeStatsData
+                        {
+                            Gamemode = "trios"
+                        },
+                        new GamemodeStatsData
+                        {
+                            Gamemode = "squad"
+                        },
+                        new GamemodeStatsData
+                        {
+                            Gamemode = "ltm"
+                        }
+                    }
+                };
+
                 await Accountcollection.InsertOneAsync(AccountData); // first if it fails then tell the user
                 Usercollection.InsertOne(UserData);
                 UserFriendscollection.InsertOne(UserFriendsData);
+                Statscollection.InsertOne(statsData); // stats data
                 return NewAccessToken;
             }
             catch (Exception ex)

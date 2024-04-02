@@ -12,6 +12,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
         public string AccountId { get; set; } = string.Empty; // accountid
         public Account AccountData { get; set; } = new Account();
         public User UserData { get; set; } = new User();
+        public StatsInfo StatsData { get; set; } = new StatsInfo();
         public UserFriends UserFriends { get; set; } = new UserFriends();
         public DateTime LastUpdated { get; set; } = DateTime.Now;
     }

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using FortBackend.src.App.XMPP_V2;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.Helpers;
 namespace FortBackend.src.App
 {
     public class Service
@@ -119,6 +120,12 @@ namespace FortBackend.src.App
                 Xmpp_Server.Intiliazation(args);
             });
             XmppServer.Start();
+
+            var LeadBoardLoop = new Thread(async () =>
+            {
+                await UpdateLeaderBoard.LeaderboardLoop();
+            });
+            LeadBoardLoop.Start();
 
             //var TCPXmppServer = new Thread(() =>
             //{ 

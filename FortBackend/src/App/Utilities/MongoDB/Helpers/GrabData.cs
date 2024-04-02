@@ -31,11 +31,13 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                         if (UserDataParsed != null)
                         {
                             var AccountData = await Handlers.FindOne<Account>("accountId", UserDataParsed.AccountId);
+                            var AccStatsData = await Handlers.FindOne<StatsInfo>("accountId", UserDataParsed.AccountId);
                             var FriendsData = await Handlers.FindOne<UserFriends>("accountId", UserDataParsed.AccountId);
 
                             if (AccountData != "Error" && FriendsData != "Error")
                             {
                                 Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
+                                StatsInfo AccStatsDataParsed = JsonConvert.DeserializeObject<StatsInfo[]>(AccStatsData)![0];
                                 UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)![0];
 
                                 if (AccountDataParsed != null && UserDataParsed != null && FriendsDataParsed != null)
@@ -44,6 +46,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                                     {
                                         AccountId = UserDataParsed.AccountId,
                                         AccountData = AccountDataParsed,
+                                        StatsData = AccStatsDataParsed,
                                         UserData = UserDataParsed,
                                         UserFriends = FriendsDataParsed,
                                         LastUpdated = DateTime.Now,

@@ -74,35 +74,52 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 DailyQuestsData dailyQuestsData = new DailyQuestsData
                                                 {
                                                     templateId = dailyQuests.Properties.Objectives[0].BackendName,
-                                                    attributes = new Dictionary<string, object>
+                                                    attributes = new DailyQuestsDataDB
                                                     {
-                                                        { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                        { "level", -1 },
-                                                        { "item_seen", false },
-                                                        { "playlists", new List<object>() },
-                                                        { "sent_new_notification", false },
-                                                        { "challenge_bundle_id", "" },
-                                                        { "xp_reward_scalar", 1 },
-                                                        { "challenge_linked_quest_given", "" },
-                                                        { "quest_pool", "" },
-                                                        { "quest_state", "Active" },
-                                                        { "bucket", "" },
-                                                        { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                        { "challenge_linked_quest_parent", "" },
-                                                        { "max_level_bonus", 0 },
-                                                        { "xp", 0 },
-                                                        { "quest_rarity", "uncommon" },
-                                                        { "favorite", false },
-                                                        { $"completion_{dailyQuests.Properties.Objectives[0].ObjectiveState}", 0 }
+
+                                                        ObjectiveState = new List<DailyQuestsObjectiveStates>
+                                                        {
+                                                            new DailyQuestsObjectiveStates
+                                                            {
+                                                                Name = $"completion_{dailyQuests.Properties.Objectives[0].ObjectiveState}",
+                                                                Value = 0
+                                                            }
+                                                        }
                                                     },
                                                     quantity = 1
                                                 };
 
+                                                // so skunked but should wokr
                                                 MultiUpdates.Add(new MultiUpdateClass
                                                 {
                                                     changeType = "itemAdded",
                                                     itemId = dailyQuests.Name,
-                                                    item = dailyQuestsData
+                                                    item = new
+                                                    {
+                                                        templateId = "",
+                                                        attributes = new Dictionary<string, object>
+                                                        {
+                                                            { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                            { "level", -1 },
+                                                            { "item_seen", false },
+                                                            { "playlists", new List<object>() },
+                                                            { "sent_new_notification", false },
+                                                            { "challenge_bundle_id", "" },
+                                                            { "xp_reward_scalar", 1 },
+                                                            { "challenge_linked_quest_given", "" },
+                                                            { "quest_pool", "" },
+                                                            { "quest_state", "Active" },
+                                                            { "bucket", "" },
+                                                            { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                            { "challenge_linked_quest_parent", "" },
+                                                            { "max_level_bonus", 0 },
+                                                            { "xp", 0 },
+                                                            { "quest_rarity", "uncommon" },
+                                                            { "favorite", false },
+                                                            { $"completion_{dailyQuests.Properties.Objectives[0].ObjectiveState}", 0 }
+                                                        },
+                                                        quantity = 1
+                                                    }
                                                 });
 
                                                 FoundSeason.DailyQuests.Daily_Quests.Add(dailyQuests.Name, dailyQuestsData);

@@ -1,19 +1,17 @@
 [
     {
-        "id": "a327fdedd4463b643c69e64be75a3233a34c23",
+        "devName": "[VIRTUAL]1 x Aerial Assault One for 500 MtxCurrency",
+        "id": "9bC4Za6K3L8xV2s9Q1eP7hG5T2fD3wR0n7B5rT8yU3iM2oP1lK9jH6gF4eD3cV0x",
         "item": "AthenaGlider:Glider_ID_001",
         "name": "Aerial Assault One",
         "description": "Fly into battle on the wings of victory.",
+        "categories": [ "Panel 1" ],
         "items": [],
         "price": 500,
         "singleprice": 500,
-        "metaInfo": [
-            {
-                "key": "SeasonLevel",
-                "value": 3
-            }
-        ],
+        "metaInfo": [],
         "variants": [],
+        "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_Featured_GliderMiG.DA_Featured_GliderMiG",
         "BundlePath": "",
         "rarity": "uncommon",
         "sortPriority": -1,
@@ -21,20 +19,18 @@
         "MinLevel": 5
     },
     {
-        "id": "82c02a6031e8a8b06e62fe17ee34603529f903",
+        "devName": "[VIRTUAL]1 x Aerial Assault Trooper for 1200 MtxCurrency",
+        "id": "4rT6gH2fD7sK3jL8qP5wR9eT0xY1cN25mN8bV3cX2zQ1wE4rT9yU6iO7pL0kM3",
         "item": "AthenaCharacter:CID_017_Athena_Commando_M",
         "name": "Aerial Assault Trooper",
         "description": "Rare aerial assault trooper outfit.",
+        "categories": [ "Panel 2" ],
         "items": [],
         "price": 1200,
         "singleprice": 1200,
-        "metaInfo": [
-            {
-                "key": "SeasonLevel",
-                "value": 3
-            }
-        ],
+        "metaInfo": [],
         "variants": [],
+        "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_Featured_SMaleHID017.DA_Featured_SMaleHID017",
         "BundlePath": "",
         "rarity": "rare",
         "sortPriority": -1,
@@ -42,20 +38,18 @@
         "MinLevel": 15
     },
     {
-        "id": "e260f23da46ec0b0a9734742879d521d802022",
+        "devName": "[VIRTUAL]1 x Renegade Raider for 1200 MtxCurrency",
+        "id": "A2bC4D6eF8gH0iJ2kL4mN6oP8qR0sT2uV4wX6yZ1a3b5c7d9e1f3g5h7i9j2k4",
         "item": "AthenaCharacter:CID_028_Athena_Commando_F",
         "name": "Renegade Raider",
+        "categories": [ "Panel 3" ],
         "description": "Rare renegade raider outfit.",
         "items": [],
         "price": 1200,
         "singleprice": 1200,
-        "metaInfo": [
-            {
-                "key": "SeasonLevel",
-                "value": 3
-            }
-        ],
+        "metaInfo": [],
         "variants": [],
+        "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_Featured_SFemaleHID028.DA_Featured_SFemaleHID028",
         "BundlePath": "",
         "rarity": "rare",
         "sortPriority": -1,
@@ -63,20 +57,18 @@
         "MinLevel": 20
     },
     {
-        "id": "192f53821088625393485c078f7dfed3df8dcd",
+        "devName": "[VIRTUAL] 1 x Raider's Revenge for 1500 MtxCurrency",
+        "id": "C0xV2zQ4eR6tY8uI0oP2aS4dF6gH8jK0lM2nB4vC6bN8mX0zQ2wE4rT6yU8iO",
         "item": "AthenaPickaxe:Pickaxe_Lockjaw",
         "name": "Raider's Revenge",
+        "categories": [ "Panel 4" ],
         "description": "Wrapped in rusty barbed wire, and ready to settle the score.",
         "items": [],
         "price": 1500,
         "singleprice": 1500,
-        "metaInfo": [
-            {
-                "key": "SeasonLevel",
-                "value": 3
-            }
-        ],
+        "metaInfo": [],
         "variants": [],
+        "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_Featured_PickaxeLockjaw.DA_Featured_PickaxeLockjaw",
         "BundlePath": "",
         "rarity": "epic",
         "sortPriority": -1,

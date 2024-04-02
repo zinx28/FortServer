@@ -12,6 +12,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Data
 
     public class ItemsSaved
     {
+        public string devName { get; set; } = string.Empty;
         public string id { get; set; } = string.Empty;
         public string item { get; set; } = string.Empty;
         public string name { get; set; } = string.Empty;    
@@ -23,6 +24,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers.Data
 
         public List<MetaInfo> metaInfo { get; set; } = new List<MetaInfo>();
         public string BundlePath { get; set; } = string.Empty;
+
+        public string displayAssetPath { get; set; } = string.Empty;
         public string rarity { get; set; } = string.Empty;
         public string type = string.Empty;
         public string[] categories { get; set; } = new string[0];

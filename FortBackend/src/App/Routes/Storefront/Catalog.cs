@@ -101,16 +101,17 @@ namespace FortBackend.src.App.Routes.Storefront
                                 templateId = item.item,
                                 quantity = 1
                             });
-                            requirements.Add(new CatalogRequirements
-                            {
-                                requirementType = "DenyOnItemOwnership",
-                                requiredId = item.item,
-                                minQuantity = 1,
-                            });
+
+                            //requirements.Add(new CatalogRequirements
+                            //{
+                            //    requirementType = "DenyOnItemOwnership",
+                            //    requiredId = item.item,
+                            //    minQuantity = 1,
+                            //});
 
                             SeasonShopEntrie.Add(new catalogEntrie
                             {
-                                devName = $"{item.id}",
+                                devName = $"{item.devName}",
                                 offerId = $"v2:/{item.id}",
                                 categories = item.categories,
                                 prices = new List<CatalogPrices>
@@ -127,15 +128,9 @@ namespace FortBackend.src.App.Routes.Storefront
                                 },
                                 requirements = requirements,
                                 offerType = "StaticPrice",
-                                giftInfo = new
-                                {
-                                    bIsEnabled = true,
-                                    forcedGiftBoxTemplateId = "",
-                                    purchaseRequirements = new List<dynamic>(),
-                                    giftRecordIds = new List<dynamic>()
-                                },
+                                giftInfo = new {},
                                 metaInfo = item.metaInfo,
-                                //displayAssetPath = $"/Game/Catalog/DisplayAssets/{DisplayAsset}.{DisplayAsset}",
+                                displayAssetPath = item.displayAssetPath,
                                 itemGrants = itemGrants,
                                 sortPriority = item.sortPriority,
                                 catalogGroupPriority = item.catalogGroupPriority,
@@ -153,8 +148,8 @@ namespace FortBackend.src.App.Routes.Storefront
                     return Ok(ShopObject);
                 }
 
-                    // NEED A RECODE RN
-                    int SortPriority = 20;
+                // NEED A RECODE RN
+                int SortPriority = 20;
                 int LargeSortPriority = -10;
 
                 foreach (var WeeklyItems in shopData.ShopItems.Weekly)

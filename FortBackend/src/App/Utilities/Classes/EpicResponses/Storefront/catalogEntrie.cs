@@ -36,7 +36,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Storefront
         public int regularPrice { get; set; } = 9999999;
         public int finalPrice { get; set; } = 9999999;
         public string saleExpiration { get; set; } = "9999-12-31T23:59:59.999Z";
-        public int basePrice = 9999999;
+        public int basePrice { get; set; } = 9999999;
     }
 
     public class CatalogRequirements

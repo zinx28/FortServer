@@ -148,7 +148,7 @@ namespace FortBackend.src.App.Routes.API
                             BookLevel = 1,
                             BookXP = 0,
                             BookPurchased = false,
-                            Quests = new List<Dictionary<string, object>>(),
+                            Quests = new Dictionary<string, object>(),
                             BattleStars = 0,
                             DailyQuests = new DailyQuests
                             {

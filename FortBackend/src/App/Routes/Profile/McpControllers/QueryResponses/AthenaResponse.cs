@@ -53,7 +53,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         BookLevel = 1,
                         BookXP = 0,
                         BookPurchased = false,
-                        Quests = new List<Dictionary<string, object>>(),
+                        Quests = new Dictionary<string, object>(),
                         BattleStars = 0,
                         DailyQuests = new DailyQuests
                         {

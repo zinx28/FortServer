@@ -150,7 +150,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         }
 
 
-            [HttpGet("public/account")]
+       [HttpGet("public/account")]
         public async Task<IActionResult> PublicAccount()
         {
             try
@@ -192,6 +192,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                 }
                 else
                 {
+                    Console.WriteLine(RequestQuery);
                     var UserData = await Handlers.FindOne<User>("accountId", RequestQuery);
 
                     if (UserData != "Error")

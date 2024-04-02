@@ -38,7 +38,7 @@ namespace FortBackend.src.App.Routes.Development
             {
                 var username = responseData1.username;
                 var GlobalName = responseData1.global_name;
-                var id = responseData1.id;
+                var DiscordId = responseData1.id;
 
                 //var email = responseData1.email;
                 IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
@@ -46,7 +46,7 @@ namespace FortBackend.src.App.Routes.Development
                 IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
 
 
-                string AccountId = Guid.NewGuid().ToString();
+                string AccountId = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12) + DiscordId;
                 string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
                 string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress!.ToString() };
 
@@ -77,7 +77,7 @@ namespace FortBackend.src.App.Routes.Development
                 User UserData = new User
                 {
                     AccountId = AccountId,
-                    DiscordId = id,
+                    DiscordId = DiscordId,
                     Username = Global ? GlobalName : username,
                     Email = Generate.RandomString(10) + "@fortbackend.com",
                     accesstoken = NewAccessToken,
@@ -89,7 +89,7 @@ namespace FortBackend.src.App.Routes.Development
                 UserFriends UserFriendsData = new UserFriends
                 {
                     AccountId = AccountId,
-                    DiscordId = id
+                    DiscordId = DiscordId
                 };
 
                 Account AccountData = new Account
@@ -241,7 +241,7 @@ namespace FortBackend.src.App.Routes.Development
                             }
                         }
                     },
-                    DiscordId = id
+                    DiscordId = DiscordId
                 };
 
                 await Accountcollection.InsertOneAsync(AccountData); // first if it fails then tell the user

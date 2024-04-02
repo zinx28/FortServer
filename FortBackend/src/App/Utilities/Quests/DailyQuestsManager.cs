@@ -6,7 +6,7 @@ namespace FortBackend.src.App.Utilities.Quests
 {
     public class DailyQuestsManager
     {
-        public static string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/FullLocker.json"), "*.json");
+        public static string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Quests/DailyQuests"), "*.json");
         public static async Task<DailyQuestsJson> GrabRandomQuest(SeasonClass seasonClass)
         {
             Random random = new Random();

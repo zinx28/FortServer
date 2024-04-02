@@ -2,6 +2,8 @@
 using FortBackend.src.App.Utilities.Classes.EpicResponses.LeaderBoard;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Helpers;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -122,6 +124,39 @@ namespace FortBackend.src.App.Routes.Leaderboards
                     //        playlist = Playlist
                     //    });
                     //};
+                }
+            }
+            catch (JsonReaderException)
+            {
+                return Ok(new { });
+            }
+            catch (Exception ex) { Logger.Error(ex.Message); }
+
+            return Ok(new { });
+        }
+
+        [HttpGet("stats/accountId/{accountId}/bulk/window/{windowId}")]
+        public async Task<ActionResult> WindowAllTime(string accountId, string windowId)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                {
+                    var Response = new List<object>();
+
+                    foreach (var item in profileCacheEntry.StatsData.stats)
+                    {
+                        Response.Add(new
+                        {
+                            name = item.Key,
+                            value = item.Value,
+                            window = windowId,
+                            ownerType = 1
+                        });
+                    }
+                    return Ok(Response);
                 }
             }
             catch (JsonReaderException)

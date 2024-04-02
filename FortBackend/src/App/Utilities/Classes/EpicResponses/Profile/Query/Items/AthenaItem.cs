@@ -14,6 +14,18 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
         public int quantity { get; set; } = 1;
 
     }
+
+    // for dynamic, and i dicti
+    public class AthenaItemDynamic
+    {
+        [JsonProperty("templateId")]
+        public string templateId { get; set; } = string.Empty;
+        [JsonProperty("attributes")]
+        public Dictionary<string, object> attributes { get; set; } = new Dictionary<string, object>();
+        [JsonProperty("quantity")]
+        public int quantity { get; set; } = 1;
+
+    }
     public class AthenaItemAttributes
     {
         [JsonProperty("favorite")]

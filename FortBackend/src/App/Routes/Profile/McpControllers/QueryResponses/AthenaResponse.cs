@@ -179,6 +179,44 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 }
                             }
 
+                            foreach(var kvp in seasonObject.DailyQuests.Daily_Quests)
+                            {
+                                var Value = kvp.Value;
+                                var AthenaItemDynamicData = new AthenaItemDynamic
+                                {
+                                    templateId = Value.templateId,
+                                    attributes = new Dictionary<string, object>
+                                    {
+                                        { "creation_time", Value.attributes.creation_time },
+                                        { "level", Value.attributes.level },
+                                        { "item_seen", Value.attributes.item_seen },
+                                        { "playlists", Value.attributes.playlists },
+                                        { "sent_new_notification", Value.attributes.sent_new_notification },
+                                        { "challenge_bundle_id", Value.attributes.challenge_bundle_id },
+                                        { "xp_reward_scalar", Value.attributes.xp_reward_scalar },
+                                        { "challenge_linked_quest_given", Value.attributes.challenge_linked_quest_given },
+                                        { "quest_pool", Value.attributes.quest_pool },
+                                        { "quest_state", Value.attributes.quest_state },
+                                        { "bucket", Value.attributes.bucket },
+                                        { "last_state_change_time", Value.attributes.last_state_change_time },
+                                        { "challenge_linked_quest_parent", Value.attributes.challenge_linked_quest_parent },
+                                        { "max_level_bonus", Value.attributes.max_level_bonus },
+                                        { "xp", Value.attributes.xp },
+                                        { "quest_rarity", Value.attributes.quest_rarity },
+                                        { "favorite", Value.attributes.favorite }
+
+                                    },
+                                    quantity = Value.quantity,
+                                };
+
+                                Value.attributes.ObjectiveState.ForEach(e =>
+                                {
+                                    AthenaItemDynamicData.attributes.Add(e.Name, e.Value);
+                                });
+
+                                ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
+                            }
+
                             foreach (var kvp in profileCacheEntry.AccountData.athena.loadouts_data)
                             {
                                 ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);

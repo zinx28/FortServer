@@ -73,7 +73,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             {
                                                 DailyQuestsData dailyQuestsData = new DailyQuestsData
                                                 {
-                                                    templateId = dailyQuests.Properties.Objectives[0].BackendName,
+                                                    templateId = $"Quest:{dailyQuests.Properties.Objectives[0].BackendName}",
                                                     attributes = new DailyQuestsDataDB
                                                     {
 
@@ -96,7 +96,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     itemId = dailyQuests.Name,
                                                     item = new
                                                     {
-                                                        templateId = "",
+                                                        templateId = $"Quest:{dailyQuests.Properties.Objectives[0].BackendName}",
                                                         attributes = new Dictionary<string, object>
                                                         {
                                                             { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },

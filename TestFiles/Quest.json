@@ -1,0 +1,88 @@
+[
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Outlive_Solo",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "QuestType": "EFortQuestType::AthenaDailyQuest",
+      "Rewards": [
+        {
+          "ItemDefinition": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
+          "Quantity": 500
+        }
+      ],
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_outlive_solo_players",
+          "ObjectiveStatHandle": {
+            "DataTable": {
+              "ObjectName": "DataTable'ObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Quests/ObjectiveStatTable.0"
+            },
+            "RowName": "outlive_athena_solo"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "Description": {
+            "Namespace": "[D94F5A324C0B92D4B32E68978FF8932E]",
+            "Key": "0CBB96404DA16D2CA60DBABAC89D6D15",
+            "SourceString": "Outlive opponents in solo mode",
+            "LocalizedString": "Outlive opponents in solo mode"
+          },
+          "HudShortDescription": {
+            "Namespace": "[D94F5A324C0B92D4B32E68978FF8932E]",
+            "Key": "011377DA483AED305C857DA974582990",
+            "SourceString": "Outlive opponents in solo mode",
+            "LocalizedString": "Outlive opponents in solo mode"
+          },
+          "HudIcon": "",
+          "Count": 150,
+          "Stage": -1,
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "bDisplayDynamicStatusUpdate": true,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": ""
+        }
+      ],
+      "Category": {
+        "DataTable": {
+          "ObjectName": "DataTable'QuestCategoryTable'",
+          "ObjectPath": "FortniteGame/Content/Quests/QuestCategoryTable.0"
+        }
+      },
+      "CompletionText": {
+        "Namespace": "",
+        "Key": "E487E1804147AC3FADEAA592045E1D9E",
+        "SourceString": "Daily Challenge Completed!",
+        "LocalizedString": "Daily Challenge Completed!"
+      },
+      "GrantToProfileType": "athena",
+      "DisplayName": {
+        "Namespace": "",
+        "Key": "1B11FEA8412651228EEB1C80F5CF899C",
+        "SourceString": "Outlive Players in Solo Matches",
+        "LocalizedString": "Outlive Players in Solo Matches"
+      },
+      "Description": {
+        "Namespace": "[D94F5A324C0B92D4B32E68978FF8932E]",
+        "Key": "E692DACE49A0430803A453912C7025B5",
+        "SourceString": "Outlive 150 solo players",
+        "LocalizedString": "Outlive 150 solo players"
+      },
+      "SmallPreviewImage": {
+        "ObjectName": "Texture2D'T-Icon-Rescue-Survivors-128'",
+        "ObjectPath": "FortniteGame/Content/UI/Foundation/Textures/Icons/Quest/T-Icon-Rescue-Survivors-128.0"
+      },
+      "LargePreviewImage": "/Game/UI/Foundation/Textures/Icons/Quest/T-Icon-Rescue-Survivors-128.T-Icon-Rescue-Survivors-128"
+    }
+  }
+]

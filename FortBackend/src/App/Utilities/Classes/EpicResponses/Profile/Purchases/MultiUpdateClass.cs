@@ -7,6 +7,14 @@
         public object item { get; set; }
     }
 
+    // for other stuff
+    public class MultiUpdateClassV2
+    {
+        public string changeType { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
+        public object value { get; set; }
+    }
+
     public class ApplyProfileChangesClass
     {
         public string changeType { get; set; } = string.Empty;

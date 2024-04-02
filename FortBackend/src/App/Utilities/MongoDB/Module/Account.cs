@@ -1,6 +1,8 @@
 ﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Quests;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
@@ -220,6 +222,11 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [JsonProperty("dailyLoginInterval")]
         public string Interval { get; set; } = DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
+
+        [BsonElement("DailyQuestsData")]
+        [JsonProperty("DailyQuestsData")]
+        public List<DailyQuestsData> Daily_Quests { get; set; } = new List<DailyQuestsData>();
+
         [BsonElement("dailyQuestRerolls")]
         [JsonProperty("dailyQuestRerolls")]
         public int Rerolls { get; set; } = 1;
@@ -269,7 +276,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonElement("Quests")]
         [JsonProperty("Quests")]
         [BsonIgnoreIfNull]
-        public List<Dictionary<string, object>> Quests { get; set; } = new List<Dictionary<string, object>>();
+        public Dictionary<string, object> Quests { get; set; } = new Dictionary<string, object>();
+
+
 
         [BsonElement("PinnedQuests")]
         [JsonProperty("PinnedQuests")]

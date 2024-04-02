@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.LeaderBoard;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -19,36 +20,27 @@ namespace FortBackend.src.App.Routes.Leaderboards
             try
             {
                 var Playlist = Request.Query["playlist"].FirstOrDefault();
-                if (Playlist == "pc_m0_p9")
+                if (Playlist != null)
                 {
-                    List<string> accountIds = new List<string>();
-                    Console.WriteLine("USING CACHED CODE!");
-                    foreach (var item in UpdateLeaderBoard.LeaderboardCached.Squads)
+                    LeaderBoardStats test = UpdateLeaderBoard.LeaderboardCached.Data.FirstOrDefault(e => e.statName.Contains(Playlist))!;
+                    if (test != null)
                     {
-                        Console.WriteLine("2 " + item.AccountId);
-                        accountIds.Add(item.AccountId);
-                    }
-                    return Ok(new
-                    {
-                        accountId,
-                        cohortAccounts = accountIds,
-                        expiresAt = "9999-12-31T00:00:00.000Z",
-                        playlist = Playlist
-                    });
-                }
-                else
-                {
-                    return Ok(new
-                    {
-                        accountId,
-                        cohortAccounts = new string[]
+                        List<string> accountIds = new List<string>();
+                        Console.WriteLine("USING CACHED CODE!");
+                        foreach (var item in test.stat)
                         {
-                            accountId
-                        },
-                        expiresAt = "9999-12-31T00:00:00.000Z",
-                        playlist = Playlist
-                    });
-                };
+                            Console.WriteLine("2 " + item.accountId);
+                            accountIds.Add(item.accountId);
+                        }
+                        return Ok(new
+                        {
+                            accountId,
+                            cohortAccounts = accountIds,
+                            expiresAt = "9999-12-31T00:00:00.000Z",
+                            playlist = Playlist
+                        });
+                    }
+                }
             }
             catch (Exception ex) { Logger.Error(ex.Message); }
 

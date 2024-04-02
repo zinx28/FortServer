@@ -8,6 +8,7 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Quests;
+using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Quests;
@@ -44,13 +45,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     //pc_m0_p2 ~ solos
                     //pc_m0_p10 ~ duos
                     //pc_m0_p9 ~ squads
-                    foreach (var item in StatsGive)
+                    foreach (var item in UpdateLeaderBoard.GetStatNames())
                     {
                         if (!profileCacheEntry.StatsData.stats.Keys.Contains(item))
                         {
                             profileCacheEntry.StatsData.stats.Add(item, 0);
                         }
                     }
+
+
                     // Daily Quests WIP
                   
                     if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == Season.Season))

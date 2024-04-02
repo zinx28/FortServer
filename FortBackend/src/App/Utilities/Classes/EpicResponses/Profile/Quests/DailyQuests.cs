@@ -8,7 +8,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Quests
         [JsonProperty("templateId")]
         public string templateId { get; set; } = string.Empty;
         [JsonProperty("attributes")]
-        public new Dictionary<string, object> attributes { get; set; } = new Dictionary<string, object> { };
+        public Dictionary<string, object> attributes { get; set; } = new Dictionary<string, object> { };
         [JsonProperty("quantity")]
         public int quantity { get; set; } = 1;
     }

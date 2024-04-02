@@ -225,7 +225,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
 
         [BsonElement("DailyQuestsData")]
         [JsonProperty("DailyQuestsData")]
-        public List<DailyQuestsData> Daily_Quests { get; set; } = new List<DailyQuestsData>();
+        public Dictionary<string, DailyQuestsData> Daily_Quests { get; set; } = new Dictionary<string, DailyQuestsData>();
 
         [BsonElement("dailyQuestRerolls")]
         [JsonProperty("dailyQuestRerolls")]

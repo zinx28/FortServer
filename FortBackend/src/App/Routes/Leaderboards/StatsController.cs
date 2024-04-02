@@ -29,8 +29,8 @@ namespace FortBackend.src.App.Routes.Leaderboards
                         Console.WriteLine("USING CACHED CODE!");
                         foreach (var item in test.stat)
                         {
-                            Console.WriteLine("2 " + item.accountId);
-                            accountIds.Add(item.accountId);
+                            Console.WriteLine("2 " + item.Key);
+                            accountIds.Add(item.Key);
                         }
                         return Ok(new
                         {
@@ -62,12 +62,26 @@ namespace FortBackend.src.App.Routes.Leaderboards
 
                     if(array != null)
                     {
-                        foreach (var item in array)
+                        LeaderBoardStats leaderBoardStats = UpdateLeaderBoard.LeaderboardCached.Data.FirstOrDefault(e => e.statName.Contains(statName))!;
+                        if (leaderBoardStats != null)
                         {
-                            entrieslist.Add(new {
-                                accountId = item,
-                                value = 0
-                            });
+
+                            foreach (var item in leaderBoardStats.stat)
+                            {
+                                entrieslist.Add(new
+                                {
+                                    accountId = item.Key,
+                                    value = item.Value,
+                                });
+                            }
+                            //foreach (var item in array)
+                            //{
+                            //    entrieslist.Add(new
+                            //    {
+                            //        accountId = item,
+                            //        value = leaderBoardStats.stat.try
+                            //    });
+                            //}
                         }
                     }
 

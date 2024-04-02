@@ -19,7 +19,7 @@ namespace FortBackend.src.App.Utilities.Helpers
 
             foreach (var statName in GetStatNames())
             {
-                var ListStatsData = new List<statsData>();
+                var ListStatsData = new Dictionary<string, int>();
 
                 var top100 = data
                 .OrderByDescending(x => x.stats.TryGetValue(statName, out int value) ? value : int.MinValue)
@@ -36,11 +36,8 @@ namespace FortBackend.src.App.Utilities.Helpers
                     {
                         statsValue = value69;
                     }
-                    ListStatsData.Add(new statsData
-                    {
-                        accountId = stats.AccountId,
-                        value = statsValue
-                    });
+
+                    ListStatsData.Add(stats.AccountId, statsValue);
                 }
 
                 TempData.Add(new LeaderBoardStats

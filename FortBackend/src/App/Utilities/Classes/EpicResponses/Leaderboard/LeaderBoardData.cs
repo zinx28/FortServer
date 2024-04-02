@@ -15,15 +15,15 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.LeaderBoard
     public class LeaderBoardStats
     {
         public string statName { get; set; } = string.Empty;
-        public List<statsData> stat { get; set; } = new List<statsData>();
+        public Dictionary<string, int> stat { get; set; } = new Dictionary<string, int>();
 
     }
 
-    public class statsData
-    {
-        public string accountId { get; set; } = string.Empty;
-        public int value { get; set; } = 0;
-    }
+    //public class statsData
+    //{
+    //    public string accountId { get; set; } = string.Empty;
+    //    public int value { get; set; } = 0;
+    //}
     //public class LeaderBoardStats
     //{
     //    public string AccountId { get; set; } = string.Empty;

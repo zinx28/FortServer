@@ -80,12 +80,26 @@ namespace FortBackend.src.App.Utilities.Helpers
         {
             return new List<string>
             {
+                "br_score_pc_m0_p2",
+                "br_matchesplayed_pc_m0_p2",
+                "br_kills_pc_m0_p2",
+                "br_minutesplayed_pc_m0_p2",
                 "br_placetop1_pc_m0_p2",
                 "br_placetop10_pc_m0_p2",
                 "br_placetop25_pc_m0_p2",
+
+                "br_score_pc_m0_p10",
+                "br_matchesplayed_pc_m0_p10",
+                "br_kills_pc_m0_p10",
+                "br_minutesplayed_pc_m0_p10",
                 "br_placetop1_pc_m0_p10",
                 "br_placetop5_pc_m0_p10",
                 "br_placetop12_pc_m0_p10",
+
+                "br_score_pc_m0_p9",
+                "br_matchesplayed_pc_m0_p9",
+                "br_kills_pc_m0_p9",
+                "br_minutesplayed_pc_m0_p9",
                 "br_placetop1_pc_m0_p9",
                 "br_placetop3_pc_m0_p9",
                 "br_placetop6_pc_m0_p9"

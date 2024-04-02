@@ -1,26 +1,24 @@
-[
-    {
-        "Type": "FortQuestItemDefinition",
-        "Name": "AthenaDaily_Outlive_Squad",
-        "Class": "UScriptClass'FortQuestItemDefinition'",
-        "Properties": {
-            "DisplayName": "Outlive Opponents in Squad Matches",
-            "Description": "Outlive 150 opponents in squad mode",
-            "SeasonXP": 500,
-            "Objectives": [
-                {
-                    "BackendName": "daily_athena_outlive_squad_players_v2",
-                    "ObjectiveState": "outlive_athena_squad",
-                    "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
-                    "ItemReference": "",
-                    "ItemTemplateIdOverride": "",
-                    "Description": "Outlive opponents in squad mode",
-                    "HudShortDescription": "Outlive opponents in squad mode",
-                    "Count": 150,
-                    "Stage": -1,
-                    "bHidden": false
-                }
-            ]
-        }
+{
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Outlive_Squad",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+        "DisplayName": "Outlive Opponents in Squad Matches",
+        "Description": "Outlive 150 opponents in squad mode",
+        "SeasonXP": 500,
+        "Objectives": [
+            {
+                "BackendName": "daily_athena_outlive_squad_players_v2",
+                "ObjectiveState": "outlive_athena_squad",
+                "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+                "ItemReference": "",
+                "ItemTemplateIdOverride": "",
+                "Description": "Outlive opponents in squad mode",
+                "HudShortDescription": "Outlive opponents in squad mode",
+                "Count": 150,
+                "Stage": -1,
+                "bHidden": false
+            }
+        ]
     }
-]
+}

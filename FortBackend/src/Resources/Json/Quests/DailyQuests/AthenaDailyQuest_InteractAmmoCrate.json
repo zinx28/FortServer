@@ -1,26 +1,24 @@
-[
-    {
-        "Type": "FortQuestItemDefinition",
-        "Name": "AthenaDailyQuest_InteractAmmoCrate",
-        "Class": "UScriptClass'FortQuestItemDefinition'",
-        "Properties": {
-            "DisplayName": "Search Ammo Boxes",
-            "Description": "Search 10 ammo boxes",
-            "SeasonXP": 500,
-            "Objectives": [
-                {
-                    "BackendName": "athena_daily_loot_ammobox",
-                    "ObjectiveState": "interact_athena_ammobox",
-                    "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
-                    "ItemReference": "",
-                    "ItemTemplateIdOverride": "",
-                    "Description": "Search 10 ammo boxes across multiple matches",
-                    "HudShortDescription": "Search Ammo Boxes",
-                    "Count": 10,
-                    "Stage": -1,
-                    "bHidden": false
-                }
-            ]
-        }
+{
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDailyQuest_InteractAmmoCrate",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+        "DisplayName": "Search Ammo Boxes",
+        "Description": "Search 10 ammo boxes",
+        "SeasonXP": 500,
+        "Objectives": [
+            {
+                "BackendName": "athena_daily_loot_ammobox",
+                "ObjectiveState": "interact_athena_ammobox",
+                "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+                "ItemReference": "",
+                "ItemTemplateIdOverride": "",
+                "Description": "Search 10 ammo boxes across multiple matches",
+                "HudShortDescription": "Search Ammo Boxes",
+                "Count": 10,
+                "Stage": -1,
+                "bHidden": false
+            }
+        ]
     }
-]
+}

@@ -118,10 +118,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                         Logger.Error(ex.Message, "DAILY QUESTS!");
                                     }
                                 }
-
-
-                                
-
                                 // 
                             } // else how?
 

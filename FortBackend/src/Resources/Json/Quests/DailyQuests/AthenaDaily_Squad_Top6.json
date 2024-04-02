@@ -1,26 +1,24 @@
-[
-    {
-        "Type": "FortQuestItemDefinition",
-        "Name": "AthenaDaily_Squad_Top6",
-        "Class": "UScriptClass'FortQuestItemDefinition'",
-        "Properties": {
-            "DisplayName": "Place in the Top 6 in Squad Matches",
-            "Description": "Squad Top 6",
-            "SeasonXP": 500,
-            "Objectives": [
-                {
-                    "BackendName": "daily_athena_squad_top6_v2",
-                    "ObjectiveState": "complete_athena_squad_top_6",
-                    "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
-                    "ItemReference": "",
-                    "ItemTemplateIdOverride": "",
-                    "Description": "Place withing the top 6 squads across multiple matches",
-                    "HudShortDescription": "Place Top 6 in Squads",
-                    "Count": 1,
-                    "Stage": -1,
-                    "bHidden": false
-                }
-            ]
-        }
+{
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Squad_Top6",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+        "DisplayName": "Place in the Top 6 in Squad Matches",
+        "Description": "Squad Top 6",
+        "SeasonXP": 500,
+        "Objectives": [
+            {
+                "BackendName": "daily_athena_squad_top6_v2",
+                "ObjectiveState": "complete_athena_squad_top_6",
+                "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+                "ItemReference": "",
+                "ItemTemplateIdOverride": "",
+                "Description": "Place withing the top 6 squads across multiple matches",
+                "HudShortDescription": "Place Top 6 in Squads",
+                "Count": 1,
+                "Stage": -1,
+                "bHidden": false
+            }
+        ]
     }
-]
+}

@@ -19,6 +19,7 @@ namespace FortBackend.src.App.Utilities.Quests
                     string jsonContent = File.ReadAllText(randomJsonFile);
                     if (jsonContent != null)
                     {
+                        Console.WriteLine(randomJsonFile);
                         DailyQuestsJson dailyQuestJson = JsonConvert.DeserializeObject<DailyQuestsJson>(jsonContent)!;
 
                         // We check if its already a thing.. if so run again
@@ -30,7 +31,7 @@ namespace FortBackend.src.App.Utilities.Quests
                         return await GrabRandomQuest(seasonClass);
                     }
                 }
-                catch { };
+                catch (Exception ex) { Logger.Error(ex.Message, "Grab Random Quest!"); };
             }else
             {
                 Logger.Error("DAILY QUESTS FILES ARE EMPTY");

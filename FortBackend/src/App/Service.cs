@@ -64,6 +64,8 @@ namespace FortBackend.src.App
             }
             catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message);  }
 
+
+
             startup.ConfigureServices(builder.Services);
         #if HTTPS
                 Saved.DeserializeConfig.DefaultProtocol = "https://";

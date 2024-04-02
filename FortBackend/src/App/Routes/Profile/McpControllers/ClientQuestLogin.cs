@@ -73,7 +73,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             {
                                                 DailyQuestsData dailyQuestsData = new DailyQuestsData
                                                 {
-                                                    templateId = $"Quest:{dailyQuests.Properties.Objectives[0].BackendName}",
+                                                    templateId = $"Quest:{dailyQuests.Name}",
                                                     attributes = new DailyQuestsDataDB
                                                     {
 
@@ -81,7 +81,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                         {
                                                             new DailyQuestsObjectiveStates
                                                             {
-                                                                Name = $"completion_{dailyQuests.Properties.Objectives[0].ObjectiveState}",
+                                                                Name = $"completion_{dailyQuests.Properties.Objectives[0].BackendName}",
                                                                 Value = 0
                                                             }
                                                         }
@@ -96,7 +96,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     itemId = dailyQuests.Name,
                                                     item = new
                                                     {
-                                                        templateId = $"Quest:{dailyQuests.Properties.Objectives[0].BackendName}",
+                                                        templateId = $"Quest:{dailyQuests.Name}",
                                                         attributes = new Dictionary<string, object>
                                                         {
                                                             { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
@@ -116,7 +116,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                             { "xp", 0 },
                                                             { "quest_rarity", "uncommon" },
                                                             { "favorite", false },
-                                                            { $"completion_{dailyQuests.Properties.Objectives[0].ObjectiveState}", 0 }
+                                                            { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
                                                         },
                                                         quantity = 1
                                                     }

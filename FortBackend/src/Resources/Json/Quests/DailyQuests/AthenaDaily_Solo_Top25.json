@@ -1,0 +1,26 @@
+[
+    {
+        "Type": "FortQuestItemDefinition",
+        "Name": "AthenaDaily_Solo_Top25",
+        "Class": "UScriptClass'FortQuestItemDefinition'",
+        "Properties": {
+            "DisplayName": "Place in the Top 25 in Solo Matches",
+            "Description": "Solo Top 25",
+            "SeasonXP": 500,
+            "Objectives": [
+                {
+                    "BackendName": "daily_athena_solo_top25_v2",
+                    "ObjectiveState": "complete_athena_solo_top_25",
+                    "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+                    "ItemReference": "",
+                    "ItemTemplateIdOverride": "",
+                    "Description": "Place within the top 25 players across multiple matches",
+                    "HudShortDescription": "Place Top 25 in Solo",
+                    "Count": 1,
+                    "Stage": -1,
+                    "bHidden": false
+                }
+            ]
+        }
+    }
+]

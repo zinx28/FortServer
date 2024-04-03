@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
+using FortBackend.src.App.Utilities.Helpers.UserManagement;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Saved;
 using MongoDB.Driver;
@@ -9,7 +10,7 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 
-namespace FortBackend.src.App.Routes.Development
+namespace FortBackend.src.App.Utilities.Helpers
 {
     public class CreateAccount
     {
@@ -36,13 +37,15 @@ namespace FortBackend.src.App.Routes.Development
         {
             try
             {
+                
                 var Ip = "";
-                if (Saved.DeserializeConfig.Cloudflare)
+                if (Saved.Saved.DeserializeConfig.Cloudflare)
                 {
                     Ip = httpContext.Request.Headers["CF-Connecting-IP"];
-                }else
+                }
+                else
                 {
-                    Ip = httpContext.Connection.RemoteIpAddress!.ToString(); 
+                    Ip = httpContext.Connection.RemoteIpAddress!.ToString();
                 }
                 var username = responseData1.username;
                 var GlobalName = responseData1.global_name;
@@ -76,9 +79,9 @@ namespace FortBackend.src.App.Routes.Development
 
                     if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
                     {
-                        if (Saved.DeserializeConfig.DetectedWebhookUrl != null)
+                        if (Saved.Saved.DeserializeConfig.DetectedWebhookUrl != null)
                         {
-                            await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+                            await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, responseData1);
                         }
                     }
                 }
@@ -244,8 +247,8 @@ namespace FortBackend.src.App.Routes.Development
                                 templateId = "Currency:MtxPurchased",
                                 //attributes = new CommonCoreItemAttributes
                                 //{
-                               //     platform = "EpicPC"
-                               // },
+                                //     platform = "EpicPC"
+                                // },
                                 quantity = 1000
                             }
                         }

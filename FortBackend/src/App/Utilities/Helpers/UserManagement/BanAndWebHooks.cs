@@ -3,16 +3,17 @@ using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.XMPP_Server.Globals;
 using MongoDB.Driver.Core.Servers;
 using Newtonsoft.Json;
 using System.Text;
 using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 
-namespace FortBackend.src.App.Routes.Development
+namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {
-    public class unbanAndWebhooks
+    public class BanAndWebHooks
     {
-        public static async Task Init(Config DeserializeConfig, UserInfo userinfo, string Message = "false ban", string BodyMessage = "Moderator")
+        public static async Task Init(Config DeserializeConfig, UserInfo userinfo, string Message = "attemping to bypass ban.", string BodyMessage = "Auto Banned")
         {
             try
             {
@@ -29,16 +30,39 @@ namespace FortBackend.src.App.Routes.Development
                     var guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
                     if (ulong.TryParse(userinfo.id, out ulong userId))
                     {
-                        try
-                        {
-                            RequestOptions NoWay = new RequestOptions();
-                            NoWay.AuditLogReason = Message;
+                        var user = await DiscordBot.Client.GetUserAsync(userId);
 
-                            await guild.RemoveBanAsync(userId, NoWay);
-                        }
-                        catch (Exception ex)
+                        if (user != null)
                         {
-                            Logger.Error(ex.Message);
+                            var embed = new EmbedBuilder
+                            {
+                                Title = "You have been banned!",
+                                Description = $"You were banned from Luna for {Message}",
+                                Color = Color.Red
+                            }.Build();
+
+                            try
+                            {
+                                var dmChannel = await user.CreateDMChannelAsync();
+                                if (dmChannel != null)
+                                {
+                                    await dmChannel.SendMessageAsync(embed: embed);
+                                }
+                            }
+                            catch { }
+                            try
+                            {
+                                await guild.AddBanAsync(user, reason: Message);
+                            }
+                            catch (Exception ex)
+                            {
+                                Logger.Error(ex.Message);
+                            }
+                        }
+                        else
+                        {
+                            Logger.Error("Returning id is false");
+                            return;
                         }
                     }
                 }
@@ -49,8 +73,8 @@ namespace FortBackend.src.App.Routes.Development
 
                 var embed2 = new
                 {
-                    title = "Ban Revoked",
-                    footer = new { text = userinfo.username + " Has Been Unbanned!" },
+                    title = "User Banned",
+                    footer = new { text = userinfo.username + " Has Been Banned!" },
                     fields = new[]
                     {
                         new { name = "Display Name", value = userinfo.username ?? "Couldn't find username?", inline = false },

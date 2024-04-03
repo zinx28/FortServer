@@ -139,7 +139,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 {
                                     if (UserData.banned)
                                     {
-                                        return Ok(new { test = "Banned" });
+                                        return BadRequest(new { Error = "You are banned!" });
                                     }
 
                                     Console.WriteLine("TEST");
@@ -183,16 +183,16 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                                    { "banned", true }
                                                 });
 
-                                                return Ok(new { test = "Banned" });
+                                                return BadRequest(new { Error = "You are banned!" });
                                             }
                                             else
                                             {
-                                                return Ok(new { test = "Server Issue" });
+                                                return BadRequest(new { Error = "Server Issue, Banned?" });
                                             }
                                         }
                                         else
                                         {
-                                            return Ok(new { test = "Server Issue: Already Banned! YOU NAUGHTY BOY!" });
+                                            return BadRequest(new { Error = "Server Issue: Already Banned! YOU NAUGHTY BOY!" });
                                         }
                                     }
                                     else
@@ -211,7 +211,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                             }
                             else
                             {
-                                return Ok(new { test = "error!! couldnt login" });
+                                return BadRequest(new { Error = "error!! couldnt login" });
                             }
                         }
                         else
@@ -223,14 +223,14 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 if (FindUserId != "Error")
                                 {
                                     // Create the account
-                                    return Ok(new { test = "username is in use but lkets make you a acc" });
+                                    return BadRequest(new { Error = "username is in use but lkets make you a acc" });
                                 }
                                 else
                                 {
                                     string NewAccessToken = await CreateAccount.Init(httpContext, _database, responseData1, true);
                                     if (NewAccessToken == "ERROR")
                                     {
-                                        return Ok(new { test = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
+                                        return BadRequest(new { Error = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
                                     }
                                     return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
                                 }
@@ -240,7 +240,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 string NewAccessToken = await CreateAccount.Init(httpContext, _database, responseData1);
                                 if (NewAccessToken == "ERROR")
                                 {
-                                    return Ok(new { test = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
+                                    return BadRequest(new { Error = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
                                 }
                                 return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
                             }
@@ -248,7 +248,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                     }
                     else
                     {
-                        return Ok(new { test = "User is not in discord server!" });
+                        return BadRequest(new { Error = "User is not in discord server!" });
                     }
 
 
@@ -262,7 +262,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                 Logger.Error(ex.Message);
             }
 
-            return Ok(new { test = "Unknown Issue!" });
+            return BadRequest(new { Error = "Unknown Issue!" });
         }
 
     }

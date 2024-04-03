@@ -29,8 +29,8 @@ namespace FortBackend.src.App.Utilities.Helpers
 
                 foreach (var stats in top100)
                 {
-                    Console.WriteLine(stats.AccountId);
-                    Console.WriteLine(statName);
+                    //Console.WriteLine(stats.AccountId);
+                    //Console.WriteLine(statName);
                     int statsValue = -1;
                     if (stats.stats.TryGetValue(statName, out int value69))
                     {

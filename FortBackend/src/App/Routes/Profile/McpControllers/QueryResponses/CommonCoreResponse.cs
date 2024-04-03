@@ -10,6 +10,8 @@ using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attribut
 using FortBackend.src.App.Utilities;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.Saved;
+using Amazon.Runtime.Internal.Transform;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
@@ -131,6 +133,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             },
                             quantity = profileChange.Value.quantity,
                         });
+                    }
+                    foreach (var profileChange in Saved.DeserializeConfig.DefaultBanners_Items)
+                    {
+                        ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
                     }
                 }
 

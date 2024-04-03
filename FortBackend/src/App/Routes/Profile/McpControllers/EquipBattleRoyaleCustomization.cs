@@ -58,6 +58,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     else
                     {
                         UpdatedData.GetSlotName(slotName).items = new List<string>() { itemToSlot };
+     
                         ProfileChanges.Add(new {
                             changeType = "statModified",
                             name = $"favorite_{slotName}",

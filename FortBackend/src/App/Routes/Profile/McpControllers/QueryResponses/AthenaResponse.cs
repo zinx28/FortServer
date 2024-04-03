@@ -98,7 +98,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     Profile = new ProfileData
                                     {
                                         _id = profileCacheEntry.AccountData.AccountId,
-                                        Update = "",
+                                       // Update = "",
                                         Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
                                         Updated = profileCacheEntry.AccountData.athena.Updated,
                                         rvn = profileCacheEntry.AccountData.athena.RVN,

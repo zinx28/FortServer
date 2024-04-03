@@ -5,7 +5,7 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query
     public class ProfileData
     {
         public string _id { get; set; } = "RANDOM";
-        public string Update { get; set; } = "";
+       // public string Update { get; set; } = "";
         public DateTime Created { get; set; } = DateTime.Parse(DateTime.UtcNow.ToString());
         public DateTime Updated { get; set; } = DateTime.Parse(DateTime.UtcNow.ToString());
         public int rvn { get; set; }

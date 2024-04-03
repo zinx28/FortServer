@@ -35,6 +35,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                     throw new Exception("BLANK APPLICATION INFO");
                     return Ok(new { test = "Blank Application Info" });
                 }
+
                 var Client = new HttpClient();
                 var formData = new Dictionary<string, string>()
                 {
@@ -51,6 +52,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                 var responseData = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseContent);
                 if (responseData == null)
                 {
+                    throw new Exception("responseContent is null");
                     return Ok(new { test = "Null!" });
                 }
 
@@ -67,7 +69,6 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                     {
                         foreach (Server item in responseData2)
                         {
-                            //Console.WriteLine(item.id);
                             if (item.id == Saved.DeserializeConfig.ServerID)
                             {
                                 IsInServer = true;
@@ -77,6 +78,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                     HttpContext httpContext = HttpContext;
                     if (httpContext == null)
                     {
+                        throw new Exception("Context is null");
                         return Ok(new { test = "Context is null" });
                     }
 

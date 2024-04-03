@@ -65,5 +65,9 @@ namespace FortBackend.src.App.Utilities.Saved
         // THIS AUTO GENERATES DURING RUNTIME TO REDUCE LAG
         public Dictionary<string, AthenaItem> FullLocker_AthenaItems { get; set; } = new Dictionary<string, AthenaItem>();
         public Dictionary<string, CommonCoreItem> DefaultBanners_Items { get; set; } = new Dictionary<string, CommonCoreItem>();
+
+
+        // THIS IS FOR LUNA TESTING ONLY.... ENABLING WILL BREAK YOUR THE BACKEND
+        public bool LunaPROD { get; set; } = false;
     }   
 }

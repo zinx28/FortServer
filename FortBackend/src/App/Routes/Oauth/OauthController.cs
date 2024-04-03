@@ -168,6 +168,29 @@ namespace FortBackend.src.App.Routes.Oauth
                 string clientId = "";
                 try
                 {
+                    if (Saved.DeserializeConfig.LunaPROD)
+                    {
+                        //foreach (var header in Request.Headers)
+                        //{
+                        //    Console.WriteLine($"{header.Key}: {header.Value}");
+                        //}
+                        string LunaDevTesting = Request.Headers["lunaprod"]!;
+                       // Console.WriteLine(LunaDevTesting);
+                        if(LunaDevTesting != "verytrue") {
+                            Logger.Error("FAKE CURL?");
+                            return BadRequest(new BaseError
+                            {
+                                errorCode = "errors.com.epicgames.account.invalid_client",
+                                errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                                messageVars = new List<string>(),
+                                numericErrorCode = 1011,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                                error = "invalid_client"
+                            }); 
+                        }
+                    }
                     string AuthorizationToken = Request.Headers["Authorization"]!;
 
                     if (string.IsNullOrEmpty(AuthorizationToken))

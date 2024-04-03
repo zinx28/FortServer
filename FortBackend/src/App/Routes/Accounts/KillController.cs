@@ -72,10 +72,13 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                         }
                     }
 
-                    var ClientTokenIndex = GlobalData.ClientToken.FindIndex(i => i.token == accesstoken);
-                    if (ClientTokenIndex != -1)
+                    if(GlobalData.ClientToken.Any(i => i.token == accesstoken))
                     {
-                        GlobalData.ClientToken.RemoveAt(ClientTokenIndex);
+                        var ClientTokenIndex = GlobalData.ClientToken.FindIndex(i => i.token == accesstoken);
+                        if (ClientTokenIndex != -1)
+                        {
+                            GlobalData.ClientToken.RemoveAt(ClientTokenIndex);
+                        }
                     }
                 }
             }

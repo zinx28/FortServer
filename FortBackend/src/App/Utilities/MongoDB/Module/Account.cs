@@ -113,9 +113,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonIgnoreIfNull]
         public List<SeasonClass> Seasons { get; set; } = new List<SeasonClass>();
 
-        [BsonElement("ban_status")]
-        [BsonIgnoreIfNull]
-        public BanStatus BanStatus { get; set; } = new BanStatus();
+        //[BsonElement("ban_status")]
+        //[BsonIgnoreIfNull]
+        //public BanStatus BanStatus { get; set; } = new BanStatus();
 
        // [BsonElement("ban_history")]
        // [BsonIgnoreIfNull]

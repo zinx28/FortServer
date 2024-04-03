@@ -42,7 +42,7 @@ namespace WpfApp1.Services.Pages
 
                 var listener = new HttpListener();
 		// THIS IS FOR THE LAUNCHER DONT CHANGE THE PORT
-                listener.Prefixes.Add("http://127.0.0.1:2158/callback/");
+                listener.Prefixes.Add("http://127.0.0.1:2158/launcher/api/v1/callback/");
                 listener.Start();
 
 

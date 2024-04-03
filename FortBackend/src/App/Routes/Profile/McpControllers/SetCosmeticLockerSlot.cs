@@ -75,10 +75,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     {
                         new
                         {
-                                changeType = "itemAttrChanged",
-                                itemId = Body.lockerItem,
-                                attributeName = "locker_slots_data",
-                                attributeValue = UpdatedData
+                            changeType = "itemAttrChanged",
+                            itemId = Body.lockerItem,
+                            attributeName = "locker_slots_data",
+                            attributeValue = UpdatedData
                         }
                     });
                 }

@@ -52,7 +52,7 @@ namespace FortBackend.src.App
                 Logger.Log("Loaded Config", "CONFIG");
             }
 
-            string FullLockerJson = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/FullLocker.json"));
+            string FullLockerJson = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/FullLocker.json"));
             if (FullLockerJson == null)
             {
                 Logger.Error("FULL LOCKER JSON IS NULL", "Services");

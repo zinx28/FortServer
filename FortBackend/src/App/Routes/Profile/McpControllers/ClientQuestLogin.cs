@@ -26,7 +26,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
 
-                var jsonData = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\default.json"));
+                var jsonData = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Profiles\\default.json"));
                 if (!string.IsNullOrEmpty(jsonData))
                 {
                     // adds stats shocked

@@ -117,9 +117,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Module
         [BsonIgnoreIfNull]
         public BanStatus BanStatus { get; set; } = new BanStatus();
 
-        [BsonElement("ban_history")]
-        [BsonIgnoreIfNull]
-        public BanHistory BanHistory { get; set; } = new BanHistory();
+       // [BsonElement("ban_history")]
+       // [BsonIgnoreIfNull]
+       // public BanHistory BanHistory { get; set; } = new BanHistory();
 
         [BsonElement("current_mtx_platform")]
         public string current_mtx_platform { get; set; } = "EpicPC";

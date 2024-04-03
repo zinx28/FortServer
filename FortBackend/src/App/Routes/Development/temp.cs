@@ -141,6 +141,16 @@ namespace FortBackend.src.App.Routes.Development
                                 { "accesstoken", NewAccessToken }
                             });
 
+                            var Ip = "";
+                            if (Saved.DeserializeConfig.Cloudflare)
+                            {
+                                Ip = httpContext.Request.Headers["CF-Connecting-IP"];
+                            }
+                            else
+                            {
+                                Ip = httpContext.Connection.RemoteIpAddress!.ToString();
+                            }
+
                             if (UpdateResponse != "Error")
                             {
                                 User UserData = JsonConvert.DeserializeObject<User[]>(FindDiscordID)?[0]!;
@@ -152,10 +162,10 @@ namespace FortBackend.src.App.Routes.Development
                                     }
 
                                     Console.WriteLine("TEST");
-                                    string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress!.ToString() };
+                                    string[] UserIp = new string[] { Ip };
 
                                     IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
-                                    var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, httpContext.Connection.RemoteIpAddress?.ToString());
+                                    var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, Ip);
                                     var count = await StoreInfocollection.CountDocumentsAsync(filter);
                                     if (count > 0)
                                     {
@@ -210,7 +220,7 @@ namespace FortBackend.src.App.Routes.Development
                                         {
                                             await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
                                             {
-                                                { "UserIps", httpContext.Connection.RemoteIpAddress?.ToString()! }
+                                                { "UserIps", Ip }
                                             }, false);
                                         }
                                     }

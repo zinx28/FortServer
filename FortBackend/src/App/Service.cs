@@ -123,11 +123,11 @@ namespace FortBackend.src.App
             var app = builder.Build();
 
             // Fix ips not showing
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor |
-                ForwardedHeaders.XForwardedProto
-            });
+            //app.UseForwardedHeaders(new ForwardedHeadersOptions
+            //{
+            //    ForwardedHeaders = ForwardedHeaders.XForwardedFor |
+            //    ForwardedHeaders.XForwardedProto
+            //});
 
 #if HTTPS
                 app.UseHttpsRedirection();

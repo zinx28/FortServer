@@ -16,5 +16,6 @@
     "Season": 0,
     "DetectedWebhookUrl": "",
     "EnableDetections": false,
-    "FullLockerForEveryone": false
+    "FullLockerForEveryone": false,
+    "Cloudflare": false
 }

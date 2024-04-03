@@ -54,6 +54,8 @@ namespace FortBackend.src.App.Utilities.Saved
         public string DetectedWebhookUrl { get; set; } = "";
         public bool EnableDetections { get; set; } = true;
 
+        public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
+
         // SEASON YOU'RE HOSTING
         public bool ForceSeason { get; set; } = false;
         public int Season { get; set; } = 0;

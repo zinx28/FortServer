@@ -36,6 +36,14 @@ namespace FortBackend.src.App.Routes.Development
         {
             try
             {
+                var Ip = "";
+                if (Saved.DeserializeConfig.Cloudflare)
+                {
+                    Ip = httpContext.Request.Headers["CF-Connecting-IP"];
+                }else
+                {
+                    Ip = httpContext.Connection.RemoteIpAddress!.ToString(); 
+                }
                 var username = responseData1.username;
                 var GlobalName = responseData1.global_name;
                 var DiscordId = responseData1.id;
@@ -49,11 +57,11 @@ namespace FortBackend.src.App.Routes.Development
 
                 string AccountId = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12) + DiscordId;
                 string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
-                string[] UserIp = new string[] { httpContext.Connection.RemoteIpAddress!.ToString() };
+                string[] UserIp = new string[] { Ip };
 
 
                 IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
-                var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, httpContext.Connection.RemoteIpAddress?.ToString());
+                var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, Ip);
                 var count = await StoreInfocollection.CountDocumentsAsync(filter);
                 bool BanUser = false;
                 if (count > 0)
@@ -61,7 +69,7 @@ namespace FortBackend.src.App.Routes.Development
                     BanUser = true;
 
                     var update = Builders<StoreInfo>.Update
-                        .PushEach(e => e.UserIps, new[] { httpContext.Connection.RemoteIpAddress?.ToString() })
+                        .PushEach(e => e.UserIps, new[] { Ip })
                         .PushEach(e => e.UserIds, new[] { AccountId });
 
                     var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);

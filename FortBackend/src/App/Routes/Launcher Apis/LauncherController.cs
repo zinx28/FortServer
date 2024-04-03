@@ -32,6 +32,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 
                 if (string.IsNullOrEmpty(config.ApplicationClientID) || string.IsNullOrEmpty(config.ApplicationURI) || string.IsNullOrEmpty(config.ApplicationSecret))
                 {
+                    throw new Exception("BLANK APPLICATION INFO");
                     return Ok(new { test = "Blank Application Info" });
                 }
                 var Client = new HttpClient();

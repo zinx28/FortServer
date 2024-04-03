@@ -44,7 +44,7 @@ namespace FortBackend.src.App.Routes.Oauth
                     var handler = new JwtSecurityTokenHandler();
                     var decodedToken = handler.ReadJwtToken(accessToken);
 
-                    Console.WriteLine(decodedToken);
+                    //Console.WriteLine(decodedToken);
                     string[] tokenParts = decodedToken.ToString().Split('.');
 
                     if (tokenParts.Length == 2)

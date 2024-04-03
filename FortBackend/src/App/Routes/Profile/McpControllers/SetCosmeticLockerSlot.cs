@@ -42,44 +42,32 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
                         UpdatedData.slots.itemwrap.items = ReplacedItems;
-                        ProfileChanges.Add(new List<object>()
-                        {
-                            new
-                            {
-                                 changeType = "itemAttrChanged",
-                                 itemId = Body.lockerItem,
-                                 attributeName = "locker_slots_data",
-                                 attributeValue = UpdatedData
-                            }
+                        ProfileChanges.Add(new {
+                                changeType = "itemAttrChanged",
+                                itemId = Body.lockerItem,
+                                attributeName = "locker_slots_data",
+                                attributeValue = UpdatedData
                         });
                     }
                     else
                     {
                         UpdatedData.slots.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
-                        ProfileChanges.Add(new List<object>()
-                        {
-                            new
-                            {
-                                 changeType = "itemAttrChanged",
-                                 itemId = Body.lockerItem,
-                                 attributeName = "locker_slots_data",
-                                 attributeValue = UpdatedData
-                            }
+                        ProfileChanges.Add(new {
+                                changeType = "itemAttrChanged",
+                                itemId = Body.lockerItem,
+                                attributeName = "locker_slots_data",
+                                attributeValue = UpdatedData
                         });
                     }
                 }
                 else
                 {
                     UpdatedData.slots.GetSlotName(slotName).items = new List<string>() { itemToSlot };
-                    ProfileChanges.Add(new List<object>()
-                    {
-                        new
-                        {
-                            changeType = "itemAttrChanged",
-                            itemId = Body.lockerItem,
-                            attributeName = "locker_slots_data",
-                            attributeValue = UpdatedData
-                        }
+                    ProfileChanges.Add(new {
+                        changeType = "itemAttrChanged",
+                        itemId = Body.lockerItem,
+                        attributeName = "locker_slots_data",
+                        attributeValue = UpdatedData
                     });
                 }
 

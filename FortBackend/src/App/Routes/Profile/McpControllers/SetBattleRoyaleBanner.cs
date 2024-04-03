@@ -64,11 +64,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     return new Mcp()
                     {
-                        profileRevision = profileCacheEntry.AccountData.athena.RVN + 1,
+                        profileRevision = profileCacheEntry.AccountData.athena.RVN,
                         profileId = ProfileId,
-                        profileChangesBaseRevision = BaseRev + 1,
+                        profileChangesBaseRevision = BaseRev,
                         profileChanges = ProfileChangesV2,
-                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision + 1,
+                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                         serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                         responseVersion = 1
                     };

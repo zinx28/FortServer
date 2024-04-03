@@ -39,41 +39,29 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             }
                             List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
                             UpdatedData.itemwrap.items = ReplacedItems;
-                            ProfileChanges.Add(new List<object>()
-                            {
-                                new
-                                {
-                                    changeType = "statModified",
-                                    name = $"favorite_{slotName}",
-                                    value = ReplacedItems
-                                }
+                            ProfileChanges.Add(new {
+                                changeType = "statModified",
+                                name = $"favorite_{slotName}",
+                                value = ReplacedItems
                             });
                         }
                         else
                         {
                             UpdatedData.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
-                            ProfileChanges.Add(new List<object>()
-                            {
-                                new
-                                {
-                                    changeType = "statModified",
-                                    name = $"favorite_{slotName}",
-                                    value =  UpdatedData.GetSlotName(slotName).items
-                                }
+                            ProfileChanges.Add(new {
+                                changeType = "statModified",
+                                name = $"favorite_{slotName}",
+                                value =  UpdatedData.GetSlotName(slotName).items
                             });
                         }
                     }
                     else
                     {
                         UpdatedData.GetSlotName(slotName).items = new List<string>() { itemToSlot };
-                        ProfileChanges.Add(new List<object>()
-                        {
-                            new
-                            {
-                                changeType = "statModified",
-                                name = $"favorite_{slotName}",
-                                value = itemToSlot
-                            }
+                        ProfileChanges.Add(new {
+                            changeType = "statModified",
+                            name = $"favorite_{slotName}",
+                            value = itemToSlot
                         });
                     }
 
@@ -92,6 +80,20 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                         ProfileChanges = test.profileChanges;
                     }
+
+                    //if(Season.Season == 1)
+                    //{
+                    //    return new Mcp()
+                    //    {
+                    //        profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                    //        profileId = ProfileId,
+                    //        profileChangesBaseRevision = BaseRev,
+                    //        profileChanges = ProfileChanges,
+                    //        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                    //        serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                    //        responseVersion = 1
+                    //    };
+                    //}
 
                     return new Mcp()
                     {

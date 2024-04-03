@@ -242,7 +242,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             }
 
                           
-
+                            if(ProfileId == "profile0")
+                            {
+                                foreach (var profileChange in Saved.DeserializeConfig.DefaultBanners_Items)
+                                {
+                                    ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
+                                }
+                            }
                            
 
                             int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.Select((pair, index) => (pair.Key, pair.Value, index))

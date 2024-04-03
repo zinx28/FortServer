@@ -66,6 +66,35 @@ namespace FortBackend.src.App
             catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message);  }
 
 
+            string DefaultBanners = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/Banners/DefaultBanners.json"));
+            if (DefaultBanners == null)
+            {
+                Logger.Error("DefaultBanners JSON IS NULL", "Services");
+            }
+            // if errors or someone skunks the file it won't crash on startup
+            try
+            {
+                Saved.DeserializeConfig.DefaultBanners_Items = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultBanners)!;
+                Logger.Log("DefaultBanners is loaded", "Services");
+            }
+            catch (Exception ex) { Logger.Error("DefaultBanners -> " + ex.Message); }
+
+            string DefaultColors = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/Banners/DefaultColors.json"));
+            if (DefaultColors == null)
+            {
+                Logger.Error("DefaultColors JSON IS NULL", "Services");
+            }
+            // if errors or someone skunks the file it won't crash on startup
+            try
+            {
+                Dictionary<string, CommonCoreItem> DefaultColorsData = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultColors)!;
+                foreach(var item in DefaultColorsData)
+                {
+                    Saved.DeserializeConfig.DefaultBanners_Items.Add(item.Key, item.Value);
+                }
+                Logger.Log("DefaultColors is loaded", "Services");
+            }
+            catch (Exception ex) { Logger.Error("DefaultColors -> " + ex.Message); }
 
             startup.ConfigureServices(builder.Services);
         #if HTTPS

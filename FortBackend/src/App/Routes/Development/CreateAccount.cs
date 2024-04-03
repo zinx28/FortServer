@@ -234,10 +234,10 @@ namespace FortBackend.src.App.Routes.Development
                             ["Currency"] = new CommonCoreItem
                             {
                                 templateId = "Currency:MtxPurchased",
-                                attributes = new CommonCoreItemAttributes
-                                {
-                                    platform = "EpicPC"
-                                },
+                                //attributes = new CommonCoreItemAttributes
+                                //{
+                               //     platform = "EpicPC"
+                               // },
                                 quantity = 1000
                             }
                         }

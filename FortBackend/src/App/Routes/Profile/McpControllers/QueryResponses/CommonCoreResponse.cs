@@ -122,7 +122,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                 {
                     foreach (var profileChange in profileCacheEntry.AccountData.commoncore.Items)
                     {
-                        ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
+                        ProfileChange.Profile.items.Add(profileChange.Key, new
+                        {
+                            templateId = profileChange.Value.templateId,
+                            attributes = new
+                            {
+                                platform = profileCacheEntry.AccountData.commoncore.current_mtx_platform
+                            },
+                            quantity = profileChange.Value.quantity,
+                        });
                     }
                 }
 

@@ -14,8 +14,11 @@ namespace FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Item
 
     public class CommonCoreItemAttributes
     {
-        [JsonProperty("platform")]
-        public string platform { get; set; } = "EpicPC";
+
+        [JsonProperty("level")]
+        public int level { get; set; } = 1;
+        [JsonProperty("item_seen")]
+        public bool item_seen { get; set; } = false;
 
     }
  }

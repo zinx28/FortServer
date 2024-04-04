@@ -9,6 +9,7 @@ using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities;
+using FortBackend.src.App.XMPP_Server.XMPP.Root;
 
 namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 {
@@ -138,8 +139,8 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 {
                                     if (UserData.banned)
                                     {
-                                        Response.Headers.Add("Message", "You Are Banned");
-                                        return Redirect("http://127.0.0.1:2158/callback?code=");
+                                        string encodedMessage = Uri.EscapeDataString("You Are Banned");
+                                        return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                                     }
 
                                     Console.WriteLine("TEST");
@@ -183,22 +184,22 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                                    { "banned", true }
                                                 });
 
-                                                Response.Headers.Add("Message", "You Are Banned");
-                                                return Redirect("http://127.0.0.1:2158/callback?code=");
+                                                string encodedMessage = Uri.EscapeDataString("You Are Banned");
+                                                return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                                                 //return BadRequest(new { Error = "You are banned!" });
                                             }
                                             else
                                             {
-                                                Response.Headers.Add("Message", "Server Issue, Banned?");
-                                                return Redirect("http://127.0.0.1:2158/callback?code=");
+                                                string encodedMessage = Uri.EscapeDataString("Server Issue, Banned?");
+                                                return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                                                 //return BadRequest(new { Error = "Server Issue, Banned?" });
                                             }
                                         }
                                         else
                                         {
-                                            Response.Headers.Add("Message", "Server Issue: Already Banned! YOU NAUGHTY BOY!");
-                                            return Redirect("http://127.0.0.1:2158/callback?code=");
-                                           // return Redirect("http://127.0.0.1:2158/callback?error=" + "Server Issue: Already Banned! YOU NAUGHTY BOY!");
+                                            string encodedMessage = Uri.EscapeDataString("Server Issue: Already Banned! YOU NAUGHTY BOY!");
+                                            return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
+                                            // return Redirect("http://127.0.0.1:2158/callback?error=" + "Server Issue: Already Banned! YOU NAUGHTY BOY!");
                                             //return BadRequest(new { Error = "Server Issue: Already Banned! YOU NAUGHTY BOY!" });
                                         }
                                     }
@@ -218,8 +219,8 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                             }
                             else
                             {
-                                Response.Headers.Add("Message", "Couldn't login");
-                                return Redirect("http://127.0.0.1:2158/callback?code=");
+                                string encodedMessage = Uri.EscapeDataString("Couldn't login");
+                                return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                                // return BadRequest(new { Error = "error!! couldnt login" });
                             }
                         }
@@ -232,8 +233,10 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 if (FindUserId != "Error")
                                 {
                                     // Create the account
-                                    Response.Headers.Add("Message", "username is in use but lkets make you a acc");
-                                    return Redirect("http://127.0.0.1:2158/callback?code=");
+                                    string encodedMessage = Uri.EscapeDataString("username is in use but lkets make you a acc");
+                                    return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
+                                    //Response.Cookies.Append("Message", "username is in use but lkets make you a acc");
+                                    //return Redirect("http://127.0.0.1:2158/callback?code=");
                                     //return BadRequest(new { Error = "username is in use but lkets make you a acc" });
                                 }
                                 else
@@ -241,9 +244,10 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                     string NewAccessToken = await CreateAccount.Init(httpContext, _database, responseData1, true);
                                     if (NewAccessToken == "ERROR")
                                     {
-                                        Response.Headers.Add("Message", "ERROR CREATING ACCOUNTS PLEASE TELL DEVS\"");
-                                        return Redirect("http://127.0.0.1:2158/callback?code=");
-                                       // return BadRequest(new { Error = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
+                                        //Response.Cookies.Append("Message", "ERROR CREATING ACCOUNTS PLEASE TELL DEVS\"");
+                                        string encodedMessage = Uri.EscapeDataString("ERROR CREATING ACCOUNTS PLEASE TELL DEVS");
+                                        return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
+                                        // return BadRequest(new { Error = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
                                     }
                                     return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
                                 }
@@ -253,9 +257,10 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 string NewAccessToken = await CreateAccount.Init(httpContext, _database, responseData1);
                                 if (NewAccessToken == "ERROR")
                                 {
-                                    Response.Headers.Add("Message", "ERROR CREATING ACCOUNTS PLEASE TELL DEVS\"");
-                                    return Redirect("http://127.0.0.1:2158/callback?code=");
-                                    //return BadRequest(new { Error = "ERROR CREATING ACCOUNTS PLEASE TELL DEVS" });
+                                   // Response.Cookies.Append("Message", "ERROR CREATING ACCOUNTS PLEASE TELL DEVS\"");
+                              
+                                    string encodedMessage = Uri.EscapeDataString("ERROR CREATING ACCOUNTS PLEASE TELL DEVS");
+                                    return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                                 }
                                 return Redirect("http://127.0.0.1:2158/callback?code=" + NewAccessToken);
                             }
@@ -263,14 +268,9 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                     }
                     else
                     {
-                        Response.Headers.Add("Message", "Please join the discord server!\"");
-                        return Redirect("http://127.0.0.1:2158/callback?code=");
-                        //return BadRequest(new { Error = "User is not in discord server!" });
+                        string encodedMessage = Uri.EscapeDataString("Please join the discord server!");
+                        return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                     }
-
-
-                    //https://discord.com/api/users/@me
-                    //Console.WriteLine(responseContent);
                 }
 
             }

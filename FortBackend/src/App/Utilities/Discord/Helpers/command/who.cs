@@ -116,13 +116,14 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             await interaction.RespondWithModalAsync(modalBuilder.Build());
                         }
                         else if (interaction is SocketModal BanComponent &&
-                        BanComponent.Data.CustomId == "reasontoban" && BanComponent.User.Id == command.User.Id)
+                        BanComponent.Data.CustomId == "reasontoban" && BanComponent.User.Id == command.User.Id && !Banned)
                         {
                             if (BanComponent.Message != null)
                             {
                                 List<SocketMessageComponentData> components = BanComponent.Data.Components.ToList();
                                 if (components.First(e => e.CustomId == "reasontoban").Value != null)
                                 {
+                                    Banned = true;
                                     IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
                                     StoreInfo storeinfo = new StoreInfo
                                     {
@@ -145,23 +146,30 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     {
                                         var AccessTokenIndex = GlobalData.AccessToken.FindIndex(i => i.accountId == RespondBack.AccountId);
 
-                                        if (AccessTokenIndex != -1)
+                                        try
                                         {
-                                            var AccessToken = GlobalData.AccessToken[AccessTokenIndex];
-                                            GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
-
-                                            var XmppClient = GlobalData.Clients.Find(i => i.accountId == RespondBack.AccountId);
-                                            if (XmppClient != null)
+                                            if (AccessTokenIndex != -1)
                                             {
-                                                XmppClient.Client.Dispose();
-                                            }
+                                                var AccessToken = GlobalData.AccessToken[AccessTokenIndex];
+                                                GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
 
-                                            var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == RespondBack.AccountId);
-                                            if (RefreshTokenIndex != -1)
-                                            {
-                                                GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
+                                                var XmppClient = GlobalData.Clients.Find(i => i.accountId == RespondBack.AccountId);
+                                                if (XmppClient != null)
+                                                {
+                                                    XmppClient.Client.Dispose();
+                                                }
+
+                                                var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == RespondBack.AccountId);
+                                                if (RefreshTokenIndex != -1)
+                                                {
+                                                    GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
+                                                }
                                             }
+                                        }catch (Exception ex)
+                                        {
+                                            Logger.Error(ex.Message, "Who command ban");
                                         }
+                                       
                                         await MongoSaveData.SaveToDB(RespondBack.AccountId);
                                         CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId);
                                     }
@@ -186,27 +194,29 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     try
                                     {
                                         Banned = false; // temp valiue
-                                        IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
+                                        IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database?.GetCollection<StoreInfo>("StoreInfo")!;
                                         var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIds, RespondBack.AccountId);
                                         var count = await StoreInfocollection.CountDocumentsAsync(filter);
+                                        Console.WriteLine(count.ToString());
                                         if (count > 0)
                                         {
                                             await StoreInfocollection.DeleteOneAsync(filter);
                                         }
+
+
+                                        await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
+                                        {
+                                            { "banned", false }
+                                        });
+
+                                        await unbanAndWebhooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
+                                        {
+                                            id = RespondBack.DiscordId,
+                                            username = RespondBack.Username
+                                        }, components.First(e => e.CustomId == "reasontouban").Value, $"<@{command.User.Id}>");
+                                        await interaction.RespondAsync($"Unbanned User :)", ephemeral: true);
                                     }
-                                    catch (Exception ex) { Logger.Error(ex.Message); }
-
-                                    await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
-                                    {
-                                        { "banned", false }
-                                    });
-
-                                    await unbanAndWebhooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
-                                    {
-                                        id = RespondBack.DiscordId,
-                                        username = RespondBack.Username
-                                    }, components.First(e => e.CustomId == "reasontouban").Value, $"<@{command.User.Id}>");
-                                    await interaction.RespondAsync($"Unbanned User :)", ephemeral: true);
+                                    catch (Exception ex) { Logger.Error(ex.Message, "Couldnt unban user"); }
                                 }
                             }
                         }

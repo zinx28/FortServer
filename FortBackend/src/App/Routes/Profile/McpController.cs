@@ -178,6 +178,7 @@ namespace FortBackend.src.App.Routes.Profile
             catch (BaseError ex)
             {
                 var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+
                 StatusCode(500);
                 return new ContentResult()
                 {
@@ -185,7 +186,6 @@ namespace FortBackend.src.App.Routes.Profile
                     ContentType = "application/json",
                     StatusCode = 500
                 };
-                // return Ok(errorDetails);
             }
             catch (Exception ex)
             {

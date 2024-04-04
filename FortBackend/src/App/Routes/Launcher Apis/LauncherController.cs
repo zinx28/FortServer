@@ -114,7 +114,6 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                         var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
                         if (FindDiscordID != "Error")
                         {
-                            Console.WriteLine("li");
                             string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
 
                             var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", id, new Dictionary<string, object>()

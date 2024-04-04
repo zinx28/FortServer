@@ -121,25 +121,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             if (BanComponent.Message != null)
                             {
                                 List<SocketMessageComponentData> components = BanComponent.Data.Components.ToList();
-                                if (components.First(e => e.CustomId == "reasontoban").Value != null)
+                                if (components.First(e => e.CustomId == "reasontoban").Value != null && !Banned)
                                 {
                                     Banned = true;
-                                    IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
-                                    StoreInfo storeinfo = new StoreInfo
-                                    {
-                                        UserIds = new string[] { RespondBack.AccountId },
-                                        UserIps = RespondBack.UserIps,
-                                        InitialBanReason = components.First(e => e.CustomId == "reasontoban").Value
-                                    };
-                                    StoreInfocollection.InsertOne(storeinfo);
-
-                                    await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
-                                    {
-                                        id = RespondBack.DiscordId,
-                                        username = RespondBack.Username
-                                    }, components.First(e => e.CustomId == "reasontoban").Value, $"<@{command.User.Id}>");
-                                    await interaction.RespondAsync($"Banned :)", ephemeral: true);
-
                                     bool FoundAccount = GlobalData.AccessToken.Any(e => e.accountId == RespondBack.AccountId);
 
                                     if (FoundAccount)
@@ -165,13 +149,18 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                     GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
                                                 }
                                             }
-                                        }catch (Exception ex)
+                                        }
+                                        catch (Exception ex)
                                         {
                                             Logger.Error(ex.Message, "Who command ban");
                                         }
-                                       
-                                        await MongoSaveData.SaveToDB(RespondBack.AccountId);
-                                        CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId);
+
+                                        try
+                                        {
+                                            await MongoSaveData.SaveToDB(RespondBack.AccountId);
+                                            CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId);
+                                        }
+                                        catch {} // idfk
                                     }
 
                                     // Ban user after deleting token and killing cached data
@@ -179,6 +168,25 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     {
                                        { "banned", true }
                                     });
+
+                                    // do this last
+                                    IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
+                                    StoreInfo storeinfo = new StoreInfo
+                                    {
+                                        UserIds = new string[] { RespondBack.AccountId },
+                                        UserIps = RespondBack.UserIps,
+                                        InitialBanReason = components.First(e => e.CustomId == "reasontoban").Value
+                                    };
+                                    await StoreInfocollection.InsertOneAsync(storeinfo);
+
+                                    await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
+                                    {
+                                        id = RespondBack.DiscordId,
+                                        username = RespondBack.Username
+                                    }, components.First(e => e.CustomId == "reasontoban").Value, $"<@{command.User.Id}>");
+                                    await interaction.RespondAsync($"Banned :)", ephemeral: true);
+
+
                                 }
                             }
                         }
@@ -189,11 +197,17 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             if (unbanInteraction.Message != null)
                             {
                                 List<SocketMessageComponentData> components = unbanInteraction.Data.Components.ToList();
-                                if (components.First(e => e.CustomId == "reasontouban").Value != null)
+                                if (components.First(e => e.CustomId == "reasontouban").Value != null && Banned)
                                 {
                                     try
                                     {
                                         Banned = false; // temp valiue
+                                        await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
+                                        {
+                                            { "banned", false }
+                                        });
+
+
                                         IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database?.GetCollection<StoreInfo>("StoreInfo")!;
                                         var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIds, RespondBack.AccountId);
                                         var count = await StoreInfocollection.CountDocumentsAsync(filter);
@@ -202,12 +216,6 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                         {
                                             await StoreInfocollection.DeleteOneAsync(filter);
                                         }
-
-
-                                        await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
-                                        {
-                                            { "banned", false }
-                                        });
 
                                         await unbanAndWebhooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
                                         {

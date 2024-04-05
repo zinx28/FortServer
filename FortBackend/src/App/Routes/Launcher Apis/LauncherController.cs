@@ -139,7 +139,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 {
                                     if (UserData.banned)
                                     {
-                                        string encodedMessage = Uri.EscapeDataString("You Are Banned");
+                                        string encodedMessage = Uri.EscapeDataString("You are banned from Luna.");
                                         return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                                     }
 
@@ -151,7 +151,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                     var count = await StoreInfocollection.CountDocumentsAsync(filter);
                                     if (count > 0)
                                     {
-
+                                        bool hasUpdates = false;
                                         var update = Builders<StoreInfo>.Update.Combine();
 
                                         var existingIPs = await StoreInfocollection.Find(filter).Project(b => b.UserIps).FirstOrDefaultAsync();
@@ -159,6 +159,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                         if (newIps.Count() > 0)
                                         {
                                             update = update.PushEach(b => b.UserIps, newIps);
+                                            hasUpdates = true;
                                         }
 
                                         var existingIds = await StoreInfocollection.Find(filter).Project(b => b.UserIds).FirstOrDefaultAsync();
@@ -168,40 +169,33 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                         if (newIds.Count() > 0)
                                         {
                                             update = update.PushEach(b => b.UserIds, newIds);
+                                            hasUpdates = true;
                                         }
-
-                                        if (!update.Equals(Builders<StoreInfo>.Update.Combine()))
+                                      
+                                       
+                                        if(hasUpdates)
                                         {
-
-                                            var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);
-
-                                            if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
-                                            {
-                                                await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
-
-                                                await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
-                                                {
-                                                   { "banned", true }
-                                                });
-
-                                                string encodedMessage = Uri.EscapeDataString("You Are Banned");
-                                                return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
-                                                //return BadRequest(new { Error = "You are banned!" });
-                                            }
-                                            else
-                                            {
-                                                string encodedMessage = Uri.EscapeDataString("Server Issue, Banned?");
-                                                return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
-                                                //return BadRequest(new { Error = "Server Issue, Banned?" });
-                                            }
+                                            await StoreInfocollection.UpdateManyAsync(filter, update);
                                         }
-                                        else
+                                        try
                                         {
-                                            string encodedMessage = Uri.EscapeDataString("Server Issue: Already Banned! YOU NAUGHTY BOY!");
+                                            await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+
+                                            await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
+                                            {
+                                                { "banned", true }
+                                            });
+
+                                            string encodedMessage = Uri.EscapeDataString("You are banned from Luna.");
                                             return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
-                                            // return Redirect("http://127.0.0.1:2158/callback?error=" + "Server Issue: Already Banned! YOU NAUGHTY BOY!");
-                                            //return BadRequest(new { Error = "Server Issue: Already Banned! YOU NAUGHTY BOY!" });
                                         }
+                                        catch (Exception ex)
+                                        {
+
+                                        }
+                                     
+                                            //return BadRequest(new { Error = "You are banned!" });
+                                      
                                     }
                                     else
                                     {

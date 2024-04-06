@@ -65,7 +65,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
               
                 using (SslStream sslStream = new SslStream(client.GetStream(), false))
                 {
-                    sslStream.AuthenticateAsServer(certificate, true, System.Security.Authentication.SslProtocols.Tls, false);
+                    sslStream.AuthenticateAsServer(certificate, true, System.Security.Authentication.SslProtocols.Tls12, false);
 
                     StreamReader reader = new StreamReader(sslStream);
                     string message = reader.ReadLine();

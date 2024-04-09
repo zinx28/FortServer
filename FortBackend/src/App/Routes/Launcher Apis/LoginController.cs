@@ -58,7 +58,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                             var CharacterData = sandboxLoadout.attributes.locker_slots_data.slots.character.items[0];
                             if(!string.IsNullOrEmpty(CharacterData) && !CharacterData.Contains("cid_random"))
                             {
-                                Character = CharacterData.Split(":")[1;
+                                Character = CharacterData.Split(":")[1];
                             }
                         }
                        

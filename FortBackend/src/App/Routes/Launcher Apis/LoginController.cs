@@ -39,7 +39,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 
                 string authToken = Request.Headers["Authorization"];
 
-                Console.WriteLine(authToken);
+                //Console.WriteLine(authToken);
 
                 if (authToken != null)
                 {

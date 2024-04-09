@@ -9,6 +9,10 @@ using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 
 namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 {
@@ -37,24 +41,32 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 
                 if (authToken != null)
                 {
-                    var FindUser = await Handlers.FindOne<User>("accesstoken", authToken);
-                    if (FindUser != "Error")
+                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, authToken);
+        
+                    if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
-                        User UserData = JsonConvert.DeserializeObject<User[]>(FindUser)?[0]!;
-                        if (UserData != null)
+                        var Character = "CID_001_Athena_Commando_F_Default";
+                        if (profileCacheEntry.UserData.banned)
                         {
-                            if (UserData.banned)
-                            {
-                                return Unauthorized(); // Banned
-                            }
-
-                            return Ok(new
-                            {
-                                username = UserData.Username,
-                                email = UserData.Email,
-                                DiscordId = UserData.DiscordId,
-                            });
+                            return Unauthorized(); // Banned
                         }
+                        SandboxLoadout sandboxLoadout = profileCacheEntry.AccountData.athena.loadouts_data.FirstOrDefault(e => e.Key.Contains("sandbox_loadout"))!.Value;
+                        if (sandboxLoadout != null)
+                        {
+                            var CharacterData = sandboxLoadout.attributes.locker_slots_data.slots.character.items[0];
+                            if(!string.IsNullOrEmpty(CharacterData) && CharacterData.Contains("cid_random"))
+                            {
+                                Character = CharacterData;
+                            }
+                        }
+                       
+                        return Ok(new
+                        {
+                            username = profileCacheEntry.UserData.Username,
+                            email = profileCacheEntry.UserData.Email,
+                            character = Character,
+                            DiscordId = profileCacheEntry.UserData.DiscordId,
+                        });                
                     }
                 }
 

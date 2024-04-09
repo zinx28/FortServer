@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Configurations>Debug;Release;HTTPS</Configurations>
+    <Configurations>Debug;Release;HTTPS;DEVELOPMENT</Configurations>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 

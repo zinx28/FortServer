@@ -139,11 +139,13 @@ namespace FortBackend.src.App
 
             startup.Configure(app, app.Environment);
             //Setup.Initialize(app);
+#if !DEVELOPMENT
             var DiscordBotServer = new Thread(async () =>
             {
                 await DiscordBot.Start(); // dont away... app.run does it for you
             });
             DiscordBotServer.Start();
+#endif
 
 
             var XmppServer = new Thread(() =>

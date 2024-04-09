@@ -97,6 +97,8 @@ namespace FortBackend.src.App
             catch (Exception ex) { Logger.Error("DefaultColors -> " + ex.Message); }
 
             startup.ConfigureServices(builder.Services);
+
+
         #if HTTPS
                 Saved.DeserializeConfig.DefaultProtocol = "https://";
                 builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");

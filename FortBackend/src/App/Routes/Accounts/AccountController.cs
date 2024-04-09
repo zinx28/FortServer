@@ -1,4 +1,6 @@
-﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
+﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
@@ -52,44 +54,71 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         // THIS IS WIP
         //persona/api/public/account/lookup
         [HttpGet("/persona/api/public/account/lookup")]
-        public async Task<IActionResult> DisplayNameSearch()
+        public async Task<IActionResult> PersonaAPI([FromQuery(Name = "q")] string query)
         {
-            string RequestQuery = Request.Query["q"]!;
-
-            if (RequestQuery != null && !RequestQuery.Contains(","))
+            try
             {
-                var UserData1 = await Handlers.FindOne<User>("Username", RequestQuery);
-                if (UserData1 != "Error")
+                if (query != null && !query.Contains(","))
                 {
-                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0]!;
-
-                    if (UserDataParsed != null)
+                    var UserData1 = await Handlers.FindOne<User>("Username", query);
+                    if (UserData1 != "Error")
                     {
+                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0]!;
 
-                        return Ok(new
+                        if (UserDataParsed != null)
                         {
-                            id = UserDataParsed.AccountId,
-                            displayName = UserDataParsed.Username,
-                            name = UserDataParsed.Username,
-                            lastName = UserDataParsed.Username,
-                            email = UserDataParsed.Email,
-                            failedLoginAttempts = 0,
-                            lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                            numberOfDisplayNameChanges = 0,
-                            ageGroup = "UNKNOWN",
-                            headless = false,
-                            country = "US",
-                            canUpdateDisplayName = false,
-                            tfaEnabled = false,
-                            emailVerified = true,
-                            minorVerified = false,
-                            minorExpected = false,
-                            minorStatus = "UNKOWN"
-                        });
-                    }
-                }
-            }
 
+                            return Ok(new
+                            {
+                                id = UserDataParsed.AccountId,
+                                displayName = UserDataParsed.Username,
+                            });
+                        }
+                    }
+
+                    throw new BaseError
+                    {
+                        errorCode = "errors.com.epicgames.account.account_not_found",
+                        errorMessage = $"Sorry, we couldn't find an account for {query}",
+                        messageVars = new List<string> { $"/persona/api/public/account/lookup" },
+                        numericErrorCode = 18007,
+                        originatingService = "any",
+                        intent = "prod",
+                        error_description = $"Sorry, we couldn't find an account for {query}",
+                    };
+                }
+                else
+                {
+                    throw new BaseError
+                    {
+                        errorCode = "errors.com.epicgames.iforgot",
+                        errorMessage = $"Sorry, we couldn't find an account for {query}",
+                        messageVars = new List<string> { $"/persona/api/public/account/lookup" },
+                        numericErrorCode = 18007,
+                        originatingService = "any",
+                        intent = "prod",
+                        error_description = $"Sorry, we couldn't find an account for {query}",
+                    };
+                }
+
+                
+            }
+            catch (BaseError ex)
+            {
+                var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+                StatusCode(500);
+                return new ContentResult()
+                {
+                    Content = jsonResult,
+                    ContentType = "application/json",
+                    StatusCode = 500
+                };
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+            }
+          
             return Ok(new { });
         }
 

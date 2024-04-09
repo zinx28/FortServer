@@ -39,6 +39,8 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 
                 string authToken = Request.Headers["Authorization"];
 
+                Console.WriteLine(authToken);
+
                 if (authToken != null)
                 {
                     ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, authToken);
@@ -54,9 +56,9 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                         if (sandboxLoadout != null)
                         {
                             var CharacterData = sandboxLoadout.attributes.locker_slots_data.slots.character.items[0];
-                            if(!string.IsNullOrEmpty(CharacterData) && CharacterData.Contains("cid_random"))
+                            if(!string.IsNullOrEmpty(CharacterData) && !CharacterData.Contains("cid_random"))
                             {
-                                Character = CharacterData;
+                                Character = CharacterData.Split(":")[0];
                             }
                         }
                        

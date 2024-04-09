@@ -67,7 +67,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 {
                     if (GrabData.Value != null)
                     {
-                        Console.WriteLine("RETURNING CORRET DATA <3");
+                        //Console.WriteLine("RETURNING CORRET DATA <3");
                         return GrabData.Value;
                     }
                     Console.WriteLine("what? how");

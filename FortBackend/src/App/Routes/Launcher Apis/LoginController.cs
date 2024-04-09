@@ -61,12 +61,49 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 Character = CharacterData.Split(":")[1];
                             }
                         }
-                       
+
+                        var Wins = 0;
+                        var MatchesPlayed = 0;
+                        var Kills = 0;
+                        var Vbucks = 0;
+
+                        // not the best way but only way
+                        if (profileCacheEntry.StatsData.stats.Count > 0)
+                        {
+                            // Solos
+                            if(profileCacheEntry.StatsData.stats.TryGetValue("br_placetop1_pc_m0_p2", out int SoloWin)) { Wins += SoloWin; }
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_matchesplayed_pc_m0_p2", out int SoloMatchedPlayed)) { MatchesPlayed += SoloMatchedPlayed; }
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_kills_pc_m0_p2", out int SolosKills)) { Kills += SolosKills; }
+                            // Duos
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_placetop1_pc_m0_p10", out int DuoWin)) { Wins += DuoWin; }
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_matchesplayed_pc_m0_p10", out int DuosMatchedPlayed)) { MatchesPlayed += DuosMatchedPlayed; }
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_kills_pc_m0_p10", out int DuoKills)) { Kills += DuoKills; }
+                            // Squads
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_placetop1_pc_m0_p9", out int SquadWin)) { Wins += SquadWin; }
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_matchesplayed_pc_m0_p9", out int SquadMatchedPlayed)) { MatchesPlayed += SquadMatchedPlayed; }
+                            if (profileCacheEntry.StatsData.stats.TryGetValue("br_kills_pc_m0_p9", out int SquadKills)) { Kills += SquadKills; }
+                        }
+
+                        int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.Select((pair, index) => (pair.Key, pair.Value, index))
+                          .TakeWhile(pair => !pair.Key.Equals("Currency")).Count();
+
+                        if (GrabPlacement3 != -1)
+                        {
+                            Vbucks = profileCacheEntry.AccountData.commoncore.Items["Currency"].quantity;
+                        }
+
                         return Ok(new
                         {
                             username = profileCacheEntry.UserData.Username,
                             email = profileCacheEntry.UserData.Email,
                             character = Character,
+                            vbucks = Vbucks,
+                            stats = new
+                            {
+                                Wins,
+                                MatchesPlayed,
+                                Kills
+                            },
                             DiscordId = profileCacheEntry.UserData.DiscordId,
                         });                
                     }

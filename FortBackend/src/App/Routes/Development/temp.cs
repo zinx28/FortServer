@@ -36,6 +36,23 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
+        [HttpGet("/PRIVATE/DEVELOPER/DATA/TOKEN/{token}")]
+        public async Task<IActionResult> GrabTokenDATA(string token)
+        {
+            try
+            {
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, token);
+                string Data = JsonConvert.SerializeObject(profileCacheEntry);
+                if (!string.IsNullOrEmpty(Data)) { return Ok(Data); }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message); // 
+            }
+
+            return BadRequest(new { message = "error" });
+        }
+
         [HttpGet("/image/{image}")]
         public IActionResult ImageEnd(string image)
         {

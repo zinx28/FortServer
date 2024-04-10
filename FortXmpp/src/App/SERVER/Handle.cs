@@ -47,8 +47,12 @@ namespace FortXmpp.src.App.SERVER
 
                             switch (xmlDoc.Root?.Name.LocalName)
                             {
+                                // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS
+                                case "login":
+                                    Login.Init(webSocket, xmlDoc, clientId, dataSaved);
+                                    break;
                                 case "open":
-                                    Open.Init(webSocket, dataSaved.DidUserLoginNotSure, clientId); // Pov Client Is Used For Anything (Not Gonna be skunky and use a random id)
+                                    Open.Init(webSocket, dataSaved.DidUserLoginNotSure, clientId);
                                     break;
                                 case "auth":
                                     Auth.Init(webSocket, xmlDoc, clientId, dataSaved);
@@ -65,7 +69,6 @@ namespace FortXmpp.src.App.SERVER
                                 default: break;
                             }
 
-                            ClientFix.Init(webSocket, dataSaved, clientId);
                             dataSaved.receivedMessage = "";
                         }
                         break;

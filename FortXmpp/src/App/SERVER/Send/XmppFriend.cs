@@ -1,6 +1,8 @@
 ﻿
+using FortLibrary;
 using FortLibrary.MongoDB.Module;
 using FortXmpp.src.App.Globals;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.WebSockets;
 using System.Text;
@@ -28,41 +30,54 @@ namespace FortXmpp.src.App.SERVER.Send
                 GlobalData.Clients[ClientIndex].lastPresenceUpdate.away = away;
                 GlobalData.Clients[ClientIndex].lastPresenceUpdate.presence = status;
 
-                var FriendsData = await Handlers.FindOne<UserFriends>("accountId", ClientData.accountId);
-                if (FriendsData != "Error")
+                HttpClient httpClient = new HttpClient();
+                HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{ClientData.accountId}");
+
+                if (response.IsSuccessStatusCode)
                 {
-                    dynamic FriendsDataParsed = JArray.Parse(FriendsData)[0];
-                    Console.WriteLine("TEST");
-                    foreach (var friend in FriendsDataParsed["Accepted"])
+                    //ProfileCacheEntry
+                    var datareturned = await response.Content.ReadAsStringAsync();
+                    if (datareturned != null)
                     {
-                        var FriendsClientData = GlobalData.Clients.Find(testc => testc.accountId == friend["accountId"].ToString());
-
-                        if (FriendsClientData == null)
+                        ProfileCacheEntry Data = JsonConvert.DeserializeObject<ProfileCacheEntry>(datareturned)!;
+                        if (Data.AccountData != null)
                         {
-                            return;
-                        }
-                        XNamespace clientNs1 = "jabber:client";
-                        XElement openElement = new XElement(clientNs1 + "presence",
-                          new XAttribute("to", FriendsClientData.jid),
-                          new XAttribute("from", ClientData.jid),
-                          new XAttribute("type", offline ? "unavailable" : "available")
-                        );
+                            UserFriends FriendsDataParsed = Data.UserFriends;
+                            Console.WriteLine("TEST");
+                            foreach (var friend in FriendsDataParsed.Accepted)
+                            {
+                                var FriendsClientData = GlobalData.Clients.Find(client => client.accountId == FriendsDataParsed.AccountId.ToString());
 
-                        if (away)
-                        {
-                            openElement.Add(new XElement("show", "away"));
-                            openElement.Add(new XElement("status", status));
-                        }
-                        else
-                        {
-                            openElement.Add(new XElement("status", status));
+                                if (FriendsClientData == null)
+                                {
+                                    return;
+                                }
+                                XNamespace clientNs1 = "jabber:client";
+                                XElement openElement = new XElement(clientNs1 + "presence",
+                                  new XAttribute("to", FriendsClientData.jid),
+                                  new XAttribute("from", ClientData.jid),
+                                  new XAttribute("type", offline ? "unavailable" : "available")
+                                );
+
+                                if (away)
+                                {
+                                    openElement.Add(new XElement("show", "away"));
+                                    openElement.Add(new XElement("status", status));
+                                }
+                                else
+                                {
+                                    openElement.Add(new XElement("status", status));
+                                }
+
+                                xmlMessage = openElement.ToString();
+                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
+
+                                await FriendsClientData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                            }
                         }
 
-                        xmlMessage = openElement.ToString();
-                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                        await FriendsClientData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                     }
+
                 }
             }
             catch (Exception ex)

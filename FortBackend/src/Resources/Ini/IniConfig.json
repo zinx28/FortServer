@@ -139,7 +139,7 @@
                         },
                         {
                             "Name": "bUsePartySystemV2",
-                            "Value": true
+                            "Value": false
                         }
                     ]
                 },
@@ -266,7 +266,7 @@
                     "Data": [
                         {
                             "Name": "bUsePartySystemV2",
-                            "Value": true
+                            "Value": false
                         }
                     ]
                 },

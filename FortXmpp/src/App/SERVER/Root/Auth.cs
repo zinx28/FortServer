@@ -51,7 +51,7 @@ namespace FortXmpp.src.App.SERVER.Root
                         await Client.CloseClient(webSocket);
                         return;
                     }
-
+                    HttpClient httpClient = new HttpClient();
                     HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{foundClient.accountId}");
 
                     if (response.IsSuccessStatusCode)

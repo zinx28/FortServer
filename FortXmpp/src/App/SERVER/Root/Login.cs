@@ -61,10 +61,14 @@ namespace FortXmpp.src.App.SERVER.Root
 
                                 }
 
+                                ClientFix.Init(webSocket, dataSaved, clientId);
                             }
 
                         }
-                    }                  ClientFix.Init(webSocket, dataSaved, clientId);
+                    }else
+                    {
+                        Console.WriteLine("FAILED");
+                    }                
                 }
             }
             catch (Exception ex)

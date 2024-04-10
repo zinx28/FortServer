@@ -5,11 +5,11 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.XMPP_Server.XMPP.Root;
+using static FortLibrary.DiscordAuth;
 
 namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 {

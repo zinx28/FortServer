@@ -1,19 +1,16 @@
 ﻿using System.Net;
 using FortBackend.src.App.Utilities.Saved;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Security.Cryptography.X509Certificates;
-using System.Runtime.CompilerServices;
 using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Routes;
 using System.Runtime.InteropServices;
-using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Shop;
-using Microsoft.AspNetCore.HttpOverrides;
 using FortBackend.src.App.XMPP_V2;
 using Newtonsoft.Json;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers;
+using FortLibrary.EpicResponses.Profile.Query.Items;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System.Security.Cryptography.X509Certificates;
+using FortBackend.src.App.Utilities.Discord;
 namespace FortBackend.src.App
 {
     public class Service

@@ -1,7 +1,4 @@
-﻿using Amazon.Runtime.Internal.Transform;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
-using FortBackend.src.App.Utilities.Helpers;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Matching;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;

@@ -85,10 +85,6 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                     }
 
                 }
-                else if (context.Request.Path == "/")
-                {
-                    Console.WriteLine("IDK");
-                }
                 else if (context.Request.Path == "/clients" && !context.WebSockets.IsWebSocketRequest)
                 {
                     var responseObj = new

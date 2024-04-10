@@ -1,19 +1,16 @@
 ﻿using FortBackend.src.App.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-
 using System.Security.Claims;
 using System.Text;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Oauth;
 using System.IdentityModel.Tokens.Jwt;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.XMPP_Server.Globals;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
-using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary.EpicResponses.Errors;
+using FortLibrary.EpicResponses.Oauth;
 
 
 namespace FortBackend.src.App.Routes.Oauth

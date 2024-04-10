@@ -1,5 +1,4 @@
 ﻿using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using MongoDB.Driver;

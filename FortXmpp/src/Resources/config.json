@@ -1,0 +1,7 @@
+{
+    "//": "FortXmpp Config",
+    "BackendPort": 1111,
+    "XmppPort": 443,
+    "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
+    "MongoDBConnectionName": "FortBackend"
+}

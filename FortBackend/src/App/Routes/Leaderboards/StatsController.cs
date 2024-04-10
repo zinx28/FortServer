@@ -1,6 +1,5 @@
-﻿using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.LeaderBoard;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
+﻿using FortLibrary.EpicResponses.LeaderBoard;
+using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;

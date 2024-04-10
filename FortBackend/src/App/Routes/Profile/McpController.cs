@@ -1,20 +1,18 @@
 ﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities;
 using Newtonsoft.Json;
-using FortBackend.src.App.Utilities.Helpers;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using System.Text;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Routes.Profile.McpControllers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using FortBackend.src.App.XMPP_Server.Globals;
+using FortLibrary.EpicResponses.Errors;
+using FortLibrary.EpicResponses.Profile;
+using FortLibrary.EpicResponses.Profile.Purchases;
 
 namespace FortBackend.src.App.Routes.Profile
 {

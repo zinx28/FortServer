@@ -1,11 +1,11 @@
 ﻿using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Fortnite;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.XMPP_Server.Globals;
+using FortLibrary.EpicResponses.Fortnite;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.IO;

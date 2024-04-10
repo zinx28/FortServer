@@ -1,10 +1,8 @@
-﻿using Amazon.Runtime;
-using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Events;
-using FortBackend.src.App.Utilities.Discord.Helpers.command;
+﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.EpicResponses.FortniteServices.Events;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

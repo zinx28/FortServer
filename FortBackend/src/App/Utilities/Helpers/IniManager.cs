@@ -1,6 +1,6 @@
-﻿using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Fortnite;
-using FortBackend.src.App.Utilities.Helpers.Encoders;
+﻿using FortBackend.src.App.Utilities.Helpers.Encoders;
+using FortLibrary.ConfigHelpers;
+using FortLibrary.EpicResponses.Fortnite;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using System.Text;

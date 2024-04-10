@@ -1,12 +1,10 @@
 ﻿using Amazon.Runtime.Internal.Transform;
 using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Friends;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.Utilities.Shop.Helpers.Data;
 using FortBackend.src.App.XMPP_Server.Globals;
+using FortLibrary.EpicResponses.Errors;
+using FortLibrary.EpicResponses.Friends;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json;

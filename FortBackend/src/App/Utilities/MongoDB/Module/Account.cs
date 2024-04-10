@@ -1,8 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Quests;
-using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using Microsoft.AspNetCore.Mvc.Formatters;
+﻿using FortLibrary.EpicResponses.Profile.Query.Items;
+using FortLibrary.EpicResponses.Profile.Quests;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;

@@ -13,10 +13,10 @@ namespace FortBackend.src.App.XMPP_V2
             Logger.Log("Initializing Xmpp", "Xmpp");
 
 
-            new Thread(() =>
-            {
-                XmppServer.Intiliazation(args);
-            }).Start();
+            //new Thread(() =>
+            //{
+            //    XmppServer.Intiliazation(args);
+            //}).Start();
 
             new Thread(() =>
             {

@@ -1,9 +1,5 @@
 ﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.Utilities.Shop.Helpers.Data;
-using Microsoft.Extensions.Caching.Memory;
-using MongoDB.Driver;
-using System.Threading;
 
 namespace FortBackend.src.App.Utilities.Helpers.Middleware
 {

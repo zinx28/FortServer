@@ -6,7 +6,7 @@ using FortBackend.src.App.Utilities.Saved;
 using MongoDB.Driver.Core.Servers;
 using Newtonsoft.Json;
 using System.Text;
-using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
+using static FortLibrary.DiscordAuth;
 
 namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {

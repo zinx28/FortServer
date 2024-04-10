@@ -1,14 +1,14 @@
 ﻿using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.Encoders;
 using FortBackend.src.App.Utilities.Helpers.UserManagement;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary.EpicResponses.Profile.Query.Items;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
-using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
+using static FortLibrary.DiscordAuth;
 
 namespace FortBackend.src.App.Utilities.Helpers
 {

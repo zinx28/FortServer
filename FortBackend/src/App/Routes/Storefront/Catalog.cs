@@ -1,8 +1,6 @@
 ﻿using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Storefront;
-using FortBackend.src.App.Utilities.Shop.Helpers.Class;
-using FortBackend.src.App.Utilities.Shop.Helpers.Data;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using FortLibrary.EpicResponses.Storefront;
+using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;

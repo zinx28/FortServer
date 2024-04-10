@@ -1,19 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using FortBackend.src.App.Utilities.MongoDB.Module;
-using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
-using System.Text;
 using MongoDB.Driver;
-using FortBackend.src.App.Utilities.Classes;
-using FortBackend.src.App.Utilities.Helpers.Encoders;
 using System.Text.RegularExpressions;
-using System.Net;
-using System.Linq;
-using FortBackend.src.App.Utilities.Helpers;
-using FortBackend.src.App.Utilities.Helpers.UserManagement;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 
 namespace FortBackend.src.App.Routes.Development
 {
@@ -26,10 +17,22 @@ namespace FortBackend.src.App.Routes.Development
         {
             _database = database;
         }
-        [HttpGet("yeah69")]
-        public IActionResult YeahImsoGayyy()
+
+        [HttpGet("/PRIVATE/DEVELOPER/DATA/{accountId}")]
+        public async Task<IActionResult> GrabDATA(string accountId)
         {
-            return Ok(new { });
+            try
+            {
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                string Data = JsonConvert.SerializeObject(profileCacheEntry);
+                if(!string.IsNullOrEmpty(Data)) { return Ok(Data); }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message); // 
+            }
+
+            return BadRequest(new { message = "error" });
         }
 
         [HttpGet("/image/{image}")]

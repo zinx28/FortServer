@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 using System.Net.Http;
-using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
+using static FortLibrary.DiscordAuth;
 
 namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 {

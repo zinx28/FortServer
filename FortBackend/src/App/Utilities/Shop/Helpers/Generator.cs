@@ -1,5 +1,4 @@
-﻿using FortBackend.src.App.Utilities.Shop.Helpers.Class;
-using FortBackend.src.App.Utilities.Shop.Helpers.Data;
+﻿using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

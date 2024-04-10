@@ -1,5 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Classes.Dynamics;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+﻿using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.Dynamics;
 using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Utilities.Quests

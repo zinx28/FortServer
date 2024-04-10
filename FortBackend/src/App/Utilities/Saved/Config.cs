@@ -1,4 +1,4 @@
-﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+﻿using FortLibrary.EpicResponses.Profile.Query.Items;
 using System.Text.Json.Serialization;
 
 namespace FortBackend.src.App.Utilities.Saved

@@ -5,14 +5,11 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using static FortBackend.src.App.Utilities.Classes.DiscordAuth;
 using FortBackend.src.App.Utilities.Saved;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Attributes;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
+using FortLibrary.EpicResponses.Profile.Query.Items;
 
 namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 {

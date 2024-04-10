@@ -1,11 +1,10 @@
 ﻿using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query.Items;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using Newtonsoft.Json;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.EpicResponses.Profile;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {

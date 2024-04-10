@@ -1,7 +1,7 @@
 ﻿using FortBackend.src.App.Utilities;
-using FortBackend.src.App.Utilities.Classes.ConfigHelpers;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.FortniteServices.Content;
 using FortBackend.src.App.Utilities.Helpers;
+using FortLibrary.EpicResponses.FortniteServices.Content;
+using FortLibrary.ConfigHelpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;

@@ -1,9 +1,9 @@
 ﻿using FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Errors;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Purchases;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.EpicResponses.Errors;
+using FortLibrary.EpicResponses.Profile;
+using FortLibrary.EpicResponses.Profile.Purchases;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Text.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;

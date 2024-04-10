@@ -1,15 +1,7 @@
-﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
-using FortBackend.src.App.Utilities.MongoDB.Module;
-using FortBackend.src.App.Utilities;
-using Newtonsoft.Json;
-using FortBackend.src.App.Utilities.Helpers;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile.Query;
-using FortBackend.src.App.Utilities.Classes.EpicResponses.Profile;
-using static FortBackend.src.App.Utilities.Helpers.Grabber;
+﻿using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortLibrary.EpicResponses.Profile;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {

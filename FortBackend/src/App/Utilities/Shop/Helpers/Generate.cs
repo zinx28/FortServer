@@ -1,5 +1,4 @@
-﻿using FortBackend.src.App.Utilities.Shop.Helpers.Class;
-using FortBackend.src.App.Utilities.Shop.Helpers.Data;
+﻿using FortLibrary.Shop;
 using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Utilities.Shop.Helpers

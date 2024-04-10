@@ -1,4 +1,4 @@
-﻿using FortBackend.src.App.Utilities.Classes.EpicResponses.LeaderBoard;
+﻿using FortLibrary.EpicResponses.LeaderBoard;
 using FortBackend.src.App.Utilities.MongoDB;
 using FortBackend.src.App.Utilities.MongoDB.Module;
 using MongoDB.Driver;

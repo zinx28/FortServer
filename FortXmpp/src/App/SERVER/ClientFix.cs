@@ -10,8 +10,9 @@ namespace FortXmpp.src.App.SERVER
         {
             if (!dataSaved.clientExists && webSocket.State == WebSocketState.Open)
             {
-                if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && dataSaved.JID != "" && clientId != "" && dataSaved.Resource != "" && dataSaved.DidUserLoginNotSure)
+                if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && /*dataSaved.JID != "" && */clientId != "" && /*dataSaved.Resource != "" &&*/ dataSaved.DidUserLoginNotSure)
                 {
+                    Console.WriteLine("TEST");
                     dataSaved.clientExists = true;
                     Clients newClient = new Clients
                     {

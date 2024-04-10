@@ -36,38 +36,34 @@ namespace FortXmpp.src.App.SERVER.Root
                     byte[] decodedBytes = Convert.FromBase64String(authElementContent);
                     string decodedContent = Encoding.UTF8.GetString(decodedBytes);
                     string[] splitContent = decodedContent.Split('\u0000');
-
-                    Console.WriteLine("T£ " + decodedContent);
-
-                    Console.WriteLine(splitContent.Length);
-                    //TokenData tokenData = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2])!;
-                    //if (tokenData == null)
-                    //{
-                    //    await Client.CloseClient(webSocket);
-                    //    return;
-                    //}
-                    Clients foundClient = GlobalData.Clients.FirstOrDefault(i => i.token == splitContent[1])!;
-                    Console.WriteLine(foundClient);
-                    if (foundClient != null)
+                    
+                    if(splitContent.Length == 3)
                     {
-                        dataSaved.DisplayName = foundClient.displayName;
-                        dataSaved.AccountId = foundClient.accountId;
-                        dataSaved.Token = foundClient.token;
-                        if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
-                        {
-                            dataSaved.DidUserLoginNotSure = true;
-                            Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} ~ found old data from launcher");
+                        var AccessToken = splitContent[2].Replace("eg1~", "");
 
-                            XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
-                            var featuresElement = new XElement(streamNs + "success",
-                                   new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
-                            );
-                            xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
-                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                            return;
+                        Clients foundClient = GlobalData.Clients.FirstOrDefault(i => i.token == AccessToken)!;
+                        if (foundClient != null)
+                        {
+                            dataSaved.DisplayName = foundClient.displayName;
+                            dataSaved.AccountId = foundClient.accountId;
+                            dataSaved.Token = foundClient.token;
+                            if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
+                            {
+                                dataSaved.DidUserLoginNotSure = true;
+                                Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} ~ found old data from launcher");
+
+                                XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
+                                var featuresElement = new XElement(streamNs + "success",
+                                       new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
+                                );
+                                xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
+                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                return;
+                            }
                         }
                     }
+                   
                 }
                 await Client.CloseClient(webSocket);
                 return;

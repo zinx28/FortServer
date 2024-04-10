@@ -5,6 +5,7 @@ using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
 using FortLibrary.EpicResponses.Profile;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {

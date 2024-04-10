@@ -6,6 +6,7 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Leaderboards
 {

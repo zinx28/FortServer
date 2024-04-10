@@ -16,6 +16,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Security.Claims;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {

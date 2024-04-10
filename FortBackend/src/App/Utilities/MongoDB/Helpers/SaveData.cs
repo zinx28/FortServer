@@ -2,6 +2,7 @@
 using FortLibrary.MongoDB.Module;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using FortLibrary;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {

@@ -6,6 +6,7 @@ using Amazon.Runtime.Internal.Transform;
 using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Query;
 using FortLibrary.EpicResponses.Profile.Query.Attributes;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {

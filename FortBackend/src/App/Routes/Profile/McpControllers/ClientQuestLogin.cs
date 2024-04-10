@@ -12,6 +12,7 @@ using FortLibrary.EpicResponses.Profile.Quests;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {

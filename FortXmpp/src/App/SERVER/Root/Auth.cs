@@ -1,4 +1,5 @@
-﻿using FortXmpp.src.App.Globals;
+﻿using FortLibrary.MongoDB.Module;
+using FortXmpp.src.App.Globals;
 using FortXmpp.src.App.Globals.Data;
 using FortXmpp.src.App.SERVER.Send;
 using Newtonsoft.Json;
@@ -6,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
+using FortLibrary;
 
 namespace FortXmpp.src.App.SERVER.Root
 {
@@ -54,6 +56,8 @@ namespace FortXmpp.src.App.SERVER.Root
 
                     if (response.IsSuccessStatusCode)
                     {
+                        //ProfileCacheEntry
+                        string Data = JsonConvert.DeserializeObject<ProfileCacheEntry>
                         if (UserData != "Error")
                         {
                             User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];

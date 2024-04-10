@@ -9,6 +9,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.Shop;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {

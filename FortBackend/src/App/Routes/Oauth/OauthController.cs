@@ -11,6 +11,7 @@ using FortBackend.src.App.XMPP_Server.Globals;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.EpicResponses.Oauth;
+using FortLibrary;
 
 
 namespace FortBackend.src.App.Routes.Oauth

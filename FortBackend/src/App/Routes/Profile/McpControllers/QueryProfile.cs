@@ -2,6 +2,7 @@
 using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortLibrary.EpicResponses.Profile;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {

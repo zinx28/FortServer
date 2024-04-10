@@ -13,6 +13,7 @@ using FortBackend.src.App.XMPP_Server.Globals;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Purchases;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Profile
 {

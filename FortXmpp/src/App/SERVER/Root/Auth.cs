@@ -48,49 +48,14 @@ namespace FortXmpp.src.App.SERVER.Root
                     Clients foundClient = GlobalData.Clients.FirstOrDefault(i => i.accountId == tokenData.accountId)!;
                     if (foundClient != null)
                     {
-                        await Client.CloseClient(webSocket);
+                        XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
+                        var featuresElement = new XElement(streamNs + "success",
+                               new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
+                        );
+                        xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
+                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                         return;
-                    }
-                    HttpClient httpClient = new HttpClient();
-                    HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{tokenData.accountId}");
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        //ProfileCacheEntry
-                        var datareturned = await response.Content.ReadAsStringAsync();
-                        if(datareturned != null)
-                        {
-                            ProfileCacheEntry Data = JsonConvert.DeserializeObject<ProfileCacheEntry>(datareturned)!;
-                            if (Data.AccountData != null)
-                            {
-                                User UserDataParsed = Data.UserData;
-                                if (UserDataParsed == null)
-                                {
-                                    await Client.CloseClient(webSocket);
-                                    return;
-                                }
-
-                                if (UserDataParsed.banned == false)
-                                {
-                                    dataSaved.DisplayName = UserDataParsed.Username;
-                                    dataSaved.AccountId = UserDataParsed.AccountId;
-                                    dataSaved.Token = tokenData.token;
-                                    if (decodedContent != "" && dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && splitContent.Length == 3)
-                                    {
-                                        dataSaved.DidUserLoginNotSure = true;
-                                        Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName}");
-                                        XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
-                                        var featuresElement = new XElement(streamNs + "success",
-                                               new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
-                                        );
-                                        xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
-                                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                                        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                        return;
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
                 await Client.CloseClient(webSocket);

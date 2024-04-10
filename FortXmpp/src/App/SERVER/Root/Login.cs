@@ -57,11 +57,13 @@ namespace FortXmpp.src.App.SERVER.Root
                                         dataSaved.DidUserLoginNotSure = true;
                                         Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName}");
 
-                                    }
+                                        // LOGS THE USER IN IF THEY ARE NOT BANNED
 
+                                        ClientFix.Init(webSocket, dataSaved, clientId);
+                                    }
                                 }
 
-                                ClientFix.Init(webSocket, dataSaved, clientId);
+                              
                             }
 
                         }

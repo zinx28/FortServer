@@ -549,7 +549,7 @@ namespace FortBackend.src.App.Routes.Oauth
 
                                 return Ok(new OauthToken
                                 {
-                                    access_token = $"eg1~{AccessToken}",
+                                    access_token = $"{AccessData.token}",
                                     expires_in = 28800,
                                     expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                     token_type = "bearer",
@@ -557,7 +557,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                     client_id = clientId,
                                     internal_client = true,
                                     client_service = "fortnite",
-                                    refresh_token = $"{RefreshData}",
+                                    refresh_token = $"{RefreshData.token}",
                                     refresh_expires = 115200,
                                     refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                     displayName = DisplayName,

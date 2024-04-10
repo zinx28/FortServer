@@ -39,6 +39,7 @@ namespace FortXmpp.src.App.SERVER.Root
 
                     Console.WriteLine("T£ " + decodedContent);
 
+                    Console.WriteLine(splitContent.Length);
                     //TokenData tokenData = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2])!;
                     //if (tokenData == null)
                     //{

@@ -98,7 +98,7 @@ namespace FortXmpp.src.App.SERVER.Root
                                         {
                                             dataSaved.DisplayName = UserDataParsed.Username;
                                             dataSaved.AccountId = UserDataParsed.AccountId;
-                                            dataSaved.Token = token;
+                                            dataSaved.Token = AccessToken; // used wrong token all this time
                                             if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
                                             {
                                                 dataSaved.DidUserLoginNotSure = true;

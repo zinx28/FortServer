@@ -40,7 +40,7 @@ namespace FortXmpp.src.App.SERVER.Root
                     if(splitContent.Length == 3)
                     {
                         var AccessToken = splitContent[2].Replace("eg1~", "");
-
+                        Console.WriteLine(AccessToken);
                         Clients foundClient = GlobalData.Clients.FirstOrDefault(i => i.token == AccessToken)!;
                         if (foundClient != null)
                         {
@@ -61,6 +61,9 @@ namespace FortXmpp.src.App.SERVER.Root
                                 await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                                 return;
                             }
+                        }else
+                        {
+                            Console.WriteLine("INVAILD ACCOUNT");
                         }
                     }
                    

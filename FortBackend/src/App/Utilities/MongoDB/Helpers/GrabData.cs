@@ -16,10 +16,6 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     if (Auth)
                     {
                         GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Value.UserData.accesstoken == AuthToken);
-                        if (GrabData.Value == null)
-                        {
-                            GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
-                        }
                     }
                     else
                     {
@@ -31,10 +27,22 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     var UserData = await Handlers.FindOne<User>(Auth ? "accesstoken" : "accountId", Auth ? AuthToken : AccountId);
                     if (UserData != "Error")
                     {
-                        
                         User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
                         if (UserDataParsed != null)
                         {
+                            // we need to check again just in case
+                            if (Auth)
+                            {
+                                GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == UserDataParsed.AccountId);
+                                if (GrabData.Value != null)
+                                {
+                                    return GrabData.Value;
+                                }
+                            }
+                 
+                   
+                        
+                      
                             var AccountData = await Handlers.FindOne<Account>("accountId", UserDataParsed.AccountId);
                             var AccStatsData = await Handlers.FindOne<StatsInfo>("accountId", UserDataParsed.AccountId);
                             var FriendsData = await Handlers.FindOne<UserFriends>("accountId", UserDataParsed.AccountId);

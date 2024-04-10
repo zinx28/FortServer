@@ -57,33 +57,37 @@ namespace FortXmpp.src.App.SERVER.Root
                     if (response.IsSuccessStatusCode)
                     {
                         //ProfileCacheEntry
-                        string Data = JsonConvert.DeserializeObject<ProfileCacheEntry>
-                        if (UserData != "Error")
+                        var datareturned = await response.Content.ReadAsStringAsync();
+                        if(datareturned != null)
                         {
-                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
-                            if (UserDataParsed == null)
+                            ProfileCacheEntry Data = JsonConvert.DeserializeObject<ProfileCacheEntry>(datareturned)!;
+                            if (Data.AccountData != null)
                             {
-                                await Client.CloseClient(webSocket);
-                                return;
-                            }
-
-                            if (UserDataParsed.banned == false)
-                            {
-                                dataSaved.DisplayName = UserDataParsed.Username;
-                                dataSaved.AccountId = UserDataParsed.AccountId;
-                                dataSaved.Token = foundClient.token;
-                                if (decodedContent != "" && dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && splitContent.Length == 3)
+                                User UserDataParsed = Data.UserData;
+                                if (UserDataParsed == null)
                                 {
-                                    dataSaved.DidUserLoginNotSure = true;
-                                    Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName}");
-                                    XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
-                                    var featuresElement = new XElement(streamNs + "success",
-                                           new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
-                                    );
-                                    xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
-                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                    await Client.CloseClient(webSocket);
                                     return;
+                                }
+
+                                if (UserDataParsed.banned == false)
+                                {
+                                    dataSaved.DisplayName = UserDataParsed.Username;
+                                    dataSaved.AccountId = UserDataParsed.AccountId;
+                                    dataSaved.Token = foundClient.token;
+                                    if (decodedContent != "" && dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && splitContent.Length == 3)
+                                    {
+                                        dataSaved.DidUserLoginNotSure = true;
+                                        Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName}");
+                                        XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
+                                        var featuresElement = new XElement(streamNs + "success",
+                                               new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
+                                        );
+                                        xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
+                                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                        return;
+                                    }
                                 }
                             }
                         }

@@ -36,51 +36,51 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         {
             try
             {
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
+                //var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
 
-                var accessToken = token.Replace("eg1~", "");
+                //var accessToken = token.Replace("eg1~", "");
 
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                bool FoundAccount = false;
-                if (GlobalData.AccessToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.ClientToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.RefreshToken.Any(e => e.token == token))
-                    FoundAccount = true;
+                //var handler = new JwtSecurityTokenHandler();
+                //var decodedToken = handler.ReadJwtToken(accessToken);
+                //bool FoundAccount = false;
+                //if (GlobalData.AccessToken.Any(e => e.token == token))
+                //    FoundAccount = true;
+                //else if (GlobalData.ClientToken.Any(e => e.token == token))
+                //    FoundAccount = true;
+                //else if (GlobalData.RefreshToken.Any(e => e.token == token))
+                //    FoundAccount = true;
 
-                if (FoundAccount)
-                {
-                    var AccessTokenIndex = GlobalData.AccessToken.FindIndex(i => i.token == accesstoken);
+                //if (FoundAccount)
+                //{
+                //    var AccessTokenIndex = GlobalData.AccessToken.FindIndex(i => i.token == accesstoken);
 
-                    if (AccessTokenIndex != -1)
-                    {
-                        var AccessToken = GlobalData.AccessToken[AccessTokenIndex];
-                        GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
+                //    if (AccessTokenIndex != -1)
+                //    {
+                //        var AccessToken = GlobalData.AccessToken[AccessTokenIndex];
+                //        GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
 
-                        var XmppClient = GlobalData.Clients.Find(i => i.token == AccessToken.token);
-                        if (XmppClient != null)
-                        {
-                            XmppClient.Client.Dispose();
-                        }
+                //        var XmppClient = GlobalData.Clients.Find(i => i.token == AccessToken.token);
+                //        if (XmppClient != null)
+                //        {
+                //            XmppClient.Client.Dispose();
+                //        }
 
-                        var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == AccessToken.accountId);
-                        if (RefreshTokenIndex != -1)
-                        {
-                            GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
-                        }
-                    }
+                //        var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == AccessToken.accountId);
+                //        if (RefreshTokenIndex != -1)
+                //        {
+                //            GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
+                //        }
+                //    }
 
-                    if(GlobalData.ClientToken.Any(i => i.token == accesstoken))
-                    {
-                        var ClientTokenIndex = GlobalData.ClientToken.FindIndex(i => i.token == accesstoken);
-                        if (ClientTokenIndex != -1)
-                        {
-                            GlobalData.ClientToken.RemoveAt(ClientTokenIndex);
-                        }
-                    }
-                }
+                //    if(GlobalData.ClientToken.Any(i => i.token == accesstoken))
+                //    {
+                //        var ClientTokenIndex = GlobalData.ClientToken.FindIndex(i => i.token == accesstoken);
+                //        if (ClientTokenIndex != -1)
+                //        {
+                //            GlobalData.ClientToken.RemoveAt(ClientTokenIndex);
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex)
             {

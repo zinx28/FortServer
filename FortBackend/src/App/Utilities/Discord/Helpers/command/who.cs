@@ -4,7 +4,7 @@ using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Helpers.UserManagement;
 using FortBackend.src.App.Utilities.MongoDB;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.MongoDB.Module;
 using FortBackend.src.App.XMPP_Server.Globals;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Driver;

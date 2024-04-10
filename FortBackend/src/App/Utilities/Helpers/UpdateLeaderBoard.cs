@@ -1,6 +1,6 @@
 ﻿using FortLibrary.EpicResponses.LeaderBoard;
 using FortBackend.src.App.Utilities.MongoDB;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.MongoDB.Module;
 using MongoDB.Driver;
 using System.Collections.Generic;
 

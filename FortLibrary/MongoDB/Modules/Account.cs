@@ -3,11 +3,8 @@ using FortLibrary.EpicResponses.Profile.Quests;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Xml.Linq;
 
-namespace FortBackend.src.App.Utilities.MongoDB.Module
+namespace FortLibrary.MongoDB.Module
 {
     [BsonIgnoreExtraElements]
     public class Account

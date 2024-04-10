@@ -1,8 +1,8 @@
-﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using FortLibrary.MongoDB.Helpers;
 
-namespace FortBackend.src.App.Utilities.MongoDB.Module
+namespace FortLibrary.MongoDB.Module
 {
     [BsonCollectionName("Friends")]
     [BsonIgnoreExtraElements]

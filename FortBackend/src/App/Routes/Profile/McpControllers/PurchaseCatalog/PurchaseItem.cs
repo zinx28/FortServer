@@ -1,7 +1,7 @@
 ﻿using Discord;
 using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.MongoDB.Module;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Purchases;

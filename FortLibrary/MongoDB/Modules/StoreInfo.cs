@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace FortBackend.src.App.Utilities.MongoDB.Module
+namespace FortLibrary.MongoDB.Module
 {
     [BsonIgnoreExtraElements]
     public class StoreInfo

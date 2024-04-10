@@ -1,5 +1,5 @@
 ﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.MongoDB.Module;
 
 namespace FortBackend.src.App.Utilities.Helpers.Middleware
 {

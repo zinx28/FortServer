@@ -1,8 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using MongoDB.Driver;
 
-namespace FortBackend.src.App.Utilities.MongoDB.Module
+namespace FortLibrary.MongoDB.Module
 {
     [BsonIgnoreExtraElements]
     public class StatsInfo

@@ -1,7 +1,7 @@
 ﻿using Amazon.Runtime.Internal.Transform;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.MongoDB.Module;
 using FortBackend.src.App.XMPP_Server.Globals;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.EpicResponses.Friends;

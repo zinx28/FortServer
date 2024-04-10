@@ -1,7 +1,7 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.MongoDB.Module;
 using FortLibrary.EpicResponses.FortniteServices.Events;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

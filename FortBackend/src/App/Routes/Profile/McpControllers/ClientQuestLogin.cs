@@ -3,7 +3,7 @@ using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
-using FortBackend.src.App.Utilities.MongoDB.Module;
+using FortLibrary.MongoDB.Module;
 using FortBackend.src.App.Utilities.Quests;
 using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Profile;

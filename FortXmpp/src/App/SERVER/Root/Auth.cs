@@ -39,20 +39,20 @@ namespace FortXmpp.src.App.SERVER.Root
                     string decodedContent = Encoding.UTF8.GetString(decodedBytes);
                     string[] splitContent = decodedContent.Split('\u0000');
 
-                    TokenData foundClient = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2])!;
-                    if (foundClient == null)
+                    TokenData tokenData = GlobalData.AccessToken.FirstOrDefault(client => client.token == splitContent[2])!;
+                    if (tokenData == null)
                     {
                         await Client.CloseClient(webSocket);
                         return;
                     }
-                    Clients wow = GlobalData.Clients.FirstOrDefault(i => i.accountId == foundClient.accountId)!;
-                    if (wow != null)
+                    Clients foundClient = GlobalData.Clients.FirstOrDefault(i => i.accountId == tokenData.accountId)!;
+                    if (foundClient != null)
                     {
                         await Client.CloseClient(webSocket);
                         return;
                     }
                     HttpClient httpClient = new HttpClient();
-                    HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{foundClient.accountId}");
+                    HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{tokenData.accountId}");
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -74,7 +74,7 @@ namespace FortXmpp.src.App.SERVER.Root
                                 {
                                     dataSaved.DisplayName = UserDataParsed.Username;
                                     dataSaved.AccountId = UserDataParsed.AccountId;
-                                    dataSaved.Token = foundClient.token;
+                                    dataSaved.Token = tokenData.token;
                                     if (decodedContent != "" && dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && splitContent.Length == 3)
                                     {
                                         dataSaved.DidUserLoginNotSure = true;

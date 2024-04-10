@@ -12,7 +12,6 @@ namespace FortXmpp.src.App.SERVER
             {
                 if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && /*dataSaved.JID != "" && */clientId != "" && /*dataSaved.Resource != "" &&*/ dataSaved.DidUserLoginNotSure)
                 {
-                    Console.WriteLine("TEST");
                     dataSaved.clientExists = true;
                     Clients newClient = new Clients
                     {
@@ -29,6 +28,7 @@ namespace FortXmpp.src.App.SERVER
                         }
                     };
                     GlobalData.Clients.Add(newClient);
+                    Console.WriteLine("ADDED CLIENT");
                     return;
                 }
             }

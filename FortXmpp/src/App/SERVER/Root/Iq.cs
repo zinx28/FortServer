@@ -32,43 +32,42 @@ namespace FortXmpp.src.App.SERVER.Root
                         if (dataSaved.Resource != "" || dataSaved.AccountId == "") return;
                         XElement bindElement = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name.LocalName == "bind")!;
                         if (bindElement == null) return;
-                        Clients FindClient = GlobalData.Clients.FirstOrDefault(i => i.accountId == dataSaved.AccountId)!;
-                        if (FindClient != null)
+
+                        if (GlobalData.Clients.Any(e => e.accountId == dataSaved.AccountId))
                         {
-                            await Client.CloseClient(webSocket);
-                            break;
+                            Clients FindClient = GlobalData.Clients.FirstOrDefault(i => i.accountId == dataSaved.AccountId)!;
+                            if (FindClient == null) { await Client.CloseClient(webSocket); break; }
+
+                            XElement resourceElement = bindElement.Descendants().FirstOrDefault(i => i.Name.LocalName == "resource")!;
+                            if (resourceElement == null || string.IsNullOrEmpty(resourceElement.Value)) return;
+
+                            dataSaved.Resource = resourceElement.Value;
+                            dataSaved.JID = $"{dataSaved.AccountId}@prod.ol.epicgames.com/{dataSaved.Resource}";
+
+                            XNamespace clientNs = "jabber:client";
+                            XNamespace bindNs = "urn:ietf:params:xml:ns:xmpp-bind";
+
+                            XElement featuresElement = new XElement(clientNs + "iq",
+                                new XAttribute("to", dataSaved.JID),
+                                new XAttribute("id", "_xmpp_bind1"),
+                                   new XAttribute(XNamespace.Xmlns + "jabber", clientNs.NamespaceName),
+                                new XAttribute("type", "result"),
+                                new XElement(bindNs + "bind",
+                                    new XAttribute(XNamespace.Xmlns + "bind", bindNs.NamespaceName),
+                                    new XElement(bindNs + "jid", dataSaved.JID)
+                                )
+                            );
+
+                            xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
+                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+
                         }
-                        XElement resourceElement = bindElement.Descendants().FirstOrDefault(i => i.Name.LocalName == "resource")!;
-                        if (resourceElement == null || string.IsNullOrEmpty(resourceElement.Value)) return;
-                        dataSaved.Resource = resourceElement.Value;
-                        dataSaved.JID = $"{dataSaved.AccountId}@prod.ol.epicgames.com/{dataSaved.Resource}";
 
-                        XNamespace clientNs = "jabber:client";
-                        XNamespace bindNs = "urn:ietf:params:xml:ns:xmpp-bind";
-
-                        XElement featuresElement = new XElement(clientNs + "iq",
-                            new XAttribute("to", dataSaved.JID),
-                            new XAttribute("id", "_xmpp_bind1"),
-                               new XAttribute(XNamespace.Xmlns + "jabber", clientNs.NamespaceName),
-                            new XAttribute("type", "result"),
-                            new XElement(bindNs + "bind",
-                                new XAttribute(XNamespace.Xmlns + "bind", bindNs.NamespaceName),
-                                new XElement(bindNs + "jid", dataSaved.JID)
-                            )
-                        );
-
-
-                        xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
-                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-
+                      
                         break;
                     case "_xmpp_session1":
-                        if (!dataSaved.clientExists)
-                        {
-                            await Client.CloseClient(webSocket);
-                            return;
-                        }
+                        if (!dataSaved.clientExists) { await Client.CloseClient(webSocket); return; }
                         XNamespace YA = "jabber:client";
 
                         XElement featuresElement1 = new XElement(YA + "iq",
@@ -82,17 +81,18 @@ namespace FortXmpp.src.App.SERVER.Root
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
                         await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                         
+                        Console.WriteLine(dataSaved.AccountId);
+
                         HttpClient httpClient = new HttpClient();
-                        HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{dataSaved.AccountId}");
+                        HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1:{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{dataSaved.AccountId}");
 
                         if (response.IsSuccessStatusCode)
                         {
-                            //ProfileCacheEntry
                             var datareturned = await response.Content.ReadAsStringAsync();
                             if (datareturned != null)
                             {
                                 ProfileCacheEntry Data = JsonConvert.DeserializeObject<ProfileCacheEntry>(datareturned)!;
-                                if (Data.AccountData != null)
+                                if (!string.IsNullOrEmpty(Data.AccountId) && Data.AccountData != null)
                                 {
                                     User UserDataParsed = Data.UserData;
                                     UserFriends FriendsDataParsed = Data.UserFriends;
@@ -122,7 +122,7 @@ namespace FortXmpp.src.App.SERVER.Root
                                         {
                                             presence.Add(new XElement("status", letssee.lastPresenceUpdate.presence));
                                         }
-
+                
                                         xmlMessage = presence.ToString();
                                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
                                         await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
@@ -138,10 +138,14 @@ namespace FortXmpp.src.App.SERVER.Root
                                         // Else nothing ig?
                                     }
                                 }
+                            }else
+                            {
+
                             }
                         }
                         else
                         {
+                            Console.WriteLine(response);
                             await Client.CloseClient(webSocket);
                             return;
                         }  

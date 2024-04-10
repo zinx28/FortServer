@@ -91,6 +91,7 @@ namespace FortXmpp.src.App.SERVER
             }
             finally
             {
+                Console.WriteLine("XMPP CLOSE");
                 try
                 {
                     if (webSocket.State == WebSocketState.Open || webSocket.State == WebSocketState.CloseReceived)

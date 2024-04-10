@@ -102,10 +102,9 @@ namespace FortXmpp.src.App.SERVER.Root
                                             if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
                                             {
                                                 dataSaved.DidUserLoginNotSure = true;
-                                                Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName}");
+                                                Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} with account id {dataSaved.AccountId}");
 
                                                 // LOGS THE USER IN IF THEY ARE NOT BANNED
-
                                                 ClientFix.Init(webSocket, dataSaved, clientId);
                                             }
                                         }

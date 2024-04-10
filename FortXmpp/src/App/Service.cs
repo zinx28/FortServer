@@ -71,12 +71,10 @@ namespace FortXmpp.src.App
 
             app.Use(async (context, next) =>
             {
-                Console.WriteLine("TEST!! THIS COULD BE NEW CONNECTION BUT IDK");
                 if (context.Request.Path == "//")
                 {
                     if (context.WebSockets.IsWebSocketRequest)
                     {
-                        Console.WriteLine("XMPP IS BEING CLALED");
                         try
                         {
                             string clientId = Guid.NewGuid().ToString();

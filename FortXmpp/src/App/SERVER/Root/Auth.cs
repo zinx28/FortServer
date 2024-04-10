@@ -50,6 +50,8 @@ namespace FortXmpp.src.App.SERVER.Root
                             if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
                             {
                                 dataSaved.DidUserLoginNotSure = true;
+                                dataSaved.clientExists = true;
+
                                 Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} ~ found old data from launcher");
 
                                 XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";

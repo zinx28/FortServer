@@ -1,4 +1,4 @@
-﻿using FortBackend.src.App.Utilities.Helpers.Encoders;
+﻿using FortLibrary.Encoders;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.EpicResponses.Fortnite;
 using MongoDB.Driver;

@@ -1,7 +1,5 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers;
-using FortBackend.src.App.Utilities.Helpers.Encoders;
-using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
 using FortBackend.src.App.XMPP_Server.Globals;
@@ -13,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using FortLibrary;
+using FortLibrary.Encoders;
 
 namespace FortBackend.src.App.Routes.CloudStorage
 {

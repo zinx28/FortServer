@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace FortBackend.src.App.Utilities.Helpers.Encoders
+namespace FortLibrary.Encoders
 {
     public class JWT
     {

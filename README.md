@@ -2,10 +2,13 @@
 
 FortBackend is a Universal Fortnite Private Server Backend writen in C#
 
+# Some features may break over time while when i have a chance these issues will be fixed
+
 # About
 - Supports HTTP and HTTPS!
+- Custom OAUTH SYSTEM (🔥) - requires [LunaLauncher](https://github.com/ProjectLunaMP/Launcher)
 - Aiming to support S3 - S15
-- Arena UI/Playlists! S8 - S23 (Working.... Not For Prod)
+- Arena UI/Playlists! S8 - S23 (UNFINISHED NOT WORKED ON ~ not proper scores on season 8 and 11 >)
 - Save the world (STW) is aimed at the very end and might never actually be implemented
 - You may use added/unfished config stuff [FortBackend/src/App/Utilities/Saved/Config.cs](https://github.com/zinx28/FortBackend/blob/main/FortBackend/src/App/Utilities/Saved/Config.cs)
 

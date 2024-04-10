@@ -1,5 +1,4 @@
-﻿using FortBackend.src.App.Utilities.Helpers.Encoders;
-using FortBackend.src.App.Utilities.Helpers.UserManagement;
+﻿using FortBackend.src.App.Utilities.Helpers.UserManagement;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
@@ -10,6 +9,7 @@ using Newtonsoft.Json;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.XMPP_Server.XMPP.Root;
 using static FortLibrary.DiscordAuth;
+using FortLibrary.Encoders;
 
 namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 {

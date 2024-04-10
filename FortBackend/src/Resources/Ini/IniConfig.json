@@ -155,21 +155,29 @@
                             "Value": true
                         },
                         {
-                            "Name": "Domain",
-                            "Value": "\"127.0.0.1\""
-                        },
-                        {
                             "Name": "ServerAddr",
-                            "Value": "\"127.0.0.1\""
-                        },
-                        {
-                            "Name": "bUsePlainTextAuth",
-                            "Value": true
+                            "Value": "\"ws://127.0.0.1:443\""
                         },
                         {
                             "Name": "ServerPort",
-                            "Value": 20123
+                            "Value": 443
                         }
+                        //{
+                        //    "Name": "Domain",
+                        //    "Value": "\"127.0.0.1\""
+                        //},
+                        //{
+                        //    "Name": "ServerAddr",
+                        //    "Value": "\"127.0.0.1\""
+                        //},
+                        //{
+                        //    "Name": "bUsePlainTextAuth",
+                        //    "Value": true
+                        //},
+                        //{
+                        //    "Name": "ServerPort",
+                        //    "Value": 20123
+                        //}
                     ]
                 },
                 {

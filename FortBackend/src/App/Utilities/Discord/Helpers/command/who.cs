@@ -200,6 +200,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     try
                                     {
                                         Banned = false; // temp valiue
+
+                                        try { CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId); } catch { }
+
                                         await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
                                         {
                                             { "banned", false }

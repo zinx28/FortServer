@@ -51,29 +51,34 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                                 Color = Color.Red
                             }.Build();
 
-                            Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.DiscordId == userId.ToString())!;
-                            if(targetClient2 != null)
+                            Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.DataSaved.DiscordId == userId.ToString())!;
+                            if (targetClient2 != null)
                             {
-                                if(targetClient2.Launcher_Client != null && targetClient2.Launcher_Client.State == WebSocketState.Open)
+                                try
                                 {
-                                    string message = "banned";
-                                    byte[] buffer = Encoding.UTF8.GetBytes(message);
-                                    await targetClient2.Launcher_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                    if (targetClient2.Launcher_Client != null && targetClient2.Launcher_Client.State == WebSocketState.Open)
+                                    {
+                                        string message = "banned";
+                                        byte[] buffer = Encoding.UTF8.GetBytes(message);
+                                        await targetClient2.Launcher_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                                    await targetClient2.Launcher_Client.CloseAsync(WebSocketCloseStatus.NormalClosure, "User banned", CancellationToken.None);
+                                        // LAUNCHER SHOULD FORCE KILL
+                                    }
+
+                                    if (targetClient2.Game_Client != null && targetClient2.Game_Client.State == WebSocketState.Open)
+                                    {
+                                        await Client.CloseClient(targetClient2.Game_Client);
+                                    }
                                 }
-
-                                if (targetClient2.Game_Client != null && targetClient2.Game_Client.State == WebSocketState.Open)
+                                catch (Exception ex)
                                 {
-                                    await Client.CloseClient(targetClient2.Game_Client);
+                                    Logger.Error($"{ex.Message}");
                                 }
-                                XNamespace clientNs = "jabber:client";
-
-                                //await Client.SendClientMessage(targetClient2, message);
+                              
                             }
                             //    Services.Xmpp.Helpers.Send.Client.SendClientMessage(targetClient2, message);
 
-                         
+
 
                             try
                             {

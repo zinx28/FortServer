@@ -135,18 +135,16 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                             if (AccessTokenIndex != -1)
                                             {
                                                 var AccessToken = GlobalData.AccessToken[AccessTokenIndex];
-                                                GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
-
-                                                var XmppClient = GlobalData.Clients.Find(i => i.accountId == RespondBack.AccountId);
-                                                if (XmppClient != null)
+                                                if(AccessToken != null)
                                                 {
-                                                    XmppClient.Game_Client.Dispose();
-                                                }
+                                                    GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
 
-                                                var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == RespondBack.AccountId);
-                                                if (RefreshTokenIndex != -1)
-                                                {
-                                                    GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
+                                                    var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == RespondBack.AccountId);
+                                                    if (RefreshTokenIndex != -1)
+                                                    {
+                                                        GlobalData.RefreshToken.RemoveAt(RefreshTokenIndex);
+                                                    }
+
                                                 }
                                             }
                                         }

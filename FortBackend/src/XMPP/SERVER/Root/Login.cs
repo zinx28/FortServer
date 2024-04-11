@@ -32,8 +32,6 @@ namespace FortBackend.src.App.SERVER.Root
 
                 if (!string.IsNullOrEmpty(token))
                 {
-                    Console.WriteLine(token);
-
                     ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, token);
                     if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.UserData.banned != true)
                     {

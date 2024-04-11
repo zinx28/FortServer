@@ -140,7 +140,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 var XmppClient = GlobalData.Clients.Find(i => i.accountId == RespondBack.AccountId);
                                                 if (XmppClient != null)
                                                 {
-                                                    XmppClient.Client.Dispose();
+                                                    XmppClient.Game_Client.Dispose();
                                                 }
 
                                                 var RefreshTokenIndex = GlobalData.RefreshToken.FindIndex(i => i.accountId == RespondBack.AccountId);

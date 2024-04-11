@@ -87,7 +87,7 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                 {
                     var responseObj = new
                     {
-                        Amount = DataSaved_XMPP.connectedClients.Count,
+                        //Amount = DataSaved_XMPP.connectedClients.Count,
                         Clients = GlobalData.Clients.ToList(),
                         Rooms = GlobalData.Rooms.ToList(),
                     };

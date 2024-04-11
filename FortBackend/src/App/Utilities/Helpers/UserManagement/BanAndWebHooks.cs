@@ -7,6 +7,12 @@ using MongoDB.Driver.Core.Servers;
 using Newtonsoft.Json;
 using System.Text;
 using static FortLibrary.DiscordAuth;
+using FortBackend.src.App.SERVER.Root;
+using FortBackend.src.App.SERVER.Send;
+using System.Xml.Linq;
+using FortBackend.src.XMPP.Data;
+using FortLibrary.XMPP;
+using System.Net.WebSockets;
 
 namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {
@@ -29,6 +35,11 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                     var guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
                     if (ulong.TryParse(userinfo.id, out ulong userId))
                     {
+                        if (string.IsNullOrEmpty(userId.ToString()))
+                        {
+                            Logger.Error("WEIRD");
+                            return;
+                        }
                         var user = await DiscordBot.Client.GetUserAsync(userId);
 
                         if (user != null)
@@ -39,6 +50,30 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                                 Description = $"You were banned from Luna for {Message}",
                                 Color = Color.Red
                             }.Build();
+
+                            Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.DiscordId == userId.ToString())!;
+                            if(targetClient2 != null)
+                            {
+                                if(targetClient2.Launcher_Client != null && targetClient2.Launcher_Client.State == WebSocketState.Open)
+                                {
+                                    string message = "banned";
+                                    byte[] buffer = Encoding.UTF8.GetBytes(message);
+                                    await targetClient2.Launcher_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+
+                                    await targetClient2.Launcher_Client.CloseAsync(WebSocketCloseStatus.NormalClosure, "User banned", CancellationToken.None);
+                                }
+
+                                if (targetClient2.Game_Client != null && targetClient2.Game_Client.State == WebSocketState.Open)
+                                {
+                                    await Client.CloseClient(targetClient2.Game_Client);
+                                }
+                                XNamespace clientNs = "jabber:client";
+
+                                //await Client.SendClientMessage(targetClient2, message);
+                            }
+                            //    Services.Xmpp.Helpers.Send.Client.SendClientMessage(targetClient2, message);
+
+                         
 
                             try
                             {

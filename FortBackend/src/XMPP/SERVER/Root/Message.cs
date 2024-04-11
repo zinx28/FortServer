@@ -11,7 +11,7 @@ namespace FortBackend.src.App.SERVER.Root
 {
     public class Message
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved_XMPP dataSaved)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, string AccountId)
         {
             try
             {
@@ -22,6 +22,10 @@ namespace FortBackend.src.App.SERVER.Root
                     await Client.CloseClient(webSocket);
                     return;
                 }
+
+               
+                var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == AccountId);
+                if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
 
                 XElement findBody = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name == "body")!;
 
@@ -45,7 +49,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                         Clients Friend = GlobalData.Clients.Find(test => test.jid.Split("/")[0] == xmlDoc.Root?.Attribute("to")?.Value)!;
 
-                        if (Friend == null || Friend.accountId == dataSaved.AccountId) break;
+                        if (Friend == null || Friend.accountId == Saved_Clients.DataSaved.AccountId) break;
 
 
                         XNamespace clientNs = "jabber:client";
@@ -53,7 +57,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                         XElement featuresElement = new XElement(clientNs + "message",
                             new XAttribute("to", Friend.jid),
-                            new XAttribute("from", dataSaved.JID),
+                            new XAttribute("from", Saved_Clients.DataSaved.JID),
                             new XAttribute("type", "chat"),
                             new XElement("body", body)
                         );
@@ -61,7 +65,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                         xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                        await Friend.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                        await Friend.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                         break;
                     case "groupchat":
                         Console.WriteLine("GC");
@@ -81,7 +85,7 @@ namespace FortBackend.src.App.SERVER.Root
                             break;
                         }
                         var MemberList = GlobalData.Rooms[RoomName].members;
-                        if (MemberList.Find(testc => testc.accountId == dataSaved.AccountId) == null)
+                        if (MemberList.Find(testc => testc.accountId == Saved_Clients.DataSaved.AccountId) == null)
                         {
                             break;
                         }
@@ -99,7 +103,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                             XElement featuresElement = new XElement(clientNs + "message",
                                 new XAttribute("to", ClientData.jid),
-                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.DataSaved.DisplayName)}:{Saved_Clients.DataSaved.AccountId}:{Saved_Clients.DataSaved.Resource}"),
                                 new XAttribute("type", "groupchat"),
                                 new XElement("body", body)
                             );
@@ -107,7 +111,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                             xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
                             buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                            await ClientData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                            await ClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
                         });
                         break;
@@ -128,7 +132,7 @@ namespace FortBackend.src.App.SERVER.Root
                     if (test["type"] == null || string.IsNullOrEmpty((string)xmlDoc.Root?.Attribute("to")!) || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("id")!))
                         return;
 
-                    await XmppFriend.SendMessageToClient(dataSaved.JID, xmlDoc, body);
+                    await XmppFriend.SendMessageToClient(Saved_Clients.DataSaved.JID, xmlDoc, body);
                 }
             }
             catch (Exception ex)

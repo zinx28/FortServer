@@ -14,7 +14,7 @@ namespace FortBackend.src.App.SERVER.Root
     public class Auth
     {
         public static HttpClient httpClient = new HttpClient();
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved_XMPP dataSaved)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, string AccountId)
         {
             try
             {
@@ -44,25 +44,23 @@ namespace FortBackend.src.App.SERVER.Root
                         Clients foundClient = GlobalData.Clients.FirstOrDefault(i => i.token == AccessToken)!;
                         if (foundClient != null)
                         {
-                            dataSaved.DisplayName = foundClient.displayName;
-                            dataSaved.AccountId = foundClient.accountId;
-                            dataSaved.Token = foundClient.token;
-                            if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
-                            {
-                                dataSaved.DidUserLoginNotSure = true;
-                                dataSaved.clientExists = true;
+                            foundClient.Game_Client = webSocket;
+                            AccountId = foundClient.accountId;
+                            // for future calls if needed
 
-                                Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} ~ found old data from launcher");
 
-                                XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
-                                var featuresElement = new XElement(streamNs + "success",
-                                       new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
-                                );
-                                xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
-                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                                await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                return;
-                            }
+
+                            Console.WriteLine($"New Xmpp Client Logged In User Name Is As {foundClient.displayName} ~ found old data from launcher");
+
+                            XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
+                            var featuresElement = new XElement(streamNs + "success",
+                                    new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")
+                            );
+                            xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
+                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                            return;
+                            
                         }else
                         {
                             Console.WriteLine("INVAILD ACCOUNT");

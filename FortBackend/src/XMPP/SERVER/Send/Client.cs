@@ -22,7 +22,7 @@ namespace FortBackend.src.App.SERVER.Send
         {
             try
             {
-                await client.Client.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(xElement.ToString())), WebSocketMessageType.Text, true, CancellationToken.None);
+                await client.Game_Client.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(xElement.ToString())), WebSocketMessageType.Text, true, CancellationToken.None);
             }
             catch /*(Exception ex)*/
             {

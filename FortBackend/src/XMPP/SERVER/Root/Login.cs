@@ -16,7 +16,7 @@ namespace FortBackend.src.App.SERVER.Root
 {
     public class Login
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved_XMPP dataSaved)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId)
         {
             try
             {
@@ -123,7 +123,8 @@ namespace FortBackend.src.App.SERVER.Root
                                         accountId = profileCacheEntry.AccountId,
                                     });
                                 }
-
+                                DataSaved dataSaved = new DataSaved();
+                                dataSaved.DiscordId = UserDataParsed.DiscordId;
                                 dataSaved.DisplayName = UserDataParsed.Username;
                                 dataSaved.AccountId = UserDataParsed.AccountId;
                                 dataSaved.Token = AccessToken; // used wrong token all this time

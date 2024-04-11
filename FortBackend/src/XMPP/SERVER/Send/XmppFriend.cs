@@ -20,7 +20,7 @@ namespace FortBackend.src.App.SERVER.Send
                 string xmlMessage;
                 byte[] buffer;
 
-                int ClientIndex = GlobalData.Clients.FindIndex(testc => testc.Client == webSocket);
+                int ClientIndex = GlobalData.Clients.FindIndex(testc => testc.Game_Client == webSocket);
                 if (ClientIndex == -1)
                 {
                     return; // wow so bad
@@ -73,7 +73,7 @@ namespace FortBackend.src.App.SERVER.Send
                                 xmlMessage = openElement.ToString();
                                 buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                await FriendsClientData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                await FriendsClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                             }
                         }
 
@@ -122,7 +122,7 @@ namespace FortBackend.src.App.SERVER.Send
                 xmlMessage = openElement.ToString();
                 buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                await ToAccountIdData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                await ToAccountIdData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
             }
             catch (Exception ex)
             {
@@ -156,7 +156,7 @@ namespace FortBackend.src.App.SERVER.Send
                     xmlMessage = message.ToString();
                     buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                    await receiver.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                    await receiver.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                 }
                 else
                 {
@@ -191,7 +191,7 @@ namespace FortBackend.src.App.SERVER.Send
                     xmlMessage = message.ToString();
                     buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                    await receiver.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                    await receiver.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                 }
             }
             catch (Exception ex)

@@ -7,6 +7,7 @@ using FortBackend.src.XMPP.Data;
 using FortBackend.src.App.SERVER.Root;
 using FortBackend.src.App.SERVER.Send;
 using FortLibrary.XMPP;
+using FortBackend.src.XMPP.SERVER;
 
 namespace FortBackend.src.App.SERVER
 {
@@ -15,11 +16,12 @@ namespace FortBackend.src.App.SERVER
 
         public static async Task HandleWebSocketConnection(WebSocket webSocket, HttpRequest context, string clientId)
         {
-
-            DataSaved_XMPP dataSaved = new DataSaved_XMPP(); // outside the try wow!
+            string receivedMessage = ""; // so skunky but works fine
+            string AccountId = ""; // for both clients to know the main
+            bool DidUserLoginNotSure = false; // for game only
             try
             {
-                DataSaved_XMPP.connectedClients.TryAdd(clientId, webSocket); // Adds The data inside the handlewebsocekt!
+                //DataSaved_XMPP.connectedClients.TryAdd(clientId, webSocket); // Adds The data inside the handlewebsocekt!
                 var buffer = new byte[0];
                 XDocument xmlDoc;
 
@@ -30,46 +32,46 @@ namespace FortBackend.src.App.SERVER
                     while (!result.CloseStatus.HasValue)
                     {
                         string chunk = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                        dataSaved.receivedMessage += chunk;
+                        receivedMessage += chunk;
                         if (result.EndOfMessage)
                         {
-                            Console.WriteLine("Received WebSocket message: " + dataSaved.receivedMessage);
+                            Console.WriteLine("Received WebSocket message: " + receivedMessage);
                             JToken test = "";
                             try
                             {
-                                test = JToken.Parse(dataSaved.receivedMessage);
+                                test = JToken.Parse(receivedMessage);
                                 Console.WriteLine("DISCONNETING USER AS FAKE RESPONSE // JSON");
-                                dataSaved.receivedMessage = "";
+                                receivedMessage = "";
                                 return;
                             }
                             catch { }
-                            xmlDoc = XDocument.Parse(dataSaved.receivedMessage);
+                            xmlDoc = XDocument.Parse(receivedMessage);
 
                             switch (xmlDoc.Root?.Name.LocalName)
                             {
                                 // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS
                                 case "login":
-                                    Login.Init(webSocket, xmlDoc, clientId, dataSaved);
+                                    Login.Init(webSocket, xmlDoc, clientId);
                                     break;
                                 case "open":
-                                    Open.Init(webSocket, dataSaved.DidUserLoginNotSure, clientId);
+                                    Open.Init(webSocket, DidUserLoginNotSure, clientId);
                                     break;
                                 case "auth":
-                                    Auth.Init(webSocket, xmlDoc, clientId, dataSaved);
+                                    Auth.Init(webSocket, xmlDoc, clientId, AccountId);
                                     break;
                                 case "iq":
-                                    Iq.Init(webSocket, xmlDoc, clientId, dataSaved);
+                                    Iq.Init(webSocket, xmlDoc, clientId, AccountId);
                                     break;
                                 case "message":
-                                    Message.Init(webSocket, xmlDoc, clientId, dataSaved);
+                                    Message.Init(webSocket, xmlDoc, clientId, AccountId);
                                     break;
                                 case "presence":
-                                    Presence.Init(webSocket, xmlDoc, clientId, dataSaved);
+                                    Presence.Init(webSocket, xmlDoc, clientId, AccountId);
                                     break;
                                 default: break;
                             }
 
-                            dataSaved.receivedMessage = "";
+                            receivedMessage = "";
                         }
                         break;
                     }
@@ -111,75 +113,22 @@ namespace FortBackend.src.App.SERVER
                 }
                 try
                 {
-                    DataSaved_XMPP.connectedClients.TryRemove(clientId, out _);
-                    //DataSaved..TryRemove(clientId, out _);
-                    await XmppFriend.UpdatePresenceForFriends(webSocket, "{}", false, true);
+                  //  DataSaved_XMPP.connectedClients.TryRemove(clientId, out _);
 
-                    Clients client = GlobalData.Clients.FirstOrDefault(c => c.Client == webSocket)!;
-                    if (client != null)
+                    Clients launcher_client = GlobalData.Clients.FirstOrDefault(c => c.Launcher_Client == webSocket)!;
+                    if (launcher_client != null)
                     {
+                        if(launcher_client.Game_Client != null)
+                            KillGame.Init(launcher_client, launcher_client.DataSaved);
+          
+                        GlobalData.Clients.Remove(launcher_client);
+                    }
+                    else
+                    {
+                        Clients client = GlobalData.Clients.FirstOrDefault(c => c.Game_Client == webSocket)!;
 
-
-                        int ClientIndex = GlobalData.Clients.FindIndex(e => e.Client == webSocket);
-                        var ClientData = GlobalData.Clients[ClientIndex];
-                        Console.WriteLine(ClientData);
-                        if (ClientIndex != -1)
-                        {
-                            object ParsedPresence = "";
-                            try
-                            {
-                                ParsedPresence = JsonConvert.DeserializeObject(ClientData.lastPresenceUpdate.presence)!;
-
-
-                                GlobalData.Clients.Remove(client);
-
-                                foreach (var woah in dataSaved.Rooms)
-                                {
-                                    if (Array.IndexOf(dataSaved.Rooms, woah) != -1)
-                                    {
-                                        var MemberIndex = GlobalData.Rooms[woah].members.FindIndex(i => i.accountId == client.accountId);
-
-                                        if (MemberIndex != -1)
-                                        {
-                                            GlobalData.Rooms[woah]?.members.RemoveAt(MemberIndex);
-                                        }
-                                    }
-                                    //  dataSaved.Rooms.Remove(woah);
-                                }
-
-                                try
-                                {
-                                    if (ParsedPresence != null)
-                                    {
-                                        //var ParsedPresence = JsonConvert.DeserializeObject(client.lastPresenceUpdate.presence);
-
-                                        Console.WriteLine($"YOO TEST TEST {ParsedPresence}"); // onmly for testing
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.Message); // Average Erro! 
-                                }
-
-                                // what?
-                            }
-                            catch
-                            {
-
-                                GlobalData.Clients.Remove(client);
-                                //return; // wow
-                            }
-
- 
-                        }
-                        else
-                        {
-                            // return;
-                        }
-
-
-
-
+                        if (client != null)
+                            KillGame.Init(client, client.DataSaved);
                     }
                 }
                 catch (Exception ex)

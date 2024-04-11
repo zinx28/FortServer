@@ -12,7 +12,7 @@ namespace FortBackend.src.App.SERVER.Root
 {
     public class Presence
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved_XMPP dataSaved)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, string AccountId)
         {
             try
             {
@@ -24,6 +24,10 @@ namespace FortBackend.src.App.SERVER.Root
                     await Client.CloseClient(webSocket);
                     return;
                 }
+
+                var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == AccountId);
+                if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
+
                 Console.WriteLine("TEST2 " + xmlDoc.Root?.Attribute("type")?.Value);
                 Console.WriteLine("TEST3 " + xmlDoc.Root?.Attribute("type")?.Name);
                 switch (xmlDoc.Root?.Attribute("type")?.Value)
@@ -64,7 +68,7 @@ namespace FortBackend.src.App.SERVER.Root
                                 Console.WriteLine("fdsfdsfdsf");
                                 foreach (var member in currentMembers)
                                 {
-                                    if (member.accountId == dataSaved.AccountId)
+                                    if (member.accountId == Saved_Clients.DataSaved.AccountId)
                                     {
                                         return;
                                     }
@@ -72,10 +76,10 @@ namespace FortBackend.src.App.SERVER.Root
                             }
 
                             Console.WriteLine("fdsfdsfdsfU");
-                            currentMembers.Add(new MembersData { accountId = dataSaved.AccountId });
+                            currentMembers.Add(new MembersData { accountId = Saved_Clients.DataSaved.AccountId });
 
 
-                            dataSaved.Rooms.Append(RoomName); // so we know what room they are in for future stuff!
+                            Saved_Clients.DataSaved.Rooms.Append(RoomName); // so we know what room they are in for future stuff!
                             GlobalData.Rooms[RoomName].members = currentMembers;
                             //GlobalData.Rooms[RoomName]["Members"] = currentMembers;
                             Console.WriteLine("MUCX NOT NULL");
@@ -85,12 +89,12 @@ namespace FortBackend.src.App.SERVER.Root
                             XNamespace fdsfdsdsfds = "http://jabber.org/protocol/muc#user";
 
                             XElement featuresElement = new XElement(clientNs + "presence",
-                                new XAttribute("to", dataSaved.JID),
-                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
+                                new XAttribute("to", Saved_Clients.DataSaved.JID),
+                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.DataSaved.DisplayName)}:{Saved_Clients.DataSaved.AccountId}:{Saved_Clients.DataSaved.Resource}"),
                                 new XElement(fdsfdsdsfds + "x",
                                     new XElement("item",
-                                        new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
-                                        new XAttribute("jid", dataSaved.JID),
+                                        new XAttribute("nick", $"{Uri.EscapeDataString(Saved_Clients.DataSaved.DisplayName)}:{Saved_Clients.DataSaved.AccountId}:{Saved_Clients.DataSaved.Resource}"),
+                                        new XAttribute("jid", Saved_Clients.DataSaved.JID),
                                         new XAttribute("role", "participant"),
                                         new XAttribute("affiliation", "none")
                                     )
@@ -129,18 +133,18 @@ namespace FortBackend.src.App.SERVER.Root
                                     buffer = Encoding.UTF8.GetBytes(xmlMessage);
                                     await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                                    if (dataSaved.AccountId == ClientData.accountId)
+                                    if (Saved_Clients.DataSaved.AccountId == ClientData.accountId)
                                     {
                                         return; // not normal user! well the person who owns the party
                                     }
 
                                     presenceElement = new XElement(clientNs + "presence",
-                                        new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
-                                        new XAttribute("to", dataSaved.JID),
+                                        new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.DataSaved.DisplayName)}:{Saved_Clients.DataSaved.AccountId}:{Saved_Clients.DataSaved.Resource}"),
+                                        new XAttribute("to", Saved_Clients.DataSaved.JID),
                                          new XElement(fdsfdsdsfds + "x",
                                             new XElement("item",
-                                                new XAttribute("nick", $"{Uri.EscapeDataString(dataSaved.DisplayName)}:{dataSaved.AccountId}:{dataSaved.Resource}"),
-                                                new XAttribute("jid", dataSaved.JID),
+                                                new XAttribute("nick", $"{Uri.EscapeDataString(Saved_Clients.DataSaved.DisplayName)}:{Saved_Clients.DataSaved.AccountId}:{Saved_Clients.DataSaved.Resource}"),
+                                                new XAttribute("jid", Saved_Clients.DataSaved.JID),
                                                 new XAttribute("role", "participant"),
                                                 new XAttribute("affiliation", "none")
                                             )
@@ -149,7 +153,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                                     xmlMessage = presenceElement.ToString();
                                     buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                                    await ClientData.Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                    await ClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
                                 }
                             }
@@ -199,7 +203,7 @@ namespace FortBackend.src.App.SERVER.Root
                     Console.WriteLine("TEST + " + findStatus);
 
                     await XmppFriend.UpdatePresenceForFriends(webSocket, status, away, false);
-                    await XmppFriend.GrabSomeonesPresence(dataSaved.AccountId, dataSaved.AccountId, false);
+                    await XmppFriend.GrabSomeonesPresence(Saved_Clients.DataSaved.AccountId, Saved_Clients.DataSaved.AccountId, false);
                 }
             }
             catch (Exception ex)

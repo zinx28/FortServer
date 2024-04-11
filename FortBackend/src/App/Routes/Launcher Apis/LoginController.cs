@@ -48,6 +48,14 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                         var Character = "CID_001_Athena_Commando_F_Default";
                         if (profileCacheEntry.UserData.banned)
                         {
+                            return Ok(new
+                            {
+                                banned = true,
+                                username = profileCacheEntry.UserData.Username,
+                                email = profileCacheEntry.UserData.Email,
+                                character = Character,
+                                DiscordId = profileCacheEntry.UserData.DiscordId,
+                            });
                             return Unauthorized(); // Banned
                         }
                         SandboxLoadout sandboxLoadout = profileCacheEntry.AccountData.athena.loadouts_data.FirstOrDefault(e => e.Key.Contains("sandbox_loadout"))!.Value;
@@ -92,6 +100,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 
                         return Ok(new
                         {
+                            banned = profileCacheEntry.UserData.banned,
                             username = profileCacheEntry.UserData.Username,
                             email = profileCacheEntry.UserData.Email,
                             character = Character,

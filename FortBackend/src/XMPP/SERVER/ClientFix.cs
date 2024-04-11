@@ -30,7 +30,6 @@ namespace FortBackend.src.App.SERVER
                         }
                     };
                     GlobalData.Clients.Add(newClient);
-                    Console.WriteLine("ADDED CLIENT");
                     return;
                 }
             }

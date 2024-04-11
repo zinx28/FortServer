@@ -88,9 +88,16 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         .WithCurrentTimestamp();
 
                     await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: RespondBack.banned ? unbanButton : banButton);
+                   
                     bool Banned = RespondBack.banned;
+                    bool InProgess = false;
                     DiscordBot.Client.InteractionCreated += async (interaction) =>
                     {
+                        if (InProgess || interaction.User.Id != command.User.Id)
+                        {
+                            return;
+                        }
+
                         if (interaction is SocketMessageComponent componentInteraction &&
                             componentInteraction.Data.CustomId == "ban" &&
                             componentInteraction.User.Id == command.User.Id)
@@ -120,6 +127,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         {
                             if (BanComponent.Message != null)
                             {
+                                InProgess = true;
                                 List<SocketMessageComponentData> components = BanComponent.Data.Components.ToList();
                                 if (components.First(e => e.CustomId == "reasontoban").Value != null && !Banned)
                                 {
@@ -194,6 +202,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         {
                             if (unbanInteraction.Message != null)
                             {
+                                InProgess = true;
                                 List<SocketMessageComponentData> components = unbanInteraction.Data.Components.ToList();
                                 if (components.First(e => e.CustomId == "reasontouban").Value != null && Banned)
                                 {
@@ -229,6 +238,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                 }
                             }
                         }
+
+                        InProgess = false;
                     };
                 }
                 else

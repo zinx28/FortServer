@@ -35,7 +35,7 @@ namespace FortBackend.src.App.SERVER
                         receivedMessage += chunk;
                         if (result.EndOfMessage)
                         {
-                            Console.WriteLine("Received WebSocket message: " + receivedMessage);
+                            //Console.WriteLine("Received WebSocket message: " + receivedMessage);
                             JToken test = "";
                             try
                             {

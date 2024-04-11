@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.SERVER.Send;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.XMPP.Data;
 using FortLibrary;
@@ -84,69 +85,57 @@ namespace FortBackend.src.App.SERVER.Root
                         
                         Console.WriteLine(dataSaved.AccountId);
 
-                        HttpClient httpClient = new HttpClient();
-                        HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1:{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{dataSaved.AccountId}");
 
-                        if (response.IsSuccessStatusCode)
+
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(dataSaved.AccountId);
+                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.UserData.banned != true)
                         {
-                            var datareturned = await response.Content.ReadAsStringAsync();
-                            if (datareturned != null)
+                            User UserDataParsed = profileCacheEntry.UserData;
+                            UserFriends FriendsDataParsed = profileCacheEntry.UserFriends;
+
+                            List<FriendsObject> accepted = FriendsDataParsed.Accepted;
+
+                            foreach (FriendsObject friendToken in accepted)
                             {
-                                ProfileCacheEntry Data = JsonConvert.DeserializeObject<ProfileCacheEntry>(datareturned)!;
-                                if (!string.IsNullOrEmpty(Data.AccountId) && Data.AccountData != null)
+                                string accountId = friendToken.accountId;
+                                Clients letssee = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId)!;
+
+                                if (letssee == null) return;
+
+                                XNamespace clientNs1 = "jabber:client";
+                                XElement presence = new XElement(clientNs1 + "presence",
+                                    new XAttribute("to", dataSaved.JID),
+                                    new XAttribute("from", letssee.jid),
+                                    new XAttribute("type", "available")
+                                );
+
+                                if (letssee.lastPresenceUpdate.away)
                                 {
-                                    User UserDataParsed = Data.UserData;
-                                    UserFriends FriendsDataParsed = Data.UserFriends;
-
-                                    List<FriendsObject> accepted = FriendsDataParsed.Accepted;
-
-                                    foreach (FriendsObject friendToken in accepted)
-                                    {
-                                        string accountId = friendToken.accountId;
-                                        Clients letssee = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId)!;
-
-                                        if (letssee == null) return;
-
-                                        XNamespace clientNs1 = "jabber:client";
-                                        XElement presence = new XElement(clientNs1 + "presence",
-                                            new XAttribute("to", dataSaved.JID),
-                                            new XAttribute("from", letssee.jid),
-                                            new XAttribute("type", "available")
-                                        );
-
-                                        if (letssee.lastPresenceUpdate.away)
-                                        {
-                                            presence.Add(new XElement("show", "away"));
-                                            presence.Add(new XElement("status", letssee.lastPresenceUpdate.presence));
-                                        }
-                                        else
-                                        {
-                                            presence.Add(new XElement("status", letssee.lastPresenceUpdate.presence));
-                                        }
-                
-                                        xmlMessage = presence.ToString();
-                                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
-                                        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-
-
-                                        //var TestIG691 = await MongoDBUser.FindOne<User>(database, "accountId", accountId);
-                                        //if(TestIG691.Message != "Error")
-                                        //{
-                                        //    var JsonArrayIg = JArray.Parse(TestIG691.Message)[0];
-
-                                        //    JArray accepted1 = (JArray)jsonArray["Friends"]["Accepted"];
-                                        //}
-                                        // Else nothing ig?
-                                    }
+                                    presence.Add(new XElement("show", "away"));
+                                    presence.Add(new XElement("status", letssee.lastPresenceUpdate.presence));
                                 }
-                            }else
-                            {
+                                else
+                                {
+                                    presence.Add(new XElement("status", letssee.lastPresenceUpdate.presence));
+                                }
 
+                                xmlMessage = presence.ToString();
+                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+
+
+                                //var TestIG691 = await MongoDBUser.FindOne<User>(database, "accountId", accountId);
+                                //if(TestIG691.Message != "Error")
+                                //{
+                                //    var JsonArrayIg = JArray.Parse(TestIG691.Message)[0];
+
+                                //    JArray accepted1 = (JArray)jsonArray["Friends"]["Accepted"];
+                                //}
+                                // Else nothing ig?
                             }
                         }
                         else
                         {
-                            Console.WriteLine(response);
                             await Client.CloseClient(webSocket);
                             return;
                         }  

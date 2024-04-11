@@ -9,11 +9,11 @@ using FortBackend.src.App.Routes.Profile.McpControllers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using FortBackend.src.App.XMPP_Server.Globals;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary;
+using FortBackend.src.XMPP.Data;
 
 namespace FortBackend.src.App.Routes.Profile
 {

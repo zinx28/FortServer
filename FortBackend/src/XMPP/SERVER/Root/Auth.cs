@@ -1,15 +1,15 @@
 ﻿using FortLibrary.MongoDB.Module;
-using FortXmpp.src.App.Globals;
-using FortXmpp.src.App.Globals.Data;
-using FortXmpp.src.App.SERVER.Send;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 using FortLibrary;
+using FortBackend.src.XMPP.Data;
+using FortBackend.src.App.SERVER.Send;
+using FortLibrary.XMPP;
 
-namespace FortXmpp.src.App.SERVER.Root
+namespace FortBackend.src.App.SERVER.Root
 {
     public class Auth
     {

@@ -1,8 +1,8 @@
-﻿using FortXmpp.src.App.Globals;
-using FortXmpp.src.App.Globals.Data;
+﻿using FortBackend.src.XMPP.Data;
+using FortLibrary.XMPP;
 using System.Net.WebSockets;
 
-namespace FortXmpp.src.App.SERVER
+namespace FortBackend.src.App.SERVER
 {
     public class ClientFix
     {

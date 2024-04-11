@@ -1,4 +1,6 @@
-﻿namespace FortXmpp.src.App.Globals
+﻿using FortLibrary.XMPP;
+
+namespace FortBackend.src.XMPP.Data
 {
     public class GlobalData
     {

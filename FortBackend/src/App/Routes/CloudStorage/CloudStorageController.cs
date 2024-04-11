@@ -2,7 +2,6 @@
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
-using FortBackend.src.App.XMPP_Server.Globals;
 using FortLibrary.EpicResponses.Fortnite;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
@@ -12,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using FortLibrary;
 using FortLibrary.Encoders;
+using FortBackend.src.XMPP.Data;
 
 namespace FortBackend.src.App.Routes.CloudStorage
 {

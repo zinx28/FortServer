@@ -1,14 +1,14 @@
 ﻿
-using FortXmpp.src.App.Globals;
-using FortXmpp.src.App.Globals.Data;
-using FortXmpp.src.App.SERVER.Send;
+using FortBackend.src.App.SERVER.Send;
+using FortBackend.src.XMPP.Data;
+using FortLibrary.XMPP;
 using Newtonsoft.Json;
 using System;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortXmpp.src.App.SERVER.Root
+namespace FortBackend.src.App.SERVER.Root
 {
     public class Presence
     {

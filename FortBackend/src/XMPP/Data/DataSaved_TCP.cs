@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Net.WebSockets;
 
-namespace FortXmpp.src.App.Globals.Data
+namespace FortBackend.src.XMPP.Data
 {
     public class DataSaved_TCP
     {

@@ -2,7 +2,7 @@
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortXmpp.src.App.SERVER.Root
+namespace FortBackend.src.App.SERVER.Root
 {
     public class Open
     {

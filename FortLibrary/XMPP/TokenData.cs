@@ -1,4 +1,4 @@
-﻿namespace FortXmpp.src.App.Globals
+﻿namespace FortLibrary.XMPP
 {
     public class TokenData
     {

@@ -3,7 +3,6 @@ using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Discord;
 using FortLibrary.MongoDB.Module;
 using FortBackend.src.App.Utilities.Saved;
-using FortBackend.src.App.XMPP_Server.Globals;
 using MongoDB.Driver.Core.Servers;
 using Newtonsoft.Json;
 using System.Text;

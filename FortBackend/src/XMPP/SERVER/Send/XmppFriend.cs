@@ -1,14 +1,15 @@
 ﻿
+using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.XMPP.Data;
 using FortLibrary;
 using FortLibrary.MongoDB.Module;
-using FortXmpp.src.App.Globals;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortXmpp.src.App.SERVER.Send
+namespace FortBackend.src.App.SERVER.Send
 {
     public class XmppFriend
     {

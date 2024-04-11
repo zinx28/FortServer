@@ -1,9 +1,9 @@
-﻿using FortXmpp.src.App.Globals;
+﻿using FortLibrary.XMPP;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
-namespace FortXmpp.src.App.SERVER.Send
+namespace FortBackend.src.App.SERVER.Send
 {
     public class Client
     {

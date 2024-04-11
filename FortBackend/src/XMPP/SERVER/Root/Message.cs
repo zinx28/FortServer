@@ -3,11 +3,11 @@ using Newtonsoft.Json;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
-using FortXmpp.src.App.Globals.Data;
-using FortXmpp.src.App.SERVER.Send;
-using FortXmpp.src.App.Globals;
+using FortBackend.src.XMPP.Data;
+using FortLibrary.XMPP;
+using FortBackend.src.App.SERVER.Send;
 
-namespace FortXmpp.src.App.SERVER.Root
+namespace FortBackend.src.App.SERVER.Root
 {
     public class Message
     {

@@ -1,4 +1,4 @@
-﻿namespace FortBackend.src.App.XMPP_Server.Globals
+﻿namespace FortLibrary.XMPP
 {
     public class Pings
     {

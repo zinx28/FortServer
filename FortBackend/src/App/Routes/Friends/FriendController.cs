@@ -2,8 +2,6 @@
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
-using FortBackend.src.App.XMPP_Server.Globals;
-using FortBackend.src.App.XMPP_Server.XMPP.Helpers.Send;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,6 +9,9 @@ using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Xml.Linq;
 using FortLibrary;
+using FortLibrary.XMPP;
+using FortBackend.src.App.SERVER.Send;
+using FortBackend.src.XMPP.Data;
 
 namespace FortBackend.src.App.Routes.Friends
 {

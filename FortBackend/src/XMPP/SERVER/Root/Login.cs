@@ -8,6 +8,9 @@ using System.Security.Claims;
 using FortBackend.src.XMPP.Data;
 using FortBackend.src.App.SERVER.Send;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortLibrary.XMPP;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FortBackend.src.App.SERVER.Root
 {
@@ -31,96 +34,111 @@ namespace FortBackend.src.App.SERVER.Root
                 {
                     Console.WriteLine(token);
 
-                    HttpClient httpClient = new HttpClient();
-                    HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1:{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/TOKEN/{token}");
-
-                    if (response.IsSuccessStatusCode)
+                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, token);
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.UserData.banned != true)
                     {
-                        //ProfileCacheEntry
-                        var datareturned = await response.Content.ReadAsStringAsync();
-                        if (datareturned != null)
+                        if (profileCacheEntry.AccountData != null)
                         {
-                            ProfileCacheEntry Data = JsonConvert.DeserializeObject<ProfileCacheEntry>(datareturned)!;
-                            if (Data.AccountData != null)
+                            User UserDataParsed = profileCacheEntry.UserData;
+                            if (UserDataParsed == null)
                             {
-                                User UserDataParsed = Data.UserData;
-                                if (UserDataParsed == null)
-                                {
-                                    await Client.CloseClient(webSocket);
-                                    return;
-                                }
-
-                                var DeviceID = Hex.GenerateRandomHexString(16);
-
-                                // WE WILL GENERATE A exchange_code TOKEN
-                                string RefreshToken = JWT.GenerateJwtToken(new[]
-                                {
-                                    new Claim("sub", Data.AccountData.AccountId),
-                                    new Claim("t", "r"),
-                                    new Claim("dvid", DeviceID),
-                                    new Claim("clid", clientId),
-                                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
-                                    new Claim("am", "exchange_code"),
-                                    new Claim("jti", Hex.GenerateRandomHexString(32)),
-                                }, 24);
-
-                                string AccessToken = JWT.GenerateJwtToken(new[]
-                                {
-                                        new Claim("app", "fortnite"),
-                                        new Claim("sub",  Data.AccountData.AccountId),
-                                        new Claim("dvid", DeviceID),
-                                        new Claim("mver", "false"),
-                                        new Claim("clid", clientId),
-                                        new Claim("dn",  Data.UserData.Username),
-                                        new Claim("am", "exchange_code"),
-                                        new Claim("sec", "1"),
-                                        new Claim("p", Hex.GenerateRandomHexString(256)),
-                                        new Claim("iai",  Data.AccountData.AccountId),
-                                        new Claim("clsvc", "fortnite"),
-                                        new Claim("t", "s"),
-                                        new Claim("ic", "true"),
-                                        new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 480 * 480).ToString()),
-                                        new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
-                                        new Claim("jti", Hex.GenerateRandomHexString(32)),
-                                }, 8);
-
-                                httpClient.DefaultRequestHeaders.Add("Authorization", AccessToken);
-                                httpClient.DefaultRequestHeaders.Add("RefreshToken", RefreshToken);
-
-                                response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1:{Saved.DeserializeConfig.BackendPort}/account/api/oauth/websocket/addnew/token");
-                                Console.WriteLine(response);
-                                if (response.IsSuccessStatusCode)
-                                {
-                                    //ProfileCacheEntry
-                                    datareturned = await response.Content.ReadAsStringAsync();
-                                    if (datareturned != null)
-                                    {
-                                        if (UserDataParsed.banned == false)
-                                        {
-                                            dataSaved.DisplayName = UserDataParsed.Username;
-                                            dataSaved.AccountId = UserDataParsed.AccountId;
-                                            dataSaved.Token = AccessToken; // used wrong token all this time
-                                            if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
-                                            {
-                                                dataSaved.DidUserLoginNotSure = true;
-                                                Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} with account id {dataSaved.AccountId}");
-
-                                                // LOGS THE USER IN IF THEY ARE NOT BANNED
-                                                ClientFix.Init(webSocket, dataSaved, clientId);
-                                            }
-                                        }
-
-
-                                    }
-                                }
-                                        // /account/api/oauth/websocket/addnew/token
-
-                                      
-                              
+                                await Client.CloseClient(webSocket);
+                                return;
                             }
 
+                            var DeviceID = Hex.GenerateRandomHexString(16);
+
+                            // WE WILL GENERATE A exchange_code TOKEN
+                            string RefreshToken = JWT.GenerateJwtToken(new[]
+                            {
+                                new Claim("sub", profileCacheEntry.AccountData.AccountId),
+                                new Claim("t", "r"),
+                                new Claim("dvid", DeviceID),
+                                new Claim("clid", clientId),
+                                new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
+                                new Claim("am", "exchange_code"),
+                                new Claim("jti", Hex.GenerateRandomHexString(32)),
+                            }, 24);
+
+                            string AccessToken = JWT.GenerateJwtToken(new[]
+                            {
+                                    new Claim("app", "fortnite"),
+                                    new Claim("sub",  profileCacheEntry.AccountData.AccountId),
+                                    new Claim("dvid", DeviceID),
+                                    new Claim("mver", "false"),
+                                    new Claim("clid", clientId),
+                                    new Claim("dn",  profileCacheEntry.UserData.Username),
+                                    new Claim("am", "exchange_code"),
+                                    new Claim("sec", "1"),
+                                    new Claim("p", Hex.GenerateRandomHexString(256)),
+                                    new Claim("iai",  profileCacheEntry.AccountData.AccountId),
+                                    new Claim("clsvc", "fortnite"),
+                                    new Claim("t", "s"),
+                                    new Claim("ic", "true"),
+                                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 480 * 480).ToString()),
+                                    new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
+                                    new Claim("jti", Hex.GenerateRandomHexString(32)),
+                            }, 8);
+
+                            if (UserDataParsed.banned == false)
+                            {
+                                var FindAccount = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == profileCacheEntry.AccountId);
+                                if (FindAccount != null)
+                                {
+                                    GlobalData.AccessToken.Remove(FindAccount);
+                                    GlobalData.AccessToken.Add(new TokenData
+                                    {
+                                        token = $"eg1~{AccessToken}",
+                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                        accountId = FindAccount.accountId,
+                                    });
+                                }
+                                else
+                                {
+                                    GlobalData.AccessToken.Add(new TokenData
+                                    {
+                                        token = $"eg1~{AccessToken}",
+                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                        accountId = profileCacheEntry.AccountId,
+                                    });
+                                }
+
+                                var RefreshAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.accountId == profileCacheEntry.AccountId);
+                                if (RefreshAccount != null)
+                                {
+                                    GlobalData.RefreshToken.Remove(RefreshAccount);
+                                    GlobalData.RefreshToken.Add(new TokenData
+                                    {
+                                        token = $"eg1~{RefreshToken}",
+                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                        accountId = RefreshAccount.accountId,
+                                    });
+                                }
+                                else
+                                {
+                                    GlobalData.RefreshToken.Add(new TokenData
+                                    {
+                                        token = $"eg1~{RefreshToken}",
+                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                        accountId = profileCacheEntry.AccountId,
+                                    });
+                                }
+
+                                dataSaved.DisplayName = UserDataParsed.Username;
+                                dataSaved.AccountId = UserDataParsed.AccountId;
+                                dataSaved.Token = AccessToken; // used wrong token all this time
+                                if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
+                                {
+                                    dataSaved.DidUserLoginNotSure = true;
+                                    Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} with account id {dataSaved.AccountId}");
+
+                                    // LOGS THE USER IN IF THEY ARE NOT BANNED
+                                    ClientFix.Init(webSocket, dataSaved, clientId);
+                                }
+                            }
                         }
-                    }else
+                    }
+                    else
                     {
                         Console.WriteLine("FAILED");
                     }                

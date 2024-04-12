@@ -56,6 +56,8 @@ namespace FortBackend.src.App.Utilities.Discord
 
         private static Task OnReconnected()
         {
+            Logger.Log("RECONNECTING", "Discord");
+            DiscordBot.Client.Ready -= OnReady;
             DiscordBot.Client.Ready += OnReady;
            /// DiscordBot.Client.InteractionCreated += OnInteractionCreated;
             return Task.CompletedTask;

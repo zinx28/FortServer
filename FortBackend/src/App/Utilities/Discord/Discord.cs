@@ -26,16 +26,16 @@ namespace FortBackend.src.App.Utilities.Discord
 
             DiscordSocketConfig config = new DiscordSocketConfig
             {
-                UseInteractionSnowflakeDate = true, // lets say discord sucks right... discord loves snow right right this just fixes the blank responses
-                GatewayIntents = GatewayIntents.All
+                UseInteractionSnowflakeDate = true//, // lets say discord sucks right... discord loves snow right right this just fixes the blank responses
+               // GatewayIntents = GatewayIntents.All
             };
 
             Client = new(config);
             CommandService = new CommandService();
 
             Client.Ready += OnReady;
-            DiscordBot.Client.Connected += OnReconnected;
-            DiscordBot.Client.Disconnected += OnDisconnected;
+            Client.Connected += OnReconnected;
+            Client.Disconnected += OnDisconnected;
 
             Client.SlashCommandExecuted += async (command) => await SlashCommand.Handler(DeserializeConfig, command, guild);
 

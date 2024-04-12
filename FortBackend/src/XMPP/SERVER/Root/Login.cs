@@ -83,47 +83,6 @@ namespace FortBackend.src.App.SERVER.Root
 
                             if (UserDataParsed.banned == false)
                             {
-                                var FindAccount = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == profileCacheEntry.AccountId);
-                                if (FindAccount != null)
-                                {
-                                    GlobalData.AccessToken.Remove(FindAccount);
-                                    GlobalData.AccessToken.Add(new TokenData
-                                    {
-                                        token = $"eg1~{AccessToken}",
-                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
-                                        accountId = FindAccount.accountId,
-                                    });
-                                }
-                                else
-                                {
-                                    GlobalData.AccessToken.Add(new TokenData
-                                    {
-                                        token = $"eg1~{AccessToken}",
-                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
-                                        accountId = profileCacheEntry.AccountId,
-                                    });
-                                }
-
-                                var RefreshAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.accountId == profileCacheEntry.AccountId);
-                                if (RefreshAccount != null)
-                                {
-                                    GlobalData.RefreshToken.Remove(RefreshAccount);
-                                    GlobalData.RefreshToken.Add(new TokenData
-                                    {
-                                        token = $"eg1~{RefreshToken}",
-                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
-                                        accountId = RefreshAccount.accountId,
-                                    });
-                                }
-                                else
-                                {
-                                    GlobalData.RefreshToken.Add(new TokenData
-                                    {
-                                        token = $"eg1~{RefreshToken}",
-                                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
-                                        accountId = profileCacheEntry.AccountId,
-                                    });
-                                }
                                 DataSaved dataSaved = new DataSaved();
                                 dataSaved.DiscordId = UserDataParsed.DiscordId;
                                 dataSaved.DisplayName = UserDataParsed.Username;
@@ -136,6 +95,47 @@ namespace FortBackend.src.App.SERVER.Root
                                     string IPResponse = await CheckIP.Init(Ip, UserDataParsed);
                                     if (IPResponse == "ok")
                                     {
+                                        var FindAccount = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == profileCacheEntry.AccountId);
+                                        if (FindAccount != null)
+                                        {
+                                            GlobalData.AccessToken.Remove(FindAccount);
+                                            GlobalData.AccessToken.Add(new TokenData
+                                            {
+                                                token = $"eg1~{AccessToken}",
+                                                creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                                accountId = FindAccount.accountId,
+                                            });
+                                        }
+                                        else
+                                        {
+                                            GlobalData.AccessToken.Add(new TokenData
+                                            {
+                                                token = $"eg1~{AccessToken}",
+                                                creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                                accountId = profileCacheEntry.AccountId,
+                                            });
+                                        }
+
+                                        var RefreshAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.accountId == profileCacheEntry.AccountId);
+                                        if (RefreshAccount != null)
+                                        {
+                                            GlobalData.RefreshToken.Remove(RefreshAccount);
+                                            GlobalData.RefreshToken.Add(new TokenData
+                                            {
+                                                token = $"eg1~{RefreshToken}",
+                                                creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                                accountId = RefreshAccount.accountId,
+                                            });
+                                        }
+                                        else
+                                        {
+                                            GlobalData.RefreshToken.Add(new TokenData
+                                            {
+                                                token = $"eg1~{RefreshToken}",
+                                                creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                                                accountId = profileCacheEntry.AccountId,
+                                            });
+                                        }
                                         ClientFix.Init(webSocket, dataSaved, clientId);
                                     }else
                                     {

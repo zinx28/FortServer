@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Helpers.UserManagement;
+﻿using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.Helpers.UserManagement;
 using FortBackend.src.App.Utilities.MongoDB;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
@@ -46,6 +47,13 @@ namespace FortBackend.src.App.Utilities.Helpers
                 }
                 try
                 {
+                    try
+                    {
+                        await MongoSaveData.SaveToDB(UserData.AccountId);
+                        CacheMiddleware.GlobalCacheProfiles.Remove(UserData.AccountId);
+                    }
+                    catch { } // idfk
+
                     await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo
                     {
                         id = UserData.DiscordId,

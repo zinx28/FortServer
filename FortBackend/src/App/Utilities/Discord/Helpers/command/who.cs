@@ -103,7 +103,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             componentInteraction.User.Id == command.User.Id)
                         {
                             ulong messageId = componentInteraction.Message.Id;
-
+                            InProgess = true;
                             var modalBuilder = new ModalBuilder()
                             .WithTitle("Reason")
                             .WithCustomId("reasontoban")
@@ -115,7 +115,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         unbanComponent.Data.CustomId == "unban" && unbanComponent.User.Id == command.User.Id)
                         {
                             ulong messageId = unbanComponent.Message.Id;
-
+                            InProgess = true;
                             var modalBuilder = new ModalBuilder()
                             .WithTitle("Reason")
                             .WithCustomId("reasontouban")

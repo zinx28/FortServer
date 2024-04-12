@@ -55,8 +55,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             {
                 await Test.Respond(command);
             }
-
-            if(command.CommandName == "who")
+            else if(command.CommandName == "who")
             {
                 if(CheckIfRole(config, command, guild))
                 {

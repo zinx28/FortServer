@@ -32,12 +32,9 @@ namespace FortBackend.src.App.Utilities.Discord
             Client = new(config);
             CommandService = new CommandService();
 
-            Client.Ready += async () =>
-            {
-                Logger.Log("Discord Bot is connected", "Discord");
-                guild = DiscordBot.Client.GetGuild(DeserializeConfig.ServerID);
-                await RegisterCommands.Connect(DeserializeConfig, guild);
-            };
+            Client.Ready += OnReady;
+            DiscordBot.Client.Connected += OnReconnected;
+            DiscordBot.Client.Disconnected += OnDisconnected;
 
             Client.SlashCommandExecuted += async (command) => await SlashCommand.Handler(DeserializeConfig, command, guild);
 
@@ -47,6 +44,32 @@ namespace FortBackend.src.App.Utilities.Discord
             {
                 await Client.SetActivityAsync(new Game(DeserializeConfig.DiscordBotMessage, ActivityType.Playing));
             }
+        }
+
+        private static async Task OnReady()
+        {
+            Logger.Log("Discord Bot is connected", "Discord");
+            guild = DiscordBot.Client.GetGuild(Saved.Saved.DeserializeConfig.ServerID);
+            await RegisterCommands.Connect(Saved.Saved.DeserializeConfig, guild);
+        }
+
+        private static Task OnReconnected()
+        {
+            DiscordBot.Client.Ready += OnReady;
+           /// DiscordBot.Client.InteractionCreated += OnInteractionCreated;
+            return Task.CompletedTask;
+        }
+
+        private static async Task OnInteractionCreated(SocketInteraction interaction)
+        {
+            await RegisterCommands.Connect(Saved.Saved.DeserializeConfig, guild);
+        }
+
+        private static Task OnDisconnected(Exception exception)
+        {
+            DiscordBot.Client.Ready -= OnReady;
+           // DiscordBot.Client.InteractionCreated -= OnInteractionCreated;
+            return Task.CompletedTask;
         }
     }
 }

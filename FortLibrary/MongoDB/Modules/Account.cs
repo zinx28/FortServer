@@ -19,6 +19,8 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("DiscordId")]
         public string DiscordId { get; set; } = string.Empty;
 
+        [BsonElement("JoinDate")]
+        public DateTime JoinDate { get; set; } = DateTime.UtcNow;
 
         [BsonElement("athena")]
         public Athena athena { get; set; } = new Athena();

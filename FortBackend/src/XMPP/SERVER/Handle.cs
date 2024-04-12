@@ -14,7 +14,7 @@ namespace FortBackend.src.App.SERVER
     public class Handle
     {
 
-        public static async Task HandleWebSocketConnection(WebSocket webSocket, HttpRequest context, string clientId)
+        public static async Task HandleWebSocketConnection(WebSocket webSocket, HttpRequest context, string clientId, string IP)
         {
             string receivedMessage = ""; // so skunky but works fine
             string AccountId = ""; // for both clients to know the main
@@ -51,7 +51,7 @@ namespace FortBackend.src.App.SERVER
                             {
                                 // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS
                                 case "login":
-                                    Login.Init(webSocket, xmlDoc, clientId);
+                                    Login.Init(webSocket, xmlDoc, clientId, IP);
                                     break;
                                 case "open":
                                     Open.Init(webSocket, DidUserLoginNotSure, clientId);

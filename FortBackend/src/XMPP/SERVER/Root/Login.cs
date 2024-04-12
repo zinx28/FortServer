@@ -11,12 +11,13 @@ using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.XMPP;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using FortBackend.src.App.Utilities.Helpers;
 
 namespace FortBackend.src.App.SERVER.Root
 {
     public class Login
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, string Ip)
         {
             try
             {
@@ -27,6 +28,8 @@ namespace FortBackend.src.App.SERVER.Root
                     await Client.CloseClient(webSocket);
                     return;
                 }
+
+               
 
                 var token = xmlDoc.Root?.Element("token")?.Value;
 
@@ -129,10 +132,20 @@ namespace FortBackend.src.App.SERVER.Root
                                 if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "")
                                 {
                                     dataSaved.DidUserLoginNotSure = true;
+
+                                    string IPResponse = await CheckIP.Init(Ip, UserDataParsed);
+                                    if (IPResponse == "ok")
+                                    {
+                                        ClientFix.Init(webSocket, dataSaved, clientId);
+                                    }else
+                                    {
+                                        await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "banned", CancellationToken.None);
+                                        return;
+                                    }
                                     //Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} with account id {dataSaved.AccountId}");
 
                                     // LOGS THE USER IN IF THEY ARE NOT BANNED
-                                    ClientFix.Init(webSocket, dataSaved, clientId);
+                                   
                                 }
                             }
                         }

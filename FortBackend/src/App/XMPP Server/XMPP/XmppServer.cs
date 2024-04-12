@@ -2,6 +2,7 @@
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.XMPP.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Net;
 using System.Net.WebSockets;
@@ -56,9 +57,18 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                     {
                         try
                         {
+                            var Ip = "";
+                            if (Saved.DeserializeConfig.Cloudflare)
+                            {
+                                Ip = context.Request.Headers["CF-Connecting-IP"];
+                            }
+                            else
+                            {
+                                Ip = context.Connection.RemoteIpAddress!.ToString();
+                            }
                             string clientId = Guid.NewGuid().ToString();
                             WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                            await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId);
+                            await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId, Ip);
                         }
                         catch (Exception ex)
                         {

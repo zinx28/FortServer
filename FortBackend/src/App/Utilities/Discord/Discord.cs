@@ -26,7 +26,8 @@ namespace FortBackend.src.App.Utilities.Discord
 
             DiscordSocketConfig config = new DiscordSocketConfig
             {
-                UseInteractionSnowflakeDate = true // lets say discord sucks right... discord loves snow right right this just fixes the blank responses
+                UseInteractionSnowflakeDate = true, // lets say discord sucks right... discord loves snow right right this just fixes the blank responses
+                GatewayIntents = GatewayIntents.All
             };
 
             Client = new(config);

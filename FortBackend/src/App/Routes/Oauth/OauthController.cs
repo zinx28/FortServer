@@ -14,6 +14,7 @@ using FortLibrary;
 using Microsoft.IdentityModel.Tokens;
 using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
+using FortLibrary.MongoDB.Module;
 
 
 namespace FortBackend.src.App.Routes.Oauth
@@ -206,6 +207,61 @@ namespace FortBackend.src.App.Routes.Oauth
             // shouldn't never call this
             return BadRequest(new { });
         }
+
+        [HttpGet("/test/{token}")]
+        public ActionResult Test(string token)
+        {
+          
+             var AccessToken = token.Replace("eg1~", "");
+              
+             var handler = new JwtSecurityTokenHandler();
+                
+             var decodedToken = handler.ReadJwtToken(AccessToken);
+
+            var claimsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(decodedToken.Claims.ToDictionary(c => c.Type, c => c.Value)));
+
+            if (decodedToken.ToString() != null)
+            {
+                //dynamic payload = JsonConvert.DeserializeObject(tokenParts[1].ToString())!;
+                if (claimsDictionary == null)
+                {
+                    return BadRequest(new { });
+                }
+
+                if (!string.IsNullOrEmpty(claimsDictionary["dvid"].ToString()))
+                {
+
+                //GlobalData.RefreshToken.Add(RefreshTokenClient);
+
+                return Ok(new OauthToken
+                {
+                    access_token = $"{token}",
+                    expires_in = 28800,
+                    expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    token_type = "bearer",
+                    account_id = "test",
+                    client_id = "test",
+                    internal_client = true,
+                    client_service = "fortnite",
+                    refresh_token = $"test",
+                    refresh_expires = 115200,
+                    refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    displayName = "test",
+                    app = "fortnite",
+                    in_app_id = "test",
+                    device_id = claimsDictionary["dvid"]
+                });
+            }
+
+            }
+            else
+            {
+                Console.WriteLine("FAKE TOKEN?"); // never should happen
+            }
+
+            return Ok(new { });
+        }
+
 
         [HttpPost("oauth/token")]
         public async Task<IActionResult> LoginToken()
@@ -530,20 +586,12 @@ namespace FortBackend.src.App.Routes.Oauth
                         var handler = new JwtSecurityTokenHandler();
                         var decodedToken = handler.ReadJwtToken(AccessToken);
 
-                        string[] tokenParts = decodedToken.ToString().Split('.');
+                        var claimsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(decodedToken.Claims.ToDictionary(c => c.Type, c => c.Value)));
 
-                        Console.WriteLine(tokenParts.Length);
-                        Console.WriteLine(tokenParts);
-                        if (tokenParts.Length == 2)
+                        if (claimsDictionary != null && claimsDictionary.Count() > 1)
                         {
-                            var payloadJson = tokenParts[1];
-                            dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
-                            if (payload == null)
-                            {
-                                return BadRequest(new { });
-                            }
-
-                            if (!string.IsNullOrEmpty(payload.dvid.ToString()))
+                           
+                            if (!string.IsNullOrEmpty(claimsDictionary["dvid"].ToString()))
                             {
 
                                 //GlobalData.RefreshToken.Add(RefreshTokenClient);
@@ -564,7 +612,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                     displayName = DisplayName,
                                     app = "fortnite",
                                     in_app_id = AccountId,
-                                    device_id = payload.dvid
+                                    device_id = claimsDictionary["dvid"]
                                 });
                             }
 

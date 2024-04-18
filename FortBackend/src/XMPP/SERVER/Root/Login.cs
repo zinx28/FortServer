@@ -147,6 +147,10 @@ namespace FortBackend.src.App.SERVER.Root
                                     // LOGS THE USER IN IF THEY ARE NOT BANNED
                                    
                                 }
+                            }else
+                            {
+                                await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "banned", CancellationToken.None);
+                                return;
                             }
                         }
                     }

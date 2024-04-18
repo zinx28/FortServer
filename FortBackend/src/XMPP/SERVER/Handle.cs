@@ -23,7 +23,7 @@ namespace FortBackend.src.App.SERVER
             {
                 //DataSaved_XMPP.connectedClients.TryAdd(clientId, webSocket); // Adds The data inside the handlewebsocekt!
                 var buffer = new byte[0];
-                XDocument xmlDoc;
+                XDocument xmlDoc = null;
 
                 while (webSocket.State == WebSocketState.Open)
                 {
@@ -45,30 +45,39 @@ namespace FortBackend.src.App.SERVER
                                 return;
                             }
                             catch { }
-                            xmlDoc = XDocument.Parse(receivedMessage);
 
-                            switch (xmlDoc.Root?.Name.LocalName)
+                            try
                             {
-                                // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS
-                                case "login":
-                                    Login.Init(webSocket, xmlDoc, clientId, IP);
-                                    break;
-                                case "open":
-                                    Open.Init(webSocket, DidUserLoginNotSure, clientId);
-                                    break;
-                                case "auth":
-                                    Auth.Init(webSocket, xmlDoc, clientId, AccountId);
-                                    break;
-                                case "iq":
-                                    Iq.Init(webSocket, xmlDoc, clientId, AccountId);
-                                    break;
-                                case "message":
-                                    Message.Init(webSocket, xmlDoc, clientId, AccountId);
-                                    break;
-                                case "presence":
-                                    Presence.Init(webSocket, xmlDoc, clientId, AccountId);
-                                    break;
-                                default: break;
+                                xmlDoc = XDocument.Parse(receivedMessage);
+                            }
+                            catch { }
+
+                            if (xmlDoc != null) {
+
+                                switch (xmlDoc.Root?.Name.LocalName)
+                                {
+                                    // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS
+                                    case "login":
+                                        Login.Init(webSocket, xmlDoc, clientId, IP);
+                                        break;
+                                    case "open":
+                                        Open.Init(webSocket, DidUserLoginNotSure, clientId);
+                                        break;
+                                    case "auth":
+                                        Auth.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        break;
+                                    case "iq":
+                                        Iq.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        break;
+                                    case "message":
+                                        Message.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        break;
+                                    case "presence":
+                                        Presence.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        break;
+                                    default: break;
+                                }
+
                             }
 
                             receivedMessage = "";

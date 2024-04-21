@@ -235,6 +235,16 @@ namespace FortBackend.src.App.Routes.API
             }));
         }
 
+        //content-controls/
+
+        [HttpGet("/content-controls/{accountId}")]
+        public IActionResult ContentControls(string accountId)
+        {
+            return StatusCode(201);
+        }
+
+
+
         [HttpGet("v1/search/{accountId}")]
         public async Task<IActionResult> SearchPlayer(string accountId, [FromQuery] string prefix)
         {

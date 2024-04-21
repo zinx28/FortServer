@@ -357,7 +357,7 @@ namespace FortBackend.src.App.Routes.API
                     return BadRequest("Invalid image parameter");
                 }
 
-                string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/Ini/CloudDir/{filename}");
+                string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/Json/{filename}");
                
                 if (Path.Exists(ConfigFilePath))
                 {

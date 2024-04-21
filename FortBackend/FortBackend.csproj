@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <Folder Include="src\Resources\Certificates\" />
+    <Folder Include="src\Resources\Json\NewFolder\" />
     <Folder Include="src\Resources\Json\templates\" />
   </ItemGroup>
 

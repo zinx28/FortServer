@@ -281,6 +281,36 @@ namespace FortBackend.src.App.Routes.API
             return Ok(Search);
         }
 
+        //v1/epic-settings/public/users/372da84236e342c297ca36599deb669d/values
+
+        [HttpPatch("/v1/epic-settings/public/users/{accountId}/values")]
+        public IActionResult EpicSettings(string accountId)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                
+                string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/Json/epicsettings.json");
+
+                if (Path.Exists(ConfigFilePath))
+                {
+                    string ConfigFile = System.IO.File.ReadAllText(ConfigFilePath);
+
+                    return Content(ConfigFile, "application/json");
+                }
+                else
+                {
+                    Logger.Error(ConfigFilePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "ApiController-EpicSettings");
+            }
+
+            return NoContent();
+        }
+
         //api/v1/user/setting
 
         [HttpPost("v1/user/setting")]

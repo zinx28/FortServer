@@ -1,0 +1,45 @@
+{
+    "response": {
+        "settings": [
+            {
+                "namespace": "profile",
+                "settingName": "allow-non-squad-users-to-see-my-username",
+                "effectiveValue": true,
+                "effectiveSource": "preference",
+                "parentLimit": true
+            },
+            {
+                "namespace": "profile",
+                "settingName": "can-see-player-usernames-from-other-squads",
+                "effectiveValue": true,
+                "effectiveSource": "preference",
+                "parentLimit": true
+            },
+            {
+                "namespace": "chat",
+                "settingName": "filter-out-mature-language",
+                "effectiveValue": false,
+                "effectiveSource": "preference",
+                "parentLimit": false
+            },
+            {
+                "namespace": "chat",
+                "settingName": "text",
+                "effectiveValue": "everybody",
+                "effectiveSource": "preference",
+                "parentLimit": "everybody"
+            },
+            {
+                "namespace": "chat",
+                "settingName": "voice",
+                "effectiveValue": "everybody",
+                "effectiveSource": "preference",
+                "parentLimit": "everybody"
+            }
+        ]
+    },
+    "meta": {
+        "requestId": "",
+        "timestamp": "9999-99-99T00:00:00.000z"
+    }
+}

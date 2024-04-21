@@ -25,5 +25,24 @@ namespace FortBackend.src.App.Routes.CloudStorage
 
             return NoContent();
         }
+
+        [HttpGet("ChunksV4/{number}/{chunk}")]
+        public IActionResult CloudDirChunk(string number, string chunk)
+        {
+            Response.ContentType = "application/octet-stream";
+            try
+            {
+                string CloudDirFull = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Ini/CloudDir/FortBackend.chunk");
+                string FullIni = System.IO.File.ReadAllText(CloudDirFull);
+
+                return Content(FullIni, "application/octet-stream");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "CloudDIR_Chunks");
+            }
+
+            return NoContent();
+        }
     }
 }

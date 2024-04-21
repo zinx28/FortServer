@@ -15,11 +15,15 @@
   <ItemGroup>
     <None Remove="src\Resources\Image\test.png" />
     <None Remove="src\Resources\Image\Trans_Boykisser.png" />
+    <None Remove="src\Resources\Ini\CloudDir\FortBackend.chunk" />
     <None Remove="src\Resources\Ini\CloudDir\Full.ini" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="src\Resources\Image\Trans_Boykisser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Resources\Ini\CloudDir\FortBackend.chunk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Resources\Ini\CloudDir\Full.ini">

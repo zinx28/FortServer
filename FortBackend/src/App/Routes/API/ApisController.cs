@@ -344,6 +344,40 @@ namespace FortBackend.src.App.Routes.API
             return Content("{}");
         }
 
+        //hotconfigs/v2/livefn.json 
+
+        [HttpGet("/hotconfigs/v2/{filename}")]
+        public IActionResult HotConfigs(string filename)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                if (!Regex.IsMatch(filename, "^[a-zA-Z\\-\\._]+$"))
+                {
+                    return BadRequest("Invalid image parameter");
+                }
+
+                string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/Ini/CloudDir/{filename}");
+               
+                if (Path.Exists(ConfigFilePath))
+                {
+                    string ConfigFile = System.IO.File.ReadAllText(ConfigFilePath);
+
+                    return Content(ConfigFile, "application/json");
+                }
+                else
+                {
+                    Logger.Error(ConfigFilePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "CloudDIR");
+            }
+
+            return NoContent();
+        }
+
         // /api/v1/assets/Fortnite/++Fortnite+Release-15.50/15526472?
 
         [HttpPost("v1/assets/Fortnite/{version}/{number}")]

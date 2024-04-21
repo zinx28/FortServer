@@ -53,13 +53,40 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
+        [HttpGet("/{a}/{s}/{idk}")]
+        public IActionResult GameRating(string a, string s, string idk)
+        {
+            try
+            {
+                // Prevent Weird Characters
+                if (!Regex.IsMatch(idk, @"^[a-zA-Z0-9\-._]+$"))
+                {
+                    return BadRequest("Invalid image parameter");
+                }
+                var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Image", "Trans_Boykisser.png");
+                if (System.IO.File.Exists(imagePath))
+                {
+                    return PhysicalFile(imagePath, "image/jpeg");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch /*(Exception ex)*/
+            {
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
         [HttpGet("/image/{image}")]
         public IActionResult ImageEnd(string image)
         {
             try
             {
                 // Prevent Weird Characters
-                if (!Regex.IsMatch(image, "^[a-zA-Z\\-\\._]+$"))
+                if (!Regex.IsMatch(image, @"^[a-zA-Z0-9\-._]+$"))
                 {
                     return BadRequest("Invalid image parameter");
                 }

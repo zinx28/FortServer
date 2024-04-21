@@ -293,7 +293,7 @@ namespace FortBackend.src.App.Routes.API
 
         //v1/epic-settings/public/users/372da84236e342c297ca36599deb669d/values
 
-        [HttpPatch("/v1/epic-settings/public/users/{accountId}/values")]
+        [HttpGet("/v1/epic-settings/public/users/{accountId}/values")]
         public IActionResult EpicSettings(string accountId)
         {
             Response.ContentType = "application/json";

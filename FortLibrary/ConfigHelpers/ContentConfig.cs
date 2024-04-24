@@ -5,6 +5,7 @@ namespace FortLibrary.ConfigHelpers
 {
     public class ContentConfig
     {
+        public LoginMessageContent loginmessage { get; set; } = new LoginMessageContent();
         public Battleroyalenewscontent battleroyalenews { get; set; } = new Battleroyalenewscontent();
         public List<Emergencynoticecontent> emergencynotice { get; set; } = new List<Emergencynoticecontent>();
         public List<shopSectionsItems> shopSections { get; set; } = new List<shopSectionsItems>();
@@ -87,5 +88,11 @@ namespace FortLibrary.ConfigHelpers
     {
         public string title { get; set; } = "FortBackend";
         public string body { get; set; } = "Play Universal on fort the backend yippeee";
+    }
+
+    public class LoginMessageContent
+    {
+        public string title { get; set; } = "FortBackend";
+        public string body { get; set; } = "FortBackend News";
     }
 }

@@ -1,4 +1,8 @@
 {
+    "loginmessage": {
+        "title": "FortBackend",
+        "body": "FortBackend News"
+    },
     "battleroyalenews": {
         "motds": [
             {

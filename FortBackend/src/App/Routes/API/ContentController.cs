@@ -87,6 +87,9 @@ namespace FortBackend.src.App.Routes.API
                         });
                     });
 
+                    ContentJsonResponse.loginMessage.loginmessage.message.title = contentconfig.loginmessage.title;
+                    ContentJsonResponse.loginMessage.loginmessage.message.body = contentconfig.loginmessage.body;
+
                     contentconfig.battleroyalenews.messages.ForEach(x =>
                     {
                         ContentJsonResponse.battleroyalenews.news.messages.Add(new NewContentMessages()

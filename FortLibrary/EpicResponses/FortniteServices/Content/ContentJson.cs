@@ -15,6 +15,7 @@ namespace FortLibrary.EpicResponses.FortniteServices.Content
         public string _activeDate { get; set; } = "2017-08-30T03:20:48.050Z";
         public string lastModified { get; set; } = "2023-11-09T18:08:17.334Z";
         public string _locale { get; set; } = "en_US";
+        public LoginMessage loginMessage { get; set; } = new LoginMessage();
         public BattleRoyaleNews battleroyalenews { get; set; } = new BattleRoyaleNews();
         public BattleRoyaleNewsV2 battleroyalnewsv2 { get; set; } = new BattleRoyaleNewsV2();
         public EmergencyNotice emergencynotice { get; set; } = new EmergencyNotice();

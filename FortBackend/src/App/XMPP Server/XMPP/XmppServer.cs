@@ -102,6 +102,15 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                     var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
                     context.Response.ContentType = "application/json";
                     await context.Response.WriteAsync(jsonResponse);
+                }else if(context.Request.Path == "/")
+                {
+                    var responseObj = new
+                    {
+                        status = "OK"
+                    };
+                    var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(jsonResponse);
                 }
                 else
                 {

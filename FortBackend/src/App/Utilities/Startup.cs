@@ -86,6 +86,16 @@ namespace FortBackend.src.App.Utilities
             {
                 var response = context.HttpContext.Response;
                 Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}?{context.HttpContext.Request.Query}");
+                if (context.HttpContext.Request.Path == "/")
+                {
+                    var responseObj = new
+                    {
+                        status = "OK"
+                    };
+                    var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
+                    context.HttpContext.Request.ContentType = "application/json";
+                    await response.WriteAsync(jsonResponse);
+                }
                 if (response.StatusCode == (int)HttpStatusCode.NotFound)
                 {
                     await response.WriteAsJsonAsync(new

@@ -94,6 +94,7 @@ namespace FortBackend.src.App.Utilities
                     };
                     var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
                     context.HttpContext.Request.ContentType = "application/json";
+                    response.StatusCode = (int)HttpStatusCode.OK;
                     await response.WriteAsync(jsonResponse);
                 }
                 if (response.StatusCode == (int)HttpStatusCode.NotFound)

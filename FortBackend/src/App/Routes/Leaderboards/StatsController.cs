@@ -28,10 +28,10 @@ namespace FortBackend.src.App.Routes.Leaderboards
                     if (test != null)
                     {
                         List<string> accountIds = new List<string>();
-                        Console.WriteLine("USING CACHED CODE!");
+                        //Console.WriteLine("USING CACHED CODE!");
                         foreach (var item in test.stat)
                         {
-                            Console.WriteLine("2 " + item.Key);
+                            //Console.WriteLine("2 " + item.Key);
                             accountIds.Add(item.Key);
                         }
                         return Ok(new

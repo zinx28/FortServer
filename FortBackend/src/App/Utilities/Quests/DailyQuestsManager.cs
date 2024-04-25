@@ -1,40 +1,35 @@
 ﻿using FortLibrary.MongoDB.Module;
 using FortLibrary.Dynamics;
 using Newtonsoft.Json;
+using System.Net.Http.Json;
 
 namespace FortBackend.src.App.Utilities.Quests
 {
     public class DailyQuestsManager
     {
-        public static string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Quests/DailyQuests"), "*.json");
+        public static List<DailyQuestsJson> DailyQuestsObjects = new List<DailyQuestsJson>();
         public static async Task<DailyQuestsJson> GrabRandomQuest(SeasonClass seasonClass)
         {
             Random random = new Random();
-            if (DailyQuestsFiles.Count() > 0)
+            if (DailyQuestsObjects.Count() > 0)
             {
-                string randomJsonFile = DailyQuestsFiles[random.Next(DailyQuestsFiles.Length)];
+                try 
+                { 
+                    DailyQuestsJson dailyQuestsJson = DailyQuestsObjects[random.Next(DailyQuestsObjects.Count())];
 
-                try
-                {
-                    string jsonContent = File.ReadAllText(randomJsonFile);
-                    if (jsonContent != null)
+                    // We check if its already a thing.. if so run again
+                    if (!CheckUsedQuest(dailyQuestsJson, seasonClass))
                     {
-                        Console.WriteLine(randomJsonFile);
-                        DailyQuestsJson dailyQuestJson = JsonConvert.DeserializeObject<DailyQuestsJson>(jsonContent)!;
-
-                        // We check if its already a thing.. if so run again
-                        if(!CheckUsedQuest(dailyQuestJson, seasonClass))
-                        {
-                            return dailyQuestJson;
-                        }
-
-                        return await GrabRandomQuest(seasonClass);
+                        return dailyQuestsJson;
                     }
+
+                    return await GrabRandomQuest(seasonClass);
                 }
                 catch (Exception ex) { Logger.Error(ex.Message, "Grab Random Quest!"); };
-            }else
+            }
+            else
             {
-                Logger.Error("DAILY QUESTS FILES ARE EMPTY");
+                Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
             }
 
             return new DailyQuestsJson();
@@ -48,6 +43,56 @@ namespace FortBackend.src.App.Utilities.Quests
             }
 
             return false;
+        }
+
+        public static DailyQuestsJson ReturnQuestInfo(string DailyQuestName)
+        {
+            if (DailyQuestsObjects.Count() > 0)
+            {
+                DailyQuestsJson DailyResponse = DailyQuestsObjects.FirstOrDefault(e => e.Name == DailyQuestName)!;   
+                if(DailyResponse != null)
+                {
+                    return DailyResponse;
+                }
+            }
+
+            return new DailyQuestsJson();
+        }
+
+        public static void LoadDailyQuests()
+        {
+            var DailyQuestsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Quests/DailyQuests");
+            if(Path.Exists(DailyQuestsFolder))
+            {
+                string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Quests/DailyQuests"), "*.json");
+
+                if (DailyQuestsFiles.Count() > 0)
+                {
+                    foreach (string item in DailyQuestsFiles)
+                    {
+                        string jsonContent = File.ReadAllText(item);
+                        if (jsonContent != null)
+                        {
+                            DailyQuestsJson dailyQuestJson = JsonConvert.DeserializeObject<DailyQuestsJson>(jsonContent)!;
+
+                            if (dailyQuestJson != null)
+                            {
+                                DailyQuestsObjects.Add(dailyQuestJson);
+                            }
+                        }
+                    }
+
+                    var a = DailyQuestsObjects.Count();
+                    var b = DailyQuestsFiles.Count();
+
+                    Logger.Log($"Loaded Daily Quests: {a}/{b}", "DailyQuestManager");
+                }
+                else
+                {
+                    // throw error? or let them find out they are skunekd
+                    Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
+                }
+            }
         }
     }
 }

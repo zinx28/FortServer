@@ -257,6 +257,10 @@ namespace FortLibrary.MongoDB.Module
         [JsonProperty("battlestars_currency")]
         public int battlestars_currency { get; set; } = 0;
 
+        [BsonElement("seasonXP")]
+        [JsonProperty("seasonXP")]
+        public int SeasonXP { get; set; } = 0;
+
         [BsonElement("book_xp")]
         [JsonProperty("book_xp")]
         public int BookXP { get; set; } = 0;
@@ -269,12 +273,11 @@ namespace FortLibrary.MongoDB.Module
         [JsonProperty("lastclaimeditem")]
         public int lastclaimeditem { get; set; } = 0;
 
+        // QUESTS STUFF ~ require to be cleaner in the future versions without breaking user
         [BsonElement("Quests")]
         [JsonProperty("Quests")]
         [BsonIgnoreIfNull]
         public Dictionary<string, object> Quests { get; set; } = new Dictionary<string, object>();
-
-
 
         [BsonElement("PinnedQuests")]
         [JsonProperty("PinnedQuests")]
@@ -290,10 +293,7 @@ namespace FortLibrary.MongoDB.Module
         [JsonProperty("quest_manager")]
         public DailyQuests DailyQuests { get; set; } = new DailyQuests();
 
-        [BsonElement("BattleStars")]
-        [JsonProperty("BattleStars")]
-        public int BattleStars { get; set; } = 0;
-
+        // should be true when the user logins.. so the trailer doesnt replay
         [BsonElement("intro_game_played")]
         [JsonProperty("intro_game_played")]
         public bool intro_game_played { get; set; } = false;

@@ -1,695 +1,497 @@
 {
   "1": {
-        "Level": 1,
-        "XpToNextLevel": 100,
-        "XpTotal": 0,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "2": {
-        "Level": 2,
-        "XpToNextLevel": 250,
-        "XpTotal": 100,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "3": {
-        "Level": 3,
-        "XpToNextLevel": 300,
-        "XpTotal": 350,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "4": {
-        "Level": 4,
-        "XpToNextLevel": 350,
-        "XpTotal": 650,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "5": {
-        "Level": 5,
-        "XpToNextLevel": 700,
-        "XpTotal": 1000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "6": {
-        "Level": 6,
-        "XpToNextLevel": 700,
-        "XpTotal": 1700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "7": {
-        "Level": 7,
-        "XpToNextLevel": 700,
-        "XpTotal": 2400,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "8": {
-        "Level": 8,
-        "XpToNextLevel": 700,
-        "XpTotal": 3100,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "9": {
-        "Level": 9,
-        "XpToNextLevel": 700,
-        "XpTotal": 3800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "10": {
-        "Level": 10,
-        "XpToNextLevel": 700,
-        "XpTotal": 4500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": "HomebaseBannerIcon:brseason01"
-      },
-      "11": {
-        "Level": 11,
-        "XpToNextLevel": 700,
-        "XpTotal": 5200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "12": {
-        "Level": 12,
-        "XpToNextLevel": 700,
-        "XpTotal": 5900,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "13": {
-        "Level": 13,
-        "XpToNextLevel": 700,
-        "XpTotal": 6600,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "14": {
-        "Level": 14,
-        "XpToNextLevel": 700,
-        "XpTotal": 7300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "15": {
-        "Level": 15,
-        "XpToNextLevel": 1700,
-        "XpTotal": 8000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "16": {
-        "Level": 16,
-        "XpToNextLevel": 1700,
-        "XpTotal": 9700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "17": {
-        "Level": 17,
-        "XpToNextLevel": 1700,
-        "XpTotal": 11400,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "18": {
-        "Level": 18,
-        "XpToNextLevel": 1700,
-        "XpTotal": 13100,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "19": {
-        "Level": 19,
-        "XpToNextLevel": 1700,
-        "XpTotal": 14800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "20": {
-        "Level": 20,
-        "XpToNextLevel": 1700,
-        "XpTotal": 16500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "21": {
-        "Level": 21,
-        "XpToNextLevel": 1700,
-        "XpTotal": 18200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "22": {
-        "Level": 22,
-        "XpToNextLevel": 1700,
-        "XpTotal": 19900,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "23": {
-        "Level": 23,
-        "XpToNextLevel": 1700,
-        "XpTotal": 21600,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "24": {
-        "Level": 24,
-        "XpToNextLevel": 1700,
-        "XpTotal": 23300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "25": {
-        "Level": 25,
-        "XpToNextLevel": 1700,
-        "XpTotal": 25000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": "AthenaGlider:glider_warthog"
-      },
-      "26": {
-        "Level": 26,
-        "XpToNextLevel": 1800,
-        "XpTotal": 26800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "27": {
-        "Level": 27,
-        "XpToNextLevel": 1900,
-        "XpTotal": 28700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "28": {
-        "Level": 28,
-        "XpToNextLevel": 2000,
-        "XpTotal": 30700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "29": {
-        "Level": 29,
-        "XpToNextLevel": 2100,
-        "XpTotal": 32800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "30": {
-        "Level": 30,
-        "XpToNextLevel": 2200,
-        "XpTotal": 35000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "31": {
-        "Level": 31,
-        "XpToNextLevel": 2300,
-        "XpTotal": 37300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "32": {
-        "Level": 32,
-        "XpToNextLevel": 2400,
-        "XpTotal": 39700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "33": {
-        "Level": 33,
-        "XpToNextLevel": 2500,
-        "XpTotal": 42200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "34": {
-        "Level": 34,
-        "XpToNextLevel": 2600,
-        "XpTotal": 44800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "35": {
-        "Level": 35,
-        "XpToNextLevel": 2700,
-        "XpTotal": 47500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "36": {
-        "Level": 36,
-        "XpToNextLevel": 2800,
-        "XpTotal": 50300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "37": {
-        "Level": 37,
-        "XpToNextLevel": 2900,
-        "XpTotal": 53200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "38": {
-        "Level": 38,
-        "XpToNextLevel": 3000,
-        "XpTotal": 56200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "39": {
-        "Level": 39,
-        "XpToNextLevel": 3100,
-        "XpTotal": 59300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "40": {
-        "Level": 40,
-        "XpToNextLevel": 3200,
-        "XpTotal": 62500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "41": {
-        "Level": 41,
-        "XpToNextLevel": 3300,
-        "XpTotal": 65800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "42": {
-        "Level": 42,
-        "XpToNextLevel": 3400,
-        "XpTotal": 69200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "43": {
-        "Level": 43,
-        "XpToNextLevel": 3500,
-        "XpTotal": 72700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "44": {
-        "Level": 44,
-        "XpToNextLevel": 3600,
-        "XpTotal": 76300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "45": {
-        "Level": 45,
-        "XpToNextLevel": 3700,
-        "XpTotal": 80000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "46": {
-        "Level": 46,
-        "XpToNextLevel": 3800,
-        "XpTotal": 83800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "47": {
-        "Level": 47,
-        "XpToNextLevel": 3900,
-        "XpTotal": 87700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "48": {
-        "Level": 48,
-        "XpToNextLevel": 4000,
-        "XpTotal": 91700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "49": {
-        "Level": 49,
-        "XpToNextLevel": 4100,
-        "XpTotal": 95800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "50": {
-        "Level": 50,
-        "XpToNextLevel": 4200,
-        "XpTotal": 100000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "51": {
-        "Level": 51,
-        "XpToNextLevel": 4300,
-        "XpTotal": 104300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "52": {
-        "Level": 52,
-        "XpToNextLevel": 4400,
-        "XpTotal": 108700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "53": {
-        "Level": 53,
-        "XpToNextLevel": 4500,
-        "XpTotal": 113200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "54": {
-        "Level": 54,
-        "XpToNextLevel": 4600,
-        "XpTotal": 117800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "55": {
-        "Level": 55,
-        "XpToNextLevel": 4700,
-        "XpTotal": 122500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "56": {
-        "Level": 56,
-        "XpToNextLevel": 4800,
-        "XpTotal": 127300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "57": {
-        "Level": 57,
-        "XpToNextLevel": 4900,
-        "XpTotal": 132200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "58": {
-        "Level": 58,
-        "XpToNextLevel": 5000,
-        "XpTotal": 137200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "59": {
-        "Level": 59,
-        "XpToNextLevel": 5100,
-        "XpTotal": 142300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "60": {
-        "Level": 60,
-        "XpToNextLevel": 5200,
-        "XpTotal": 147500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "61": {
-        "Level": 61,
-        "XpToNextLevel": 5300,
-        "XpTotal": 152800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "62": {
-        "Level": 62,
-        "XpToNextLevel": 5400,
-        "XpTotal": 158200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "63": {
-        "Level": 63,
-        "XpToNextLevel": 5500,
-        "XpTotal": 163700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "64": {
-        "Level": 64,
-        "XpToNextLevel": 5600,
-        "XpTotal": 169300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "65": {
-        "Level": 65,
-        "XpToNextLevel": 5700,
-        "XpTotal": 175000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "66": {
-        "Level": 66,
-        "XpToNextLevel": 5800,
-        "XpTotal": 180800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "67": {
-        "Level": 67,
-        "XpToNextLevel": 5900,
-        "XpTotal": 186700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "68": {
-        "Level": 68,
-        "XpToNextLevel": 6000,
-        "XpTotal": 192700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "69": {
-        "Level": 69,
-        "XpToNextLevel": 6100,
-        "XpTotal": 198800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "70": {
-        "Level": 70,
-        "XpToNextLevel": 6200,
-        "XpTotal": 205000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "71": {
-        "Level": 71,
-        "XpToNextLevel": 6300,
-        "XpTotal": 211300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "72": {
-        "Level": 72,
-        "XpToNextLevel": 6400,
-        "XpTotal": 217700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "73": {
-        "Level": 73,
-        "XpToNextLevel": 6500,
-        "XpTotal": 224200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "74": {
-        "Level": 74,
-        "XpToNextLevel": 6600,
-        "XpTotal": 230800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "75": {
-        "Level": 75,
-        "XpToNextLevel": 6700,
-        "XpTotal": 237500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "76": {
-        "Level": 76,
-        "XpToNextLevel": 6800,
-        "XpTotal": 244300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "77": {
-        "Level": 77,
-        "XpToNextLevel": 6900,
-        "XpTotal": 251200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "78": {
-        "Level": 78,
-        "XpToNextLevel": 7000,
-        "XpTotal": 258200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "79": {
-        "Level": 79,
-        "XpToNextLevel": 7100,
-        "XpTotal": 265300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "80": {
-        "Level": 80,
-        "XpToNextLevel": 7200,
-        "XpTotal": 272500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "81": {
-        "Level": 81,
-        "XpToNextLevel": 7300,
-        "XpTotal": 279800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "82": {
-        "Level": 82,
-        "XpToNextLevel": 7400,
-        "XpTotal": 287200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "83": {
-        "Level": 83,
-        "XpToNextLevel": 7500,
-        "XpTotal": 294700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "84": {
-        "Level": 84,
-        "XpToNextLevel": 7600,
-        "XpTotal": 302300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "85": {
-        "Level": 85,
-        "XpToNextLevel": 7700,
-        "XpTotal": 310000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "86": {
-        "Level": 86,
-        "XpToNextLevel": 7800,
-        "XpTotal": 317800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "87": {
-        "Level": 87,
-        "XpToNextLevel": 7900,
-        "XpTotal": 325700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "88": {
-        "Level": 88,
-        "XpToNextLevel": 8000,
-        "XpTotal": 333700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "89": {
-        "Level": 89,
-        "XpToNextLevel": 8100,
-        "XpTotal": 341800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "90": {
-        "Level": 90,
-        "XpToNextLevel": 8200,
-        "XpTotal": 350000,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "91": {
-        "Level": 91,
-        "XpToNextLevel": 8300,
-        "XpTotal": 358300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "92": {
-        "Level": 92,
-        "XpToNextLevel": 8400,
-        "XpTotal": 366700,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "93": {
-        "Level": 93,
-        "XpToNextLevel": 8500,
-        "XpTotal": 375200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "94": {
-        "Level": 94,
-        "XpToNextLevel": 8600,
-        "XpTotal": 383800,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "95": {
-        "Level": 95,
-        "XpToNextLevel": 8700,
-        "XpTotal": 392500,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "96": {
-        "Level": 96,
-        "XpToNextLevel": 8800,
-        "XpTotal": 401300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "97": {
-        "Level": 97,
-        "XpToNextLevel": 8900,
-        "XpTotal": 410200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "98": {
-        "Level": 98,
-        "XpToNextLevel": 9000,
-        "XpTotal": 419200,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      },
-      "99": {
-        "Level": 99,
-        "XpToNextLevel": 9100,
-        "XpTotal": 428300,
-        "CurrencyReward": 0,
-        "ChaseRewardTemplateId": ""
-      }
+    "Level": 1,
+    "XpToNextLevel": 100,
+    "XpTotal": 0
+  },
+  "2": {
+    "Level": 2,
+    "XpToNextLevel": 250,
+    "XpTotal": 100
+  },
+  "3": {
+    "Level": 3,
+    "XpToNextLevel": 300,
+    "XpTotal": 350
+  },
+  "4": {
+    "Level": 4,
+    "XpToNextLevel": 350,
+    "XpTotal": 650
+  },
+  "5": {
+    "Level": 5,
+    "XpToNextLevel": 700,
+    "XpTotal": 1000
+  },
+  "6": {
+    "Level": 6,
+    "XpToNextLevel": 750,
+    "XpTotal": 1700
+  },
+  "7": {
+    "Level": 7,
+    "XpToNextLevel": 800,
+    "XpTotal": 2450
+  },
+  "8": {
+    "Level": 8,
+    "XpToNextLevel": 850,
+    "XpTotal": 3250
+  },
+  "9": {
+    "Level": 9,
+    "XpToNextLevel": 900,
+    "XpTotal": 4100
+  },
+  "10": {
+    "Level": 10,
+    "XpToNextLevel": 1000,
+    "XpTotal": 5000
+  },
+  "11": {
+    "Level": 11,
+    "XpToNextLevel": 1050,
+    "XpTotal": 6000
+  },
+  "12": {
+    "Level": 12,
+    "XpToNextLevel": 1100,
+    "XpTotal": 7050
+  },
+  "13": {
+    "Level": 13,
+    "XpToNextLevel": 1150,
+    "XpTotal": 8150
+  },
+  "14": {
+    "Level": 14,
+    "XpToNextLevel": 1200,
+    "XpTotal": 9300
+  },
+  "15": {
+    "Level": 15,
+    "XpToNextLevel": 1250,
+    "XpTotal": 10500
+  },
+  "16": {
+    "Level": 16,
+    "XpToNextLevel": 1300,
+    "XpTotal": 11750
+  },
+  "17": {
+    "Level": 17,
+    "XpToNextLevel": 1350,
+    "XpTotal": 13050
+  },
+  "18": {
+    "Level": 18,
+    "XpToNextLevel": 1400,
+    "XpTotal": 14400
+  },
+  "19": {
+    "Level": 19,
+    "XpToNextLevel": 1450,
+    "XpTotal": 15800
+  },
+  "20": {
+    "Level": 20,
+    "XpToNextLevel": 1500,
+    "XpTotal": 17250
+  },
+  "21": {
+    "Level": 21,
+    "XpToNextLevel": 1550,
+    "XpTotal": 18750
+  },
+  "22": {
+    "Level": 22,
+    "XpToNextLevel": 1600,
+    "XpTotal": 20300
+  },
+  "23": {
+    "Level": 23,
+    "XpToNextLevel": 1650,
+    "XpTotal": 21900
+  },
+  "24": {
+    "Level": 24,
+    "XpToNextLevel": 1700,
+    "XpTotal": 23550
+  },
+  "25": {
+    "Level": 25,
+    "XpToNextLevel": 1750,
+    "XpTotal": 25250
+  },
+  "26": {
+    "Level": 26,
+    "XpToNextLevel": 1800,
+    "XpTotal": 27000
+  },
+  "27": {
+    "Level": 27,
+    "XpToNextLevel": 1850,
+    "XpTotal": 28800
+  },
+  "28": {
+    "Level": 28,
+    "XpToNextLevel": 1900,
+    "XpTotal": 30650
+  },
+  "29": {
+    "Level": 29,
+    "XpToNextLevel": 1950,
+    "XpTotal": 32550
+  },
+  "30": {
+    "Level": 30,
+    "XpToNextLevel": 2000,
+    "XpTotal": 34500
+  },
+  "31": {
+    "Level": 31,
+    "XpToNextLevel": 2100,
+    "XpTotal": 36500
+  },
+  "32": {
+    "Level": 32,
+    "XpToNextLevel": 2200,
+    "XpTotal": 38600
+  },
+  "33": {
+    "Level": 33,
+    "XpToNextLevel": 2300,
+    "XpTotal": 40800
+  },
+  "34": {
+    "Level": 34,
+    "XpToNextLevel": 2400,
+    "XpTotal": 43100
+  },
+  "35": {
+    "Level": 35,
+    "XpToNextLevel": 2500,
+    "XpTotal": 45500
+  },
+  "36": {
+    "Level": 36,
+    "XpToNextLevel": 2600,
+    "XpTotal": 48000
+  },
+  "37": {
+    "Level": 37,
+    "XpToNextLevel": 2700,
+    "XpTotal": 50600
+  },
+  "38": {
+    "Level": 38,
+    "XpToNextLevel": 2800,
+    "XpTotal": 53300
+  },
+  "39": {
+    "Level": 39,
+    "XpToNextLevel": 2900,
+    "XpTotal": 56100
+  },
+  "40": {
+    "Level": 40,
+    "XpToNextLevel": 3000,
+    "XpTotal": 59000
+  },
+  "41": {
+    "Level": 41,
+    "XpToNextLevel": 3200,
+    "XpTotal": 62000
+  },
+  "42": {
+    "Level": 42,
+    "XpToNextLevel": 3400,
+    "XpTotal": 65200
+  },
+  "43": {
+    "Level": 43,
+    "XpToNextLevel": 3600,
+    "XpTotal": 68600
+  },
+  "44": {
+    "Level": 44,
+    "XpToNextLevel": 3800,
+    "XpTotal": 72200
+  },
+  "45": {
+    "Level": 45,
+    "XpToNextLevel": 4000,
+    "XpTotal": 76000
+  },
+  "46": {
+    "Level": 46,
+    "XpToNextLevel": 4200,
+    "XpTotal": 80000
+  },
+  "47": {
+    "Level": 47,
+    "XpToNextLevel": 4400,
+    "XpTotal": 84200
+  },
+  "48": {
+    "Level": 48,
+    "XpToNextLevel": 4600,
+    "XpTotal": 88600
+  },
+  "49": {
+    "Level": 49,
+    "XpToNextLevel": 4800,
+    "XpTotal": 93200
+  },
+  "50": {
+    "Level": 50,
+    "XpToNextLevel": 5000,
+    "XpTotal": 98000
+  },
+  "51": {
+    "Level": 51,
+    "XpToNextLevel": 5300,
+    "XpTotal": 103000
+  },
+  "52": {
+    "Level": 52,
+    "XpToNextLevel": 5600,
+    "XpTotal": 108300
+  },
+  "53": {
+    "Level": 53,
+    "XpToNextLevel": 5900,
+    "XpTotal": 113900
+  },
+  "54": {
+    "Level": 54,
+    "XpToNextLevel": 6200,
+    "XpTotal": 119800
+  },
+  "55": {
+    "Level": 55,
+    "XpToNextLevel": 6500,
+    "XpTotal": 126000
+  },
+  "56": {
+    "Level": 56,
+    "XpToNextLevel": 6800,
+    "XpTotal": 132500
+  },
+  "57": {
+    "Level": 57,
+    "XpToNextLevel": 7100,
+    "XpTotal": 139300
+  },
+  "58": {
+    "Level": 58,
+    "XpToNextLevel": 7400,
+    "XpTotal": 146400
+  },
+  "59": {
+    "Level": 59,
+    "XpToNextLevel": 7700,
+    "XpTotal": 153800
+  },
+  "60": {
+    "Level": 60,
+    "XpToNextLevel": 8000,
+    "XpTotal": 161500
+  },
+  "61": {
+    "Level": 61,
+    "XpToNextLevel": 8400,
+    "XpTotal": 169500
+  },
+  "62": {
+    "Level": 62,
+    "XpToNextLevel": 8800,
+    "XpTotal": 177900
+  },
+  "63": {
+    "Level": 63,
+    "XpToNextLevel": 9200,
+    "XpTotal": 186700
+  },
+  "64": {
+    "Level": 64,
+    "XpToNextLevel": 9600,
+    "XpTotal": 195900
+  },
+  "65": {
+    "Level": 65,
+    "XpToNextLevel": 10000,
+    "XpTotal": 205500
+  },
+  "66": {
+    "Level": 66,
+    "XpToNextLevel": 10400,
+    "XpTotal": 215500
+  },
+  "67": {
+    "Level": 67,
+    "XpToNextLevel": 10800,
+    "XpTotal": 225900
+  },
+  "68": {
+    "Level": 68,
+    "XpToNextLevel": 11200,
+    "XpTotal": 236700
+  },
+  "69": {
+    "Level": 69,
+    "XpToNextLevel": 11600,
+    "XpTotal": 247900
+  },
+  "70": {
+    "Level": 70,
+    "XpToNextLevel": 12000,
+    "XpTotal": 259500
+  },
+  "71": {
+    "Level": 71,
+    "XpToNextLevel": 12500,
+    "XpTotal": 271500
+  },
+  "72": {
+    "Level": 72,
+    "XpToNextLevel": 13000,
+    "XpTotal": 284000
+  },
+  "73": {
+    "Level": 73,
+    "XpToNextLevel": 13500,
+    "XpTotal": 297000
+  },
+  "74": {
+    "Level": 74,
+    "XpToNextLevel": 14000,
+    "XpTotal": 310500
+  },
+  "75": {
+    "Level": 75,
+    "XpToNextLevel": 14500,
+    "XpTotal": 324500
+  },
+  "76": {
+    "Level": 76,
+    "XpToNextLevel": 15000,
+    "XpTotal": 339000
+  },
+  "77": {
+    "Level": 77,
+    "XpToNextLevel": 15500,
+    "XpTotal": 354000
+  },
+  "78": {
+    "Level": 78,
+    "XpToNextLevel": 16000,
+    "XpTotal": 369500
+  },
+  "79": {
+    "Level": 79,
+    "XpToNextLevel": 16500,
+    "XpTotal": 385500
+  },
+  "80": {
+    "Level": 80,
+    "XpToNextLevel": 17000,
+    "XpTotal": 402000
+  },
+  "81": {
+    "Level": 81,
+    "XpToNextLevel": 18000,
+    "XpTotal": 419000
+  },
+  "82": {
+    "Level": 82,
+    "XpToNextLevel": 19000,
+    "XpTotal": 437000
+  },
+  "83": {
+    "Level": 83,
+    "XpToNextLevel": 20000,
+    "XpTotal": 456000
+  },
+  "84": {
+    "Level": 84,
+    "XpToNextLevel": 21000,
+    "XpTotal": 476000
+  },
+  "85": {
+    "Level": 85,
+    "XpToNextLevel": 22000,
+    "XpTotal": 497000
+  },
+  "86": {
+    "Level": 86,
+    "XpToNextLevel": 23000,
+    "XpTotal": 519000
+  },
+  "87": {
+    "Level": 87,
+    "XpToNextLevel": 24000,
+    "XpTotal": 542000
+  },
+  "88": {
+    "Level": 88,
+    "XpToNextLevel": 25000,
+    "XpTotal": 566000
+  },
+  "89": {
+    "Level": 89,
+    "XpToNextLevel": 26000,
+    "XpTotal": 591000
+  },
+  "90": {
+    "Level": 90,
+    "XpToNextLevel": 28000,
+    "XpTotal": 617000
+  },
+  "91": {
+    "Level": 91,
+    "XpToNextLevel": 30000,
+    "XpTotal": 645000
+  },
+  "92": {
+    "Level": 92,
+    "XpToNextLevel": 32000,
+    "XpTotal": 675000
+  },
+  "93": {
+    "Level": 93,
+    "XpToNextLevel": 34000,
+    "XpTotal": 707000
+  },
+  "94": {
+    "Level": 94,
+    "XpToNextLevel": 36000,
+    "XpTotal": 741000
+  },
+  "95": {
+    "Level": 95,
+    "XpToNextLevel": 38000,
+    "XpTotal": 777000
+  },
+  "96": {
+    "Level": 96,
+    "XpToNextLevel": 40000,
+    "XpTotal": 815000
+  },
+  "97": {
+    "Level": 97,
+    "XpToNextLevel": 43000,
+    "XpTotal": 855000
+  },
+  "98": {
+    "Level": 98,
+    "XpToNextLevel": 46000,
+    "XpTotal": 898000
+  },
+  "99": {
+    "Level": 99,
+    "XpToNextLevel": 50000,
+    "XpTotal": 944000
+  }
 }

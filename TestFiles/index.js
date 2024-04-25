@@ -1,5 +1,6 @@
 /*const datafile = require("./Data.json")
-var tesa =0;
+var tesa = 0;
+var Data = [];
 for(var index in datafile) {
   tesa += 1;
   var dataHa = datafile[index];
@@ -9,19 +10,109 @@ for(var index in datafile) {
  //   "XpTotal": dataHa.XpTotal
  // })
   
-  var temp = []
-  if(dataHa.ChaseRewardTemplateId != "") {
-    temp.push({
-      "TemplateId": dataHa.ChaseRewardTemplateId,
-      "Level": tesa,
-      "Quantity": 1
-    })
+  //var temp = []
+  //if(dataHa.ChaseRewardTemplateId != "") {
+    //temp.push({
+    //  "TemplateId": dataHa.ChaseRewardTemplateId,
+    ///  "Level": tesa,
+    //  "Quantity": 1
+    //})
+  //}
+
+  Data.push({
+     "Level": dataHa.Level,
+     "XpToNextLevel": dataHa.XpToNextLevel,
+     "XpTotal": dataHa.XpTotal
+   })
+  //console.log({ "Rewards": temp })
+}
+console.log(JSON.stringify(Data));*/
+
+const datafile = require("./BattlePass.json");
+var Data = [];
+var Level = 0;
+
+for(var index in datafile){
+  var dataha = datafile[index];
+
+  //var DataToPush = {
+     // Rewards: dataha.Rewards,
+     // Level: Level
+  //}
+  var rewards = []
+  dataha.Rewards.forEach(e => { 
+     var templatePush = "";
+     if(e.TemplateId != "") {
+        templatePush = e.TemplateId
+     }else {
+        if(e.ItemDefinition.AssetPathName) {
+            var test = e.ItemDefinition.AssetPathName.split(".")[1].toLowerCase();
+            console.log(e.ItemDefinition.AssetPathName);
+            //console.log(test);
+            //if(test.includes(""))
+            if(test.includes("eid") || test.includes("emoji")){
+               templatePush = `AthenaDance:${test}`
+            }
+            else if(test.includes("mtxgiveaway")) {
+              templatePush = `Currency:${test}` 
+            }else if(test.includes("athenaseasonalxp")) {
+              templatePush = `AccountResource:${test}`
+            }else if(test.includes("glider")) {
+              templatePush = `AthenaGlider:${test}`
+            }else if(test.includes("cid")) {
+              templatePush = `AthenaCharacter:${test}`
+            }else if(test.includes("athenaseason") && test.includes("xp")) { // idk
+              templatePush = `Token:${test}`
+            }else if(test.includes("pickaxe")) {
+              templatePush = `AthenaPickaxe:${test}`
+            }//else if()
+        }
+     }
+     
+     rewards.push({
+        templateId: templatePush,
+        quantity: e.Quantity
+     })
+  })
+
+  var DataToPush = {
+      Rewards: rewards,
+      Level: Level
   }
 
-  console.log({ "Rewards": temp })
-}*/
+  Data.push(DataToPush);
 
-const datafile = require("./Quest.json")
+  Level += 1;
+}
+
+console.log(JSON.stringify(Data));
+
+/*
+const datafile = require("./SeasonStars.json");
+var Data = [];
+var Level = 0;
+for(var index in datafile){
+  var dataha = datafile[index];
+  var BattleStars = 0;
+  for(var RewardsIndex in dataha.Rewards) 
+  {
+      var te = dataha.Rewards[RewardsIndex];
+      BattleStars = te.Quantity;
+  }
+  var DataToPush = {
+      Level: Level,
+      BattleStars
+  };
+  
+
+  Data.push(DataToPush);
+
+  Level += 1;
+}
+
+console.log(JSON.stringify(Data));*/
+
+/*const datafile = require("./Quest.json")
 var tesa =0;
 for(var index in datafile) {
   tesa += 1;
@@ -73,4 +164,4 @@ for(var index in datafile) {
   //}
 
   console.log(JSON.stringify(temp))
-}
+}*/

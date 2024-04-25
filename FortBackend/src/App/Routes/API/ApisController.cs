@@ -143,11 +143,11 @@ namespace FortBackend.src.App.Routes.API
                         profileCacheEntry.AccountData.commoncore.Seasons.Add(new SeasonClass
                         {
                             SeasonNumber = Season,
+                            SeasonXP = 0,
                             BookLevel = 1,
                             BookXP = 0,
                             BookPurchased = false,
                             Quests = new Dictionary<string, object>(),
-                            BattleStars = 0,
                             DailyQuests = new DailyQuests
                             {
                                 Interval = "0001-01-01T00:00:00.000Z",

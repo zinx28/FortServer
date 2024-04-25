@@ -47,11 +47,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                     SeasonClass seasonJson = new SeasonClass
                     {
                         SeasonNumber = Season.Season,
+                        SeasonXP = 0,
                         BookLevel = 1,
                         BookXP = 0,
                         BookPurchased = false,
                         Quests = new Dictionary<string, object>(),
-                        BattleStars = 0,
                         DailyQuests = new DailyQuests
                         {
                             Interval = "0001-01-01T00:00:00.000Z",
@@ -109,7 +109,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             {
                                                 use_random_loadout = false,
                                                 past_seasons = new List<object>(),
-                                                season_match_boost = seasonObject.season_match_boost,
                                                 loadouts =  profileCacheEntry.AccountData.athena.loadouts,
                                                 mfa_reward_claimed = false,
                                                 rested_xp_overflow = 0,
@@ -132,16 +131,17 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 rested_xp_exchange = 1,
                                                 rested_xp_cumulative = 0,
                                                 rested_xp_mult = 0,
+                                                season_match_boost = seasonObject.season_match_boost,
                                                 season_friend_match_boost = seasonObject.season_friend_match_boost,
                                                 active_loadout_index = Array.IndexOf(profileCacheEntry.AccountData.athena.loadouts, profileCacheEntry.AccountData.athena.last_applied_loadout),
                                                 purchased_bp_offers = new List<object> { },
                                                 last_applied_loadout = profileCacheEntry.AccountData.athena.last_applied_loadout?.ToString() ?? "",
-                                                xp = seasonObject.BookXP,
-                                                rested_xp = seasonObject.BookXP,
+                                                xp = seasonObject.SeasonXP,
+                                                rested_xp = seasonObject.SeasonXP,
                                                 accountLevel = seasonObject.Level,
                                                 level = seasonObject.Level,
                                                 book_purchased = seasonObject.BookPurchased,
-                                                book_xp = seasonObject.BattleStars,
+                                                book_xp = seasonObject.BookXP,
                                                 season_num = Season.Season,
                                                 book_level = seasonObject.BookLevel
                                             }

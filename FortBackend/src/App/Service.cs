@@ -11,6 +11,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Security.Cryptography.X509Certificates;
 using FortBackend.src.App.Utilities.Discord;
+using FortBackend.src.App.Utilities.Quests;
 namespace FortBackend.src.App
 {
     public class Service
@@ -92,6 +93,12 @@ namespace FortBackend.src.App
                 Logger.Log("DefaultColors is loaded", "Services");
             }
             catch (Exception ex) { Logger.Error("DefaultColors -> " + ex.Message); }
+
+            try
+            {
+                DailyQuestsManager.LoadDailyQuests();
+            }
+            catch (Exception ex) { Logger.Error("DailyQuests -> " + ex.Message); }
 
             startup.ConfigureServices(builder.Services);
 

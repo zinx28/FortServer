@@ -50,7 +50,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == Season.Season))
                     {
                         // Response Data ~ DONT CHANGE
-                        var MultiUpdates = new List<object>();
+                        List<object> MultiUpdates = new List<object>();
                         int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
                         int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
 
@@ -243,90 +243,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                                 if (BookLevelOG <= BattlePass.Level) continue;
                                                                 if (BattlePass.Level > FoundSeason.Level) break;
 
-                                                                foreach (ItemInfo iteminfo in BattlePass.Rewards)
-                                                                {
-                                                                    if (!profileCacheEntry.AccountData.athena.Items.ContainsKey(iteminfo.TemplateId))
-                                                                    {
-                                                                        if (!profileCacheEntry.AccountData.commoncore.Items.ContainsKey(iteminfo.TemplateId))
-                                                                        {
-                                                                            if (iteminfo.TemplateId.Contains("HomebaseBannerIcon"))
-                                                                            {
-                                                                                profileCacheEntry.AccountData.commoncore.Items.Add(iteminfo.TemplateId, new CommonCoreItem
-                                                                                {
-                                                                                    templateId = iteminfo.TemplateId,
-                                                                                    attributes = new CommonCoreItemAttributes
-                                                                                    {
-                                                                                        item_seen = false
-                                                                                    },
-                                                                                    quantity = iteminfo.Quantity,
-                                                                                });
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("Athena"))
-                                                                            {
-                                                                                profileCacheEntry.AccountData.athena.Items.Add(iteminfo.TemplateId, new AthenaItem
-                                                                                {
-                                                                                    templateId = iteminfo.TemplateId,
-                                                                                    attributes = new AthenaItemAttributes
-                                                                                    {
-                                                                                        favorite = false,
-                                                                                        item_seen = false,
-                                                                                        level = 1,
-                                                                                        max_level_bonus = 0,
-                                                                                        rnd_sel_cnt = 0,
-                                                                                        variants = new List<AthenaItemVariants>(),
-                                                                                        xp = 0
-                                                                                    },
-                                                                                    quantity = iteminfo.Quantity,
-                                                                                });
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("Token:"))
-                                                                            {
-                                                                                if (iteminfo.TemplateId.Contains("athenaseasonfriendxpboost"))
-                                                                                {
-                                                                                    FoundSeason.season_friend_match_boost += iteminfo.Quantity;
-
-                                                                                    MultiUpdates.Add(new
-                                                                                    {
-                                                                                        changeType = "statModified",
-                                                                                        name = "season_match_boost",
-                                                                                        value = FoundSeason.season_friend_match_boost
-                                                                                    });
-                                                                                }
-                                                                                else if (iteminfo.TemplateId.Contains("athenaseasonxpboost"))
-                                                                                {
-                                                                                    //  season_match_boost
-                                                                                    FoundSeason.season_match_boost += iteminfo.Quantity;
-
-                                                                                    MultiUpdates.Add(new
-                                                                                    {
-                                                                                        changeType = "statModified",
-                                                                                        name = "season_friend_match_boost",
-                                                                                        value = FoundSeason.season_friend_match_boost
-                                                                                    });
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
-                                                                                }
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("Currency:"))
-                                                                            {
-                                                                                currencyItem.quantity += iteminfo.Quantity;
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("AccountResource:"))
-                                                                            {
-                                                                                FoundSeason.SeasonXP += iteminfo.Quantity;
-
-                                                                                (FoundSeason, NeedItems) = await LevelUpdater.Init(Season.Season, FoundSeason, NeedItems);
-                                                                                NeedItems = true; // force it as we don't want this to become false here
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
+                                                                (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                             }
 
                                                             foreach (var BattlePass in PaidTier)
@@ -335,90 +252,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                                 if (BookLevelOG <= BattlePass.Level) continue;
                                                                 if (BattlePass.Level > FoundSeason.Level) break;
 
-                                                                foreach (ItemInfo iteminfo in BattlePass.Rewards)
-                                                                {
-                                                                    if (!profileCacheEntry.AccountData.athena.Items.ContainsKey(iteminfo.TemplateId))
-                                                                    {
-                                                                        if (!profileCacheEntry.AccountData.commoncore.Items.ContainsKey(iteminfo.TemplateId))
-                                                                        {
-                                                                            if (iteminfo.TemplateId.Contains("HomebaseBannerIcon"))
-                                                                            {
-                                                                                profileCacheEntry.AccountData.commoncore.Items.Add(iteminfo.TemplateId, new CommonCoreItem
-                                                                                {
-                                                                                    templateId = iteminfo.TemplateId,
-                                                                                    attributes = new CommonCoreItemAttributes
-                                                                                    {
-                                                                                        item_seen = false
-                                                                                    },
-                                                                                    quantity = iteminfo.Quantity,
-                                                                                });
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("Athena"))
-                                                                            {
-                                                                                profileCacheEntry.AccountData.athena.Items.Add(iteminfo.TemplateId, new AthenaItem
-                                                                                {
-                                                                                    templateId = iteminfo.TemplateId,
-                                                                                    attributes = new AthenaItemAttributes
-                                                                                    {
-                                                                                        favorite = false,
-                                                                                        item_seen = false,
-                                                                                        level = 1,
-                                                                                        max_level_bonus = 0,
-                                                                                        rnd_sel_cnt = 0,
-                                                                                        variants = new List<AthenaItemVariants>(),
-                                                                                        xp = 0
-                                                                                    },
-                                                                                    quantity = iteminfo.Quantity,
-                                                                                });
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("Token:"))
-                                                                            {
-                                                                                if (iteminfo.TemplateId.Contains("athenaseasonfriendxpboost"))
-                                                                                {
-                                                                                    FoundSeason.season_friend_match_boost += iteminfo.Quantity;
 
-                                                                                    MultiUpdates.Add(new
-                                                                                    {
-                                                                                        changeType = "statModified",
-                                                                                        name = "season_match_boost",
-                                                                                        value = FoundSeason.season_friend_match_boost
-                                                                                    });
-                                                                                }
-                                                                                else if (iteminfo.TemplateId.Contains("athenaseasonxpboost"))
-                                                                                {
-                                                                                    //  season_match_boost
-                                                                                    FoundSeason.season_match_boost += iteminfo.Quantity;
-
-                                                                                    MultiUpdates.Add(new
-                                                                                    {
-                                                                                        changeType = "statModified",
-                                                                                        name = "season_friend_match_boost",
-                                                                                        value = FoundSeason.season_friend_match_boost
-                                                                                    });
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
-                                                                                }
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("Currency:"))
-                                                                            {
-                                                                                currencyItem.quantity += iteminfo.Quantity;
-                                                                            }
-                                                                            else if (iteminfo.TemplateId.Contains("AccountResource:"))
-                                                                            {
-                                                                                FoundSeason.SeasonXP += iteminfo.Quantity;
-
-                                                                                (FoundSeason, NeedItems) = await LevelUpdater.Init(Season.Season, FoundSeason, NeedItems);
-                                                                                NeedItems = true; // force it as we don't want this to become false here
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
+                                                                (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                             }
                                                         }
                                                     }
@@ -441,49 +276,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     if (BookLevelOG <= BattlePass.Level) continue;
                                                     if (BattlePass.Level > FoundSeason.Level) break;
 
-                                                    foreach (ItemInfo iteminfo in BattlePass.Rewards)
-                                                    {
-                                                        if (!profileCacheEntry.AccountData.athena.Items.ContainsKey(iteminfo.TemplateId))
-                                                        {
-                                                            if (!profileCacheEntry.AccountData.commoncore.Items.ContainsKey(iteminfo.TemplateId))
-                                                            {
-                                                                if (iteminfo.TemplateId.Contains("HomebaseBannerIcon"))
-                                                                {
-                                                                    profileCacheEntry.AccountData.commoncore.Items.Add(iteminfo.TemplateId, new CommonCoreItem
-                                                                    {
-                                                                        templateId = iteminfo.TemplateId,
-                                                                        attributes = new CommonCoreItemAttributes
-                                                                        {
-                                                                            item_seen = false
-                                                                        },
-                                                                        quantity = iteminfo.Quantity,
-                                                                    });
-                                                                }
-                                                                else if (iteminfo.TemplateId.Contains("Athena"))
-                                                                {
-                                                                    profileCacheEntry.AccountData.athena.Items.Add(iteminfo.TemplateId, new AthenaItem
-                                                                    {
-                                                                        templateId = iteminfo.TemplateId,
-                                                                        attributes = new AthenaItemAttributes
-                                                                        {
-                                                                            favorite = false,
-                                                                            item_seen = false,
-                                                                            level = 1,
-                                                                            max_level_bonus = 0,
-                                                                            rnd_sel_cnt = 0,
-                                                                            variants = new List<AthenaItemVariants>(),
-                                                                            xp = 0
-                                                                        },
-                                                                        quantity = iteminfo.Quantity,
-                                                                    });
-                                                                }
-                                                                else
-                                                                {
-                                                                    Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
-                                                                }
-                                                            }
-                                                        }
-                                                    }
+                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                 }
                                             }
                                         }

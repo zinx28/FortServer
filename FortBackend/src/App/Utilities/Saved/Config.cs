@@ -36,7 +36,7 @@ namespace FortBackend.src.App.Utilities.Saved
         public string MongoDBConnectionName { get; set; } = "FortBackend"; // 
 
 
-        // ---  YOU MAY ADD THIS TO YOUR CONFIG
+        // ---  YOU MAY ADD THIS TO YOUR CONFIG ~ Auto in config now
         public bool bShowBotMessage { get; set; } = true; // just add this to your config like "bShowBotMessage": false;
         public string DiscordBotMessage { get; set; } = "FortBackend";
 
@@ -62,6 +62,7 @@ namespace FortBackend.src.App.Utilities.Saved
 
         // ENABLE FULL LOCKER FOR EVERYONE <3
         public bool FullLockerForEveryone { get; set; } = false;
+
         // THIS AUTO GENERATES DURING RUNTIME TO REDUCE LAG
         public Dictionary<string, AthenaItem> FullLocker_AthenaItems { get; set; } = new Dictionary<string, AthenaItem>();
         public Dictionary<string, CommonCoreItem> DefaultBanners_Items { get; set; } = new Dictionary<string, CommonCoreItem>();

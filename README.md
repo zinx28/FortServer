@@ -15,7 +15,7 @@ FortBackend is a Universal Fortnite Private Server Backend written in C#.
 
 ### Commands
 - /test
-- /who (this command only works if the user has a role, let's say helpers.. ig)
+- /who (this command only works if the user has a role, let's say moderator.. ig)
 
 ## HTTP
 - Just build on Release or Debug
@@ -26,7 +26,7 @@ FortBackend is a Universal Fortnite Private Server Backend written in C#.
 - Before you run the project, make sure you change the build type from (Debug or Release) to HTTPS
 
 ## Added/Not Added 
-- MCP (QueryProfile, Equipping, and useless things) [!]
+- MCP (Season 10 login is skunked.. i will need to look at this) [!]
 - Timeline [+]
 - Cloudstorage, ClientSaving [+]
 - 24/7 Shop (WIP - could be so random, items in wrong places) [!]

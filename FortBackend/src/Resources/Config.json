@@ -17,5 +17,9 @@
     "DetectedWebhookUrl": "",
     "EnableDetections": false,
     "FullLockerForEveryone": false,
-    "Cloudflare": false
+    "Cloudflare": false,
+
+
+    "bShowBotMessage": true,
+    "DiscordBotMessage": "FortBackend"
 }

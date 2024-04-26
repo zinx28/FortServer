@@ -10,6 +10,7 @@ using FortLibrary.MongoDB.Module;
 using FortBackend.src.App.Utilities;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
@@ -19,6 +20,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
         {
             string OfferId = Body.offerId;
             int Price = 0;
+
+            List<object> MultiUpdates = new List<object>();
 
             int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
             int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
@@ -123,9 +126,62 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             {
                                 currencyItem.quantity -= Price;
                                 seasonObject.BookPurchased = true;
+                                bool NeedItems = true;
+                                int BookLevelOG = seasonObject.BookLevel;
+                                List<Battlepass> FreeTier = BattlepassManager.FreeBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                                if (FreeTier != null)
+                                {
+                                    if (FreeTier.Count > 0)
+                                    {
+                                        if (Season.Season > 1)
+                                        {
+                                            List<Battlepass> PaidTier = BattlepassManager.PaidBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                                            if (PaidTier != null)
+                                            {
+                                                if (PaidTier.Count > 0)
+                                                {
+                                                    foreach (var BattlePass in FreeTier)
+                                                    {
+                                                        if (!NeedItems) break;
+                                                        //We don't need this check on purchase as we "WANT" the user to get them items
+                                                        //if (BookLevelOG <= BattlePass.Level) continue;
+                                                        if (BattlePass.Level > seasonObject.Level) break;
+
+                                                        (profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems);
+                                                    }
+
+                                                    foreach (var BattlePass in PaidTier)
+                                                    {
+                                                        if (!NeedItems) break;
+                                                        //if (BookLevelOG <= BattlePass.Level) continue;
+                                                        if (BattlePass.Level > seasonObject.Level) break;
 
 
-
+                                                        (profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems);
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    Logger.Error("PaidTier file is null [] ? battlepass tiering disabled");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Logger.Log("Unsupported season");
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Logger.Error("FreeTier file is null [] ? battlepass tiering disabled");
+                                    }
+                                }
+                                else
+                                {
+                                    Logger.Error($"This season is *NOT* supported ~ {Season.Season}", "ClientQuestLogin");
+                                }
                             }
                             else
                             {

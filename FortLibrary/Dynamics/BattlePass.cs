@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FortLibrary.Dynamics
 {
-    public class BattlePass
+    public class Battlepass
     {
         public List<ItemInfo> Rewards = new List<ItemInfo>();
         public int Level { get; set; } = 0;

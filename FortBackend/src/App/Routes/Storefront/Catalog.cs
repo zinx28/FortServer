@@ -2,9 +2,10 @@
 using FortLibrary.EpicResponses.Storefront;
 using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using System.IO;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortLibrary.Dynamics;
 
 namespace FortBackend.src.App.Routes.Storefront
 {
@@ -347,6 +348,19 @@ namespace FortBackend.src.App.Routes.Storefront
                     }
                 }
 
+                string SeasonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/Season/{season.Season}/BattlePass.json");
+                if (System.IO.File.Exists(SeasonPath))
+                {
+                    var SeasonData = System.IO.File.ReadAllText(SeasonPath);
+                    if(SeasonData != null)
+                    {
+                        StoreBattlepass itemshop = JsonConvert.DeserializeObject<StoreBattlepass>(SeasonData)!;
+                        if (itemshop != null)
+                        {
+                            ShopObject.storefronts.Add(itemshop);
+                        }
+                    }
+                }
                 return Ok(ShopObject);
             }
             catch (Exception ex)

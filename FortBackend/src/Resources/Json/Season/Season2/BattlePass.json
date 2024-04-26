@@ -1,0 +1,111 @@
+{
+    "name": "BRSeason2",
+    "catalogEntries": [
+        {
+            "offerId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
+            "devName": "BR.Season2.BattlePass.01",
+            "offerType": "StaticPrice",
+            "prices": [
+                {
+                    "currencyType": "MtxCurrency",
+                    "currencySubType": "",
+                    "regularPrice": 1800,
+                    "finalPrice": 950,
+                    "saleExpiration": "9999-12-31T23:59:59.999Z",
+                    "basePrice": 950
+                }
+            ],
+            "categories": [],
+            "dailyLimit": -1,
+            "weeklyLimit": -1,
+            "monthlyLimit": -1,
+            "refundable": false,
+            "appStoreId": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "requirements": [
+                {
+                    "requirementType": "DenyOnFulfillment",
+                    "requiredId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
+                    "minQuantity": 1
+                }
+            ],
+            "metaInfo": [
+                {
+                    "key": "Preroll",
+                    "value": "False"
+                }
+            ],
+            "catalogGroup": "",
+            "catalogGroupPriority": 0,
+            "sortPriority": 1,
+            "title": "Battle Pass",
+            "shortDescription": "Get it then!",
+            "description": "Season 10 through February 6.\nWant it all faster? You can use V-Bucks to buy rewards any time!",
+            "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season10_BattlePass.DA_BR_Season10_BattlePass",
+            "itemGrants": []
+        },
+        {
+            "offerId": "BigBlackPenis",
+            "devName": "BR.Season2.SingleTier.01",
+            "offerType": "StaticPrice",
+            "prices": [
+                {
+                    "currencyType": "MtxCurrency",
+                    "currencySubType": "",
+                    "regularPrice": 150,
+                    "dynamicRegularPrice": -1,
+                    "finalPrice": 150,
+                    "saleExpiration": "9999-12-31T23:59:59.999Z",
+                    "basePrice": 150
+                }
+            ],
+            "categories": [],
+            "dailyLimit": -1,
+            "weeklyLimit": -1,
+            "monthlyLimit": -1,
+            "refundable": false,
+            "appStoreId": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "requirements": [],
+            "metaInfo": [
+                {
+                    "key": "Preroll",
+                    "value": "False"
+                }
+            ],
+            "catalogGroup": "",
+            "catalogGroupPriority": 0,
+            "sortPriority": 0,
+            "title": "Battle Pass Level",
+            "shortDescription": "",
+            "description": "Get great rewards now!",
+            "displayAssetPath": "",
+            "itemGrants": []
+        }
+
+    ]
+}

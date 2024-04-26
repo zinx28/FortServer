@@ -215,25 +215,25 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                                 if (File.Exists(SeasonFreeBattlePassFolder))
                                 {
-                                    List<BattlePass> FreeTier = new List<BattlePass>();
+                                    List<Battlepass> FreeTier = new List<Battlepass>();
 
                                     var FreeBattlePass = File.ReadAllText(SeasonFreeBattlePassFolder);
                                     if (FreeBattlePass != null)
                                     {
-                                        FreeTier = JsonConvert.DeserializeObject<List<BattlePass>>(FreeBattlePass)!;
+                                        FreeTier = JsonConvert.DeserializeObject<List<Battlepass>>(FreeBattlePass)!;
 
                                         if (FreeTier.Count > 0)
                                         {
                                             if (Season.Season > 1)
                                             {
-                                                List<BattlePass> PaidTier = new List<BattlePass>();
+                                                List<Battlepass> PaidTier = new List<Battlepass>();
 
                                                 if (File.Exists(SeasonPaidBattlePassFolder))
                                                 {
                                                     var PaidBattlePass = File.ReadAllText(SeasonFreeBattlePassFolder);
                                                     if (PaidBattlePass != null)
                                                     {
-                                                        PaidTier = JsonConvert.DeserializeObject<List<BattlePass>>(PaidBattlePass)!;
+                                                        PaidTier = JsonConvert.DeserializeObject<List<Battlepass>>(PaidBattlePass)!;
 
                                                         if (PaidTier.Count > 0)
                                                         {

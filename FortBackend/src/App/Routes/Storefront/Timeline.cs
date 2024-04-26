@@ -31,7 +31,7 @@ namespace FortBackend.src.App.Routes.Storefront
                 if(shopData == null) { return BadRequest(new { }); } // if null return
 
                 VersionClass season = await SeasonUserAgent(Request);
-
+           
                 var Response = new
                 {
                     channels = new Dictionary<string, object>

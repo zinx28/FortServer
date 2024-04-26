@@ -23,7 +23,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                 if (!string.IsNullOrEmpty(userAgent))
                 {
                     string[] userAgentParts = userAgent.Split('-');
-
+                    Console.WriteLine(userAgent);
                     if (userAgentParts.Length > 1)
                     {
                         string[] seasonParts = userAgentParts[1].Split('.');
@@ -34,7 +34,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                             {
                                 VersionIG.SeasonFull = float.Parse($"{parsedSeason1}.{parsedSeason2}");
                             }
-
+                            //Console.WriteLine(seasonParts[0]);
                             if (int.TryParse(seasonParts[0], out int parsedSeason))
                             {
                                 if (saved.ForceSeason == false)
@@ -46,8 +46,24 @@ namespace FortBackend.src.App.Utilities.Helpers
                                     VersionIG.Season = saved.Season;
                                 }
                             }
+                            else
+                            {
+                                if(seasonParts[0].Contains("Cert"))
+                                {
+                                    VersionIG.Season = 1;
+                                }
+                                else if (seasonParts[0].Contains("Next"))
+                                {
+                                    VersionIG.Season = 2;
+                                }
+                            }
                         }
                     }
+                }
+
+                if (saved.ForceSeason)
+                {
+                    VersionIG.Season = saved.Season;
                 }
             }
             catch (Exception ex)

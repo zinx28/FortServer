@@ -47,6 +47,10 @@ namespace FortBackend.src.App
                 throw new Exception("Couldn't deserialize config");
             }else
             {
+                if (Saved.DeserializeConfig.ForceSeason)
+                {
+                    Logger.Log($"Force Season Is On [{Saved.DeserializeConfig.Season}]", "Config");
+                }
                 Logger.Log("Loaded Config", "CONFIG");
             }
 

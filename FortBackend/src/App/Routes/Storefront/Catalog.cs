@@ -355,9 +355,76 @@ namespace FortBackend.src.App.Routes.Storefront
                     if(SeasonData != null)
                     {
                         StoreBattlepassPages itemshop = JsonConvert.DeserializeObject<StoreBattlepassPages>(SeasonData)!;
+                        
+                        // i cant be bothered
                         if (itemshop != null)
                         {
-                            ShopObject.storefronts.Add(itemshop);
+                            List<object> responseobject = new List<object>();
+                            foreach(catalogEntrieStore a in itemshop.catalogEntries)
+                            {
+                                List<object> array = new List<object>();
+
+                                if (a.prices[0].saleType != null)
+                                {
+                                    array.Add(new
+                                    {
+                                        currencyType = a.prices[0].currencyType,
+                                        currencySubType = a.prices[0].currencySubType,
+                                        regularPrice = a.prices[0].regularPrice,
+                                        finalPrice = a.prices[0].finalPrice,
+                                        saleType = a.prices[0].saleType,
+                                        saleExpiration = a.prices[0].saleExpiration,
+                                        basePrice = a.prices[0].basePrice,
+                                    });
+                                }
+                                else
+                                {
+
+                                    array.Add(new
+                                    {
+                                        currencyType = a.prices[0].currencyType,
+                                        currencySubType = a.prices[0].currencySubType,
+                                        regularPrice = a.prices[0].regularPrice,
+                                        finalPrice = a.prices[0].finalPrice,
+                                        //saleType = a.prices[0].saleType,
+                                        saleExpiration = a.prices[0].saleExpiration,
+                                        basePrice = a.prices[0].basePrice,
+                                    });
+                                }
+
+                                var ResponseItem = new
+                                {
+                                    devName = $"{a.devName}",
+                                    offerId = $"v2:/{a.offerId}",
+                                    offerType = "StaticPrice",
+                                    prices = array,
+                                    categories = a.categories,
+                                    dailyLimit = a.dailyLimit,
+                                    weeklyLimit = a.weeklyLimit,
+                                    monthlyLimit = a.monthlyLimit,
+                                    refundable = a.refundable,
+                                    appStoreId = a.appStoreId,
+                                    requirements = a.requirements,
+                                    giftInfo = a.giftInfo,
+                                    metaInfo = a.metaInfo,
+                                    displayAssetPath = a.displayAssetPath,
+                                    itemGrants = a.itemGrants,
+                                    sortPriority = a.sortPriority,
+                                    catalogGroupPriority = 0,
+                                    title = a.title,
+                                    shortDescription = a.shortDescription,
+                                    description = a.description
+                                };
+
+                                responseobject.Add(ResponseItem);
+                            }
+
+                            var SeasonBattlepassinfo = new
+                            {
+                                name = itemshop.name,
+                                catalogEntries = responseobject
+                            };
+                            ShopObject.storefronts.Add(SeasonBattlepassinfo);
                         }
                     }
                 }

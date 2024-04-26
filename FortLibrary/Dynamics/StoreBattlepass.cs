@@ -17,7 +17,7 @@ namespace FortLibrary.Dynamics
     public class StoreBattlepassPages
     {
         public string name { get; set; } = string.Empty;
-        public List<catalogEntrieStore> catalogEntries { get; set; } = new List<catalogEntrie>();
+        public List<catalogEntrieStore> catalogEntries { get; set; } = new List<catalogEntrieStore>();
 
     }
 }

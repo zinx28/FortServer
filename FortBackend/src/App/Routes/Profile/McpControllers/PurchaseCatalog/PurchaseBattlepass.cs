@@ -121,9 +121,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             }
                             else if (ShopContent.devName.ToString().Contains("BattlePass"))
                             {
-                                
-
                                 currencyItem.quantity -= Price;
+                                seasonObject.BookPurchased = true;
+
+
 
                             }
                             else

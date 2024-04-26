@@ -195,8 +195,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         var SeasonXPFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonXP.json");
                         var SeasonBattleStarsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonBP.json");
-                        var SeasonFreeBattlePassFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonFreeBattlepass.json");
-                        var SeasonPaidBattlePassFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonPaidBattlepass.json");
+                      
                         int BookLevelOG = FoundSeason.BookLevel;
                         bool NeedItems = false;
                         // unsupported seasons will not go though.. so it doesn't break stuff
@@ -213,83 +212,74 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                                 // BATTLE PASS SYSTEM
 
-                                if (File.Exists(SeasonFreeBattlePassFolder))
+                                List<Battlepass> FreeTier = BattlepassManager.FreeBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                                if(FreeTier != null)
                                 {
-                                    List<Battlepass> FreeTier = new List<Battlepass>();
-
-                                    var FreeBattlePass = File.ReadAllText(SeasonFreeBattlePassFolder);
-                                    if (FreeBattlePass != null)
+                                    if (FreeTier.Count > 0)
                                     {
-                                        FreeTier = JsonConvert.DeserializeObject<List<Battlepass>>(FreeBattlePass)!;
-
-                                        if (FreeTier.Count > 0)
+                                        if (Season.Season > 1)
                                         {
-                                            if (Season.Season > 1)
+                                            List<Battlepass> PaidTier = BattlepassManager.PaidBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                                            if(PaidTier != null)
                                             {
-                                                List<Battlepass> PaidTier = new List<Battlepass>();
-
-                                                if (File.Exists(SeasonPaidBattlePassFolder))
+                                                if (PaidTier.Count > 0)
                                                 {
-                                                    var PaidBattlePass = File.ReadAllText(SeasonFreeBattlePassFolder);
-                                                    if (PaidBattlePass != null)
+                                                    foreach (var BattlePass in FreeTier)
                                                     {
-                                                        PaidTier = JsonConvert.DeserializeObject<List<Battlepass>>(PaidBattlePass)!;
+                                                        if (!NeedItems) break;
+                                                        if (BookLevelOG <= BattlePass.Level) continue;
+                                                        if (BattlePass.Level > FoundSeason.Level) break;
 
-                                                        if (PaidTier.Count > 0)
-                                                        {
-                                                            foreach (var BattlePass in FreeTier)
-                                                            {
-                                                                if (!NeedItems) break;
-                                                                if (BookLevelOG <= BattlePass.Level) continue;
-                                                                if (BattlePass.Level > FoundSeason.Level) break;
-
-                                                                (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
-                                                            }
-
-                                                            foreach (var BattlePass in PaidTier)
-                                                            {
-                                                                if (!NeedItems) break;
-                                                                if (BookLevelOG <= BattlePass.Level) continue;
-                                                                if (BattlePass.Level > FoundSeason.Level) break;
-
-
-                                                                (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
-                                                            }
-                                                        }
+                                                        (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                     }
-                                                    else
+
+                                                    foreach (var BattlePass in PaidTier)
                                                     {
-                                                        Logger.Error("PaidTier file is null [] ? battlepass tiering disabled");
+                                                        if (!NeedItems) break;
+                                                        if (BookLevelOG <= BattlePass.Level) continue;
+                                                        if (BattlePass.Level > FoundSeason.Level) break;
+
+
+                                                        (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    Logger.Log("Unsupported season");
+                                                    Logger.Error("PaidTier file is null [] ? battlepass tiering disabled");
                                                 }
                                             }
                                             else
                                             {
-                                                // season 1 only free tier
-                                                foreach (var BattlePass in FreeTier)
-                                                {
-                                                    if (!NeedItems) break;
-                                                    if (BookLevelOG <= BattlePass.Level) continue;
-                                                    if (BattlePass.Level > FoundSeason.Level) break;
-
-                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
-                                                }
+                                                Logger.Log("Unsupported season");
                                             }
                                         }
                                         else
                                         {
-                                            Logger.Error("FreeTier file is null [] ? battlepass tiering disabled");
+                                            // season 1 only free tier
+                                            foreach (var BattlePass in FreeTier)
+                                            {
+                                                if (!NeedItems) break;
+                                                if (BookLevelOG <= BattlePass.Level) continue;
+                                                if (BattlePass.Level > FoundSeason.Level) break;
+
+                                                (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
+                                            }
                                         }
+                                    }
+                                    else
+                                    {
+                                        Logger.Error("FreeTier file is null [] ? battlepass tiering disabled");
                                     }
                                 }
                                 else
                                 {
                                     Logger.Error($"This season is *NOT* supported ~ {Season.Season}", "ClientQuestLogin");
                                 }
+                            
+                            
+                                    
 
                                 MultiUpdates.Add(new
                                 {

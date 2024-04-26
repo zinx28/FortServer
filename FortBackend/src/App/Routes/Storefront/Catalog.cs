@@ -348,7 +348,7 @@ namespace FortBackend.src.App.Routes.Storefront
                     }
                 }
 
-                string SeasonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/Season/{season.Season}/BattlePass.json");
+                string SeasonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/Season/Season{season.Season}/BattlePass.json");
                 if (System.IO.File.Exists(SeasonPath))
                 {
                     var SeasonData = System.IO.File.ReadAllText(SeasonPath);

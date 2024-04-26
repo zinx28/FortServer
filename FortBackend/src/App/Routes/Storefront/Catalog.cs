@@ -354,7 +354,7 @@ namespace FortBackend.src.App.Routes.Storefront
                     var SeasonData = System.IO.File.ReadAllText(SeasonPath);
                     if(SeasonData != null)
                     {
-                        StoreBattlepass itemshop = JsonConvert.DeserializeObject<StoreBattlepass>(SeasonData)!;
+                        StoreBattlepassPages itemshop = JsonConvert.DeserializeObject<StoreBattlepassPages>(SeasonData)!;
                         if (itemshop != null)
                         {
                             ShopObject.storefronts.Add(itemshop);

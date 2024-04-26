@@ -8,6 +8,11 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using System.Text.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary;
+using FortLibrary.Dynamics;
+using Newtonsoft.Json;
+using FortLibrary.EpicResponses.Storefront;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -53,6 +58,43 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                     Mcp mcp = await PurchaseItem.Init(Season, ProfileId, Body, profileCacheEntry);
                                     return mcp;
                                 }
+                                else
+                                {
+                                    // should be battlepass but we can verify that
+                                    StoreBattlepassPages battlepass = BattlepassManager.BattlePasses.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                                    if (battlepass != null)
+                                    {
+                                        bool FoundId = false ;
+                                        foreach (catalogEntrieStore a in battlepass.catalogEntries)
+                                        {
+                                            if(a.offerId == OfferId)
+                                            {
+                                                FoundId = true;
+                                                break;
+                                            }
+                                        }
+
+                                        if (FoundId)
+                                        {
+                                            Mcp mcp = await PurchaseBattlepass.Init(Season, ProfileId, Body, profileCacheEntry, battlepass);
+                                            return mcp;
+                                        }
+                                        else
+                                        {
+                                            throw new BaseError
+                                            {
+                                                errorCode = "errors.com.epicgames.modules.catalog",
+                                                errorMessage = "Couldn't find battlepass offer: " + OfferId,
+                                                messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                                numericErrorCode = 12801,
+                                                originatingService = "any",
+                                                intent = "prod",
+                                                error_description = "Catalog Limit is at least 1!",
+                                            };
+                                        }
+                                    }
+                                }
                             }
                         }
 
@@ -66,7 +108,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             intent = "prod",
                             error_description = "Error trying to purchase item",
                         };
-                    }else
+                    }
+                    else
                     {
                         throw new BaseError
                         {

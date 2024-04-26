@@ -52,6 +52,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                     if (storefront.id == SecondSplitOfferId)
                     {
                         ShopContent = storefront;
+                        break;
                     }
                 }
 
@@ -60,6 +61,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                     if (storefront.id == SecondSplitOfferId)
                     {
                         ShopContent = storefront;
+                        break;
                     }
                 }
 

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Security.Cryptography.X509Certificates;
 using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Quests;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 namespace FortBackend.src.App
 {
     public class Service
@@ -103,6 +104,12 @@ namespace FortBackend.src.App
                 DailyQuestsManager.LoadDailyQuests();
             }
             catch (Exception ex) { Logger.Error("DailyQuests -> " + ex.Message); }
+
+            try
+            {
+                BattlepassManager.Init();
+            }
+            catch (Exception ex) { Logger.Error("Battlepass Data -> " + ex.Message); }
 
             startup.ConfigureServices(builder.Services);
 

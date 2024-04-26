@@ -6,6 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary.Dynamics;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 
 namespace FortBackend.src.App.Routes.Storefront
 {
@@ -348,86 +349,78 @@ namespace FortBackend.src.App.Routes.Storefront
                     }
                 }
 
-                string SeasonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/Season/Season{season.Season}/BattlePass.json");
-                if (System.IO.File.Exists(SeasonPath))
+                StoreBattlepassPages battlepass = BattlepassManager.BattlePasses.FirstOrDefault(e => e.Key == season.Season).Value;
+
+                if(battlepass != null)
                 {
-                    var SeasonData = System.IO.File.ReadAllText(SeasonPath);
-                    if(SeasonData != null)
+                    List<object> responseobject = new List<object>();
+                    foreach (catalogEntrieStore a in battlepass.catalogEntries)
                     {
-                        StoreBattlepassPages itemshop = JsonConvert.DeserializeObject<StoreBattlepassPages>(SeasonData)!;
-                        
-                        // i cant be bothered
-                        if (itemshop != null)
+                        List<object> array = new List<object>();
+
+                        if (a.prices[0].saleType != null)
                         {
-                            List<object> responseobject = new List<object>();
-                            foreach(catalogEntrieStore a in itemshop.catalogEntries)
+                            array.Add(new
                             {
-                                List<object> array = new List<object>();
-
-                                if (a.prices[0].saleType != null)
-                                {
-                                    array.Add(new
-                                    {
-                                        currencyType = a.prices[0].currencyType,
-                                        currencySubType = a.prices[0].currencySubType,
-                                        regularPrice = a.prices[0].regularPrice,
-                                        finalPrice = a.prices[0].finalPrice,
-                                        saleType = a.prices[0].saleType,
-                                        saleExpiration = a.prices[0].saleExpiration,
-                                        basePrice = a.prices[0].basePrice,
-                                    });
-                                }
-                                else
-                                {
-
-                                    array.Add(new
-                                    {
-                                        currencyType = a.prices[0].currencyType,
-                                        currencySubType = a.prices[0].currencySubType,
-                                        regularPrice = a.prices[0].regularPrice,
-                                        finalPrice = a.prices[0].finalPrice,
-                                        //saleType = a.prices[0].saleType,
-                                        saleExpiration = a.prices[0].saleExpiration,
-                                        basePrice = a.prices[0].basePrice,
-                                    });
-                                }
-
-                                var ResponseItem = new
-                                {
-                                    devName = $"{a.devName}",
-                                    offerId = $"v2:/{a.offerId}",
-                                    offerType = "StaticPrice",
-                                    prices = array,
-                                    categories = a.categories,
-                                    dailyLimit = a.dailyLimit,
-                                    weeklyLimit = a.weeklyLimit,
-                                    monthlyLimit = a.monthlyLimit,
-                                    refundable = a.refundable,
-                                    appStoreId = a.appStoreId,
-                                    requirements = a.requirements,
-                                    giftInfo = a.giftInfo,
-                                    metaInfo = a.metaInfo,
-                                    displayAssetPath = a.displayAssetPath,
-                                    itemGrants = a.itemGrants,
-                                    sortPriority = a.sortPriority,
-                                    catalogGroupPriority = 0,
-                                    title = a.title,
-                                    shortDescription = a.shortDescription,
-                                    description = a.description
-                                };
-
-                                responseobject.Add(ResponseItem);
-                            }
-
-                            var SeasonBattlepassinfo = new
-                            {
-                                name = itemshop.name,
-                                catalogEntries = responseobject
-                            };
-                            ShopObject.storefronts.Add(SeasonBattlepassinfo);
+                                currencyType = a.prices[0].currencyType,
+                                currencySubType = a.prices[0].currencySubType,
+                                regularPrice = a.prices[0].regularPrice,
+                                finalPrice = a.prices[0].finalPrice,
+                                saleType = a.prices[0].saleType,
+                                saleExpiration = a.prices[0].saleExpiration,
+                                basePrice = a.prices[0].basePrice,
+                            });
                         }
+                        else
+                        {
+
+                            array.Add(new
+                            {
+                                currencyType = a.prices[0].currencyType,
+                                currencySubType = a.prices[0].currencySubType,
+                                regularPrice = a.prices[0].regularPrice,
+                                finalPrice = a.prices[0].finalPrice,
+                                //saleType = a.prices[0].saleType,
+                                saleExpiration = a.prices[0].saleExpiration,
+                                basePrice = a.prices[0].basePrice,
+                            });
+                        }
+
+                        var ResponseItem = new
+                        {
+                            devName = $"{a.devName}",
+                            offerId = $"{a.offerId}",
+                            offerType = "StaticPrice",
+                            prices = array,
+                            categories = a.categories,
+                            dailyLimit = a.dailyLimit,
+                            weeklyLimit = a.weeklyLimit,
+                            monthlyLimit = a.monthlyLimit,
+                            refundable = a.refundable,
+                            appStoreId = a.appStoreId,
+                            requirements = a.requirements,
+                            giftInfo = a.giftInfo,
+                            metaInfo = a.metaInfo,
+                            displayAssetPath = a.displayAssetPath,
+                            itemGrants = a.itemGrants,
+                            sortPriority = a.sortPriority,
+                            catalogGroupPriority = 0,
+                            title = a.title,
+                            shortDescription = a.shortDescription,
+                            description = a.description
+                        };
+
+                        responseobject.Add(ResponseItem);
                     }
+
+                    var SeasonBattlepassinfo = new
+                    {
+                        name = battlepass.name,
+                        catalogEntries = responseobject
+                    };
+                    ShopObject.storefronts.Add(SeasonBattlepassinfo);
                 }
+               
                 return Ok(ShopObject);
             }
             catch (Exception ex)

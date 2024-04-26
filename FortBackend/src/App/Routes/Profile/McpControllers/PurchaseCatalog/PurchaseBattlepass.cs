@@ -44,20 +44,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
                     if (seasonObject != null)
                     {
-                        if (seasonObject.BookPurchased)
-                        {
-                            // not proper response
-                            throw new BaseError()
-                            {
-                                errorCode = "errors.com.epicgames.modules.catalog",
-                                errorMessage = "You already own the bp",
-                                messageVars = new List<string> { "PurchaseCatalogEntry" },
-                                numericErrorCode = 12801,
-                                originatingService = "any",
-                                intent = "prod",
-                                error_description = "You already own the bp",
-                            };
-                        }
+                        
                         // I need to work on this
                         var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"];
 
@@ -66,7 +53,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             throw new BaseError()
                             {
                                 errorCode = "errors.com.epicgames.modules.catalog",
-                                errorMessage = "Not enough vbucks",
+                                errorMessage = "Not enough vbucks/ did you bypass",
                                 messageVars = new List<string> { "PurchaseCatalogEntry" },
                                 numericErrorCode = 12801,
                                 originatingService = "any",
@@ -74,6 +61,89 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 error_description = "Not enough vbucks",
                             };
                         }
+
+                        if (ShopContent.devName.ToString().Contains("SingleTier"))
+                        {
+                            if (!seasonObject.BookPurchased)
+                            {
+                                throw new BaseError()
+                                {
+                                    errorCode = "errors.com.epicgames.modules.catalog",
+                                    errorMessage = "Required Battlepass",
+                                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                    numericErrorCode = 12801,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "Required Battlepass",
+                                };
+                            }
+
+                            throw new BaseError()
+                            {
+                                errorCode = "errors.com.epicgames.modules.catalog",
+                                errorMessage = "FortBackend Doesn't Support This At the moment~ SingleTier",
+                                messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                numericErrorCode = 12801,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "FortBackend Doesn't Support This At the moment~ SingleTier",
+                            };
+                        }
+                        else
+                        {
+                            // not proper response
+                            if (seasonObject.BookPurchased)
+                            {
+                                throw new BaseError()
+                                {
+                                    errorCode = "errors.com.epicgames.modules.catalog",
+                                    errorMessage = "You already own the bp",
+                                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                    numericErrorCode = 12801,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "You already own the bp",
+                                };
+                            }
+
+                            if (ShopContent.devName.ToString().Contains("BattleBundle"))
+                            {
+                                throw new BaseError()
+                                {
+                                    errorCode = "errors.com.epicgames.modules.catalog",
+                                    errorMessage = "FortBackend Doesn't Support This At the moment",
+                                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                    numericErrorCode = 12801,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "FortBackend Doesn't Support This At the moment",
+                                };
+                            }
+                            else if (ShopContent.devName.ToString().Contains("BattlePass"))
+                            {
+                                
+
+                                currencyItem.quantity -= Price;
+
+                            }
+                            else
+                            {
+                                throw new BaseError()
+                                {
+                                    errorCode = "errors.com.epicgames.modules.catalog",
+                                    errorMessage = "?????",
+                                    messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                    numericErrorCode = 12801,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "?????",
+                                };
+                            }
+                        }
+
+                       
+
+
                     }
                 }
             }

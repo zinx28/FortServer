@@ -23,7 +23,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                 if (!string.IsNullOrEmpty(userAgent))
                 {
                     string[] userAgentParts = userAgent.Split('-');
-                    Console.WriteLine(userAgent);
+                    //Console.WriteLine(userAgent);
                     if (userAgentParts.Length > 1)
                     {
                         string[] seasonParts = userAgentParts[1].Split('.');

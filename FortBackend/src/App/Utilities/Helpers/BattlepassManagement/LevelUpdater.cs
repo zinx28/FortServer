@@ -39,7 +39,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                     List<SeasonXP> seasonXp = JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)!;
                     if (seasonXp != null && seasonXp.Count > 0)
                     {
-                        foreach (var item in seasonXp)
+                        foreach (SeasonXP item in seasonXp)
                         {
                             if (item.Level == FoundSeason.Level)
                             {
@@ -88,7 +88,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         // They are added back during chapter 2 season 7 but they don't auto claim
                         if (Season > 1 && Season <= 10)
                         {
-                            while (FoundSeason.BookXP < 10)
+                            while (FoundSeason.BookXP >= 10)
                             {
                                 FoundSeason.BookXP -= 10;
                                 FoundSeason.BookLevel += 1;

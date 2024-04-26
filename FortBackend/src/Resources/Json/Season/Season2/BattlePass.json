@@ -12,7 +12,7 @@
                     "regularPrice": 1800,
                     "finalPrice": 950,
                     "saleExpiration": "9999-12-31T23:59:59.999Z",
-                    "basePrice": 950
+                    "basePrice": 1800
                 }
             ],
             "categories": [],
@@ -52,7 +52,7 @@
             "sortPriority": 1,
             "title": "Battle Pass",
             "shortDescription": "Get it then!",
-            "description": "Season 10 through February 6.\nWant it all faster? You can use V-Bucks to buy rewards any time!",
+            "description": "Season 2: Dec 14 - Feb 20\n\nInstantly get these items valued at over 2000 V-Bucks.\n- Blue Squire Outfit\n- 50% Bonus Season Match XP\n- Extra Battle Pass Daily Challenge\n\nPlay to level up your Battle Pass, unlocking up to 65+ rewards worth 12,000 V-Bucks (typically take 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy levels any time!\n- Black Knight plus 2 other outfits\n- 3 Harvesting Tools\n- 2 Gliders\n- 1000 V-Bucks\n- 60% Bonus Season Match XP\n- 20% Bonus Season Friend Match XP\n- 2 Animated Emotes\n- 13 2D Emotes\n- and more!",
             "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season2_BattlePass.DA_BR_Season2_BattlePass",
             "itemGrants": []
         },

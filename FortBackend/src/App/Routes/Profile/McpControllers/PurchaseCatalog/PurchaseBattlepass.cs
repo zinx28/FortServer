@@ -11,6 +11,13 @@ using FortBackend.src.App.Utilities;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+using Newtonsoft.Json;
+using Discord;
+using FortBackend.src.XMPP.Data;
+using FortLibrary.XMPP;
+using System.Net.WebSockets;
+using System.Text;
+using System.Xml.Linq;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
@@ -22,6 +29,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
             int Price = 0;
 
             List<object> MultiUpdates = new List<object>();
+            List<object> ApplyProfileChanges = new List<object>();
+            var NotificationsItems = new List<NotificationsItemsClass>();
 
             int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
             int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
@@ -124,8 +133,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             }
                             else if (ShopContent.devName.ToString().Contains("BattlePass"))
                             {
-                                currencyItem.quantity -= Price;
-                                seasonObject.BookPurchased = true;
+                               
                                 bool NeedItems = true;
                                 int BookLevelOG = seasonObject.BookLevel;
                                 List<Battlepass> FreeTier = BattlepassManager.FreeBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
@@ -142,6 +150,19 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                             {
                                                 if (PaidTier.Count > 0)
                                                 {
+                                                    currencyItem.quantity -= Price;
+                                                    seasonObject.BookPurchased = true;
+
+                                                    ApplyProfileChanges.Add(new
+                                                    {
+                                                        changeType = "statModified",
+                                                        name = "book_purchased",
+                                                        value = true
+                                                    });
+
+                                                    //var RandomOfferId = Guid.NewGuid().ToString();
+                                                    List<NotificationsItemsClassOG> ItemsGivenToUser = new List<NotificationsItemsClassOG>();
+
                                                     foreach (var BattlePass in FreeTier)
                                                     {
                                                         if (!NeedItems) break;
@@ -149,7 +170,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                         //if (BookLevelOG <= BattlePass.Level) continue;
                                                         if (BattlePass.Level > seasonObject.Level) break;
 
-                                                        (profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems);
+                                                        (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
                                                     }
 
                                                     foreach (var BattlePass in PaidTier)
@@ -159,7 +180,62 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                         if (BattlePass.Level > seasonObject.Level) break;
 
 
-                                                        (profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, MultiUpdates, currencyItem, NeedItems);
+                                                        (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
+                                                    }
+
+
+                                                    /*
+                                                     *   NewItemsGiven.Add(new Dictionary<string, object>
+                                {
+                                    { "itemType", FreeRewards["TemplateId"].ToString() },
+                                    { "itemGuid", FreeRewards["TemplateId"].ToString() },
+                                    { "quantity", int.Parse(FreeRewards["Quantity"].ToString() ?? "1") }
+                                });
+                                                    */
+
+                                                    MultiUpdates.Add(new ApplyProfileChangesClassV2
+                                                    {
+                                                        changeType = "itemAdded",
+                                                        itemId = ShopContent.offerId,
+                                                        item = new
+                                                        {
+                                                            templateId = "GiftBox:gb_battlepass",
+                                                            attributes = new
+                                                            {
+                                                                max_level_bonus = 0,
+                                                                fromAccountId = "",
+                                                                lootList = ItemsGivenToUser
+                                                            }
+                                                        }
+                                                    });
+
+                                                    if(!string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                                                    {
+                                                        Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+
+                                                        if (Client != null)
+                                                        {
+                                                            string xmlMessage;
+                                                            byte[] buffer;
+                                                            WebSocket webSocket = Client.Game_Client;
+                                                            XNamespace clientNs = "jabber:client";
+
+                                                            var message = new XElement(clientNs + "message",
+                                                                new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                                new XAttribute("to", profileCacheEntry.AccountId),
+                                                                new XElement("body", @"{
+                                                                    ""payload"": {},
+                                                                    ""type"": ""com.epicgames.gift.received"",
+                                                                    ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
+                                                                }")
+                                                            );
+
+                                                            xmlMessage = message.ToString();
+                                                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
+
+                                                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                                        }
+
                                                     }
                                                 }
                                                 else
@@ -198,9 +274,51 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             }
                         }
 
-                       
+
+                        // Response
+
+                        if (MultiUpdates.Count > 0)
+                        {
+                            profileCacheEntry.AccountData.athena.RVN += 1;
+                            profileCacheEntry.AccountData.athena.CommandRevision += 1;
+                        }
 
 
+                        Mcp mcp = new Mcp()
+                        {
+                            profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
+                            profileId = ProfileId,
+                            profileChangesBaseRevision = BaseRev,
+                            profileChanges = ApplyProfileChanges,
+                            notifications = new List<McpNotifications>()
+                                {
+                                    new McpNotifications
+                                    {
+                                        type = "CatalogPurchase",
+                                        primary =  true,
+                                        lootResult = new LootResultClass
+                                        {
+                                            items = NotificationsItems
+                                        }
+                                    }
+                                },
+                            profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
+                            serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                            multiUpdate = new List<object>()
+                                {
+                                    new
+                                    {
+                                        profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                                        profileId = "athena",
+                                        profileChangesBaseRevision = BaseRev2,
+                                        profileChanges = MultiUpdates,
+                                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                                    }
+                                },
+                            responseVersion = 1
+                        };
+                        string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
+                        return mcp;
                     }
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using FortLibrary;
 using FortLibrary.Dynamics;
+using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.MongoDB.Module;
 
@@ -7,7 +8,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 {
     public class BattlePassRewards
     {
-        public static async Task<(ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems)> Init(List<ItemInfo> Rewards, ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems)
+        public static async Task<(ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems, List<NotificationsItemsClassOG> applyProfileChanges)> Init(List<ItemInfo> Rewards, ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems, List<NotificationsItemsClassOG> applyProfileChanges = null)
         {
             foreach (ItemInfo iteminfo in Rewards)
             {
@@ -90,11 +91,18 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         {
                             Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
                         }
+
+                        applyProfileChanges.Add(new NotificationsItemsClassOG
+                        {
+                            itemType = iteminfo.TemplateId,
+                            itemGuid = iteminfo.TemplateId,
+                            quantity = iteminfo.Quantity,
+                        });
                     }
                 }
             }
 
-            return (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
+            return (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems,  applyProfileChanges);
         }
     }
 }

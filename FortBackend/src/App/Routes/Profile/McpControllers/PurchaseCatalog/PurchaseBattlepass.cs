@@ -218,22 +218,26 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                             string xmlMessage;
                                                             byte[] buffer;
                                                             WebSocket webSocket = Client.Game_Client;
-                                                            XNamespace clientNs = "jabber:client";
+                                                            if(webSocket != null && webSocket.State == WebSocketState.Open)
+                                                            {
+                                                                XNamespace clientNs = "jabber:client";
 
-                                                            var message = new XElement(clientNs + "message",
-                                                                new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                                new XAttribute("to", profileCacheEntry.AccountId),
-                                                                new XElement("body", @"{
+                                                                var message = new XElement(clientNs + "message",
+                                                                    new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                                    new XAttribute("to", profileCacheEntry.AccountId),
+                                                                    new XElement("body", @"{
                                                                     ""payload"": {},
                                                                     ""type"": ""com.epicgames.gift.received"",
                                                                     ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
                                                                 }")
-                                                            );
+                                                                );
 
-                                                            xmlMessage = message.ToString();
-                                                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                                                xmlMessage = message.ToString();
+                                                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                                                await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                                            }
+                                                            
                                                         }
 
                                                     }

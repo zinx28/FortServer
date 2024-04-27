@@ -6,6 +6,8 @@ using System.Net.Security;
 using System.Security.Authentication;
 using System.Text;
 using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace FortBackend.src.App.XMPP_Server.TCP
 {
@@ -56,10 +58,12 @@ namespace FortBackend.src.App.XMPP_Server.TCP
             try
             {
                 DataSaved_TCP.connectedClients.TryAdd(clientId, client);
+                
+               
                 //byte[] buffer = new byte[0];
                 //XDocument xmlDoc;
                 // NetworkStream stream = client.GetStream();
-                string logFilePath = "test.txt";
+               // string logFilePath = "test.txt";
 
                 //  using (StreamWriter sw = File.AppendText(logFilePath))
 
@@ -72,7 +76,10 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                     byte[] buffer = new byte[1024];
                     int totalBytesRead = 0;
                     bool tlsStarted = false;
-                    while (true)
+                    XDocument xmlDoc = null;
+                    StringBuilder receivedDataBuilder = new StringBuilder();
+
+                    while (client.Connected)
                     {
 
                         int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
@@ -80,12 +87,45 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                         {
                             break;
                         }
-                        string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                       
+                        receivedDataBuilder.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
 
-                        if (receivedData.EndsWith(">"))
+                        string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                        Logger.Log($"Received message: {receivedData}");
+
+                        XmlReaderSettings settings = new XmlReaderSettings
                         {
-                            Logger.Log($"Received message: {receivedData}");
+                            Async = true
+                        };
+
+                        using (StringReader stringReader = new StringReader(receivedData))
+                        using (XmlReader reader = XmlReader.Create(stringReader, settings))
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                if (reader.NodeType == XmlNodeType.Element && reader.Name == "stream:stream")
+                                {
+                                    Console.WriteLine("chat");
+
+                                    break;
+                                }
+                            }
                         }
+
+                               
+                       
+                       
+
+                        //if(xmlDoc != null)
+                        //{
+                        //    switch (xmlDoc.Root?.Name.LocalName)
+                        //    {
+                        //        case "stream:stream":
+                        //            Console.WriteLine("chat");
+                        //            break;
+                        //        default: break;
+                        //    }
+                        // }
                         // receivedMessage += chunk;
                     }
 

@@ -201,7 +201,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                         itemId = ShopContent.offerId,
                                                         item = new
                                                         {
-                                                            templateId = "GiftBox:gb_battlepasspurchased",
+                                                            templateId = Season.Season >= 5 ? "GiftBox:gb_battlepasspurchased" : "GiftBox:gb_battlepass",
                                                             attributes = new
                                                             {
                                                                 max_level_bonus = 0,
@@ -213,7 +213,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
                                                     profileCacheEntry.AccountData.commoncore.Gifts.Add(ShopContent.offerId, new GiftCommonCoreItem
                                                     {
-                                                        templateId = "GiftBox:gb_battlepasspurchased",
+                                                        templateId = Season.Season >= 5 ? "GiftBox:gb_battlepasspurchased" : "GiftBox:gb_battlepass",
                                                         attributes = new GiftCommonCoreItemAttributes
                                                         {
                                                             lootList = ItemsGivenToUser

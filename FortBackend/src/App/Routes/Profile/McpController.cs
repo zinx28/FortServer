@@ -130,6 +130,9 @@ namespace FortBackend.src.App.Routes.Profile
                                     case "MarkNewQuestNotificationSent":
                                         response = await MarkNewQuestNotificationSent.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
                                         break;
+                                    case "MarkItemSeen":
+                                        response = await MarkItemSeen.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
+                                        break;
                                     case "EquipBattleRoyaleCustomization":
                                         response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);
                                         break;

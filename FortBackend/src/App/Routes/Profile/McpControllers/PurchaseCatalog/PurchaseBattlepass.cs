@@ -201,13 +201,22 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                         itemId = ShopContent.offerId,
                                                         item = new
                                                         {
-                                                            templateId = "GiftBox:gb_battlepass",
+                                                            templateId = "GiftBox:gb_battlepasspurchased",
                                                             attributes = new
                                                             {
                                                                 max_level_bonus = 0,
                                                                 fromAccountId = "",
                                                                 lootList = ItemsGivenToUser
                                                             }
+                                                        }
+                                                    });
+
+                                                    profileCacheEntry.AccountData.commoncore.Gifts.Add(ShopContent.offerId, new GiftCommonCoreItem
+                                                    {
+                                                        templateId = "GiftBox:gb_battlepasspurchased",
+                                                        attributes = new GiftCommonCoreItemAttributes
+                                                        {
+                                                            lootList = ItemsGivenToUser
                                                         }
                                                     });
 

@@ -105,6 +105,9 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("items")]
         public Dictionary<string, CommonCoreItem> Items { get; set; } = new Dictionary<string, CommonCoreItem>();
 
+        [BsonElement("gifts")]
+        public Dictionary<string, GiftCommonCoreItem> Gifts { get; set; } = new Dictionary<string, GiftCommonCoreItem>();
+
         [BsonElement("Season")]
         [BsonIgnoreIfNull]
         public List<SeasonClass> Seasons { get; set; } = new List<SeasonClass>();

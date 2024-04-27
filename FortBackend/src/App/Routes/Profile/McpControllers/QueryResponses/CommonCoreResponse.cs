@@ -129,6 +129,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             quantity = profileChange.Value.quantity,
                         });
                     }
+                    foreach (var profileChange in profileCacheEntry.AccountData.commoncore.Gifts)
+                    {
+                        ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
+                    }
                     foreach (var profileChange in Saved.DeserializeConfig.DefaultBanners_Items)
                     {
                         ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);

@@ -102,7 +102,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 }
             }
 
-            return (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems,  applyProfileChanges);
+            return (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, applyProfileChanges);
         }
     }
 }

@@ -49,6 +49,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                 }
             }
         }
+        // this is the worst tcp server ever that will always need a recode and prob won't work till the end
         private async Task HandleTcpClientAsync(TcpClient client, string clientId)
         {
             DataSaved_TCP dataSaved = new DataSaved_TCP();
@@ -62,15 +63,43 @@ namespace FortBackend.src.App.XMPP_Server.TCP
 
                 //  using (StreamWriter sw = File.AppendText(logFilePath))
 
-              
-                using (SslStream sslStream = new SslStream(client.GetStream(), false))
+                //
+                // Requests are normal until it hits starttls
+                // you don't need to handle the open thing instead you handle sessions
+                using (NetworkStream stream = client.GetStream())
                 {
-                    sslStream.AuthenticateAsServer(certificate, true, System.Security.Authentication.SslProtocols.Tls12, false);
+                    StringBuilder receivedMessageBuilder = new StringBuilder();
+                    byte[] buffer = new byte[1024];
+                    int totalBytesRead = 0;
+                    bool tlsStarted = false;
+                    while (true)
+                    {
 
-                    StreamReader reader = new StreamReader(sslStream);
-                    string message = reader.ReadLine();
-                    Console.WriteLine(message);
+                        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                        if (bytesRead == 0)
+                        {
+                            break;
+                        }
+                        string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+                        if (receivedData.EndsWith(">"))
+                        {
+                            Logger.Log($"Received message: {receivedData}");
+                        }
+                        // receivedMessage += chunk;
+                    }
+
                 }
+                //using (SslStream sslStream = new SslStream(client.GetStream(), false))
+                //{
+                //    sslStream.AuthenticateAsServer(certificate, true, System.Security.Authentication.SslProtocols.Tls12, false);
+
+                //    StreamReader reader = new StreamReader(sslStream);
+                //    string message = reader.ReadLine();
+
+
+                //    Console.WriteLine(message);
+                //}
 
                     //using (StreamWriter sw = File.AppendText(logFilePath))
                     //using (NetworkStream stream = client.GetStream())

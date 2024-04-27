@@ -6,6 +6,8 @@ using MongoDB.Driver;
 using System.Text.RegularExpressions;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortLibrary;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+using FortLibrary.Dynamics;
 
 namespace FortBackend.src.App.Routes.Development
 {
@@ -27,6 +29,40 @@ namespace FortBackend.src.App.Routes.Development
                 ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
                 string Data = JsonConvert.SerializeObject(profileCacheEntry);
                 if(!string.IsNullOrEmpty(Data)) { return Ok(Data); }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message); // 
+            }
+
+            return BadRequest(new { message = "error" });
+        }
+
+        [HttpGet("/bp/free")]
+        public async Task<IActionResult> TestA()
+        {
+            try
+            {
+                List<Battlepass> FreeTier = BattlepassManager.FreeBattlePassItems.FirstOrDefault(e => e.Key == 2).Value;
+                string Data = JsonConvert.SerializeObject(FreeTier);
+                return Content(Data, "application/json");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message); // 
+            }
+
+            return BadRequest(new { message = "error" });
+        }
+
+        [HttpGet("/bp/paid")]
+        public async Task<IActionResult> TestB()
+        {
+            try
+            {
+                List<Battlepass> FreeTier = BattlepassManager.PaidBattlePassItems.FirstOrDefault(e => e.Key == 2).Value;
+                string Data = JsonConvert.SerializeObject(FreeTier);
+                return Content(Data, "application/json");
             }
             catch (Exception ex)
             {

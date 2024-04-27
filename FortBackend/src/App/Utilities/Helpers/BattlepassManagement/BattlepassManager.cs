@@ -68,7 +68,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
                             if (File.Exists(SeasonPaidBattlePassFolder))
                             {
-                                var PaidBattlePass = File.ReadAllText(SeasonFreeBattlePassFolder);
+                                var PaidBattlePass = File.ReadAllText(SeasonPaidBattlePassFolder);
                                 if (PaidBattlePass != null)
                                 {
                                     List<Battlepass> PaidTier = JsonConvert.DeserializeObject<List<Battlepass>>(PaidBattlePass)!;

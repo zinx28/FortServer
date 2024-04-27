@@ -150,6 +150,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                             {
                                                 if (PaidTier.Count > 0)
                                                 {
+
                                                     currencyItem.quantity -= Price;
                                                     seasonObject.BookPurchased = true;
 
@@ -163,26 +164,27 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                     //var RandomOfferId = Guid.NewGuid().ToString();
                                                     List<NotificationsItemsClassOG> ItemsGivenToUser = new List<NotificationsItemsClassOG>();
 
-                                                    foreach (var BattlePass in FreeTier)
+                                                    foreach (Battlepass BattlePass in FreeTier)
                                                     {
                                                         if (!NeedItems) break;
                                                         //We don't need this check on purchase as we "WANT" the user to get them items
                                                         //if (BookLevelOG <= BattlePass.Level) continue;
                                                         if (BattlePass.Level > seasonObject.Level) break;
-
+                                                        
                                                         (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
                                                     }
 
-                                                    foreach (var BattlePass in PaidTier)
+                                                    foreach (Battlepass BattlePass in PaidTier)
                                                     {
                                                         if (!NeedItems) break;
                                                         //if (BookLevelOG <= BattlePass.Level) continue;
                                                         if (BattlePass.Level > seasonObject.Level) break;
-
+                                                       
 
                                                         (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
                                                     }
 
+                                                    
 
                                                     /*
                                                      *   NewItemsGiven.Add(new Dictionary<string, object>

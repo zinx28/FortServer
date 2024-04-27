@@ -289,6 +289,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             profileCacheEntry.AccountData.athena.CommandRevision += 1;
                         }
 
+                        if (ApplyProfileChanges.Count > 0)
+                        {
+                            profileCacheEntry.AccountData.commoncore.RVN += 1;
+                            profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                        }
+
 
                         Mcp mcp = new Mcp()
                         {

@@ -38,6 +38,7 @@ namespace FortBackend.src.App.Routes.Profile
                 {
                     var requestbody = await reader.ReadToEndAsync();
                     Console.WriteLine(requestbody);
+                    Console.WriteLine(mcp);
                     VersionClass Season = await SeasonUserAgent(Request);
 
                     if (string.IsNullOrEmpty(requestbody))
@@ -125,6 +126,9 @@ namespace FortBackend.src.App.Routes.Profile
                                         break;
                                     case "SetCosmeticLockerSlot":
                                         response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody)!);
+                                        break;
+                                    case "MarkNewQuestNotificationSent":
+                                        response = await MarkNewQuestNotificationSent.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
                                         break;
                                     case "EquipBattleRoyaleCustomization":
                                         response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);

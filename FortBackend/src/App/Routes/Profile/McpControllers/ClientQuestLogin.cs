@@ -102,7 +102,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     templateId = $"Quest:{dailyQuests.Name}",
                                                     attributes = new DailyQuestsDataDB
                                                     {
-
+                                                        sent_new_notification = false,
                                                         ObjectiveState = new List<DailyQuestsObjectiveStates>
                                                         {
                                                             new DailyQuestsObjectiveStates

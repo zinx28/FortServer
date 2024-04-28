@@ -8,6 +8,9 @@ using System.Text;
 using FortBackend.src.App.XMPP_Server.Helpers.Globals.Data;
 using System.Xml.Linq;
 using System.Xml;
+using System.IO;
+using System.Reflection;
+using ZstdSharp;
 
 namespace FortBackend.src.App.XMPP_Server.TCP
 {
@@ -98,6 +101,10 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                             Async = true
                         };
 
+                        XNamespace streamNs = "http://etherx.jabber.org/streams";
+                        XNamespace jabberNs = "jabber:client";
+                        XNamespace tlsNs = "urn:ietf:params:xml:ns:xmpp-tls";
+                        XNamespace saslNs = "urn:ietf:params:xml:ns:xmpp-sasl";
                         using (StringReader stringReader = new StringReader(receivedData))
                         using (XmlReader reader = XmlReader.Create(stringReader, settings))
                         {
@@ -105,11 +112,27 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                             {
                                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "stream:stream")
                                 {
+
                                     Console.WriteLine("chat");
+                                    string responseXml1 = "<?xml version='1.0' encoding='UTF-8'?>" +
+                                    "<stream:stream xmlns:stream='http://etherx.jabber.org/streams' " +
+                                    $"xmlns='jabber:client' from='127.0.0.1'  id='{clientId}' " +
+                                    "xml:lang='und' version='1.0'>";
+
+                                    byte[] responseBytes2 = Encoding.UTF8.GetBytes("<?xml version='1.0' encoding='UTF-8'?>" + responseXml1.ToString());
+                                    await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
+
+                                    string responseXml3 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" +
+                                    "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
+
+                                   byte[] responseBytes3 = Encoding.UTF8.GetBytes(responseXml3.ToString());
+                                    await stream.WriteAsync(responseBytes3, 0, responseBytes3.Length);
 
                                     break;
                                 }
                             }
+                            reader.Close();
+                            stringReader.Close();
                         }
 
                                

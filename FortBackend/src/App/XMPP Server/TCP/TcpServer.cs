@@ -129,6 +129,33 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                                     Console.WriteLine("Response sent");
                                     break;
                                 }
+                                //<starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
+                                else if (reader.NodeType == XmlNodeType.Element && reader.Name == "starttls")
+                                {
+                                    string xmlString = "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
+                                    byte[] responseBytes33 = Encoding.UTF8.GetBytes(xmlString.ToString());
+                                    await stream.WriteAsync(responseBytes33, 0, responseBytes33.Length);
+                                    Console.WriteLine("StartTls");
+
+                                    //stream.Close();
+                                    //client.Close();
+
+                                  
+                                  
+
+                                    SslStream sslStream = new SslStream(client.GetStream(), false);
+                                    //await sslStream.AuthenticateAsServerAsync(certificate, false, SslProtocols.Tls12, false);
+
+                                    // sslStream.AuthenticateAsServer(certificate, true, System.Security.Authentication.SslProtocols.Tls12, false);
+
+                                    StreamReader reader2 = new StreamReader(sslStream);
+                                    string message = await reader2.ReadLineAsync();
+
+
+                                    Console.WriteLine(message);
+                                    
+                                    break;
+                                }
                             }
                             reader.Close();
                             stringReader.Close();

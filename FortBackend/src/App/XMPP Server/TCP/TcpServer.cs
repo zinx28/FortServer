@@ -77,9 +77,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                 {
                     StringBuilder receivedMessageBuilder = new StringBuilder();
                     byte[] buffer = new byte[1024];
-                    int totalBytesRead = 0;
-                    bool tlsStarted = false;
-                    XDocument xmlDoc = null;
+               
                     StringBuilder receivedDataBuilder = new StringBuilder();
 
                     while (client.Connected)
@@ -119,15 +117,16 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                                     $"xmlns='jabber:client' from='127.0.0.1'  id='{clientId}' " +
                                     "xml:lang='und' version='1.0'>";
 
-                                    byte[] responseBytes2 = Encoding.UTF8.GetBytes("<?xml version='1.0' encoding='UTF-8'?>" + responseXml1.ToString());
+                                    byte[] responseBytes2 = Encoding.UTF8.GetBytes(responseXml1.ToString());
                                     await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
-
+                                    Console.WriteLine("Response sent");
+                                    await Task.Delay(100);
                                     string responseXml3 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" +
                                     "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
 
-                                   byte[] responseBytes3 = Encoding.UTF8.GetBytes(responseXml3.ToString());
+                                    byte[] responseBytes3 = Encoding.UTF8.GetBytes(responseXml3.ToString());
                                     await stream.WriteAsync(responseBytes3, 0, responseBytes3.Length);
-
+                                    Console.WriteLine("Response sent");
                                     break;
                                 }
                             }

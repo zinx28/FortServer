@@ -111,6 +111,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 MatchesPlayed,
                                 Kills
                             },
+                            created = profileCacheEntry.AccountData.JoinDate.ToString("MMMM d, yyyy"),
                             DiscordId = profileCacheEntry.UserData.DiscordId,
                         });                
                     }

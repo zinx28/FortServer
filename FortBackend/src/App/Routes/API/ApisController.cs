@@ -16,7 +16,7 @@ namespace FortBackend.src.App.Routes.API
     [Route("api")]
     public class ApisController : ControllerBase
     {
-        [HttpPost("/datarouter/api/v1/public/data/*")]
+        [HttpGet("/datarouter/api/v1/public/data/*")]
 
         [HttpPost("/datarouter/api/v1/public/data")]
         public IActionResult DataRouter()

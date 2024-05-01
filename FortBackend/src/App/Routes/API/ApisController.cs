@@ -243,6 +243,28 @@ namespace FortBackend.src.App.Routes.API
             return StatusCode(201);
         }
 
+        [HttpGet("/sdk/v1/product/prod-fn")]
+        public IActionResult ProdFN()
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                var DefaultSDKPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json", "FN_PROD.json");
+
+                if (System.IO.File.Exists(DefaultSDKPath))
+                {
+                    var ReadFile = System.IO.File.ReadAllText(DefaultSDKPath);
+                    if (!string.IsNullOrEmpty(ReadFile)) { return Content(ReadFile, "application/json"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "SDKDEFAULT!!");
+            }
+
+            return Ok(new { });
+        }
+
 
 
         [HttpGet("v1/search/{accountId}")]

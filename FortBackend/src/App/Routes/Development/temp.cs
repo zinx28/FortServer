@@ -89,6 +89,28 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
+        [HttpGet("/sdk/v1/default")]
+        public IActionResult SDKDEFAULT()
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                var DefaultSDKPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json", "SdkDefault.json");
+
+                if (System.IO.File.Exists(DefaultSDKPath))
+                {
+                    var ReadFile = System.IO.File.ReadAllText(DefaultSDKPath);
+                    if (!string.IsNullOrEmpty(ReadFile)) { return Content(ReadFile, "application/json"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "SDKDEFAULT!!");
+            }
+
+            return Ok(new { });
+        }
+
         [HttpGet("/{a}/{s}/{idk}")]
         public IActionResult GameRating(string a, string s, string idk)
         {

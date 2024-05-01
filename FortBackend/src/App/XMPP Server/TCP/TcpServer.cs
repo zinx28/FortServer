@@ -61,18 +61,19 @@ namespace FortBackend.src.App.XMPP_Server.TCP
             try
             {
                 DataSaved_TCP.connectedClients.TryAdd(clientId, client);
-                
-               
+
+
                 //byte[] buffer = new byte[0];
                 //XDocument xmlDoc;
                 // NetworkStream stream = client.GetStream();
-               // string logFilePath = "test.txt";
+                // string logFilePath = "test.txt";
 
                 //  using (StreamWriter sw = File.AppendText(logFilePath))
 
                 //
                 // Requests are normal until it hits starttls
                 // you don't need to handle the open thing instead you handle sessions
+                bool Tetst = false;
                 using (NetworkStream stream = client.GetStream())
                 {
                     StringBuilder receivedMessageBuilder = new StringBuilder();
@@ -93,6 +94,21 @@ namespace FortBackend.src.App.XMPP_Server.TCP
 
                         string receivedData = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                         Logger.Log($"Received message: {receivedData}");
+
+                        //if (Tetst)
+                        //{
+
+                        //    SslStream sslStream = new SslStream(client.GetStream(), false);
+                        //    await sslStream.AuthenticateAsServerAsync(certificate, false, SslProtocols.Tls12, false);
+
+                        //    //// sslStream.AuthenticateAsServer(certificate, true, System.Security.Authentication.SslProtocols.Tls12, false);
+
+                        //    StreamReader reader2 = new StreamReader(sslStream);
+                        //    string message = await reader2.ReadLineAsync();
+
+
+                        //    Console.WriteLine(message);
+                        //}
 
                         XmlReaderSettings settings = new XmlReaderSettings
                         {
@@ -121,7 +137,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                                     await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
                                     Console.WriteLine("Response sent");
                                     await Task.Delay(100);
-                                    string responseXml3 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" +
+                                    string responseXml3 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" + 
                                     "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
 
                                     byte[] responseBytes3 = Encoding.UTF8.GetBytes(responseXml3.ToString());
@@ -140,20 +156,20 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                                     //stream.Close();
                                     //client.Close();
 
-                                  
-                                  
+                                    using (var sslStream = new SslStream(stream, false))
+                                    {
+                                        await sslStream.AuthenticateAsServerAsync(certificate, false, SslProtocols.Tls12, false);
 
-                                    SslStream sslStream = new SslStream(client.GetStream(), false);
-                                    //await sslStream.AuthenticateAsServerAsync(certificate, false, SslProtocols.Tls12, false);
-
-                                    // sslStream.AuthenticateAsServer(certificate, true, System.Security.Authentication.SslProtocols.Tls12, false);
-
-                                    StreamReader reader2 = new StreamReader(sslStream);
-                                    string message = await reader2.ReadLineAsync();
+                                        int bytesRead2 = await stream.ReadAsync(buffer, 0, buffer.Length);
+                                        string initialMessage = Encoding.UTF8.GetString(buffer, 0, bytesRead2);
+                                        Console.WriteLine($"Received initial message: {initialMessage}");
 
 
-                                    Console.WriteLine(message);
-                                    
+                                    }
+
+
+
+
                                     break;
                                 }
                             }

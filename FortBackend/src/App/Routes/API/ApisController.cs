@@ -16,10 +16,10 @@ namespace FortBackend.src.App.Routes.API
     [Route("api")]
     public class ApisController : ControllerBase
     {
-        [HttpGet("/datarouter/api/v1/public/data/*")]
+        [HttpPost("/datarouter/api/v1/public/data/{a}")]
 
         [HttpPost("/datarouter/api/v1/public/data")]
-        public IActionResult DataRouter()
+        public IActionResult DataRouter(string a)
         {
             //var queryParameters = HttpContext.Request.Query;
             //Console.WriteLine("Query Parameters:");

@@ -11,6 +11,7 @@ using FortBackend.src.App.Utilities;
 using FortLibrary.Encoders;
 using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
 using FortLibrary.EpicResponses.Matchmaker;
+using FortLibrary.ConfigHelpers;
 
 namespace FortBackend.src.App.Routes.Matchmaker
 {

@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary.ConfigHelpers;
 using System;
 
 namespace FortBackend.src.App.Utilities.Discord.Helpers
@@ -17,7 +18,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
 
             var TempCommand = new SlashCommandBuilder()
                 .WithName("test")
-                .WithDescription("no way walter black")
+                .WithDescription("FortBackend Test Command / Check if backend is online")
                 .WithDMPermission(false);
 
             var WhoCommand = new SlashCommandBuilder()

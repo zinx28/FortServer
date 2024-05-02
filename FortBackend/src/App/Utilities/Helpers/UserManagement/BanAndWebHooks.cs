@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
 using System.Net.WebSockets;
+using FortLibrary.ConfigHelpers;
 
 namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {

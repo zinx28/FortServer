@@ -13,6 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Quests;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+using FortLibrary.ConfigHelpers;
 namespace FortBackend.src.App
 {
     public class Service

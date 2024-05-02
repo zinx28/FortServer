@@ -28,10 +28,9 @@ namespace FortBackend.src.App.Routes.Leaderboards
                     if (test != null)
                     {
                         List<string> accountIds = new List<string>();
-                        //Console.WriteLine("USING CACHED CODE!");
+
                         foreach (var item in test.stat)
                         {
-                            //Console.WriteLine("2 " + item.Key);
                             accountIds.Add(item.Key);
                         }
                         return Ok(new
@@ -76,14 +75,6 @@ namespace FortBackend.src.App.Routes.Leaderboards
                                     value = item.Value,
                                 });
                             }
-                            //foreach (var item in array)
-                            //{
-                            //    entrieslist.Add(new
-                            //    {
-                            //        accountId = item,
-                            //        value = leaderBoardStats.stat.try
-                            //    });
-                            //}
                         }
                     }
 
@@ -93,7 +84,8 @@ namespace FortBackend.src.App.Routes.Leaderboards
                         statName = statName,
                         statWindow = tab
                     });
-                                 // var Playlist = Request.Query["playlist"].FirstOrDefault();
+
+                    // var Playlist = Request.Query["playlist"].FirstOrDefault();
                     //if (Playlist == "pc_m0_p9")
                     //{
                     //    List<string> accountIds = new List<string>();

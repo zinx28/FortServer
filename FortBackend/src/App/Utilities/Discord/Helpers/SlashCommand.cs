@@ -8,7 +8,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
 {
     public class SlashCommand
     { 
-        public static bool CheckIfRole(Config config, SocketSlashCommand command, SocketGuild guild)
+        public static bool CheckIfRole(FortConfig config, SocketSlashCommand command, SocketGuild guild)
         {
             if (config.RoleID != 0)
             {
@@ -44,7 +44,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             command.RespondAsync("Please the check backend logs");
             return false;
         }
-        public static async Task Handler(Config config, SocketSlashCommand command, SocketGuild guild)
+        public static async Task Handler(FortConfig config, SocketSlashCommand command, SocketGuild guild)
         {
             // no BOTS gr
             if(command.User.IsBot)

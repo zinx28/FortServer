@@ -6,15 +6,16 @@ using MongoDB.Driver;
 namespace FortBackend.src.App.Routes.Storefront
 {
     [ApiController]
-    [Route("fortnite/api/storefront/v2")]
+    [Route("fortnite/api/storefront/v2/keychain")]
     public class KeychainApiController : ControllerBase
     {
-        [HttpGet("keychain")]
+        [HttpGet]
         public IActionResult GrabKeychain([FromServices] IMemoryCache memoryCache)
         {
             Response.ContentType = "application/json";
             try
             {
+                var cacheKey = $"KeychainEndpointKey";
                 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/keychain.json");
 
                 if (!System.IO.File.Exists(filePath))
@@ -24,7 +25,7 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 string json = System.IO.File.ReadAllText(filePath);
 
-                var cacheKey = $"KeychainEndpointKey";
+               
                 if (memoryCache.TryGetValue(cacheKey, out string? cachedResult))
                 {
                     if (cachedResult != null) { return Content(cachedResult); }
@@ -39,8 +40,9 @@ namespace FortBackend.src.App.Routes.Storefront
             }
             catch (Exception ex)
             {
-                Logger.Error("[Keychain:Grabkeychain]: " + ex.Message);
+                Logger.Error("[Keychain:Grabkeychain]: " + ex.Message, "KeyChain");
             }
+
             return NotFound();
         }
     }

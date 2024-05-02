@@ -13,6 +13,8 @@ namespace FortBackend.src.App.Routes.API
 {
     [ApiController]
     [Route("content/api/pages/fortnite-game")]
+
+    // I NEED TO REDO THIS AND MAKE IT SUPPORT OTHERS
     public class ContentController : ControllerBase
     {
 

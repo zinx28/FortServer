@@ -17,7 +17,7 @@ namespace FortBackend.src.App.Utilities.Helpers
             VersionClass VersionIG = new VersionClass();
             try
             {
-                Config saved = Saved.Saved.DeserializeConfig;
+                FortConfig saved = Saved.Saved.DeserializeConfig;
                 var userAgent = Request.Headers["User-Agent"].ToString();
 
 

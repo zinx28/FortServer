@@ -15,7 +15,7 @@ namespace FortBackend.src.App.Utilities.MongoDB
         public static void Initialize(IServiceCollection services, IConfiguration Configuration)
         {
             Logger.Log("Initializing MongoDB", "MongoDB");
-            Config DeserializeConfig = Saved.Saved.DeserializeConfig;
+            FortConfig DeserializeConfig = Saved.Saved.DeserializeConfig;
             string connectionString = DeserializeConfig.MongoDBConnectionString;
             string connectionName = DeserializeConfig.MongoDBConnectionName;
 

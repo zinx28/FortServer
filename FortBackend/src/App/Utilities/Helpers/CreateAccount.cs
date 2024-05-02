@@ -59,7 +59,7 @@ namespace FortBackend.src.App.Utilities.Helpers
 
 
                 string AccountId = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12) + DiscordId;
-                string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
+                string NewAccessToken = JWT.GenerateRandomJwtToken(15, Saved.Saved.DeserializeConfig.JWTKEY);
                 string[] UserIp = new string[] { Ip };
 
 

@@ -17,7 +17,7 @@ namespace FortBackend.src.App.Utilities.Discord
         public static async Task Start()
         {
             Logger.Log("Initializing Discord", "Discord");
-            Config DeserializeConfig = Saved.Saved.DeserializeConfig;
+            FortConfig DeserializeConfig = Saved.Saved.DeserializeConfig;
 
             if(string.IsNullOrEmpty(DeserializeConfig.DiscordToken))
             {

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FortBackend.src.App.Utilities.Saved;
+using FortLibrary.Shop;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Matching;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
@@ -9,12 +11,6 @@ namespace FortBackend.src.App.Routes.Storefront
     [Route("fortnite/api/calendar/v1/timeline")]
     public class TimelineApiController : ControllerBase
     {
-        //class ShopData
-        //{
-        //    public string expiration { get; set; }
-        //    public string cacheExpire { get; set; }
-        //    public string 
-        //}
         [HttpGet]
         public async Task<IActionResult> GrabTimeline()
         {
@@ -26,12 +22,14 @@ namespace FortBackend.src.App.Routes.Storefront
                 {
                     return BadRequest(new { });
                 }
-                dynamic shopData = JsonConvert.DeserializeObject(Json)!;
+                // i need to work on this dynamic!
+                ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(Json)!;
 
-                if(shopData == null) { return BadRequest(new { }); } // if null return
+                if (shopData == null) { return BadRequest(new { }); } // if null return
 
                 VersionClass season = await SeasonUserAgent(Request);
-           
+
+            
                 var Response = new
                 {
                     channels = new Dictionary<string, object>
@@ -40,7 +38,7 @@ namespace FortBackend.src.App.Routes.Storefront
                             "client-matchmaking", new
                             {
                                 states = new object[] { },
-                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = shopData?.expiration
                             }
                         },
                         {
@@ -50,18 +48,18 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                        validFrom = "2019-01-21T18:36:38.383Z",
+                                        validFrom = DateTime.MinValue,
                                         activeEvents = new string[0],
                                         state = new
                                         {
                                             activePurchaseLimitingEventIds = new string[0],
                                             storefront = new { },
                                             rmtPromotionConfig = new string[0],
-                                            storeEnd = "9999-12-31T23:59:59.999Z"
+                                            storeEnd = Saved.DeserializeGameConfig.SeasonEndDate
                                         }
                                     }
                                 },
-                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = shopData?.expiration
                             }
                         },
                         {
@@ -71,7 +69,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                         validFrom = "2019-01-21T18:36:38.383Z",
+                                         validFrom = DateTime.MinValue,
                                          activeEvents = new string[0],
                                          state = new
                                          {
@@ -79,7 +77,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                          }
                                     }
                                 },
-                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = shopData?.expiration
                             }
                         },
                         {
@@ -89,18 +87,18 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                        validFrom = "2019-01-21T18:36:38.383Z",
+                                        validFrom = DateTime.MinValue,
                                         activeEvents = new string[0],
                                         state = new
                                         {
-                                            electionId = "",
+                                            electionId = "", // i want to look at this in the future
                                             candidates = new string[0],
-                                            electionEnds = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}",
+                                            electionEnds = shopData?.expiration,
                                             numWinnners = 1
                                         }
                                     }
                                 },
-                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = shopData?.expiration
                             }
                         },
                         {
@@ -110,7 +108,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                         validFrom = "2019-01-21T18:36:38.383Z",
+                                         validFrom = DateTime.MinValue,
                                          activeEvents = new string[0],
                                          state = new
                                          {
@@ -121,7 +119,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                          }
                                     }
                                 },
-                                cacheExpire = $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = shopData?.expiration
                             }
                         },
                         {
@@ -131,20 +129,20 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                        validFrom = "2019-01-21T18:36:38.383Z",
+                                        validFrom = DateTime.MinValue,
                                         activeEvents = new[]
                                         {
                                             new
                                             {
                                                 eventType = $"EventFlag.Season{season.Season}",
-                                                activeUntil = "9999-12-31T23:59:59.999Z",
-                                                activeSince = "2020-01-010T23:59:59.999Z"
+                                                activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                                                activeSince = DateTime.MinValue
                                             },
                                             new
                                             {
                                                 eventType = $"EventFlag.LobbySeason{season.Season}",
-                                                activeUntil = "9999-12-31T23:59:59.999Z",
-                                                activeSince = "2020-01-01T23:59:59.999Z"
+                                                activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                                                activeSince = DateTime.MinValue
                                             }
                                         },
                                         state = new
@@ -154,17 +152,17 @@ namespace FortBackend.src.App.Routes.Storefront
                                             seasonNumber = season.Season,
                                             seasonTemplateId = $"AthenaSeason:athenaseason{season.Season}",
                                             matchXpBonusPoints = 0,
-                                            seasonBegin = "2020-01-01T00:00:00Z",
-                                            seasonEnd = "2067-01-01T00:00:00Z",
-                                            seasonDisplayedEnd = "2067-01-01T00:00:00Z",
-                                            weeklyStoreEnd =  $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}",
+                                            seasonBegin = DateTime.MinValue,
+                                            seasonEnd = Saved.DeserializeGameConfig.SeasonEndDate,
+                                            seasonDisplayedEnd = Saved.DeserializeGameConfig.SeasonEndDate,
+                                            weeklyStoreEnd =  shopData?.expiration,
                                             stwEventStoreEnd = "9999-12-31T23:59:59.999Z",
-                                            stwWeeklyStoreEnd = "9999-12-31T23:59:59.999Z",
-                                            dailyStoreEnd =  $"{shopData?.expiration.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                            stwWeeklyStoreEnd = shopData?.expiration,
+                                            dailyStoreEnd =  shopData?.expiration
                                         }
                                     }
                                 },
-                                cacheExpire = $"{shopData?.cacheExpire.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")}"
+                                cacheExpire = shopData?.expiration
                             }
                         }
                     },

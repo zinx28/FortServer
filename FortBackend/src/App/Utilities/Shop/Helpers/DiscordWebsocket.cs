@@ -18,7 +18,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
         public async static Task SendEmbed(/*SavedData dataSaved*/)
         {
-            Config DeserializeConfig = Saved.Saved.DeserializeConfig;
+            FortConfig DeserializeConfig = Saved.Saved.DeserializeConfig;
             if (string.IsNullOrEmpty(DeserializeConfig.ShopWebhookUrl))
             {
                 Logger.Error("Shop Webhook url is missing from config!", "ItemShop");

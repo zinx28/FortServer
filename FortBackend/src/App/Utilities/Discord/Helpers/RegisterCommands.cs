@@ -8,7 +8,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
 {
     public class RegisterCommands
     {
-        public static async Task Connect(Config config, SocketGuild guild)
+        public static async Task Connect(FortConfig config, SocketGuild guild)
         {
             
 

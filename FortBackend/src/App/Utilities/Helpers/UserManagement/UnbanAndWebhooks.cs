@@ -13,7 +13,7 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {
     public class unbanAndWebhooks
     {
-        public static async Task Init(Config DeserializeConfig, UserInfo userinfo, string Message = "false ban", string BodyMessage = "Moderator")
+        public static async Task Init(FortConfig DeserializeConfig, UserInfo userinfo, string Message = "false ban", string BodyMessage = "Moderator")
         {
             try
             {

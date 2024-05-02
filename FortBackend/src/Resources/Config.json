@@ -1,5 +1,7 @@
 {
     "//": "FortBackend Config",
+    "ProjectName": "FortBackend",
+    "JWT-KEY": "MyVerySecretFortBackendKey",
     "BackendPort": 1111,
     "MatchmakerPort": 2121,
     "XmppPort": 443,
@@ -18,8 +20,6 @@
     "EnableDetections": false,
     "FullLockerForEveryone": false,
     "Cloudflare": false,
-
-
     "bShowBotMessage": true,
     "DiscordBotMessage": "FortBackend"
 }

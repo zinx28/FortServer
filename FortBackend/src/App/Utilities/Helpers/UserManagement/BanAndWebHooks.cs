@@ -19,7 +19,7 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {
     public class BanAndWebHooks
     {
-        public static async Task Init(Config DeserializeConfig, UserInfo userinfo, string Message = "attemping to bypass ban.", string BodyMessage = "Auto Banned")
+        public static async Task Init(FortConfig DeserializeConfig, UserInfo userinfo, string Message = "attemping to bypass ban.", string BodyMessage = "Auto Banned")
         {
             try
             {

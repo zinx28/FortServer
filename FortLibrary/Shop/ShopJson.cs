@@ -2,8 +2,8 @@
 {
     public class ShopJson
     {
-        public string expiration { get; set; } = string.Empty;
-        public string cacheExpire { get; set; } = string.Empty;
+        public string expiration { get; set; } = "9999-12-31T23:59:59.9999999";
+        public string cacheExpire { get; set; } = "9999-12-31T23:59:59.9999999";
         public ShopJsonItem ShopItems { get; set; } = new ShopJsonItem();
     }
 

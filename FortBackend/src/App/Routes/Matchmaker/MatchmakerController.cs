@@ -34,7 +34,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
             Response.ContentType = "application/json";
             try
             {
-                Config config = Saved.DeserializeConfig;
+                FortConfig config = Saved.DeserializeConfig;
                 string JsonContent = ""; // no idea
 
                 try
@@ -187,7 +187,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
             Response.ContentType = "application/json";
             try
             {
-                Config config = Saved.DeserializeConfig;
+                FortConfig config = Saved.DeserializeConfig;
 
                 var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
                 var accessToken = token.Replace("eg1~", "");

@@ -31,86 +31,11 @@ namespace FortBackend.src.App
 
             Logger.Log("MARVELCO IS LOADING (marcellowmellow)");
             Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
+
             var builder = WebApplication.CreateBuilder(args);
             var startup = new Startup(builder.Configuration);
-         
 
-            var ReadConfig = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "config.json"));
-            if (ReadConfig == null)
-            {
-                Logger.Error("Couldn't find config", "CONFIG");
-                throw new Exception("Couldn't find config");
-            }
-
-            Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<Config>(ReadConfig)!;
-            if (Saved.DeserializeConfig == null)
-            {
-                Logger.Error("Couldn't deserialize config", "CONFIG");
-                throw new Exception("Couldn't deserialize config");
-            }else
-            {
-                if (Saved.DeserializeConfig.ForceSeason)
-                {
-                    Logger.Log($"Force Season Is On [{Saved.DeserializeConfig.Season}]", "Config");
-                }
-                Logger.Log("Loaded Config", "CONFIG");
-            }
-
-            string FullLockerJson = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/FullLocker.json"));
-            if (FullLockerJson == null)
-            {
-                Logger.Error("FULL LOCKER JSON IS NULL", "Services");
-            }
-            // if errors or someone skunks the file it won't crash on startup
-            try
-            {
-                Saved.DeserializeConfig.FullLocker_AthenaItems = JsonConvert.DeserializeObject<Dictionary<string, AthenaItem>>(FullLockerJson)!;
-                Logger.Log("Full locker is loaded", "Services");
-            }
-            catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message);  }
-
-
-            string DefaultBanners = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/Banners/DefaultBanners.json"));
-            if (DefaultBanners == null)
-            {
-                Logger.Error("DefaultBanners JSON IS NULL", "Services");
-            }
-            // if errors or someone skunks the file it won't crash on startup
-            try
-            {
-                Saved.DeserializeConfig.DefaultBanners_Items = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultBanners)!;
-                Logger.Log("DefaultBanners is loaded", "Services");
-            }
-            catch (Exception ex) { Logger.Error("DefaultBanners -> " + ex.Message); }
-
-            string DefaultColors = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/Banners/DefaultColors.json"));
-            if (DefaultColors == null)
-            {
-                Logger.Error("DefaultColors JSON IS NULL", "Services");
-            }
-            // if errors or someone skunks the file it won't crash on startup
-            try
-            {
-                Dictionary<string, CommonCoreItem> DefaultColorsData = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultColors)!;
-                foreach(var item in DefaultColorsData)
-                {
-                    Saved.DeserializeConfig.DefaultBanners_Items.Add(item.Key, item.Value);
-                }
-                Logger.Log("DefaultColors is loaded", "Services");
-            }
-            catch (Exception ex) { Logger.Error("DefaultColors -> " + ex.Message); }
-
-            try
-            {
-                DailyQuestsManager.LoadDailyQuests();
-            }
-            catch (Exception ex) { Logger.Error("DailyQuests -> " + ex.Message); }
-
-            try
-            {
-                BattlepassManager.Init();
-            }
-            catch (Exception ex) { Logger.Error("Battlepass Data -> " + ex.Message); }
+            await CachedData.Init();
 
             startup.ConfigureServices(builder.Services);
 

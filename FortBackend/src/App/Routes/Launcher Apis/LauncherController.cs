@@ -29,7 +29,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
         {
             try
             {
-                Config config = Saved.DeserializeConfig;
+                FortConfig config = Saved.DeserializeConfig;
 
                 if (string.IsNullOrEmpty(config.ApplicationClientID) || string.IsNullOrEmpty(config.ApplicationURI) || string.IsNullOrEmpty(config.ApplicationSecret))
                 {
@@ -115,7 +115,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                         var FindDiscordID = await Handlers.FindOne<User>("DiscordId", id);
                         if (FindDiscordID != "Error")
                         {
-                            string NewAccessToken = JWT.GenerateRandomJwtToken(15, "FortBackendIsSoCoolLetMeNutAllOverYou!@!@!@!@!");
+                            string NewAccessToken = JWT.GenerateRandomJwtToken(15, config.JWTKEY);
 
                             var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", id, new Dictionary<string, object>()
                             {

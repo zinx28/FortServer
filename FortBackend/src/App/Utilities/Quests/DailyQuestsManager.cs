@@ -2,6 +2,7 @@
 using FortLibrary.Dynamics;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Utilities.Quests
 {
@@ -61,10 +62,10 @@ namespace FortBackend.src.App.Utilities.Quests
 
         public static void LoadDailyQuests()
         {
-            var DailyQuestsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Quests/DailyQuests");
+            var DailyQuestsFolder = Path.Combine(PathConstants.BaseDir, "src/Resources/Json/Quests/DailyQuests");
             if(Path.Exists(DailyQuestsFolder))
             {
-                string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Quests/DailyQuests"), "*.json");
+                string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(PathConstants.BaseDir, "src/Resources/Json/Quests/DailyQuests"), "*.json");
 
                 if (DailyQuestsFiles.Count() > 0)
                 {

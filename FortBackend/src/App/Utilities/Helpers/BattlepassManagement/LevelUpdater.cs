@@ -1,4 +1,5 @@
-﻿using FortLibrary.Dynamics;
+﻿using FortBackend.src.App.Utilities.Constants;
+using FortLibrary.Dynamics;
 using FortLibrary.MongoDB.Module;
 using Newtonsoft.Json;
 
@@ -8,8 +9,8 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
     {
         public static async Task<(SeasonClass FoundSeason, bool NeedItems)> Init(int Season, SeasonClass FoundSeason, bool NeedItems)
         {
-            var SeasonXPFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season}\\SeasonXP.json");
-            var SeasonBattleStarsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season}\\SeasonBP.json");
+            var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season}\\SeasonXP.json");
+            var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season}\\SeasonBP.json");
 
             if (File.Exists(SeasonXPFolder))
             {

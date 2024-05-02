@@ -7,6 +7,7 @@ using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Components.Forms;
 using MongoDB.Bson.Serialization.Serializers;
 using FortLibrary.Shop;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Utilities.Shop
 {
@@ -19,7 +20,7 @@ namespace FortBackend.src.App.Utilities.Shop
             SavedData savedData = new SavedData();
 
             savedData = await Generator.Start(savedData);
-            var OutPutFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "output.png");
+            var OutPutFile = Path.Combine(PathConstants.BaseDir, "src", "Resources", "output.png");
             int Width = 600;
             int Height = 500;
             using (var bitmap = new SKBitmap(Width, Height))

@@ -1,4 +1,5 @@
-﻿using FortLibrary.Shop;
+﻿using FortBackend.src.App.Utilities.Constants;
+using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -12,7 +13,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
         public static int Attempts = 0;
         public static SavedData savedData = new SavedData();
 
-        public static string PriceFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/shop/prices.json");
+        public static string PriceFile = Path.Combine(PathConstants.BaseDir, $"src/Resources/json/shop/prices.json");
         public static string PricejsonContent = File.ReadAllText(PriceFile);
 
         public static Dictionary<string, Dictionary<string, int>> PriceValues = new Dictionary<string, Dictionary<string, int>>();
@@ -83,7 +84,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                 Console.WriteLine(shopGen);
                 string updatedJsonContent = JsonConvert.SerializeObject(shopGen, Formatting.Indented);
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
+                string filePath = Path.Combine(PathConstants.BaseDir, "src/Resources/json/shop/shop.json");
                 File.WriteAllText(filePath, updatedJsonContent);
             }
             return savedData;

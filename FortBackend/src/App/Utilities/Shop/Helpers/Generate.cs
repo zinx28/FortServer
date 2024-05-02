@@ -1,4 +1,5 @@
-﻿using FortLibrary.Shop;
+﻿using FortBackend.src.App.Utilities.Constants;
+using FortLibrary.Shop;
 using Newtonsoft.Json;
 
 namespace FortBackend.src.App.Utilities.Shop.Helpers
@@ -16,7 +17,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
 
             Random random = new Random();
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "bundles.json");
+            string filePath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "json", "shop", "bundles.json");
             string jsonContent = File.ReadAllText(filePath);
             if (jsonContent == null)
             {
@@ -287,7 +288,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 }
             }
 
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/json/shop/{ChosenItem}.json");
+            string filePath = Path.Combine(PathConstants.BaseDir, $"src/Resources/json/shop/{ChosenItem}.json");
             string jsonContent = File.ReadAllText(filePath);
 
             if(jsonContent == null)

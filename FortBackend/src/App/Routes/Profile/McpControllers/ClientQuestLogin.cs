@@ -16,6 +16,7 @@ using FortLibrary;
 using System.Net.Http.Json;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -28,7 +29,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
 
-                var jsonData = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Profiles\\default.json"));
+                var jsonData = File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Profiles\\default.json"));
                 if (!string.IsNullOrEmpty(jsonData))
                 {
                     // adds stats shocked
@@ -193,8 +194,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         // LEVEL SYSTEM & XP
 
-                        var SeasonXPFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonXP.json");
-                        var SeasonBattleStarsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonBP.json");
+                        var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonXP.json");
+                        var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonBP.json");
                       
                         int BookLevelOG = FoundSeason.BookLevel;
                         bool NeedItems = false;

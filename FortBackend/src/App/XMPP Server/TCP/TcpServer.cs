@@ -11,6 +11,7 @@ using System.Xml;
 using System.IO;
 using System.Reflection;
 using ZstdSharp;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.XMPP_Server.TCP
 {
@@ -29,7 +30,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
         public async Task Start()
         {
             tcpListener.Start();
-            var FindPfxPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx");
+            var FindPfxPath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "Certificates", "FortBackend.pfx");
             if(!File.Exists(FindPfxPath))
             {
                 Logger.Log($"Couldn't find FortBackend.pfx" , "TCP");

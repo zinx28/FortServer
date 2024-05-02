@@ -1,4 +1,5 @@
 ﻿using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
+using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.ConfigHelpers;
 using Newtonsoft.Json;
@@ -48,7 +49,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     HttpContent httpContent2 = new StringContent(jsonPayload2, Encoding.UTF8, "application/json");
                     try
                     {
-                        var OutPutFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "output.png");
+                        var OutPutFile = Path.Combine(PathConstants.BaseDir, "src", "Resources", "output.png");
                         byte[] imageData = File.ReadAllBytes(OutPutFile);
                         ByteArrayContent imageContent = new ByteArrayContent(imageData);
 

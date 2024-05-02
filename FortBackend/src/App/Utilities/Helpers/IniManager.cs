@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Text;
 using ThirdParty.Json.LitJson;
 using static System.Collections.Specialized.BitVector32;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Utilities.Helpers
 {
@@ -21,21 +22,21 @@ namespace FortBackend.src.App.Utilities.Helpers
 
            
 
-            string filePath = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\IniConfig.json"));
+            string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\IniConfig.json"));
 
             if (string.IsNullOrEmpty(filePath))
             {
                 return "NotFound";
             }
 
-            string PlaylistData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\PlaylistData.json"));
+            string PlaylistData = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\PlaylistData.json"));
 
             if (string.IsNullOrEmpty(PlaylistData))
             {
                 return "NotFound";
             }
 
-            string QosRegionManagerData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\QosRegionManager.json"));
+            string QosRegionManagerData = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\QosRegionManager.json"));
 
             if (string.IsNullOrEmpty(QosRegionManagerData))
             {
@@ -117,7 +118,7 @@ namespace FortBackend.src.App.Utilities.Helpers
         public static List<CloudstorageFile> CloudStorageArrayData()
         {
             var list = new List<CloudstorageFile>();
-            string filePath = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\ini\\IniConfig.json"));
+            string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\IniConfig.json"));
 
             if (string.IsNullOrEmpty(filePath))
             {

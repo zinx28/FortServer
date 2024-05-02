@@ -10,6 +10,7 @@ using FortLibrary.Shop;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
@@ -17,7 +18,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
     {
         public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, ProfileCacheEntry profileCacheEntry)
         {
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "shop.json");
+            string filePath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "json", "shop", "shop.json");
             string json = File.ReadAllText(filePath);
 
             if (string.IsNullOrEmpty(json))
@@ -270,7 +271,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                 else
                 {
                     // This should be season shop
-                    string SeasonShopFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "json", "shop", "special", "SeasonShop.json");
+                    string SeasonShopFilePath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "json", "shop", "special", "SeasonShop.json");
                     string SeasonShopJson = File.ReadAllText(SeasonShopFilePath);
 
                     if (string.IsNullOrEmpty(SeasonShopJson))

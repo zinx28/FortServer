@@ -144,7 +144,7 @@ namespace FortBackend.src.App.Routes.API
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
                 });
 
-                //var jsonData1 = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\ph.json"));
+                //var jsonData1 = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\ph.json"));
                 //ContentJson contentconfig1 = JsonConvert.DeserializeObject<ContentJson>(jsonData); //dynamicbackgrounds.news
 
                 //return Ok(contentconfig1);

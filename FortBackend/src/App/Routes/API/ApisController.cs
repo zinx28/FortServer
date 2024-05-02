@@ -53,10 +53,14 @@ namespace FortBackend.src.App.Routes.API
         [HttpGet("/statsproxy/api/statsv2/account/{accountId}")]
         public IActionResult StatsProxy(string accountId)
         {
+            long ticksInOneDay = TimeSpan.TicksPerDay;
+            long ticksInOneYear = 365 * ticksInOneDay;
+
+         
             return Ok(new
             {
                 startTime = 0,
-                endTime = 9223372036854776000,
+                endTime = ticksInOneYear,
                 accountId,
                 stats = new { } // stats like "smth": number
             });

@@ -62,10 +62,10 @@ namespace FortBackend.src.App.Utilities.Quests
 
         public static void LoadDailyQuests()
         {
-            var DailyQuestsFolder = Path.Combine(PathConstants.BaseDir, "src/Resources/Json/Quests/DailyQuests");
+            var DailyQuestsFolder = Path.Combine(PathConstants.BaseDir, "Json/Quests/DailyQuests");
             if(Path.Exists(DailyQuestsFolder))
             {
-                string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(PathConstants.BaseDir, "src/Resources/Json/Quests/DailyQuests"), "*.json");
+                string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(PathConstants.BaseDir, "Json/Quests/DailyQuests"), "*.json");
 
                 if (DailyQuestsFiles.Count() > 0)
                 {

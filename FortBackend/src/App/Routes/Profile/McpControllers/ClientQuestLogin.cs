@@ -29,7 +29,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
 
-                var jsonData = File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Profiles\\default.json"));
+                var jsonData = File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"Json\\Profiles\\default.json"));
                 if (!string.IsNullOrEmpty(jsonData))
                 {
                     // adds stats shocked
@@ -194,8 +194,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         // LEVEL SYSTEM & XP
 
-                        var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonXP.json");
-                        var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season.Season}\\SeasonBP.json");
+                        var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonXP.json");
+                        var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonBP.json");
                       
                         int BookLevelOG = FoundSeason.BookLevel;
                         bool NeedItems = false;

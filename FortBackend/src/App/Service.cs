@@ -14,6 +14,7 @@ using FortBackend.src.App.Utilities.Discord;
 using FortBackend.src.App.Utilities.Quests;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortLibrary.ConfigHelpers;
+using FortBackend.src.App.Utilities.ADMIN;
 namespace FortBackend.src.App
 {
     public class Service
@@ -100,6 +101,12 @@ namespace FortBackend.src.App
                 await UpdateLeaderBoard.LeaderboardLoop();
             });
             LeadBoardLoop.Start();
+
+            var AdminServerThread = new Thread(() =>
+            {
+                AdminServer.Init(args);
+            });
+            AdminServerThread.Start();
 
             //var TCPXmppServer = new Thread(() =>
             //{ 

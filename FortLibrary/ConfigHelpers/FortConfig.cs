@@ -29,6 +29,7 @@ namespace FortLibrary.ConfigHelpers
         public string JWTKEY { get; set; } = "MyVerySecretFortBackendKey";
         public int BackendPort { get; set; } = 1111;
         public int MatchmakerPort { get; set; } = 2121;
+        public int AdminPort { get; set; } = 2134;
         public string MatchmakerIP { get; set; } = "127.0.0.1"; // Change if your hosting the matchmaker on a different ip
 
         // -- XMPP -- //

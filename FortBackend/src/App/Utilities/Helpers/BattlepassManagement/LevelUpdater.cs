@@ -9,8 +9,8 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
     {
         public static async Task<(SeasonClass FoundSeason, bool NeedItems)> Init(int Season, SeasonClass FoundSeason, bool NeedItems)
         {
-            var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season}\\SeasonXP.json");
-            var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{Season}\\SeasonBP.json");
+            var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season}\\SeasonXP.json");
+            var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season}\\SeasonBP.json");
 
             if (File.Exists(SeasonXPFolder))
             {

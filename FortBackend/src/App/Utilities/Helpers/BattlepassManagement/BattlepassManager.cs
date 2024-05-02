@@ -14,7 +14,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
         public static Dictionary<int, List<Battlepass>> PaidBattlePassItems = new Dictionary<int, List<Battlepass>>();
         public static void Init()
         {
-            string[] seasonFolders = Directory.GetDirectories(Path.Combine(PathConstants.BaseDir, $"src/Resources/json/Season"));
+            string[] seasonFolders = Directory.GetDirectories(Path.Combine(PathConstants.BaseDir, $"json/Season"));
 
             foreach (string seasonFolder in seasonFolders)
             {
@@ -52,7 +52,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                     }
                 }
 
-                var SeasonFreeBattlePassFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{season}\\SeasonFreeBattlepass.json");
+                var SeasonFreeBattlePassFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{season}\\SeasonFreeBattlepass.json");
               
                 if (File.Exists(SeasonFreeBattlePassFolder))
                 {
@@ -65,7 +65,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         {
                             FreeBattlePassItems.Add(season, FreeTier);
 
-                            var SeasonPaidBattlePassFolder = Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\Season\\Season{season}\\SeasonPaidBattlepass.json");
+                            var SeasonPaidBattlePassFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{season}\\SeasonPaidBattlepass.json");
 
                             if (File.Exists(SeasonPaidBattlePassFolder))
                             {

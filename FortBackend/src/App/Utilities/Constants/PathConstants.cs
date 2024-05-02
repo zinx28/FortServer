@@ -43,6 +43,7 @@
 
         }
 
+        public static readonly string EulaTrackingFN = Path.Combine(BaseDir, "Json/EulaTrackingFN.json");
         public static readonly string Keychain = Path.Combine(BaseDir, "Json/keychain.json");
         public static readonly string FN_PROD = Path.Combine(BaseDir, "Json/FN_PROD.json");
         public static readonly string SdkDefault = Path.Combine(BaseDir, "Json/SdkDefault.json");

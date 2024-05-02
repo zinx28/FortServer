@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Constants;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -7,8 +9,28 @@ namespace FortBackend.src.App.Routes.API
     public class EulatrackingController : ControllerBase
     {
         [HttpGet]
-        public IActionResult StatsProxy(string accountId)
+        public IActionResult EulaTracking()
         {
+            Response.ContentType = "application/json";
+            try
+            {
+                var EulaPath = PathConstants.EulaTrackingFN;
+
+                if (System.IO.File.Exists(EulaPath))
+                {
+                    var ReadFile = System.IO.File.ReadAllText(EulaPath);
+
+                    if(!string.IsNullOrEmpty(ReadFile))
+                    {
+                        return Content(ReadFile, "application/json");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "EulaTracking");
+            }
+
             return Ok(new {});
         }
 

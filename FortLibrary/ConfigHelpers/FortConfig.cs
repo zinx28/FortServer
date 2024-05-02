@@ -66,6 +66,12 @@ namespace FortLibrary.ConfigHelpers
 
         // -- //
 
+        // -- ADMIN STUFF -- //
+        public string AdminEmail { get; set; } = "Admin@gmail.com";
+        public string AdminPassword { get; set; } = "AdminPassword123";
+
+        // -- //
+
 
         public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
 

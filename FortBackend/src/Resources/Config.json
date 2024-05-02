@@ -21,5 +21,8 @@
     "FullLockerForEveryone": false,
     "Cloudflare": false,
     "bShowBotMessage": true,
-    "DiscordBotMessage": "FortBackend"
+    "DiscordBotMessage": "FortBackend",
+
+    "AdminEmail": "Admin@gmail.com",
+    "AdminPassword": "AdminPassword123"
 }

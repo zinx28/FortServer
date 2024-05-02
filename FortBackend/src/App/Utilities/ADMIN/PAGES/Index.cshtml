@@ -4,6 +4,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewBag.Title = "Admin Login Page";
 
 }
 
@@ -12,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Login Page</title>
+    <title>@ViewBag.Title</title>
     <link href="/css/BootStrap.css" rel="stylesheet" crossorigin="anonymous">
 
     <style>
@@ -42,16 +43,15 @@
 
 
     <main class="form-signin w-100 m-auto">
-        <form>
-            <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <form method="post">
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
 
@@ -62,6 +62,12 @@
                 </label>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+            {
+                <div class="alert alert-danger mt-3" role="alert">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
             <p class="mt-5 mb-3 text-body-secondary">Using getbootstrap.. i am not doing this</p>
         </form>
     </main>

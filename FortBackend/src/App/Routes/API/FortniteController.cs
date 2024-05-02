@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.MongoDB.Helpers;
+﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
@@ -114,15 +115,18 @@ namespace FortBackend.src.App.Routes.API
         public async Task<IActionResult> Accinventory(string accountId)
         {
             Response.ContentType = "application/json";
-            var AccountData = await Handlers.FindOne<Account>("accountId", accountId);
             int globalcash = 0;
-            if (AccountData != "Error")
+            try
             {
-                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                if (AccountDataParsed != null)
+                var profileCacheEntry = await GrabData.Profile(accountId);
+                if (profileCacheEntry != null)
                 {
-                    globalcash = AccountDataParsed.athena.Gold;
+                    globalcash = profileCacheEntry.AccountData.athena.Gold;
                 }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex.Message, "AccInventory");
             }
 
             return Ok(new

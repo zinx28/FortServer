@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Constants;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using MongoDB.Driver;
@@ -16,7 +17,7 @@ namespace FortBackend.src.App.Routes.Storefront
             try
             {
                 var cacheKey = $"KeychainEndpointKey";
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/keychain.json");
+                string filePath = PathConstants.Keychain;
 
                 if (!System.IO.File.Exists(filePath))
                 {

@@ -7,9 +7,11 @@ using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary.Dynamics;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Routes.Storefront
 {
+    // The worst code ever needs to be cleaner
     [ApiController]
     [Route("fortnite/api/storefront/v2/catalog")]
     public class CatalogController : ControllerBase
@@ -23,7 +25,7 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 VersionClass season = await SeasonUserAgent(Request);
 
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/shop.json");
+                string filePath = PathConstants.ShopJson.Shop;
                 string json = System.IO.File.ReadAllText(filePath);
 
                 if (string.IsNullOrEmpty(json))
@@ -71,7 +73,7 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 if (season.Season == 1)
                 {
-                    string SeasonShopPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/shop/special/SeasonShop.json");
+                    string SeasonShopPath = PathConstants.ShopJson.SeasonShop;
                     string OGJson = System.IO.File.ReadAllText(SeasonShopPath);
 
                     if (string.IsNullOrEmpty(OGJson))

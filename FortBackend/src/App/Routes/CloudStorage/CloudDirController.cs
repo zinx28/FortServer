@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Constants;
 using Microsoft.AspNetCore.Mvc;
 using SharpCompress.Common;
 using System.Text.RegularExpressions;
@@ -15,7 +16,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
             Response.ContentType = "application/octet-stream";
             try
             {
-                string CloudDirFull = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Ini/CloudDir/Full.ini");
+                string CloudDirFull = PathConstants.CloudDir.FullCloud;
                 string FullIni = System.IO.File.ReadAllText(CloudDirFull);
 
                 return Content(FullIni, "application/octet-stream");
@@ -41,7 +42,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
                     return BadRequest("Invalid image parameter");
                 }
        
-                string CloudDirFull = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/Ini/CloudDir/Chunks/{chunk}");
+                string CloudDirFull = PathConstants.CloudDir.chunk(chunk);
                 if (System.IO.File.Exists(CloudDirFull))
                 {
                     byte[] FullIni = System.IO.File.ReadAllBytes(CloudDirFull);

@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Saved;
+﻿using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Matching;
@@ -17,12 +18,13 @@ namespace FortBackend.src.App.Routes.Storefront
             Response.ContentType = "application/json";
             try
             {
-                string Json = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/shop/shop.json"));
+                
+                string Json = System.IO.File.ReadAllText(PathConstants.ShopJson.Shop);
                 if (Json == null)
                 {
                     return BadRequest(new { });
                 }
-                // i need to work on this dynamic!
+
                 ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(Json)!;
 
                 if (shopData == null) { return BadRequest(new { }); } // if null return

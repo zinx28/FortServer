@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Dynamic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text.RegularExpressions;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -90,11 +91,11 @@ namespace FortBackend.src.App.Routes.API
                     Season = (await Grabber.SeasonUserAgent(Request)).Season;
 
 
-                    string filePath1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Events.json");
+                    string filePath1 = PathConstants.Templates.Events;
                     string json1 = System.IO.File.ReadAllText(filePath1);
                     var jsonResponse = JsonConvert.DeserializeObject<List<EventC>>(json1);
 
-                    string filePath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json/templates/Arena.json");
+                    string filePath2 = PathConstants.Templates.Arena;
                     string json2 = System.IO.File.ReadAllText(filePath2);
                     var jsonResponse2 = JsonConvert.DeserializeObject<List<TemplateC>>(json2);
 
@@ -255,7 +256,7 @@ namespace FortBackend.src.App.Routes.API
             Response.ContentType = "application/json";
             try
             {
-                var DefaultSDKPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json", "FN_PROD.json");
+                var DefaultSDKPath = PathConstants.FN_PROD;
 
                 if (System.IO.File.Exists(DefaultSDKPath))
                 {
@@ -328,7 +329,7 @@ namespace FortBackend.src.App.Routes.API
             try
             {
                 
-                string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/Json/epicsettings.json");
+                string ConfigFilePath = PathConstants.EpicSettings;
 
                 if (Path.Exists(ConfigFilePath))
                 {
@@ -425,7 +426,7 @@ namespace FortBackend.src.App.Routes.API
                     return BadRequest("Invalid image parameter");
                 }
 
-                string ConfigFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src/Resources/Json/{filename}");
+                string ConfigFilePath = Path.Combine(PathConstants.BaseDir, filename);
                
                 if (Path.Exists(ConfigFilePath))
                 {

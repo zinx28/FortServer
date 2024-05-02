@@ -13,6 +13,7 @@ using FortLibrary;
 using FortLibrary.Encoders;
 using FortBackend.src.XMPP.Data;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Routes.CloudStorage
 {
@@ -75,7 +76,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
         public IActionResult UserApi(string id, string file)
         {
             Response.ContentType = "application/octet-stream";
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Saved.DeserializeConfig.ProjectName, "ClientSettings", $"ClientSettings-{id}.sav");
+            string filePath = PathConstants.CloudSettings($"ClientSettings-{id}.sav");
 
             if (System.IO.File.Exists(filePath))
             {
@@ -119,14 +120,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
                     {
                         string requestBody = await reader.ReadToEndAsync();
 
-                        string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Saved.DeserializeConfig.ProjectName, "ClientSettings");
-
-                        if (!Directory.Exists(folderPath))
-                        {
-                            Directory.CreateDirectory(folderPath);
-                        }
-                        
-                        System.IO.File.WriteAllText(Path.Combine(folderPath, $"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
+                        System.IO.File.WriteAllText(PathConstants.CloudSettings($"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
                         StatusCode(204);
 
                         reader.Close();
@@ -160,7 +154,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
                     ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
                     if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
-                        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Saved.DeserializeConfig.ProjectName, "ClientSettings", $"ClientSettings-{profileCacheEntry.AccountId}.sav");
+                        string filePath = IniManager.GrabIniFile($"ClientSettings-{profileCacheEntry.AccountId}.sav");
 
                         if (System.IO.File.Exists(filePath))
                         {

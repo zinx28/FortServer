@@ -8,6 +8,7 @@ using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortLibrary;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortLibrary.Dynamics;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Routes.Development
 {
@@ -95,7 +96,7 @@ namespace FortBackend.src.App.Routes.Development
             Response.ContentType = "application/json";
             try
             {
-                var DefaultSDKPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/json", "SdkDefault.json");
+                var DefaultSDKPath = PathConstants.SdkDefault;
 
                 if (System.IO.File.Exists(DefaultSDKPath))
                 {
@@ -121,7 +122,7 @@ namespace FortBackend.src.App.Routes.Development
                 {
                     return BadRequest("Invalid image parameter");
                 }
-                var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Image", "Trans_Boykisser.png");
+                var imagePath = PathConstants.ReturnImage("Trans_Boykisser.png");
                 if (System.IO.File.Exists(imagePath))
                 {
                     return PhysicalFile(imagePath, "image/jpeg");
@@ -148,7 +149,7 @@ namespace FortBackend.src.App.Routes.Development
                 {
                     return BadRequest("Invalid image parameter");
                 }
-                var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Image", image);
+                var imagePath = PathConstants.ReturnImage(image);
                 if (System.IO.File.Exists(imagePath))
                 {
                     return PhysicalFile(imagePath, "image/jpeg");

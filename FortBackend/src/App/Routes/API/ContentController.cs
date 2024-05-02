@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Net;
 using ZstdSharp.Unsafe;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortBackend.src.App.Utilities.Constants;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -59,7 +60,7 @@ namespace FortBackend.src.App.Routes.API
                     }
                 };
 
-                var jsonData = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"src\\Resources\\Json\\content.json"));
+                var jsonData = System.IO.File.ReadAllText(PathConstants.Content);
                 if(string.IsNullOrEmpty(jsonData)) {
                     Logger.Error("CONTENT FILE IS NULL OR EMPTY");
 

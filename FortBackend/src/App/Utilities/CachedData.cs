@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+﻿using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Quests;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.EpicResponses.Profile.Query.Items;
@@ -13,12 +14,12 @@ namespace FortBackend.src.App.Utilities
         {
             // -- All Paths -- //
 
-            var FortConfigPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "config.json");
-            var FortGamePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "GameConfig.json");
-            var FullLockerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/FullLocker.json");
-            var DefaultBannerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/Banners/DefaultBanners.json");
-            var DefaultBannerColorsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources/Json/Profiles/Banners/DefaultColors.json");
-            
+            var FortConfigPath = PathConstants.CachedPaths.FortConfig;
+            var FortGamePath = PathConstants.CachedPaths.FortGame;
+            var FullLockerPath = PathConstants.CachedPaths.FullLocker;
+            var DefaultBannerPath = PathConstants.CachedPaths.DefaultBanner;
+            var DefaultBannerColorsPath = PathConstants.CachedPaths.DefaultBannerColors;
+
             // -- //
 
             // -- Verify -- //
@@ -61,9 +62,6 @@ namespace FortBackend.src.App.Utilities
 
             var ReadFortConfig = File.ReadAllText(FortConfigPath);
             if (string.IsNullOrEmpty(ReadFortConfig)) { throw new Exception("Error reading ReadFortConfig"); } // well should've thrown a different error
-
-
-
 
             DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(ReadFortConfig)!;
             if (DeserializeConfig == null)

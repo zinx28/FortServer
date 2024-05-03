@@ -4,6 +4,8 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    bool isHomeTabActive = true;
+    bool isDashboardTabActive = false;
 }
 
 <!doctype html>
@@ -27,7 +29,7 @@
     </style>
 </head>
 <body >
-
+    <div class="d-flex" style="height: 100%;">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100%;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -62,6 +64,16 @@
         </div>
     </div>
 
+    <div class="flex-grow-1">
+        <div class="tab-pane fade @(isHomeTabActive ? "show active" : "")" id="home-tab" role="tabpanel" aria-labelledby="home-tab">
+             <h1>T</h1>
+        </div>
+        <div class="tab-pane fade @(isDashboardTabActive ? "show active" : "")" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-tab">
+            <h1>A</h1>
+        </div>
+    </div>
+    
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -7,10 +7,12 @@
 
 @{
     var NewsData = NewsManager.ContentConfig;
-    var INdexIg = 0;
+    var INdexIg = -1;
     int counter2 = 0;
 
     var TempData = NewsData;
+
+    var Tab = 0;
 }
 
 
@@ -167,13 +169,17 @@
                                                     @if(counter2 != 0) {
                                                         counter2 = 0;
                                                     }
-                                                    @foreach (var newsItem in NewsData.battleroyalenews.motds)
+                                                    @if (Tab == 1)
                                                     {
-                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">@newsItem.title</a></li>
-                                                        counter2++;
+                                                        @foreach (var newsItem in NewsData.battleroyalenews.motds)
+                                                        {
+                                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">@newsItem.title</a></li>
+                                                            counter2++;
+                                                        }
                                                     }
+                                                   
                                                     <li><hr class="dropdown-divider"></li>
-                                                    <li><a class="dropdown-item" href="#">Add News Item</a></li>
+                                                    <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
                                                 </ul>
                                             </div>
                 
@@ -194,7 +200,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary">Save changes</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="populateModalClose()">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -217,11 +223,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             var indexIg = @INdexIg;
-            var newsData = @Html.Raw(Json.Serialize(NewsData));
+            var newsData = @Html.Raw(Json.Serialize(TempData));
 
             function populateModalForEdit(type, index) {
                 var selectedItem;
                 if (type === 'news' && index >= 0) {
+                    if (indexIg != index) {
+                        // Add Data Before to be "CACHED";
+                        if (indexIg != -1) { // so it won't break the -1 value
+                            newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
+                            newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                        }
+                    }
                     indexIg = index;
                     selectedItem = newsData.battleroyalenews.motds[indexIg];
                     console.log(selectedItem)
@@ -235,8 +248,21 @@
                     document.getElementById('editBody').value = selectedItem.body;
                     $('#editModal').modal('show');
                 }else {
+                    // Clear it duh?
+                    document.getElementById('dropdownMenuButton').textContent = "Not Selected"
+                    document.getElementById('editType').value = type;
+                    document.getElementById('editIndex').value = index;
+                    document.getElementById('editTitle').value = "";
+                    document.getElementById('editBody').value = "";
+
                     $('#editModal').modal('show');
                 }
+            }
+
+            function populateModalClose() {
+                @(INdexIg = -1);
+                indexIg = @INdexIg;
+                newsData = @Html.Raw(Json.Serialize(TempData));
             }
         </script>
 

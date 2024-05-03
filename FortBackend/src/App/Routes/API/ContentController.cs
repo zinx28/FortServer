@@ -9,6 +9,7 @@ using System.Net;
 using ZstdSharp.Unsafe;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Helpers.Cached;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -39,14 +40,16 @@ namespace FortBackend.src.App.Routes.API
                     if(cachedResult != null) { return cachedResult; }  
                 }
 
-                var ContentJsonResponse = new ContentJson
-                {
 
-                    dynamicbackgrounds = new DynamicBackground()
+
+                var ContentJsonResponse = new ContentJson();
+                ContentJsonResponse = NewsManager.ContentJsonResponse;
+
+                ContentJsonResponse.dynamicbackgrounds = new DynamicBackground()
+                {
+                    backgrounds = new DynamicBackgrounds()
                     {
-                        backgrounds = new DynamicBackgrounds()
-                        {
-                            backgrounds = new List<DynamicBackgroundList>
+                        backgrounds = new List<DynamicBackgroundList>
                             {
                                 new DynamicBackgroundList
                                 {
@@ -56,88 +59,12 @@ namespace FortBackend.src.App.Routes.API
                                 }
                             }
 
-                        }
                     }
                 };
 
-                var jsonData = System.IO.File.ReadAllText(PathConstants.Content);
-                if(string.IsNullOrEmpty(jsonData)) {
-                    Logger.Error("CONTENT FILE IS NULL OR EMPTY");
+                //NewsManager
 
-                    return Content(JsonConvert.SerializeObject(ContentJsonResponse, new JsonSerializerSettings
-                    {
-                        NullValueHandling = NullValueHandling.Ignore
-                    }), "application/json");
-                }
-                ContentConfig contentconfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData)!; //dynamicbackgrounds.news
 
-                if (contentconfig != null)
-                {
-                    contentconfig.battleroyalenews.motds.ForEach(x =>
-                    {
-                        ContentJsonResponse.battleroyalenews.news.motds.Add(new NewContentMotds()
-                        {
-                            image = x.image,
-                            title = x.title,
-                            body = x.body,
-                        });
-
-                        ContentJsonResponse.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
-                        {
-                            image = x.image,
-                            title = x.title,
-                            body = x.body,
-                        });
-                    });
-
-                    ContentJsonResponse.loginMessage.loginmessage.message.title = contentconfig.loginmessage.title;
-                    ContentJsonResponse.loginMessage.loginmessage.message.body = contentconfig.loginmessage.body;
-
-                    contentconfig.battleroyalenews.messages.ForEach(x =>
-                    {
-                        ContentJsonResponse.battleroyalenews.news.messages.Add(new NewContentMessages()
-                        {
-                            image = x.image,
-                            title = x.title,
-                            body = x.body,
-                        });
-                    });
-
-                    contentconfig.emergencynotice.ForEach(x =>
-                    {
-                        ContentJsonResponse.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
-                        {
-                            title = x.title,
-                            body = x.body,
-                        });
-
-                        ContentJsonResponse.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
-                        {
-                            title = x.title,
-                            body = x.body,
-                        });
-                    });
-
-                    contentconfig.shopSections.ForEach(x =>
-                    {
-                        ContentJsonResponse.shopSections.sectionList.sections.Add(new ShopSectionsSectionsSEctions
-                        {
-                            sectionId = x.sectionId,
-                            sectionDisplayName = x.sectionDisplayName,
-                            landingPriority = x.landingPriority,
-                        });
-                    });
-
-                    contentconfig.tournamentinformation.ForEach(x =>
-                    {
-                        ContentJsonResponse.tournamentinformation.tournament_info.tournaments.Add(x);
-                    });
-
-                    contentconfig.playlistinformation.ForEach(x =>
-                    {
-                        ContentJsonResponse.playlistinformation.playlist_info.playlists.Add(x);
-                    });
-                }
 
                 memoryCache.Set(cacheKey, ContentJsonResponse, new MemoryCacheEntryOptions
                 {

@@ -1,12 +1,16 @@
-﻿@using FortBackend.src.XMPP.Data
+﻿@using FortBackend.src.App.Utilities.Helpers.Cached
+@using FortBackend.src.XMPP.Data
+@using Newtonsoft.Json
 
 
 @model FortBackend.src.App.Utilities.ADMIN.Controllers.DashboardContentController
 
 @{
-  
+    var NewsData = NewsManager.ContentConfig;
+    var INdexIg = 0;
+    int counter2 = 0;
 
-
+    var TempData = NewsData;
 }
 
 
@@ -37,11 +41,22 @@
             background-color: #007bff;
             border-color: #007bff;
         }
+
+        .table {
+            background-color: transparent !important;
+        }
+
+        .modal-content {
+            background-color: #343a40;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 </head>
 <body>
     <div class="d-flex" style="height: 100%;">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100%;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark position-fixed" style="width: 280px; height: 100%; overflow-y: auto;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
                 <span class="fs-4">FortBackend</span>
@@ -76,7 +91,7 @@
             </div>
         </div>
 
-        <div class="flex-grow-1 p-3 text-white">
+        <div class="flex-grow-1 p-3 text-white" style="margin-left: 280px;">
             <div class="tab-pane fade show active" id="content-tab" role="tabpanel" aria-labelledby="content-tab">
                 <h1>Content Management</h1>
 
@@ -96,8 +111,94 @@
                     <div class="tab-pane fade show active" id="news" role="tabpanel" aria-labelledby="news-tab">
                        
                         <h2>News Updates</h2>
-                    
-                    </div>
+                        
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Body</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>News</td>
+                                    <td>Edit Live News</td>
+                                    <td>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" onclick="populateModalForEdit('News', -1)">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>OTher</td>
+                                    <td>Edit SA</td>
+                                    <td>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      
+                                        <ul class="nav nav-tabs" id="editTabs" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="news-tab" data-bs-toggle="tab" data-bs-target="#news" type="button" role="tab" aria-controls="news" aria-selected="true">News</button>
+                                            </li>
+                                           
+                                        </ul>
+                                      
+                                        <div class="tab-content" id="editTabContent">
+
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Not Selected
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    @if(counter2 != 0) {
+                                                        counter2 = 0;
+                                                    }
+                                                    @foreach (var newsItem in NewsData.battleroyalenews.motds)
+                                                    {
+                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">@newsItem.title</a></li>
+                                                        counter2++;
+                                                    }
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item" href="#">Add News Item</a></li>
+                                                </ul>
+                                            </div>
+                
+                                        </div>
+                                     
+                                        <form id="editForm">
+                                            <input type="hidden" id="editType" name="type">
+                                            <input type="hidden" id="editIndex" name="index">
+                                            <div class="mb-3">
+                                                <label for="editTitle" class="form-label">Title</label>
+                                                <input type="text" class="form-control" id="editTitle" name="title">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="editBody" class="form-label">Body</label>
+                                                <textarea class="form-control" id="editBody" rows="3" name="body"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <div class="tab-pane fade" id="servers" role="tabpanel" aria-labelledby="servers-tab">
                        
                         <h2>Server Management</h2>
@@ -112,7 +213,33 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            var indexIg = @INdexIg;
+            var newsData = @Html.Raw(Json.Serialize(NewsData));
+
+            function populateModalForEdit(type, index) {
+                var selectedItem;
+                if (type === 'news' && index >= 0) {
+                    indexIg = index;
+                    selectedItem = newsData.battleroyalenews.motds[indexIg];
+                    console.log(selectedItem)
+                }
+
+                if (selectedItem) {
+                    document.getElementById('dropdownMenuButton').textContent = selectedItem.title
+                    document.getElementById('editType').value = type;
+                    document.getElementById('editIndex').value = index;
+                    document.getElementById('editTitle').value = selectedItem.title;
+                    document.getElementById('editBody').value = selectedItem.body;
+                    $('#editModal').modal('show');
+                }else {
+                    $('#editModal').modal('show');
+                }
+            }
+        </script>
+
   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
-namespace FortBackend.src.App.Utilities
+namespace FortBackend.src.App.Utilities.Helpers.Cached
 {
     public class CachedData
     {
@@ -95,13 +95,13 @@ namespace FortBackend.src.App.Utilities
             }
 
 
-            string FullLockerJson = System.IO.File.ReadAllText(FullLockerPath);
+            string FullLockerJson = File.ReadAllText(FullLockerPath);
             if (string.IsNullOrEmpty(FullLockerJson))
             {
                 Logger.Error("FULL LOCKER JSON IS NULL", "FullLockerFile");
                 throw new Exception("FULL LOCKER JSON IS NULL");
             }
-            
+
             try
             {
                 DeserializeConfig.FullLocker_AthenaItems = JsonConvert.DeserializeObject<Dictionary<string, AthenaItem>>(FullLockerJson)!;
@@ -109,13 +109,13 @@ namespace FortBackend.src.App.Utilities
             }
             catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message); }
 
-            string DefaultBanners = System.IO.File.ReadAllText(DefaultBannerPath);
+            string DefaultBanners = File.ReadAllText(DefaultBannerPath);
             if (string.IsNullOrEmpty(DefaultBanners))
             {
                 Logger.Error("DefaultBanners JSON IS NULL", "DefaultBannersFile");
                 throw new Exception("DefaultBanners JSON IS NULL");
             }
-           
+
             try
             {
                 DeserializeConfig.DefaultBanners_Items = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultBanners)!;
@@ -124,7 +124,7 @@ namespace FortBackend.src.App.Utilities
             catch (Exception ex) { Logger.Error("DefaultBanners -> " + ex.Message); }
 
 
-            string DefaultColors = System.IO.File.ReadAllText(DefaultBannerColorsPath);
+            string DefaultColors = File.ReadAllText(DefaultBannerColorsPath);
             if (string.IsNullOrEmpty(DefaultColors))
             {
                 Logger.Error("DefaultColors JSON IS NULL", "DefaultColorsFile");
@@ -153,6 +153,12 @@ namespace FortBackend.src.App.Utilities
                 BattlepassManager.Init();
             }
             catch (Exception ex) { Logger.Error("Battlepass Data -> " + ex.Message); }
+
+            try
+            {
+                NewsManager.Init();
+            }
+            catch (Exception ex) { Logger.Error("NewsManager Data -> " + ex.Message); }
 
             Saved.Saved.DeserializeConfig = DeserializeConfig;
             Saved.Saved.DeserializeGameConfig = DeserializeGameConfig;

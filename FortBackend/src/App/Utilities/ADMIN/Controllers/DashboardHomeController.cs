@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FortBackend.src.App.Utilities.ADMIN.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardHomeController : Controller
     {
         [HttpGet]
         public IActionResult Index()
         {
+            Console.WriteLine("T");
             if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
             {
                 AdminData adminData = AdminServer.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
@@ -15,8 +16,7 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
                 {
                     Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
-                    //return View("~/src/App/Utilities/ADMIN/Pages/Dashboard/Home.cshtml");
-                    return Redirect("/dashboard/home");
+                    return View("~/src/App/Utilities/ADMIN/PAGES/Dashboard/Home.cshtml");
                 }
             }
 

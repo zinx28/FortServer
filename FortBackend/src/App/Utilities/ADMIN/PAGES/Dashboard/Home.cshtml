@@ -1,0 +1,109 @@
+﻿@using FortBackend.src.XMPP.Data
+@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model FortBackend.src.App.Utilities.ADMIN.Controllers.DashboardHomeController
+
+@{
+   
+    int PeopleConnected = GlobalData.Clients.Count;
+
+   
+
+
+}
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="/css/BootStrap.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            width: auto;
+            height: 100%;
+            background: #3f474f;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex" style="height: 100%;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100%;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="fs-4">FortBackend</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto" style="overflow-y: auto;">
+                <li class="nav-item">
+                  
+                    <a href="/dashboard/home" class="nav-link text-white active" aria-current="page">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dashboard/content" class="nav-link text-white">
+                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Content Management
+                    </a>
+                </li>
+            </ul>
+
+            <div class="dropdown mt-auto">
+                <hr>
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <strong>@ViewData["Username"]!</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li><a class="dropdown-item" href="#">Idrk</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex-grow-1 p-3 text-white">
+            
+                <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <h1>Dashboard</h1>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">People Connected</h5>
+                                    <p class="card-text">@PeopleConnected</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Some grid</h5>
+                                    <p class="card-text">grid</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

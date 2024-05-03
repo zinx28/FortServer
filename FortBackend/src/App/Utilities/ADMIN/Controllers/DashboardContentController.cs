@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FortBackend.src.App.Utilities.ADMIN.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardContentController : Controller
     {
         [HttpGet]
         public IActionResult Index()
@@ -15,8 +15,7 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
                 {
                     Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
-                    //return View("~/src/App/Utilities/ADMIN/Pages/Dashboard/Home.cshtml");
-                    return Redirect("/dashboard/home");
+                    return View("~/src/App/Utilities/ADMIN/PAGES/Dashboard/Content.cshtml");
                 }
             }
 

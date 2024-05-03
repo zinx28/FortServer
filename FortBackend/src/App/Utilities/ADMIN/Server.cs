@@ -60,12 +60,20 @@
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                   name: "home_default",
+                   pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
-                   name: "default",
-                   pattern: "{controller=Dashboard}/dashboard/{action=Index}/{id?}");
+                    name: "dashboard_default",
+                    pattern: "dashboard/{controller=Dashboard}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "dashboard_home_default",
+                    pattern: "dashboard/home/{controller=DashboardHome}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                   name: "dashboard_content_default",
+                   pattern: "dashboard/content/{controller=DashboardContent}/{action=Index}/{id?}");
             });
 
             

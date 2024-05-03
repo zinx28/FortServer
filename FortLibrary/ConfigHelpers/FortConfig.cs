@@ -1,4 +1,5 @@
 ﻿using FortLibrary.EpicResponses.Profile.Query.Items;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace FortLibrary.ConfigHelpers
     public class FortConfig
     {
         [JsonPropertyName("//")]
+        [JsonProperty("//")]
         public string FortBackend { get; set; } = "";
 
         // AUTO CHANGES DURING RUN TIME
@@ -26,7 +28,8 @@ namespace FortLibrary.ConfigHelpers
         public string ProjectName { get; set; } = "FortBackend"; // clientsettings, and many other things that include fortbackend
 
         [JsonPropertyName("JWT-KEY")]
-        public string JWTKEY { get; set; } = "MyVerySecretFortBackendKey";
+        [JsonProperty("JWT-KEY")]
+        public string JWTKEY { get; set; } = "MyVerySecretFortBackendKey@!!!!!!!!";
         public int BackendPort { get; set; } = 1111;
         public int MatchmakerPort { get; set; } = 2121;
         public int AdminPort { get; set; } = 2134;

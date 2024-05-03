@@ -1,7 +1,7 @@
 {
     "//": "FortBackend Config",
     "ProjectName": "FortBackend",
-    "JWT-KEY": "MyVerySecretFortBackendKey",
+    "JWT-KEY": "MyVerySecretFortBackendKey@!!!!!!!!",
     "BackendPort": 1111,
     "MatchmakerPort": 2121,
     "XmppPort": 443,

@@ -153,6 +153,9 @@ namespace FortBackend.src.App.Utilities
                 BattlepassManager.Init();
             }
             catch (Exception ex) { Logger.Error("Battlepass Data -> " + ex.Message); }
+
+            Saved.Saved.DeserializeConfig = DeserializeConfig;
+            Saved.Saved.DeserializeGameConfig = DeserializeGameConfig;
         }
     }
 }

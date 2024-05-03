@@ -2,9 +2,17 @@
 {
     public class AdminServer
     {
+        public static CachedAdminData CachedAdminData { get; set; } = new CachedAdminData();
         public static void Init(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             builder.Services.AddControllersWithViews();
 
@@ -12,6 +20,7 @@
 
             var app = builder.Build();
 
+            app.UseSession();
             app.UseRouting();
 
             app.Use(async (context, next) =>
@@ -53,6 +62,10 @@
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Dashboard}/dashboard/{action=Index}/{id?}");
             });
 
             

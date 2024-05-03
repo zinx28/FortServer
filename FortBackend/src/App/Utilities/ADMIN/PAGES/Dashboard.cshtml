@@ -1,0 +1,67 @@
+﻿@model FortBackend.src.App.Utilities.ADMIN.Controllers.DashboardController
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link href="/css/BootStrap.css" rel="stylesheet" crossorigin="anonymous">
+
+    <style>
+
+        html, body {
+            height: 100%;
+        }
+        body {
+            width: auto;
+            height: 100%;
+            background: #3f474f;
+        }
+    </style>
+</head>
+<body >
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100%;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">FortBackend</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto" style="overflow-y: auto;">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                    Dashboard
+                </a>
+            </li>
+        </ul>
+        
+        <div class="dropdown mt-auto">
+            <hr>
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <strong>@ViewData["Username"]!</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Idrk</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

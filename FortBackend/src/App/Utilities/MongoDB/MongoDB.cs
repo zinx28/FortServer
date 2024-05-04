@@ -4,6 +4,7 @@ using FortBackend.src.App.Utilities.Saved;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
 using FortLibrary.ConfigHelpers;
+using FortLibrary.MongoDB.Modules;
 
 
 namespace FortBackend.src.App.Utilities.MongoDB
@@ -49,6 +50,7 @@ namespace FortBackend.src.App.Utilities.MongoDB
             CreateBlank.Module<Account>(database);
             CreateBlank.Module<StatsInfo>(database);
             CreateBlank.Module<StoreInfo>(database);
+            CreateBlank.Module<AdminInfo>(database);
 
             Logger.Log("MongoDB has fully loaded", "MongoDB");
         }

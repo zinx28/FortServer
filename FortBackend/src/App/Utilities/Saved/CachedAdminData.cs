@@ -1,4 +1,6 @@
-﻿namespace FortBackend.src.App.Utilities.ADMIN
+﻿using FortLibrary.Dynamics;
+
+namespace FortBackend.src.App.Utilities.ADMIN
 {
     public class CachedAdminData
     {
@@ -11,5 +13,6 @@
         public bool IsForcedAdmin { get; set; } = false;
         public string AdminUser { get; set; } = "";
         public string AdminUserName { get; set; } = "Admin";
+        public int RoleId { get; set; } = AdminDashboardRoles.Moderator;
     }
 }

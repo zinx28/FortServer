@@ -16,4 +16,10 @@ namespace FortLibrary
         public UserFriends UserFriends { get; set; } = new UserFriends();
         public DateTime LastUpdated { get; set; } = DateTime.Now;
     }
+
+    public class AdminProfileCacheEntry
+    {
+        public ProfileCacheEntry profileCacheEntry { get; set; } = new ProfileCacheEntry();
+
+    }
 }

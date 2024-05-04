@@ -44,7 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\App\Utilities\ADMIN\Controllers\" />
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\NewFolder\" />
     <Folder Include="src\Resources\Json\templates\" />

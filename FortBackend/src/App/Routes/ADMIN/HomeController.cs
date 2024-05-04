@@ -1,7 +1,10 @@
 ﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.ADMIN;
 using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary;
 using FortLibrary.Encoders;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
@@ -18,7 +21,7 @@ namespace FortBackend.src.App.Routes.ADMIN
         }
 
         [HttpPost("login")]
-        public IActionResult Index(string email, string password)
+        public async Task<IActionResult> Index(string email, string password)
         {
 
             Console.WriteLine(email);
@@ -82,6 +85,65 @@ namespace FortBackend.src.App.Routes.ADMIN
                     //HttpContext.Session.SetString("Key", "Value");
 
                     return Redirect("/admin/dashboard");
+                }
+            }
+            else
+            {
+                //ProfileEmail(email);
+                AdminProfileCacheEntry FoundAcc = GrabAdminData.AdminUsers?.FirstOrDefault(e => e.profileCacheEntry.UserData.Email == email)!;
+                if(FoundAcc != null && !string.IsNullOrEmpty(FoundAcc.profileCacheEntry.AccountId))
+                {
+                    ProfileCacheEntry profileCacheEntry = FoundAcc.profileCacheEntry;
+                    if (profileCacheEntry.UserData.Password == password)
+                    {
+                        ViewBag.ErrorMessage = "Correct!";
+                        var Token = JWT.GenerateRandomJwtToken(24, Saved.DeserializeConfig.JWTKEY);
+
+                        AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUser == email);
+                        if (adminData != null)
+                        {
+                            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                            {
+                                if (adminData.AccessToken == authToken)
+                                {
+                                    return Redirect("/dashboard");
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                            {
+                                if (adminData != null)
+                                {
+                                    if (adminData.AccessToken == authToken)
+                                    {
+                                        return Redirect("/dashboard");
+                                    }
+                                }
+                            }
+
+                            Saved.CachedAdminData.Data.Add(new AdminData
+                            {
+                                AccessToken = Token,
+                                AdminUser = FoundAcc.profileCacheEntry.UserData.Email,
+                                AdminUserName = FoundAcc.profileCacheEntry.UserData.Username,
+                                IsForcedAdmin = email == Saved.DeserializeConfig.AdminEmail
+                            });
+                        }
+                        Response.Cookies.Delete("AuthToken");
+
+                        Response.Cookies.Append("AuthToken", Token, new CookieOptions
+                        {
+                            // HttpOnly = true,
+                            Secure = false,
+                            SameSite = SameSiteMode.Strict
+                        });
+
+
+                        return Redirect("/admin/dashboard");
+                    }
                 }
             }
 

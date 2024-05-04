@@ -7,6 +7,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
     public class CacheMiddleware : IHostedService
     {
         public static Dictionary<string, ProfileCacheEntry> GlobalCacheProfiles = new Dictionary<string, ProfileCacheEntry>();
+      
         private CancellationTokenSource _cancellationTokenSource;
 
         // private readonly IMemoryCache _cache;

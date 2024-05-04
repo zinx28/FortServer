@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities.ADMIN;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -43,7 +44,7 @@ namespace FortBackend.src.App.Utilities
             services.AddControllers();
         }
     
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -102,6 +103,8 @@ namespace FortBackend.src.App.Utilities
 
                 //endpoints.MapControllers();
             });
+
+            await GrabAdminData.GrabAllAdmin(); // cache service needs to be alive for this to wrok!
 
             Logger.Log("Done Loading");
 

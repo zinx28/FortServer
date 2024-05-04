@@ -16,6 +16,7 @@ using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortLibrary.ConfigHelpers;
 using FortBackend.src.App.Utilities.ADMIN;
 using FortBackend.src.App.Utilities.Helpers.Cached;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 namespace FortBackend.src.App
 {
     public class Service
@@ -41,6 +42,8 @@ namespace FortBackend.src.App
 
             startup.ConfigureServices(builder.Services);
 
+     
+
 
         #if HTTPS
                 Saved.DeserializeConfig.DefaultProtocol = "https://";
@@ -59,13 +62,15 @@ namespace FortBackend.src.App
                         listenOptions.UseHttps(certificate);
                     });
                 });
-            #else
+#else
                 Saved.DeserializeConfig.DefaultProtocol = "http://";
                 builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
             #endif
 
 
             var app = builder.Build();
+
+           
 
             // Fix ips not showing
             //app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -81,6 +86,10 @@ namespace FortBackend.src.App
             app.UseRouting();
 
             startup.Configure(app, app.Environment);
+
+          
+
+
             //Setup.Initialize(app);
 #if !DEVELOPMENT
             var DiscordBotServer = new Thread(async () =>
@@ -123,6 +132,9 @@ namespace FortBackend.src.App
             //ItemShopGenThread.Start();
 
             //GenerateShop.Init();
+
+        
+
             await app.StartAsync();
 
             var shutdownTask = app.WaitForShutdownAsync();

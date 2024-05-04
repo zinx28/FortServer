@@ -159,6 +159,13 @@
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('emergencynotice', -1)">Edit</button>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Login Message</td>
+                                    <td>Edit Login Message</td>
+                                    <td>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('loginmessage', -1)">Edit</button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -324,6 +331,13 @@
                         console.log(selectedItem)
                    // }
                 }
+                else if (type === 'loginmessage') {
+                    newsList.style.display = 'none';
+                   @(Tab = 3); // not needed + won't be proper during runtime
+                    indexIg = index;
+                    selectedItem = newsData.loginmessage;
+                    console.log(selectedItem)
+                }
                 else {
                     @(Tab = -1); // won't show nothing
                 }
@@ -418,6 +432,9 @@
                     if (lastTab == "emergencynotice") {
                         newsData.emergencynotice[0].title = document.getElementById('editTitle').value;
                         newsData.emergencynotice[0].body = document.getElementById('editBody').value;
+                    } else if (lastTab == "loginmessage"){
+                        newsData.loginmessage.title = document.getElementById('editTitle').value;
+                        newsData.loginmessage.body = document.getElementById('editBody').value;
                     }
                 }
 

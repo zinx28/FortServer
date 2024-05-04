@@ -234,12 +234,14 @@
         <script>
             var indexIg = @INdexIg;
             var newsData = @Html.Raw(TempData);
+            var lastTab = "";
 
             function populateModalForEdit(type, index) {
                 var newsList = document.getElementById('newsList');
                 var selectedItem;
                 console.log(type);
                 console.log(index);
+                lastTab = type;
                 if (type === 'news') {
                     newsList.style.display = '';
            
@@ -298,9 +300,18 @@
                
                 // dw chat this is updating it
                 var tf = "gg";
-                if (indexIg != -1){
-                    newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
-                    newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                if(lastTab == "news"){
+                    // fixes stuff ofc
+                    if (indexIg != -1) {
+                        newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
+                        newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                    }
+                }
+                else { //
+                    if (lastTab == "emergencynotice") {
+                        newsData.emergencynotice[0].title = document.getElementById('editTitle').value;
+                        newsData.emergencynotice[0].body = document.getElementById('editBody').value;
+                    }
                 }
     
                 $.ajax({

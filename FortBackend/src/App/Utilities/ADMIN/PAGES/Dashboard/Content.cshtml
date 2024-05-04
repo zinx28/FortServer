@@ -303,9 +303,8 @@
                 $.ajax({
                     url: '/admin/dashboard/content/update',
                     type: 'POST',
-                    data: {
-                        data: newsData
-                    },
+                    contentType: 'application/json',
+                    data: JSON.stringify({ data: newsData }),
                     success: function (response) {
                         console.log("SAVING");
                         if (response === true) {

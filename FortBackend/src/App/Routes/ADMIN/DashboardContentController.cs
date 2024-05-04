@@ -3,11 +3,19 @@ using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.ConfigHelpers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Text.Json;
 
 namespace FortBackend.src.App.Routes.ADMIN
 {
+    public class TempDataModel
+    {
+        public string data { get; set; } = string.Empty;
+    }
+
     [Route("/admin/dashboard/content")]
     public class DashboardContentController : Controller
     {
@@ -28,17 +36,30 @@ namespace FortBackend.src.App.Routes.ADMIN
             return Redirect("/admin/login");
         }
 
+
         [HttpPost("update")]
-        public ActionResult UpdateTempDataV2([FromBody] string tempData)
+        public IActionResult UpdateTempDataV2([FromBody] JsonElement tempData)
         {
+            /*
+             * 
+             * TO DO: ADD AUTH SO NORMAL PEOPLE CANT UPDATE OR BREAK IT
+             * 
+             */
             try
             {
-                if (!string.IsNullOrEmpty(tempData))
-                {
-                    NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(tempData);
-                    return Json(true);
-                }
 
+                if (tempData.TryGetProperty("data", out JsonElement dataElement))
+                {
+                    string dataValue = dataElement.ToString();
+                    Console.WriteLine(dataValue);
+                    if (!string.IsNullOrEmpty(dataValue))
+                    {
+                        NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
+                        NewsManager.Update();
+                        return Json(true);
+                    }
+
+                }
                 return Json(false);
             }
             catch (Exception ex)

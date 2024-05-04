@@ -1,4 +1,5 @@
-﻿using FortLibrary.ConfigHelpers;
+﻿using FortBackend.src.App.Utilities.ADMIN;
+using FortLibrary.ConfigHelpers;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using System.Text.Json.Serialization;
 
@@ -6,6 +7,7 @@ namespace FortBackend.src.App.Utilities.Saved
 {
     public class Saved
     {
+        public static CachedAdminData CachedAdminData = new CachedAdminData();
         public static FortConfig DeserializeConfig = new FortConfig();
         public static FortGameConfig DeserializeGameConfig = new FortGameConfig();
     }

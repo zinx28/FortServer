@@ -1,8 +1,14 @@
-﻿using FortLibrary.Encoders;
+﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.ADMIN;
+using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Saved;
+using FortLibrary.Encoders;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 
-namespace FortBackend.src.App.Utilities.ADMIN.Controllers
+namespace FortBackend.src.App.Routes.ADMIN
 {
+    [Route("/admin/login")]
     public class HomeController : Controller
     {
         [HttpGet]
@@ -14,18 +20,18 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
         [HttpPost]
         public IActionResult Index(string email, string password)
         {
-           
+
             Console.WriteLine(email);
             Console.WriteLine($"Password {password}");
-            if (email == Saved.Saved.DeserializeConfig.AdminEmail)
+            if (email == Saved.DeserializeConfig.AdminEmail)
             {
-                if(password == Saved.Saved.DeserializeConfig.AdminPassword)
+                if (password == Saved.DeserializeConfig.AdminPassword)
                 {
                     Console.WriteLine($"w");
                     ViewBag.ErrorMessage = "Correct!";
-                    var Token = JWT.GenerateRandomJwtToken(24, Saved.Saved.DeserializeConfig.JWTKEY);
+                    var Token = JWT.GenerateRandomJwtToken(24, Saved.DeserializeConfig.JWTKEY);
 
-                    AdminData adminData = AdminServer.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUser == email);
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUser == email);
                     if (adminData != null)
                     {
                         if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
@@ -38,7 +44,7 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
 
                                 return Redirect("/dashboard");
                             }
-                            
+
                         }
                     }
                     else
@@ -46,7 +52,7 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
                         if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
                         {
                             Console.WriteLine(authToken);
-                            if(adminData != null)
+                            if (adminData != null)
                             {
                                 Console.WriteLine(adminData.AccessToken);
                                 if (adminData.AccessToken == authToken)
@@ -57,11 +63,11 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
                             }
                         }
 
-                        AdminServer.CachedAdminData.Data.Add(new AdminData
+                        Saved.CachedAdminData.Data.Add(new AdminData
                         {
                             AccessToken = Token,
                             AdminUser = email,
-                            IsForcedAdmin = email == Saved.Saved.DeserializeConfig.AdminEmail
+                            IsForcedAdmin = email == Saved.DeserializeConfig.AdminEmail
                         });
                     }
                     Response.Cookies.Delete("AuthToken");
@@ -75,7 +81,7 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
 
                     //HttpContext.Session.SetString("Key", "Value");
 
-                    return Redirect("/dashboard");
+                    return Redirect("/admin/dashboard");
                 }
             }
 
@@ -83,5 +89,36 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
 
             return View("~/src/App/Utilities/ADMIN/Pages/Index.cshtml");
         }
+
+      
+
     }
 }
+
+/*
+ * if (context.Request.Path.StartsWithSegments("/css") && context.Request.Path.Value.EndsWith(".css"))
+//                {
+//                    string cssFileName = Path.GetFileNameWithoutExtension(context.Request.Path.Value);
+
+//                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "src/App/Utilities/ADMIN/CSS", cssFileName + ".css");
+
+//                    Console.WriteLine(filePath);
+//                    if (!System.IO.File.Exists(filePath))
+//                    {
+//                        context.Response.StatusCode = 404;
+//                    }
+//                    else
+//                    {
+//                        string cssContent = System.IO.File.ReadAllText(filePath);
+                        
+//                        Console.WriteLine(cssFileName);
+//                        context.Response.ContentType = "text/css";
+//                        await context.Response.WriteAsync(cssContent);
+                        
+
+                        
+//                    }
+
+                   
+//                }
+*/

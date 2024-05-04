@@ -103,11 +103,11 @@ namespace FortBackend.src.App
             });
             LeadBoardLoop.Start();
 
-            var AdminServerThread = new Thread(() =>
-            {
-                AdminServer.Init(args);
-            });
-            AdminServerThread.Start();
+            //var AdminServerThread = new Thread(() =>
+            //{
+            //    AdminServer.Init(args);
+            //});
+            //AdminServerThread.Start();
 
             //var TCPXmppServer = new Thread(() =>
             //{ 

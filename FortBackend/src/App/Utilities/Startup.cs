@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Helpers.Middleware;
+﻿using FortBackend.src.App.Utilities.ADMIN;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ using System.Net;
 
 namespace FortBackend.src.App.Utilities
 {
+  
     public class Startup
     {
         private readonly IConfiguration Configuration;
@@ -37,6 +39,7 @@ namespace FortBackend.src.App.Utilities
             services.AddHostedService<CacheMiddleware>();
             services.AddHttpContextAccessor();
             services.AddMemoryCache();
+            services.AddControllersWithViews();
             services.AddControllers();
         }
     
@@ -59,25 +62,45 @@ namespace FortBackend.src.App.Utilities
 
             app.UseEndpoints(endpoints =>
             {
+               
                 var actionDescriptors = app.ApplicationServices.GetRequiredService<IActionDescriptorCollectionProvider>().ActionDescriptors.Items;
                 foreach (var actionDescriptor in actionDescriptors)
                 {
                     if (actionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
                     {
-                        var route = actionDescriptor.AttributeRouteInfo?.Template ?? actionDescriptor.RouteValues["action"];
-                        var controller = actionDescriptor.RouteValues["controller"];
+                        var controllerNamespace = controllerActionDescriptor.ControllerTypeInfo.Namespace;
+                        
+                        if (controllerNamespace != null && controllerNamespace.Contains("App.Routes"))
+                        {
+                            //Console.WriteLine(controllerNamespace);
+                            var route = actionDescriptor.AttributeRouteInfo?.Template ?? actionDescriptor.RouteValues["action"];
+                            var controller = actionDescriptor.RouteValues["controller"];
 
-                        var HttpMethod = controllerActionDescriptor.MethodInfo
-                        .GetCustomAttributes(true)
-                        .OfType<HttpMethodAttribute>()
-                        .SelectMany(attr => attr.HttpMethods)
-                        .Distinct();
+                            var HttpMethod = controllerActionDescriptor.MethodInfo
+                            .GetCustomAttributes(true)
+                            .OfType<HttpMethodAttribute>()
+                            .SelectMany(attr => attr.HttpMethods)
+                            .Distinct();
 
-                        Logger.Log($"/{route}", string.Join(",", HttpMethod));
+                             Logger.Log($"/{route}", string.Join(",", HttpMethod));
+
+                        
+                                endpoints.MapControllerRoute(
+                                    name: $"{controller}",
+                                    pattern: $"/{route}",
+                                    defaults: new { controller = controller }
+                             );
+                            
+                             
+
+
+                            Logger.Log($"/{route}", "Mapped");
+                        }
                     }
                 }
 
-                endpoints.MapControllers();
+
+                //endpoints.MapControllers();
             });
 
             Logger.Log("Done Loading");

@@ -39,6 +39,20 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
+        [HttpGet("/")]
+        public async Task<IActionResult> asa()
+        {
+            Request.ContentType = "application/json";
+            var responseObj = new
+            {
+                status = "OK"
+            };
+
+            return Ok(responseObj);
+        }
+
+        // stuff that are useless
+
         [HttpGet("/bp/free")]
         public async Task<IActionResult> TestA()
         {
@@ -90,54 +104,34 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
-        [HttpGet("/sdk/v1/default")]
-        public IActionResult SDKDEFAULT()
-        {
-            Response.ContentType = "application/json";
-            try
-            {
-                var DefaultSDKPath = PathConstants.SdkDefault;
+      
 
-                if (System.IO.File.Exists(DefaultSDKPath))
-                {
-                    var ReadFile = System.IO.File.ReadAllText(DefaultSDKPath);
-                    if (!string.IsNullOrEmpty(ReadFile)) { return Content(ReadFile, "application/json"); }
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex.Message, "SDKDEFAULT!!");
-            }
+        //[HttpGet("/{a}/{s}/{idk}")]
+        //public IActionResult GameRating(string a, string s, string idk)
+        //{
+        //    try
+        //    {
+        //        // Prevent Weird Characters
+        //        if (!Regex.IsMatch(idk, @"^[a-zA-Z0-9\-._]+$"))
+        //        {
+        //            return BadRequest("Invalid image parameter");
+        //        }
+        //        var imagePath = PathConstants.ReturnImage("Trans_Boykisser.png");
+        //        if (System.IO.File.Exists(imagePath))
+        //        {
+        //            return PhysicalFile(imagePath, "image/jpeg");
+        //        }
+        //        else
+        //        {
+        //            return NotFound();
+        //        }
+        //    }
+        //    catch /*(Exception ex)*/
+        //    {
 
-            return Ok(new { });
-        }
-
-        [HttpGet("/{a}/{s}/{idk}")]
-        public IActionResult GameRating(string a, string s, string idk)
-        {
-            try
-            {
-                // Prevent Weird Characters
-                if (!Regex.IsMatch(idk, @"^[a-zA-Z0-9\-._]+$"))
-                {
-                    return BadRequest("Invalid image parameter");
-                }
-                var imagePath = PathConstants.ReturnImage("Trans_Boykisser.png");
-                if (System.IO.File.Exists(imagePath))
-                {
-                    return PhysicalFile(imagePath, "image/jpeg");
-                }
-                else
-                {
-                    return NotFound();
-                }
-            }
-            catch /*(Exception ex)*/
-            {
-
-                return StatusCode(500, "Internal Server Error");
-            }
-        }
+        //        return StatusCode(500, "Internal Server Error");
+        //    }
+        //}
 
         [HttpGet("/image/{image}")]
         public IActionResult ImageEnd(string image)
@@ -164,6 +158,37 @@ namespace FortBackend.src.App.Routes.Development
 
                 return StatusCode(500, "Internal Server Error");
             }
+        }
+
+        [HttpGet("/css/{file}")]
+        public IActionResult FileResponse(string file)
+        {
+            try
+            {
+                Response.ContentType = "text/css";
+
+                if (!Regex.IsMatch(file, @"^[a-zA-Z0-9\-._]+$"))
+                {
+                    return BadRequest("Invalid image parameter");
+                }
+
+                string filePath = Path.Combine(PathConstants.BaseDir, "CSS", file);
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    string cssContent = System.IO.File.ReadAllText(filePath);
+
+
+                    return Content(cssContent);
+                    // await context.Response.WriteAsync(cssContent);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "CSS");
+            }
+
+            return NoContent();
         }
     }
 }

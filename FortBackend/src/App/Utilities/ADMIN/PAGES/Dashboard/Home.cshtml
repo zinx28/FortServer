@@ -9,7 +9,7 @@
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@model FortBackend.src.App.Utilities.ADMIN.Controllers.DashboardHomeController
+@model FortBackend.src.App.Routes.ADMIN.DashboardHomeController
 
 @{
    
@@ -52,13 +52,13 @@
             <ul class="nav nav-pills flex-column mb-auto" style="overflow-y: auto;">
                 <li class="nav-item">
                   
-                    <a href="/dashboard/home" class="nav-link text-white active" aria-current="page">
+                    <a href="/admin/dashboard/home" class="nav-link text-white active" aria-current="page">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard/content" class="nav-link text-white">
+                    <a href="/admin/dashboard/content" class="nav-link text-white">
                         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                         Content Management
                     </a>

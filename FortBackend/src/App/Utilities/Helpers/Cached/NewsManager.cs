@@ -9,7 +9,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
     public class NewsManager
     {
         public static ContentJson ContentJsonResponse = new ContentJson();
-        public static ContentConfig ContentConfig  = new ContentConfig();
+        public static ContentConfig ContentConfig = new ContentConfig();
 
         public static void Init()
         {

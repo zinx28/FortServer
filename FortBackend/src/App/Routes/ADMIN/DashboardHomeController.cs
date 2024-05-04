@@ -1,8 +1,11 @@
-﻿using FortLibrary.Encoders;
+﻿using FortBackend.src.App.Utilities.ADMIN;
+using FortBackend.src.App.Utilities.Saved;
+using FortLibrary.Encoders;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FortBackend.src.App.Utilities.ADMIN.Controllers
+namespace FortBackend.src.App.Routes.ADMIN
 {
+    [Route("/admin/dashboard/home")]
     public class DashboardHomeController : Controller
     {
         [HttpGet]
@@ -11,8 +14,8 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
             Console.WriteLine("T");
             if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
             {
-                AdminData adminData = AdminServer.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
-                if(adminData != null)
+                AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                if (adminData != null)
                 {
                     Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
@@ -20,7 +23,7 @@ namespace FortBackend.src.App.Utilities.ADMIN.Controllers
                 }
             }
 
-            return Redirect("/");
+            return Redirect("/admin/login");
         }
 
         //[HttpPost]

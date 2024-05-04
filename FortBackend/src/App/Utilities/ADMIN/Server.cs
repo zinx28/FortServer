@@ -1,85 +1,92 @@
-﻿namespace FortBackend.src.App.Utilities.ADMIN
-{
-    public class AdminServer
-    {
-        public static CachedAdminData CachedAdminData { get; set; } = new CachedAdminData();
-        public static void Init(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+﻿//using Microsoft.AspNetCore.Mvc.Controllers;
+//using Microsoft.AspNetCore.Mvc.Infrastructure;
+//using Microsoft.AspNetCore.Mvc.Routing;
 
-            builder.Services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
+//namespace FortBackend.src.App.Utilities.ADMIN
+//{
+//    public class AdminServer
+//    {
+//        public static CachedAdminData CachedAdminData { get; set; } = new CachedAdminData();
+//        public static void Init(string[] args)
+//        {
+//            var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllersWithViews();
+//            builder.Services.AddSession(options =>
+//            {
+//                options.IdleTimeout = TimeSpan.FromMinutes(30);
+//                options.Cookie.HttpOnly = true;
+//                options.Cookie.IsEssential = true;
+//            });
 
-            builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.Saved.DeserializeConfig.AdminPort}");
+//            builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+//            builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.Saved.DeserializeConfig.AdminPort}");
 
-            app.UseSession();
-            app.UseRouting();
+//            var app = builder.Build();
 
-            app.Use(async (context, next) =>
-            {
-                Console.WriteLine(context.Request.Path);
-                if (context.Request.Path.StartsWithSegments("/css") && context.Request.Path.Value.EndsWith(".css"))
-                {
-                    string cssFileName = Path.GetFileNameWithoutExtension(context.Request.Path.Value);
+//            app.UseSession();
+//            app.UseRouting();
 
-                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "src/App/Utilities/ADMIN/CSS", cssFileName + ".css");
+//            app.Use(async (context, next) =>
+//            {
+//                Console.WriteLine(context.Request.Path);
+//                if (context.Request.Path.StartsWithSegments("/css") && context.Request.Path.Value.EndsWith(".css"))
+//                {
+//                    string cssFileName = Path.GetFileNameWithoutExtension(context.Request.Path.Value);
 
-                    Console.WriteLine(filePath);
-                    if (!System.IO.File.Exists(filePath))
-                    {
-                        context.Response.StatusCode = 404;
-                    }
-                    else
-                    {
-                        string cssContent = System.IO.File.ReadAllText(filePath);
+//                    string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "src/App/Utilities/ADMIN/CSS", cssFileName + ".css");
+
+//                    Console.WriteLine(filePath);
+//                    if (!System.IO.File.Exists(filePath))
+//                    {
+//                        context.Response.StatusCode = 404;
+//                    }
+//                    else
+//                    {
+//                        string cssContent = System.IO.File.ReadAllText(filePath);
                         
-                        Console.WriteLine(cssFileName);
-                        context.Response.ContentType = "text/css";
-                        await context.Response.WriteAsync(cssContent);
+//                        Console.WriteLine(cssFileName);
+//                        context.Response.ContentType = "text/css";
+//                        await context.Response.WriteAsync(cssContent);
                         
 
                         
-                    }
+//                    }
 
                    
-                }
-                else
-                {
-                    await next();
-                }
-            });
+//                }
+//                else
+//                {
+//                    await next();
+//                }
+//            });
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                   name: "home_default",
-                   pattern: "{controller=Home}/{action=Index}/{id?}");
+//            app.UseEndpoints(endpoints =>
+//            {
+                
+              
+//               // endpoints.MapControllers();
+//                //endpoints.MapControllerRoute(
+//                //   name: "home_default",
+//                //   pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapControllerRoute(
-                    name: "dashboard_default",
-                    pattern: "dashboard/{controller=Dashboard}/{id?}");
+//                //endpoints.MapControllerRoute(
+//                //    name: "dashboard_default",
+//                //    pattern: "dashboard/{controller=Dashboard}/{id?}");
 
-                endpoints.MapControllerRoute(
-                    name: "dashboard_home_default",
-                    pattern: "dashboard/home/{controller=DashboardHome}/{action=Index}/{id?}");
+//                //endpoints.MapControllerRoute(
+//                //    name: "dashboard_home_default",
+//                //    pattern: "dashboard/home/{controller=DashboardHome}/{id?}");
 
-                endpoints.MapControllerRoute(
-                   name: "dashboard_content_default",
-                   pattern: "dashboard/content/{controller=DashboardContent}/{action=Index}/{id?}");
-            });
+//                //endpoints.MapControllerRoute(
+//                //   name: "dashboard_content_default",
+//                //   pattern: "dashboard/content/{controller=DashboardContent}/{id?}");
+//            });
 
             
 
 
-            app.Start();
-        }
-    }
-}
+//            app.Start();
+//        }
+//    }
+//}

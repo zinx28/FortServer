@@ -465,5 +465,27 @@ namespace FortBackend.src.App.Routes.API
                 }
             });
         }
+
+        [HttpGet("/sdk/v1/default")]
+        public IActionResult SDKDEFAULT()
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                var DefaultSDKPath = PathConstants.SdkDefault;
+
+                if (System.IO.File.Exists(DefaultSDKPath))
+                {
+                    var ReadFile = System.IO.File.ReadAllText(DefaultSDKPath);
+                    if (!string.IsNullOrEmpty(ReadFile)) { return Content(ReadFile, "application/json"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "SDKDEFAULT!!");
+            }
+
+            return Ok(new { });
+        }
     }
 }

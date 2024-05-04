@@ -182,9 +182,16 @@
                                                 <ul class="dropdown-menu" id="dropdownmenu" aria-labelledby="dropdownMenuButton">
                                                    @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.motds)
                                                     {
+                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">News @(counter2 + 1) (Motds)</a></li>
+                                                        counter2++;
+                                                    }
+
+                                                    @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.messages)
+                                                    {
                                                         <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">News @(counter2 + 1)</a></li>
                                                         counter2++;
                                                     }
+
 
                                                     <li><hr class="dropdown-divider"></li>
                                                     <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
@@ -238,7 +245,6 @@
         <script>
             var indexIg = @INdexIg;
             var newsData = @Html.Raw(TempData);
-          
             var lastTab = "";
             var newsFiles = [[],[]];
 
@@ -265,8 +271,14 @@
                         //if (indexIg != index) {
                             // Add Data Before to be "CACHED";
                             if (indexIg != -1) { // so it won't break the -1 value
-                                newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
-                                newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                                if (newsData.battleroyalenews.motds.length > indexIg) {
+                                    newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
+                                    newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                                } else {
+                                    newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].title = document.getElementById('editTitle').value;
+                                    newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].body = document.getElementById('editBody').value;
+                                }
+                               
                                 //if (ImageInputSelect && ImageInputSelect.files && ImageInputSelect.files.length > 0) {
                                     //if (ImageInputSelect.files == null) {
                                       //  if (newsFiles[indexIg] != null) {
@@ -289,9 +301,17 @@
                             }
                         //}
                         indexIg = index;
-                        selectedItem = newsData.battleroyalenews.motds[indexIg];
-                      
-                        document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1)
+                        console.log(newsData.battleroyalenews.motds.length < indexIg);
+                        if ((newsData.battleroyalenews.motds.length - 1) >= indexIg) {
+                            selectedItem = newsData.battleroyalenews.motds[indexIg];
+                            document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1) + " (Motds)"
+                        } 
+                        // ik this looks terrible it works fine and we have to + one as the index isnt correct with legth
+                        else if (indexIg - (newsData.battleroyalenews.motds.length) >= 0) {
+                            selectedItem = newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)]
+                            document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1)
+                        }
+                       
                         console.log(selectedItem)
                     }
                 } else if (type === 'emergencynotice'){
@@ -339,6 +359,8 @@
                     document.getElementById('editIndex').value = index;
                     document.getElementById('editTitle').value = "";
                     document.getElementById('editTitle').disabled = true;
+                    document.getElementById('editBody').value = "";
+                    document.getElementById('editBody').disabled = true;
 
                     //dropdownmenu
                     //document.getElementById('editBody').value = "";
@@ -366,8 +388,16 @@
                 if(lastTab == "news"){
                     // fixes stuff ofc
                     if (indexIg != -1) {
-                        newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
-                        newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                        if ((newsData.battleroyalenews.motds.length - 1) >= indexIg) {
+                            newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
+                            newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                        }
+                        else if (indexIg - (newsData.battleroyalenews.motds.length) >= 0) {
+                            newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].title = document.getElementById('editTitle').value;
+                            newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].body = document.getElementById('editBody').value;
+                        }
+
+                      
                     }
 
                 }
@@ -377,8 +407,6 @@
                         newsData.emergencynotice[0].body = document.getElementById('editBody').value;
                     }
                 }
-
-                newsDatas = newsData;
     
                 $.ajax({
                     url: '/admin/dashboard/content/update',

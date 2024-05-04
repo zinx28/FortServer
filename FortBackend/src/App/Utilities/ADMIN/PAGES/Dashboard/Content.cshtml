@@ -21,7 +21,7 @@
 
     var TempData = NewsData;
     var TempDataV2 = "";
-    var Tab = 1;
+    var Tab = -1;
 
 
     // bool UpdateContent()
@@ -149,14 +149,14 @@
                                     <td>News</td>
                                     <td>Edit Live News</td>
                                     <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('News', -1)">Edit</button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('news', -1)">Edit</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>OTher</td>
-                                    <td>Edit SA</td>
+                                    <td>Emergency Nnotice</td>
+                                    <td>Edit Emergency Notice</td>
                                     <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('emergencynotice', -1)">Edit</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -183,22 +183,15 @@
                                         <div class="tab-content" id="editTabContent">
 
 
-                                            <div class="dropdown">
+                                            <div class="dropdown" id="newsList" style="display: none;">
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                                     Not Selected
                                                 </button>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    @if (counter2 != 0)
+                                                   @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.motds)
                                                     {
-                                                        counter2 = 0;
-                                                    }
-                                                    @if (Tab == 1)
-                                                    {
-                                                        @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.motds)
-                                                        {
-                                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">@newsItem.title</a></li>
-                                                            counter2++;
-                                                        }
+                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">@newsItem.title</a></li>
+                                                        counter2++;
                                                     }
 
                                                     <li><hr class="dropdown-divider"></li>
@@ -249,23 +242,39 @@
             var newsData = @Html.Raw(TempData);
 
             function populateModalForEdit(type, index) {
+                var newsList = document.getElementById('newsList');
                 var selectedItem;
-                if (type === 'news' && index >= 0) {
-                       @(Tab = 1);
-                    if (indexIg != index) {
-                        // Add Data Before to be "CACHED";
-                        if (indexIg != -1) { // so it won't break the -1 value
-                            newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
-                            newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                console.log(type);
+                console.log(index);
+                if (type === 'news') {
+                    newsList.style.display = '';
+           
+                    console.log("should show 1")
+                    if (index >= 0) {
+                        if (indexIg != index) {
+                            // Add Data Before to be "CACHED";
+                            if (indexIg != -1) { // so it won't break the -1 value
+                                newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
+                                newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                            }
                         }
+                        indexIg = index;
+                        selectedItem = newsData.battleroyalenews.motds[indexIg];
+                        console.log(selectedItem)
                     }
-                    indexIg = index;
-                    selectedItem = newsData.battleroyalenews.motds[indexIg];
-                    console.log(selectedItem)
-                } else {
-                  @(Tab = -1); // won't show nothing
+                } else if (type === 'emergencynotice'){
+                    newsList.style.display = 'none';
+                   @(Tab = 2);
+                   // if (index >= 0){
+                        indexIg = index;
+                        selectedItem = newsData.emergencynotice[0];
+                        console.log(selectedItem)
+                   // }
                 }
-
+                else {
+                    @(Tab = -1); // won't show nothing
+                }
+         
                 if (selectedItem) {
                     document.getElementById('dropdownMenuButton').textContent = selectedItem.title
                     document.getElementById('editType').value = type;

@@ -74,7 +74,7 @@ namespace FortBackend.src.App.Routes.ADMIN
 
                     Response.Cookies.Append("AuthToken", Token, new CookieOptions
                     {
-                        HttpOnly = true,
+                       // HttpOnly = true,
                         Secure = false,
                         SameSite = SameSiteMode.Strict
                     });

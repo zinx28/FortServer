@@ -47,19 +47,28 @@ namespace FortBackend.src.App.Routes.ADMIN
              */
             try
             {
+                var authToken = Request.Headers["Authorization"].ToString();
 
-                if (tempData.TryGetProperty("data", out JsonElement dataElement))
+                if(authToken != null)
                 {
-                    string dataValue = dataElement.ToString();
-                    Console.WriteLine(dataValue);
-                    if (!string.IsNullOrEmpty(dataValue))
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                    if (adminData != null)
                     {
-                        NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
-                        NewsManager.Update();
-                        return Json(true);
+                        if (tempData.TryGetProperty("data", out JsonElement dataElement))
+                        {
+                            string dataValue = dataElement.ToString();
+                            Console.WriteLine(dataValue);
+                            if (!string.IsNullOrEmpty(dataValue))
+                            {
+                                NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
+                                NewsManager.Update();
+                                return Json(true);
+                            }
+                        }
                     }
-
                 }
+
+               
                 return Json(false);
             }
             catch (Exception ex)

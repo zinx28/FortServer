@@ -377,12 +377,25 @@
             function populateModalClose() {
                 @(INdexIg = -1);
                 indexIg = @INdexIg;
-                newsFiles = [];
+               // newsFiles = [];
                 newsData = @Html.Raw(TempData);
             }
 
+            function getAuthToken() {
+                var authToken = null;
+                document.cookie.split(';').forEach(function (cookie) {
+                    var parts = cookie.trim().split('=');
+                    if (parts[0] === 'AuthToken') {
+                        authToken = parts[1] ? decodeURIComponent(parts[1]) : '';
+                        //l
+                    }
+                });
+                return authToken;
+            }
+
             function populateModalSave() {
-               
+
+
                 // dw chat this is updating it
                 var tf = "gg";
                 if(lastTab == "news"){
@@ -407,11 +420,17 @@
                         newsData.emergencynotice[0].body = document.getElementById('editBody').value;
                     }
                 }
-    
+
+                indexIg = -1;
+
+
                 $.ajax({
                     url: '/admin/dashboard/content/update',
                     type: 'POST',
                     contentType: 'application/json',
+                    headers: {
+                        'Authorization': getAuthToken()
+                    },
                     data: JSON.stringify({ data: newsData }),
                     success: function (response) {
                         console.log("SAVING");

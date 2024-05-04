@@ -179,21 +179,23 @@
                                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                                     Not Selected
                                                 </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <ul class="dropdown-menu" id="dropdownmenu" aria-labelledby="dropdownMenuButton">
                                                    @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.motds)
                                                     {
-                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">@newsItem.title</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">News @(counter2 + 1)</a></li>
                                                         counter2++;
                                                     }
 
                                                     <li><hr class="dropdown-divider"></li>
                                                     <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
                                                 </ul>
+
+                                                <hr>
                                             </div>
 
                                         </div>
 
-                                        <hr>
+                                      
 
                                         <form id="editForm">
                                             <input type="hidden" id="editType" name="type">
@@ -206,6 +208,8 @@
                                                 <label for="editBody" class="form-label">Body</label>
                                                 <textarea class="form-control" id="editBody" rows="3" name="body"></textarea>
                                             </div>
+                                         
+                                            <p>* changing images from dashboard is unsupported *</p>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
@@ -234,32 +238,65 @@
         <script>
             var indexIg = @INdexIg;
             var newsData = @Html.Raw(TempData);
+          
             var lastTab = "";
+            var newsFiles = [[],[]];
+
+   
 
             function populateModalForEdit(type, index) {
                 var newsList = document.getElementById('newsList');
+                //var ImageSelect = document.getElementById('image-select');
+                //var ImageInputSelect = document.getElementById('imageInput');
                 var selectedItem;
-                console.log(type);
+                console.log(type); 
                 console.log(index);
                 lastTab = type;
+
+               
+
                 if (type === 'news') {
+                    
                     newsList.style.display = '';
-           
+                   
+                   // ImageSelect.style.display = '';
                     console.log("should show 1")
                     if (index >= 0) {
-                        if (indexIg != index) {
+                        //if (indexIg != index) {
                             // Add Data Before to be "CACHED";
                             if (indexIg != -1) { // so it won't break the -1 value
                                 newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
                                 newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                                //if (ImageInputSelect && ImageInputSelect.files && ImageInputSelect.files.length > 0) {
+                                    //if (ImageInputSelect.files == null) {
+                                      //  if (newsFiles[indexIg] != null) {
+                                      //      newsFiles[indexIg] = [];
+                                      //  } else {
+                                       //     newsFiles.push([]);
+                                      ///  }
+                                   // } else {
+                                       // if (newsFiles[indexIg] != null) {
+                                        //    newsFiles[indexIg] = ImageInputSelect.files;
+                                        //} else {
+                                        //    newsFiles.push(ImageInputSelect.files);
+                                        //}
+                                   // }
+                                    //newsFiles.push(ImageInputSelect.files)
+                                    //console.log(ImageInputSelect.files);
+
+
+                                //}
                             }
-                        }
+                        //}
                         indexIg = index;
                         selectedItem = newsData.battleroyalenews.motds[indexIg];
+                      
+                        document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1)
                         console.log(selectedItem)
                     }
                 } else if (type === 'emergencynotice'){
                     newsList.style.display = 'none';
+                    //ImageSelect.style.display = 'none';
                    @(Tab = 2);
                    // if (index >= 0){
                         indexIg = index;
@@ -271,12 +308,29 @@
                     @(Tab = -1); // won't show nothing
                 }
          
+
                 if (selectedItem) {
-                    document.getElementById('dropdownMenuButton').textContent = selectedItem.title
+                   // document.getElementById('dropdownMenuButton').textContent = selectedItem.title
                     document.getElementById('editType').value = type;
                     document.getElementById('editIndex').value = index;
                     document.getElementById('editTitle').value = selectedItem.title;
+                    document.getElementById('editTitle').disabled = false;
                     document.getElementById('editBody').value = selectedItem.body;
+                    document.getElementById('editBody').disabled = false;
+                   // console.log(newsFiles[index]);
+                    //if (newsFiles[index] == null || newsFiles[index].length === 0) {
+                    //    document.getElementById('imageInput').value = '';
+                   // }else {
+                   //    
+                    //    document.getElementById('imageInput').files = newsFiles[index];
+                   // }
+
+                    //document.getElementById('imageInput').disabled = false;
+                  
+                    // if (type == "news") {
+                    //     document.getElementById('imageInput').value = selectedItem.image;
+                    // }
+                 
                     $('#editModal').modal('show');
                 } else {
                     // Clear it duh?
@@ -284,7 +338,15 @@
                     document.getElementById('editType').value = type;
                     document.getElementById('editIndex').value = index;
                     document.getElementById('editTitle').value = "";
-                    document.getElementById('editBody').value = "";
+                    document.getElementById('editTitle').disabled = true;
+
+                    //dropdownmenu
+                    //document.getElementById('editBody').value = "";
+                   // document.getElementById('editBody').disabled = true;
+                   // ImageInputSelect.value = '';
+                    //ImageInputSelect.disabled = true;
+                   // UpdateDropdown(type);
+
 
                     $('#editModal').modal('show');
                 }
@@ -293,6 +355,7 @@
             function populateModalClose() {
                 @(INdexIg = -1);
                 indexIg = @INdexIg;
+                newsFiles = [];
                 newsData = @Html.Raw(TempData);
             }
 
@@ -306,6 +369,7 @@
                         newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
                         newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
                     }
+
                 }
                 else { //
                     if (lastTab == "emergencynotice") {
@@ -313,6 +377,8 @@
                         newsData.emergencynotice[0].body = document.getElementById('editBody').value;
                     }
                 }
+
+                newsDatas = newsData;
     
                 $.ajax({
                     url: '/admin/dashboard/content/update',

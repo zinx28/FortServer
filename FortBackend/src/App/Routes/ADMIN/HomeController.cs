@@ -8,16 +8,16 @@ using System.Text.RegularExpressions;
 
 namespace FortBackend.src.App.Routes.ADMIN
 {
-    [Route("/admin/login")]
+    [Route("/admin")]
     public class HomeController : Controller
     {
-        [HttpGet]
+        [HttpGet("login")]
         public IActionResult Index()
         {
             return View("~/src/App/Utilities/ADMIN/Pages/Index.cshtml");
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public IActionResult Index(string email, string password)
         {
 
@@ -90,7 +90,26 @@ namespace FortBackend.src.App.Routes.ADMIN
             return View("~/src/App/Utilities/ADMIN/Pages/Index.cshtml");
         }
 
-      
+
+        [HttpGet("logout")]
+        public IActionResult Details()
+        {
+            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+            {
+                if(!string.IsNullOrEmpty(authToken) && Saved.CachedAdminData.Data != null)
+                {
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                    if (adminData != null)
+                    {
+                        Saved.CachedAdminData.Data!.Remove(adminData);
+                    }
+                }
+            }
+
+            return Redirect("/admin/login");
+        }
+
+
 
     }
 }

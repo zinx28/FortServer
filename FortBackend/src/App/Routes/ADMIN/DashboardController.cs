@@ -26,6 +26,7 @@ namespace FortBackend.src.App.Routes.ADMIN
             return Redirect("/admin/login");
         }
 
+
         //[HttpPost]
         //public IActionResult Index(string email, string password)
         //{

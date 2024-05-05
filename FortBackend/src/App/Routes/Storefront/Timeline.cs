@@ -50,7 +50,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                        validFrom = DateTime.MinValue,
+                                        validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         activeEvents = new string[0],
                                         state = new
                                         {
@@ -71,7 +71,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                         validFrom = DateTime.MinValue,
+                                         validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                          activeEvents = new string[0],
                                          state = new
                                          {
@@ -89,7 +89,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                        validFrom = DateTime.MinValue,
+                                        validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         activeEvents = new string[0],
                                         state = new
                                         {
@@ -110,7 +110,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                         validFrom = DateTime.MinValue,
+                                         validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                          activeEvents = new string[0],
                                          state = new
                                          {
@@ -131,20 +131,20 @@ namespace FortBackend.src.App.Routes.Storefront
                                 {
                                     new
                                     {
-                                        validFrom = DateTime.MinValue,
+                                        validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         activeEvents = new[]
                                         {
                                             new
                                             {
                                                 eventType = $"EventFlag.Season{season.Season}",
                                                 activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                                                activeSince = DateTime.MinValue
+                                                activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                                             },
                                             new
                                             {
                                                 eventType = $"EventFlag.LobbySeason{season.Season}",
                                                 activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                                                activeSince = DateTime.MinValue
+                                                activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                                             }
                                         },
                                         state = new
@@ -154,11 +154,11 @@ namespace FortBackend.src.App.Routes.Storefront
                                             seasonNumber = season.Season,
                                             seasonTemplateId = $"AthenaSeason:athenaseason{season.Season}",
                                             matchXpBonusPoints = 0,
-                                            seasonBegin = DateTime.MinValue,
+                                            seasonBegin = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                             seasonEnd = Saved.DeserializeGameConfig.SeasonEndDate,
                                             seasonDisplayedEnd = Saved.DeserializeGameConfig.SeasonEndDate,
                                             weeklyStoreEnd =  shopData?.expiration,
-                                            stwEventStoreEnd = "9999-12-31T23:59:59.999Z",
+                                            stwEventStoreEnd = shopData?.expiration,
                                             stwWeeklyStoreEnd = shopData?.expiration,
                                             dailyStoreEnd =  shopData?.expiration
                                         }

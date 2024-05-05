@@ -14,7 +14,7 @@ namespace FortLibrary.ConfigHelpers
         [JsonProperty("//")]
         public string FortBackendGame { get; set; } = "";
 
-        public string SeasonEndDate { get; set; } = "9999-12-31T23:59:59.9999999";
+        public string SeasonEndDate { get; set; } = "9999-12-31T23:59:59.999Z";
 
         public bool ForceSeason { get; set; } = false; // force season~ means that no matter version you login to will be that season
         public int Season { get; set; } = 0;

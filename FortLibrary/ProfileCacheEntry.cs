@@ -1,4 +1,5 @@
 ﻿using FortLibrary.MongoDB.Module;
+using FortLibrary.MongoDB.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace FortLibrary
 
     public class AdminProfileCacheEntry
     {
+        // i dont recommend updating info in profileCacheEntry as it won't actually rep
         public ProfileCacheEntry profileCacheEntry { get; set; } = new ProfileCacheEntry();
-
+        public AdminInfo adminInfo { get; set; } = new AdminInfo();
     }
 }

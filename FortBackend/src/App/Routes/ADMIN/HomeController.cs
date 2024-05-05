@@ -5,6 +5,7 @@ using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary;
+using FortLibrary.Dynamics;
 using FortLibrary.Encoders;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
@@ -70,7 +71,8 @@ namespace FortBackend.src.App.Routes.ADMIN
                         {
                             AccessToken = Token,
                             AdminUser = email,
-                            IsForcedAdmin = email == Saved.DeserializeConfig.AdminEmail
+                            IsForcedAdmin = email == Saved.DeserializeConfig.AdminEmail,
+                            RoleId = AdminDashboardRoles.Admin
                         });
                     }
                     Response.Cookies.Delete("AuthToken");
@@ -129,7 +131,8 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 AccessToken = Token,
                                 AdminUser = FoundAcc.profileCacheEntry.UserData.Email,
                                 AdminUserName = FoundAcc.profileCacheEntry.UserData.Username,
-                                IsForcedAdmin = email == Saved.DeserializeConfig.AdminEmail
+                                IsForcedAdmin = email == Saved.DeserializeConfig.AdminEmail,
+                                RoleId = FoundAcc.adminInfo.Role
                             });
                         }
                         Response.Cookies.Delete("AuthToken");

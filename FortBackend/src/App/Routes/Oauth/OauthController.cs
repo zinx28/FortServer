@@ -637,7 +637,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 }
                 else 
                 {
-                    if (string.IsNullOrEmpty(username))
+                    if (string.IsNullOrEmpty(DisplayName))
                     {
                         return Ok(new { });
                     }

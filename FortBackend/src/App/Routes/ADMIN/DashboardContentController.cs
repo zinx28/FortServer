@@ -34,7 +34,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                         return Redirect("/admin/setup");
                     }
 
-                    Console.WriteLine("Valid User!");
+                    //Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
                     return View("~/src/App/Utilities/ADMIN/PAGES/Dashboard/Content.cshtml");
                 }
@@ -60,7 +60,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                         if(tempData.TryGetProperty("BackendConfig", out JsonElement BackenddataElement))
                         {
                             string dataValue = BackenddataElement.ToString();
-                            Console.WriteLine(dataValue);
+                            //Console.WriteLine(dataValue);
                             if (!string.IsNullOrEmpty(dataValue))
                             {
                                 if (System.IO.File.Exists(PathConstants.CachedPaths.FortConfig))
@@ -94,7 +94,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                         if (tempData.TryGetProperty("data", out JsonElement dataElement))
                         {
                             string dataValue = dataElement.ToString();
-                            Console.WriteLine(dataValue);
+                            //Console.WriteLine(dataValue);
                             if (!string.IsNullOrEmpty(dataValue))
                             {
                                 NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);

@@ -20,7 +20,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                     {
                         return Redirect("/admin/setup");
                     }
-                    Console.WriteLine("Valid User!");
+                    //Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
                     //return View("~/src/App/Utilities/ADMIN/Pages/Dashboard/Home.cshtml");
                     return Redirect("/admin/dashboard/home");

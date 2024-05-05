@@ -151,8 +151,8 @@ namespace FortBackend.src.App.Routes.ADMIN
         public async Task<IActionResult> Index(string email, string password)
         {
 
-            Console.WriteLine(email);
-            Console.WriteLine($"Password {password}");
+            //Console.WriteLine(email);
+            ////Console.WriteLine($"Password {password}");
             //return ReturnErrorMessage("Admin account *inactive* until you change values");
             if (email == DefaultValues.AdminEmail) {
                 if (password == DefaultValues.AdminPassword) {

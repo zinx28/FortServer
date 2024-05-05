@@ -35,10 +35,10 @@ namespace FortBackend.src.App.Routes.ADMIN
                     // await GrabAdminData.GrabAllAdmin();
                     ViewData["roleId"] = adminData.RoleId;
 
-                    Console.WriteLine((int)ViewData["roleId"]);
+                    //Console.WriteLine((int)ViewData["roleId"]);
 
 
-                    Console.WriteLine("Valid User!");
+                    //Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
                     return View("~/src/App/Utilities/ADMIN/PAGES/Dashboard/AdminPanel.cshtml");
                 }
@@ -63,7 +63,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                         if (tempData.TryGetProperty("data", out JsonElement dataElement))
                         {
                             string dataValue = dataElement.ToString();
-                            Console.WriteLine(dataValue);
+                            //Console.WriteLine(dataValue);
                             if (!string.IsNullOrEmpty(dataValue))
                             {
                                 AdminProfileCacheEntry Updateeditthingy = JsonConvert.DeserializeObject<AdminProfileCacheEntry>(dataValue);

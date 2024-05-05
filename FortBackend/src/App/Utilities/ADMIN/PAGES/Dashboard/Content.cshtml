@@ -233,7 +233,7 @@
                                                     
                                                     @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).playlistinformation)
                                                     {
-                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('playlistinformation', @counter2)">Playlist @(counter2 + 1)</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('playlistinformation', @counter2)">@newsItem.playlist_name</a></li>
                                                         counter2++;
                                                     }
 

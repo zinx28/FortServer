@@ -1,5 +1,9 @@
 # FortBackend (RECODE REQUIRED)
 
+<div align=center>
+  <img src="/assets/FORTBACKEND.png" alt="worst image ever">
+</div>
+
 FortBackend is a Universal Fortnite Private Server Backend written in C#.
 
 ## About

@@ -63,13 +63,13 @@ namespace FortBackend.src.App.Routes.ADMIN
                             //Console.WriteLine(dataValue);
                             if (!string.IsNullOrEmpty(dataValue))
                             {
-                                if (System.IO.File.Exists(PathConstants.CachedPaths.FortConfig))
+                                if (System.IO.File.Exists(PathConstants.CachedPaths.FortGame))
                                 {
 
                                     var FortDataConfig = JsonConvert.DeserializeObject<FortGameConfig>(dataValue);
                                     if(FortDataConfig != null)
                                     {
-                                        var ReadFile = System.IO.File.ReadAllText(PathConstants.CachedPaths.FortConfig);
+                                        var ReadFile = System.IO.File.ReadAllText(PathConstants.CachedPaths.FortGame);
                                         if(ReadFile != null)
                                         {
                                             FortGameConfig DeserializeConfig = JsonConvert.DeserializeObject<FortGameConfig>(ReadFile);
@@ -83,7 +83,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                                 DeserializeConfig.ForceSeason = FortDataConfig.ForceSeason;
 
 
-                                                System.IO.File.WriteAllText(PathConstants.CachedPaths.FortConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
+                                                System.IO.File.WriteAllText(PathConstants.CachedPaths.FortGame, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
                                             }
                                         }
                                     }

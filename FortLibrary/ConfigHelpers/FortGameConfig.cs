@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace FortLibrary.ConfigHelpers
     public class FortGameConfig
     {
         [JsonPropertyName("//")]
+        [JsonProperty("//")]
         public string FortBackendGame { get; set; } = "";
 
         public string SeasonEndDate { get; set; } = "9999-12-31T23:59:59.9999999";

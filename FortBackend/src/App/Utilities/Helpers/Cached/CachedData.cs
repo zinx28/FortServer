@@ -73,7 +73,6 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
             else
             {
-
                 Logger.Log("Loaded Config", "FortConfig");
             }
 
@@ -81,7 +80,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             if (string.IsNullOrEmpty(ReadFortGameConfig)) { throw new Exception("Error reading ReadFortGameConfig"); }
 
 
-            DeserializeGameConfig = JsonConvert.DeserializeObject<FortGameConfig>(ReadFortConfig)!;
+            DeserializeGameConfig = JsonConvert.DeserializeObject<FortGameConfig>(ReadFortGameConfig)!;
             if (DeserializeGameConfig == null)
             {
                 Logger.Error("Couldn't deserialize config", "FortGameConfig");

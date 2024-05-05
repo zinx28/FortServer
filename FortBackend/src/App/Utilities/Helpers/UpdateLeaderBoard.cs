@@ -87,6 +87,10 @@ namespace FortBackend.src.App.Utilities.Helpers
                 "br_placetop1_pc_m0_p2",
                 "br_placetop10_pc_m0_p2",
                 "br_placetop25_pc_m0_p2",
+                "br_placetop1_keyboardmouse_m0_playlist_defaultsolo",
+                "br_placetop10_keyboardmouse_m0_playlist_defaultsolo",
+                "br_placetop25_keyboardmouse_m0_playlist_defaultsolo",
+
 
                 "br_score_pc_m0_p10",
                 "br_matchesplayed_pc_m0_p10",
@@ -95,6 +99,9 @@ namespace FortBackend.src.App.Utilities.Helpers
                 "br_placetop1_pc_m0_p10",
                 "br_placetop5_pc_m0_p10",
                 "br_placetop12_pc_m0_p10",
+                "br_placetop1_keyboardmouse_m0_playlist_defaultduo",
+                "br_placetop5_keyboardmouse_m0_playlist_defaultduo",
+                "br_placetop12_keyboardmouse_m0_playlist_defaultduo",
 
                 "br_score_pc_m0_p9",
                 "br_matchesplayed_pc_m0_p9",
@@ -102,7 +109,10 @@ namespace FortBackend.src.App.Utilities.Helpers
                 "br_minutesplayed_pc_m0_p9",
                 "br_placetop1_pc_m0_p9",
                 "br_placetop3_pc_m0_p9",
-                "br_placetop6_pc_m0_p9"
+                "br_placetop6_pc_m0_p9",
+                "br_placetop1_keyboardmouse_m0_playlist_defaultsquad",
+                "br_placetop3_keyboardmouse_m0_playlist_defaultsquad",
+                "br_placetop6_keyboardmouse_m0_playlist_defaultsquad",
             };
         }
     }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 using FortLibrary;
+using FortLibrary.EpicResponses.Fortnite;
 
 namespace FortBackend.src.App.Routes.Leaderboards
 {
@@ -127,6 +128,71 @@ namespace FortBackend.src.App.Routes.Leaderboards
             return Ok(new { });
         }
 
+        //fortnite/api/statsv2/query
+
+        [HttpPost("statsv2/query")]
+        public async Task<ActionResult> LeaderBoardStatsQuery()
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(Request.Body, Encoding.Default))
+                {
+                    var requestBody = await reader.ReadToEndAsync();
+                    StatsBody StatsBody = JsonConvert.DeserializeObject<StatsBody>(requestBody);
+                    // string RequestQuery = Request.Query["accountId"]!;
+                    return Ok(new
+                    {
+                        owners = StatsBody.owners,
+                        stats = StatsBody.stats
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "StatsV2");
+            }
+
+            return Ok(new string[0]);
+        }
+
+        [HttpGet("statsv2/leaderboards/{windowId}")]
+        public async Task<ActionResult> LeaderBoardStatsNew(string windowId)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                List<object> entrieslist = new List<object>();
+               
+                LeaderBoardStats leaderBoardStats = UpdateLeaderBoard.LeaderboardCached.Data.FirstOrDefault(e => e.statName.Contains(windowId))!;
+                if (leaderBoardStats != null)
+                {
+
+                    foreach (var item in leaderBoardStats.stat)
+                    {
+                        entrieslist.Add(new
+                        {
+                            account = item.Key,
+                            value = item.Value,
+                        });
+                    }
+                }
+
+
+                return Ok(new
+                {
+                    entries = entrieslist,
+                    maxSize = entrieslist.Count
+                });
+            }
+            catch (JsonReaderException)
+            {
+                return Ok(new { });
+            }
+            catch (Exception ex) { Logger.Error(ex.Message); }
+
+            return Ok(new { });
+        }
+
         [HttpGet("stats/accountId/{accountId}/bulk/window/{windowId}")]
         public async Task<ActionResult> WindowAllTime(string accountId, string windowId)
         {
@@ -149,6 +215,67 @@ namespace FortBackend.src.App.Routes.Leaderboards
                         });
                     }
                     return Ok(Response);
+                }
+            }
+            catch (JsonReaderException)
+            {
+                return Ok(new { });
+            }
+            catch (Exception ex) { Logger.Error(ex.Message); }
+
+            return Ok(new { });
+        }
+
+        //statsproxy/api/statsv2/account/
+        [HttpGet("/statsproxy/api/statsv2/account/{accountId}")]
+        public async Task<IActionResult> StatsProxy(string accountId)
+        {
+            long ticksInOneDay = TimeSpan.TicksPerDay;
+            long ticksInOneYear = 365 * ticksInOneDay;
+
+            ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+            if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+            {
+
+                return Ok(new
+                {
+                    startTime = 0,
+                    endTime = ticksInOneYear,
+                    accountId,
+                    stats = profileCacheEntry.StatsData.stats // stats like "smth": number
+                });
+            }
+
+            return Ok(new
+            {
+                startTime = 0,
+                endTime = ticksInOneYear,
+                accountId,
+                stats = new { }
+            });
+        }
+
+
+        [HttpGet("statsv2/account/{accountId}")]
+        public async Task<ActionResult> StatsV2(string accountId)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                {
+                    var Response = new List<object>();
+                    long ticksInOneDay = TimeSpan.TicksPerDay;
+                    long ticksInOneYear = 365 * ticksInOneDay;
+
+                    return Ok(new
+                    {
+                        startTime = 0,
+                        endTime = ticksInOneYear,
+                        accountId,
+                        stats = profileCacheEntry.StatsData.stats
+                    });
                 }
             }
             catch (JsonReaderException)

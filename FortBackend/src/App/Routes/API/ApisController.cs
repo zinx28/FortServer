@@ -50,23 +50,6 @@ namespace FortBackend.src.App.Routes.API
             return Ok();
         }
 
-        //statsproxy/api/statsv2/account/
-        [HttpGet("/statsproxy/api/statsv2/account/{accountId}")]
-        public IActionResult StatsProxy(string accountId)
-        {
-            long ticksInOneDay = TimeSpan.TicksPerDay;
-            long ticksInOneYear = 365 * ticksInOneDay;
-
-         
-            return Ok(new
-            {
-                startTime = 0,
-                endTime = ticksInOneYear,
-                accountId,
-                stats = new { } // stats like "smth": number
-            });
-        }
-
         [HttpGet("v1/Fortnite/get")]
         public IActionResult FortniteGet()
         {

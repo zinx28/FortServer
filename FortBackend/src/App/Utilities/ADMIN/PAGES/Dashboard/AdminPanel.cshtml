@@ -232,16 +232,15 @@
                                                 <button class="nav-link" id="roles-tab" data-bs-toggle="tab" data-bs-target="#roles" type="button" role="tab" aria-controls="roles" aria-selected="false">Roles</button>
                                             </li>
                                         </ul>
+                                        <hr />
                                         <div class="tab-content" id="editUserTabsContent">
                                             <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                                                 <form id="editForm">
                                                     <input type="hidden" id="editType" name="type">
                                                     <input type="hidden" id="editIndex" name="index">
-                                                    <div class="row mb-3">
-                                                        <label for="editTitle" class="col-sm-2 col-form-label"></label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="editTitle" name="title">
-                                                        </div>
+                                                    <div class="mb-3">
+                                                        <label for="editUsersEmail" class="form-label">Email</label>
+                                                        <input type="email" class="form-control" id="editUsersEmail" placeholder="uh" disabled>
                                                     </div>
                                                 </form>
                                             </div>
@@ -294,6 +293,9 @@
                         //populateModalEditPanelSave
                         var adminRadio = document.getElementById('AdminRadio1');
                         var moderatorRadio = document.getElementById('ModeratorRadio1');
+                        //var editUsersBox = document.getElementById('editUsersEmail');
+
+                        //TempData.profileCacheEntry.UserData.Email = editUsersBox.value
 
                         if (adminRadio.checked) {
                             TempData.adminInfo.Role = @AdminDashboardRoles.Admin;
@@ -364,6 +366,11 @@
                     TempData = UserData;
                     var adminRadio = document.getElementById('AdminRadio1');
                     var moderatorRadio = document.getElementById('ModeratorRadio1');
+                    var editUsersBox = document.getElementById('editUsersEmail');
+
+
+                    editUsersBox.value = UserData.profileCacheEntry.UserData.Email;
+
 
                     if (UserData.adminInfo.Role == @AdminDashboardRoles.Admin) {
                         moderatorRadio.checked = false;

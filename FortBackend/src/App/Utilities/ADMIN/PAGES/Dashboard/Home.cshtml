@@ -1,4 +1,5 @@
-﻿@using FortBackend.src.XMPP.Data
+﻿@using FortBackend.src.App.Utilities.Saved
+@using FortBackend.src.XMPP.Data
 @using System.Net.Http
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
@@ -14,8 +15,8 @@
 @{
    
     int PeopleConnected = GlobalData.Clients.Count;
-
-   
+    bool ForcedSeason = Saved.DeserializeConfig.ForceSeason;
+    int SeasonForced = Saved.DeserializeConfig.Season;
 
 
 }
@@ -100,8 +101,15 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Some grid</h5>
-                                    <p class="card-text">grid</p>
+                                    <h5 class="card-title">Forced Season: @ForcedSeason</h5>
+                                    @if (ForcedSeason)
+                                    {
+                                       <p class="card-text"> @SeasonForced</p>
+                                    }else
+                                    {
+                                      <p class="card-text">grid</p>
+                                    }
+
                                 </div>
                             </div>
                         </div>

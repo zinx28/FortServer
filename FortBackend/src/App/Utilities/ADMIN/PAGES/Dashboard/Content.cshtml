@@ -137,7 +137,7 @@
                     </li>
                 </ul>
 
-                <div class="tab-content mt-4" id="myTabContent">
+                <div class="tab-content mt-4">
                     <div class="tab-pane fade show active" id="news" role="tabpanel" aria-labelledby="news-tab">
 
                         <h2>News Updates</h2>
@@ -271,9 +271,29 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                         <div class="tab-pane fade" id="servers" role="tabpanel" aria-labelledby="servers-tab">
 
                             <h2>Server Management</h2>
+
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Body</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Forced Season</td>
+                                        <td>Choose/Set Forced Season</td>
+                                        <td>
+                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('forcedseason', -1)">Edit</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
                         </div>
                         <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
@@ -293,10 +313,11 @@
             var lastTab = "";
             var newsFiles = [[],[]];
             var IsPlaylist = false;
-   
+            var IsForcedSeason = false;
 
             function populateModalForEdit(type, index) {
                 IsPlaylist = false;
+                IsForcedSeason = false;
                 var newsList = document.getElementById('newsList');
                 var newsList_playlist = document.getElementById('newsList-playlist');
                 //var ImageSelect = document.getElementById('image-select');
@@ -400,6 +421,13 @@
                     }
                     selectedItem = newsData.playlistinformation[indexIg];
                     console.log(selectedItem)
+                }
+                else if (type === "forcedseason") {
+                    IsForcedSeason = true;
+                    newsList.style.display = 'none';
+                    newsList_playlist.style.display = 'none';
+
+                      @(Tab = 5); // not needed + won't be proper during runtime
                 }
                 else {
                     @(Tab = -1); // won't show nothing

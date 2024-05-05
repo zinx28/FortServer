@@ -22,21 +22,21 @@ namespace FortBackend.src.App.Utilities.Helpers
 
            
 
-            string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\IniConfig.json"));
+            string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.CloudStorage.IniConfig));
 
             if (string.IsNullOrEmpty(filePath))
             {
                 return "NotFound";
             }
 
-            string PlaylistData = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\PlaylistData.json"));
+            string PlaylistData = System.IO.File.ReadAllText(Path.Combine(PathConstants.CloudStorage.PlaylistData));
 
             if (string.IsNullOrEmpty(PlaylistData))
             {
                 return "NotFound";
             }
 
-            string QosRegionManagerData = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\QosRegionManager.json"));
+            string QosRegionManagerData = System.IO.File.ReadAllText(Path.Combine(PathConstants.CloudStorage.QosRegionManager));
 
             if (string.IsNullOrEmpty(QosRegionManagerData))
             {
@@ -118,7 +118,7 @@ namespace FortBackend.src.App.Utilities.Helpers
         public static List<CloudstorageFile> CloudStorageArrayData()
         {
             var list = new List<CloudstorageFile>();
-            string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\ini\\IniConfig.json"));
+            string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.CloudStorage.IniConfig));
 
             if (string.IsNullOrEmpty(filePath))
             {

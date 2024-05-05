@@ -6,6 +6,7 @@
         public static readonly string LocalAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Saved.Saved.DeserializeConfig.ProjectName);
        
         public static readonly string ImageDir = Path.Combine(BaseDir, "Image");
+        public static readonly string IniDir = Path.Combine(BaseDir, "Ini");
         public static readonly string ClientSettingsDir = Path.Combine(LocalAppData, "ClientSettings");
 
         public class ShopJson
@@ -22,15 +23,24 @@
 
         public class CloudDir
         {
-            public static readonly string IniDir = Path.Combine(BaseDir, "Ini/CloudDir");
+            public static readonly string CloudDire = Path.Combine(BaseDir, "Ini/CloudDir");
+          
             public static string chunk(string chunk)
             {
-                return Path.Combine(IniDir, chunk);
+                return Path.Combine(CloudDire, chunk);
             }
 
-            
+          
 
-            public static readonly string FullCloud = Path.Combine(BaseDir, "Ini/CloudDir/Full.ini");
+            public static readonly string FullCloud = Path.Combine(CloudDire, "Full.ini");
+        }
+
+        public class CloudStorage
+        {
+            public static readonly string IniConfig = Path.Combine(IniDir, "IniConfig.json");
+            public static readonly string PlaylistData = Path.Combine(IniDir, "PlaylistData.json");
+            public static readonly string QosRegionManager = Path.Combine(IniDir, "QosRegionManager.json");
+            //QosRegionManager.json
         }
 
         public class CachedPaths

@@ -1,6 +1,7 @@
 ﻿using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Quests;
+using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using Microsoft.IdentityModel.Tokens;
@@ -57,6 +58,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             // -- //
 
             FortConfig DeserializeConfig = Saved.Saved.DeserializeConfig;
+            CachedDataClass BackendCachedData = Saved.Saved.BackendCachedData;
             FortGameConfig DeserializeGameConfig = Saved.Saved.DeserializeGameConfig;
 
 
@@ -104,7 +106,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
-                DeserializeConfig.FullLocker_AthenaItems = JsonConvert.DeserializeObject<Dictionary<string, AthenaItem>>(FullLockerJson)!;
+                BackendCachedData.FullLocker_AthenaItems = JsonConvert.DeserializeObject<Dictionary<string, AthenaItem>>(FullLockerJson)!;
                 Logger.Log("Full locker is loaded", "Services");
             }
             catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message); }
@@ -118,7 +120,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
-                DeserializeConfig.DefaultBanners_Items = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultBanners)!;
+                BackendCachedData.DefaultBanners_Items = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultBanners)!;
                 Logger.Log("DefaultBanners is loaded", "Services");
             }
             catch (Exception ex) { Logger.Error("DefaultBanners -> " + ex.Message); }
@@ -136,7 +138,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 Dictionary<string, CommonCoreItem> DefaultColorsData = JsonConvert.DeserializeObject<Dictionary<string, CommonCoreItem>>(DefaultColors)!;
                 foreach (var item in DefaultColorsData)
                 {
-                    DeserializeConfig.DefaultBanners_Items.Add(item.Key, item.Value);
+                    BackendCachedData.DefaultBanners_Items.Add(item.Key, item.Value);
                 }
                 Logger.Log("DefaultColors is loaded", "Services");
             }

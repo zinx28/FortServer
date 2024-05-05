@@ -63,7 +63,7 @@ namespace FortBackend.src.App
                     });
                 });
 #else
-                Saved.DeserializeConfig.DefaultProtocol = "http://";
+                Saved.BackendCachedData.DefaultProtocol = "http://";
                 builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
             #endif
 

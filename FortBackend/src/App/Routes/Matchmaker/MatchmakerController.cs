@@ -35,11 +35,12 @@ namespace FortBackend.src.App.Routes.Matchmaker
             try
             {
                 FortConfig config = Saved.DeserializeConfig;
+                CachedDataClass BackendCachedData = Saved.BackendCachedData;
                 string JsonContent = ""; // no idea
 
                 try
                 {
-                    HttpResponseMessage response = await client.GetAsync($"{config.DefaultProtocol}{config.MatchmakerIP}:{config.MatchmakerPort}/v1/devers/servers");
+                    HttpResponseMessage response = await client.GetAsync($"{BackendCachedData.DefaultProtocol}{config.MatchmakerIP}:{config.MatchmakerPort}/v1/devers/servers");
                     response.EnsureSuccessStatusCode();
                     JsonContent = await response.Content.ReadAsStringAsync(); // just guess if its on the same server
                     if (JsonContent == null)
@@ -188,6 +189,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
             try
             {
                 FortConfig config = Saved.DeserializeConfig;
+                CachedDataClass BackendCachedData = Saved.BackendCachedData;
 
                 var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
                 var accessToken = token.Replace("eg1~", "");
@@ -279,7 +281,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
 
                                 string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
                                 string encryptedData = GenerateAES.EncryptAES256(jsonData, "pleasework");
-                                string WssConnection = config.DefaultProtocol == "http://" ? "ws://" : "wss://";
+                                string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
                                 Console.WriteLine(new
                                 {
                                     serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",

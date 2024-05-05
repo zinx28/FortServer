@@ -32,7 +32,7 @@ namespace FortBackend.src.App.SERVER.Send
                 GlobalData.Clients[ClientIndex].lastPresenceUpdate.presence = status;
 
                 HttpClient httpClient = new HttpClient();
-                HttpResponseMessage response = await httpClient.GetAsync($"{Saved.DeserializeConfig.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{ClientData.accountId}");
+                HttpResponseMessage response = await httpClient.GetAsync($"{Saved.BackendCachedData.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{ClientData.accountId}");
 
                 if (response.IsSuccessStatusCode)
                 {

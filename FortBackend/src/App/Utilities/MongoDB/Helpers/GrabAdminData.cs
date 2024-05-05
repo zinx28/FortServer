@@ -3,6 +3,9 @@ using FortLibrary;
 using MongoDB.Driver;
 using FortLibrary.EpicResponses.Oauth;
 using FortBackend.src.App.Utilities.ADMIN;
+using FortBackend.src.App.Utilities.Constants;
+using Newtonsoft.Json;
+using FortLibrary.ConfigHelpers;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {
@@ -27,7 +30,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     AdminProfileCacheEntry checkvalue = AdminUsers.FirstOrDefault(e => e.adminInfo.AccountId == adminInfo.AccountId);
                     if (checkvalue != null)
                     {
-                        AdminData cachedAdminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUser == checkvalue.profileCacheEntry.UserData.Email);
+                        AdminData cachedAdminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == checkvalue.profileCacheEntry.UserData.Email);
                         if(cachedAdminData != null)
                         {
                             Console.WriteLine("CHANGING ROLES");
@@ -124,6 +127,40 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             {
                 Logger.Error(ex.Message, "ADMIN PANEL");
             }
+        }
+
+        public static async Task<bool> ChangeForcedAdminPassword(string Email, string Password)
+        {
+            if(File.Exists(PathConstants.CachedPaths.FortConfig))
+            {
+                if (!string.IsNullOrEmpty(Saved.Saved.DeserializeConfig.AdminEmail)) // why would it if the default value isnt
+                {
+                    AdminData adminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == Saved.Saved.DeserializeConfig.AdminEmail)!;
+                    if (adminData != null)
+                    {
+                        
+
+                        FortConfig DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(File.ReadAllText(PathConstants.CachedPaths.FortConfig));
+                        
+                        adminData.AdminUserEmail = Email;
+                        adminData.bIsSetup = false;
+
+                        DeserializeConfig.AdminEmail = Email;
+                        DeserializeConfig.AdminPassword = Password;
+
+                        Saved.Saved.DeserializeConfig.AdminEmail = Email;
+                        Saved.Saved.DeserializeConfig.AdminPassword = Password;
+
+                     
+
+                        File.WriteAllText(PathConstants.CachedPaths.FortConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

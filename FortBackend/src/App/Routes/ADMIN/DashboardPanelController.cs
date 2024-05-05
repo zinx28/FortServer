@@ -27,6 +27,11 @@ namespace FortBackend.src.App.Routes.ADMIN
                 AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                 if (adminData != null)
                 {
+                    if (adminData.bIsSetup)
+                    {
+                        return Redirect("/admin/setup");
+                    }
+
                     // await GrabAdminData.GrabAllAdmin();
                     ViewData["roleId"] = adminData.RoleId;
 

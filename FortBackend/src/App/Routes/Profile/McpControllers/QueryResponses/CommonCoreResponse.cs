@@ -133,7 +133,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                     {
                         ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
                     }
-                    foreach (var profileChange in Saved.DeserializeConfig.DefaultBanners_Items)
+                    foreach (var profileChange in Saved.BackendCachedData.DefaultBanners_Items)
                     {
                         ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
                     }

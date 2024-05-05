@@ -11,12 +11,15 @@ namespace FortBackend.src.App.Routes.ADMIN
         [HttpGet]
         public IActionResult Index()
         {
-            Console.WriteLine("T");
             if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
             {
                 AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                 if (adminData != null)
                 {
+                    if (adminData.bIsSetup)
+                    {
+                        return Redirect("/admin/setup");
+                    }
                     Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
                     return View("~/src/App/Utilities/ADMIN/PAGES/Dashboard/Home.cshtml");

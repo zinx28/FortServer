@@ -163,7 +163,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             if (Saved.DeserializeConfig.FullLockerForEveryone)
                             {
                                 //ProfileChange.Profile.items = Saved.DeserializeConfig.FullLocker_AthenaItems;
-                                foreach (var kvp in Saved.DeserializeConfig.FullLocker_AthenaItems)
+                                foreach (var kvp in Saved.BackendCachedData.FullLocker_AthenaItems)
                                 {
                                     ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
                                 }
@@ -241,7 +241,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                           
                             if(ProfileId == "profile0")
                             {
-                                foreach (var profileChange in Saved.DeserializeConfig.DefaultBanners_Items)
+                                foreach (var profileChange in Saved.BackendCachedData.DefaultBanners_Items)
                                 {
                                     ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
                                 }

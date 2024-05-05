@@ -18,10 +18,6 @@ namespace FortLibrary.ConfigHelpers
         [JsonProperty("//")]
         public string FortBackend { get; set; } = "";
 
-        // AUTO CHANGES DURING RUN TIME
-        public string DefaultProtocol { get; set; } = "http://";
-        public Dictionary<string, AthenaItem> FullLocker_AthenaItems { get; set; } = new Dictionary<string, AthenaItem>();
-        public Dictionary<string, CommonCoreItem> DefaultBanners_Items { get; set; } = new Dictionary<string, CommonCoreItem>();
 
         // ** //
 

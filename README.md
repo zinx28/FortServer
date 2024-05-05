@@ -33,3 +33,19 @@ FortBackend is a Universal Fortnite Private Server Backend written in C#.
 - XMPP (WIP PartyV2) [!]
 - Friends [-]
 - Matchmaker (Won't connect as I haven't coded the WS server) [-]
+
+## Admin Panel
+I've created an admin page to make it easier to manage JSON configs.
+
+### About
+- The admin account is essential and cannot be deleted or edited.
+- Currently, the admin panel is styled using [Bootstrap](https://getbootstrap.com). However, this may change in the future.
+- Admins can grant other "FortBackend" users admin or moderator roles.
+- Admins have the ability to edit user roles, but moderators cannot edit users or add new ones (work in progress).
+
+### Setup and Login
+- Start the FortBackend application.
+- Access the login page [here](http://127.0.0.1:1111/admin/login) (right-click to copy the link).
+- Use the default email (Admin@gmail.com) and password (AdminPassword123).
+- Upon first login, you will be prompted to change your email and password.
+

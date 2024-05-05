@@ -11,8 +11,10 @@ namespace FortBackend.src.App.Utilities.ADMIN
     {
         public string AccessToken { get; set; } = "";
         public bool IsForcedAdmin { get; set; } = false;
-        public string AdminUser { get; set; } = "";
+        public string AdminUserEmail { get; set; } = "";
         public string AdminUserName { get; set; } = "Admin";
         public int RoleId { get; set; } = AdminDashboardRoles.Moderator;
+
+        public bool bIsSetup { get; set; } = false;
     }
 }

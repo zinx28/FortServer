@@ -16,6 +16,10 @@ namespace FortBackend.src.App.Routes.ADMIN
                 AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                 if (adminData != null)
                 {
+                    if (adminData.bIsSetup)
+                    {
+                        return Redirect("/admin/setup");
+                    }
                     Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
                     //return View("~/src/App/Utilities/ADMIN/Pages/Dashboard/Home.cshtml");

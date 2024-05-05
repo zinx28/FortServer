@@ -1,4 +1,5 @@
 ﻿using FortBackend.src.App.Utilities.ADMIN;
+using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.ConfigHelpers;
@@ -56,6 +57,40 @@ namespace FortBackend.src.App.Routes.ADMIN
                     AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
+                        if(tempData.TryGetProperty("BackendConfig", out JsonElement BackenddataElement))
+                        {
+                            string dataValue = BackenddataElement.ToString();
+                            Console.WriteLine(dataValue);
+                            if (!string.IsNullOrEmpty(dataValue))
+                            {
+                                if (System.IO.File.Exists(PathConstants.CachedPaths.FortConfig))
+                                {
+
+                                    var FortDataConfig = JsonConvert.DeserializeObject<FortConfig>(dataValue);
+                                    if(FortDataConfig != null)
+                                    {
+                                        var ReadFile = System.IO.File.ReadAllText(PathConstants.CachedPaths.FortConfig);
+                                        if(ReadFile != null)
+                                        {
+                                            FortConfig DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(ReadFile);
+
+                                            if (DeserializeConfig != null)
+                                            {
+                                                Saved.DeserializeConfig.Season = FortDataConfig.Season;
+                                                Saved.DeserializeConfig.ForceSeason = FortDataConfig.ForceSeason;
+
+                                                DeserializeConfig.Season = FortDataConfig.Season;
+                                                DeserializeConfig.ForceSeason = FortDataConfig.ForceSeason;
+
+
+                                                System.IO.File.WriteAllText(PathConstants.CachedPaths.FortConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                         if (tempData.TryGetProperty("data", out JsonElement dataElement))
                         {
                             string dataValue = dataElement.ToString();

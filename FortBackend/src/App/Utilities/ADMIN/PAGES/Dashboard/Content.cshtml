@@ -1,4 +1,5 @@
-﻿@using Newtonsoft.Json
+﻿@using FortBackend.src.App.Utilities.Saved
+@using Newtonsoft.Json
 @using FortBackend.src.App.Utilities.Helpers.Cached
 @using FortBackend.src.XMPP.Data
 @using FortLibrary.ConfigHelpers
@@ -10,6 +11,7 @@
 @{
     //var NewsData = new ContentConfig();
     string NewsData = JsonConvert.SerializeObject(NewsManager.ContentConfig);
+    string DeserializeConfig = JsonConvert.SerializeObject(Saved.DeserializeConfig);
     // if(NewsData == null)
     // {
     //     NewsManager.Init();
@@ -23,6 +25,8 @@
     var TempDataV2 = "";
     var Tab = -1;
 
+    bool ForcedSeason = Saved.DeserializeConfig.ForceSeason;
+    int SeasonForced = Saved.DeserializeConfig.Season;
 
     // bool UpdateContent()
     // {
@@ -217,7 +221,7 @@
             </div>
 
 
-                 <div class="modal fade  text-white" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal fade  text-white" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -285,14 +289,34 @@
                             <form id="editForm">
                                 <input type="hidden" id="editType" name="type">
                                 <input type="hidden" id="editIndex" name="index">
-                                <div class="mb-3">
-                                    <label for="editTitle" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="editTitle" name="title">
+                                <div class="mb-3" id="most-average-thingy" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="editTitle" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="editTitle" name="title">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editBody" class="form-label">Body</label>
+                                        <textarea class="form-control" id="editBody" rows="3" name="body"></textarea>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3" id="forcedseason-data" style="display: none;">
+                                   
+                                    <label for="editBody" class="form-label">Forced Season</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-forced" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Not Selected (weird)
+                                        </button>
+                                        <ul class="dropdown-menu" id="dropdownmenu-playlist" aria-labelledby="dropdownMenuButton-forced">
+                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('forcedseason', 10)">True</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('forcedseason', 20)">False</a></li>
+                                        </ul>
+
+                                      
+                                    </div>
+                                    <hr>
                                     <label for="editBody" class="form-label">Body</label>
-                                    <textarea class="form-control" id="editBody" rows="3" name="body"></textarea>
-                                </div>
+                                    <input type="number" min="0" pattern="^[0-9]" class="form-control" max="100" id="IntNumberOnly" name="title">
+                                 </div>
 
                                 <p>* changing images from dashboard is unsupported *</p>
                             </form>
@@ -312,16 +336,26 @@
         <script>
             var indexIg = @INdexIg;
             var newsData = @Html.Raw(TempData);
+            var BackendConfig = @Html.Raw(DeserializeConfig);
             var lastTab = "";
             var newsFiles = [[],[]];
             var IsPlaylist = false;
             var IsForcedSeason = false;
+
+            //var ForcedSeasonData = @ForcedSeason;
+            //var ForcedSeasonNumber = @SeasonForced;
 
             function populateModalForEdit(type, index) {
                 IsPlaylist = false;
                 IsForcedSeason = false;
                 var newsList = document.getElementById('newsList');
                 var newsList_playlist = document.getElementById('newsList-playlist');
+                var forcedseason_data = document.getElementById('forcedseason-data');
+                var most_average_thingy = document.getElementById('most-average-thingy');
+
+                most_average_thingy.style.display = "";
+          
+            //forcedseason-data
                 //var ImageSelect = document.getElementById('image-select');
                 //var ImageInputSelect = document.getElementById('imageInput');
                 var selectedItem;
@@ -329,6 +363,7 @@
                 console.log(index);
                 lastTab = type;
 
+                forcedseason_data.style.display = "none";
                 newsList_playlist.style.display = 'none';
 
                 if (type === 'news') {
@@ -426,10 +461,28 @@
                 }
                 else if (type === "forcedseason") {
                     IsForcedSeason = true;
+                    forcedseason_data.style.display = '';
+                    most_average_thingy.style.display = "none";
                     newsList.style.display = 'none';
                     newsList_playlist.style.display = 'none';
+                    indexIg = index;
+                    
+                    if (indexIg == -1) {
+                        document.getElementById('dropdownMenuButton-forced').textContent = BackendConfig.ForceSeason ? "True" : "False"
+                    }
+                    else {
+                        if (indexIg == 10) {
+                            document.getElementById('dropdownMenuButton-forced').textContent = "True"
+                        } else {
+                            document.getElementById('dropdownMenuButton-forced').textContent = "False"
+                        }
+                    }
 
-                      @(Tab = 5); // not needed + won't be proper during runtime
+                    document.getElementById('IntNumberOnly').value = BackendConfig.Season;
+                    
+                    selectedItem = "s";
+
+                   @(Tab = 5); // not needed + won't be proper during runtime
                 }
                 else {
                     @(Tab = -1); // won't show nothing
@@ -440,17 +493,20 @@
                    // document.getElementById('dropdownMenuButton').textContent = selectedItem.title
                     document.getElementById('editType').value = type;
                     document.getElementById('editIndex').value = index;
-                    if (IsPlaylist){
-                        document.getElementById('editTitle').value = selectedItem.display_name;
-                        document.getElementById('editTitle').disabled = false;
-                        document.getElementById('editBody').value = selectedItem.description;
-                        document.getElementById('editBody').disabled = false;
-                    }else {
-                        document.getElementById('editTitle').value = selectedItem.title;
-                        document.getElementById('editTitle').disabled = false;
-                        document.getElementById('editBody').value = selectedItem.body;
-                        document.getElementById('editBody').disabled = false;
+                    if(!IsForcedSeason) {
+                        if (IsPlaylist){
+                            document.getElementById('editTitle').value = selectedItem.display_name;
+                            document.getElementById('editTitle').disabled = false;
+                            document.getElementById('editBody').value = selectedItem.description;
+                            document.getElementById('editBody').disabled = false;
+                        }else {
+                            document.getElementById('editTitle').value = selectedItem.title;
+                            document.getElementById('editTitle').disabled = false;
+                            document.getElementById('editBody').value = selectedItem.body;
+                            document.getElementById('editBody').disabled = false;
+                        }
                     }
+                    
                   
                    // console.log(newsFiles[index]);
                     //if (newsFiles[index] == null || newsFiles[index].length === 0) {
@@ -468,16 +524,18 @@
                  
                     $('#editModal').modal('show');
                 } else {
+                    console.log("-1")
                     // Clear it duh?
                     document.getElementById('dropdownMenuButton').textContent = "Not Selected"
                     document.getElementById('dropdownMenuButton-playlist').textContent = "Not Selected"
+                    document.getElementById('dropdownMenuButton-forced').textContent = "Not Selected"
                     document.getElementById('editType').value = type;
                     document.getElementById('editIndex').value = index;
                     document.getElementById('editTitle').value = "";
                     document.getElementById('editTitle').disabled = true;
                     document.getElementById('editBody').value = "";
                     document.getElementById('editBody').disabled = true;
-
+                    document.getElementById('IntNumberOnly').value = "";
                     //dropdownmenu
                     //document.getElementById('editBody').value = "";
                    // document.getElementById('editBody').disabled = true;
@@ -545,6 +603,13 @@
                     } else if (lastTab == "loginmessage"){
                         newsData.loginmessage.title = document.getElementById('editTitle').value;
                         newsData.loginmessage.body = document.getElementById('editBody').value;
+                    }else if(lastTab == "forcedseason"){
+                        BackendConfig.ForceSeason = document.getElementById('dropdownMenuButton-forced').textContent == "True";
+                        var TempNum = parseInt(document.getElementById('IntNumberOnly').value);
+                        if (!isNaN(TempNum)) {
+                            console.log(TempNum);
+                            BackendConfig.Season = TempNum
+                        }
                     }
                 }
 
@@ -558,7 +623,10 @@
                     headers: {
                         'Authorization': getAuthToken()
                     },
-                    data: JSON.stringify({ data: newsData }),
+                    data: JSON.stringify({ 
+                        data: newsData,
+                        BackendConfig: BackendConfig
+                    }),
                     success: function (response) {
                         console.log("SAVING");
                         if (response === true) {

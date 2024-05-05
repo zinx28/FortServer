@@ -16,6 +16,7 @@
 
 ## Discord Bot
 - Make sure you set up the bot in the configs, and the /test command works
+- Discord Bot Disabled On "DEVELOPMENT"
 
 ### Commands
 - /test

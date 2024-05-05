@@ -75,8 +75,6 @@ namespace FortLibrary.ConfigHelpers
         public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
 
         // - could be in game config in the future
-        public bool ForceSeason { get; set; } = false; // force season~ means that no matter version you login to will be that season
-        public int Season { get; set; } = 0;
         public bool FullLockerForEveryone { get; set; } = false; // full locker (should show all up to 29.10 - .20 i forgot)
         // ^^ i need a better name
 

@@ -73,10 +73,6 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
             else
             {
-                if (DeserializeConfig.ForceSeason)
-                {
-                    Logger.Log($"Force Season Is On [{DeserializeConfig.Season}]", "FortConfig");
-                }
 
                 Logger.Log("Loaded Config", "FortConfig");
             }
@@ -93,6 +89,11 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
             else
             {
+                if (DeserializeGameConfig.ForceSeason)
+                {
+                    Logger.Log($"Force Season Is On [{DeserializeGameConfig.Season}]", "FortConfig");
+                }
+
                 Logger.Log("Loaded Config", "FortGameConfig");
             }
 

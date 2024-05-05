@@ -66,18 +66,18 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 if (System.IO.File.Exists(PathConstants.CachedPaths.FortConfig))
                                 {
 
-                                    var FortDataConfig = JsonConvert.DeserializeObject<FortConfig>(dataValue);
+                                    var FortDataConfig = JsonConvert.DeserializeObject<FortGameConfig>(dataValue);
                                     if(FortDataConfig != null)
                                     {
                                         var ReadFile = System.IO.File.ReadAllText(PathConstants.CachedPaths.FortConfig);
                                         if(ReadFile != null)
                                         {
-                                            FortConfig DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(ReadFile);
+                                            FortGameConfig DeserializeConfig = JsonConvert.DeserializeObject<FortGameConfig>(ReadFile);
 
                                             if (DeserializeConfig != null)
                                             {
-                                                Saved.DeserializeConfig.Season = FortDataConfig.Season;
-                                                Saved.DeserializeConfig.ForceSeason = FortDataConfig.ForceSeason;
+                                                Saved.DeserializeGameConfig.Season = FortDataConfig.Season;
+                                                Saved.DeserializeGameConfig.ForceSeason = FortDataConfig.ForceSeason;
 
                                                 DeserializeConfig.Season = FortDataConfig.Season;
                                                 DeserializeConfig.ForceSeason = FortDataConfig.ForceSeason;

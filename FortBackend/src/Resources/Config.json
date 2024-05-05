@@ -14,8 +14,6 @@
     "ApplicationSecret": "",
     "ApplicationURI": "",
     "ShopWebhookUrl": "",
-    "ForceSeason": false,
-    "Season": 0,
     "DetectedWebhookUrl": "",
     "EnableDetections": false,
     "FullLockerForEveryone": false,

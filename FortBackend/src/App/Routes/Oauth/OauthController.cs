@@ -233,25 +233,25 @@ namespace FortBackend.src.App.Routes.Oauth
 
                 //GlobalData.RefreshToken.Add(RefreshTokenClient);
 
-                return Ok(new OauthToken
-                {
-                    access_token = $"{token}",
-                    expires_in = 28800,
-                    expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                    token_type = "bearer",
-                    account_id = "test",
-                    client_id = "test",
-                    internal_client = true,
-                    client_service = "fortnite",
-                    refresh_token = $"test",
-                    refresh_expires = 115200,
-                    refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                    displayName = "test",
-                    app = "fortnite",
-                    in_app_id = "test",
-                    device_id = claimsDictionary["dvid"]
-                });
-            }
+                    return Ok(new OauthToken
+                    {
+                        access_token = $"{token}",
+                        expires_in = 28800,
+                        expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        token_type = "bearer",
+                        account_id = "test",
+                        client_id = "test",
+                        internal_client = true,
+                        client_service = "fortnite",
+                        refresh_token = $"test",
+                        refresh_expires = 115200,
+                        refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        displayName = "test",
+                        app = "fortnite",
+                        in_app_id = "test",
+                        device_id = claimsDictionary["dvid"]
+                    });
+                }
 
             }
             else
@@ -272,6 +272,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 var Headers = Request.Headers;
                 var FormRequest = HttpContext.Request.Form;
 
+                string token_type = "";
                 string grant_type = "";
                 string DisplayName = "";
                 string Email = "";
@@ -285,6 +286,13 @@ namespace FortBackend.src.App.Routes.Oauth
                 {
                     if (!string.IsNullOrEmpty(GrantType))
                         grant_type = GrantType!;
+                }
+
+                //eg1
+                if (FormRequest.TryGetValue("token_type", out var TokenType))
+                {
+                    if (!string.IsNullOrEmpty(TokenType))
+                        token_type = TokenType!;
                 }
 
                 if (FormRequest.TryGetValue("username", out var username))
@@ -430,11 +438,11 @@ namespace FortBackend.src.App.Routes.Oauth
                             new Claim("p", Base64.GenerateRandomString(128)),
                             new Claim("clsvc", "fortnite"),
                             new Claim("t", "s"),
-                            new Claim("mver", false.ToString()),
+                            new Claim("mver", "false"),
                             new Claim("clid", clientId),
                             new Claim("ic", "true"),
                             new Claim("exp", DateTimeOffset.UtcNow.AddMinutes(240).ToUnixTimeSeconds().ToString()),
-                            new Claim("am", "client_credentials"),
+                            new Claim("am", grant_type),
                             new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
                             new Claim("jti", Hex.GenerateRandomHexString(32).ToLower()),
                         }, 24);

@@ -45,8 +45,12 @@
                             "Value": true
                         },
                         {
-                            "Name": "bEnableEulaCheck",
-                            "Value": false
+                          "Name": "bEnableEulaCheck",
+                          "Value": false
+                        },
+                        {
+                          "Name": "bShouldCheckIfPlatformAllowed",
+                          "Value": false
                         }
                     ]
                 },

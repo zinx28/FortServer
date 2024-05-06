@@ -47,6 +47,7 @@ I've created an admin page to make it easier to manage JSON configs.
 - Currently, the admin panel is styled using [Bootstrap](https://getbootstrap.com). However, this may change in the future.
 - Admins can grant other "FortBackend" users admin or moderator roles.
 - Admins have the ability to edit user roles, but moderators cannot edit users or add new ones (work in progress).
+- INI Manager on the dashboard is a mess and i will redo it in the future
 
 ### Setup and Login
 - Start the FortBackend application.

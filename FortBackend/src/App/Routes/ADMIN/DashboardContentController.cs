@@ -1,13 +1,16 @@
 ﻿using FortBackend.src.App.Utilities.ADMIN;
 using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
+using FortLibrary.EpicResponses.Fortnite;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SharpCompress.Common;
 using System;
 using System.Text.Json;
 
@@ -63,8 +66,54 @@ namespace FortBackend.src.App.Routes.ADMIN
                             if (!string.IsNullOrEmpty(dataValue))
                             {
                                 Console.WriteLine(dataValue);
+
+                                SavingCloudStorage DeserializeSavingCloudStorage = JsonConvert.DeserializeObject<SavingCloudStorage>(dataValue);
+
+                                if(DeserializeSavingCloudStorage != null)
+                                {
+                                    Console.WriteLine(DeserializeSavingCloudStorage.Title);
+
+                                    if (System.IO.File.Exists(PathConstants.CloudStorage.IniConfig))
+                                    {
+                                        var ReadFile = System.IO.File.ReadAllText(PathConstants.CloudStorage.IniConfig);
+                                        if (ReadFile != null)
+                                        {
+                                            IniConfig DeserializeConfig = JsonConvert.DeserializeObject<IniConfig>(ReadFile);
+                                            if( DeserializeConfig != null)
+                                            {
+                                                foreach (IniConfigFiles item in DeserializeConfig.FileData)
+                                                {
+                                                    if(item.Name == DeserializeSavingCloudStorage.Title)
+                                                    {
+                                                        Console.WriteLine("Valid File Name");
+
+                                                        foreach(IniConfigData item2 in item.Data)
+                                                        {
+                                                            if(item2.Title == DeserializeSavingCloudStorage.Body.Name)
+                                                            {
+                                                                Console.WriteLine("Valid File Name 2");
+                                                                item2.Data = DeserializeSavingCloudStorage.Body.CachedData;
+
+                                                            }
+                                                        }
+
+                                                        item.UploadedTime = DateTime.Now;
+                                                    }
+                                                }
+
+
+                                                System.IO.File.WriteAllText(PathConstants.CloudStorage.IniConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
+                                                IniManager.IniConfigData = DeserializeConfig;
+                                            }
+                                          
+                                           // IniManager.IniConfigData = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
+                                        }
+                                    }
+                                }
+                                //SavingCloudStorage
+                                //  Console.WriteLine(dataValue.Title);
                             }
-                           
+
                         }
                         if (tempData.TryGetProperty("BackendConfig", out JsonElement BackenddataElement))
                         {
@@ -108,9 +157,11 @@ namespace FortBackend.src.App.Routes.ADMIN
                             {
                                 NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
                                 NewsManager.Update();
-                                return Json(true);
+                               
                             }
                         }
+
+                        return Json(true);
                     }
                 }
 

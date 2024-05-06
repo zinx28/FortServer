@@ -106,9 +106,9 @@ namespace FortBackend.src.App.Utilities.Helpers
         }
 
 
-        public static List<CloudstorageFile> CloudStorageArrayData()
+        public static List<CloudstorageFileShort> CloudStorageArrayData()
         {
-            var list = new List<CloudstorageFile>();
+            var list = new List<CloudstorageFileShort>();
             string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.CloudStorage.IniConfig));
 
             if (string.IsNullOrEmpty(filePath))
@@ -133,15 +133,15 @@ namespace FortBackend.src.App.Utilities.Helpers
                         }
                     }
 
-                    list.Add(new CloudstorageFile
+                    list.Add(new CloudstorageFileShort
                     {
                         uniqueFilename = file.Name,
                         filename = file.Name,
                         hash = Hex.MakeHexWithString(file.Name),
                         hash256 = Hex.MakeHexWithString2(file.Name),
                         length = retardedfilecal,
-                        contentType = "text/plain",
-                        uploaded = file.UploadedTime,
+                        contentType = "application/octet-stream",
+                        uploaded = file.UploadedTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         storageType = "S3",
                         doNotCache = false
                     });

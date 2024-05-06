@@ -171,7 +171,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
                                     hash256 = Hex.MakeHexWithString(fileInfo.Name),
                                     length = fileContents.Length,
                                     contentType = "application/octet-stream",
-                                    uploaded = fileInfo.LastWriteTime,
+                                    uploaded = fileInfo.LastWriteTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                     storageType = "S3",
                                     storageIds = new { },
                                     accountId = profileCacheEntry.AccountId,

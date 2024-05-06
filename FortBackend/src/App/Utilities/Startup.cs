@@ -104,9 +104,6 @@ namespace FortBackend.src.App.Utilities
                 //endpoints.MapControllers();
             });
 
-            await GrabAdminData.GrabAllAdmin(); // cache service needs to be alive for this to wrok!
-
-            Logger.Log("Done Loading");
 
             app.UseStatusCodePages(async (StatusCodeContext context) =>
             {
@@ -135,6 +132,10 @@ namespace FortBackend.src.App.Utilities
                     });
                 }
             });
+
+            await GrabAdminData.GrabAllAdmin(); // cache service needs to be alive for this to wrok!
+
+            Logger.Log("Done Loading");
         }
     }
 

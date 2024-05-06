@@ -39,17 +39,17 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
-        [HttpGet("/")]
-        public async Task<IActionResult> asa()
-        {
-            Request.ContentType = "application/json";
-            var responseObj = new
-            {
-                status = "OK"
-            };
+        //[HttpGet("/")]
+        //public async Task<IActionResult> asa()
+        //{
+        //    Request.ContentType = "application/json";
+        //    var responseObj = new
+        //    {
+        //        status = "OK"
+        //    };
 
-            return Ok(responseObj);
-        }
+        //    return Ok(responseObj);
+        //}
 
         // stuff that are useless
 

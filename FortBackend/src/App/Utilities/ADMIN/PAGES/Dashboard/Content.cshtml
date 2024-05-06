@@ -1,4 +1,5 @@
-﻿@using FortBackend.src.App.Utilities.Saved
+﻿@using FortBackend.src.App.Utilities.Helpers
+@using FortBackend.src.App.Utilities.Saved
 @using Newtonsoft.Json
 @using FortBackend.src.App.Utilities.Helpers.Cached
 @using FortBackend.src.XMPP.Data
@@ -12,6 +13,7 @@
     //var NewsData = new ContentConfig();
     string NewsData = JsonConvert.SerializeObject(NewsManager.ContentConfig);
     string DeserializeGameConfig = JsonConvert.SerializeObject(Saved.DeserializeGameConfig);
+    string IniManagerConfig = JsonConvert.SerializeObject(IniManager.IniConfigData);
     // if(NewsData == null)
     // {
     //     NewsManager.Init();
@@ -144,10 +146,13 @@
                         <button class="nav-link" id="servers-tab" data-bs-toggle="tab" data-bs-target="#servers" type="button" role="tab" aria-controls="servers" aria-selected="false">Server Management</button>
                     </li>
                     <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="inimanagement-tab" data-bs-toggle="tab" data-bs-target="#inimanagement" type="button" role="tab" aria-controls="inimanagement" aria-selected="false">INI Management</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
                         <button class="nav-link" id="shop-tab" data-bs-toggle="tab" data-bs-target="#shop" type="button" role="tab" aria-controls="shop" aria-selected="false">Shop Configuration</button>
                     </li>
                 </ul>
-
+               
                 <div class="tab-content mt-4">
                     <div class="tab-pane fade show active" id="news" role="tabpanel" aria-labelledby="news-tab">
 
@@ -218,6 +223,54 @@
                             </table>
 
                         </div>
+                          <div class="tab-pane fade" id="inimanagement" role="tabpanel" aria-labelledby="inimanagement-tab">
+
+                            <h2>INI Management</h2>
+
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                @foreach (var newsItem in JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData)
+                                {
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link @(newsItem.Name == JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData.First().Name ? "active" : "")" id="@($"{newsItem.Name}-tab")" data-bs-toggle="tab" data-bs-target="#@newsItem.Name" type="button" role="tab" aria-controls="@newsItem.Name" aria-selected="true">@newsItem.Name</button>
+                                    </li>
+                                }
+                            </ul>
+
+                            <div class="tab-content">
+                                @foreach (var newsItem in JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData)
+                                {
+                                    <div class="tab-pane fade @(newsItem.Name == JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData.First().Name ? "show active" : "")" id="@newsItem.Name" role="tabpanel" aria-labelledby="@($"{newsItem.Name}-tab")">
+                                        <h2>@newsItem.Name</h2>
+
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Body</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach(var test in newsItem.Data)
+                                            {
+                                                <tr>
+                                                    <td>@test.Title</td>
+                                                    <td>N/A</td>
+                                                    <td>
+                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalDataIniForEdit(@JsonConvert.SerializeObject(test.Data), '@newsItem.Name', '@test.Title')">Edit</button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                            </div>
+
+                           
+
+                        </div>
                         <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
 
                             <h2>Shop Configuration</h2>
@@ -226,6 +279,7 @@
                     </div>
                 </div>
             </div>
+
 
 
             <div class="modal fade  text-white" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -289,6 +343,18 @@
                                     <hr>
                                 </div>
 
+                                <div class="dropdown" id="IniTest-playlist" style="display: none;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-ini" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Not Selected
+                                    </button>
+                                    <ul class="dropdown-menu" id="dropdownmenu1-playlist" aria-labelledby="dropdownMenuButton-ini">
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
+                                    </ul>
+
+                                    <hr>
+                                </div>
+
                             </div>
 
 
@@ -296,6 +362,15 @@
                             <form id="editForm">
                                 <input type="hidden" id="editType" name="type">
                                 <input type="hidden" id="editIndex" name="index">
+                                <div class="mb-3" id="IniUIManager" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="editInitText" class="form-label">INI VALUE</label>
+                                        <input type="text" class="form-control" id="editInitText" name="title">
+                                    </div>
+
+                                    <p>* DONT CHANGE THE VALUES IF YOU DON'T UNDERSTAND HOW THEY WORK (but should be basic to understand) *</p>
+                                </div>
+
                                 <div class="mb-3" id="most-average-thingy" style="display: none;">
                                     <div class="mb-3">
                                         <label for="editTitle" class="form-label">Title</label>
@@ -343,7 +418,7 @@
         <script>
             var indexIg = @INdexIg;
             var newsData = @Html.Raw(TempData);
-        var BackendConfig = @Html.Raw(DeserializeGameConfig);
+            var BackendConfig = @Html.Raw(DeserializeGameConfig);
             var lastTab = "";
             var newsFiles = [[],[]];
             var IsPlaylist = false;
@@ -352,7 +427,98 @@
             //var ForcedSeasonData = @ForcedSeason;
             //var ForcedSeasonNumber = @SeasonForced;
 
+            var TempINICache = "";
+            var IndexBefore = -1;
+            var TempIniName = "";
+            var TempIniTitle = "";
+            function populateModalDataIniForEdit(data, Name, Title) {
+                TempIniName = Name;
+                TempIniTitle = Title;
+                TempINICache = data;
+                IndexBefore = -1;
+                lastTab = "IniChanges";
+    
+                document.getElementById('dropdownMenuButton').textContent = "Not Selected"
+                document.getElementById('dropdownMenuButton-ini').textContent = "Not Selected"
+                document.getElementById('dropdownMenuButton-playlist').textContent = "Not Selected"
+                document.getElementById('dropdownMenuButton-forced').textContent = "Not Selected"
+                document.getElementById('editTitle').value = "";
+                document.getElementById('editTitle').disabled = true;
+                document.getElementById('editBody').value = "";
+                document.getElementById('editBody').disabled = true;
+                document.getElementById('IntNumberOnly').value = "";
+
+                var MainBody = document.getElementById('most-average-thingy');
+                MainBody.style.display = "none";
+
+                var IniUIManager = document.getElementById('IniUIManager');
+                IniUIManager.style.display = "";
+                document.getElementById('editInitText').value = "";
+                document.getElementById('editInitText').disabled = true;
+            //editInitText
+                //IniUIManager
+
+                var forcedseason_data = document.getElementById('forcedseason-data');
+               // var newsList = document.getElementById('newsList');
+                var newsList_playlist = document.getElementById('newsList-playlist');
+
+                forcedseason_data.style.display = "none";
+                newsList_playlist.style.display = 'none';
+
+                var dropdownMenu1 = document.getElementById('IniTest-playlist');
+                dropdownMenu1.style.display = "";
+
+                var dropdownMenu = document.getElementById('dropdownmenu1-playlist');
+                dropdownMenu.innerHTML = '';
+
+                data.forEach(function (playlist, index) {
+                    var listItem = document.createElement('li');
+                    var link = document.createElement('a');
+                    link.classList.add('dropdown-item');
+                    link.href = '#';
+                    link.textContent = playlist.Name;
+                  
+                    link.onclick = function () {
+                     populateModalDataIniForEditSelect(index);
+                    };
+                    listItem.appendChild(link);
+                    dropdownMenu.appendChild(listItem);
+                });
+
+                var divider = document.createElement('li');
+                divider.innerHTML = '<hr class="dropdown-divider">';
+                var addNewsItemLink = document.createElement('li');
+                addNewsItemLink.innerHTML = '<a class="dropdown-item" href="#not implemented">Add News Item</a>';
+                dropdownMenu.appendChild(divider);
+                dropdownMenu.appendChild(addNewsItemLink);
+        
+ 
+
+                console.log(data);
+            }
+
+           
+            function populateModalDataIniForEditSelect(index) {
+                if (TempINICache != "") {
+                    // uipdate stuff here check or <a href="#"></a>
+                    if (IndexBefore != -1) {
+                        TempINICache[IndexBefore].Value = document.getElementById('editInitText').value
+                    }
+
+                    //^^
+
+                    IndexBefore = index;
+                    document.getElementById('dropdownMenuButton-ini').textContent = TempINICache[index].Name
+
+                    document.getElementById('editInitText').value = TempINICache[index].Value;
+                    document.getElementById('editInitText').disabled = false;
+                    console.log(TempINICache[index]);
+                }
+            }
+
             function populateModalForEdit(type, index) {
+                TempIniName = "";
+                TempIniTitle = "";
                 IsPlaylist = false;
                 IsForcedSeason = false;
                 var newsList = document.getElementById('newsList');
@@ -543,6 +709,11 @@
                     document.getElementById('editBody').value = "";
                     document.getElementById('editBody').disabled = true;
                     document.getElementById('IntNumberOnly').value = "";
+
+                    var IniUIManager = document.getElementById('IniUIManager');
+                    IniUIManager.style.display = "none";
+                    document.getElementById('editInitText').value = "";
+                    document.getElementById('editInitText').disabled = true;
                     //dropdownmenu
                     //document.getElementById('editBody').value = "";
                    // document.getElementById('editBody').disabled = true;
@@ -558,6 +729,7 @@
             function populateModalClose() {
                 @(INdexIg = -1);
                 indexIg = @INdexIg;
+                TempINICache = ""; // eh
                // newsFiles = [];
                 newsData = @Html.Raw(TempData);
             }
@@ -617,6 +789,8 @@
                             console.log(TempNum);
                             BackendConfig.Season = TempNum
                         }
+                    } else if (lastTab == "IniChanges"){
+                        TempINICache[IndexBefore].Value = document.getElementById('editInitText').value
                     }
                 }
 
@@ -630,9 +804,10 @@
                     headers: {
                         'Authorization': getAuthToken()
                     },
-                    data: JSON.stringify({ 
+                    data: JSON.stringify({
                         data: newsData,
-                        BackendConfig: BackendConfig
+                        BackendConfig: BackendConfig,
+                        IniChanges: { Title: TempIniTitle, Body: { Name: TempIniName, CachedData: TempINICache } }
                     }),
                     success: function (response) {
                         console.log("SAVING");

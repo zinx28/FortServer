@@ -85,38 +85,6 @@ namespace FortBackend.src.App.Routes.Leaderboards
                         statName = statName,
                         statWindow = tab
                     });
-
-                    // var Playlist = Request.Query["playlist"].FirstOrDefault();
-                    //if (Playlist == "pc_m0_p9")
-                    //{
-                    //    List<string> accountIds = new List<string>();
-                    //    Console.WriteLine("USING CACHED CODE!");
-                    //    foreach (var item in UpdateLeaderBoard.LeaderboardCached.Squads)
-                    //    {
-                    //        Console.WriteLine("2 " + item.AccountId);
-                    //        accountIds.Add(item.AccountId);
-                    //    }
-                    //    return Ok(new
-                    //    {
-                    //        accountId,
-                    //        cohortAccounts = accountIds,
-                    //        expiresAt = "9999-12-31T00:00:00.000Z",
-                    //        playlist = Playlist
-                    //    });
-                    //}
-                    //else
-                    //{
-                    //    return Ok(new
-                    //    {
-                    //        accountId,
-                    //        cohortAccounts = new string[]
-                    //        {
-                    //            accountId
-                    //        },
-                    //        expiresAt = "9999-12-31T00:00:00.000Z",
-                    //        playlist = Playlist
-                    //    });
-                    //};
                 }
             }
             catch (JsonReaderException)
@@ -129,7 +97,7 @@ namespace FortBackend.src.App.Routes.Leaderboards
         }
 
         //fortnite/api/statsv2/query
-
+        // Doesn't work ofc
         [HttpPost("statsv2/query")]
         public async Task<ActionResult> LeaderBoardStatsQuery()
         {

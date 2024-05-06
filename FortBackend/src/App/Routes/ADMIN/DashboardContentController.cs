@@ -57,7 +57,16 @@ namespace FortBackend.src.App.Routes.ADMIN
                     AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
-                        if(tempData.TryGetProperty("BackendConfig", out JsonElement BackenddataElement))
+                        if(tempData.TryGetProperty("IniChanges", out JsonElement IniChangesData))
+                        {
+                            string dataValue = IniChangesData.ToString();
+                            if (!string.IsNullOrEmpty(dataValue))
+                            {
+                                Console.WriteLine(dataValue);
+                            }
+                           
+                        }
+                        if (tempData.TryGetProperty("BackendConfig", out JsonElement BackenddataElement))
                         {
                             string dataValue = BackenddataElement.ToString();
                             //Console.WriteLine(dataValue);

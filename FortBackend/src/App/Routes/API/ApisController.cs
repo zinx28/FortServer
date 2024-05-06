@@ -19,6 +19,7 @@ namespace FortBackend.src.App.Routes.API
     {
         [HttpPost("/datarouter/api/v1/public/data/{a}")]
 
+        // could give event data from the game? this could be miss used though
         [HttpPost("/datarouter/api/v1/public/data")]
         public IActionResult DataRouter(string a)
         {

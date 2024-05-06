@@ -20,10 +20,16 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             var FullLockerPath = PathConstants.CachedPaths.FullLocker;
             var DefaultBannerPath = PathConstants.CachedPaths.DefaultBanner;
             var DefaultBannerColorsPath = PathConstants.CachedPaths.DefaultBannerColors;
-
+            var IniConfigPath = PathConstants.CloudStorage.IniConfig;
             // -- //
 
             // -- Verify -- //
+
+            if (!File.Exists(IniConfigPath))
+            {
+                Logger.Error("Couldn't find IniConfig Path (IniConfig.json)", "IniConfig-Path");
+                throw new Exception("Couldn't find IniConfig Path (IniConfig.json)");
+            }
 
             if (!File.Exists(FortConfigPath))
             {
@@ -56,6 +62,8 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
 
             // -- //
+
+       
 
             FortConfig DeserializeConfig = Saved.Saved.DeserializeConfig;
             CachedDataClass BackendCachedData = Saved.Saved.BackendCachedData;
@@ -161,6 +169,14 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 NewsManager.Init();
             }
             catch (Exception ex) { Logger.Error("NewsManager Data -> " + ex.Message); }
+
+            try
+            {
+                string filePath = System.IO.File.ReadAllText(IniConfigPath);
+
+                IniManager.IniConfigData = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
+            }
+            catch (Exception ex) { Logger.Error("IniConfig Data -> " + ex.Message); }
 
             Saved.Saved.DeserializeConfig = DeserializeConfig;
             Saved.Saved.DeserializeGameConfig = DeserializeGameConfig;

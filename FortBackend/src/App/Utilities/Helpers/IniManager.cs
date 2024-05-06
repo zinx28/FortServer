@@ -15,20 +15,12 @@ namespace FortBackend.src.App.Utilities.Helpers
         /*
          FORTBACKEND INI MANAGER
         */
-
+        public static IniConfig IniConfigData { get; set; } = new IniConfig();
         public static string GrabIniFile(string FileName)
         {
             StringBuilder iniBuilder = new StringBuilder();
 
-           
-
-            string filePath = System.IO.File.ReadAllText(Path.Combine(PathConstants.CloudStorage.IniConfig));
-
-            if (string.IsNullOrEmpty(filePath))
-            {
-                return "NotFound";
-            }
-
+         
             string PlaylistData = System.IO.File.ReadAllText(Path.Combine(PathConstants.CloudStorage.PlaylistData));
 
             if (string.IsNullOrEmpty(PlaylistData))
@@ -43,18 +35,17 @@ namespace FortBackend.src.App.Utilities.Helpers
                 return "NotFound";
             }
 
-            IniConfig contentconfig = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
             RegionManagerConfig RegionManagerconfig = JsonConvert.DeserializeObject<RegionManagerConfig>(QosRegionManagerData)!;
             List<PlaylistDataClass> PlaylistDataconfig = JsonConvert.DeserializeObject<List<PlaylistDataClass>>(PlaylistData)!;
 
-            if (contentconfig != null && PlaylistDataconfig != null)
+            if (IniManager.IniConfigData != null && PlaylistDataconfig != null)
             {
-                iniBuilder.AppendLine($";{contentconfig.Info} // Generated {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffffffZ")} - {FileName}");
+                iniBuilder.AppendLine($";{IniManager.IniConfigData.Info} // Generated {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffffffZ")} - {FileName}");
 
-                int FindIndex = contentconfig.FileData.FindIndex(e => e.Name == FileName);
+                int FindIndex = IniManager.IniConfigData.FileData.FindIndex(e => e.Name == FileName);
                 if (FindIndex != -1)
                 {
-                    IniConfigFiles iniConfigFiles = contentconfig.FileData[FindIndex];
+                    IniConfigFiles iniConfigFiles = IniManager.IniConfigData.FileData[FindIndex];
 
                     if (iniConfigFiles.Name == "DefaultEngine.ini")
                     {

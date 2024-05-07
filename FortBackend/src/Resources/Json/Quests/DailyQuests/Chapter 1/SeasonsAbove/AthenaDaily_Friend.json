@@ -1,0 +1,27 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Friend",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Play a match with a friend",
+      "Description": "Play a match with a friend",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_friend",
+          "ObjectiveState": "complete_athena_friend",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Play a match with a friend",
+          "HudShortDescription": "Play a match with a friend",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }
+

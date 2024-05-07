@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Squad_Top6",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Place Top 6 in Squads",
+      "Description": "Place Top 6 in Squads",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_squad_top6_v2",
+          "ObjectiveState": "complete_athena_squad_top_6",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Place Top 6 in Squads",
+          "HudShortDescription": "Place Top 6 in Squads",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

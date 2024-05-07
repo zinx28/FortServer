@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDailyQuest_PlayerEliminationAssaultRifles",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Assault Rifle Eliminations",
+      "Description": "Assault Rifle Eliminations",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "athena_daily_kill_players_assault_rifles",
+          "ObjectiveState": "killingblow_athena_player_assault",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Assault Rifle Eliminations",
+          "HudShortDescription": "Assault Rifle Eliminations",
+          "Count": 5,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

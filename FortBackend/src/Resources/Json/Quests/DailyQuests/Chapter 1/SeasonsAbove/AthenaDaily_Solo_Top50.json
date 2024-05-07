@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Solo_Top50",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Place Top 50 in Solo",
+      "Description": "Place Top 50 in Solo",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_solo_top50",
+          "ObjectiveState": "complete_athena_solo_top_50",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Place Top 50 in Solo",
+          "HudShortDescription": "Place Top 50 in Solo",
+          "Count": 5,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

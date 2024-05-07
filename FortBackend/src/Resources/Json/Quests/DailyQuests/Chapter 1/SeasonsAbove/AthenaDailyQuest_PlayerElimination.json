@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDailyQuest_PlayerElimination",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Eliminate Opponents",
+      "Description": "Eliminate Opponents",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "athena_daily_kill_players_v2",
+          "ObjectiveState": "killingblow_athena_player",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Eliminate Opponents",
+          "HudShortDescription": "Eliminate Opponents",
+          "Count": 10,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

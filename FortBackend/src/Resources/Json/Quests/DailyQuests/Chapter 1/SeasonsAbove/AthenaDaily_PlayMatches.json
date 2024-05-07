@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_PlayMatches",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Play Matches",
+      "Description": "Play Matches",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_play_matches_v3",
+          "ObjectiveState": "complete_athena",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Play Matches",
+          "HudShortDescription": "Play Matches",
+          "Count": 7,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

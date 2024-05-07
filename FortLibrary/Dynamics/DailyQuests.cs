@@ -13,6 +13,7 @@
         public string DisplayName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int SeasonXP { get; set; } = 0;
+        public int SeasonBattleStars { get; set; } = 0;
         public List<DailyObjectives> Objectives { get; set; } = new List<DailyObjectives>();
     }
 

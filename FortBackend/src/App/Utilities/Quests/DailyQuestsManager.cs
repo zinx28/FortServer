@@ -8,30 +8,102 @@ namespace FortBackend.src.App.Utilities.Quests
 {
     public class DailyQuestsManager
     {
-        public static List<DailyQuestsJson> DailyQuestsObjects = new List<DailyQuestsJson>();
+        public static Dictionary<string, List<DailyQuestsJson>> DailyQuestsSeasonAboveDictionary = new Dictionary<string, List<DailyQuestsJson>>();
+        
+        //public static List<DailyQuestsJson> DailyQuestsSeason1Objects = new List<DailyQuestsJson>();
+        //public static List<DailyQuestsJson> DailyQuestsSeasonAboveObjects = new List<DailyQuestsJson>();
         public static async Task<DailyQuestsJson> GrabRandomQuest(SeasonClass seasonClass)
         {
             Random random = new Random();
-            if (DailyQuestsObjects.Count() > 0)
+            if (seasonClass.SeasonNumber <= 10) // eh
             {
-                try 
-                { 
-                    DailyQuestsJson dailyQuestsJson = DailyQuestsObjects[random.Next(DailyQuestsObjects.Count())];
-
-                    // We check if its already a thing.. if so run again
-                    if (!CheckUsedQuest(dailyQuestsJson, seasonClass))
-                    {
-                        return dailyQuestsJson;
-                    }
-
-                    return await GrabRandomQuest(seasonClass);
+                var FindKey = "SeasonsAbove";
+                if (seasonClass.SeasonNumber == 1)
+                {
+                    FindKey = "Season1";
                 }
-                catch (Exception ex) { Logger.Error(ex.Message, "Grab Random Quest!"); };
+
+                if (DailyQuestsSeasonAboveDictionary.Count() > 0)
+                {
+                    try
+                    {
+                        List<DailyQuestsJson> SomeList = DailyQuestsSeasonAboveDictionary.FirstOrDefault(e => e.Key == FindKey).Value;
+                        
+                        DailyQuestsJson dailyQuestsJson = SomeList[random.Next(SomeList.Count())];
+
+                        // We check if its already a thing.. if so run again
+                        if (!CheckUsedQuest(dailyQuestsJson, seasonClass))
+                        {
+                            return dailyQuestsJson;
+                        }
+
+                        return await GrabRandomQuest(seasonClass);
+                    }
+                    catch (Exception ex) { Logger.Error(ex.Message, "Grab Random Quest!"); };
+                }
+                else
+                {
+                    Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
+                }
+
             }
-            else
-            {
-                Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
-            }
+            //if (seasonClass.SeasonNumber == 1)
+            //{
+            //    if (DailyQuestsSeason1Objects.Count() > 0)
+            //    {
+            //        try
+            //        {
+            //            DailyQuestsJson dailyQuestsJson = DailyQuestsSeason1Objects[random.Next(DailyQuestsSeason1Objects.Count())];
+
+            //            // We check if its already a thing.. if so run again
+            //            if (!CheckUsedQuest(dailyQuestsJson, seasonClass))
+            //            {
+            //                return dailyQuestsJson;
+            //            }
+
+            //            return await GrabRandomQuest(seasonClass);
+            //        }
+            //        catch (Exception ex) { Logger.Error(ex.Message, "Grab Random Quest!"); };
+            //    }
+            //    else
+            //    {
+            //        Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
+            //    }
+            //}
+            //else if(seasonClass.SeasonNumber > 1 && seasonClass.SeasonNumber <= 10)
+            //{
+            //    if (DailyQuestsSeasonAboveObjects.Count() > 0)
+            //    {
+            //        try
+            //        {
+            //            DailyQuestsJson dailyQuestsJson = DailyQuestsSeasonAboveObjects[random.Next(DailyQuestsSeasonAboveObjects.Count())];
+
+            //            // We check if its already a thing.. if so run again
+            //            if (!CheckUsedQuest(dailyQuestsJson, seasonClass))
+            //            {
+            //                return dailyQuestsJson;
+            //            }
+
+            //            return await GrabRandomQuest(seasonClass);
+            //        }
+            //        catch (Exception ex) { Logger.Error(ex.Message, "Grab Random Quest!"); };
+            //    }
+            //    else
+            //    {
+            //        Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
+            //    }
+            //}
+            //else
+            //{
+            //    if(seasonClass.SeasonNumber == 0)
+            //    {
+            //        return new DailyQuestsJson();
+            //    }
+
+            //    // REMOVE IF YOU ARE USING A SEASON HIGHER THEN CHAPTER 1 OR THIS WILL SPAM
+            //    Logger.Error("UNSUPPORTED SEASON -> " + seasonClass.SeasonNumber, "QUESTS");
+            //}
+           
 
             return new DailyQuestsJson();
         }
@@ -46,16 +118,40 @@ namespace FortBackend.src.App.Utilities.Quests
             return false;
         }
 
-        public static DailyQuestsJson ReturnQuestInfo(string DailyQuestName)
+        public static DailyQuestsJson ReturnQuestInfo(string DailyQuestName, int season)
         {
-            if (DailyQuestsObjects.Count() > 0)
+            if(season <= 10) // eh
             {
-                DailyQuestsJson DailyResponse = DailyQuestsObjects.FirstOrDefault(e => e.Name == DailyQuestName)!;   
-                if(DailyResponse != null)
+                var FindKey = "SeasonsAbove";
+                if(season == 1)
                 {
-                    return DailyResponse;
+                    FindKey = "Season1";
+                }
+                if (DailyQuestsSeasonAboveDictionary.Count() > 0)
+                {
+                    DailyQuestsJson DailyResponse = DailyQuestsSeasonAboveDictionary.FirstOrDefault(e => e.Key == FindKey).Value.FirstOrDefault(e => e.Name == DailyQuestName)!;
+                    if (DailyResponse != null)
+                    {
+                        return DailyResponse;
+                    }
                 }
             }
+            //else if(season > 1 && season <= 10)
+            //{
+            //    if (DailyQuestsSeasonAboveObjects.Count() > 0)
+            //    {
+            //        DailyQuestsJson DailyResponse = DailyQuestsSeasonAboveObjects.FirstOrDefault(e => e.Name == DailyQuestName)!;
+            //        if (DailyResponse != null)
+            //        {
+            //            return DailyResponse;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    // ifk
+            //}
+        
 
             return new DailyQuestsJson();
         }
@@ -65,34 +161,68 @@ namespace FortBackend.src.App.Utilities.Quests
             var DailyQuestsFolder = Path.Combine(PathConstants.BaseDir, "Json/Quests/DailyQuests");
             if(Path.Exists(DailyQuestsFolder))
             {
-                string[] DailyQuestsFiles = Directory.GetFiles(Path.Combine(PathConstants.BaseDir, "Json/Quests/DailyQuests"), "*.json");
-
-                if (DailyQuestsFiles.Count() > 0)
+                string[] FolderDir = Directory.GetDirectories(Path.Combine(PathConstants.BaseDir, "Json/Quests/DailyQuests"));
+                if (FolderDir.Count() > 0)
                 {
-                    foreach (string item in DailyQuestsFiles)
+                    
+                    foreach(string folder in FolderDir)
                     {
-                        string jsonContent = File.ReadAllText(item);
-                        if (jsonContent != null)
+                        string[] QuestsLoader = Directory.GetDirectories(Path.Combine(PathConstants.BaseDir, "Json/Quests/DailyQuests", Path.GetFileName(folder)));
+                        foreach (string Quests in QuestsLoader)
                         {
-                            DailyQuestsJson dailyQuestJson = JsonConvert.DeserializeObject<DailyQuestsJson>(jsonContent)!;
+                            string[] DailyQuestsFiles = new string[0];
+                            /// if (Quests == "Season 1")
+                            //{
+                            // Console.WriteLine(Quests);
+                           // Console.WriteLine(Quests);
+                                DailyQuestsFiles = Directory.GetFiles(Path.Combine(PathConstants.BaseDir, "Json/Quests/DailyQuests", Path.GetFileName(folder), Path.GetFileName(Quests)), "*.json");
 
-                            if (dailyQuestJson != null)
-                            {
-                                DailyQuestsObjects.Add(dailyQuestJson);
-                            }
+                                if (DailyQuestsFiles.Count() > 0)
+                                {
+                                    List<DailyQuestsJson> DailyQuestsList = new List<DailyQuestsJson>();
+                                    
+                                    try
+                                    {
+                                        foreach (string item in DailyQuestsFiles)
+                                        {
+                                            string jsonContent = File.ReadAllText(item);
+                                            if (jsonContent != null)
+                                            {
+                                                //Console.WriteLine(jsonContent);
+                                                DailyQuestsJson dailyQuestJson = JsonConvert.DeserializeObject<DailyQuestsJson>(jsonContent)!;
+
+                                                if (dailyQuestJson != null)
+                                                {
+                                                    DailyQuestsList.Add(dailyQuestJson);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Logger.Error(ex.Message, "DAILYQUESTMANAGER");
+                                    }
+                                   
+
+                                    DailyQuestsSeasonAboveDictionary.Add(Path.GetFileName(Quests), DailyQuestsList);
+
+                                    var a = DailyQuestsList.Count();
+                                    var b = DailyQuestsFiles.Count();
+
+                                    Logger.Log($"Loaded Daily {Path.GetFileName(Quests)} Quests: {a}/{b}", "DailyQuestManager");
+                                }
+                                else
+                                {
+                                    // throw error? or let them find out they are skunekd
+                                    Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
+                                }
+                            //}else
+                            //{
+                            //    Logger.Error("folder different.. weird?", "DAILYQUESTSMANAGER");
+                           // }
                         }
                     }
-
-                    var a = DailyQuestsObjects.Count();
-                    var b = DailyQuestsFiles.Count();
-
-                    Logger.Log($"Loaded Daily Quests: {a}/{b}", "DailyQuestManager");
-                }
-                else
-                {
-                    // throw error? or let them find out they are skunekd
-                    Logger.Error("DAILY QUEST FOLDER IS EMPTY!", "DailyQuestManager");
-                }
+                }             
             }
         }
     }

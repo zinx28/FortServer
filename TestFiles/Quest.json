@@ -1,48 +1,64 @@
 [
   {
     "Type": "FortQuestItemDefinition",
-    "Name": "AthenaDaily_Outlive_Solo",
+    "Name": "AthenaDailyQuest_PlayerEliminationSniperRifles",
     "Class": "UScriptClass'FortQuestItemDefinition'",
     "Properties": {
       "QuestType": "EFortQuestType::AthenaDailyQuest",
       "Rewards": [
         {
-          "ItemDefinition": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
+          "ItemDefinition": {
+            "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
+            "SubPathString": ""
+          },
           "Quantity": 500
+        },
+        {
+          "ItemDefinition": {
+            "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalBP.AthenaSeasonalBP",
+            "SubPathString": ""
+          },
+          "Quantity": 5
         }
       ],
       "Objectives": [
         {
-          "BackendName": "daily_athena_outlive_solo_players",
+          "BackendName": "athena_daily_kill_players_sniper_v2",
           "ObjectiveStatHandle": {
             "DataTable": {
               "ObjectName": "DataTable'ObjectiveStatTable'",
               "ObjectPath": "FortniteGame/Content/Quests/ObjectiveStatTable.0"
             },
-            "RowName": "outlive_athena_solo"
+            "RowName": "killingblow_athena_player_sniper"
           },
           "AlternativeStatHandles": [],
           "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
-          "ItemReference": "",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
           "LinkVaultTab": "EFortInventoryFilter::Max_None",
           "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "Description": {
-            "Namespace": "[D94F5A324C0B92D4B32E68978FF8932E]",
-            "Key": "0CBB96404DA16D2CA60DBABAC89D6D15",
-            "SourceString": "Outlive opponents in solo mode",
-            "LocalizedString": "Outlive opponents in solo mode"
+            "Namespace": "",
+            "Key": "0A786AE74AB1D4C930B771935D2EC70F",
+            "SourceString": "Sniper Rifle Eliminations",
+            "LocalizedString": "Sniper Rifle Eliminations"
           },
           "HudShortDescription": {
-            "Namespace": "[D94F5A324C0B92D4B32E68978FF8932E]",
-            "Key": "011377DA483AED305C857DA974582990",
-            "SourceString": "Outlive opponents in solo mode",
-            "LocalizedString": "Outlive opponents in solo mode"
+            "Namespace": "",
+            "Key": "D99885C649E69CFB6B3C45BDB14328C3",
+            "SourceString": "Sniper Rifle Eliminations",
+            "LocalizedString": "Sniper Rifle Eliminations"
           },
-          "HudIcon": "",
-          "Count": 150,
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
           "Stage": -1,
           "bHidden": false,
           "bRequirePrimaryMissionCompletion": false,
@@ -50,39 +66,47 @@
           "bDisplayDynamicAnnouncementUpdate": false,
           "bDisplayDynamicStatusUpdate": true,
           "DynamicUpdateCompletionDelay": 1.0,
-          "ScriptedAction": ""
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
         }
       ],
+      "Weight": 0.75,
       "Category": {
         "DataTable": {
           "ObjectName": "DataTable'QuestCategoryTable'",
           "ObjectPath": "FortniteGame/Content/Quests/QuestCategoryTable.0"
-        }
+        },
+        "RowName": "BRDailyChallenges"
       },
       "CompletionText": {
         "Namespace": "",
-        "Key": "E487E1804147AC3FADEAA592045E1D9E",
+        "Key": "AA0F7A83417D85FA5B8DA6955CF7F250",
         "SourceString": "Daily Challenge Completed!",
         "LocalizedString": "Daily Challenge Completed!"
       },
       "GrantToProfileType": "athena",
       "DisplayName": {
         "Namespace": "",
-        "Key": "1B11FEA8412651228EEB1C80F5CF899C",
-        "SourceString": "Outlive Players in Solo Matches",
-        "LocalizedString": "Outlive Players in Solo Matches"
+        "Key": "532B0D374B0FC8CCABC9F6B227233274",
+        "SourceString": "Sniper Rifle Eliminations",
+        "LocalizedString": "Sniper Rifle Eliminations"
       },
       "Description": {
-        "Namespace": "[D94F5A324C0B92D4B32E68978FF8932E]",
-        "Key": "E692DACE49A0430803A453912C7025B5",
-        "SourceString": "Outlive 150 solo players",
-        "LocalizedString": "Outlive 150 solo players"
+        "Namespace": "",
+        "Key": "1C3D256E4D76CE1531388FBEDEB52862",
+        "SourceString": "Sniper Rifle Eliminations",
+        "LocalizedString": "Sniper Rifle Eliminations"
       },
       "SmallPreviewImage": {
-        "ObjectName": "Texture2D'T-Icon-Rescue-Survivors-128'",
-        "ObjectPath": "FortniteGame/Content/UI/Foundation/Textures/Icons/Quest/T-Icon-Rescue-Survivors-128.0"
+        "ObjectName": "Texture2D'T-Icon-Exterminate-128'",
+        "ObjectPath": "FortniteGame/Content/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.0"
       },
-      "LargePreviewImage": "/Game/UI/Foundation/Textures/Icons/Quest/T-Icon-Rescue-Survivors-128.T-Icon-Rescue-Survivors-128"
+      "LargePreviewImage": {
+        "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
+        "SubPathString": ""
+      }
     }
   }
 ]

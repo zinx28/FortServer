@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Outlive",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Outlive Opponents",
+      "Description": "Outlive Opponents",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_outlive_players_v3",
+          "ObjectiveState": "outlive_athena",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Outlive Opponents",
+          "HudShortDescription": "Outlive Opponents",
+          "Count": 300,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

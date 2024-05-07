@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDailyQuest_InteractTreasureChest",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Search Chests",
+      "Description": "Search Chests",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_loot_chest_v2",
+          "ObjectiveState": "interact_athena_treasurechest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Search Chests",
+          "HudShortDescription": "Search Chests",
+          "Count": 7,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

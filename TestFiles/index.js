@@ -28,6 +28,7 @@ for(var index in datafile) {
 }
 console.log(JSON.stringify(Data));*/
 
+/*
 const datafile = require("./BattlePass.json");
 var Data = [];
 var Level = 0;
@@ -85,7 +86,7 @@ for(var index in datafile){
   Level += 1;
 }
 
-console.log(JSON.stringify(Data));
+console.log(JSON.stringify(Data));*/
 
 /*
 const datafile = require("./SeasonStars.json");
@@ -112,7 +113,7 @@ for(var index in datafile){
 
 console.log(JSON.stringify(Data));*/
 
-/*const datafile = require("./Quest.json")
+const datafile = require("./Quest.json")
 var tesa =0;
 for(var index in datafile) {
   tesa += 1;
@@ -123,13 +124,29 @@ for(var index in datafile) {
  //   "XpTotal": dataHa.XpTotal
  // })
   var SeasonXP = 0;
+  var SeasonBattleStars = 0;
   for(var RewardsIndex in dataHa.Properties.Rewards) {
     var Rewards = dataHa.Properties.Rewards[RewardsIndex];
-      if(!Rewards.ItemDefinition.includes("AthenaSeasonalXP")) {
-        throw "ERROR REWARDS"
+      console.log(Rewards);
+
+      // V1 Quests (season 1 -> 1.9.1) i think (i dont have other versions)
+      //if(!Rewards.ItemDefinition.includes("AthenaSeasonalXP")) {
+        //throw "ERROR REWARDS"
+      //}
+
+      //SeasonXP = Rewards.Quantity
+
+      // V2 / V3 (idk why it's v3 after a few versions)
+      if(Rewards.ItemDefinition.AssetPathName.includes("AthenaSeasonalXP")) {
+          SeasonXP = Rewards.Quantity;
       }
 
-      SeasonXP = Rewards.Quantity
+      if(Rewards.ItemDefinition.AssetPathName.includes("AthenaSeasonalBP")) {
+         SeasonBattleStars = Rewards.Quantity
+      }
+
+    
+   
   }
   
   var temp = []
@@ -158,10 +175,11 @@ for(var index in datafile) {
         "DisplayName": dataHa.Properties.DisplayName.LocalizedString,
         "Description": dataHa.Properties.Description.LocalizedString,
         "SeasonXP": SeasonXP,
+        "SeasonBattleStars": SeasonBattleStars,
         "Objectives": temp2
       }
     })
   //}
 
   console.log(JSON.stringify(temp))
-}*/
+}

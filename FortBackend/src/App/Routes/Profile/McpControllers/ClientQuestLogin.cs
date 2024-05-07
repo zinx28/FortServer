@@ -52,6 +52,28 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
                     int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
 
+
+                    if (Season.Season == 0)
+                    {
+                        if (BaseRev != RVN)
+                        {
+                            Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
+                            MultiUpdates = test.profileChanges;
+                        }
+
+                        return new Mcp
+                        {
+                            profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                            profileId = ProfileId,
+                            profileChangesBaseRevision = BaseRev,
+                            profileChanges = MultiUpdates,
+                            profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                            serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                            responseVersion = 1
+                        };
+                    }
+
+
                     // Temp data
                     //int AddedXP = 0; // xp added to the users account
                     //int AddedLevel = 0; // level added to the users account
@@ -177,7 +199,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             if(DailyQuestsObject.attributes.quest_state == "Claimed")
                             {
                                 // AddedXP += DailyQuestsObject.attributes.
-                                DailyQuestsJson dailyQuestsJson = DailyQuestsManager.ReturnQuestInfo(item.Key);
+                                DailyQuestsJson dailyQuestsJson = DailyQuestsManager.ReturnQuestInfo(item.Key, Season.Season);
                                 if (string.IsNullOrEmpty(dailyQuestsJson.Name))
                                 {
                                     FoundSeason.BookXP += dailyQuestsJson.Properties.SeasonXP;

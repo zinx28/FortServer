@@ -1,0 +1,25 @@
+{
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDailyQuest_InteractAmmoCrate",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Search Ammo Boxes",
+      "Description": "Search Ammo Boxes",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "athena_daily_loot_ammobox_v2",
+          "ObjectiveState": "interact_athena_ammobox",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Search Ammo Boxes",
+          "HudShortDescription": "Search Ammo Boxes",
+          "Count": 7,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

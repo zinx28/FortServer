@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDailyQuest_PlayerEliminationPistols",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Pistol Eliminations",
+      "Description": "Pistol Eliminations",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "athena_daily_kill_players_pistol_v3",
+          "ObjectiveState": "killingblow_athena_player_pistol",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Pistol Eliminations",
+          "HudShortDescription": "Pistol Eliminations",
+          "Count": 2,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

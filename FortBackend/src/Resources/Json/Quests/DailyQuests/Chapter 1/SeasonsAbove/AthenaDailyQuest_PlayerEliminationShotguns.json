@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDailyQuest_PlayerEliminationShotguns",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Shotgun Eliminations",
+      "Description": "Shotgun Eliminations",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "athena_daily_kill_players_shotgun_v2",
+          "ObjectiveState": "killingblow_athena_player_shotgun",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Shotgun Eliminations",
+          "HudShortDescription": "Shotgun Eliminations",
+          "Count": 4,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

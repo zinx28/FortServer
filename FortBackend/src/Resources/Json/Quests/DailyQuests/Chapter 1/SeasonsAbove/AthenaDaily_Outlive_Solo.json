@@ -1,0 +1,26 @@
+
+  {
+    "Type": "FortQuestItemDefinition",
+    "Name": "AthenaDaily_Outlive_Solo",
+    "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Properties": {
+      "DisplayName": "Outlive opponents in solo mode",
+      "Description": "Outlive opponents in solo mode",
+      "SeasonXP": 500,
+      "SeasonBattleStars": 5,
+      "Objectives": [
+        {
+          "BackendName": "daily_athena_outlive_solo_players",
+          "ObjectiveState": "outlive_athena_solo",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Outlive opponents in solo mode",
+          "HudShortDescription": "Outlive opponents in solo mode",
+          "Count": 150,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

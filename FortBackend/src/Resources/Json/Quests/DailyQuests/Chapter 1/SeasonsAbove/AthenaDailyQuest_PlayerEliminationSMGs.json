@@ -1,0 +1,26 @@
+
+{
+  "Type": "FortQuestItemDefinition",
+  "Name": "AthenaDailyQuest_PlayerEliminationSMGs",
+  "Class": "UScriptClass'FortQuestItemDefinition'",
+  "Properties": {
+    "DisplayName": "SMG Eliminations",
+    "Description": "SMG Eliminations",
+    "SeasonXP": 500,
+    "SeasonBattleStars": 5,
+    "Objectives": [
+      {
+        "BackendName": "athena_daily_kill_players_smg_v2",
+        "ObjectiveState": "killingblow_athena_player_smg",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "SMG Eliminations",
+        "HudShortDescription": "SMG Eliminations",
+        "Count": 2,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

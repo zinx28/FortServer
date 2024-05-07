@@ -40,13 +40,13 @@ namespace FortBackend.src.App.Routes.ADMIN
             }
           
 
-            return View("~/src/App/Utilities/ADMIN/Pages/Index.cshtml");
+            return View("~/src/App/Utilities/ADMIN/Index.cshtml");
         }
 
         public IActionResult ReturnErrorMessage(string Message = "Server Issue", string PageName = "Index.cshtml")
         {
             ViewBag.ErrorMessage = Message;
-            return View("~/src/App/Utilities/ADMIN/Pages/" + PageName);
+            return View("~/src/App/Utilities/ADMIN/" + PageName);
         }
 
         [HttpGet("setup")]
@@ -62,7 +62,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                     {
                         if (adminData.bIsSetup)
                         {
-                            return View("~/src/App/Utilities/ADMIN/Pages/ChangePassword.cshtml");
+                            return View("~/src/App/Utilities/ADMIN/ChangePassword.cshtml");
                         }
                        
                         return Redirect("/admin/dashboard");

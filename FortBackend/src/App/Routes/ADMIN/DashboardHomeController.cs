@@ -22,7 +22,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                     }
                     //Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
-                    return View("~/src/App/Utilities/ADMIN/PAGES/Dashboard/Home.cshtml");
+                    return View("~/src/App/Utilities/ADMIN/Dashboard/Home.cshtml");
                 }
             }
 

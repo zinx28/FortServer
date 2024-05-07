@@ -12,6 +12,14 @@ namespace FortBackend.src.App.Routes.API
     [Route("fortnite/api")]
     public class FortniteApiController : ControllerBase
     {
+        //fortnite/api/game/v2/grant_access
+        [HttpPost("game/v2/grant_access/{accountId}")]
+        public IActionResult GrantAccess(string accountId)
+        {
+            return Ok(new {});
+        }
+
+
         [HttpGet("receipts/v1/account/{accountId}/receipts")]
         public IActionResult Receipts(string accountId)
         {

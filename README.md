@@ -53,5 +53,5 @@ I've created an admin page to make it easier to manage JSON configs.
 - Start the FortBackend application.
 - Access the login page [here](http://127.0.0.1:1111/admin/login) (right-click to copy the link).
 - Use the default email (Admin@gmail.com) and password (AdminPassword123).
-- Upon first login, you will be prompted to change your email and password.
+- Upon first login, you will be prompted to change your email and password. 
 

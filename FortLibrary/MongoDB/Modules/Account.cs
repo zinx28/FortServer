@@ -236,6 +236,10 @@ namespace FortLibrary.MongoDB.Module
         [JsonProperty("season")]
         public int SeasonNumber { get; set; } = 12;
 
+        [BsonElement("party_assist")]
+        [JsonProperty("party_assist")]
+        public string party_assist { get; set; } = "";
+
         [BsonElement("events")]
         [JsonProperty("events")]
         public Events events { get; set; } = new Events();

@@ -136,6 +136,9 @@ namespace FortBackend.src.App.Routes.Profile
                                     case "EquipBattleRoyaleCustomization":
                                         response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);
                                         break;
+                                    case "SetPartyAssistQuest":
+                                        response = await SetPartyAssistQuest.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetPartyAssistQuestResponse>(requestbody)!);
+                                        break;
                                     case "SetBattleRoyaleBanner":
                                         response = await SetBattleRoyaleBanner.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetBattleRoyaleBannerReq>(requestbody)!);
                                         break;

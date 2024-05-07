@@ -143,7 +143,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 book_purchased = seasonObject.BookPurchased,
                                                 book_xp = seasonObject.BookXP,
                                                 season_num = Season.Season,
-                                                book_level = seasonObject.BookLevel
+                                                book_level = seasonObject.BookLevel,
+                                                party_assist_quest = seasonObject.party_assist
                                             }
                                         },
                                         items = new Dictionary<string, object>(),

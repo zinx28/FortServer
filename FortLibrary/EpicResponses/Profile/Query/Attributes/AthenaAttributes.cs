@@ -47,6 +47,7 @@
         public string favorite_loadingscreen { get; set; } = string.Empty;
         public string banner_color { get; set; } = string.Empty;
         public string favorite_character { get; set; } = string.Empty;
+        public string party_assist_quest { get; set; } = string.Empty;
     }
 
     public class SeasonStats

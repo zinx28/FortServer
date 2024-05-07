@@ -1,29 +1,29 @@
 {
-    "loginmessage": {
-        "title": "FortBackend",
-        "body": "FortBackend News"
-    },
+  "loginmessage": {
+    "title": "FortBackend",
+    "body": "FortBackend News \nFortBackend is a Universal Private Server for fortnite"
+  },
     "battleroyalenews": {
         "motds": [
-            {
-                "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-                "title": "FortBackend",
-                "body": "Fortnite Kittens :3"
-            }
+          {
+            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+            "title": "FortBackend",
+            "body": "FortBackend is a Universal Private Server for fortnite"
+          }
         ],
         "messages": [
-            {
-                "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-                "title": "FortBackend",
-                "body": "Fortnite Kittens :3"
-            }
+          {
+            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+            "title": "FortBackend",
+            "body": "FortBackend is a Universal Private Server for fortnite"
+          }
         ]
     },
     "emergencynotice": [
-        {
-            "title": "FortBackend",
-            "body": "Fortnite Kittens :3"
-        }
+      {
+        "title": "FortBackend",
+        "body": "FortBackend is a Universal Private Server for fortnite"
+      }
     ],
     "shopSections": [
         {
@@ -41,32 +41,28 @@
         {
             "hidden": false,
             "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_DefaultSolo",
-            "description": "something interesting!"
+            "playlist_name": "Playlist_DefaultSolo"
         },
         {
             "hidden": false,
             "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_DefaultDuo",
-            "description": "something interesting!"
+            "playlist_name": "Playlist_DefaultDuo"
         },
         {
             "hidden": false,
             "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_DefaultSquad",
-            "description": "something interesting!"
+            "playlist_name": "Playlist_DefaultSquad"
+        },
+        {
+          "hidden": false,
+          "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+          "playlist_name": "Playlist_PlaygroundV2",
+          "description": "Creative is so cool ngl"
         },
         {
             "hidden": false,
             "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_PlaygroundV2",
-            "description": "something interesting!"
-        },
-        {
-            "hidden": false,
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_ShowdownAlt_Solo",
-            "description": "something interesting!"
+            "playlist_name": "Playlist_ShowdownAlt_Solo"
         },
         {
             "hidden": false,

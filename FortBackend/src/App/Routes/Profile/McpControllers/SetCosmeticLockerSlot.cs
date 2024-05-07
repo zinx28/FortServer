@@ -96,7 +96,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     profileChangesBaseRevision = BaseRev + 1,
                     profileChanges = ProfileChangesV2,
                     profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision + 1,
-                    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                    serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     responseVersion = 1
                 };
             }

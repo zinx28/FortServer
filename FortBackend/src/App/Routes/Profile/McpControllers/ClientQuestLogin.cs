@@ -17,6 +17,7 @@ using System.Net.Http.Json;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Constants;
+using FortLibrary.EpicResponses.Profile.Query;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -28,342 +29,355 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             string currentDate = DateTime.UtcNow.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
-
-                var jsonData = File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"Json\\Profiles\\default.json"));
-                if (!string.IsNullOrEmpty(jsonData))
-                {
-                    // adds stats shocked
+                // adds stats shocked
                  
-                    //pc_m0_p2 ~ solos
-                    //pc_m0_p10 ~ duos
-                    //pc_m0_p9 ~ squads
-                    foreach (var item in UpdateLeaderBoard.GetStatNames())
+                //pc_m0_p2 ~ solos
+                //pc_m0_p10 ~ duos
+                //pc_m0_p9 ~ squads
+                foreach (var item in UpdateLeaderBoard.GetStatNames())
+                {
+                    if (!profileCacheEntry.StatsData.stats.Keys.Contains(item))
                     {
-                        if (!profileCacheEntry.StatsData.stats.Keys.Contains(item))
-                        {
-                            profileCacheEntry.StatsData.stats.Add(item, 0);
-                        }
+                        profileCacheEntry.StatsData.stats.Add(item, 0);
                     }
+                }
 
 
-                    // Daily Quests WIP
+                // Daily Quests WIP
                   
-                    if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == Season.Season))
-                    {
-                        // Response Data ~ DONT CHANGE
-                        List<object> MultiUpdates = new List<object>();
-                        int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
-                        int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
+                if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == Season.Season))
+                {
+                    // Response Data ~ DONT CHANGE
+                    List<object> MultiUpdates = new List<object>();
+                    int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
+                    int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
 
-                        // Temp data
-                        //int AddedXP = 0; // xp added to the users account
-                        //int AddedLevel = 0; // level added to the users account
+                    // Temp data
+                    //int AddedXP = 0; // xp added to the users account
+                    //int AddedLevel = 0; // level added to the users account
 
-                        // Season Data
-                        SeasonClass FoundSeason = profileCacheEntry.AccountData.commoncore?.Seasons.FirstOrDefault(x => x.SeasonNumber == Season.Season)!;
+                    // Season Data
+                    SeasonClass FoundSeason = profileCacheEntry.AccountData.commoncore?.Seasons.FirstOrDefault(x => x.SeasonNumber == Season.Season)!;
 
                         
 
-                        if(FoundSeason.DailyQuests.Interval != currentDate)
-                        {
-                            FoundSeason.DailyQuests.Interval = currentDate;
-                            FoundSeason.DailyQuests.Rerolls = 1; // give 1 reroll everyday
+                    if(FoundSeason.DailyQuests.Interval != currentDate)
+                    {
+                        FoundSeason.DailyQuests.Interval = currentDate;
+                        FoundSeason.DailyQuests.Rerolls = 1; // give 1 reroll everyday
                              
-                            MultiUpdates.Add(new MultiUpdateClassV2
+                        MultiUpdates.Add(new MultiUpdateClassV2
+                        {
+                            changeType = "statModified",
+                            name = "quest_manager",
+                            value = new
                             {
-                                changeType = "statModified",
-                                name = "quest_manager",
-                                value = new
-                                {
-                                    dailyLoginInterval = currentDate,
-                                    dailyQuestRerolls = 1
-                                }
-                            });
+                                dailyLoginInterval = currentDate,
+                                dailyQuestRerolls = 1
+                            }
+                        });
 
-                            if (!(FoundSeason.DailyQuests.Daily_Quests.Count > 3))
-                            {
-                                var DailyCount = 3 - FoundSeason.DailyQuests.Daily_Quests.Count;
+                        if (!(FoundSeason.DailyQuests.Daily_Quests.Count > 3))
+                        {
+                            var DailyCount = 3 - FoundSeason.DailyQuests.Daily_Quests.Count;
                                
-                                for (int i = 0; i < DailyCount; i++)
+                            for (int i = 0; i < DailyCount; i++)
+                            {
+                                try
                                 {
-                                    try
+                                    DailyQuestsJson dailyQuests = await DailyQuestsManager.GrabRandomQuest(FoundSeason);
+
+                                    if (!string.IsNullOrEmpty(dailyQuests.Name))
                                     {
-                                        DailyQuestsJson dailyQuests = await DailyQuestsManager.GrabRandomQuest(FoundSeason);
-
-                                        if (!string.IsNullOrEmpty(dailyQuests.Name))
+                                        if(dailyQuests.Properties.Objectives.Count > 1)
                                         {
-                                            if(dailyQuests.Properties.Objectives.Count > 1)
-                                            {
-                                                Logger.Error("FEATURE NOT IMPLEMENTED");
-                                            }
-                                            else
-                                            {
-                                                DailyQuestsData dailyQuestsData = new DailyQuestsData
-                                                {
-                                                    templateId = $"Quest:{dailyQuests.Name}",
-                                                    attributes = new DailyQuestsDataDB
-                                                    {
-                                                        sent_new_notification = false,
-                                                        ObjectiveState = new List<DailyQuestsObjectiveStates>
-                                                        {
-                                                            new DailyQuestsObjectiveStates
-                                                            {
-                                                                Name = $"completion_{dailyQuests.Properties.Objectives[0].BackendName}",
-                                                                Value = 0
-                                                            }
-                                                        }
-                                                    },
-                                                    quantity = 1
-                                                };
-
-                                                // so skunked but should wokr
-                                                MultiUpdates.Add(new MultiUpdateClass
-                                                {
-                                                    changeType = "itemAdded",
-                                                    itemId = dailyQuests.Name,
-                                                    item = new
-                                                    {
-                                                        templateId = $"Quest:{dailyQuests.Name}",
-                                                        attributes = new Dictionary<string, object>
-                                                        {
-                                                            { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "level", -1 },
-                                                            { "item_seen", false },
-                                                            { "playlists", new List<object>() },
-                                                            { "sent_new_notification", false },
-                                                            { "challenge_bundle_id", "" },
-                                                            { "xp_reward_scalar", 1 },
-                                                            { "challenge_linked_quest_given", "" },
-                                                            { "quest_pool", "" },
-                                                            { "quest_state", "Active" },
-                                                            { "bucket", "" },
-                                                            { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "challenge_linked_quest_parent", "" },
-                                                            { "max_level_bonus", 0 },
-                                                            { "xp", 0 },
-                                                            { "quest_rarity", "uncommon" },
-                                                            { "favorite", false },
-                                                            { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                        },
-                                                        quantity = 1
-                                                    }
-                                                });
-
-                                                FoundSeason.DailyQuests.Daily_Quests.Add(dailyQuests.Name, dailyQuestsData);
-                                            }
-                                            
+                                            Logger.Error("FEATURE NOT IMPLEMENTED");
                                         }
                                         else
                                         {
-                                            Logger.Error("GRABBED EMPTY STUFF FOR DAUKY QUESTS?", "DAILY QUESTS!");
+                                            DailyQuestsData dailyQuestsData = new DailyQuestsData
+                                            {
+                                                templateId = $"Quest:{dailyQuests.Name}",
+                                                attributes = new DailyQuestsDataDB
+                                                {
+                                                    sent_new_notification = false,
+                                                    ObjectiveState = new List<DailyQuestsObjectiveStates>
+                                                    {
+                                                        new DailyQuestsObjectiveStates
+                                                        {
+                                                            Name = $"completion_{dailyQuests.Properties.Objectives[0].BackendName}",
+                                                            Value = 0
+                                                        }
+                                                    }
+                                                },
+                                                quantity = 1
+                                            };
+
+                                            // so skunked but should wokr
+                                            MultiUpdates.Add(new MultiUpdateClass
+                                            {
+                                                changeType = "itemAdded",
+                                                itemId = dailyQuests.Name,
+                                                item = new
+                                                {
+                                                    templateId = $"Quest:{dailyQuests.Name}",
+                                                    attributes = new Dictionary<string, object>
+                                                    {
+                                                        { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "level", -1 },
+                                                        { "item_seen", false },
+                                                        { "playlists", new List<object>() },
+                                                        { "sent_new_notification", true },
+                                                        { "challenge_bundle_id", "" },
+                                                        { "xp_reward_scalar", 1 },
+                                                        { "challenge_linked_quest_given", "" },
+                                                        { "quest_pool", "" },
+                                                        { "quest_state", "Active" },
+                                                        { "bucket", "" },
+                                                        { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "challenge_linked_quest_parent", "" },
+                                                        { "max_level_bonus", 0 },
+                                                        { "xp", 0 },
+                                                        { "quest_rarity", "uncommon" },
+                                                        { "favorite", false },
+                                                        { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                                    },
+                                                    quantity = 1
+                                                }
+                                            });
+
+                                            FoundSeason.DailyQuests.Daily_Quests.Add(dailyQuests.Name, dailyQuestsData);
                                         }
-                                    }catch (Exception ex)
-                                    {
-                                        Logger.Error(ex.Message, "DAILY QUESTS!");
+                                            
                                     }
-                                }
-                                // 
-                            } // else how?
-                        }
-
-                        // CLAIMING QUEST SYSTEM
-                        // Theres a whole different endpoint for claiming but in here we remove and give xp
-                        // since i only worked on season 1 quests hasn't been implemented on other seasons until i work on season 2
-
-                        foreach (var item in FoundSeason.DailyQuests.Daily_Quests)
-                        {
-                            if(item.Value != null) // shoudn't ever be null
-                            {
-                                DailyQuestsData DailyQuestsObject = item.Value;
-                                if (DailyQuestsObject == null) continue;
-
-                                if(DailyQuestsObject.attributes.quest_state == "Claimed")
+                                    else
+                                    {
+                                        Logger.Error("GRABBED EMPTY STUFF FOR DAUKY QUESTS?", "DAILY QUESTS!");
+                                    }
+                                }catch (Exception ex)
                                 {
-                                    // AddedXP += DailyQuestsObject.attributes.
-                                    DailyQuestsJson dailyQuestsJson = DailyQuestsManager.ReturnQuestInfo(item.Key);
-                                    if (string.IsNullOrEmpty(dailyQuestsJson.Name))
-                                    {
-                                        FoundSeason.BookXP += dailyQuestsJson.Properties.SeasonXP;
-                                        FoundSeason.DailyQuests.Daily_Quests.Remove(item.Key); // removes the quest
-                                    }
+                                    Logger.Error(ex.Message, "DAILY QUESTS!");
+                                }
+                            }
+                            // 
+                        } // else how?
+                    }
+
+                    // CLAIMING QUEST SYSTEM
+                    // Theres a whole different endpoint for claiming but in here we remove and give xp
+                    // since i only worked on season 1 quests hasn't been implemented on other seasons until i work on season 2
+
+                    foreach (var item in FoundSeason.DailyQuests.Daily_Quests)
+                    {
+                        if(item.Value != null) // shoudn't ever be null
+                        {
+                            DailyQuestsData DailyQuestsObject = item.Value;
+                            if (DailyQuestsObject == null) continue;
+
+                            if(DailyQuestsObject.attributes.quest_state == "Claimed")
+                            {
+                                // AddedXP += DailyQuestsObject.attributes.
+                                DailyQuestsJson dailyQuestsJson = DailyQuestsManager.ReturnQuestInfo(item.Key);
+                                if (string.IsNullOrEmpty(dailyQuestsJson.Name))
+                                {
+                                    FoundSeason.BookXP += dailyQuestsJson.Properties.SeasonXP;
+                                    FoundSeason.DailyQuests.Daily_Quests.Remove(item.Key); // removes the quest
                                 }
                             }
                         }
+                    }
 
-                        // END OF CLAIMING QUEST SYTEM
+                    // END OF CLAIMING QUEST SYTEM
 
-                        // LEVEL SYSTEM & XP
+                    // LEVEL SYSTEM & XP
 
-                        var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonXP.json");
-                        var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonBP.json");
+                    var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonXP.json");
+                    var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonBP.json");
                       
-                        int BookLevelOG = FoundSeason.BookLevel;
-                        bool NeedItems = false;
-                        // unsupported seasons will not go though.. so it doesn't break stuff
-                        // I will try to add it for most seasons when i'm not doing other things
-                        if (File.Exists(SeasonXPFolder))
+                    int BookLevelOG = FoundSeason.BookLevel;
+                    bool NeedItems = false;
+                    // unsupported seasons will not go though.. so it doesn't break stuff
+                    // I will try to add it for most seasons when i'm not doing other things
+                    if (File.Exists(SeasonXPFolder))
+                    {
+                        //FoundSeason
+                        (FoundSeason, NeedItems) = await LevelUpdater.Init(Season.Season, FoundSeason, NeedItems);
+
+                        var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+                        if (currencyItem != null)
                         {
-                            //FoundSeason
-                            (FoundSeason, NeedItems) = await LevelUpdater.Init(Season.Season, FoundSeason, NeedItems);
 
-                            var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"];
-                            if (currencyItem != null)
+
+                            // BATTLE PASS SYSTEM
+
+                            List<Battlepass> FreeTier = BattlepassManager.FreeBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                            if(FreeTier != null)
                             {
-
-
-                                // BATTLE PASS SYSTEM
-
-                                List<Battlepass> FreeTier = BattlepassManager.FreeBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
-
-                                if(FreeTier != null)
+                                if (FreeTier.Count > 0)
                                 {
-                                    if (FreeTier.Count > 0)
+                                    if (Season.Season > 1)
                                     {
-                                        if (Season.Season > 1)
+                                        List<Battlepass> PaidTier = BattlepassManager.PaidBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                                        if(PaidTier != null)
                                         {
-                                            List<Battlepass> PaidTier = BattlepassManager.PaidBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
-
-                                            if(PaidTier != null)
+                                            if (PaidTier.Count > 0)
                                             {
-                                                if (PaidTier.Count > 0)
+                                                foreach (var BattlePass in FreeTier)
                                                 {
-                                                    foreach (var BattlePass in FreeTier)
-                                                    {
-                                                        if (!NeedItems) break;
-                                                        if (BookLevelOG <= BattlePass.Level) continue;
-                                                        if (BattlePass.Level > FoundSeason.Level) break;
+                                                    if (!NeedItems) break;
+                                                    if (BookLevelOG <= BattlePass.Level) continue;
+                                                    if (BattlePass.Level > FoundSeason.Level) break;
 
-                                                        List<NotificationsItemsClassOG> unlessfunc;
-                                                        (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
-                                                    }
-
-                                                    foreach (var BattlePass in PaidTier)
-                                                    {
-                                                        if (!NeedItems) break;
-                                                        if (BookLevelOG <= BattlePass.Level) continue;
-                                                        if (BattlePass.Level > FoundSeason.Level) break;
-
-                                                        List<NotificationsItemsClassOG> unlessfunc;
-                                                        (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
-                                                    }
+                                                    List<NotificationsItemsClassOG> unlessfunc;
+                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                 }
-                                                else
+
+                                                foreach (var BattlePass in PaidTier)
                                                 {
-                                                    Logger.Error("PaidTier file is null [] ? battlepass tiering disabled");
+                                                    if (!NeedItems) break;
+                                                    if (BookLevelOG <= BattlePass.Level) continue;
+                                                    if (BattlePass.Level > FoundSeason.Level) break;
+
+                                                    List<NotificationsItemsClassOG> unlessfunc;
+                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                 }
                                             }
                                             else
                                             {
-                                                Logger.Log("Unsupported season");
+                                                Logger.Error("PaidTier file is null [] ? battlepass tiering disabled");
                                             }
                                         }
                                         else
                                         {
-                                            // season 1 only free tier
-                                            foreach (var BattlePass in FreeTier)
-                                            {
-                                                if (!NeedItems) break;
-                                                if (BookLevelOG <= BattlePass.Level) continue;
-                                                if (BattlePass.Level > FoundSeason.Level) break;
-
-                                                List<NotificationsItemsClassOG> unlessfunc;
-                                                (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
-                                            }
+                                            Logger.Log("Unsupported season");
                                         }
                                     }
                                     else
                                     {
-                                        Logger.Error("FreeTier file is null [] ? battlepass tiering disabled");
+                                        // season 1 only free tier
+                                        foreach (var BattlePass in FreeTier)
+                                        {
+                                            if (!NeedItems) break;
+                                            if (BookLevelOG <= BattlePass.Level) continue;
+                                            if (BattlePass.Level > FoundSeason.Level) break;
+
+                                            List<NotificationsItemsClassOG> unlessfunc;
+                                            (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    Logger.Error($"This season is *NOT* supported ~ {Season.Season}", "ClientQuestLogin");
+                                    Logger.Error("FreeTier file is null [] ? battlepass tiering disabled");
                                 }
+                            }
+                            else
+                            {
+                                Logger.Error($"This season is *NOT* supported ~ {Season.Season}", "ClientQuestLogin");
+                            }
                             
                             
                                     
 
-                                MultiUpdates.Add(new
-                                {
-                                    changeType = "itemQuantityChanged",
-                                    name = "Currency",
-                                    value = currencyItem.quantity
-                                });
-                            }
-                            
-
-                            // END OF BATTLE PASS SYSTEM
-
-                            // need to check if they need to actually need to be updated
-                            MultiUpdates.Add(new
-                            {
-                                changeType = "statModified",
-                                name = "level",
-                                value = FoundSeason.BookLevel
-                            });
-
-                            MultiUpdates.Add(new
-                            {
-                                changeType = "statModified",
-                                name = "book_level",
-                                value = FoundSeason.BookLevel
-                            });
-
                             MultiUpdates.Add(new
                             {
                                 changeType = "itemQuantityChanged",
-                                itemId = "xp",
-                                quantity = FoundSeason.BookXP
+                                name = "Currency",
+                                value = currencyItem.quantity
                             });
+                        }
+                            
+
+                        // END OF BATTLE PASS SYSTEM
+
+                        // need to check if they need to actually need to be updated
+                        MultiUpdates.Add(new
+                        {
+                            changeType = "statModified",
+                            name = "level",
+                            value = FoundSeason.BookLevel
+                        });
+
+                        MultiUpdates.Add(new
+                        {
+                            changeType = "statModified",
+                            name = "book_level",
+                            value = FoundSeason.BookLevel
+                        });
+
+                        MultiUpdates.Add(new
+                        {
+                            changeType = "itemQuantityChanged",
+                            itemId = "xp",
+                            quantity = FoundSeason.BookXP
+                        });
 
                        
-                        }
-
-                        // END OF LEVEL SYTEM & XP
-
-
-
-
-
-                        if (MultiUpdates.Count > 0)
-                        {
-                            profileCacheEntry.AccountData.athena.RVN += 1;
-                            profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                        }
-
-                        return new Mcp
-                        {
-                            profileRevision = profileCacheEntry.AccountData.athena.RVN,
-                            profileId = ProfileId,
-                            profileChangesBaseRevision = BaseRev,
-                            profileChanges = MultiUpdates,
-                            profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
-                            serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-                            responseVersion = 1
-                        };
                     }
-                    //var DailyQuests =
-                    Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
 
-                    return response;
-                    ////Console.WriteLine("fas");
-                    //List<AthenaItem> contentconfig = JsonConvert.DeserializeObject<List<AthenaItem>>(jsonData); //dynamicbackgrounds.news
-                    ////Console.WriteLine("GR");
+                    // END OF LEVEL SYTEM & XP
 
-                    //ProfileChange test1 = response.profileChanges[0] as ProfileChange;
-                    //foreach (AthenaItem test in contentconfig)
+
+
+
+
+                    if (MultiUpdates.Count > 0)
+                    {
+                        profileCacheEntry.AccountData.athena.RVN += 1;
+                        profileCacheEntry.AccountData.athena.CommandRevision += 1;
+                    }
+
+                    if (BaseRev != RVN)
+                    {
+                        Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
+                        MultiUpdates = test.profileChanges;
+                    }
+
+                    //Console.WriteLine(JsonConvert.SerializeObject(new Mcp
                     //{
-                    //    //Console.WriteLine("TET");
-                    //    test1.Profile.items.Add(test.templateId, test);
-                    //}
-                    //return response;
+                    //    profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                    //    profileId = ProfileId,
+                    //    profileChangesBaseRevision = BaseRev,
+                    //    profileChanges = MultiUpdates,
+                    //    profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                    //    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                    //    responseVersion = 1
+                    //}));
+
+                    return new Mcp
+                    {
+                        profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                        profileId = ProfileId,
+                        profileChangesBaseRevision = BaseRev,
+                        profileChanges = MultiUpdates,
+                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                        serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        responseVersion = 1
+                    };
                 }
-                else
-                {
-                    Logger.Error("ClientQuestLogin might not function well");
-                }
+                //var DailyQuests =
+                Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
+
+                return response;
+                ////Console.WriteLine("fas");
+                //List<AthenaItem> contentconfig = JsonConvert.DeserializeObject<List<AthenaItem>>(jsonData); //dynamicbackgrounds.news
+                ////Console.WriteLine("GR");
+
+                //ProfileChange test1 = response.profileChanges[0] as ProfileChange;
+                //foreach (AthenaItem test in contentconfig)
+                //{
+                //    //Console.WriteLine("TET");
+                //    test1.Profile.items.Add(test.templateId, test);
+                //}
+                //return response;
             }
+            else
+            {
+                Logger.Error("ClientQuestLogin might not function well");
+            }
+       
 
             return new Mcp();
         }

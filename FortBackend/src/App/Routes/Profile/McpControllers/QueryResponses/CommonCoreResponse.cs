@@ -71,8 +71,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             {
                                 _id = profileCacheEntry.AccountData.AccountId,
                                 //Update = "",
-                                Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                Updated = profileCacheEntry.AccountData.commoncore.Updated,
+                                Created = profileCacheEntry.AccountData.JoinDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                Updated = profileCacheEntry.AccountData.commoncore.Updated.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 rvn = profileCacheEntry.AccountData.commoncore.RVN,
                                 WipeNumber = 1,
                                 accountId = AccountId,
@@ -111,7 +111,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         }
                     },
                     profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
-                    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                    serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     responseVersion = 1,
                 };
                 var ProfileChange = CommonCoreClass.profileChanges[0] as ProfileChange;

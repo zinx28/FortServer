@@ -13,7 +13,7 @@ namespace FortLibrary.EpicResponses.Profile
         public List<McpNotifications> notifications { get; set; } = new List<McpNotifications>();
 
         public int profileCommandRevision { get; set; } = 1;
-        public DateTime serverTime { get; set; }
+        public string serverTime { get; set; }
 
         public List<object> multiUpdate { get; set; } = new List<object>();
         public int responseVersion { get; set; } = 1;

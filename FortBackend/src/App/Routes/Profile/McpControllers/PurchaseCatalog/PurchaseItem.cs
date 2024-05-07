@@ -250,7 +250,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             }
                         },
                         profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
-                        serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                        serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         multiUpdate = new List<object>()
                         {
                             new
@@ -416,7 +416,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                     }
                                 },
                                 profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
-                                serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                                serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 multiUpdate = new List<object>()
                                 {
                                     new

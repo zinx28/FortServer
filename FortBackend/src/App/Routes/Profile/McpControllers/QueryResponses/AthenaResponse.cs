@@ -96,8 +96,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     {
                                         _id = profileCacheEntry.AccountData.AccountId,
                                        // Update = "",
-                                        Created = DateTime.Parse("2021-03-07T16:33:28.462Z"),
-                                        Updated = profileCacheEntry.AccountData.athena.Updated,
+                                        Created = profileCacheEntry.AccountData.JoinDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        Updated = profileCacheEntry.AccountData.athena.Updated.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         rvn = profileCacheEntry.AccountData.athena.RVN,
                                         WipeNumber = 1,
                                         accountId = AccountId,
@@ -152,7 +152,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 }
                             },
                             profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
-                            serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
+                            serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                             responseVersion = 1,
                         };
 

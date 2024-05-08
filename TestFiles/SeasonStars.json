@@ -1,1791 +1,2087 @@
 [
-    {
-      "Rewards": []
-    },
-    {
-      "Rewards": []
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 5,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 1,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 2,
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "IsChaseReward": false,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    },
-    {
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-            "SubPathString": ""
-          },
-          "TemplateId": "",
-          "Quantity": 10,
-          "GiftBoxToUse": {
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
-          "IsChaseReward": true,
-          "RewardType": "EAthenaRewardItemType::Normal"
-        }
-      ]
-    }
-  ]
-  
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  }
+]

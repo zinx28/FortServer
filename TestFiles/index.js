@@ -28,7 +28,7 @@ for(var index in datafile) {
 }
 console.log(JSON.stringify(Data));*/
 
-/*
+
 const datafile = require("./BattlePass.json");
 var Data = [];
 var Level = 0;
@@ -51,7 +51,7 @@ for(var index in datafile){
             console.log(e.ItemDefinition.AssetPathName);
             //console.log(test);
             //if(test.includes(""))
-            if(test.includes("eid") || test.includes("emoji")){
+            if(test.includes("eid") || test.includes("emoji") || test.includes("spid")){
                templatePush = `AthenaDance:${test}`
             }
             else if(test.includes("mtxgiveaway")) {
@@ -66,7 +66,17 @@ for(var index in datafile){
               templatePush = `Token:${test}`
             }else if(test.includes("pickaxe")) {
               templatePush = `AthenaPickaxe:${test}`
-            }//else if()
+            }else if(test.includes("lsid")) {
+              templatePush = `AthenaLoadingScreen:${test}`
+            }else if(test.includes("trails")) {
+              templatePush = `AthenaSkyDiveContrail:${test}`
+            }else if(test.includes("musicpack")){
+              templatePush = `AthenaMusicPack:${test}`
+            }else if(test.includes("bid")){
+              templatePush = `AthenaBackpack:${test}`
+            }
+
+            console.log(templatePush)
         }
      }
      
@@ -86,7 +96,7 @@ for(var index in datafile){
   Level += 1;
 }
 
-console.log(JSON.stringify(Data));*/
+console.log(JSON.stringify(Data));
 
 /*
 const datafile = require("./SeasonStars.json");
@@ -113,6 +123,7 @@ for(var index in datafile){
 
 console.log(JSON.stringify(Data));*/
 
+/*
 const datafile = require("./Quest.json")
 var tesa =0;
 for(var index in datafile) {
@@ -182,4 +193,4 @@ for(var index in datafile) {
   //}
 
   console.log(JSON.stringify(temp))
-}
+}*/

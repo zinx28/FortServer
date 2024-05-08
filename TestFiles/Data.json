@@ -6,492 +6,492 @@
   },
   "2": {
     "Level": 2,
-    "XpToNextLevel": 250,
+    "XpToNextLevel": 200,
     "XpTotal": 100
   },
   "3": {
     "Level": 3,
     "XpToNextLevel": 300,
-    "XpTotal": 350
+    "XpTotal": 300
   },
   "4": {
     "Level": 4,
-    "XpToNextLevel": 350,
-    "XpTotal": 650
+    "XpToNextLevel": 400,
+    "XpTotal": 600
   },
   "5": {
     "Level": 5,
-    "XpToNextLevel": 700,
+    "XpToNextLevel": 500,
     "XpTotal": 1000
   },
   "6": {
     "Level": 6,
-    "XpToNextLevel": 750,
-    "XpTotal": 1700
+    "XpToNextLevel": 650,
+    "XpTotal": 1500
   },
   "7": {
     "Level": 7,
     "XpToNextLevel": 800,
-    "XpTotal": 2450
+    "XpTotal": 2150
   },
   "8": {
     "Level": 8,
-    "XpToNextLevel": 850,
-    "XpTotal": 3250
+    "XpToNextLevel": 950,
+    "XpTotal": 2950
   },
   "9": {
     "Level": 9,
-    "XpToNextLevel": 900,
-    "XpTotal": 4100
+    "XpToNextLevel": 1100,
+    "XpTotal": 3900
   },
   "10": {
     "Level": 10,
-    "XpToNextLevel": 1000,
+    "XpToNextLevel": 1250,
     "XpTotal": 5000
   },
   "11": {
     "Level": 11,
-    "XpToNextLevel": 1050,
-    "XpTotal": 6000
+    "XpToNextLevel": 1400,
+    "XpTotal": 6250
   },
   "12": {
     "Level": 12,
-    "XpToNextLevel": 1100,
-    "XpTotal": 7050
+    "XpToNextLevel": 1550,
+    "XpTotal": 7650
   },
   "13": {
     "Level": 13,
-    "XpToNextLevel": 1150,
-    "XpTotal": 8150
+    "XpToNextLevel": 1700,
+    "XpTotal": 9200
   },
   "14": {
     "Level": 14,
-    "XpToNextLevel": 1200,
-    "XpTotal": 9300
+    "XpToNextLevel": 1850,
+    "XpTotal": 10900
   },
   "15": {
     "Level": 15,
-    "XpToNextLevel": 1250,
-    "XpTotal": 10500
+    "XpToNextLevel": 2000,
+    "XpTotal": 12750
   },
   "16": {
     "Level": 16,
-    "XpToNextLevel": 1300,
-    "XpTotal": 11750
+    "XpToNextLevel": 2150,
+    "XpTotal": 14750
   },
   "17": {
     "Level": 17,
-    "XpToNextLevel": 1350,
-    "XpTotal": 13050
+    "XpToNextLevel": 2300,
+    "XpTotal": 16900
   },
   "18": {
     "Level": 18,
-    "XpToNextLevel": 1400,
-    "XpTotal": 14400
+    "XpToNextLevel": 2450,
+    "XpTotal": 19200
   },
   "19": {
     "Level": 19,
-    "XpToNextLevel": 1450,
-    "XpTotal": 15800
+    "XpToNextLevel": 2600,
+    "XpTotal": 21650
   },
   "20": {
     "Level": 20,
-    "XpToNextLevel": 1500,
-    "XpTotal": 17250
+    "XpToNextLevel": 2750,
+    "XpTotal": 24250
   },
   "21": {
     "Level": 21,
-    "XpToNextLevel": 1550,
-    "XpTotal": 18750
+    "XpToNextLevel": 2900,
+    "XpTotal": 27000
   },
   "22": {
     "Level": 22,
-    "XpToNextLevel": 1600,
-    "XpTotal": 20300
+    "XpToNextLevel": 3050,
+    "XpTotal": 29900
   },
   "23": {
     "Level": 23,
-    "XpToNextLevel": 1650,
-    "XpTotal": 21900
+    "XpToNextLevel": 3200,
+    "XpTotal": 32950
   },
   "24": {
     "Level": 24,
-    "XpToNextLevel": 1700,
-    "XpTotal": 23550
+    "XpToNextLevel": 3350,
+    "XpTotal": 36150
   },
   "25": {
     "Level": 25,
-    "XpToNextLevel": 1750,
-    "XpTotal": 25250
+    "XpToNextLevel": 3500,
+    "XpTotal": 39500
   },
   "26": {
     "Level": 26,
-    "XpToNextLevel": 1800,
-    "XpTotal": 27000
+    "XpToNextLevel": 3650,
+    "XpTotal": 43000
   },
   "27": {
     "Level": 27,
-    "XpToNextLevel": 1850,
-    "XpTotal": 28800
+    "XpToNextLevel": 3800,
+    "XpTotal": 46650
   },
   "28": {
     "Level": 28,
-    "XpToNextLevel": 1900,
-    "XpTotal": 30650
+    "XpToNextLevel": 3950,
+    "XpTotal": 50450
   },
   "29": {
     "Level": 29,
-    "XpToNextLevel": 1950,
-    "XpTotal": 32550
+    "XpToNextLevel": 4100,
+    "XpTotal": 54400
   },
   "30": {
     "Level": 30,
-    "XpToNextLevel": 2000,
-    "XpTotal": 34500
+    "XpToNextLevel": 4250,
+    "XpTotal": 58500
   },
   "31": {
     "Level": 31,
-    "XpToNextLevel": 2100,
-    "XpTotal": 36500
+    "XpToNextLevel": 4400,
+    "XpTotal": 62750
   },
   "32": {
     "Level": 32,
-    "XpToNextLevel": 2200,
-    "XpTotal": 38600
+    "XpToNextLevel": 4550,
+    "XpTotal": 67150
   },
   "33": {
     "Level": 33,
-    "XpToNextLevel": 2300,
-    "XpTotal": 40800
+    "XpToNextLevel": 4700,
+    "XpTotal": 71700
   },
   "34": {
     "Level": 34,
-    "XpToNextLevel": 2400,
-    "XpTotal": 43100
+    "XpToNextLevel": 4850,
+    "XpTotal": 76400
   },
   "35": {
     "Level": 35,
-    "XpToNextLevel": 2500,
-    "XpTotal": 45500
+    "XpToNextLevel": 5000,
+    "XpTotal": 81250
   },
   "36": {
     "Level": 36,
-    "XpToNextLevel": 2600,
-    "XpTotal": 48000
+    "XpToNextLevel": 5150,
+    "XpTotal": 86250
   },
   "37": {
     "Level": 37,
-    "XpToNextLevel": 2700,
-    "XpTotal": 50600
+    "XpToNextLevel": 5300,
+    "XpTotal": 91400
   },
   "38": {
     "Level": 38,
-    "XpToNextLevel": 2800,
-    "XpTotal": 53300
+    "XpToNextLevel": 5450,
+    "XpTotal": 96700
   },
   "39": {
     "Level": 39,
-    "XpToNextLevel": 2900,
-    "XpTotal": 56100
+    "XpToNextLevel": 5600,
+    "XpTotal": 102150
   },
   "40": {
     "Level": 40,
-    "XpToNextLevel": 3000,
-    "XpTotal": 59000
+    "XpToNextLevel": 5800,
+    "XpTotal": 107750
   },
   "41": {
     "Level": 41,
-    "XpToNextLevel": 3200,
-    "XpTotal": 62000
+    "XpToNextLevel": 6000,
+    "XpTotal": 113550
   },
   "42": {
     "Level": 42,
-    "XpToNextLevel": 3400,
-    "XpTotal": 65200
+    "XpToNextLevel": 6200,
+    "XpTotal": 119550
   },
   "43": {
     "Level": 43,
-    "XpToNextLevel": 3600,
-    "XpTotal": 68600
+    "XpToNextLevel": 6400,
+    "XpTotal": 125750
   },
   "44": {
     "Level": 44,
-    "XpToNextLevel": 3800,
-    "XpTotal": 72200
+    "XpToNextLevel": 6600,
+    "XpTotal": 132150
   },
   "45": {
     "Level": 45,
-    "XpToNextLevel": 4000,
-    "XpTotal": 76000
+    "XpToNextLevel": 6800,
+    "XpTotal": 138750
   },
   "46": {
     "Level": 46,
-    "XpToNextLevel": 4200,
-    "XpTotal": 80000
+    "XpToNextLevel": 7000,
+    "XpTotal": 145550
   },
   "47": {
     "Level": 47,
-    "XpToNextLevel": 4400,
-    "XpTotal": 84200
+    "XpToNextLevel": 7200,
+    "XpTotal": 152550
   },
   "48": {
     "Level": 48,
-    "XpToNextLevel": 4600,
-    "XpTotal": 88600
+    "XpToNextLevel": 7400,
+    "XpTotal": 159750
   },
   "49": {
     "Level": 49,
-    "XpToNextLevel": 4800,
-    "XpTotal": 93200
+    "XpToNextLevel": 7600,
+    "XpTotal": 167150
   },
   "50": {
     "Level": 50,
-    "XpToNextLevel": 5000,
-    "XpTotal": 98000
+    "XpToNextLevel": 7800,
+    "XpTotal": 174750
   },
   "51": {
     "Level": 51,
-    "XpToNextLevel": 5300,
-    "XpTotal": 103000
+    "XpToNextLevel": 8100,
+    "XpTotal": 182550
   },
   "52": {
     "Level": 52,
-    "XpToNextLevel": 5600,
-    "XpTotal": 108300
+    "XpToNextLevel": 8400,
+    "XpTotal": 190650
   },
   "53": {
     "Level": 53,
-    "XpToNextLevel": 5900,
-    "XpTotal": 113900
+    "XpToNextLevel": 8700,
+    "XpTotal": 199050
   },
   "54": {
     "Level": 54,
-    "XpToNextLevel": 6200,
-    "XpTotal": 119800
+    "XpToNextLevel": 9000,
+    "XpTotal": 207750
   },
   "55": {
     "Level": 55,
-    "XpToNextLevel": 6500,
-    "XpTotal": 126000
+    "XpToNextLevel": 9300,
+    "XpTotal": 216750
   },
   "56": {
     "Level": 56,
-    "XpToNextLevel": 6800,
-    "XpTotal": 132500
+    "XpToNextLevel": 9600,
+    "XpTotal": 226050
   },
   "57": {
     "Level": 57,
-    "XpToNextLevel": 7100,
-    "XpTotal": 139300
+    "XpToNextLevel": 9900,
+    "XpTotal": 235650
   },
   "58": {
     "Level": 58,
-    "XpToNextLevel": 7400,
-    "XpTotal": 146400
+    "XpToNextLevel": 10200,
+    "XpTotal": 245550
   },
   "59": {
     "Level": 59,
-    "XpToNextLevel": 7700,
-    "XpTotal": 153800
+    "XpToNextLevel": 10500,
+    "XpTotal": 255750
   },
   "60": {
     "Level": 60,
-    "XpToNextLevel": 8000,
-    "XpTotal": 161500
+    "XpToNextLevel": 10800,
+    "XpTotal": 266250
   },
   "61": {
     "Level": 61,
-    "XpToNextLevel": 8400,
-    "XpTotal": 169500
+    "XpToNextLevel": 11200,
+    "XpTotal": 277050
   },
   "62": {
     "Level": 62,
-    "XpToNextLevel": 8800,
-    "XpTotal": 177900
+    "XpToNextLevel": 11600,
+    "XpTotal": 288250
   },
   "63": {
     "Level": 63,
-    "XpToNextLevel": 9200,
-    "XpTotal": 186700
+    "XpToNextLevel": 12000,
+    "XpTotal": 299850
   },
   "64": {
     "Level": 64,
-    "XpToNextLevel": 9600,
-    "XpTotal": 195900
+    "XpToNextLevel": 12400,
+    "XpTotal": 311850
   },
   "65": {
     "Level": 65,
-    "XpToNextLevel": 10000,
-    "XpTotal": 205500
+    "XpToNextLevel": 12800,
+    "XpTotal": 324250
   },
   "66": {
     "Level": 66,
-    "XpToNextLevel": 10400,
-    "XpTotal": 215500
+    "XpToNextLevel": 13200,
+    "XpTotal": 337050
   },
   "67": {
     "Level": 67,
-    "XpToNextLevel": 10800,
-    "XpTotal": 225900
+    "XpToNextLevel": 13600,
+    "XpTotal": 350250
   },
   "68": {
     "Level": 68,
-    "XpToNextLevel": 11200,
-    "XpTotal": 236700
+    "XpToNextLevel": 14000,
+    "XpTotal": 363850
   },
   "69": {
     "Level": 69,
-    "XpToNextLevel": 11600,
-    "XpTotal": 247900
+    "XpToNextLevel": 14400,
+    "XpTotal": 377850
   },
   "70": {
     "Level": 70,
-    "XpToNextLevel": 12000,
-    "XpTotal": 259500
+    "XpToNextLevel": 14800,
+    "XpTotal": 392250
   },
   "71": {
     "Level": 71,
-    "XpToNextLevel": 12500,
-    "XpTotal": 271500
+    "XpToNextLevel": 15300,
+    "XpTotal": 407050
   },
   "72": {
     "Level": 72,
-    "XpToNextLevel": 13000,
-    "XpTotal": 284000
+    "XpToNextLevel": 15800,
+    "XpTotal": 422350
   },
   "73": {
     "Level": 73,
-    "XpToNextLevel": 13500,
-    "XpTotal": 297000
+    "XpToNextLevel": 16300,
+    "XpTotal": 438150
   },
   "74": {
     "Level": 74,
-    "XpToNextLevel": 14000,
-    "XpTotal": 310500
+    "XpToNextLevel": 16800,
+    "XpTotal": 454450
   },
   "75": {
     "Level": 75,
-    "XpToNextLevel": 14500,
-    "XpTotal": 324500
+    "XpToNextLevel": 17300,
+    "XpTotal": 471250
   },
   "76": {
     "Level": 76,
-    "XpToNextLevel": 15000,
-    "XpTotal": 339000
+    "XpToNextLevel": 17800,
+    "XpTotal": 488550
   },
   "77": {
     "Level": 77,
-    "XpToNextLevel": 15500,
-    "XpTotal": 354000
+    "XpToNextLevel": 18300,
+    "XpTotal": 506350
   },
   "78": {
     "Level": 78,
-    "XpToNextLevel": 16000,
-    "XpTotal": 369500
+    "XpToNextLevel": 18800,
+    "XpTotal": 524650
   },
   "79": {
     "Level": 79,
-    "XpToNextLevel": 16500,
-    "XpTotal": 385500
+    "XpToNextLevel": 19300,
+    "XpTotal": 543450
   },
   "80": {
     "Level": 80,
-    "XpToNextLevel": 17000,
-    "XpTotal": 402000
+    "XpToNextLevel": 19800,
+    "XpTotal": 562750
   },
   "81": {
     "Level": 81,
-    "XpToNextLevel": 18000,
-    "XpTotal": 419000
+    "XpToNextLevel": 20800,
+    "XpTotal": 582550
   },
   "82": {
     "Level": 82,
-    "XpToNextLevel": 19000,
-    "XpTotal": 437000
+    "XpToNextLevel": 21800,
+    "XpTotal": 603350
   },
   "83": {
     "Level": 83,
-    "XpToNextLevel": 20000,
-    "XpTotal": 456000
+    "XpToNextLevel": 22800,
+    "XpTotal": 625150
   },
   "84": {
     "Level": 84,
-    "XpToNextLevel": 21000,
-    "XpTotal": 476000
+    "XpToNextLevel": 23800,
+    "XpTotal": 647950
   },
   "85": {
     "Level": 85,
-    "XpToNextLevel": 22000,
-    "XpTotal": 497000
+    "XpToNextLevel": 24800,
+    "XpTotal": 671750
   },
   "86": {
     "Level": 86,
-    "XpToNextLevel": 23000,
-    "XpTotal": 519000
+    "XpToNextLevel": 25800,
+    "XpTotal": 696550
   },
   "87": {
     "Level": 87,
-    "XpToNextLevel": 24000,
-    "XpTotal": 542000
+    "XpToNextLevel": 26800,
+    "XpTotal": 722350
   },
   "88": {
     "Level": 88,
-    "XpToNextLevel": 25000,
-    "XpTotal": 566000
+    "XpToNextLevel": 27800,
+    "XpTotal": 749150
   },
   "89": {
     "Level": 89,
-    "XpToNextLevel": 26000,
-    "XpTotal": 591000
+    "XpToNextLevel": 28800,
+    "XpTotal": 776950
   },
   "90": {
     "Level": 90,
-    "XpToNextLevel": 28000,
-    "XpTotal": 617000
+    "XpToNextLevel": 30800,
+    "XpTotal": 805750
   },
   "91": {
     "Level": 91,
-    "XpToNextLevel": 30000,
-    "XpTotal": 645000
+    "XpToNextLevel": 32800,
+    "XpTotal": 836550
   },
   "92": {
     "Level": 92,
-    "XpToNextLevel": 32000,
-    "XpTotal": 675000
+    "XpToNextLevel": 34800,
+    "XpTotal": 869350
   },
   "93": {
     "Level": 93,
-    "XpToNextLevel": 34000,
-    "XpTotal": 707000
+    "XpToNextLevel": 36800,
+    "XpTotal": 904150
   },
   "94": {
     "Level": 94,
-    "XpToNextLevel": 36000,
-    "XpTotal": 741000
+    "XpToNextLevel": 38800,
+    "XpTotal": 940950
   },
   "95": {
     "Level": 95,
-    "XpToNextLevel": 38000,
-    "XpTotal": 777000
+    "XpToNextLevel": 40800,
+    "XpTotal": 979750
   },
   "96": {
     "Level": 96,
-    "XpToNextLevel": 40000,
-    "XpTotal": 815000
+    "XpToNextLevel": 42800,
+    "XpTotal": 1020550
   },
   "97": {
     "Level": 97,
-    "XpToNextLevel": 43000,
-    "XpTotal": 855000
+    "XpToNextLevel": 45800,
+    "XpTotal": 1063350
   },
   "98": {
     "Level": 98,
-    "XpToNextLevel": 46000,
-    "XpTotal": 898000
+    "XpToNextLevel": 49800,
+    "XpTotal": 1109150
   },
   "99": {
     "Level": 99,
-    "XpToNextLevel": 50000,
-    "XpTotal": 944000
+    "XpToNextLevel": 54800,
+    "XpTotal": 1158950
   }
 }

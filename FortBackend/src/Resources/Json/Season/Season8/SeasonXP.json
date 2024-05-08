@@ -1,406 +1,497 @@
 [
   {
-    "Level": 0,
-    "BattleStars": 0
-  },
-  {
     "Level": 1,
-    "BattleStars": 0
+    "XpToNextLevel": 100,
+    "XpTotal": 0
   },
   {
     "Level": 2,
-    "BattleStars": 2
+    "XpToNextLevel": 200,
+    "XpTotal": 100
   },
   {
     "Level": 3,
-    "BattleStars": 2
+    "XpToNextLevel": 300,
+    "XpTotal": 300
   },
   {
     "Level": 4,
-    "BattleStars": 2
+    "XpToNextLevel": 400,
+    "XpTotal": 600
   },
   {
     "Level": 5,
-    "BattleStars": 5
+    "XpToNextLevel": 500,
+    "XpTotal": 1000
   },
   {
     "Level": 6,
-    "BattleStars": 2
+    "XpToNextLevel": 650,
+    "XpTotal": 1500
   },
   {
     "Level": 7,
-    "BattleStars": 2
+    "XpToNextLevel": 800,
+    "XpTotal": 2150
   },
   {
     "Level": 8,
-    "BattleStars": 2
+    "XpToNextLevel": 950,
+    "XpTotal": 2950
   },
   {
     "Level": 9,
-    "BattleStars": 2
+    "XpToNextLevel": 1100,
+    "XpTotal": 3900
   },
   {
     "Level": 10,
-    "BattleStars": 10
+    "XpToNextLevel": 1250,
+    "XpTotal": 5000
   },
   {
     "Level": 11,
-    "BattleStars": 2
+    "XpToNextLevel": 1400,
+    "XpTotal": 6250
   },
   {
     "Level": 12,
-    "BattleStars": 2
+    "XpToNextLevel": 1550,
+    "XpTotal": 7650
   },
   {
     "Level": 13,
-    "BattleStars": 2
+    "XpToNextLevel": 1700,
+    "XpTotal": 9200
   },
   {
     "Level": 14,
-    "BattleStars": 2
+    "XpToNextLevel": 1850,
+    "XpTotal": 10900
   },
   {
     "Level": 15,
-    "BattleStars": 5
+    "XpToNextLevel": 2000,
+    "XpTotal": 12750
   },
   {
     "Level": 16,
-    "BattleStars": 2
+    "XpToNextLevel": 2150,
+    "XpTotal": 14750
   },
   {
     "Level": 17,
-    "BattleStars": 2
+    "XpToNextLevel": 2300,
+    "XpTotal": 16900
   },
   {
     "Level": 18,
-    "BattleStars": 2
+    "XpToNextLevel": 2450,
+    "XpTotal": 19200
   },
   {
     "Level": 19,
-    "BattleStars": 2
+    "XpToNextLevel": 2600,
+    "XpTotal": 21650
   },
   {
     "Level": 20,
-    "BattleStars": 10
+    "XpToNextLevel": 2750,
+    "XpTotal": 24250
   },
   {
     "Level": 21,
-    "BattleStars": 2
+    "XpToNextLevel": 2900,
+    "XpTotal": 27000
   },
   {
     "Level": 22,
-    "BattleStars": 2
+    "XpToNextLevel": 3050,
+    "XpTotal": 29900
   },
   {
     "Level": 23,
-    "BattleStars": 2
+    "XpToNextLevel": 3200,
+    "XpTotal": 32950
   },
   {
     "Level": 24,
-    "BattleStars": 2
+    "XpToNextLevel": 3350,
+    "XpTotal": 36150
   },
   {
     "Level": 25,
-    "BattleStars": 5
+    "XpToNextLevel": 3500,
+    "XpTotal": 39500
   },
   {
     "Level": 26,
-    "BattleStars": 2
+    "XpToNextLevel": 3650,
+    "XpTotal": 43000
   },
   {
     "Level": 27,
-    "BattleStars": 2
+    "XpToNextLevel": 3800,
+    "XpTotal": 46650
   },
   {
     "Level": 28,
-    "BattleStars": 2
+    "XpToNextLevel": 3950,
+    "XpTotal": 50450
   },
   {
     "Level": 29,
-    "BattleStars": 2
+    "XpToNextLevel": 4100,
+    "XpTotal": 54400
   },
   {
     "Level": 30,
-    "BattleStars": 10
+    "XpToNextLevel": 4250,
+    "XpTotal": 58500
   },
   {
     "Level": 31,
-    "BattleStars": 2
+    "XpToNextLevel": 4400,
+    "XpTotal": 62750
   },
   {
     "Level": 32,
-    "BattleStars": 2
+    "XpToNextLevel": 4550,
+    "XpTotal": 67150
   },
   {
     "Level": 33,
-    "BattleStars": 2
+    "XpToNextLevel": 4700,
+    "XpTotal": 71700
   },
   {
     "Level": 34,
-    "BattleStars": 2
+    "XpToNextLevel": 4850,
+    "XpTotal": 76400
   },
   {
     "Level": 35,
-    "BattleStars": 5
+    "XpToNextLevel": 5000,
+    "XpTotal": 81250
   },
   {
     "Level": 36,
-    "BattleStars": 2
+    "XpToNextLevel": 5150,
+    "XpTotal": 86250
   },
   {
     "Level": 37,
-    "BattleStars": 2
+    "XpToNextLevel": 5300,
+    "XpTotal": 91400
   },
   {
     "Level": 38,
-    "BattleStars": 2
+    "XpToNextLevel": 5450,
+    "XpTotal": 96700
   },
   {
     "Level": 39,
-    "BattleStars": 2
+    "XpToNextLevel": 5600,
+    "XpTotal": 102150
   },
   {
     "Level": 40,
-    "BattleStars": 10
+    "XpToNextLevel": 5800,
+    "XpTotal": 107750
   },
   {
     "Level": 41,
-    "BattleStars": 2
+    "XpToNextLevel": 6000,
+    "XpTotal": 113550
   },
   {
     "Level": 42,
-    "BattleStars": 2
+    "XpToNextLevel": 6200,
+    "XpTotal": 119550
   },
   {
     "Level": 43,
-    "BattleStars": 2
+    "XpToNextLevel": 6400,
+    "XpTotal": 125750
   },
   {
     "Level": 44,
-    "BattleStars": 2
+    "XpToNextLevel": 6600,
+    "XpTotal": 132150
   },
   {
     "Level": 45,
-    "BattleStars": 5
+    "XpToNextLevel": 6800,
+    "XpTotal": 138750
   },
   {
     "Level": 46,
-    "BattleStars": 2
+    "XpToNextLevel": 7000,
+    "XpTotal": 145550
   },
   {
     "Level": 47,
-    "BattleStars": 2
+    "XpToNextLevel": 7200,
+    "XpTotal": 152550
   },
   {
     "Level": 48,
-    "BattleStars": 2
+    "XpToNextLevel": 7400,
+    "XpTotal": 159750
   },
   {
     "Level": 49,
-    "BattleStars": 2
+    "XpToNextLevel": 7600,
+    "XpTotal": 167150
   },
   {
     "Level": 50,
-    "BattleStars": 10
+    "XpToNextLevel": 7800,
+    "XpTotal": 174750
   },
   {
     "Level": 51,
-    "BattleStars": 2
+    "XpToNextLevel": 8100,
+    "XpTotal": 182550
   },
   {
     "Level": 52,
-    "BattleStars": 2
+    "XpToNextLevel": 8400,
+    "XpTotal": 190650
   },
   {
     "Level": 53,
-    "BattleStars": 2
+    "XpToNextLevel": 8700,
+    "XpTotal": 199050
   },
   {
     "Level": 54,
-    "BattleStars": 2
+    "XpToNextLevel": 9000,
+    "XpTotal": 207750
   },
   {
     "Level": 55,
-    "BattleStars": 5
+    "XpToNextLevel": 9300,
+    "XpTotal": 216750
   },
   {
     "Level": 56,
-    "BattleStars": 2
+    "XpToNextLevel": 9600,
+    "XpTotal": 226050
   },
   {
     "Level": 57,
-    "BattleStars": 2
+    "XpToNextLevel": 9900,
+    "XpTotal": 235650
   },
   {
     "Level": 58,
-    "BattleStars": 2
+    "XpToNextLevel": 10200,
+    "XpTotal": 245550
   },
   {
     "Level": 59,
-    "BattleStars": 2
+    "XpToNextLevel": 10500,
+    "XpTotal": 255750
   },
   {
     "Level": 60,
-    "BattleStars": 10
+    "XpToNextLevel": 10800,
+    "XpTotal": 266250
   },
   {
     "Level": 61,
-    "BattleStars": 2
+    "XpToNextLevel": 11200,
+    "XpTotal": 277050
   },
   {
     "Level": 62,
-    "BattleStars": 2
+    "XpToNextLevel": 11600,
+    "XpTotal": 288250
   },
   {
     "Level": 63,
-    "BattleStars": 2
+    "XpToNextLevel": 12000,
+    "XpTotal": 299850
   },
   {
     "Level": 64,
-    "BattleStars": 2
+    "XpToNextLevel": 12400,
+    "XpTotal": 311850
   },
   {
     "Level": 65,
-    "BattleStars": 5
+    "XpToNextLevel": 12800,
+    "XpTotal": 324250
   },
   {
     "Level": 66,
-    "BattleStars": 2
+    "XpToNextLevel": 13200,
+    "XpTotal": 337050
   },
   {
     "Level": 67,
-    "BattleStars": 2
+    "XpToNextLevel": 13600,
+    "XpTotal": 350250
   },
   {
     "Level": 68,
-    "BattleStars": 2
+    "XpToNextLevel": 14000,
+    "XpTotal": 363850
   },
   {
     "Level": 69,
-    "BattleStars": 2
+    "XpToNextLevel": 14400,
+    "XpTotal": 377850
   },
   {
     "Level": 70,
-    "BattleStars": 10
+    "XpToNextLevel": 14800,
+    "XpTotal": 392250
   },
   {
     "Level": 71,
-    "BattleStars": 2
+    "XpToNextLevel": 15300,
+    "XpTotal": 407050
   },
   {
     "Level": 72,
-    "BattleStars": 2
+    "XpToNextLevel": 15800,
+    "XpTotal": 422350
   },
   {
     "Level": 73,
-    "BattleStars": 2
+    "XpToNextLevel": 16300,
+    "XpTotal": 438150
   },
   {
     "Level": 74,
-    "BattleStars": 2
+    "XpToNextLevel": 16800,
+    "XpTotal": 454450
   },
   {
     "Level": 75,
-    "BattleStars": 5
+    "XpToNextLevel": 17300,
+    "XpTotal": 471250
   },
   {
     "Level": 76,
-    "BattleStars": 2
+    "XpToNextLevel": 17800,
+    "XpTotal": 488550
   },
   {
     "Level": 77,
-    "BattleStars": 2
+    "XpToNextLevel": 18300,
+    "XpTotal": 506350
   },
   {
     "Level": 78,
-    "BattleStars": 2
+    "XpToNextLevel": 18800,
+    "XpTotal": 524650
   },
   {
     "Level": 79,
-    "BattleStars": 2
+    "XpToNextLevel": 19300,
+    "XpTotal": 543450
   },
   {
     "Level": 80,
-    "BattleStars": 10
+    "XpToNextLevel": 19800,
+    "XpTotal": 562750
   },
   {
     "Level": 81,
-    "BattleStars": 2
+    "XpToNextLevel": 20800,
+    "XpTotal": 582550
   },
   {
     "Level": 82,
-    "BattleStars": 2
+    "XpToNextLevel": 21800,
+    "XpTotal": 603350
   },
   {
     "Level": 83,
-    "BattleStars": 2
+    "XpToNextLevel": 22800,
+    "XpTotal": 625150
   },
   {
     "Level": 84,
-    "BattleStars": 2
+    "XpToNextLevel": 23800,
+    "XpTotal": 647950
   },
   {
     "Level": 85,
-    "BattleStars": 5
+    "XpToNextLevel": 24800,
+    "XpTotal": 671750
   },
   {
     "Level": 86,
-    "BattleStars": 2
+    "XpToNextLevel": 25800,
+    "XpTotal": 696550
   },
   {
     "Level": 87,
-    "BattleStars": 2
+    "XpToNextLevel": 26800,
+    "XpTotal": 722350
   },
   {
     "Level": 88,
-    "BattleStars": 2
+    "XpToNextLevel": 27800,
+    "XpTotal": 749150
   },
   {
     "Level": 89,
-    "BattleStars": 2
+    "XpToNextLevel": 28800,
+    "XpTotal": 776950
   },
   {
     "Level": 90,
-    "BattleStars": 10
+    "XpToNextLevel": 30800,
+    "XpTotal": 805750
   },
   {
     "Level": 91,
-    "BattleStars": 2
+    "XpToNextLevel": 32800,
+    "XpTotal": 836550
   },
   {
     "Level": 92,
-    "BattleStars": 2
+    "XpToNextLevel": 34800,
+    "XpTotal": 869350
   },
   {
     "Level": 93,
-    "BattleStars": 2
+    "XpToNextLevel": 36800,
+    "XpTotal": 904150
   },
   {
     "Level": 94,
-    "BattleStars": 2
+    "XpToNextLevel": 38800,
+    "XpTotal": 940950
   },
   {
     "Level": 95,
-    "BattleStars": 5
+    "XpToNextLevel": 40800,
+    "XpTotal": 979750
   },
   {
     "Level": 96,
-    "BattleStars": 2
+    "XpToNextLevel": 42800,
+    "XpTotal": 1020550
   },
   {
     "Level": 97,
-    "BattleStars": 2
+    "XpToNextLevel": 45800,
+    "XpTotal": 1063350
   },
   {
     "Level": 98,
-    "BattleStars": 2
+    "XpToNextLevel": 49800,
+    "XpTotal": 1109150
   },
   {
     "Level": 99,
-    "BattleStars": 2
-  },
-  {
-    "Level": 100,
-    "BattleStars": 10
+    "XpToNextLevel": 54800,
+    "XpTotal": 1158950
   }
 ]

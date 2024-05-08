@@ -51,8 +51,13 @@ for(var index in datafile){
             console.log(e.ItemDefinition.AssetPathName);
             //console.log(test);
             //if(test.includes(""))
-            if(test.includes("eid") || test.includes("emoji") || test.includes("spid")){
+            if(e.ItemDefinition.AssetPathName.includes("ChallengeBundleSchedules")){
+              templatePush = `ChallengeBundleSchedule:${test}`
+            }else
+            if(test.includes("eid") || test.includes("emoji") || test.includes("spid") || test.includes("toy")){
                templatePush = `AthenaDance:${test}`
+            }else if(test.includes("vtid")){
+              templatePush = `CosmeticVariantToken:${test}`
             }
             else if(test.includes("mtxgiveaway")) {
               templatePush = `Currency:${test}` 
@@ -62,8 +67,10 @@ for(var index in datafile){
               templatePush = `AthenaGlider:${test}`
             }else if(test.includes("cid")) {
               templatePush = `AthenaCharacter:${test}`
-            }else if(test.includes("athenaseason") && test.includes("xp")) { // idk
+            }else if(test.includes("athenaseason") || test.includes("athenanextseason")) { // idk
               templatePush = `Token:${test}`
+            }else if(test.includes("wrap")){
+              templatePush = `AthenaItemWrap:${test}`
             }else if(test.includes("pickaxe")) {
               templatePush = `AthenaPickaxe:${test}`
             }else if(test.includes("lsid")) {
@@ -72,7 +79,7 @@ for(var index in datafile){
               templatePush = `AthenaSkyDiveContrail:${test}`
             }else if(test.includes("musicpack")){
               templatePush = `AthenaMusicPack:${test}`
-            }else if(test.includes("bid")){
+            }else if(test.includes("bid") || test.includes("petcarrier")){
               templatePush = `AthenaBackpack:${test}`
             }
 

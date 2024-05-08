@@ -8,6 +8,7 @@ using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary.Dynamics;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Constants;
+using Microsoft.AspNetCore.Razor.Hosting;
 
 namespace FortBackend.src.App.Routes.Storefront
 {
@@ -22,11 +23,16 @@ namespace FortBackend.src.App.Routes.Storefront
             Response.ContentType = "application/json";
             try
             {
-
+                var AcceptLanguage = Request.Headers["Accept-Language"].ToString();
                 VersionClass season = await SeasonUserAgent(Request);
 
                 string filePath = PathConstants.ShopJson.Shop;
                 string json = System.IO.File.ReadAllText(filePath);
+
+                if (string.IsNullOrEmpty(AcceptLanguage))
+                {
+                    AcceptLanguage = "eu"; // weird
+                }
 
                 if (string.IsNullOrEmpty(json))
                 {
@@ -388,6 +394,8 @@ namespace FortBackend.src.App.Routes.Storefront
                             });
                         }
 
+                        //Console.WriteLine(a.GetLanguage(a.title, AcceptLanguage));
+
                         var ResponseItem = new
                         {
                             devName = $"{a.devName}",
@@ -407,9 +415,9 @@ namespace FortBackend.src.App.Routes.Storefront
                             itemGrants = a.itemGrants,
                             sortPriority = a.sortPriority,
                             catalogGroupPriority = 0,
-                            title = a.title,
-                            shortDescription = a.shortDescription,
-                            description = a.description
+                            title = a.GetLanguage(a.title, AcceptLanguage),
+                            shortDescription = a.GetLanguage(a.shortDescription, AcceptLanguage),
+                            description = a.GetLanguage(a.description, AcceptLanguage)
                         };
 
                         responseobject.Add(ResponseItem);

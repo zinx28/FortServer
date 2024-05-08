@@ -27,12 +27,21 @@ namespace FortBackend.src.App.Routes.API
             try
             {
                 var userAgent = Request.Headers["User-Agent"].ToString();
+                var AcceptLanguage = Request.Headers["Accept-Language"].ToString();
                 string season = "";
                 season = (await SeasonUserAgent(Request)).Season.ToString();
                 if (season == "10")
                 {
                     season = "x";
                 }
+
+                if(string.IsNullOrEmpty(AcceptLanguage))
+                {
+                    AcceptLanguage = "eu"; // weird
+                }
+
+                Console.WriteLine(AcceptLanguage);
+
 
                 var cacheKey = $"ContentEndpointKey-{season}";
                 if (memoryCache.TryGetValue(cacheKey, out ContentJson? cachedResult))

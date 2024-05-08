@@ -1,112 +1,163 @@
 {
-    "name": "BRSeason2",
-    "catalogEntries": [
+  "name": "BRSeason2",
+  "catalogEntries": [
+    {
+      "offerId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
+      "devName": "BR.Season2.BattlePass.01",
+      "offerType": "StaticPrice",
+      "prices": [
         {
-            "offerId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
-            "devName": "BR.Season2.BattlePass.01",
-            "offerType": "StaticPrice",
-            "prices": [
-                {
-                    "currencyType": "MtxCurrency",
-                    "currencySubType": "",
-                    "regularPrice": 1800,
-                    "finalPrice": 950,
-                    "saleType": "PercentOff",
-                    "saleExpiration": "9999-12-31T23:59:59.999Z",
-                    "basePrice": 950
-                }
-            ],
-            "categories": [],
-            "dailyLimit": -1,
-            "weeklyLimit": -1,
-            "monthlyLimit": -1,
-            "refundable": false,
-            "appStoreId": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            ],
-            "requirements": [
-                {
-                    "requirementType": "DenyOnFulfillment",
-                    "requiredId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
-                    "minQuantity": 1
-                }
-            ],
-            "metaInfo": [
-                {
-                    "key": "Preroll",
-                    "value": "False"
-                }
-            ],
-            "catalogGroup": "",
-            "catalogGroupPriority": 0,
-            "sortPriority": 1,
-            "title": "Battle Pass",
-            "shortDescription": "Get it then!",
-            "description": "Season 2: Dec 14 - Feb 20\n\nInstantly get these items valued at over 2000 V-Bucks.\n- Blue Squire Outfit\n- 50% Bonus Season Match XP\n- Extra Battle Pass Daily Challenge\n\nPlay to level up your Battle Pass, unlocking up to 65+ rewards worth 12,000 V-Bucks (typically take 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy levels any time!\n- Black Knight plus 2 other outfits\n- 3 Harvesting Tools\n- 2 Gliders\n- 1000 V-Bucks\n- 60% Bonus Season Match XP\n- 20% Bonus Season Friend Match XP\n- 2 Animated Emotes\n- 13 2D Emotes\n- and more!",
-            "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season2_BattlePass.DA_BR_Season2_BattlePass",
-            "itemGrants": []
-        },
-        {
-            "offerId": "BigBlackPenis",
-            "devName": "BR.Season2.SingleTier.01",
-            "offerType": "StaticPrice",
-            "prices": [
-                {
-                    "currencyType": "MtxCurrency",
-                    "currencySubType": "",
-                    "regularPrice": 150,
-                    "dynamicRegularPrice": -1,
-                    "finalPrice": 150,
-                    "saleExpiration": "9999-12-31T23:59:59.999Z",
-                    "basePrice": 150
-                }
-            ],
-            "categories": [],
-            "dailyLimit": -1,
-            "weeklyLimit": -1,
-            "monthlyLimit": -1,
-            "refundable": false,
-            "appStoreId": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            ],
-            "requirements": [],
-            "metaInfo": [
-                {
-                    "key": "Preroll",
-                    "value": "False"
-                }
-            ],
-            "catalogGroup": "",
-            "catalogGroupPriority": 0,
-            "sortPriority": 0,
-            "title": "Battle Pass Level",
-            "shortDescription": "",
-            "description": "Get great rewards now!",
-            "displayAssetPath": "",
-            "itemGrants": []
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 1800,
+          "finalPrice": 950,
+          "saleType": "PercentOff",
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 950
         }
-
-    ]
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 1,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Get it then!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 2: Dec 14 - Feb 20\n\nInstantly get these items valued at over 2000 V-Bucks.\n- Blue Squire Outfit\n- 50% Bonus Season Match XP\n- Extra Battle Pass Daily Challenge\n\nPlay to level up your Battle Pass, unlocking up to 65+ rewards worth 12,000 V-Bucks (typically take 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy levels any time!\n- Black Knight plus 2 other outfits\n- 3 Harvesting Tools\n- 2 Gliders\n- 1000 V-Bucks\n- 60% Bonus Season Match XP\n- 20% Bonus Season Friend Match XP\n- 2 Animated Emotes\n- 13 2D Emotes\n- and more!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season2_BattlePass.DA_BR_Season2_BattlePass",
+      "itemGrants": []
+    },
+    {
+      "offerId": "BigBlackPenis",
+      "devName": "BR.Season2.SingleTier.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 150,
+          "dynamicRegularPrice": -1,
+          "finalPrice": 150,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 150
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "eu": "Battle Pass Level",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "shortDescription": {
+        "en": "",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Get great rewards now!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "",
+      "itemGrants": []
+    }
+  ]
 }

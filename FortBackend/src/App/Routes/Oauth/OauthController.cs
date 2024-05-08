@@ -175,6 +175,9 @@ namespace FortBackend.src.App.Routes.Oauth
                             }                           
                         }
                     }
+                }else
+                {
+                    Logger.Error("FAKE AUTH");
                 }
 
                 throw new BaseError

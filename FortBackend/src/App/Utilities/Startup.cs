@@ -63,7 +63,7 @@ namespace FortBackend.src.App.Utilities
 
             app.UseEndpoints(endpoints =>
             {
-               
+                int MappedNum = 0;
                 var actionDescriptors = app.ApplicationServices.GetRequiredService<IActionDescriptorCollectionProvider>().ActionDescriptors.Items;
                 foreach (var actionDescriptor in actionDescriptors)
                 {
@@ -71,34 +71,36 @@ namespace FortBackend.src.App.Utilities
                     {
                         var controllerNamespace = controllerActionDescriptor.ControllerTypeInfo.Namespace;
                         
-                        if (controllerNamespace != null && controllerNamespace.Contains("App.Routes"))
-                        {
+                        //if (controllerNamespace != null && controllerNamespace.Contains("App.Routes"))
+                        //{
                             //Console.WriteLine(controllerNamespace);
-                            var route = actionDescriptor.AttributeRouteInfo?.Template ?? actionDescriptor.RouteValues["action"];
-                            var controller = actionDescriptor.RouteValues["controller"];
+                        var route = actionDescriptor.AttributeRouteInfo?.Template ?? actionDescriptor.RouteValues["action"];
+                        var controller = actionDescriptor.RouteValues["controller"];
 
-                            var HttpMethod = controllerActionDescriptor.MethodInfo
-                            .GetCustomAttributes(true)
-                            .OfType<HttpMethodAttribute>()
-                            .SelectMany(attr => attr.HttpMethods)
-                            .Distinct();
+                        var HttpMethod = controllerActionDescriptor.MethodInfo
+                        .GetCustomAttributes(true)
+                        .OfType<HttpMethodAttribute>()
+                        .SelectMany(attr => attr.HttpMethods)
+                        .Distinct();
 
-                             Logger.Log($"/{route}", string.Join(",", HttpMethod));
+                            Logger.Log($"/{route}", string.Join(",", HttpMethod));
 
                         
-                                endpoints.MapControllerRoute(
-                                    name: $"{controller}",
-                                    pattern: $"/{route}",
-                                    defaults: new { controller = controller }
-                             );
-                            
-                             
+                            endpoints.MapControllerRoute(
+                                name: $"{controller}",
+                                pattern: $"/{route}",
+                                defaults: new { controller = controller }
+                            );
 
 
-                            Logger.Log($"/{route}", "Mapped");
-                        }
+                            MappedNum += 1;
+
+                            //Logger.Log($"/{route}", "Mapped");
+                            //}
                     }
                 }
+
+                Logger.Log($"Mapped {MappedNum}/{actionDescriptors.Count()}", "Mapped");
 
 
                 //endpoints.MapControllers();

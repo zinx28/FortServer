@@ -150,7 +150,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
             return new ProfileCacheEntry();
         }
-        public static async Task<ProfileCacheEntry> Profile(string AccountId, bool Auth = false, string AuthToken = "N")
+        public static async Task<ProfileCacheEntry> Profile(string AccountId, bool Auth = false, string AuthToken = "N"/*, bool Find11 = false*/)
         {
             try
             {

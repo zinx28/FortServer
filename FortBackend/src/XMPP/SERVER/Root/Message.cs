@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
 using FortBackend.src.App.SERVER.Send;
+using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 
 namespace FortBackend.src.App.SERVER.Root
 {
@@ -22,8 +23,8 @@ namespace FortBackend.src.App.SERVER.Root
                     await Client.CloseClient(webSocket);
                     return;
                 }
-
-               
+                XNamespace clientNs = "jabber:client";
+                XElement featuresElement;
                 var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == UserDataSaved.AccountId);
                 if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
 
@@ -46,10 +47,10 @@ namespace FortBackend.src.App.SERVER.Root
                         if (Friend == null || Friend.accountId == Saved_Clients.accountId) break;
 
 
-                        XNamespace clientNs = "jabber:client";
+                     
 
 
-                        XElement featuresElement = new XElement(clientNs + "message",
+                        featuresElement = new XElement(clientNs + "message",
                             new XAttribute("to", Friend.jid),
                             new XAttribute("from", Saved_Clients.jid),
                             new XAttribute("type", "chat"),
@@ -84,18 +85,12 @@ namespace FortBackend.src.App.SERVER.Root
                             break;
                         }
 
-                        MemberList.ForEach(async member =>
+                        foreach(MembersData roomData in MemberList)
                         {
-                            var ClientData = GlobalData.Clients.Find(client => client.accountId == member.accountId);
-                            if (ClientData == null)
-                            {
-                                return;
-                            }
+                            var ClientData = GlobalData.Clients.Find(client => client.accountId == roomData.accountId);
+                            if (ClientData == null) continue;
 
-                            XNamespace clientNs = "jabber:client";
-
-
-                            XElement featuresElement = new XElement(clientNs + "message",
+                            featuresElement = new XElement(clientNs + "message",
                                 new XAttribute("to", ClientData.jid),
                                 new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
                                 new XAttribute("type", "groupchat"),
@@ -107,7 +102,8 @@ namespace FortBackend.src.App.SERVER.Root
                             buffer = Encoding.UTF8.GetBytes(xmlMessage);
                             await ClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                        });
+                        }
+
                         break;
                 }
 

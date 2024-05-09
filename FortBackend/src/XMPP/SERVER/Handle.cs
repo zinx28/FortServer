@@ -8,6 +8,7 @@ using FortBackend.src.App.SERVER.Root;
 using FortBackend.src.App.SERVER.Send;
 using FortLibrary.XMPP;
 using FortBackend.src.XMPP.SERVER;
+using FortBackend.src.App.Utilities.Saved;
 
 namespace FortBackend.src.App.SERVER
 {
@@ -17,8 +18,9 @@ namespace FortBackend.src.App.SERVER
         public static async Task HandleWebSocketConnection(WebSocket webSocket, HttpRequest context, string clientId, string IP)
         {
             string receivedMessage = ""; // so skunky but works fine
-            string AccountId = ""; // for both clients to know the main
-            bool DidUserLoginNotSure = false; // for game only
+            //string AccountId = ""; // for both clients to know the main
+           // bool DidUserLoginNotSure = false; // for game only
+            DataSaved UserDataSaved = new DataSaved();
             try
             {
                 //DataSaved_XMPP.connectedClients.TryAdd(clientId, webSocket); // Adds The data inside the handlewebsocekt!
@@ -54,33 +56,40 @@ namespace FortBackend.src.App.SERVER
 
                             if (xmlDoc != null) {
 
+                                Console.WriteLine(xmlDoc.Root?.Name.LocalName);
                                 switch (xmlDoc.Root?.Name.LocalName)
                                 {
                                     // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS
-                                    case "login":
-                                        Login.Init(webSocket, xmlDoc, clientId, IP);
-                                        break;
+                                   // case "login":
+                                        //Login.Init(webSocket, xmlDoc, clientId, IP);
+                                       // break;
+                                    // THIS PUSH WILL BREAK THE LUNA XMPP AND FIX THE NORMAL XMPP.. ILL THINK OF SOMETHING ELSE
                                     case "open":
-                                        Open.Init(webSocket, DidUserLoginNotSure, clientId);
+                                        Open.Init(webSocket, UserDataSaved, clientId);
                                         break;
                                     case "auth":
-                                        Auth.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        Auth.Init(webSocket, xmlDoc, clientId, UserDataSaved);
                                         break;
                                     case "iq":
-                                        Iq.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        Iq.Init(webSocket, xmlDoc, clientId, UserDataSaved);
                                         break;
                                     case "message":
-                                        Message.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        Message.Init(webSocket, xmlDoc, clientId, UserDataSaved);
                                         break;
                                     case "presence":
-                                        Presence.Init(webSocket, xmlDoc, clientId, AccountId);
+                                        Presence.Init(webSocket, xmlDoc, clientId, UserDataSaved);
                                         break;
                                     default: break;
                                 }
 
+                                if (!Saved.DeserializeConfig.LunaPROD)
+                                {
+                                    ClientFix.Init(webSocket, UserDataSaved, clientId);
+                                }
+                                receivedMessage = "";
                             }
 
-                            receivedMessage = "";
+                           
                         }
                         break;
                     }
@@ -124,21 +133,23 @@ namespace FortBackend.src.App.SERVER
                 {
                   //  DataSaved_XMPP.connectedClients.TryRemove(clientId, out _);
 
-                    Clients launcher_client = GlobalData.Clients.FirstOrDefault(c => c.Launcher_Client == webSocket)!;
-                    if (launcher_client != null)
-                    {
-                        if(launcher_client.Game_Client != null)
-                            KillGame.Init(launcher_client, launcher_client.DataSaved);
+                    //Clients launcher_client = GlobalData.Clients.FirstOrDefault(c => c.Launcher_Client == webSocket)!;
+                    //if (launcher_client != null)
+                    //{
+                    //    if(launcher_client.Game_Client != null)
+                    //        KillGame.Init(launcher_client, launcher_client.DataSaved);
           
-                        GlobalData.Clients.Remove(launcher_client);
-                    }
-                    else
-                    {
+                    //    GlobalData.Clients.Remove(launcher_client);
+                    //}
+                    //else
+                    //{
                         Clients client = GlobalData.Clients.FirstOrDefault(c => c.Game_Client == webSocket)!;
 
                         if (client != null)
                             KillGame.Init(client, client.DataSaved);
-                    }
+
+                        GlobalData.Clients.Remove(client);
+                    //}
                 }
                 catch (Exception ex)
                 {

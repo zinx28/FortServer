@@ -8,14 +8,22 @@ namespace FortBackend.src.App.SERVER
     {
         public static void Init(WebSocket webSocket, DataSaved dataSaved, string clientId)
         {
-            if (!dataSaved.clientExists && webSocket.State == WebSocketState.Open)
+            if (!dataSaved.clientExists && webSocket.State == WebSocketState.Open && dataSaved.DidUserLoginNotSure)
             {
-                if (dataSaved.AccountId != "" && dataSaved.DiscordId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && /*dataSaved.JID != "" && */clientId != "" && /*dataSaved.Resource != "" &&*/ dataSaved.DidUserLoginNotSure)
+                Console.WriteLine("I WANT TO ADD!!!");
+                Console.WriteLine(dataSaved.AccountId);
+                Console.WriteLine(dataSaved.DisplayName);
+                Console.WriteLine(dataSaved.Token);
+                Console.WriteLine(dataSaved.JID);
+                Console.WriteLine(clientId);
+                Console.WriteLine(dataSaved.Resource);
+                if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && /*dataSaved.JID != "" &&*/ clientId != "" /*&& dataSaved.Resource != ""*/)
                 {
                     dataSaved.clientExists = true;
                     Clients newClient = new Clients
                     {
-                        Launcher_Client = webSocket,
+                       // Launcher_Client = webSocket,
+                        Game_Client = webSocket,
                         DataSaved = dataSaved,
                         DiscordId = dataSaved.DiscordId,
                         accountId = dataSaved.AccountId,
@@ -30,6 +38,7 @@ namespace FortBackend.src.App.SERVER
                         }
                     };
                     GlobalData.Clients.Add(newClient);
+                    Console.WriteLine("ADDED!");
                     return;
                 }
             }

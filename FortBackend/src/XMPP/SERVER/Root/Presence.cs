@@ -12,7 +12,7 @@ namespace FortBackend.src.App.SERVER.Root
 {
     public class Presence
     {
-        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, string AccountId)
+        public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved UserDataSaved)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace FortBackend.src.App.SERVER.Root
                     return;
                 }
 
-                var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == AccountId);
+                var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == UserDataSaved.AccountId);
                 if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
 
                 Console.WriteLine("TEST2 " + xmlDoc.Root?.Attribute("type")?.Value);

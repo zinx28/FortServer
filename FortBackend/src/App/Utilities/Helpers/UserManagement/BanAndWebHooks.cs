@@ -57,14 +57,14 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                             {
                                 try
                                 {
-                                    if (targetClient2.Launcher_Client != null && targetClient2.Launcher_Client.State == WebSocketState.Open)
-                                    {
-                                        string message = "banned";
-                                        byte[] buffer = Encoding.UTF8.GetBytes(message);
-                                        await targetClient2.Launcher_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                    //if (targetClient2.Launcher_Client != null && targetClient2.Launcher_Client.State == WebSocketState.Open)
+                                    //{
+                                    //    string message = "banned";
+                                    //    byte[] buffer = Encoding.UTF8.GetBytes(message);
+                                    //    await targetClient2.Launcher_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                                        // LAUNCHER SHOULD FORCE KILL
-                                    }
+                                    //    // LAUNCHER SHOULD FORCE KILL
+                                    //}
 
                                     if (targetClient2.Game_Client != null && targetClient2.Game_Client.State == WebSocketState.Open)
                                     {

@@ -1,4 +1,5 @@
-﻿using System.Net.WebSockets;
+﻿using FortLibrary.XMPP;
+using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
@@ -6,7 +7,7 @@ namespace FortBackend.src.App.SERVER.Root
 {
     public class Open
     {
-        public async static void Init(WebSocket webSocket, bool DidUserLoginNotSure, string clientId)
+        public async static void Init(WebSocket webSocket, DataSaved UserDataSaved, string clientId)
         {
             try
             {
@@ -37,7 +38,7 @@ namespace FortBackend.src.App.SERVER.Root
                 await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
                 XElement featuresElement;
-                if (DidUserLoginNotSure)
+                if (UserDataSaved.DidUserLoginNotSure)
                 {
 
                     featuresElement = new XElement(streamNs + "features",

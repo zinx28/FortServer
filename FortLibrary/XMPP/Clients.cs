@@ -9,7 +9,7 @@ namespace FortLibrary.XMPP
 {
     public class Clients
     {
-        public WebSocket Launcher_Client { get; set; } = null!;
+        //public WebSocket Launcher_Client { get; set; } = null!;
         public WebSocket Game_Client { get; set; } = null!;
         public DataSaved DataSaved { get; set; } = new DataSaved();
         public string DiscordId { get; set; } = string.Empty;

@@ -27,8 +27,8 @@ namespace FortBackend.src.App.SERVER.Send
                 
                 var ClientData = GlobalData.Clients[ClientIndex];
 
-                GlobalData.Clients[ClientIndex].lastPresenceUpdate.away = away;
-                GlobalData.Clients[ClientIndex].lastPresenceUpdate.presence = status;
+                ClientData.lastPresenceUpdate.away = away;
+                ClientData.lastPresenceUpdate.presence = status;
 
                 ProfileCacheEntry profileCacheEntry = await GrabData.Profile(ClientData.accountId);
           
@@ -42,11 +42,8 @@ namespace FortBackend.src.App.SERVER.Send
                         Console.WriteLine(status);
                         var FriendsClientData = GlobalData.Clients.FirstOrDefault(client => client.accountId == FriendsDataParsed.AccountId);
 
-                        if (FriendsClientData == null)
-                        {
-                            Console.WriteLine("WHYYYY!");
-                            return;
-                        }
+                        if (FriendsClientData == null) continue; // friend is offline
+
                         XNamespace clientNs1 = "jabber:client";
                         XElement openElement = new XElement(clientNs1 + "presence",
                             new XAttribute("to", FriendsClientData.jid),

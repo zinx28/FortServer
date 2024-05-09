@@ -44,13 +44,13 @@ namespace FortBackend.src.App.SERVER.Root
                         if (MUCX != null)
                         {
                           
-                      //  Console.WriteLine("NO FLIPPIMG WAYU");
-                        if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value))
-                        {
-                            break;
-                        }
+                          //  Console.WriteLine("NO FLIPPIMG WAYU");
+                            if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value))
+                            {
+                                break;
+                            }
 
-                        var RoomName = xmlDoc.Root?.Attribute("to")?.Value.Split("@")[0];
+                            var RoomName = xmlDoc.Root?.Attribute("to")?.Value.Split("@")[0];
                             if (!string.IsNullOrEmpty(RoomName))
                             {
                                 //Console.WriteLine("dfsfs");

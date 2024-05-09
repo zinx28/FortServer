@@ -40,7 +40,7 @@ namespace FortBackend.src.App.SERVER.Send
                     {
                         Console.WriteLine(friend.accountId);
                         Console.WriteLine(status);
-                        var FriendsClientData = GlobalData.Clients.FirstOrDefault(client => client.accountId == FriendsDataParsed.AccountId);
+                        var FriendsClientData = GlobalData.Clients.FirstOrDefault(client => client.accountId == friend.accountId);
 
                         if (FriendsClientData == null) continue; // friend is offline
 
@@ -59,7 +59,7 @@ namespace FortBackend.src.App.SERVER.Send
                         openElement.Add(new XElement(clientNs1 + "status", status));
 
                         xmlMessage = openElement.ToString();
-                        Console.WriteLine(xmlMessage);
+                        Console.WriteLine("veryporper " + xmlMessage);
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
                         await FriendsClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);

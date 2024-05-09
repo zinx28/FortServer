@@ -28,15 +28,15 @@ namespace FortBackend.src.App.SERVER.Root
                 var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == UserDataSaved.AccountId);
                 if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
 
-                Console.WriteLine("TEST2 " + xmlDoc.Root?.Attribute("type")?.Value);
-                Console.WriteLine("TEST3 " + xmlDoc.Root?.Attribute("type")?.Name);
+               // Console.WriteLine("TEST2 " + xmlDoc.Root?.Attribute("type")?.Value);
+               // Console.WriteLine("TEST3 " + xmlDoc.Root?.Attribute("type")?.Name);
                 switch (xmlDoc.Root?.Attribute("type")?.Value)
                 {
                     case "unavailable":
                         Console.WriteLine("UNNNNNNNNNNNNNN");
                         break;
                     default:
-                        Console.WriteLine(xmlDoc.Root?.Attribute("type")?.Value);
+                       // Console.WriteLine(xmlDoc.Root?.Attribute("type")?.Value);
                         XNamespace mucNamespace = "http://jabber.org/protocol/muc";
                         //XNamespace mucNamespace = "http://jabber.org/protocol/muc#user";
                         XElement MUCX = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name == mucNamespace + "x" || i.Name == "x")!;
@@ -45,7 +45,7 @@ namespace FortBackend.src.App.SERVER.Root
                             Console.WriteLine("Blank");
                             break;
                         }
-                        Console.WriteLine("NO FLIPPIMG WAYU");
+                      //  Console.WriteLine("NO FLIPPIMG WAYU");
                         if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value))
                         {
                             break;
@@ -54,18 +54,18 @@ namespace FortBackend.src.App.SERVER.Root
                         var RoomName = xmlDoc.Root?.Attribute("to")?.Value.Split("@")[0];
                         if (!string.IsNullOrEmpty(RoomName))
                         {
-                            Console.WriteLine("dfsfs");
+                            //Console.WriteLine("dfsfs");
                             if (!GlobalData.Rooms.ContainsKey(RoomName))
                             {
-                                Console.WriteLine("dfsfs");
+                             //   Console.WriteLine("dfsfs");
                                 GlobalData.Rooms[RoomName] = new RoomsData();
                             }
-                            Console.WriteLine("kfopdsfdsdfs");
+                           // Console.WriteLine("kfopdsfdsdfs");
                             var currentMembers = GlobalData.Rooms[RoomName].members;
-                            Console.WriteLine("gdsgfds");
+                          //  Console.WriteLine("gdsgfds");
                             if (GlobalData.Rooms.ContainsKey(RoomName))
                             {
-                                Console.WriteLine("fdsfdsfdsf");
+                                //Console.WriteLine("fdsfdsfdsf");
                                 foreach (var member in currentMembers)
                                 {
                                     if (member.accountId == Saved_Clients.DataSaved.AccountId)
@@ -75,14 +75,14 @@ namespace FortBackend.src.App.SERVER.Root
                                 }
                             }
 
-                            Console.WriteLine("fdsfdsfdsfU");
+                          //  Console.WriteLine("fdsfdsfdsfU");
                             currentMembers.Add(new MembersData { accountId = Saved_Clients.DataSaved.AccountId });
 
 
                             Saved_Clients.DataSaved.Rooms.Append(RoomName); // so we know what room they are in for future stuff!
                             GlobalData.Rooms[RoomName].members = currentMembers;
                             //GlobalData.Rooms[RoomName]["Members"] = currentMembers;
-                            Console.WriteLine("MUCX NOT NULL");
+                          // Console.WriteLine("MUCX NOT NULL");
 
 
                             XNamespace clientNs = "jabber:client";
@@ -111,7 +111,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                             if (GlobalData.Rooms.TryGetValue(RoomName, out RoomsData? RoomData))
                             {
-                                Console.WriteLine("TEST  " + RoomData);
+                                //Console.WriteLine("TEST  " + RoomData);
                                 foreach (var member in RoomData.members)
                                 {
                                     Clients ClientData = GlobalData.Clients.Find(i => i.accountId == member.accountId)!;
@@ -159,7 +159,7 @@ namespace FortBackend.src.App.SERVER.Root
                             }
 
                             // bool bindElement = xmlDoc.Root.Descendants().Any(i => i.Name == mucNamespace + "muc:x" || i.Name == mucNamespace +"x");
-                            Console.WriteLine("TEST DEFECT");
+                         //   Console.WriteLine("TEST DEFECT");
                             //Console.WriteLine(xmlDoc.Root?.Descendants().ToLookup());
                             //   Console.WriteLine(bindElement);
                             // if (bindElement == null) return;

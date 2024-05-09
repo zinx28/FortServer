@@ -14,7 +14,7 @@ namespace FortBackend.src.App.SERVER.Root
 {
     public class Auth
     {
-        public static HttpClient httpClient = new HttpClient();
+       // public static HttpClient httpClient = new HttpClient();
         public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, /*string AccountId,*/ DataSaved dataSaved)
         {
             try

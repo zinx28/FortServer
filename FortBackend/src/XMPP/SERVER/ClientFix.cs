@@ -10,13 +10,13 @@ namespace FortBackend.src.App.SERVER
         {
             if (!dataSaved.clientExists && webSocket.State == WebSocketState.Open && dataSaved.DidUserLoginNotSure)
             {
-                Console.WriteLine("I WANT TO ADD!!!");
-                Console.WriteLine(dataSaved.AccountId);
-                Console.WriteLine(dataSaved.DisplayName);
-                Console.WriteLine(dataSaved.Token);
-                Console.WriteLine(dataSaved.JID);
-                Console.WriteLine(clientId);
-                Console.WriteLine(dataSaved.Resource);
+                //Console.WriteLine("I WANT TO ADD!!!");
+                //Console.WriteLine(dataSaved.AccountId);
+                //Console.WriteLine(dataSaved.DisplayName);
+                //Console.WriteLine(dataSaved.Token);
+                //Console.WriteLine(dataSaved.JID);
+                //Console.WriteLine(clientId);
+                //Console.WriteLine(dataSaved.Resource);
                 if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && /*dataSaved.JID != "" &&*/ clientId != "" /*&& dataSaved.Resource != ""*/)
                 {
                     dataSaved.clientExists = true;
@@ -38,7 +38,7 @@ namespace FortBackend.src.App.SERVER
                         }
                     };
                     GlobalData.Clients.Add(newClient);
-                    Console.WriteLine("ADDED!");
+                   // Console.WriteLine("ADDED!");
                     return;
                 }
             }

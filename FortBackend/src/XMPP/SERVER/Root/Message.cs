@@ -33,7 +33,7 @@ namespace FortBackend.src.App.SERVER.Root
                     return;
 
                 string body = findBody.Value;
-                Console.WriteLine("TYPE " + xmlDoc.Root?.Attribute("type")?.Value);
+               // Console.WriteLine("TYPE " + xmlDoc.Root?.Attribute("type")?.Value);
                 switch (xmlDoc.Root?.Attribute("type")?.Value)
                 {
                     case "chat":

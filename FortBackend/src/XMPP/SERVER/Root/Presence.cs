@@ -114,7 +114,8 @@ namespace FortBackend.src.App.SERVER.Root
                                     foreach (var member in RoomData.members)
                                     {
                                         Clients ClientData = GlobalData.Clients.Find(i => i.accountId == member.accountId)!;
-                                        if (ClientData == null) { return; }
+                                        if (ClientData == null) continue;
+
                                         XElement presenceElement = new XElement(clientNs + "presence",
                                             new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
                                             new XAttribute("to", ClientData.jid),

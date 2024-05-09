@@ -36,22 +36,18 @@ namespace FortBackend.src.App.SERVER.Root
                     case "_xmpp_bind1":
 
                         if (dataSaved.Resource != "" || dataSaved.AccountId == "") return;
-
+                        //Console.WriteLine("HI");
                         XElement bindElement = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name.LocalName == "bind")!;
                         if (bindElement == null) return;
-
-                        if (GlobalData.Clients.Any(e => e.accountId == dataSaved.AccountId))
+                        //Console.WriteLine("2");
+                        if (!GlobalData.Clients.Any(e => e.accountId == dataSaved.AccountId)) // NOT found !! WW
                         {
-                            Clients FindClient = GlobalData.Clients.FirstOrDefault(i => i.accountId == dataSaved.AccountId)!;
-                            if (FindClient == null) { await Client.CloseClient(webSocket); break; }
-
                             XElement resourceElement = bindElement.Descendants().FirstOrDefault(i => i.Name.LocalName == "resource")!;
                             if (resourceElement == null || string.IsNullOrEmpty(resourceElement.Value)) return;
 
                             dataSaved.Resource = resourceElement.Value;
                             dataSaved.JID = $"{dataSaved.AccountId}@prod.ol.epicgames.com/{dataSaved.Resource}";
-                            FindClient.resource = resourceElement.Value;
-                            FindClient.jid = $"{dataSaved.AccountId}@prod.ol.epicgames.com/{dataSaved.Resource}";
+                          
 
                             XNamespace clientNs = "jabber:client";
                             XNamespace bindNs = "urn:ietf:params:xml:ns:xmpp-bind";

@@ -17,8 +17,10 @@ namespace FortBackend.src.App.SERVER
                 //Console.WriteLine(dataSaved.JID);
                 //Console.WriteLine(clientId);
                 //Console.WriteLine(dataSaved.Resource);
-                if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && /*dataSaved.JID != "" &&*/ clientId != "" /*&& dataSaved.Resource != ""*/)
+                if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && dataSaved.JID != "" && clientId != "" && dataSaved.Resource != "")
                 {
+                  //  if (dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && /*dataSaved.JID != "" &&*/ clientId != "" && dataSaved.Resource != "" )
+                //{
                     dataSaved.clientExists = true;
                     Clients newClient = new Clients
                     {

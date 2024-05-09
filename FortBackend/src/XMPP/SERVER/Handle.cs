@@ -148,10 +148,11 @@ namespace FortBackend.src.App.SERVER
 
                     if (client != null)
                     {
-                        await KillGame.Init(client, client.DataSaved);
+                        await KillGame.Init(client, client .DataSaved);
 
                         GlobalData.Clients.Remove(client);
-                    }else
+                    }
+                    else
                     {
                         Logger.Error("CLIENT IS NOT FOUND WTFFFF");
                     }

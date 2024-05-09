@@ -148,7 +148,7 @@ namespace FortBackend.src.App.SERVER
 
                     if (client != null)
                     {
-                        KillGame.Init(client, client.DataSaved);
+                        await KillGame.Init(client, client.DataSaved);
 
                         GlobalData.Clients.Remove(client);
                     }else

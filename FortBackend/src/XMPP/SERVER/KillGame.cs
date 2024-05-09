@@ -8,11 +8,16 @@ namespace FortBackend.src.XMPP.SERVER
 {
     public class KillGame
     {
-        public static async void Init(Clients client, DataSaved dataSaved)
+        public static async Task Init(Clients client, DataSaved dataSaved)
         {
             await XmppFriend.UpdatePresenceForFriends(client.Game_Client, "{}", false, true);
 
             int ClientIndex = GlobalData.Clients.FindIndex(e => e.Game_Client == client.Game_Client);
+            if(ClientIndex == -1)
+            {
+                Console.WriteLine("OK WTFFFF");
+                return;
+            }
             var ClientData = GlobalData.Clients[ClientIndex];
             Console.WriteLine(ClientData);
             if (ClientIndex != -1)

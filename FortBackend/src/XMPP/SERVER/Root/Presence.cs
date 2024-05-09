@@ -132,10 +132,7 @@ namespace FortBackend.src.App.SERVER.Root
                                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
                                         await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
 
-                                        if (Saved_Clients.DataSaved.AccountId == ClientData.accountId)
-                                        {
-                                            return; // not normal user! well the person who owns the party
-                                        }
+                                        if (Saved_Clients.DataSaved.AccountId == ClientData.accountId) continue;
 
                                         presenceElement = new XElement(clientNs + "presence",
                                             new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.DataSaved.DisplayName)}:{Saved_Clients.DataSaved.AccountId}:{Saved_Clients.DataSaved.Resource}"),

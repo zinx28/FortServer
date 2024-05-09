@@ -53,10 +53,10 @@ namespace FortBackend.src.App.SERVER.Send
 
                         if (away)
                         {
-                            openElement.Add(new XElement("show", "away"));
+                            openElement.Add(new XElement(clientNs1 + "show", "away"));
                         }
 
-                        openElement.Add(new XElement("status", status));
+                        openElement.Add(new XElement(clientNs1 + "status", status));
 
                         xmlMessage = openElement.ToString();
                         Console.WriteLine(xmlMessage);

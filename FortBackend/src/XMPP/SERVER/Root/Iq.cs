@@ -51,7 +51,7 @@ namespace FortBackend.src.App.SERVER.Root
                             dataSaved.Resource = resourceElement.Value;
                             dataSaved.JID = $"{dataSaved.AccountId}@prod.ol.epicgames.com/{dataSaved.Resource}";
                             FindClient.resource = resourceElement.Value;
-                            FindClient.jid = resourceElement.Value;
+                            FindClient.jid = $"{dataSaved.AccountId}@prod.ol.epicgames.com/{dataSaved.Resource}";
 
                             XNamespace clientNs = "jabber:client";
                             XNamespace bindNs = "urn:ietf:params:xml:ns:xmpp-bind";

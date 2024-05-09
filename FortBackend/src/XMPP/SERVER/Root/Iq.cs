@@ -94,9 +94,9 @@ namespace FortBackend.src.App.SERVER.Root
                         if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && !profileCacheEntry.UserData.banned)
                         {
                             User UserDataParsed = profileCacheEntry.UserData;
-                            UserFriends FriendsDataParsed = profileCacheEntry.UserFriends;
+                            UserFriends UserFriendsDataParsed = profileCacheEntry.UserFriends;
 
-                            foreach (FriendsObject friendToken in FriendsDataParsed.Accepted)
+                            foreach (FriendsObject friendToken in UserFriendsDataParsed.Accepted)
                             {
                                 Clients friendsClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendToken.accountId)!;
 

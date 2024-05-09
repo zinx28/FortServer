@@ -200,10 +200,10 @@ namespace FortBackend.src.App.SERVER.Root
                 {
                     string status = findStatus.Value;
 
-                    bool away = true;
+                    bool away = false;
                     if(xmlDoc.Root?.Descendants().Any(i => i.Name == "show") == null)
                     {
-                        away = false;
+                        away = true;
                     }
                  
 

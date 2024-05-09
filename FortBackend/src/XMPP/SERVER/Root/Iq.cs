@@ -57,7 +57,7 @@ namespace FortBackend.src.App.SERVER.Root
                             XElement featuresElement = new XElement(clientNs + "iq",
                                 new XAttribute("to", dataSaved.JID),
                                 new XAttribute("id", "_xmpp_bind1"),
-                                   new XAttribute(XNamespace.Xmlns + "jabber", clientNs.NamespaceName),
+                                new XAttribute(XNamespace.Xmlns + "jabber", clientNs.NamespaceName),
                                 new XAttribute("type", "result"),
                                 new XElement(bindNs + "bind",
                                     new XAttribute(XNamespace.Xmlns + "bind", bindNs.NamespaceName),
@@ -79,9 +79,9 @@ namespace FortBackend.src.App.SERVER.Root
                             await Client.CloseClient(webSocket);
                             return;
                         }
-                        XNamespace YA = "jabber:client";
+                        XNamespace ClientNamespace = "jabber:client";
 
-                        XElement featuresElement1 = new XElement(YA + "iq",
+                        XElement featuresElement1 = new XElement(ClientNamespace + "iq",
                             new XAttribute("to", dataSaved.JID),
                             new XAttribute("from", "prod.ol.epicgames.com"),
                             new XAttribute("id", "_xmpp_session1"),
@@ -92,41 +92,30 @@ namespace FortBackend.src.App.SERVER.Root
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
                         await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                         
-                      //  Console.WriteLine(dataSaved.AccountId);
-
-
-
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile(dataSaved.AccountId);
-                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.UserData.banned != true)
+                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && !profileCacheEntry.UserData.banned)
                         {
                             User UserDataParsed = profileCacheEntry.UserData;
                             UserFriends FriendsDataParsed = profileCacheEntry.UserFriends;
 
-                            List<FriendsObject> accepted = FriendsDataParsed.Accepted;
-
-                            foreach (FriendsObject friendToken in accepted)
+                            foreach (FriendsObject friendToken in FriendsDataParsed.Accepted)
                             {
-                                string accountId = friendToken.accountId;
-                                Clients letssee = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId)!;
+                                Clients friendsClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendToken.accountId)!;
 
-                                if (letssee == null) return;
+                                if (friendsClient == null) continue; // if 1 is offline then it won't destroy it
 
-                                XNamespace clientNs1 = "jabber:client";
-                                XElement presence = new XElement(clientNs1 + "presence",
+                                XElement presence = new XElement(ClientNamespace + "presence",
                                     new XAttribute("to", dataSaved.JID),
-                                    new XAttribute("from", letssee.jid),
-                                    new XAttribute("type", "available")
+                                    new XAttribute("type", "available"),
+                                    new XAttribute("from", friendsClient.jid)
                                 );
 
-                                if (letssee.lastPresenceUpdate.away)
+                                if (friendsClient.lastPresenceUpdate.away)
                                 {
                                     presence.Add(new XElement("show", "away"));
-                                    presence.Add(new XElement("status", letssee.lastPresenceUpdate.presence));
                                 }
-                                else
-                                {
-                                    presence.Add(new XElement("status", letssee.lastPresenceUpdate.presence));
-                                }
+
+                                presence.Add(new XElement("status", friendsClient.lastPresenceUpdate.presence));
 
                                 xmlMessage = presence.ToString();
                                 buffer = Encoding.UTF8.GetBytes(xmlMessage);

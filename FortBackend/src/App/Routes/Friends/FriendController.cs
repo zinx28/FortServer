@@ -12,6 +12,7 @@ using FortLibrary;
 using FortLibrary.XMPP;
 using FortBackend.src.App.SERVER.Send;
 using FortBackend.src.XMPP.Data;
+using FortBackend.src.App.SERVER.Root;
 
 namespace FortBackend.src.App.Routes.Friends
 {
@@ -158,6 +159,7 @@ namespace FortBackend.src.App.Routes.Friends
             return Ok(response);
         }
 
+        //http://127.0.0.1:1111/fortnite/api/v1/372da84236e342c297ca36599deb669d/summary
         [HttpGet("v1/{accountId}/summary")]
         public async Task<ActionResult> SummaryList(string accountId)
         {
@@ -252,9 +254,8 @@ namespace FortBackend.src.App.Routes.Friends
             return Ok(Array.Empty<string>());
         }
 
-
-        [HttpPost("v1/{accountId}/friends/{friendId}")]
-        public async Task<ActionResult> FriendsAccountId(string accountId, string friendID)
+        [HttpPost("public/friends/{accountId}/{friendId}")]
+        public async Task<ActionResult> FriendsChapter1List(string accountId, string friendID)
         {
             Response.ContentType = "application/json";
             try
@@ -283,6 +284,7 @@ namespace FortBackend.src.App.Routes.Friends
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId1); // use the auth account not from url
                         if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                         {
+
                             if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
                             {
                                 if (profileCacheEntry.UserData.banned)
@@ -290,6 +292,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     return StatusCode(403);
                                 }
                             }
+
                             ProfileCacheEntry friendsprofileCacheEntry = await GrabData.Profile(friendID); // friends
                             if (friendsprofileCacheEntry != null && !string.IsNullOrEmpty(friendsprofileCacheEntry.AccountId))
                             {
@@ -465,8 +468,8 @@ namespace FortBackend.src.App.Routes.Friends
 
                                             Clients targetClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId)!;
                                             Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendID)!;
-                                            
-                                            if(targetClient != null && targetClient2 != null)
+
+                                            if (targetClient != null && targetClient2 != null)
                                             {
                                                 //Services.Xmpp.Helpers.Send.Client.SendClientMessage(targetClient, message);
                                                 XNamespace clientNs = "jabber:client";
@@ -510,6 +513,301 @@ namespace FortBackend.src.App.Routes.Friends
                                             }
 
 
+
+                                            return StatusCode(204);
+                                        }
+                                        else
+                                        {
+                                            return StatusCode(403);
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+
+
+                    }else
+                    {
+                        Logger.Error("WETFFF");
+                    }
+                }else
+                {
+                    Logger.Error("OK WHAT");
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "FriendsChapter1List");
+            }
+            return StatusCode(403); // not proper response i'll recode this in the future
+        }
+
+
+        [HttpPost("v1/{accountId}/friends/{friendId}")]
+        public async Task<ActionResult> FriendsAccountId(string accountId, string friendID)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
+                var accessToken = token.Replace("eg1~", "");
+                bool FoundAccount = false;
+                if (GlobalData.AccessToken.Any(e => e.token == token))
+                    FoundAccount = true;
+                else if (GlobalData.ClientToken.Any(e => e.token == token))
+                    FoundAccount = true;
+                else if (GlobalData.RefreshToken.Any(e => e.token == token))
+                    FoundAccount = true;
+
+                if (FoundAccount && !string.IsNullOrEmpty(accountId) && !string.IsNullOrEmpty(friendID))
+                {
+                    var handler = new JwtSecurityTokenHandler();
+                    var decodedToken = handler.ReadJwtToken(accessToken);
+
+                    var displayName = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dn")?.Value;
+                    var accountId1 = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value;
+                    var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
+
+                    if (!string.IsNullOrEmpty(accountId1))
+                    {
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId1); // use the auth account not from url
+                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                        {
+                            if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
+                            {
+                                if (profileCacheEntry.UserData.banned)
+                                {
+                                    return StatusCode(403);
+                                }
+
+                                // BLOCK FRIENDS ARE 1000 ~ need to add on the other api + on the friends asa well!
+                                if(profileCacheEntry.UserFriends.Outgoing.Count == 1000 /*|| profileCacheEntry.UserFriends.Incoming.Count == 1000*/ || profileCacheEntry.UserFriends.Incoming.Count == 1000)
+                                {
+                                    return StatusCode(403);
+                                }
+                            }
+                            ProfileCacheEntry friendsprofileCacheEntry = await GrabData.Profile(friendID); // friends
+                            if (friendsprofileCacheEntry != null && !string.IsNullOrEmpty(friendsprofileCacheEntry.AccountId))
+                            {
+                                if (profileCacheEntry.UserFriends.Incoming != null && friendsprofileCacheEntry.UserFriends.AccountId != null)
+                                {
+                                    bool? FoundFriend = profileCacheEntry.UserFriends.Incoming.Any(account => account?.accountId?.ToString() == friendsprofileCacheEntry.UserFriends.AccountId?.ToString());
+
+                                    Console.WriteLine(FoundFriend);
+                                    if (FoundFriend.HasValue && FoundFriend.Value)
+                                    {
+                                        //Jarray2 == FriendsAccountDataParsed
+                                        List<FriendsObject> incomingFriendsArray = profileCacheEntry.UserFriends.Incoming;
+                                        List<FriendsObject> incomingFriendsArray2 = friendsprofileCacheEntry.UserFriends.Outgoing;
+
+                                        if (!incomingFriendsArray.Any(friend =>
+                                        {
+                                            var friendObject = friend;
+                                            return friendObject != null && friendObject.accountId?.ToString() == friendID;
+                                        }))
+                                        {
+                                            return StatusCode(403);
+                                        }
+
+                                        if (!incomingFriendsArray2.Any(friend =>
+                                        {
+                                            var friendObject = friend;
+                                            return friendObject != null && friendObject.accountId?.ToString() == accountId;
+                                        }))
+                                        {
+                                            return StatusCode(403);
+
+                                        }
+
+                                        var itemsToRemove = incomingFriendsArray.Where(friend =>
+                                        {
+                                            var friendObject = friend;
+                                            return friendObject != null && friendObject.accountId?.ToString() == friendID;
+                                        }).ToList();
+
+                                        foreach (var item in itemsToRemove)
+                                        {
+                                            incomingFriendsArray.Remove(item);
+                                        }
+
+                                        profileCacheEntry.UserFriends.Incoming.AddRange(incomingFriendsArray);
+
+                                        var newFriend3 = new FriendsObject
+                                        {
+                                            accountId = friendID,
+                                            created = DateTime.UtcNow
+                                        };
+
+                                        profileCacheEntry.UserFriends.Accepted.Add(newFriend3);
+
+                                        var itemsToRemove2 = incomingFriendsArray2.Where(friend =>
+                                        {
+                                            var friendObject = friend;
+                                            return friendObject != null && friendObject.accountId?.ToString() == accountId;
+                                        }).ToList();
+
+                                        foreach (var item in itemsToRemove2)
+                                        {
+                                            incomingFriendsArray2.Remove(item);
+                                        }
+
+                                        friendsprofileCacheEntry.UserFriends.Outgoing.AddRange(incomingFriendsArray2);
+
+                                        var newFriend4 = new FriendsObject
+                                        {
+                                            accountId = accountId.ToString(),
+                                            created = DateTime.UtcNow
+                                        };
+
+                                        friendsprofileCacheEntry.UserFriends.Accepted.Add(newFriend4);
+                                        XNamespace clientNs = "jabber:client";
+
+                                        //XElement message;
+                                        Clients targetClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId)!;
+                                        if(targetClient != null)
+                                        {
+                                            await Client.SendClientMessage(targetClient, new XElement(clientNs + "message",
+                                                new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                new XAttribute("to", accountId),
+                                                new XElement("body", @"{
+                                                    ""payload"": {
+                                                        ""accountId"": """ + friendsprofileCacheEntry.AccountId + @""",
+                                                        ""status"": ""ACCEPTED"",
+                                                        ""direction"": ""OUTBOUND"",
+                                                        ""created"": """ + DateTime.UtcNow.ToString("o") + @""",
+                                                        ""favorite"": false
+                                                    },
+                                                    ""type"": ""com.epicgames.friends.core.apiobjects.Friend"",
+                                                    ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
+                                                }")
+                                            ));
+
+
+                                            await Client.SendClientMessage(targetClient, new XElement(clientNs + "message",
+                                                 new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                 new XAttribute("to", accountId),
+                                                 new XElement("type", "available")
+                                             ));
+                                        }
+                                        else
+                                        {
+                                            Logger.Log("COULDNT FIND ACC ON XMPP");
+                                        }
+                                        Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendID)!;
+                                        if(targetClient2 != null)
+                                        {
+                                            await Client.SendClientMessage(targetClient2, new XElement(clientNs + "message",
+                                                   new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                   new XAttribute("to", friendsprofileCacheEntry.AccountId),
+                                                   new XElement("body", @"{
+                                                        ""payload"": {
+                                                            ""accountId"": """ + accountId1 + @""",
+                                                            ""status"": ""ACCEPTED"",
+                                                            ""direction"": ""INBOUND"",
+                                                            ""created"": """ + DateTime.UtcNow.ToString("o") + @""",
+                                                            ""favorite"": false
+                                                        },
+                                                        ""type"": ""com.epicgames.friends.core.apiobjects.Friend"",
+                                                        ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
+                                                    }")
+                                            ));
+
+      
+                                            await Client.SendClientMessage(targetClient2, new XElement(clientNs + "message",
+                                                 new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                 new XAttribute("to", accountId),
+                                                 new XElement("type", "available")
+                                             ));
+                                        }else
+                                        {
+                                            Logger.Log($"COULDNT FIND ACC ON XMPP + {friendID}");
+                                        }
+
+                                        return StatusCode(204);
+                                    }
+                                    else
+                                    {
+                                        //Jarray2 == FriendsAccountDataParsed
+                                        List<FriendsObject> incomingToken = profileCacheEntry.UserFriends.Outgoing;
+                                        List<FriendsObject> incomingToken2 = friendsprofileCacheEntry.UserFriends.Incoming;
+
+                                        if (incomingToken != null && incomingToken2 != null)
+                                        {
+                                            //List<object> incomingFriends = incomingToken.ToObject<List<object>>();
+
+                                            var newFriend = new FriendsObject
+                                            {
+                                                accountId = friendsprofileCacheEntry.AccountId,
+                                                alias = "", // idk
+                                                created = DateTime.UtcNow
+                                            };
+
+                                            string json = JsonConvert.SerializeObject(newFriend);
+                                            var jsonDeserialized = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+
+                                            profileCacheEntry.UserFriends.Outgoing.Add(newFriend);
+
+                                            var newFriend2 = new FriendsObject
+                                            {
+                                                accountId = accountId1,
+                                                alias = "",
+                                                created = DateTime.UtcNow
+                                            };
+                                            string json1 = JsonConvert.SerializeObject(newFriend2);
+                                            var jsonDeserialized1 = JsonConvert.DeserializeObject<Dictionary<string, object>>(json1);
+
+                                            friendsprofileCacheEntry.UserFriends.Incoming.Add(newFriend2);
+
+                                            XNamespace clientNs = "jabber:client";
+
+                                            Clients targetClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId)!;
+                                            if(targetClient != null)
+                                            {
+                                                await Client.SendClientMessage(targetClient, new XElement(clientNs + "message",
+                                                  new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                  new XAttribute("to", accountId),
+                                                  new XElement("body", @"{
+                                                        ""payload"": {
+                                                            ""accountId"": """ + friendsprofileCacheEntry.AccountId + @""",
+                                                            ""status"": ""PENDING"",
+                                                            ""direction"": ""OUTBOUND"",
+                                                            ""created"": """ + DateTime.UtcNow.ToString("o") + @""",
+                                                            ""favorite"": false
+                                                        },
+                                                        ""type"": ""com.epicgames.friends.core.apiobjects.Friend"",
+                                                        ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
+                                                    }")
+                                               ));
+
+                                            }else
+                                            {
+                                                Logger.Error("WHY");
+                                            }
+
+                                            Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendID)!;
+                                           
+                                            if(targetClient2 != null)
+                                            {
+                                                await Client.SendClientMessage(targetClient2, new XElement(clientNs + "message",
+                                                    new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                    new XAttribute("to", friendsprofileCacheEntry.AccountId),
+                                                    new XElement("body", @"{
+                                                        ""payload"": {
+                                                            ""accountId"": """ + accountId1 + @""",
+                                                            ""status"": ""PENDING"",
+                                                            ""direction"": ""INBOUND"",
+                                                            ""created"": """ + DateTime.UtcNow.ToString("o") + @""",
+                                                            ""favorite"": false
+                                                        },
+                                                        ""type"": ""com.epicgames.friends.core.apiobjects.Friend"",
+                                                        ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
+                                                    }")
+                                                ));
+                                            }else
+                                            {
+                                                Logger.Error("YOUR FRIEND IS LSEEPING");
+                                            }
 
                                             return StatusCode(204);
                                         }

@@ -22,22 +22,22 @@ namespace FortBackend.src.App.Routes.Development
             _database = database;
         }
 
-        [HttpGet("/PRIVATE/DEVELOPER/DATA/{accountId}")]
-        public async Task<IActionResult> GrabDATA(string accountId)
-        {
-            try
-            {
-                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
-                string Data = JsonConvert.SerializeObject(profileCacheEntry);
-                if(!string.IsNullOrEmpty(Data)) { return Ok(Data); }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex.Message); // 
-            }
+        //[HttpGet("/PRIVATE/DEVELOPER/DATA/{accountId}")]
+        //public async Task<IActionResult> GrabDATA(string accountId)
+        //{
+        //    try
+        //    {
+        //        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+        //        string Data = JsonConvert.SerializeObject(profileCacheEntry);
+        //        if(!string.IsNullOrEmpty(Data)) { return Ok(Data); }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Logger.Error(ex.Message); // 
+        //    }
 
-            return BadRequest(new { message = "error" });
-        }
+        //    return BadRequest(new { message = "error" });
+        //}
 
         //[HttpGet("/")]
         //public async Task<IActionResult> asa()

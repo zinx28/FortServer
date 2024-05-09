@@ -1,4 +1,5 @@
 ﻿
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.XMPP.Data;
 using FortLibrary;
@@ -21,36 +22,38 @@ namespace FortBackend.src.App.SERVER.Send
                 byte[] buffer;
 
                 int ClientIndex = GlobalData.Clients.FindIndex(testc => testc.Game_Client == webSocket);
-                if (ClientIndex == -1)
-                {
-                    return; // wow so bad
-                }
-                var ClientData = GlobalData.Clients[ClientIndex];
 
+                if (ClientIndex == -1) return;
+                
+                var ClientData = GlobalData.Clients[ClientIndex];
 
                 GlobalData.Clients[ClientIndex].lastPresenceUpdate.away = away;
                 GlobalData.Clients[ClientIndex].lastPresenceUpdate.presence = status;
 
-                HttpClient httpClient = new HttpClient();
-                HttpResponseMessage response = await httpClient.GetAsync($"{Saved.BackendCachedData.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{ClientData.accountId}");
+                //HttpClient httpClient = new HttpClient();
+                //HttpResponseMessage response = await httpClient.GetAsync($"{Saved.BackendCachedData.DefaultProtocol}127.0.0.1{Saved.DeserializeConfig.BackendPort}/PRIVATE/DEVELOPER/DATA/{ClientData.accountId}");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    //ProfileCacheEntry
-                    var datareturned = await response.Content.ReadAsStringAsync();
-                    if (datareturned != null)
-                    {
-                        ProfileCacheEntry Data = JsonConvert.DeserializeObject<ProfileCacheEntry>(datareturned)!;
-                        if (Data.AccountData != null)
+                //if (response.IsSuccessStatusCode)
+                //{
+                //ProfileCacheEntry
+                //ar datareturned = await response.Content.ReadAsStringAsync();
+                //if (datareturned != null)
+                // {
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(ClientData.accountId);
+          
+                        if (profileCacheEntry.AccountData != null)
                         {
-                            UserFriends FriendsDataParsed = Data.UserFriends;
+                            UserFriends FriendsDataParsed = profileCacheEntry.UserFriends;
                             Console.WriteLine("TEST");
                             foreach (var friend in FriendsDataParsed.Accepted)
                             {
-                                var FriendsClientData = GlobalData.Clients.Find(client => client.accountId == FriendsDataParsed.AccountId.ToString());
+                                Console.WriteLine(friend.accountId);
+                                Console.WriteLine(status);
+                                var FriendsClientData = GlobalData.Clients.FirstOrDefault(client => client.accountId == FriendsDataParsed.AccountId);
 
                                 if (FriendsClientData == null)
                                 {
+                                    Console.WriteLine("WHYYYY!");
                                     return;
                                 }
                                 XNamespace clientNs1 = "jabber:client";
@@ -77,9 +80,9 @@ namespace FortBackend.src.App.SERVER.Send
                             }
                         }
 
-                    }
+                   // }
 
-                }
+               //}
             }
             catch (Exception ex)
             {
@@ -94,11 +97,12 @@ namespace FortBackend.src.App.SERVER.Send
 
                 string xmlMessage;
                 byte[] buffer;
-                var FromAccountIdData = GlobalData.Clients.Find(no => no.accountId == FromAccountId);
-                var ToAccountIdData = GlobalData.Clients.Find(no => no.accountId == ToAccountId);
+                var FromAccountIdData = GlobalData.Clients.FirstOrDefault(no => no.accountId == FromAccountId);
+                var ToAccountIdData = GlobalData.Clients.FirstOrDefault(no => no.accountId == ToAccountId);
 
                 if (FromAccountIdData == null || ToAccountIdData == null)
                 {
+                    Console.WriteLine("NOT FOUND");
                     return; // invalid data not found?
                 }
 
@@ -112,12 +116,9 @@ namespace FortBackend.src.App.SERVER.Send
                 if (FromAccountIdData.lastPresenceUpdate.away)
                 {
                     openElement.Add(new XElement("show", "away"));
-                    openElement.Add(new XElement("status", FromAccountIdData.lastPresenceUpdate.presence));
                 }
-                else
-                {
-                    openElement.Add(new XElement("status", FromAccountIdData.lastPresenceUpdate.presence));
-                }
+
+                openElement.Add(new XElement("status", FromAccountIdData.lastPresenceUpdate.presence));
 
                 xmlMessage = openElement.ToString();
                 buffer = Encoding.UTF8.GetBytes(xmlMessage);

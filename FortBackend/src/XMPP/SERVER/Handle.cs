@@ -9,6 +9,7 @@ using FortBackend.src.App.SERVER.Send;
 using FortLibrary.XMPP;
 using FortBackend.src.XMPP.SERVER;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.Utilities;
 
 namespace FortBackend.src.App.SERVER
 {
@@ -143,17 +144,23 @@ namespace FortBackend.src.App.SERVER
                     //}
                     //else
                     //{
-                        Clients client = GlobalData.Clients.FirstOrDefault(c => c.Game_Client == webSocket)!;
+                    Clients client = GlobalData.Clients.FirstOrDefault(c => c.Game_Client == webSocket)!;
 
-                        if (client != null)
-                            KillGame.Init(client, client.DataSaved);
+                    if (client != null)
+                    {
+                        KillGame.Init(client, client.DataSaved);
 
                         GlobalData.Clients.Remove(client);
+                    }else
+                    {
+                        Logger.Error("CLIENT IS NOT FOUND WTFFFF");
+                    }
+                         
                     //}
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Logger.Error(ex.Message, "XMPP");
                 }
 
         }

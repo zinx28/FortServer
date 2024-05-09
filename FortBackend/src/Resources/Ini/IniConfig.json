@@ -159,10 +159,6 @@
                             "Value": true
                         },
                         {
-                            "Name": "Domain",
-                            "Value": "\"127.0.0.1\""
-                        },
-                        {
                           "Name": "ServerAddr",
                           "Value": "\"ws://127.0.0.1:443\""
                         },

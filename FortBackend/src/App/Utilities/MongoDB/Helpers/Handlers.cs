@@ -14,7 +14,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             _database = database;
         }
 
-        public async static Task<string> FindOne<T>(string FindData, object valueData)
+        public async static Task<string> FindOne<T>(string FindData, object valueData, bool MakeItSo11 = false)
         {
             try
             {
@@ -29,7 +29,15 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     var collection = _database.GetCollection<T>(typeof(T).Name);
                     var filterBuilder = Builders<T>.Filter;
                     var exactValue = Regex.Escape(valueData?.ToString()!);
-                    var regexPattern = $"^{exactValue}$";
+                    var regexPattern = "";
+                    if(MakeItSo11)
+                    {
+                        regexPattern = $"{exactValue}";
+                    }
+                    else
+                    {
+                        regexPattern = $"^{exactValue}$";
+                    }
                     var filter = filterBuilder.Regex(FindData, new BsonRegularExpression(regexPattern));
                     var result = await collection.Find(filter).ToListAsync();
 

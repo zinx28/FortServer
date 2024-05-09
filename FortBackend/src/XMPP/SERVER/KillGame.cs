@@ -28,8 +28,6 @@ namespace FortBackend.src.XMPP.SERVER
                 {
                     ParsedPresence = JsonConvert.DeserializeObject(ClientData.lastPresenceUpdate.presence)!;
 
-               
-
                     foreach (var woah in dataSaved.Rooms)
                     {
                         if (Array.IndexOf(dataSaved.Rooms, woah) != -1)

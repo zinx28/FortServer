@@ -26,7 +26,7 @@ namespace FortBackend.src.App.SERVER
                     {
                        // Launcher_Client = webSocket,
                         Game_Client = webSocket,
-                        DataSaved = dataSaved,
+                       // DataSaved = dataSaved,
                         DiscordId = dataSaved.DiscordId,
                         accountId = dataSaved.AccountId,
                         displayName = dataSaved.DisplayName,

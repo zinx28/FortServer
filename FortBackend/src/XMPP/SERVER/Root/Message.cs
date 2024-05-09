@@ -38,18 +38,12 @@ namespace FortBackend.src.App.SERVER.Root
                 {
                     case "chat":
                         Console.WriteLine("CGAT");
-                        if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value))
-                        {
-                            break;
-                        }
-                        if (body.Length >= 300)
-                        {
-                            break;
-                        }
+                        if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value)) break;
+                        if (body.Length >= 300) break;
 
                         Clients Friend = GlobalData.Clients.Find(test => test.jid.Split("/")[0] == xmlDoc.Root?.Attribute("to")?.Value)!;
 
-                        if (Friend == null || Friend.accountId == Saved_Clients.DataSaved.AccountId) break;
+                        if (Friend == null || Friend.accountId == Saved_Clients.accountId) break;
 
 
                         XNamespace clientNs = "jabber:client";
@@ -57,7 +51,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                         XElement featuresElement = new XElement(clientNs + "message",
                             new XAttribute("to", Friend.jid),
-                            new XAttribute("from", Saved_Clients.DataSaved.JID),
+                            new XAttribute("from", Saved_Clients.jid),
                             new XAttribute("type", "chat"),
                             new XElement("body", body)
                         );
@@ -85,7 +79,7 @@ namespace FortBackend.src.App.SERVER.Root
                             break;
                         }
                         var MemberList = GlobalData.Rooms[RoomName].members;
-                        if (MemberList.Find(testc => testc.accountId == Saved_Clients.DataSaved.AccountId) == null)
+                        if (MemberList.Find(testc => testc.accountId == Saved_Clients.accountId) == null)
                         {
                             break;
                         }
@@ -103,7 +97,7 @@ namespace FortBackend.src.App.SERVER.Root
 
                             XElement featuresElement = new XElement(clientNs + "message",
                                 new XAttribute("to", ClientData.jid),
-                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.DataSaved.DisplayName)}:{Saved_Clients.DataSaved.AccountId}:{Saved_Clients.DataSaved.Resource}"),
+                                new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
                                 new XAttribute("type", "groupchat"),
                                 new XElement("body", body)
                             );
@@ -132,7 +126,7 @@ namespace FortBackend.src.App.SERVER.Root
                     if (test["type"] == null || string.IsNullOrEmpty((string)xmlDoc.Root?.Attribute("to")!) || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("id")!))
                         return;
 
-                    await XmppFriend.SendMessageToClient(Saved_Clients.DataSaved.JID, xmlDoc, body);
+                    await XmppFriend.SendMessageToClient(Saved_Clients.jid, xmlDoc, body);
                 }
             }
             catch (Exception ex)

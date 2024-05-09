@@ -52,7 +52,7 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                                 Color = Color.Red
                             }.Build();
 
-                            Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.DataSaved.DiscordId == userId.ToString())!;
+                            Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.DiscordId == userId.ToString())!;
                             if (targetClient2 != null)
                             {
                                 try

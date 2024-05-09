@@ -124,31 +124,19 @@ namespace FortBackend.src.App.SERVER
                 }
                 catch (WebSocketException ex)
                 {
-                    Console.WriteLine($"WebSocketException for client: {ex.Message}");
+                    Logger.Error($"WebSocketException for client: {ex.Message}");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    Logger.Error(ex.ToString());
                 }
                 try
                 {
-                  //  DataSaved_XMPP.connectedClients.TryRemove(clientId, out _);
-
-                    //Clients launcher_client = GlobalData.Clients.FirstOrDefault(c => c.Launcher_Client == webSocket)!;
-                    //if (launcher_client != null)
-                    //{
-                    //    if(launcher_client.Game_Client != null)
-                    //        KillGame.Init(launcher_client, launcher_client.DataSaved);
-          
-                    //    GlobalData.Clients.Remove(launcher_client);
-                    //}
-                    //else
-                    //{
                     Clients client = GlobalData.Clients.FirstOrDefault(c => c.Game_Client == webSocket)!;
 
                     if (client != null)
                     {
-                        await KillGame.Init(client, client .DataSaved);
+                        await KillGame.Init(client, UserDataSaved);
 
                         GlobalData.Clients.Remove(client);
                     }

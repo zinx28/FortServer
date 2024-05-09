@@ -11,7 +11,7 @@ namespace FortLibrary.XMPP
     {
         //public WebSocket Launcher_Client { get; set; } = null!;
         public WebSocket Game_Client { get; set; } = null!;
-        public DataSaved DataSaved { get; set; } = new DataSaved();
+     
         public string DiscordId { get; set; } = string.Empty;
         public string displayName { get; set; } = string.Empty;
         public string token { get; set; } = string.Empty;
@@ -19,6 +19,8 @@ namespace FortLibrary.XMPP
         public string resource { get; set; } = string.Empty;
         public lastPresenceUpdate lastPresenceUpdate { get; set; } = new lastPresenceUpdate();
         public string accountId { get; set; } = string.Empty;
+
+        public string[] Rooms = new string[] { };
 
         // PARTY V2? stuff i think~
         public string id = "";

@@ -1,0 +1,158 @@
+{
+  "BundleId": "QuestBundle_S8_Week_001",
+  "BundleObject": [
+    {
+      "templateId": "Quest:Quest_BR_Visit_PirateCamps",
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_piratecamp_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_piratecamp_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_piratecamp_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_piratecamp_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_piratecamp_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_piratecamp_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_piratecamp_07",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_TwoLocations_01",
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_chests_twolocations_01",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Chain_Dual_A",
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Quest_BR_Damage_Chain_Dual_B",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_chests_twolocations_01",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_GiantFaces",
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_cliff_face_desert",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_cliff_face_jungle",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_cliff_face_snow",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Use_Geyser_DifferentMatches",
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_use_item_geyser",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_ExploShotGunAR",
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_3weaps_shotgun",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_killingblow_athena_player_3weaps_ar",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_killingblow_athena_player_3weaps_explosive",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Vehicle_Opponent",
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_vehicle_with_opponent_inside",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

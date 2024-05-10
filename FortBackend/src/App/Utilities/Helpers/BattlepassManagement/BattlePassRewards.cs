@@ -113,6 +113,16 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                     value = FoundSeason.season_match_boost
                                 });
                             }
+                            else if (iteminfo.TemplateId.Contains("athenaseasonmergedxpboosts"))
+                            {
+                                //FoundSeason.season_merged_boosts += iteminfo.Quantity;
+
+                                //MultiUpdates.Add(new
+                                //{
+                                //    changeType = "statModified",
+                                //    name = ""
+                                //})
+                            }
                             else
                             {
                                 Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
@@ -133,6 +143,12 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         {
                             Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
                         }
+                        
+                        /*
+                         * [ClientQuestLogin]: ChallengeBundleSchedule:season8_paid_schedule is not supported
+                            [ClientQuestLogin]: ChallengeBundleSchedule:season8_cumulative_schedule is not supported
+                            [ClientQuestLogin]: Token:athenaseasonmergedxpboosts is not supported
+                        */
 
                         applyProfileChanges.Add(new NotificationsItemsClassOG
                         {

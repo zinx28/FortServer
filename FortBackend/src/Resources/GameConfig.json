@@ -2,5 +2,6 @@
   "//": "FortBackend Game Config",
   "SeasonEndDate": "9999-12-31T23:59:59.999Z",
   "ForceSeason": false,
-  "Season": 0
+  "Season": 0,
+  "WeeklyQuest": 1
 }

@@ -252,6 +252,10 @@ namespace FortLibrary.MongoDB.Module
         [JsonProperty("season_friend_match_boost")]
         public int season_friend_match_boost = 0;
 
+        [BsonElement("season_merged_boosts")]
+        [JsonProperty("season_merged_boosts")]
+        public int season_merged_boosts = 0;
+
         [BsonElement("book_level")]
         [JsonProperty("book_level")]
         public int BookLevel { get; set; } = 1;

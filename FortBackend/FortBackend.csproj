@@ -46,6 +46,7 @@
   <ItemGroup>
     <Folder Include="src\Resources\Certificates\" />
     <Folder Include="src\Resources\Json\NewFolder\" />
+    <Folder Include="src\Resources\Json\Quests\Challenges\Season8\Special\" />
     <Folder Include="src\Resources\Json\templates\" />
   </ItemGroup>
 

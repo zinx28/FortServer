@@ -160,6 +160,16 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
+                WeeklyQuestManager.LoadAllWeeklyQuest();
+            }
+            catch (Exception ex) { Logger.Error("WeeklyQuests -> " + ex.Message); }
+
+
+
+            //WeeklyQuestManager
+
+            try
+            {
                 BattlepassManager.Init();
             }
             catch (Exception ex) { Logger.Error("Battlepass Data -> " + ex.Message); }

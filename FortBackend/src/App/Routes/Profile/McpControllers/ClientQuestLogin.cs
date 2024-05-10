@@ -262,6 +262,45 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 quantity = 1
                                             });
 
+                                            var ItemObjectResponse = new
+                                            {
+                                                templateId = $"Quest:{BundleItems.templateId}",
+                                                attributes = new Dictionary<string, object>
+                                                {
+                                                    { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                    { "level", -1 },
+                                                    { "item_seen", false },
+                                                    { "playlists", new List<object>() },
+                                                    { "sent_new_notification", true },
+                                                    { "challenge_bundle_id", "" },
+                                                    { "xp_reward_scalar", 1 },
+                                                    { "challenge_linked_quest_given", "" },
+                                                    { "quest_pool", "" },
+                                                    { "quest_state", "Active" },
+                                                    { "bucket", "" },
+                                                    { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                    { "challenge_linked_quest_parent", "" },
+                                                    { "max_level_bonus", 0 },
+                                                    { "xp", 0 },
+                                                    { "quest_rarity", "uncommon" },
+                                                    { "favorite", false },
+                                                    // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                                },
+                                                quantity = 1
+                                            };
+
+                                            foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                                            {
+                                                ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                            }
+
+                                            MultiUpdates.Add(new MultiUpdateClass
+                                            {
+                                                changeType = "itemAdded",
+                                                itemId = $"Quest:{BundleItems.templateId}",
+                                                item = ItemObjectResponse
+                                            });
+
                                         }
 
                                         FoundSeason.Quests.Add($"ChallengeBundle:{item.BundleId}", new DailyQuestsData
@@ -280,20 +319,73 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             },
                                             quantity = 1
                                         });
+
+
+                                        MultiUpdates.Add(new MultiUpdateClass
+                                        {
+                                            changeType = "itemAdded",
+                                            itemId = $"ChallengeBundle:{item.BundleId}",
+                                            item = new
+                                            {
+                                                templateId = $"ChallengeBundle:{item.BundleId}",
+                                                attributes = new Dictionary<string, object>
+                                                {
+                                                    { "has_unlock_by_completion", false },
+                                                    { "num_quests_completed", 0 },
+                                                    { "level", 0 },
+                                                    { "grantedquestinstanceids", grantedquestinstanceids },
+                                                    { "item_seen",  false },
+                                                    { "max_allowed_bundle_level", 0 },
+                                                    { "num_granted_bundle_quests", grantedquestinstanceids.Count() },
+                                                    { "max_level_bonus", 0 },
+                                                    { "challenge_bundle_schedule_id", 0 },
+                                                    { "num_progress_quests_completed", 0 },
+                                                    { "xp", 0 },
+                                                    { "favorite", false }
+                                                    // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                                },
+                                                quantity = 1
+                                            }
+                                        });
                                     }
                                 }
-
-                                FoundSeason.Quests.Add($"ChallengeBundleSchedule:{BundleSchedule}", new DailyQuestsData
+                                if (NeedToAdd)
                                 {
-                                    templateId = $"ChallengeBundleSchedule:{BundleSchedule}",
-                                    attributes = new DailyQuestsDataDB
+                                    FoundSeason.Quests.Add($"ChallengeBundleSchedule:{BundleSchedule}", new DailyQuestsData
                                     {
-                                       // unlock_epoch = "" should juyst auto add 
-                                        grantedquestinstanceids = BundleIds,
-                                    
-                                    },
-                                    quantity = 1
-                                });
+                                        templateId = $"ChallengeBundleSchedule:{BundleSchedule}",
+                                        attributes = new DailyQuestsDataDB
+                                        {
+                                            // unlock_epoch = "" should juyst auto add 
+                                            grantedquestinstanceids = BundleIds,
+
+                                        },
+                                        quantity = 1
+                                    });
+
+                                    MultiUpdates.Add(new MultiUpdateClass
+                                    {
+                                        changeType = "itemAdded",
+                                        itemId = $"ChallengeBundleSchedule:{BundleSchedule}",
+                                        item = new
+                                        {
+                                            templateId = $"ChallengeBundleSchedule:{BundleSchedule}",
+                                            attributes = new Dictionary<string, object>
+                                            {
+                                                { "unlock_epoch", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                { "max_level_bonus", 0 },
+                                                { "level", 0 },
+                                                { "item_seen", false },
+                                                { "xp", 0 },
+                                                { "favorite", false },
+                                                { "granted_bundles", BundleIds }
+                                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                            },
+                                            quantity = 1
+                                        }
+                                    });
+                                }
+                              
 
                                 Logger.Log("SHOULD OF ADDED THE CURRENT QUESTS (THIS BUILD ISNT PROPER AND WILL BE SKUNKED)", "TEST LCIENTQUSTLOGIN");
                             }

@@ -77,8 +77,8 @@ namespace FortBackend.src.App.SERVER.Root
                                 //  Console.WriteLine("fdsfdsfdsfU");
                                 currentMembers.Add(new MembersData { accountId = Saved_Clients.accountId });
 
-
-                                Saved_Clients.Rooms.Append(RoomName); // so we know what room they are in for future stuff!
+                              //  UserDataSaved.Rooms.Append(RoomName);
+                                Saved_Clients.Rooms.Append(RoomName);
                                 GlobalData.Rooms[RoomName].members = currentMembers;
                                 //GlobalData.Rooms[RoomName]["Members"] = currentMembers;
                                 // Console.WriteLine("MUCX NOT NULL");

@@ -145,6 +145,9 @@ namespace FortBackend.src.App.Routes.Profile
                                     case "PurchaseCatalogEntry":
                                         response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody)!);
                                         break;
+                                    case "RemoveGiftBox":
+                                        response = await RemoveGiftBox.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject(requestbody));
+                                        break;
                                     case "BulkEquipBattleRoyaleCustomization":
                                         response = await BulkEquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<BulkEquipBattleRoyaleCustomizationResponse>(requestbody)!);
                                         break; // not proper

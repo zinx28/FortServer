@@ -38,7 +38,7 @@ namespace FortBackend.src.App.SERVER
                         receivedMessage += chunk;
                         if (result.EndOfMessage)
                         {
-                            //Console.WriteLine("Received WebSocket message: " + receivedMessage);
+                            Console.WriteLine("Received WebSocket message: " + receivedMessage);
                             JToken test = "";
                             try
                             {
@@ -57,7 +57,7 @@ namespace FortBackend.src.App.SERVER
 
                             if (xmlDoc != null) {
 
-                               // Console.WriteLine(xmlDoc.Root?.Name.LocalName);
+                               //Console.WriteLine(xmlDoc.Root?.Name.LocalName);
                                 switch (xmlDoc.Root?.Name.LocalName)
                                 {
                                     // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS

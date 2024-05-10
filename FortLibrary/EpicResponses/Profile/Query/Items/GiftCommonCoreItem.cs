@@ -22,7 +22,7 @@ namespace FortLibrary.EpicResponses.Profile.Query.Items
     {
 
         [JsonProperty("max_level_bonus")]
-        public int max_level_bonus { get; set; } = 1;
+        public int max_level_bonus { get; set; } = 0;
 
         [JsonProperty("fromAccountId")]
         public string fromAccountId { get; set; } = "Server"; // default

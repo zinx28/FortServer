@@ -17,15 +17,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
         public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, dynamic requestBodyy)
         {
             string currentDate = DateTime.UtcNow.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-           
-            if (ProfileId == "athena" || ProfileId == "profile0")
+           // Console.WriteLine(ProfileId);
+            if (ProfileId == "common_core")
             {
-                int BaseRev = profileCacheEntry.AccountData.athena.RVN;
+                int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
 
              
                 List<object> MultiUpdates = new List<object>();
                 List<object> ProfileChanges = new List<object>();
-             
+                Console.WriteLine(requestBodyy.giftBoxItemId);
                 if(requestBodyy.giftBoxItemId != null)
                 {
                     string GiftBoxID = requestBodyy.giftBoxItemId.ToString();
@@ -64,8 +64,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                 if (MultiUpdates.Count > 0)
                 {
-                    profileCacheEntry.AccountData.athena.RVN += 1;
-                    profileCacheEntry.AccountData.athena.CommandRevision += 1;
+                    profileCacheEntry.AccountData.commoncore.RVN += 1;
+                    profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
                 }
 
                 if (BaseRev != RVN)
@@ -80,11 +80,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                 return new Mcp()
                 {
-                    profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                    profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
                     profileId = ProfileId,
                     profileChangesBaseRevision = BaseRev,
                     profileChanges = ProfileChanges,
-                    profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                    profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                     serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     responseVersion = 1
                 };

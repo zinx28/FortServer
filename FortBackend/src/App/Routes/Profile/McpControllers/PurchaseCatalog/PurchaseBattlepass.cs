@@ -152,6 +152,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                 {
 
                                                     currencyItem.quantity -= Price;
+                                                  
+
                                                     seasonObject.BookPurchased = true;
 
                                                     ApplyProfileChanges.Add(new
@@ -161,7 +163,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                         value = true
                                                     });
 
-                                                    //var RandomOfferId = Guid.NewGuid().ToString();
+                                                   
                                                     List<NotificationsItemsClassOG> ItemsGivenToUser = new List<NotificationsItemsClassOG>();
 
                                                     foreach (Battlepass BattlePass in FreeTier)
@@ -184,21 +186,26 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                         (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
                                                     }
 
-                                                    
-
+                                                    // after to get the correct price
+                                                    ApplyProfileChanges.Add(new
+                                                    {
+                                                        changeType = "itemQuantityChanged",
+                                                        itemId = "Currency",
+                                                        quantity = currencyItem.quantity
+                                                    });
                                                     /*
                                                      *   NewItemsGiven.Add(new Dictionary<string, object>
-                                {
-                                    { "itemType", FreeRewards["TemplateId"].ToString() },
-                                    { "itemGuid", FreeRewards["TemplateId"].ToString() },
-                                    { "quantity", int.Parse(FreeRewards["Quantity"].ToString() ?? "1") }
-                                });
+                                                        {
+                                                            { "itemType", FreeRewards["TemplateId"].ToString() },
+                                                            { "itemGuid", FreeRewards["TemplateId"].ToString() },
+                                                            { "quantity", int.Parse(FreeRewards["Quantity"].ToString() ?? "1") }
+                                                        });
                                                     */
-
+                                                    var RandomOfferId = Guid.NewGuid().ToString();
                                                     MultiUpdates.Add(new ApplyProfileChangesClassV2
                                                     {
                                                         changeType = "itemAdded",
-                                                        itemId = ShopContent.offerId,
+                                                        itemId = RandomOfferId,
                                                         item = new
                                                         {
                                                             templateId = Season.Season >= 5 ? "GiftBox:gb_battlepasspurchased" : "GiftBox:gb_battlepass",
@@ -207,17 +214,19 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                 max_level_bonus = 0,
                                                                 fromAccountId = "",
                                                                 lootList = ItemsGivenToUser
-                                                            }
+                                                            },
+                                                            quantity = 1
                                                         }
                                                     });
 
-                                                    profileCacheEntry.AccountData.commoncore.Gifts.Add(ShopContent.offerId, new GiftCommonCoreItem
+                                                    profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
                                                     {
                                                         templateId = Season.Season >= 5 ? "GiftBox:gb_battlepasspurchased" : "GiftBox:gb_battlepass",
                                                         attributes = new GiftCommonCoreItemAttributes
                                                         {
                                                             lootList = ItemsGivenToUser
-                                                        }
+                                                        },
+                                                        quantity = 1
                                                     });
 
                                                     if(!string.IsNullOrEmpty(profileCacheEntry.AccountId))
@@ -229,22 +238,26 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                             string xmlMessage;
                                                             byte[] buffer;
                                                             WebSocket webSocket = Client.Game_Client;
+                                                            Console.WriteLine(webSocket.State);
                                                             if(webSocket != null && webSocket.State == WebSocketState.Open)
                                                             {
                                                                 XNamespace clientNs = "jabber:client";
 
                                                                 var message = new XElement(clientNs + "message",
-                                                                    new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                                    new XAttribute("to", profileCacheEntry.AccountId),
-                                                                    new XElement("body", @"{
-                                                                    ""payload"": {},
-                                                                    ""type"": ""com.epicgames.gift.received"",
-                                                                    ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
-                                                                }")
+                                                                  new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                                  new XAttribute("to", profileCacheEntry.AccountId),
+                                                                  new XElement(clientNs + "body", JsonConvert.SerializeObject(new
+                                                                  {
+                                                                      payload = new { },
+                                                                      type = "com.epicgames.gift.received",
+                                                                      timestamp = DateTime.UtcNow.ToString("o")
+                                                                  }))
                                                                 );
 
                                                                 xmlMessage = message.ToString();
                                                                 buffer = Encoding.UTF8.GetBytes(xmlMessage);
+
+                                                                Console.WriteLine(xmlMessage);
 
                                                                 await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                                                             }
@@ -312,33 +325,36 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             profileChangesBaseRevision = BaseRev,
                             profileChanges = ApplyProfileChanges,
                             notifications = new List<McpNotifications>()
+                            {
+                                new McpNotifications
                                 {
-                                    new McpNotifications
+                                    type = "CatalogPurchase",
+                                    primary =  true,
+                                    lootResult = new LootResultClass
                                     {
-                                        type = "CatalogPurchase",
-                                        primary =  true,
-                                        lootResult = new LootResultClass
-                                        {
-                                            items = NotificationsItems
-                                        }
+                                        items = NotificationsItems
                                     }
-                                },
+                                }
+                            },
                             profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                             serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                             multiUpdate = new List<object>()
+                            {
+                                new
                                 {
-                                    new
-                                    {
-                                        profileRevision = profileCacheEntry.AccountData.athena.RVN,
-                                        profileId = "athena",
-                                        profileChangesBaseRevision = BaseRev2,
-                                        profileChanges = MultiUpdates,
-                                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
-                                    }
-                                },
+                                    profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                                    profileId = "athena",
+                                    profileChangesBaseRevision = BaseRev2,
+                                    profileChanges = MultiUpdates,
+                                    profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                                }
+                            },
                             responseVersion = 1
                         };
+
                         string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
+                        Console.WriteLine(mcpJson);
+
                         return mcp;
                     }
                 }

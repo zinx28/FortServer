@@ -305,13 +305,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
                         // Response
 
-                        if (MultiUpdates.Count > 0)
+                        if (ApplyProfileChanges.Count > 0)
                         {
                             profileCacheEntry.AccountData.athena.RVN += 1;
                             profileCacheEntry.AccountData.athena.CommandRevision += 1;
                         }
 
-                        if (ApplyProfileChanges.Count > 0)
+                        if (MultiUpdates.Count > 0)
                         {
                             profileCacheEntry.AccountData.commoncore.RVN += 1;
                             profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
@@ -324,18 +324,18 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             profileId = ProfileId,
                             profileChangesBaseRevision = BaseRev,
                             profileChanges = MultiUpdates,
-                            notifications = new List<McpNotifications>()
-                            {
-                                new McpNotifications
-                                {
-                                    type = "CatalogPurchase",
-                                    primary =  true,
-                                    lootResult = new LootResultClass
-                                    {
-                                        items = NotificationsItems
-                                    }
-                                }
-                            },
+                            //notifications = new List<McpNotifications>()
+                            //{
+                            //    new McpNotifications
+                            //    {
+                            //        type = "CatalogPurchase",
+                            //        primary =  true,
+                            //        lootResult = new LootResultClass
+                            //        {
+                            //            items = NotificationsItems
+                            //        }
+                            //    }
+                            //},
                             profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                             serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                             multiUpdate = new List<object>()

@@ -1,8 +1,10 @@
-﻿using FortLibrary;
+﻿using Discord;
+using FortLibrary;
 using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.MongoDB.Module;
+using FortLibrary.Shop;
 
 namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 {
@@ -30,6 +32,46 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         }
                         else if (iteminfo.TemplateId.Contains("Athena"))
                         {
+                            /*
+                             *  {
+                                  "changeType": "itemAdded",
+                                  "itemId": "AthenaPickaxe:Pickaxe_ID_082_SushiChef",
+                                  "item": {
+                                    "templateId": "AthenaPickaxe:Pickaxe_ID_082_SushiChef",
+                                    "attributes": {
+                                      "favorite": false,
+                                      "item_seen": false,
+                                      "level": 1,
+                                      "max_level_bonus": 0,
+                                      "rnd_sel_cnt": 0,
+                                      "variants": [],
+                                      "xp": 0
+                                    },
+                                    "quantity": 1
+                                  }
+                                }*/
+                            MultiUpdates.Add(new MultiUpdateClass
+                            {
+                                changeType = "itemAdded",
+                                itemId = iteminfo.TemplateId,
+                                item = new AthenaItem
+                                {
+                                    templateId = iteminfo.TemplateId,
+                                    attributes = new AthenaItemAttributes
+                                    {
+                                        item_seen = false,
+                                    },
+                                    quantity = 1
+                                }
+                            });
+                            //MultiUpdates.Add(new
+                            //{
+                            //    changeType = "itemAttrChanged",
+                            //    itemId = iteminfo.TemplateId,
+                            //    attributeName = "item_seen",
+                            //    attributeValue = false
+                            //});
+
                             profileCacheEntry.AccountData.athena.Items.Add(iteminfo.TemplateId, new AthenaItem
                             {
                                 templateId = iteminfo.TemplateId,
@@ -68,7 +110,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 {
                                     changeType = "statModified",
                                     name = "season_friend_match_boost",
-                                    value = FoundSeason.season_friend_match_boost
+                                    value = FoundSeason.season_match_boost
                                 });
                             }
                             else

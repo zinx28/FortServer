@@ -69,7 +69,7 @@ namespace FortBackend.src.App.SERVER.Root
                                     {
                                         if (member.accountId == Saved_Clients.accountId)
                                         {
-                                            return;
+                                            break;
                                         }
                                     }
                                 }

@@ -250,9 +250,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 }) ;
                                             }
 
-                                            FoundSeason.Quests.Add($"Quest:{BundleItems.templateId}", new DailyQuestsData
+                                            FoundSeason.Quests.Add($"{BundleItems.templateId}", new DailyQuestsData
                                             {
-                                                templateId = $"Quest:{BundleItems.templateId}",
+                                                templateId = $"{BundleItems.templateId}",
                                                 attributes = new DailyQuestsDataDB
                                                 {
                                                     challenge_bundle_id = $"ChallengeBundle:{item.BundleId}",
@@ -264,7 +264,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                                             var ItemObjectResponse = new
                                             {
-                                                templateId = $"Quest:{BundleItems.templateId}",
+                                                templateId = $"{BundleItems.templateId}",
                                                 attributes = new Dictionary<string, object>
                                                 {
                                                     { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
@@ -297,7 +297,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             MultiUpdates.Add(new MultiUpdateClass
                                             {
                                                 changeType = "itemAdded",
-                                                itemId = $"Quest:{BundleItems.templateId}",
+                                                itemId = $"{BundleItems.templateId}",
                                                 item = ItemObjectResponse
                                             });
 

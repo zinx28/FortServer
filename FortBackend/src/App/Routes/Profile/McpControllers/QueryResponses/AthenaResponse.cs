@@ -255,6 +255,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         quantity = Value.quantity,
                                     };
 
+                                    Value.attributes.ObjectiveState.ForEach(e =>
+                                    {
+                                        AthenaItemDynamicData.attributes.Add(e.Name, e.Value);
+                                    });
+
+
                                     ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
                                 }
                             }

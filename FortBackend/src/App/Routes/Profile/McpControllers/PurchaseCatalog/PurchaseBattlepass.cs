@@ -187,7 +187,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                     }
 
                                                     // after to get the correct price
-                                                    ApplyProfileChanges.Add(new
+                                                    MultiUpdates.Add(new
                                                     {
                                                         changeType = "itemQuantityChanged",
                                                         itemId = "Currency",
@@ -323,7 +323,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
                             profileId = ProfileId,
                             profileChangesBaseRevision = BaseRev,
-                            profileChanges = ApplyProfileChanges,
+                            profileChanges = MultiUpdates,
                             notifications = new List<McpNotifications>()
                             {
                                 new McpNotifications
@@ -345,7 +345,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                     profileRevision = profileCacheEntry.AccountData.athena.RVN,
                                     profileId = "athena",
                                     profileChangesBaseRevision = BaseRev2,
-                                    profileChanges = MultiUpdates,
+                                    profileChanges = ApplyProfileChanges,
                                     profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                                 }
                             },

@@ -223,20 +223,23 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             if(WeeklyQuestsArray.Count > 0) // W!
                             {
                                 var BundleSchedule = "";
-                                string[] BundleIds = new string[0];
+                                List<string> BundleIds = new List<string>();
+                              //  string[] BundleIds = new string[0];
                                 foreach (WeeklyQuestsJson item in WeeklyQuestsArray)
                                 {
                                     DailyQuestsData dailyQuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == item.BundleId).Value;
                                     if (dailyQuestData == null)
                                     {
-                                        BundleIds.Append(item.BundleId);
+                                        BundleIds.Add(item.BundleId);
                                         BundleSchedule = item.BundleSchedule;
                                         NeedToAdd = true;
-                                        string[] grantedquestinstanceids = new string[0];
+                                        List<string> grantedquestinstanceids = new List<string>();
+
+                                       // string[] grantedquestinstanceids = new string[0];
 
                                         foreach (WeeklyObjects BundleItems in item.BundleObject)
                                         {
-                                            grantedquestinstanceids.Append(BundleItems.templateId);
+                                            grantedquestinstanceids.Add(BundleItems.templateId);
                                             //new List<DailyQuestsObjectiveStates>
 
                                             List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
@@ -310,7 +313,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             {
                                                 challenge_bundle_id = $"ChallengeBundleSchedule:{item.BundleSchedule}",
                                                 sent_new_notification = false,
-                                                grantedquestinstanceids = grantedquestinstanceids,
+                                                grantedquestinstanceids = grantedquestinstanceids.ToArray(),
                                                 has_unlock_by_completion = false,
                                                 num_quests_completed = 0,
                                                 max_allowed_bundle_level = 0,
@@ -333,7 +336,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     { "has_unlock_by_completion", false },
                                                     { "num_quests_completed", 0 },
                                                     { "level", 0 },
-                                                    { "grantedquestinstanceids", grantedquestinstanceids },
+                                                    { "grantedquestinstanceids", grantedquestinstanceids.ToArray() },
                                                     { "item_seen",  false },
                                                     { "max_allowed_bundle_level", 0 },
                                                     { "num_granted_bundle_quests", grantedquestinstanceids.Count() },
@@ -357,7 +360,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                         attributes = new DailyQuestsDataDB
                                         {
                                             // unlock_epoch = "" should juyst auto add 
-                                            grantedquestinstanceids = BundleIds,
+                                            grantedquestinstanceids = BundleIds.ToArray(),
 
                                         },
                                         quantity = 1
@@ -378,7 +381,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 { "item_seen", false },
                                                 { "xp", 0 },
                                                 { "favorite", false },
-                                                { "granted_bundles", BundleIds }
+                                                { "granted_bundles",  BundleIds.ToArray() }
                                                 // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
                                             },
                                             quantity = 1

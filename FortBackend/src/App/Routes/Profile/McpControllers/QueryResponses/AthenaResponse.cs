@@ -178,10 +178,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 }
                             }
 
+                            
                             foreach (var kvp in seasonObject.Quests)
                             {
                                 var Value = kvp.Value;
-
+                                Console.WriteLine(Value.templateId);
                                 if (Value.templateId.Contains("ChallengeBundleSchedule:"))
                                 {
                                     var AthenaItemDynamicData = new AthenaItemDynamic

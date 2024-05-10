@@ -10,6 +10,7 @@ using System.Dynamic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text.RegularExpressions;
 using FortBackend.src.App.Utilities.Constants;
+using FortLibrary.EpicResponses.Profile.Quests;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -138,7 +139,7 @@ namespace FortBackend.src.App.Routes.API
                             BookLevel = 1,
                             BookXP = 0,
                             BookPurchased = false,
-                            Quests = new Dictionary<string, object>(),
+                            Quests = new Dictionary<string, DailyQuestsData>(),
                             DailyQuests = new DailyQuests
                             {
                                 Interval = "0001-01-01T00:00:00.000Z",

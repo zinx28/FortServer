@@ -18,11 +18,17 @@ namespace FortLibrary.EpicResponses.Profile.Quests
         [JsonProperty("creation_time")]
         public string creation_time { get; set; } = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
+        [JsonProperty("unlock_epoch")]
+        public string unlock_epoch { get; set; } = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+
         [JsonProperty("level")]
         public int level { get; set; } = -1;
 
         [JsonProperty("item_seen")]
         public bool item_seen { get; set; } = false;
+
+        [JsonProperty("grantedquestinstanceids")]
+        public string[] grantedquestinstanceids { get; set; } = new string[0];
 
         [JsonProperty("playlists")]
         public List<object> playlists { get; set; } = new List<object>();
@@ -56,6 +62,21 @@ namespace FortLibrary.EpicResponses.Profile.Quests
 
         [JsonProperty("max_level_bonus")]
         public int max_level_bonus { get; set; } = 0;
+
+        [JsonProperty("max_allowed_bundle_level")]
+        public int max_allowed_bundle_level { get; set; } = 0;
+
+        [JsonProperty("has_unlock_by_completion")]
+        public bool has_unlock_by_completion { get; set; } = false;
+
+        [JsonProperty("num_granted_bundle_quests")]
+        public int num_granted_bundle_quests { get; set; } = 0;
+
+        [JsonProperty("num_quests_completed")]
+        public int num_quests_completed { get; set; } = 0;
+
+        [JsonProperty("num_progress_quests_completed")]
+        public int num_progress_quests_completed { get; set; } = 0;
 
         [JsonProperty("xp")]
         public int xp { get; set; } = 0;

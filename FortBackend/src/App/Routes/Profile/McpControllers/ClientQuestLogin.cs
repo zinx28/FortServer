@@ -18,6 +18,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Constants;
 using FortLibrary.EpicResponses.Profile.Query;
+using MongoDB.Bson.IO;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -211,6 +212,102 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     // END OF CLAIMING QUEST SYTEM
 
+                    // START OF BATTLE PASS QUESTS SYSTEM
+
+                    // Until i work on a season that changes this (season 10 omg) i need to redo this
+                    if (FoundSeason.BookPurchased)
+                    {
+                        bool NeedToAdd = false;
+                        if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
+                        {
+                            if(WeeklyQuestsArray.Count > 0) // W!
+                            {
+                                var BundleSchedule = "";
+                                string[] BundleIds = new string[0];
+                                foreach (WeeklyQuestsJson item in WeeklyQuestsArray)
+                                {
+                                    DailyQuestsData dailyQuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == item.BundleId).Value;
+                                    if (dailyQuestData == null)
+                                    {
+                                        BundleIds.Append(item.BundleId);
+                                        BundleSchedule = item.BundleSchedule;
+                                        NeedToAdd = true;
+                                        string[] grantedquestinstanceids = new string[0];
+
+                                        foreach (WeeklyObjects BundleItems in item.BundleObject)
+                                        {
+                                            grantedquestinstanceids.Append(BundleItems.templateId);
+                                            //new List<DailyQuestsObjectiveStates>
+
+                                            List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+
+                                            foreach (WeeklyObjectsObjectives ObjectiveItems in BundleItems.Objectives)
+                                            {
+                                                QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                {
+                                                    Name = $"completion_{ObjectiveItems.BackendName}",
+                                                    Value = 0
+                                                }) ;
+                                            }
+
+                                            FoundSeason.Quests.Add($"Quest:{BundleItems.templateId}", new DailyQuestsData
+                                            {
+                                                templateId = $"Quest:{BundleItems.templateId}",
+                                                attributes = new DailyQuestsDataDB
+                                                {
+                                                    challenge_bundle_id = $"ChallengeBundle:{item.BundleId}",
+                                                    sent_new_notification = false,
+                                                    ObjectiveState = QuestObjectStats
+                                                },
+                                                quantity = 1
+                                            });
+
+                                        }
+
+                                        FoundSeason.Quests.Add($"ChallengeBundle:{item.BundleId}", new DailyQuestsData
+                                        {
+                                            templateId = $"ChallengeBundle:{item.BundleId}",
+                                            attributes = new DailyQuestsDataDB
+                                            {
+                                                challenge_bundle_id = $"ChallengeBundleSchedule:{item.BundleSchedule}",
+                                                sent_new_notification = false,
+                                                grantedquestinstanceids = grantedquestinstanceids,
+                                                has_unlock_by_completion = false,
+                                                num_quests_completed = 0,
+                                                max_allowed_bundle_level = 0,
+                                                num_granted_bundle_quests = grantedquestinstanceids.Count(),
+                                                num_progress_quests_completed = 0
+                                            },
+                                            quantity = 1
+                                        });
+                                    }
+                                }
+
+                                FoundSeason.Quests.Add($"ChallengeBundleSchedule:{BundleSchedule}", new DailyQuestsData
+                                {
+                                    templateId = $"ChallengeBundleSchedule:{BundleSchedule}",
+                                    attributes = new DailyQuestsDataDB
+                                    {
+                                       // unlock_epoch = "" should juyst auto add 
+                                        grantedquestinstanceids = BundleIds,
+                                    
+                                    },
+                                    quantity = 1
+                                });
+
+                                Logger.Log("SHOULD OF ADDED THE CURRENT QUESTS (THIS BUILD ISNT PROPER AND WILL BE SKUNKED)", "TEST LCIENTQUSTLOGIN");
+                            }
+                        }
+                        else
+                        {
+                            // rem,ove error in the future after "TESTIN"
+                            Logger.Error("NO QUESTS ON THIS SEASON");
+                        }
+                    }
+
+
+                    // END OF BATTLE PASS QUESTS SYSTEM
+
                     // LEVEL SYSTEM & XP
 
                     var SeasonXPFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonXP.json");
@@ -310,6 +407,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 value = currencyItem.quantity
                             });
                         }
+
+
                             
 
                         // END OF BATTLE PASS SYSTEM

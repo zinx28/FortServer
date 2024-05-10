@@ -284,21 +284,10 @@ namespace FortLibrary.MongoDB.Module
         [JsonProperty("lastclaimeditem")]
         public int lastclaimeditem { get; set; } = 0;
 
-        // QUESTS STUFF ~ require to be cleaner in the future versions without breaking user
         [BsonElement("Quests")]
         [JsonProperty("Quests")]
         [BsonIgnoreIfNull]
-        public Dictionary<string, object> Quests { get; set; } = new Dictionary<string, object>();
-
-        [BsonElement("PinnedQuests")]
-        [JsonProperty("PinnedQuests")]
-        [BsonIgnoreIfNull]
-        public List<Dictionary<string, object>> PinnedQuests { get; set; } = new List<Dictionary<string, object>>();
-
-        [BsonElement("PinnedPartyQuests")]
-        [JsonProperty("PinnedPartyQuests")]
-        [BsonIgnoreIfNull]
-        public List<Dictionary<string, object>> PinnedPartyQuests { get; set; } = new List<Dictionary<string, object>>();
+        public Dictionary<string, DailyQuestsData> Quests { get; set; } = new Dictionary<string, DailyQuestsData>();
 
         [BsonElement("quest_manager")]
         [JsonProperty("quest_manager")]

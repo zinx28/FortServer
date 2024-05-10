@@ -17,6 +17,7 @@ using System.Globalization;
 using System.Security.Claims;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary;
+using FortLibrary.EpicResponses.Profile.Quests;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
@@ -51,7 +52,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         BookLevel = 1,
                         BookXP = 0,
                         BookPurchased = false,
-                        Quests = new Dictionary<string, object>(),
+                        Quests = new Dictionary<string, DailyQuestsData>(),
                         DailyQuests = new DailyQuests
                         {
                             Interval = "0001-01-01T00:00:00.000Z",
@@ -177,7 +178,88 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 }
                             }
 
-                            foreach(var kvp in seasonObject.DailyQuests.Daily_Quests)
+                            foreach (var kvp in seasonObject.Quests)
+                            {
+                                var Value = kvp.Value;
+
+                                if (Value.templateId.Contains("ChallengeBundleSchedule:"))
+                                {
+                                    var AthenaItemDynamicData = new AthenaItemDynamic
+                                    {
+                                        templateId = Value.templateId,
+                                        attributes = new Dictionary<string, object>
+                                        {
+                                            { "unlock_epoch", Value.attributes.unlock_epoch },
+                                            { "max_level_bonus", Value.attributes.max_level_bonus },
+                                            { "level", Value.attributes.level },
+                                            { "item_seen", Value.attributes.item_seen },
+                                            { "xp", Value.attributes.xp },
+                                            { "favorite", Value.attributes.favorite },
+                                            { "granted_bundles", Value.attributes.grantedquestinstanceids }
+                                        },
+                                        quantity = Value.quantity,
+                                    };
+
+                                    ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
+                                }
+                                else if (Value.templateId.Contains("ChallengeBundle:"))
+                                {
+                                    var AthenaItemDynamicData = new AthenaItemDynamic
+                                    {
+                                        templateId = Value.templateId,
+                                        attributes = new Dictionary<string, object>
+                                        {
+                                            { "has_unlock_by_completion", Value.attributes.has_unlock_by_completion },
+                                            { "num_quests_completed", Value.attributes.num_quests_completed },
+                                            { "level", Value.attributes.level },
+                                            { "grantedquestinstanceids", Value.attributes.grantedquestinstanceids },
+                                            { "item_seen", Value.attributes.item_seen },
+                                            { "max_allowed_bundle_level", Value.attributes.max_allowed_bundle_level },
+                                            { "num_granted_bundle_quests", Value.attributes.num_granted_bundle_quests },
+                                            { "max_level_bonus", Value.attributes.max_level_bonus },
+                                            { "challenge_bundle_schedule_id", Value.attributes.challenge_bundle_id },
+                                            { "num_progress_quests_completed", Value.attributes.num_progress_quests_completed },
+                                            { "xp", Value.attributes.xp },
+                                            { "favorite", Value.attributes.favorite }
+                                        },
+                                        quantity = Value.quantity,
+                                    };
+
+                                    ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
+                                }
+                                else if (Value.templateId.Contains("Quest:"))
+                                {
+                                    var AthenaItemDynamicData = new AthenaItemDynamic
+                                    {
+                                        templateId = Value.templateId,
+                                        attributes = new Dictionary<string, object>
+                                        {
+                                            { "creation_time", Value.attributes.creation_time },
+                                            { "level", Value.attributes.level },
+                                            { "item_seen", Value.attributes.item_seen },
+                                            { "playlists", Value.attributes.playlists },
+                                            { "sent_new_notification", Value.attributes.sent_new_notification },
+                                            { "challenge_bundle_id", Value.attributes.challenge_bundle_id },
+                                            { "xp_reward_scalar", Value.attributes.xp_reward_scalar },
+                                            { "challenge_linked_quest_given", Value.attributes.challenge_linked_quest_given },
+                                            { "quest_pool", Value.attributes.quest_pool },
+                                            { "quest_state", Value.attributes.quest_state },
+                                            { "bucket", Value.attributes.bucket },
+                                            { "last_state_change_time", Value.attributes.last_state_change_time },
+                                            { "challenge_linked_quest_parent", Value.attributes.challenge_linked_quest_parent },
+                                            { "max_level_bonus", Value.attributes.max_level_bonus },
+                                            { "xp", Value.attributes.xp },
+                                            { "quest_rarity", Value.attributes.quest_rarity },
+                                            { "favorite", Value.attributes.favorite }
+                                        },
+                                        quantity = Value.quantity,
+                                    };
+
+                                    ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
+                                }
+                            }
+
+                            foreach (var kvp in seasonObject.DailyQuests.Daily_Quests)
                             {
                                 var Value = kvp.Value;
                                 var AthenaItemDynamicData = new AthenaItemDynamic

@@ -1,5 +1,6 @@
 {
   "BundleId": "QuestBundle_S8_Week_001",
+  "BundleSchedule": "Season8_Free_Schedule",
   "BundleObject": [
     {
       "templateId": "Quest:Quest_BR_Visit_PirateCamps",

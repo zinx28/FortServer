@@ -9,6 +9,7 @@ namespace FortLibrary.Dynamics
     public class WeeklyQuestsJson
     {
         public string BundleId { get; set; } = string.Empty;
+        public string BundleSchedule { get; set; } = string.Empty;
         public List<WeeklyObjects> BundleObject { get; set; } = new List<WeeklyObjects>();
     }
 

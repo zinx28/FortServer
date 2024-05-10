@@ -14,6 +14,7 @@
 
         public static void Error(string Message, string Custom = "Error")
         {
+            
             Console.WriteLine($"\u001B[31m[{Custom}]: {Message}\u001B[0m");
         }
     }

@@ -1,7 +1,7 @@
 {
   "BundleId": "QuestBundle_S8_Week_001",
   "BundleSchedule": "Season8_Free_Schedule",
-  "BundleObject": [
+  "FreeBundleObject": [
     {
       "templateId": "Quest:Quest_BR_Visit_PirateCamps",
       "Rewards": {
@@ -78,7 +78,9 @@
           "Stage": -1
         }
       ]
-    },
+    }
+  ],
+  "PaidBundleObject": [
     {
       "templateId": "Quest:Quest_BR_Visit_GiantFaces",
       "Rewards": {

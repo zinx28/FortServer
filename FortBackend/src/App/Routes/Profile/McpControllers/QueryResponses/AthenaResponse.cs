@@ -18,6 +18,8 @@ using System.Security.Claims;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary;
 using FortLibrary.EpicResponses.Profile.Quests;
+using FortBackend.src.App.Utilities.Quests;
+using FortLibrary.Dynamics;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
@@ -178,57 +180,83 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 }
                             }
 
-                            
+
+                            // THIS IS INST THE PROPER WAY BUT IT'S BETTER NTO STORING THIS IN THE CODE UNLESS IS ACTUALLY NEEDED
+                            if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
+                            {
+                                if(WeeklyQuestsArray.Count > 0)
+                                {
+                                    List<string> ResponseIgIdrk = new List<string>();
+                                    var ResponseId = "";
+                                    foreach(var kvp in WeeklyQuestsArray)
+                                    {
+                                        ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
+                                        ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
+                                        //kvp.BundleId
+                                        List<string> grantedquestinstanceids = new List<string>();
+                                        foreach (var FreeBundles in kvp.FreeBundleObject)
+                                        {
+                                            grantedquestinstanceids.Add(FreeBundles.templateId);
+                                        }
+
+                                        if (seasonObject.BookPurchased)
+                                        {
+                                            foreach (var PaidBundles in kvp.PaidBundleObject)
+                                            {
+                                                grantedquestinstanceids.Add(PaidBundles.templateId);
+                                            }
+                                        }
+                                        //challenge_bundle_schedule_id
+                                        var AthenaItemChallengeBundle = new AthenaItemDynamic
+                                        {
+                                            templateId = $"ChallengeBundle:{kvp.BundleId}",
+                                            attributes = new Dictionary<string, object>
+                                            {
+                                                { "has_unlock_by_completion", false },
+                                                { "num_quests_completed", 0 },
+                                                { "level", 0 },
+                                                { "grantedquestinstanceids", grantedquestinstanceids.ToArray() },
+                                                { "item_seen",  true },
+                                                { "max_allowed_bundle_level", 0 },
+                                                { "num_granted_bundle_quests", grantedquestinstanceids.Count() },
+                                                { "max_level_bonus", 0 },
+                                                { "challenge_bundle_schedule_id", ResponseId },
+                                                { "num_progress_quests_completed", 0 },
+                                                { "xp", 0 },
+                                                { "favorite", false }
+                                            },
+                                            quantity = 1,
+                                        };
+
+                                        ProfileChange.Profile.items.Add($"ChallengeBundle:{kvp.BundleId}", AthenaItemChallengeBundle);
+                                    }
+
+                                    var AthenaItemDynamicData = new AthenaItemDynamic
+                                    {
+                                        templateId = ResponseId,
+                                        attributes = new Dictionary<string, object>
+                                        {
+                                            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                            { "max_level_bonus", 0 },
+                                            { "level", 0 },
+                                            { "item_seen", true },
+                                            { "xp", 0 },
+                                            { "favorite", false },
+                                            { "granted_bundles", ResponseIgIdrk.ToArray() }
+                                        },
+                                        quantity = 1,
+                                    };
+
+                                    ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
+                                }
+                            }
+
                             foreach (var kvp in seasonObject.Quests)
                             {
                                 var Value = kvp.Value;
                                 Console.WriteLine(Value.templateId);
-                                if (Value.templateId.Contains("ChallengeBundleSchedule:"))
-                                {
-                                    var AthenaItemDynamicData = new AthenaItemDynamic
-                                    {
-                                        templateId = Value.templateId,
-                                        attributes = new Dictionary<string, object>
-                                        {
-                                            { "unlock_epoch", Value.attributes.unlock_epoch },
-                                            { "max_level_bonus", Value.attributes.max_level_bonus },
-                                            { "level", Value.attributes.level },
-                                            { "item_seen", Value.attributes.item_seen },
-                                            { "xp", Value.attributes.xp },
-                                            { "favorite", Value.attributes.favorite },
-                                            { "granted_bundles", Value.attributes.grantedquestinstanceids }
-                                        },
-                                        quantity = Value.quantity,
-                                    };
-
-                                    ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
-                                }
-                                else if (Value.templateId.Contains("ChallengeBundle:"))
-                                {
-                                    var AthenaItemDynamicData = new AthenaItemDynamic
-                                    {
-                                        templateId = Value.templateId,
-                                        attributes = new Dictionary<string, object>
-                                        {
-                                            { "has_unlock_by_completion", Value.attributes.has_unlock_by_completion },
-                                            { "num_quests_completed", Value.attributes.num_quests_completed },
-                                            { "level", Value.attributes.level },
-                                            { "grantedquestinstanceids", Value.attributes.grantedquestinstanceids },
-                                            { "item_seen", Value.attributes.item_seen },
-                                            { "max_allowed_bundle_level", Value.attributes.max_allowed_bundle_level },
-                                            { "num_granted_bundle_quests", Value.attributes.num_granted_bundle_quests },
-                                            { "max_level_bonus", Value.attributes.max_level_bonus },
-                                            { "challenge_bundle_schedule_id", Value.attributes.challenge_bundle_id },
-                                            { "num_progress_quests_completed", Value.attributes.num_progress_quests_completed },
-                                            { "xp", Value.attributes.xp },
-                                            { "favorite", Value.attributes.favorite }
-                                        },
-                                        quantity = Value.quantity,
-                                    };
-
-                                    ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
-                                }
-                                else if (Value.templateId.Contains("Quest:"))
+     
+                                if (Value.templateId.Contains("Quest:"))
                                 {
                                     var AthenaItemDynamicData = new AthenaItemDynamic
                                     {

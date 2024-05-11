@@ -265,7 +265,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 { "item_seen", false },
                                                 { "playlists", new List<object>() },
                                                 { "sent_new_notification", true },
-                                                { "challenge_bundle_id", "" },
+                                                { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
                                                 { "xp_reward_scalar", 1 },
                                                 { "challenge_linked_quest_given", "" },
                                                 { "quest_pool", "" },

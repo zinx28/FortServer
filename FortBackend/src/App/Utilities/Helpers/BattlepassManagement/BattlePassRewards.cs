@@ -171,6 +171,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                             {
                                                 OkayIG.Add("Quest:" + test.templateId);
                                             }
+
                                             foreach (var test in QuestJson.PaidBundleObject)
                                             {
                                                 OkayIG.Add("Quest:" + test.templateId);

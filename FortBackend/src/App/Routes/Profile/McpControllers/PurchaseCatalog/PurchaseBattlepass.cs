@@ -176,8 +176,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                 ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
                                                                 ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
 
+                                                                List<string> QuestTestResponse = new List<string>();
+                                                                foreach (var FreeBundles in kvp.FreeBundleObject)
+                                                                {
+                                                                    QuestTestResponse.Add(FreeBundles.templateId);
+                                                                }
+
                                                                 foreach (var PaidBundles in kvp.PaidBundleObject)
                                                                 {
+                                                                    QuestTestResponse.Add(PaidBundles.templateId);
                                                                     // grantedquestinstanceids.Add(PaidBundles.templateId);
 
                                                                     DailyQuestsData QuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == PaidBundles.templateId).Value;
@@ -250,6 +257,41 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
 
                                                                 }
+
+
+                                                                var AthenaItemChallengeBundle = new AthenaItemDynamic
+                                                                {
+                                                                    templateId = $"ChallengeBundle:{kvp.BundleId}",
+                                                                    attributes = new Dictionary<string, object>
+                                                                    {
+                                                                        { "has_unlock_by_completion", false },
+                                                                        { "num_quests_completed", 0 },
+                                                                        { "level", 0 },
+                                                                        { "grantedquestinstanceids", QuestTestResponse.ToArray() },
+                                                                        { "item_seen",  true },
+                                                                        { "max_allowed_bundle_level", 0 },
+                                                                        { "num_granted_bundle_quests", QuestTestResponse.Count() },
+                                                                        { "max_level_bonus", 0 },
+                                                                        { "challenge_bundle_schedule_id", ResponseId },
+                                                                        { "num_progress_quests_completed", 0 },
+                                                                        { "xp", 0 },
+                                                                        { "favorite", false }
+                                                                    },
+                                                                    quantity = 1,
+                                                                };
+
+                                                                ApplyProfileChanges.Add(new
+                                                                {
+                                                                    changeType = "itemRemoved",
+                                                                    itemId = $"ChallengeBundle:{kvp.BundleId}"
+                                                                });
+
+                                                                ApplyProfileChanges.Add(new MultiUpdateClass
+                                                                {
+                                                                    changeType = "itemAdded",
+                                                                    itemId = $"ChallengeBundle:{kvp.BundleId}",
+                                                                    item = AthenaItemChallengeBundle
+                                                                });
                                                             }
 
                                                             var ItemTestObjectResponse = new

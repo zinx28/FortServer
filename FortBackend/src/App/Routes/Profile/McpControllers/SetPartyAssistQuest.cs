@@ -30,7 +30,17 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     }
                     else
                     {
-                        FoundSeason.party_assist = "";
+                        DailyQuestsData weeklyQuestsData = FoundSeason.Quests.FirstOrDefault(e => e.Key == Body.questToPinAsPartyAssist).Value;
+
+                        if (weeklyQuestsData != null && !string.IsNullOrEmpty(weeklyQuestsData.templateId))
+                        {
+                            FoundSeason.party_assist = Body.questToPinAsPartyAssist;
+                        }
+                        else
+                        {
+                            FoundSeason.party_assist = "";
+                        }
+                           
                     }
 
                     ProfileChanges.Add(new

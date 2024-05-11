@@ -149,10 +149,12 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 {
                                     if (BPQuestsArray.Count > 0)
                                     {
-                                        WeeklyQuestsJson QuestJson = BPQuestsArray.FirstOrDefault(e => e.BundleSchedule == iteminfo.TemplateId);
-                                        if(QuestJson != null)
+                                        var matchingQuestJsons = BPQuestsArray.Where(e => e.BundleSchedule == iteminfo.TemplateId).ToList();
+
+                                        foreach (var QuestJson in matchingQuestJsons)
                                         {
-                                            
+                                            if (QuestJson == null) continue;
+
                                             List<string> TEST2FRFR = new List<string>();
                                             foreach (var test in QuestJson.PaidBundleObject)
                                             {
@@ -224,6 +226,8 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                 }
                                             }
                                         }
+                                            // WeeklyQuestsJson QuestJson = BPQuestsArray.FirstOrDefault(e => e.BundleSchedule == iteminfo.TemplateId);
+                          
                                     }
                                 }
                             }

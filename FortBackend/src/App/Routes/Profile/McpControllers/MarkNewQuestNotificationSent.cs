@@ -37,6 +37,21 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 attributeValue = true
                             });
                         }
+                        else if(FoundSeason.Quests.TryGetValue(item, out var BPQuests))
+                        {
+                            FoundSeason.Quests[item].attributes.sent_new_notification = true;
+
+
+                            MultiUpdates.Add(new
+                            {
+                                changeType = "itemAttrChanged",
+                                itemId = item,
+                                attributeName = "sent_new_notification",
+                                attributeValue = true
+                            });
+                        }
+
+
                     }
 
                     if (MultiUpdates.Count > 0)

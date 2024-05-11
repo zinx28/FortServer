@@ -191,9 +191,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                             });
                                                                         }
 
-                                                                        seasonObject.Quests.Add($"Quest:{PaidBundles.templateId}", new DailyQuestsData
+                                                                        seasonObject.Quests.Add($"{PaidBundles.templateId}", new DailyQuestsData
                                                                         {
-                                                                            templateId = $"Quest:{PaidBundles.templateId}",
+                                                                            templateId = $"{PaidBundles.templateId}",
                                                                             attributes = new DailyQuestsDataDB
                                                                             {
                                                                                 challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
@@ -206,7 +206,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
                                                                         var ItemObjectResponse = new
                                                                         {
-                                                                            templateId = $"Quest:{PaidBundles.templateId}",
+                                                                            templateId = $"{PaidBundles.templateId}",
                                                                             attributes = new Dictionary<string, object>
                                                                             {
                                                                                 { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
@@ -239,7 +239,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                         ApplyProfileChanges.Add(new MultiUpdateClass
                                                                         {
                                                                             changeType = "itemAdded",
-                                                                            itemId = $"Quest:{PaidBundles.templateId}",
+                                                                            itemId = $"{PaidBundles.templateId}",
                                                                             item = ItemObjectResponse
                                                                         });
                                                                     }

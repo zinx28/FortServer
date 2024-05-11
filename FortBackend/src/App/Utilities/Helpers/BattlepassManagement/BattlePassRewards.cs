@@ -173,7 +173,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
                                                     FoundSeason.Quests.Add(test.templateId, new DailyQuestsData
                                                     {
-                                                        templateId = $"{test.templateId}",
+                                                        templateId = $"Quest:{test.templateId}",
                                                         attributes = new DailyQuestsDataDB
                                                         {
                                                             challenge_bundle_id = $"ChallengeBundle:{QuestJson.BundleId}",
@@ -185,7 +185,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
                                                     var ItemObjectResponse = new
                                                     {
-                                                        templateId = $"{test.templateId}",
+                                                        templateId = $"Quest:{test.templateId}",
                                                         attributes = new Dictionary<string, object>
                                                         {
                                                             { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
@@ -218,7 +218,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                     MultiUpdates.Add(new MultiUpdateClass
                                                     {
                                                         changeType = "itemAdded",
-                                                        itemId = $"{test.templateId}",
+                                                        itemId = $"Quest:{test.templateId}",
                                                         item = ItemObjectResponse
                                                     });
                                                 }

@@ -336,7 +336,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 {
                                                     { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                     { "level", -1 },
-                                                    { "item_seen", false },
+                                                    { "item_seen", true },
                                                     { "playlists", new List<object>() },
                                                     { "sent_new_notification", true },
                                                     { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },

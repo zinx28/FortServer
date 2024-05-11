@@ -289,13 +289,18 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                         templateId = $"ChallengeBundle:{kvp.BundleId}",
                                                         attributes = new Dictionary<string, object>
                                                         {
-                                                            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "max_level_bonus", 0 },
+                                                            { "has_unlock_by_completion", false },
+                                                            { "num_quests_completed", 0 },
                                                             { "level", 0 },
-                                                            { "item_seen", true },
+                                                            { "grantedquestinstanceids", TEST2FRFR.ToArray() },
+                                                            { "item_seen",  true },
+                                                            { "max_allowed_bundle_level", 0 },
+                                                            { "num_granted_bundle_quests", TEST2FRFR.Count() },
+                                                            { "max_level_bonus", 0 },
+                                                            { "challenge_bundle_schedule_id", ResponseId },
+                                                            { "num_progress_quests_completed", 0 },
                                                             { "xp", 0 },
-                                                            { "favorite", false },
-                                                            { "granted_bundles", TEST2FRFR.ToArray() }
+                                                            { "favorite", false }
                                                         },
                                                         quantity = 1,
                                                     };

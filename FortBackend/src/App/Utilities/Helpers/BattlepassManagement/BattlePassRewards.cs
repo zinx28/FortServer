@@ -150,14 +150,30 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                     if (BPQuestsArray.Count > 0)
                                     {
                                         var matchingQuestJsons = BPQuestsArray.Where(e => e.BundleSchedule == iteminfo.TemplateId).ToList();
+                                        var ResponseIG = new Dictionary<string, List<string>>();
 
                                         foreach (var QuestJson in matchingQuestJsons)
                                         {
                                             if (QuestJson == null) continue;
 
-                                            List<string> TEST2FRFR = new List<string>();
+                                            List<string> FindFirstOrDe = ResponseIG.FirstOrDefault(e => e.Key == QuestJson.BundleSchedule).Value;
+                                            if (FindFirstOrDe == null || FindFirstOrDe.Count == 0)
+                                            {
+                                                ResponseIG[QuestJson.BundleSchedule] = new List<string> { $"ChallengeBundle:{QuestJson.BundleId}" };
+                                            }
+                                            else
+                                            {
+                                                FindFirstOrDe.Add($"ChallengeBundle:{QuestJson.BundleId}");
+                                            }
+
+                                            List<string> OkayIG = new List<string>();
+                                            foreach (var test in QuestJson.FreeBundleObject)
+                                            {
+                                                OkayIG.Add("Quest:" + test.templateId);
+                                            }
                                             foreach (var test in QuestJson.PaidBundleObject)
                                             {
+                                                OkayIG.Add("Quest:" + test.templateId);
                                                 DailyQuestsData QyestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == test.templateId).Value;
 
                                                 if (QyestData == null)
@@ -225,9 +241,81 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                     });
                                                 }
                                             }
+
+                                            var TempValueIG = QuestJson.BundleSchedule;
+                                            if (!QuestJson.BundleSchedule.Contains("ChallengeBundleSchedule:"))
+                                            {
+                                                TempValueIG = $"ChallengeBundleSchedule:{QuestJson.BundleSchedule}";
+                                            }
+
+                                            var AthenaItemChallengeBundle = new
+                                            {
+                                                templateId = $"ChallengeBundle:{QuestJson.BundleId}",
+                                                attributes = new Dictionary<string, object>
+                                                {
+                                                    { "has_unlock_by_completion", false },
+                                                    { "num_quests_completed", 0 },
+                                                    { "level", 0 },
+                                                    { "grantedquestinstanceids", OkayIG.ToArray() },
+                                                    { "item_seen",  true },
+                                                    { "max_allowed_bundle_level", 0 },
+                                                    { "num_granted_bundle_quests", OkayIG.Count() },
+                                                    { "max_level_bonus", 0 },
+                                                    { "challenge_bundle_schedule_id", TempValueIG },
+                                                    { "num_progress_quests_completed", 0 },
+                                                    { "xp", 0 },
+                                                    { "favorite", false }
+                                                },
+                                                quantity = 1,
+                                            };
+
+
+                                            MultiUpdates.Add(new
+                                            {
+                                                changeType = "itemRemoved",
+                                                itemId = $"ChallengeBundle:{QuestJson.BundleId}",
+                                            });
+
+                                            MultiUpdates.Add(new MultiUpdateClass
+                                            {
+                                                changeType = "itemAdded",
+                                                itemId = $"ChallengeBundle:{QuestJson.BundleId}",
+                                                item = AthenaItemChallengeBundle
+                                            });
                                         }
-                                            // WeeklyQuestsJson QuestJson = BPQuestsArray.FirstOrDefault(e => e.BundleSchedule == iteminfo.TemplateId);
-                          
+                                        foreach (var kvp in ResponseIG)
+                                        {
+                                            var ItemTestObjectResponse = new
+                                            {
+                                                templateId = kvp.Key,
+                                                attributes = new Dictionary<string, object>
+                                                {
+                                                    { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                    { "max_level_bonus", 0 },
+                                                    { "level", 0 },
+                                                    { "item_seen", true },
+                                                    { "xp", 0 },
+                                                    { "favorite", false },
+                                                    { "granted_bundles", kvp.Value.ToArray() }
+                                                },
+                                                quantity = 1,
+                                            };
+
+                                            MultiUpdates.Add(new
+                                            {
+                                                changeType = "itemRemoved",
+                                                itemId = kvp.Key,
+                                            });
+
+                                            MultiUpdates.Add(new MultiUpdateClass
+                                            {
+                                                changeType = "itemAdded",
+                                                itemId = kvp.Key,
+                                                item = ItemTestObjectResponse
+                                            });
+                                        };
+                                        // WeeklyQuestsJson QuestJson = BPQuestsArray.FirstOrDefault(e => e.BundleSchedule == iteminfo.TemplateId);
+
                                     }
                                 }
                             }

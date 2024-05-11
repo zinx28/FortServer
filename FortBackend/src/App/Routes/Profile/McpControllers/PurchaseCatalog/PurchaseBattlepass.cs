@@ -169,10 +169,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                     {
                                                         if (WeeklyQuestsArray.Count > 0)
                                                         {
-
+                                                            List<string> ResponseIgIdrk = new List<string>();
+                                                            var ResponseId = "";
                                                             foreach (var kvp in WeeklyQuestsArray)
                                                             {
-                                                                
+                                                                ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
+                                                                ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
+
                                                                 foreach (var PaidBundles in kvp.PaidBundleObject)
                                                                 {
                                                                     // grantedquestinstanceids.Add(PaidBundles.templateId);
@@ -244,8 +247,40 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                         });
                                                                     }
 
+
+
                                                                 }
                                                             }
+
+                                                            var ItemTestObjectResponse = new
+                                                            {
+                                                                templateId = ResponseId,
+                                                                attributes = new Dictionary<string, object>
+                                                                {
+                                                                    { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                                    { "max_level_bonus", 0 },
+                                                                    { "level", 0 },
+                                                                    { "item_seen", true },
+                                                                    { "xp", 0 },
+                                                                    { "favorite", false },
+                                                                    { "granted_bundles", ResponseIgIdrk.ToArray() }
+                                                                },
+                                                                quantity = 1,
+                                                            };
+
+                                                            MultiUpdates.Add(new
+                                                            {
+                                                                changeType = "itemRemoved",
+                                                                itemId = ResponseId,
+                                                            });
+
+
+                                                            MultiUpdates.Add(new MultiUpdateClass
+                                                            {
+                                                                changeType = "itemAdded",
+                                                                itemId = ResponseId,
+                                                                item = ItemTestObjectResponse
+                                                            });
                                                         }
                                                     }
 

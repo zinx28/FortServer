@@ -393,7 +393,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 quantity = 1,
                             };
 
-                            MultiUpdates.Add(new MultiUpdateClass
+                            MultiUpdates.Add(new
                             {
                                 changeType = "itemRemoved",
                                 itemId = ResponseId,

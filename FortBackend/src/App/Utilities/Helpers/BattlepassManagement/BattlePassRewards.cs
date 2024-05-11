@@ -171,7 +171,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                         });
                                                     }
 
-                                                    FoundSeason.Quests.Add(test.templateId, new DailyQuestsData
+                                                    FoundSeason.Quests.Add($"Quest:{test.templateId}", new DailyQuestsData
                                                     {
                                                         templateId = $"Quest:{test.templateId}",
                                                         attributes = new DailyQuestsDataDB

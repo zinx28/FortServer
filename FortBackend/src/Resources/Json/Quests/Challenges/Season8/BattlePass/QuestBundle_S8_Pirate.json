@@ -1,0 +1,236 @@
+{
+  "BundleId": "QuestBundle_S8_Pirate",
+  "BundleSchedule": "ChallengeBundleSchedule:season8_paid_schedule",
+  "FreeBundleObject": [],
+  "PaidBundleObject": [
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_01",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_133_Pirate_StageB",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 10000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_02",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_134_Pirate_StageC",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 40000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_03",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_135_Pirate_StageD",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 80000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_04",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Pickaxe_ID_163_PirateOctopus",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 120000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_05",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_136_Pirate_StageE",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 160000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_06",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_137_Pirate_StageF",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 200000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_07",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_138_Pirate_StageG",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 240000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_08",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_139_Pirate_StageH",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 280000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_09",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_139_Pirate_StageH",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 320000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_01",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_140_Pirate_ClothingB",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_pirate_complete_weeklychallenges_01",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_02",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_141_Pirate_ClothingC",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_pirate_complete_weeklychallenges_02",
+          "Count": 25,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_03",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_142_Pirate_ClothingD",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_pirate_complete_weeklychallenges_03",
+          "Count": 45,
+          "Stage": -1
+        }
+      ]
+    }
+    
+  ]
+}

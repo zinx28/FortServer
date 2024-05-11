@@ -251,27 +251,100 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                                     // BELOW IS JUST FOR PAID
 
-                                    if (seasonObject.BookPurchased)
+                                    if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> BPQuestsArray))
                                     {
 
-                                        //QuestBundle_S8_Cumulative
-                                        //var AthenaItemDynamicData = new AthenaItemDynamic
-                                        //{
-                                        //    templateId = $"ChallengeBundleSchedule:",
-                                        //    attributes = new Dictionary<string, object>
-                                        //    {
-                                        //        { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                        //        { "max_level_bonus", 0 },
-                                        //        { "level", 0 },
-                                        //        { "item_seen", true },
-                                        //        { "xp", 0 },
-                                        //        { "favorite", false },
-                                        //        { "granted_bundles", ResponseIgIdrk.ToArray() }
-                                        //    },
-                                        //    quantity = 1,
-                                        //};
+                                        if (seasonObject.BookPurchased)
+                                        {
+                                            if (BPQuestsArray.Count > 0)
+                                            {
+                                                var ResponseIG = new Dictionary<string, List<string>>();
+                                                //List<string> ResponseIgIdrk = new List<string>();
+                                                // var ResponseId = "";
+                                                foreach (var kvp in BPQuestsArray)
+                                                {
+                                                    List<string> FindFirstOrDe = ResponseIG.FirstOrDefault(e => e.Key == kvp.BundleSchedule).Value;
+                                                    if (FindFirstOrDe == null || FindFirstOrDe.Count() == 0)
+                                                    {
+                                                        ResponseIG[kvp.BundleSchedule] = new List<string> { $"ChallengeBundle:{kvp.BundleId}" };
+                                                        //ResponseIG.Add(kvp.BundleSchedule, new List<string>
+                                                        //{
+                                                        //    kvp.BundleId
+                                                        //});
+                                                    }
+                                                    else
+                                                    {
+                                                        FindFirstOrDe.Add($"ChallengeBundle:{kvp.BundleId}");
+                                                    }
+                                                    // kvp.BundleSchedule
+                                                    List<string> TEST2FRFR = new List<string>();
+                                                    foreach (var test in kvp.PaidBundleObject)
+                                                    {
+                                                        TEST2FRFR.Add("Quest:" + test.templateId);
+                                                    }
 
-                                        //ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
+
+                                                    var AthenaItemBPData = new AthenaItemDynamic
+                                                    {
+                                                        templateId = $"ChallengeBundle:{kvp.BundleId}",
+                                                        attributes = new Dictionary<string, object>
+                                                        {
+                                                            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                            { "max_level_bonus", 0 },
+                                                            { "level", 0 },
+                                                            { "item_seen", true },
+                                                            { "xp", 0 },
+                                                            { "favorite", false },
+                                                            { "granted_bundles", TEST2FRFR.ToArray() }
+                                                        },
+                                                        quantity = 1,
+                                                    };
+
+                                                    ProfileChange.Profile.items.Add($"ChallengeBundle:{kvp.BundleId}", AthenaItemBPData);
+
+                                                }
+
+                                                foreach(var kvp in ResponseIG)
+                                                {
+                                                    var AthenaItemBPData = new AthenaItemDynamic
+                                                    {
+                                                        templateId = kvp.Key,
+                                                        attributes = new Dictionary<string, object>
+                                                        {
+                                                            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                            { "max_level_bonus", 0 },
+                                                            { "level", 0 },
+                                                            { "item_seen", true },
+                                                            { "xp", 0 },
+                                                            { "favorite", false },
+                                                            { "granted_bundles", kvp.Value.ToArray() }
+                                                        },
+                                                        quantity = 1,
+                                                    };
+
+                                                    ProfileChange.Profile.items.Add(kvp.Key, AthenaItemBPData);
+                                                }
+
+                                            }
+                                            //QuestBundle_S8_Cumulative
+                                            //var AthenaItemDynamicData = new AthenaItemDynamic
+                                            //{
+                                            //    templateId = $"ChallengeBundleSchedule:",
+                                            //    attributes = new Dictionary<string, object>
+                                            //    {
+                                            //        { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                            //        { "max_level_bonus", 0 },
+                                            //        { "level", 0 },
+                                            //        { "item_seen", true },
+                                            //        { "xp", 0 },
+                                            //        { "favorite", false },
+                                            //        { "granted_bundles", ResponseIgIdrk.ToArray() }
+                                            //    },
+                                            //    quantity = 1,
+                                            //};
+
+                                            //ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
+                                        }
                                     }
 
                                 }

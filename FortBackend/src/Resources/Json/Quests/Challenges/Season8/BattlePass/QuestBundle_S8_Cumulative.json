@@ -1,6 +1,6 @@
 {
   "BundleId": "QuestBundle_S8_Cumulative",
-  "BundleSchedule": "ChallengeBundleSchedule:season8_paid_schedule",
+  "BundleSchedule": "ChallengeBundleSchedule:season8_cumulative_schedule",
   "FreeBundleObject": [],
   "PaidBundleObject": [
     {
@@ -29,25 +29,268 @@
     {
       "templateId": "Quest_BR_S8_Cumulative_CollectTokens_001",
       "Rewards": {
-          "BattleStars": 0,
-          "Quest": [
-            {
-              "PrimaryAssetName": "Athena_Fake_LS_S8_01",
-              "Quantity": 1
-            },
-            {
-              "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest01",
-              "Quantity": 1
-            }
-          ]
-        },
-        "Objectives": [
+        "BattleStars": 0,
+        "Quest": [
           {
-            "BackendName": "battlepass_season8_cumulative_token01",
-            "Count": 1,
-            "Stage": -1
+            "PrimaryAssetName": "Athena_Fake_LS_S8_01",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest01",
+            "Quantity": 1
           }
         ]
-      }
-    ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_002",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_02",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest02",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_108_s8cumulative02",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token02",
+          "Count": 2,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_003",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_03",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest03",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_109_s8cumulative03",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token03",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_004",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_04",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest04",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_110_s8cumulative04",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token04",
+          "Count": 4,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_005",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_05",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest05",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_111_s8cumulative05",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token05",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_006",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_06",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest06",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_112_s8cumulative06",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token06",
+          "Count": 6,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_007",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_07",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest07",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_113_s8cumulative07",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token07",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_008",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_08",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest08",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_114_s8cumulative08",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token08",
+          "Count": 8,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_009",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_09",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest09",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_115_s8cumulative09",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token09",
+          "Count": 9,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_010",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Athena_Fake_LS_S8_10",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest10",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "AthenaLoadingScreen:lsid_116_s8cumulative10",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season8_cumulative_token10",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
 }

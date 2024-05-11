@@ -1,0 +1,247 @@
+{
+  "BundleId": "QuestBundle_S8_DragonNinja",
+  "BundleSchedule": "ChallengeBundleSchedule:season8_paid_schedule",
+  "FreeBundleObject": [],
+  "PaidBundleObject": [
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_01",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Pickaxe_ID_164_DragonNinja",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 20000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_02",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_143_DragonNinja_StageB",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 60000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_03",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_149_DragonNinja_DragonSkinB",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 100000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_04",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "AthenaToken_BRSeason08_DragonNinja_PickaxeStyles",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "CosmeticVariantToken:vtid_152_dragonninja_pickaxeb",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "CosmeticVariantToken:vtid_153_dragonninja_pickaxec",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "CosmeticVariantToken:vtid_154_dragonninja_pickaxed",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 140000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_05",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_144_DragonNinja_StageC",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 180000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_06",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_150_DragonNinja_DragonSkinC",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 220000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_07",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "EID_Shinobi",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 260000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_08",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_151_DragonNinja_DragonSkinD",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 300000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Gain_SeasonXP_09",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_145_DragonNinja_StageD",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 340000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Complete_WeeklyChallenges_01",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_146_DragonNinja_ClothingB",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_dragonninja_complete_weeklychallenges_01",
+          "Count": 15,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Complete_WeeklyChallenges_02",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_147_DragonNinja_ClothingC",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_dragonninja_complete_weeklychallenges_02",
+          "Count": 35,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_DragonNinja_Complete_WeeklyChallenges_03",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_148_DragonNinja_ClothingD",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_dragonninja_complete_weeklychallenges_03",
+          "Count": 60,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

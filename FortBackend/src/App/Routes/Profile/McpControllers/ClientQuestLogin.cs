@@ -51,9 +51,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 {
                     // Response Data ~ DONT CHANGE
                     List<object> MultiUpdates = new List<object>();
-                    int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
-                    int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
-
+                    int BaseRev = profileCacheEntry.AccountData.athena.RVN;
 
                     if (Season.Season == 0)
                     {
@@ -213,7 +211,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     // END OF CLAIMING QUEST SYTEM
 
+                    // START OF BATTLE PASS QUESTS SYSTEM
 
+                    // Until i work on a season that changes this (season 10 omg) i need to redo this
                     if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
                     {
                         if (WeeklyQuestsArray.Count > 0)
@@ -336,9 +336,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 {
                                                     { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                     { "level", -1 },
-                                                    { "item_seen", true },
+                                                    { "item_seen", false },
                                                     { "playlists", new List<object>() },
-                                                    { "sent_new_notification", true },
+                                                    { "sent_new_notification", false },
                                                     { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
                                                     { "xp_reward_scalar", 1 },
                                                     { "challenge_linked_quest_given", "" },
@@ -375,197 +375,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         }
                     }
-
-                        
-
-                        // START OF BATTLE PASS QUESTS SYSTEM
-
-                        // Until i work on a season that changes this (season 10 omg) i need to redo this
-                    //    if (FoundSeason.BookPurchased)
-                    //{
-                    //    bool NeedToAdd = false;
-                    //    if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
-                    //    {
-                    //        if(WeeklyQuestsArray.Count > 0) // W!
-                    //        {
-                    //            var BundleSchedule = "";
-                    //            List<string> BundleIds = new List<string>();
-                    //          //  string[] BundleIds = new string[0];
-                    //            foreach (WeeklyQuestsJson item in WeeklyQuestsArray)
-                    //            {
-                    //                DailyQuestsData dailyQuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == item.BundleId).Value;
-                    //                if (dailyQuestData == null)
-                    //                {
-                    //                    BundleIds.Add(item.BundleId);
-                    //                    BundleSchedule = item.BundleSchedule;
-                    //                    NeedToAdd = true;
-                    //                    List<string> grantedquestinstanceids = new List<string>();
-
-                    //                   // string[] grantedquestinstanceids = new string[0];
-
-                    //                    foreach (WeeklyObjects BundleItems in item.BundleObject)
-                    //                    {
-                    //                        grantedquestinstanceids.Add(BundleItems.templateId);
-                    //                        //new List<DailyQuestsObjectiveStates>
-
-                    //                        List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
-
-                    //                        foreach (WeeklyObjectsObjectives ObjectiveItems in BundleItems.Objectives)
-                    //                        {
-                    //                            QuestObjectStats.Add(new DailyQuestsObjectiveStates
-                    //                            {
-                    //                                Name = $"completion_{ObjectiveItems.BackendName}",
-                    //                                Value = 0
-                    //                            }) ;
-                    //                        }
-
-                    //                        FoundSeason.Quests.Add($"{BundleItems.templateId}", new DailyQuestsData
-                    //                        {
-                    //                            templateId = $"{BundleItems.templateId}",
-                    //                            attributes = new DailyQuestsDataDB
-                    //                            {
-                    //                                challenge_bundle_id = $"ChallengeBundle:{item.BundleId}",
-                    //                                sent_new_notification = false,
-                    //                                ObjectiveState = QuestObjectStats
-                    //                            },
-                    //                            quantity = 1
-                    //                        });
-
-                    //                        var ItemObjectResponse = new
-                    //                        {
-                    //                            templateId = $"{BundleItems.templateId}",
-                    //                            attributes = new Dictionary<string, object>
-                    //                            {
-                    //                                { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                    //                                { "level", -1 },
-                    //                                { "item_seen", false },
-                    //                                { "playlists", new List<object>() },
-                    //                                { "sent_new_notification", true },
-                    //                                { "challenge_bundle_id", "" },
-                    //                                { "xp_reward_scalar", 1 },
-                    //                                { "challenge_linked_quest_given", "" },
-                    //                                { "quest_pool", "" },
-                    //                                { "quest_state", "Active" },
-                    //                                { "bucket", "" },
-                    //                                { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                    //                                { "challenge_linked_quest_parent", "" },
-                    //                                { "max_level_bonus", 0 },
-                    //                                { "xp", 0 },
-                    //                                { "quest_rarity", "uncommon" },
-                    //                                { "favorite", false },
-                    //                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                    //                            },
-                    //                            quantity = 1
-                    //                        };
-
-                    //                        foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
-                    //                        {
-                    //                            ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                    //                        }
-
-                    //                        MultiUpdates.Add(new MultiUpdateClass
-                    //                        {
-                    //                            changeType = "itemAdded",
-                    //                            itemId = $"{BundleItems.templateId}",
-                    //                            item = ItemObjectResponse
-                    //                        });
-
-                    //                    }
-
-                    //                    FoundSeason.Quests.Add($"ChallengeBundle:{item.BundleId}", new DailyQuestsData
-                    //                    {
-                    //                        templateId = $"ChallengeBundle:{item.BundleId}",
-                    //                        attributes = new DailyQuestsDataDB
-                    //                        {
-                    //                            challenge_bundle_id = $"ChallengeBundleSchedule:{item.BundleSchedule}",
-                    //                            sent_new_notification = false,
-                    //                            grantedquestinstanceids = grantedquestinstanceids.ToArray(),
-                    //                            has_unlock_by_completion = false,
-                    //                            num_quests_completed = 0,
-                    //                            max_allowed_bundle_level = 0,
-                    //                            num_granted_bundle_quests = grantedquestinstanceids.Count(),
-                    //                            num_progress_quests_completed = 0
-                    //                        },
-                    //                        quantity = 1
-                    //                    });
-
-
-                    //                    MultiUpdates.Add(new MultiUpdateClass
-                    //                    {
-                    //                        changeType = "itemAdded",
-                    //                        itemId = $"ChallengeBundle:{item.BundleId}",
-                    //                        item = new
-                    //                        {
-                    //                            templateId = $"ChallengeBundle:{item.BundleId}",
-                    //                            attributes = new Dictionary<string, object>
-                    //                            {
-                    //                                { "has_unlock_by_completion", false },
-                    //                                { "num_quests_completed", 0 },
-                    //                                { "level", 0 },
-                    //                                { "grantedquestinstanceids", grantedquestinstanceids.ToArray() },
-                    //                                { "item_seen",  false },
-                    //                                { "max_allowed_bundle_level", 0 },
-                    //                                { "num_granted_bundle_quests", grantedquestinstanceids.Count() },
-                    //                                { "max_level_bonus", 0 },
-                    //                                { "challenge_bundle_schedule_id", 0 },
-                    //                                { "num_progress_quests_completed", 0 },
-                    //                                { "xp", 0 },
-                    //                                { "favorite", false }
-                    //                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                    //                            },
-                    //                            quantity = 1
-                    //                        }
-                    //                    });
-                    //                }
-                    //            }
-                    //            if (NeedToAdd)
-                    //            {
-                    //                FoundSeason.Quests.Add($"ChallengeBundleSchedule:{BundleSchedule}", new DailyQuestsData
-                    //                {
-                    //                    templateId = $"ChallengeBundleSchedule:{BundleSchedule}",
-                    //                    attributes = new DailyQuestsDataDB
-                    //                    {
-                    //                        // unlock_epoch = "" should juyst auto add 
-                    //                        grantedquestinstanceids = BundleIds.ToArray(),
-
-                    //                    },
-                    //                    quantity = 1
-                    //                });
-
-                    //                MultiUpdates.Add(new MultiUpdateClass
-                    //                {
-                    //                    changeType = "itemAdded",
-                    //                    itemId = $"ChallengeBundleSchedule:{BundleSchedule}",
-                    //                    item = new
-                    //                    {
-                    //                        templateId = $"ChallengeBundleSchedule:{BundleSchedule}",
-                    //                        attributes = new Dictionary<string, object>
-                    //                        {
-                    //                            { "unlock_epoch", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                    //                            { "max_level_bonus", 0 },
-                    //                            { "level", 0 },
-                    //                            { "item_seen", false },
-                    //                            { "xp", 0 },
-                    //                            { "favorite", false },
-                    //                            { "granted_bundles",  BundleIds.ToArray() }
-                    //                            // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                    //                        },
-                    //                        quantity = 1
-                    //                    }
-                    //                });
-                    //            }
-                              
-
-                    //            Logger.Log("SHOULD OF ADDED THE CURRENT QUESTS (THIS BUILD ISNT PROPER AND WILL BE SKUNKED)", "TEST LCIENTQUSTLOGIN");
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        // rem,ove error in the future after "TESTIN"
-                    //        Logger.Error("NO QUESTS ON THIS SEASON");
-                    //    }
-                    //}
-
 
                     // END OF BATTLE PASS QUESTS SYSTEM
 
@@ -701,12 +510,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     // END OF LEVEL SYTEM & XP
 
-
-
-
-
                     if (MultiUpdates.Count > 0)
                     {
+                        profileCacheEntry.LastUpdated = DateTime.Now;
                         profileCacheEntry.AccountData.athena.RVN += 1;
                         profileCacheEntry.AccountData.athena.CommandRevision += 1;
                     }
@@ -727,6 +533,18 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     //    serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
                     //    responseVersion = 1
                     //}));
+
+                    string mcpJson = Newtonsoft.Json.JsonConvert.SerializeObject(new Mcp
+                    {
+                        profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                        profileId = ProfileId,
+                        profileChanges = MultiUpdates,
+                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                        serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        responseVersion = 1
+                    }, Formatting.Indented);
+                    Console.WriteLine(mcpJson);
+
 
                     return new Mcp
                     {

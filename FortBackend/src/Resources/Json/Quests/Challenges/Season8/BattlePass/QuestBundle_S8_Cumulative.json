@@ -1,0 +1,53 @@
+{
+  "BundleId": "QuestBundle_S8_Cumulative",
+  "BundleSchedule": "ChallengeBundleSchedule:season8_paid_schedule",
+  "FreeBundleObject": [],
+  "PaidBundleObject": [
+    {
+      "templateId": "Quest_BR_S8_Cumulative_Complete_WeeklyChallenges_01",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "CID_378_Athena_Commando_M_FurnaceFace",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "Season8_Ruin_Schedule",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_S8cumulative_complete_weeklychallenges_01",
+          "Count": 55,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Cumulative_CollectTokens_001",
+      "Rewards": {
+          "BattleStars": 0,
+          "Quest": [
+            {
+              "PrimaryAssetName": "Athena_Fake_LS_S8_01",
+              "Quantity": 1
+            },
+            {
+              "PrimaryAssetName": "Quest_BR_S8_Cumulative_Quest01",
+              "Quantity": 1
+            }
+          ]
+        },
+        "Objectives": [
+          {
+            "BackendName": "battlepass_season8_cumulative_token01",
+            "Count": 1,
+            "Stage": -1
+          }
+        ]
+      }
+    ]
+}

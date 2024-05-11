@@ -248,8 +248,36 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     };
 
                                     ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
+
+                                    // BELOW IS JUST FOR PAID
+
+                                    if (seasonObject.BookPurchased)
+                                    {
+
+                                        //QuestBundle_S8_Cumulative
+                                        //var AthenaItemDynamicData = new AthenaItemDynamic
+                                        //{
+                                        //    templateId = $"ChallengeBundleSchedule:",
+                                        //    attributes = new Dictionary<string, object>
+                                        //    {
+                                        //        { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                        //        { "max_level_bonus", 0 },
+                                        //        { "level", 0 },
+                                        //        { "item_seen", true },
+                                        //        { "xp", 0 },
+                                        //        { "favorite", false },
+                                        //        { "granted_bundles", ResponseIgIdrk.ToArray() }
+                                        //    },
+                                        //    quantity = 1,
+                                        //};
+
+                                        //ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
+                                    }
+
                                 }
                             }
+
+                            
 
                             foreach (var kvp in seasonObject.Quests)
                             {
@@ -331,6 +359,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                                 ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
                             }
+
+
 
                             foreach (var kvp in profileCacheEntry.AccountData.athena.loadouts_data)
                             {

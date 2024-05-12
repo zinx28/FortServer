@@ -194,10 +194,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
                                                                         foreach (WeeklyObjectsObjectives ObjectiveItems in PaidBundles.Objectives)
                                                                         {
+                                                                            //season_xp_gained
+                                                                          
                                                                             QuestObjectStats.Add(new DailyQuestsObjectiveStates
                                                                             {
                                                                                 Name = $"completion_{ObjectiveItems.BackendName}",
-                                                                                Value = 0
+                                                                                Value = 0,
+                                                                                MaxValue = ObjectiveItems.Count
                                                                             });
                                                                         }
 

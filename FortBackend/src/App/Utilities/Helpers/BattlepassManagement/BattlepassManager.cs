@@ -12,6 +12,11 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
         public static Dictionary<int, StoreBattlepassPages> BattlePasses = new Dictionary<int, StoreBattlepassPages>();
         public static Dictionary<int, List<Battlepass>> FreeBattlePassItems = new Dictionary<int, List<Battlepass>>();
         public static Dictionary<int, List<Battlepass>> PaidBattlePassItems = new Dictionary<int, List<Battlepass>>();
+
+        public static Dictionary<int, List<SeasonXP>> SeasonBattlePassXPItems = new Dictionary<int, List<SeasonXP>>();
+
+        public static Dictionary<int, List<SeasonBP>> SeasonBattleStarsItems = new Dictionary<int, List<SeasonBP>>();
+
         public static void Init()
         {
             string[] seasonFolders = Directory.GetDirectories(Path.Combine(PathConstants.BaseDir, $"json/Season"));
@@ -21,6 +26,52 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 if (!seasonFolder.Contains("Season")) continue;
                 //Console.WriteLine(seasonFolder);
                 int season = int.Parse(seasonFolder.Split("\\Season")[1]);
+
+
+                var SeasonXPFolder = Path.Combine(seasonFolder, "SeasonXP.json");
+
+                if (File.Exists(SeasonXPFolder))
+                {
+                    string seasonData = File.ReadAllText(SeasonXPFolder);
+
+                    if (!string.IsNullOrEmpty(seasonData))
+                    {
+                        List<SeasonXP> seasonXp = JsonConvert.DeserializeObject<List<SeasonXP>>(seasonData)!;
+                        if (seasonXp != null && seasonXp.Count > 0)
+                        {
+                            SeasonBattlePassXPItems.Add(season, seasonXp);
+                        }
+                        else
+                        {
+                            Logger.Error($"Failed To Load {season}", "BattlepassManager");
+                        }
+                        //JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
+                    }
+                }
+                // string battlepassFilePath = Path.Combine(seasonFolder, "BattlePass.json");
+
+                var SeasonBattleStarsFolder = Path.Combine(seasonFolder, "SeasonBP.json");
+
+                if (File.Exists(SeasonBattleStarsFolder))
+                {
+                    string seasonData = File.ReadAllText(SeasonBattleStarsFolder);
+
+                    if (!string.IsNullOrEmpty(seasonData))
+                    {
+                        List<SeasonBP> seasonXp = JsonConvert.DeserializeObject<List<SeasonBP>>(seasonData)!;
+                        if (seasonXp != null && seasonXp.Count > 0)
+                        {
+                            SeasonBattleStarsItems.Add(season, seasonXp);
+                        }
+                        else
+                        {
+                            Logger.Error($"Failed To Load {season}", "BattlepassManager");
+                        }
+                        //JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
+                    }
+                }
+
+
                 string battlepassFilePath = Path.Combine(seasonFolder, "BattlePass.json");
 
                 if (File.Exists(battlepassFilePath))
@@ -108,9 +159,13 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 }
             }
 
+            ///JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
+
             Logger.Log($"Loaded BattlePasses [{BattlePasses.Count}/{seasonFolders.Count()}]", "BattlpassManager");
             Logger.Log($"Loaded FreeBattlePasses [{FreeBattlePassItems.Count}/{seasonFolders.Count()}]", "BattlpassManager");
             Logger.Log($"Loaded PaidBattlePasses [{PaidBattlePassItems.Count}/{seasonFolders.Count()}]", "BattlpassManager");
+            Logger.Log($"Loaded SeasonBattlePassXPItems [{SeasonBattlePassXPItems.Count}/{seasonFolders.Count()}]", "BattlpassManager");
+            Logger.Log($"Loaded SeasonBattleStarsItems [{SeasonBattleStarsItems.Count}/{seasonFolders.Count()}]", "BattlpassManager");
         }
     }
 }

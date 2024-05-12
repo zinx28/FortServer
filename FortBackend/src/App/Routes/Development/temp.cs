@@ -9,6 +9,7 @@ using FortLibrary;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortLibrary.Dynamics;
 using FortBackend.src.App.Utilities.Constants;
+using FortLibrary.MongoDB.Module;
 
 namespace FortBackend.src.App.Routes.Development
 {
@@ -52,6 +53,39 @@ namespace FortBackend.src.App.Routes.Development
         //}
 
         // stuff that are useless
+
+        /* int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level - 1)).XpTotal;
+            int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal;*/
+
+        [HttpGet("/CalXP/{accountId}")]
+        public async Task<IActionResult> AllXP(string accountId)
+        {
+            ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+            if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+            {
+                if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == 8))
+                {
+                    SeasonClass FoundSeason = profileCacheEntry.AccountData.commoncore?.Seasons.FirstOrDefault(x => x.SeasonNumber == 8)!;
+                    Console.WriteLine(FoundSeason.SeasonNumber);
+
+                    Console.WriteLine(FoundSeason.SeasonXP);
+                    Console.WriteLine(FoundSeason.Level);
+                    List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+
+                    int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
+                    int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+
+
+                    Console.WriteLine(BeforeLevelXP);
+
+
+                    Console.WriteLine(CurrentLevelXP);
+
+                }
+
+            }
+            return Ok(new { });
+        }
 
         [HttpGet("/bp/free")]
         public async Task<IActionResult> TestA()

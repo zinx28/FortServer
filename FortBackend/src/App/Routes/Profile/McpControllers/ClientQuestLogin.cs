@@ -20,6 +20,7 @@ using FortBackend.src.App.Utilities.Constants;
 using FortLibrary.EpicResponses.Profile.Query;
 using MongoDB.Bson.IO;
 using FortLibrary.Shop;
+using Discord;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -242,7 +243,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             QuestObjectStats.Add(new DailyQuestsObjectiveStates
                                             {
                                                 Name = $"completion_{ObjectiveItems.BackendName}",
-                                                Value = 0
+                                                Value = 0,
+                                                MaxValue = ObjectiveItems.Count
                                             });
                                         }
 
@@ -253,7 +255,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             {
                                                 challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
                                                 sent_new_notification = false,
-                                                ObjectiveState = QuestObjectStats
+                                                ObjectiveState = QuestObjectStats,
                                             },
                                             quantity = 1
                                         });
@@ -316,7 +318,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 QuestObjectStats.Add(new DailyQuestsObjectiveStates
                                                 {
                                                     Name = $"completion_{ObjectiveItems.BackendName}",
-                                                    Value = 0
+                                                    Value = 0,
+                                                    MaxValue = ObjectiveItems.Count
                                                 });
                                             }
 
@@ -516,16 +519,106 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         }
 
 
-                            
+                        List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+                        int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
+                        int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+
+                        foreach (var Quests in FoundSeason.Quests)
+                        {
+                            int TempIntNum = 0;
+                            bool NeedUpdating = false;
+                            foreach (var objectiveState in Quests.Value.attributes.ObjectiveState)
+                            {
+                                if (objectiveState.Name.Contains("xp"))
+                                {
+                                    
+                                    DailyQuestsObjectiveStates ValueIsSoProper = FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum];
+                                    if (CurrentLevelXP >= objectiveState.Value)
+                                    {
+                                        NeedUpdating = true;
+                                        FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = ValueIsSoProper.MaxValue;
+                                    }
+                                    else
+                                    {
+                                        if(FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value != CurrentLevelXP)
+                                        {
+                                            NeedUpdating = true;
+                                        }
+
+                                        FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = CurrentLevelXP;
+                                    }
+
+                                    FoundSeason.Quests[Quests.Key].attributes.creation_time = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+                                    //DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+
+                                }
+
+                                TempIntNum += 1;
+                            }
+
+                            // IF THERE IS A BETTER METHOD PLEASE PULL REQUEST OR TELL ME (or ill just look in the future)
+                            if (NeedUpdating)
+                            {
+                                var AthenaItemChallengeBundle = new
+                                {
+                                    templateId = Quests.Value.templateId,
+                                    attributes = new Dictionary<string, object>
+                                    {
+                                        { "creation_time", Quests.Value.attributes.creation_time },
+                                        { "level", -1 },
+                                        { "item_seen", false },
+                                        { "playlists", new List<object>() },
+                                        { "sent_new_notification", true },
+                                        { "challenge_bundle_id", Quests.Value.attributes.challenge_bundle_id },
+                                        { "xp_reward_scalar", 1 },
+                                        { "challenge_linked_quest_given", "" },
+                                        { "quest_pool", "" },
+                                        { "quest_state", "Active" },
+                                        { "bucket", "" },
+                                        { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                        { "challenge_linked_quest_parent", "" },
+                                        { "max_level_bonus", 0 },
+                                        { "xp", 0 },
+                                        { "quest_rarity", "uncommon" },
+                                        { "favorite", false },
+                                    },
+                                    quantity = 1,
+                                };
+
+                                foreach (DailyQuestsObjectiveStates yklist in FoundSeason.Quests[Quests.Key].attributes.ObjectiveState)
+                                {
+                                    AthenaItemChallengeBundle.attributes.Add(yklist.Name, yklist.Value);
+                                }
+
+                                MultiUpdates.Add(new
+                                {
+                                    changeType = "itemRemoved",
+                                    itemId = Quests.Value.templateId,
+                                });
+
+                                MultiUpdates.Add(new MultiUpdateClass
+                                {
+                                    changeType = "itemAdded",
+                                    itemId = Quests.Value.templateId,
+                                    item = AthenaItemChallengeBundle
+                                });
+                            }
+                          
+                        }
+
+
+
 
                         // END OF BATTLE PASS SYSTEM
+
+                        /// TO-DO ONLY USE THIS IF THE STAT IS CHANGING
 
                         // need to check if they need to actually need to be updated
                         MultiUpdates.Add(new
                         {
                             changeType = "statModified",
                             name = "level",
-                            value = FoundSeason.BookLevel
+                            value = FoundSeason.Level
                         });
 
                         MultiUpdates.Add(new

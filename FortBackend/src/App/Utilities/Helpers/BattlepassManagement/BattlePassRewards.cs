@@ -7,6 +7,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary.MongoDB.Module;
 using FortLibrary.Shop;
+using System.Linq;
 
 namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 {
@@ -14,6 +15,11 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
     {
         public static async Task<(ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems, List<NotificationsItemsClassOG> applyProfileChanges)> Init(List<ItemInfo> Rewards, ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems, List<NotificationsItemsClassOG> applyProfileChanges = null)
         {
+            List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+            int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
+            int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+
+
             foreach (ItemInfo iteminfo in Rewards)
             {
                 if (!profileCacheEntry.AccountData.athena.Items.ContainsKey(iteminfo.TemplateId))
@@ -172,6 +178,12 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                 OkayIG.Add("Quest:" + test.templateId);
                                             }
 
+                                            int CurrentXP = 0;
+
+                                           
+                                          //  FoundSeason.Level
+
+
                                             foreach (var test in QuestJson.PaidBundleObject)
                                             {
                                                 OkayIG.Add("Quest:" + test.templateId);
@@ -180,14 +192,42 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                 if (QyestData == null)
                                                 {
                                                     List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
-
+                                                  //  int AmountCompleted = 0;
                                                     foreach (WeeklyObjectsObjectives ObjectiveItems in test.Objectives)
                                                     {
-                                                        QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                        //CurrentLevelXP
+                                                        if(ObjectiveItems.BackendName.ToLower().Contains("season_xp"))
                                                         {
-                                                            Name = $"completion_{ObjectiveItems.BackendName}",
-                                                            Value = 0
-                                                        });
+                                                            if (CurrentLevelXP >= ObjectiveItems.Count)
+                                                            {
+                                                              //  AmountCompleted += 1;
+                                                                QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                                {
+                                                                    Name = $"completion_{ObjectiveItems.BackendName}",
+                                                                    Value = ObjectiveItems.Count,
+                                                                    MaxValue = ObjectiveItems.Count
+                                                                });
+                                                            }
+                                                            else
+                                                            {
+                                                                QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                                {
+                                                                    Name = $"completion_{ObjectiveItems.BackendName}",
+                                                                    Value = CurrentLevelXP,
+                                                                    MaxValue = ObjectiveItems.Count
+                                                                });
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                            {
+                                                                Name = $"completion_{ObjectiveItems.BackendName}",
+                                                                Value = 0,
+                                                                MaxValue = ObjectiveItems.Count
+                                                            });
+                                                        }
+                                                       
                                                     }
 
                                                     FoundSeason.Quests.Add($"Quest:{test.templateId}", new DailyQuestsData

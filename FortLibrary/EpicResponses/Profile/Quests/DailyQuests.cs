@@ -87,6 +87,7 @@ namespace FortLibrary.EpicResponses.Profile.Quests
         [JsonProperty("favorite")]
         public bool favorite { get; set; } = false;
 
+
         // THIS IS NORMALLY DYNAMIC BUT BaCkEnD hAtEs ThAt IdEa
 
         public List<DailyQuestsObjectiveStates> ObjectiveState { get; set; } = new List<DailyQuestsObjectiveStates>();
@@ -96,6 +97,7 @@ namespace FortLibrary.EpicResponses.Profile.Quests
     {
         public string Name { get; set; } = string.Empty;
         public int Value { get; set; } = 0;
+        public int MaxValue { get; set; } = 0;
     }
 
     public class DailyQuestsDataAttributes

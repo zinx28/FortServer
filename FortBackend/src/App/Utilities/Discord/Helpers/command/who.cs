@@ -160,39 +160,41 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 attributes = new GiftCommonCoreItemAttributes { },
                                                 quantity = 1
                                             });
+                                            profileCacheEntry.AccountData.commoncore.RVN += 1;
+                                            profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
 
-                                            //Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+                                            Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
 
-                                            //if (Client != null)
-                                            //{
-                                            //    string xmlMessage;
-                                            //    byte[] buffer;
-                                            //    WebSocket webSocket = Client.Game_Client;
+                                            if (Client != null)
+                                            {
+                                                string xmlMessage;
+                                                byte[] buffer;
+                                                WebSocket webSocket = Client.Game_Client;
 
-                                            //    if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                            //    {
-                                            //        XNamespace clientNs = "jabber:client";
+                                                if (webSocket != null && webSocket.State == WebSocketState.Open)
+                                                {
+                                                    XNamespace clientNs = "jabber:client";
 
-                                            //        var message = new XElement(clientNs + "message",
-                                            //            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                            //            new XAttribute("to", profileCacheEntry.AccountId),
-                                            //            new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                            //            {
-                                            //                payload = new { },
-                                            //                type = "com.epicgames.gift.received",
-                                            //                timestamp = DateTime.UtcNow.ToString("o")
-                                            //            }))
-                                            //        );
+                                                    var message = new XElement(clientNs + "message",
+                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                        new XAttribute("to", profileCacheEntry.AccountId),
+                                                        new XElement(clientNs + "body", JsonConvert.SerializeObject(new
+                                                        {
+                                                            payload = new { },
+                                                            type = "com.epicgames.gift.received",
+                                                            timestamp = DateTime.UtcNow.ToString("o")
+                                                        }))
+                                                    );
 
-                                            //        xmlMessage = message.ToString();
-                                            //        buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                                    xmlMessage = message.ToString();
+                                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                            //        Console.WriteLine(xmlMessage);
+                                                    Console.WriteLine(xmlMessage);
 
-                                            //        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                            //    }
+                                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                                }
 
-                                            //}
+                                            }
                                         }
                                     }
                                   

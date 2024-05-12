@@ -628,11 +628,21 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             value = FoundSeason.BookLevel
                         });
 
+                        //book_xp
+
+
+                        MultiUpdates.Add(new
+                        {
+                            changeType = "itemQuantityChanged",
+                            itemId = "book_xp",
+                            quantity = FoundSeason.BookXP
+                        });
+
                         MultiUpdates.Add(new
                         {
                             changeType = "itemQuantityChanged",
                             itemId = "xp",
-                            quantity = FoundSeason.BookXP
+                            quantity = FoundSeason.Level
                         });
 
                        

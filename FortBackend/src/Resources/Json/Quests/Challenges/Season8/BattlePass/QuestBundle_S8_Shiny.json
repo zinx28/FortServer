@@ -1,0 +1,125 @@
+{
+  "BundleId": "QuestBundle_S8_Shiny",
+  "BundleSchedule": "ChallengeBundleSchedule:season8_shiny_schedule",
+  "FreeBundleObject": [],
+  "PaidBundleObject": [
+    {
+      "templateId": "Quest_BR_S8_Shiny_Outlive_01",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "Pickaxe_ID_166_Shiny",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_shiny_outlive_01",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Shiny_Outlive_02",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_155_Shiny_ClothingB",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_shiny_outlive_02",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Shiny_Outlive_03",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "BID_217_ShinyFemale",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_shiny_outlive_03",
+          "Count": 2500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Shiny_Outlive_04",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_156_Shiny_ClothingC",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_shiny_outlive_04",
+          "Count": 7500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Shiny_Outlive_05",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "EID_Shiny",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_shiny_outlive_05",
+          "Count": 15000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest_BR_S8_Shiny_Outlive_06",
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "PrimaryAssetName": "VTID_157_Shiny_ClothingD",
+            "Quantity": 1
+          },
+          {
+            "PrimaryAssetName": "VTID_158_Shiny_BackBlingB",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_shiny_outlive_06",
+          "Count": 25000,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

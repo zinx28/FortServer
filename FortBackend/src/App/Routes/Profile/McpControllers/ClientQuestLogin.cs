@@ -21,6 +21,11 @@ using FortLibrary.EpicResponses.Profile.Query;
 using MongoDB.Bson.IO;
 using FortLibrary.Shop;
 using Discord;
+using FortBackend.src.XMPP.Data;
+using FortLibrary.XMPP;
+using System.Net.WebSockets;
+using System.Text;
+using System.Xml.Linq;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -52,6 +57,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 {
                     // Response Data ~ DONT CHANGE
                     List<object> MultiUpdates = new List<object>();
+                    List<object> MultiUpdatesForCommonCore = new List<object>();
                     int BaseRev = profileCacheEntry.AccountData.athena.RVN;
 
                     if (Season.Season == 0)
@@ -453,24 +459,108 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                         {
                                             if (PaidTier.Count > 0)
                                             {
+                                                List<NotificationsItemsClassOG> unlessfunc = new List<NotificationsItemsClassOG>();
                                                 foreach (var BattlePass in FreeTier)
                                                 {
                                                     if (!NeedItems) break;
-                                                    //if (BookLevelOG <= BattlePass.Level) continue;
+                                                    if (BattlePass.Level <= BookLevelOG) continue;
                                                     if (BattlePass.Level > FoundSeason.BookLevel) break;
 
-                                                    List<NotificationsItemsClassOG> unlessfunc;
+                                                   // List<NotificationsItemsClassOG> unlessfunc;
                                                     (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
                                                 }
 
                                                 foreach (var BattlePass in PaidTier)
                                                 {
                                                     if (!NeedItems) break;
-                                                    //if (BookLevelOG <= BattlePass.Level) continue;
+                                                    if (BattlePass.Level <= BookLevelOG) continue;
                                                     if (BattlePass.Level > FoundSeason.BookLevel) break;
 
-                                                    List<NotificationsItemsClassOG> unlessfunc;
+                                                   // List<NotificationsItemsClassOG> unlessfunc;
                                                     (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
+                                                }
+
+
+                                                if (NeedItems)
+                                                {
+                                                    var RandomOfferId = Guid.NewGuid().ToString();
+
+                                                    profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
+                                                    {
+                                                        templateId = "GiftBox:gb_battlepass",
+                                                        attributes = new GiftCommonCoreItemAttributes
+                                                        {
+                                                            lootList = unlessfunc
+                                                        },
+                                                        quantity = 1
+                                                    });
+
+                                                    var BeofreUpdate = profileCacheEntry.AccountData.commoncore.RVN;
+                                                    profileCacheEntry.AccountData.commoncore.RVN += 1;
+                                                    profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+
+                                                    MultiUpdatesForCommonCore.Add(new
+                                                    {
+                                                        profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
+                                                        profileId = "common_core",
+                                                        profileChangesBaseRevision = BeofreUpdate,
+                                                        profileChanges = new List<object>() {
+                                                        new ApplyProfileChangesClassV2
+                                                        {
+                                                            changeType = "itemAdded",
+                                                            itemId = RandomOfferId,
+                                                            item = new
+                                                            {
+                                                                templateId = "GiftBox:gb_battlepass",
+                                                                attributes = new
+                                                                {
+                                                                    max_level_bonus = 0,
+                                                                    fromAccountId = "",
+                                                                    lootList = unlessfunc
+                                                                },
+                                                                quantity = 1
+                                                            }
+                                                        }
+                                                    },
+                                                        profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
+                                                    });
+
+
+                                                    if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                                                    {
+                                                        Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+
+                                                        if (Client != null)
+                                                        {
+                                                            string xmlMessage;
+                                                            byte[] buffer;
+                                                            WebSocket webSocket = Client.Game_Client;
+                                                            Console.WriteLine(webSocket.State);
+                                                            if (webSocket != null && webSocket.State == WebSocketState.Open)
+                                                            {
+                                                                XNamespace clientNs = "jabber:client";
+
+                                                                var message = new XElement(clientNs + "message",
+                                                                  new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                                  new XAttribute("to", profileCacheEntry.AccountId),
+                                                                  new XElement(clientNs + "body", Newtonsoft.Json.JsonConvert.SerializeObject(new
+                                                                  {
+                                                                      payload = new { },
+                                                                      type = "com.epicgames.gift.received",
+                                                                      timestamp = DateTime.UtcNow.ToString("o")
+                                                                  }))
+                                                                );
+
+                                                                xmlMessage = message.ToString();
+                                                                buffer = Encoding.UTF8.GetBytes(xmlMessage);
+
+                                                                Console.WriteLine(xmlMessage);
+
+                                                                await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                                            }
+
+                                                        }
+                                                    }
                                                 }
                                             }
                                             else
@@ -489,7 +579,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                         foreach (var BattlePass in FreeTier)
                                         {
                                             if (!NeedItems) break;
-                                            if (BookLevelOG <= BattlePass.Level) continue;
+                                            if (BattlePass.Level <= BookLevelOG) continue;
                                             if (BattlePass.Level > FoundSeason.Level) break;
 
                                             List<NotificationsItemsClassOG> unlessfunc;
@@ -520,8 +610,16 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
 
                         List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
-                        int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.BookLevel)).XpTotal;
-                        int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+                        var beforeLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.Level == FoundSeason.Level);
+                        //
+                        int CurrentLevelXP;
+                        if (beforeLevelXPElement != null && SeasonXpIg.IndexOf(beforeLevelXPElement) == SeasonXpIg.Count - 1)
+                        {
+                            FoundSeason.SeasonXP = 0;
+                        }
+
+                        CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+
 
                         foreach (var Quests in FoundSeason.Quests)
                         {
@@ -529,23 +627,22 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             bool NeedUpdating = false;
                             foreach (var objectiveState in Quests.Value.attributes.ObjectiveState)
                             {
-                                if (objectiveState.Name.Contains("xp"))
+                                if (objectiveState.Name.Contains("_xp_"))
                                 {
                                     
                                     DailyQuestsObjectiveStates ValueIsSoProper = FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum];
-                                    if (CurrentLevelXP >= objectiveState.Value)
+                                    if (CurrentLevelXP >= objectiveState.MaxValue)
                                     {
                                         NeedUpdating = true;
                                         FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = ValueIsSoProper.MaxValue;
                                     }
                                     else
                                     {
-                                        if(FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value != CurrentLevelXP)
+                                        if (FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value != CurrentLevelXP)
                                         {
                                             NeedUpdating = true;
+                                            FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = CurrentLevelXP;
                                         }
-
-                                        FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = CurrentLevelXP;
                                     }
 
                                     FoundSeason.Quests[Quests.Key].attributes.creation_time = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
@@ -680,6 +777,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         profileId = ProfileId,
                         profileChangesBaseRevision = BaseRev,
                         profileChanges = MultiUpdates,
+                        multiUpdate = MultiUpdatesForCommonCore,
                         profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                         serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         responseVersion = 1
@@ -693,6 +791,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         profileId = ProfileId,
                         profileChangesBaseRevision = BaseRev,
                         profileChanges = MultiUpdates,
+                        multiUpdate = MultiUpdatesForCommonCore,
                         profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                         serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         responseVersion = 1

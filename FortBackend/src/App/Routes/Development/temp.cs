@@ -72,15 +72,40 @@ namespace FortBackend.src.App.Routes.Development
                     Console.WriteLine(FoundSeason.Level);
                     List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
 
-                    int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
-                    int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+                   // List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+                    //int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.BookLevel)).XpTotal;
+
+                    var beforeLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.Level == FoundSeason.Level);
+                    //
+                    int CurrentLevelXP;
+                    if (beforeLevelXPElement != null && SeasonXpIg.IndexOf(beforeLevelXPElement) == SeasonXpIg.Count - 1)
+                    {
+                        FoundSeason.SeasonXP = 0;
+                    }
+
+                    CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+                 
+                    //int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
+                    //int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
 
 
-                    Console.WriteLine(BeforeLevelXP);
+                    Console.WriteLine(beforeLevelXPElement.XpTotal);
 
 
                     Console.WriteLine(CurrentLevelXP);
 
+                    Console.WriteLine("CURRENT LEVEL~ cal how much to level up");
+
+                    Console.WriteLine(FoundSeason.Level);
+                    Console.WriteLine(FoundSeason.BookXP);
+                    bool uh = false;
+                    (FoundSeason, uh) = await LevelUpdater.Init(FoundSeason.SeasonNumber, FoundSeason, uh);
+
+                    Console.WriteLine(uh);
+                    Console.WriteLine(FoundSeason.Level);
+
+                    Console.WriteLine(FoundSeason.BookLevel);
+                    Console.WriteLine(FoundSeason.BookXP);
                 }
 
             }

@@ -19,13 +19,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
             {
                 if (Season > 1 && Season <= 10)
                 {
-                    if ((FoundSeason.SeasonNumber + 1) > 100)
-                    {
-
-                    }else
-                    {
-                        Logger.Error("Missing Season Battlestars data on " + Season); // shouldn't happen?
-                    }
+                    Logger.Error("Missing Season Battlestars data on " + Season); // shouldn't happen?
                 }
 
             }
@@ -39,7 +33,21 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         if (FoundSeason.SeasonXP > item.XpToNextLevel)
                         {
                             FoundSeason.SeasonXP -= item.XpToNextLevel;
+
+                            if(FoundSeason.SeasonXP < 0)
+                            {
+                                FoundSeason.SeasonXP = 0;
+                            }
+
                             FoundSeason.Level += 1;
+
+                            if (Season > 1 && Season <= 10)
+                            {
+                                if(FoundSeason.Level > 100)
+                                {
+                                    FoundSeason.Level = 100; // NO BYPASSING
+                                }
+                            }
 
                             // i need to set for season 1!!!
                             if (Season <= 1)
@@ -47,6 +55,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 FoundSeason.BookLevel = FoundSeason.Level;
                             }
 
+                            //Console.WriteLine("LERVEL " + seasonBPStars.Count().ToString());
                             if (seasonBPStars != null && seasonBPStars.Count > 0)
                             {
                                 SeasonBP SeasonBpObject = seasonBPStars.FirstOrDefault(e => e.Level == FoundSeason.Level)!;
@@ -54,6 +63,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 if (SeasonBpObject != null)
                                 {
                                     FoundSeason.BookXP += SeasonBpObject.BattleStars;
+                                    //Console.WriteLine("d " + FoundSeason.BookXP);
                                 }
                             }
 
@@ -72,7 +82,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         }
 
                         // Done
-                        if (FoundSeason.BookXP < item.XpToNextLevel) break;
+                        if (FoundSeason.SeasonXP < item.XpToNextLevel) break;
                     }
                 }
 
@@ -83,10 +93,18 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 {
                     while (FoundSeason.BookXP >= 10)
                     {
+                        if (FoundSeason.BookLevel == 100) break;
+
                         FoundSeason.BookXP -= 10;
                         FoundSeason.BookLevel += 1;
                         NeedItems = true;
                         // require to give the items 
+                    }
+
+                    if (FoundSeason.BookLevel > 100)
+                    {
+                        FoundSeason.BookLevel = 100;
+                        //NeedItems = true;
                     }
                 }
             }

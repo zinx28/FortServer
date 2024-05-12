@@ -493,5 +493,10 @@
     "Level": 99,
     "XpToNextLevel": 54800,
     "XpTotal": 1158950
+  },
+  {
+    "Level": 100,
+    "XpToNextLevel": 0,
+    "XpTotal": 1213750
   }
 ]

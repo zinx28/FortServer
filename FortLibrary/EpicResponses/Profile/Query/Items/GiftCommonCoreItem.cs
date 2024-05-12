@@ -29,5 +29,14 @@ namespace FortLibrary.EpicResponses.Profile.Query.Items
 
         [JsonProperty("lootList")]
         public List<NotificationsItemsClassOG> lootList { get; set; } = new List<NotificationsItemsClassOG>();
+
+       // [JsonProperty("params")]
+       // public MakeThisProperAgain GiftParams { get; set; } = new MakeThisProperAgain(); // default
+    }
+
+    public class MakeThisProperAgain
+    {
+        
+        public string userMessage { get; set; } = string.Empty; // default
     }
 }

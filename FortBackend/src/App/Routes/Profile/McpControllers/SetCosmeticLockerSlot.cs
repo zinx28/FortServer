@@ -30,44 +30,57 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 {
                     IndexWithinSlot = 6;
                 }
-                AthenaItem FoundAccItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key.ToLower() == itemToSlot).Value;
-                if (FoundAccItem != null)
-                {
-                    if (slotName == "itemwrap" || slotName == "dance")
-                    {
-                        // emote, wraps soon upcoming
-                        if (IndexWithinSlot == -1)
-                        {
-                            if (slotName == "Dance")
-                            {
-                                return new Mcp();
-                            }
 
-                            List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
-                            UpdatedData.slots.itemwrap.items = ReplacedItems;
-                            ProfileChanges.Add(new
-                            {
-                                changeType = "itemAttrChanged",
-                                itemId = Body.lockerItem,
-                                attributeName = "locker_slots_data",
-                                attributeValue = UpdatedData
-                            });
-                        }
-                        else
+                List<string> SpecialItems = new List<string>
+                {
+                    "",
+                    "cid_random",
+                    "glider_random",
+                    "pickaxe_random",
+                };
+
+                if (!itemToSlot.Contains(":") || (!SpecialItems.Contains(itemToSlot) && !SpecialItems.Contains(itemToSlot.Split(":")[1])))
+                {
+                    AthenaItem FoundAccItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key.ToLower() == itemToSlot).Value;
+                    if (FoundAccItem == null)
+                    {
+                        throw new BaseError
                         {
-                            UpdatedData.slots.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
-                            ProfileChanges.Add(new
-                            {
-                                changeType = "itemAttrChanged",
-                                itemId = Body.lockerItem,
-                                attributeName = "locker_slots_data",
-                                attributeValue = UpdatedData
-                            });
+                            errorCode = "errors.com.epicgames.fortnite.invalid_parameter",
+                            errorMessage = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
+                            messageVars = new List<string> { itemToSlot },
+                            numericErrorCode = 16040,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
+                        };
+                    }
+
+                }
+
+                if (slotName == "itemwrap" || slotName == "dance")
+                {
+                    // emote, wraps soon upcoming
+                    if (IndexWithinSlot == -1)
+                    {
+                        if (slotName == "Dance")
+                        {
+                            return new Mcp();
                         }
+
+                        List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
+                        UpdatedData.slots.itemwrap.items = ReplacedItems;
+                        ProfileChanges.Add(new
+                        {
+                            changeType = "itemAttrChanged",
+                            itemId = Body.lockerItem,
+                            attributeName = "locker_slots_data",
+                            attributeValue = UpdatedData
+                        });
                     }
                     else
                     {
-                        UpdatedData.slots.GetSlotName(slotName).items = new List<string>() { itemToSlot };
+                        UpdatedData.slots.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
                         ProfileChanges.Add(new
                         {
                             changeType = "itemAttrChanged",
@@ -79,17 +92,16 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 }
                 else
                 {
-                    throw new BaseError
+                    UpdatedData.slots.GetSlotName(slotName).items = new List<string>() { itemToSlot };
+                    ProfileChanges.Add(new
                     {
-                        errorCode = "errors.com.epicgames.fortnite.invalid_parameter",
-                        errorMessage = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
-                        messageVars = new List<string> { itemToSlot },
-                        numericErrorCode = 16040,
-                        originatingService = "any",
-                        intent = "prod",
-                        error_description = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
-                    };
+                        changeType = "itemAttrChanged",
+                        itemId = Body.lockerItem,
+                        attributeName = "locker_slots_data",
+                        attributeValue = UpdatedData
+                    });
                 }
+                
                 if (ProfileChanges.Count > 0)
                 {
                     profileCacheEntry.LastUpdated = DateTime.Now;

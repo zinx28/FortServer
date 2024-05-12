@@ -426,7 +426,7 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_129_petcarrier_woodsy_styleb",
-        "connectedTemplate": "AthenaBackpack:PetCarrier_007_Woodsy",
+        "connectedTemplate": "AthenaBackpack:petcarrier_007_woodsy",
         "new_variants": [
           {
             "channel": "Material",
@@ -754,7 +754,7 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_131_petcarrier_fox_styleb",
-        "connectedTemplate": "AthenaBackpack:PetCarrier_008_Fox",
+        "connectedTemplate": "AthenaBackpack:petcarrier_008_fox",
         "new_variants": [
           {
             "channel": "Material",
@@ -931,7 +931,7 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_130_petcarrier_woodsy_stylec",
-        "connectedTemplate": "AthenaBackpack:PetID_007_Woodsy",
+        "connectedTemplate": "AthenaBackpack:petcarrier_007_woodsy",
         "new_variants": [
           {
             "channel": "Material",
@@ -1055,7 +1055,7 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_132_petcarrier_fox_stylec",
-        "connectedTemplate": "AthenaBackpack:PetCarrier_008_Fox",
+        "connectedTemplate": "AthenaBackpack:petcarrier_008_fox",
         "new_variants": [
           {
             "channel": "Material",
@@ -1123,7 +1123,7 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_128_masterkey_styleb",
-        "connectedTemplate": "AthenaCharacter:CID_350_Athena_Commando_M_MasterKey",
+        "connectedTemplate": "AthenaCharacter:cid_350_athena_commando_m_masterkey",
         "new_variants": [
           {
             "channel": "Parts",

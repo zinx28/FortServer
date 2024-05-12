@@ -72,7 +72,7 @@ namespace FortBackend.src.App.Routes.Development
                     Console.WriteLine(FoundSeason.Level);
                     List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
 
-                   // List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+                    // List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
                     //int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.BookLevel)).XpTotal;
 
                     var beforeLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.Level == FoundSeason.Level);
@@ -84,7 +84,7 @@ namespace FortBackend.src.App.Routes.Development
                     }
 
                     CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
-                 
+
                     //int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
                     //int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
 
@@ -106,6 +106,19 @@ namespace FortBackend.src.App.Routes.Development
 
                     Console.WriteLine(FoundSeason.BookLevel);
                     Console.WriteLine(FoundSeason.BookXP);
+
+                    List<string> SpecialItems = new List<string>
+                    {
+                        "",
+                        "cid_random",
+                        "glider_random",
+                        "pickaxe_random",
+                    };
+
+                    var ResponseIGIDFK = "w";
+
+                    Console.WriteLine(!ResponseIGIDFK.Contains(":") || (!SpecialItems.Contains(ResponseIGIDFK) && !SpecialItems.Contains(ResponseIGIDFK.Split(":")[1])));
+
                 }
 
             }

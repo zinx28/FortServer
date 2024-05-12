@@ -1,4 +1,5 @@
 ﻿using Discord;
+using FortBackend.src.App.Utilities.Discord.Helpers.command;
 using FortBackend.src.App.Utilities.Quests;
 using FortLibrary;
 using FortLibrary.Dynamics;
@@ -104,6 +105,59 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 quantity = iteminfo.Quantity,
                             });
                         }
+                        else if (iteminfo.TemplateId.Contains("CosmeticVariantToken:"))
+                        {
+                            Console.WriteLine(iteminfo.connectedTemplate);
+                            if (!string.IsNullOrEmpty(iteminfo.connectedTemplate))
+                            {
+                                AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == iteminfo.connectedTemplate).Value;
+
+                                if (athenaItem != null)
+                                {
+                                    var AddedVariants = athenaItem.attributes.variants;
+
+                                    var NeedToAdd = iteminfo.new_variants;
+
+                                    foreach (var variant in NeedToAdd)
+                                    {
+                                        var existingVariant = AddedVariants.FirstOrDefault(v => v.channel == variant.channel);
+                                        if (existingVariant != null)
+                                        {
+                                            existingVariant.owned.AddRange(variant.added);
+                                        }
+                                        else
+                                        {
+                                            var newVariant = new AthenaItemVariants
+                                            {
+                                                channel = variant.channel,
+                                                active = variant.added.First(),
+                                                owned = variant.added
+                                            };
+                                            AddedVariants.Add(newVariant);
+                                        }
+                                    }
+
+                                    profileCacheEntry.AccountData.athena.Items[iteminfo.connectedTemplate].attributes.variants = AddedVariants;
+                                    // athenaItem.attributes.variants.Add()
+
+
+                                    MultiUpdates.Add(new
+                                    {
+                                        changeType = "itemAttrChanged",
+                                        itemId = iteminfo.connectedTemplate,
+                                        attributeName = "variants",
+                                        attributeValue = AddedVariants
+                                    });
+                                }else
+                                {
+                                    Logger.Error(iteminfo.connectedTemplate, "DONT EVEN OWN");
+                                }
+                            }
+                            else
+                            {
+                                Logger.Error(iteminfo.TemplateId, "CosmeticVariantToken");
+                            }
+                        }
                         else if (iteminfo.TemplateId.Contains("Token:"))
                         {
                             if (iteminfo.TemplateId.Contains("athenaseasonfriendxpboost"))
@@ -154,45 +208,6 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
                             (FoundSeason, NeedItems) = await LevelUpdater.Init(FoundSeason.SeasonNumber, FoundSeason, NeedItems);
                             NeedItems = true; // force it as we don't want this to become false here
-                        }
-                        else if (iteminfo.TemplateId.Contains("CosmeticVariantToken"))
-                        {
-                            if(!string.IsNullOrEmpty(iteminfo.connectedTemplate))
-                            {
-                                AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == iteminfo.connectedTemplate).Value;
-
-                                if (athenaItem != null)
-                                {
-                                    var AddedVariants = athenaItem.attributes.variants;
-
-                                    var NeedToAdd = iteminfo.new_variants;
-
-                                    foreach ( var variant in NeedToAdd)
-                                    {
-                                        var existingVariant = AddedVariants.FirstOrDefault(v => v.channel == variant.channel);
-                                        if (existingVariant != null)
-                                        {
-                                            existingVariant.owned.AddRange(variant.added);
-                                        }else
-                                        {
-                                            var newVariant = new AthenaItemVariants
-                                            {
-                                                channel = variant.channel,
-                                                active = variant.added.First(),
-                                                owned = variant.added
-                                            };
-                                            AddedVariants.Add(newVariant);
-                                        }
-                                    }
-
-                                    profileCacheEntry.AccountData.athena.Items[iteminfo.connectedTemplate].attributes.variants = AddedVariants;
-                                   // athenaItem.attributes.variants.Add()
-                                }
-                            }
-                            else
-                            {
-                                Logger.Error(iteminfo.TemplateId, "CosmeticVariantToken");
-                            }
                         }
                         else
                         {

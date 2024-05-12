@@ -1,6 +1,9 @@
 {
   "BundleId": "QuestBundle_S8_Cumulative",
   "BundleSchedule": "ChallengeBundleSchedule:season8_cumulative_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
   "FreeBundleObject": [],
   "PaidBundleObject": [
     {

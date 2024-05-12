@@ -1,6 +1,9 @@
 {
   "BundleId": "QuestBundle_S8_Shiny",
   "BundleSchedule": "ChallengeBundleSchedule:season8_shiny_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 100
+  },
   "FreeBundleObject": [],
   "PaidBundleObject": [
     {

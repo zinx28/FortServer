@@ -10,8 +10,16 @@ namespace FortLibrary.Dynamics
     {
         public string BundleId { get; set; } = string.Empty;
         public string BundleSchedule { get; set; } = string.Empty;
+
+        public WeeklyQuestJsonBundleRequired BundleRequired { get; set; } = new WeeklyQuestJsonBundleRequired();
+
         public List<WeeklyObjects> FreeBundleObject { get; set; } = new List<WeeklyObjects>();
         public List<WeeklyObjects> PaidBundleObject { get; set; } = new List<WeeklyObjects>();
+    }
+
+    public class WeeklyQuestJsonBundleRequired
+    {
+        public int RequiredLevel { get; set; } = 1;
     }
 
     public class WeeklyObjects

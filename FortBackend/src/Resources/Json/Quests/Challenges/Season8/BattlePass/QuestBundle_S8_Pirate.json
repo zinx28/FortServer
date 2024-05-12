@@ -1,6 +1,9 @@
 {
   "BundleId": "QuestBundle_S8_Pirate",
   "BundleSchedule": "ChallengeBundleSchedule:season8_paid_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
   "FreeBundleObject": [],
   "PaidBundleObject": [
     {
@@ -231,6 +234,6 @@
         }
       ]
     }
-    
+
   ]
 }

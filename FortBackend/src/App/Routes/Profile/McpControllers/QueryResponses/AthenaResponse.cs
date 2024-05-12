@@ -193,6 +193,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
                                         ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
                                         //kvp.BundleId
+
+                                        if (kvp.BundleRequired.RequiredLevel > seasonObject.Level) continue;
+
+                                       // kvp.BundleRequired.RequiredLevel
                                         List<string> grantedquestinstanceids = new List<string>();
                                         foreach (var FreeBundles in kvp.FreeBundleObject)
                                         {
@@ -263,6 +267,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 // var ResponseId = "";
                                                 foreach (var kvp in BPQuestsArray)
                                                 {
+                                                    if (kvp.BundleRequired.RequiredLevel > seasonObject.Level) continue;
+
                                                     List<string> FindFirstOrDe = ResponseIG.FirstOrDefault(e => e.Key == kvp.BundleSchedule).Value;
                                                     if (FindFirstOrDe == null || FindFirstOrDe.Count() == 0)
                                                     {

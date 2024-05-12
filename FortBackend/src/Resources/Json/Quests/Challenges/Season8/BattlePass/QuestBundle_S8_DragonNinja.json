@@ -1,6 +1,9 @@
 {
   "BundleId": "QuestBundle_S8_DragonNinja",
   "BundleSchedule": "ChallengeBundleSchedule:season8_paid_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
   "FreeBundleObject": [],
   "PaidBundleObject": [
     {

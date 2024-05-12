@@ -1,4 +1,4 @@
-const datafile = require("./Data.json")
+/*const datafile = require("./Data.json")
 var tesa = 0;
 var Data = [];
 for(var index in datafile) {
@@ -26,9 +26,9 @@ for(var index in datafile) {
    })
   //console.log({ "Rewards": temp })
 }
-console.log(JSON.stringify(Data));
+console.log(JSON.stringify(Data));*/
 
-/*
+
 const datafile = require("./BattlePass.json");
 var Data = [];
 var Level = 0;
@@ -89,6 +89,7 @@ for(var index in datafile){
      
      rewards.push({
         templateId: templatePush,
+        connectedTemplate: "",
         quantity: e.Quantity
      })
   })
@@ -101,7 +102,7 @@ for(var index in datafile){
   Data.push(DataToPush);
 
   Level += 1;
-}*/
+}
 
 console.log(JSON.stringify(Data));
 

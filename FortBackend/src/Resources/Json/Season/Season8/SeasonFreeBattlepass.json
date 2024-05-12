@@ -11,6 +11,7 @@
     "Rewards": [
       {
         "templateId": "AthenaDance:spid_102_ggaztec",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -24,6 +25,7 @@
     "Rewards": [
       {
         "templateId": "AthenaLoadingScreen:lsid_099_piratetheme",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -50,6 +52,7 @@
     "Rewards": [
       {
         "templateId": "AthenaDance:emoji_sun",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -67,6 +70,7 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
         "quantity": 100
       }
     ],
@@ -84,6 +88,7 @@
     "Rewards": [
       {
         "templateId": "AthenaDance:eid_happywave",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -105,6 +110,7 @@
     "Rewards": [
       {
         "templateId": "HomebaseBannerIcon:brs8jollyroger",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -126,6 +132,7 @@
     "Rewards": [
       {
         "templateId": "AthenaBackpack:bid_215_masterkey",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -147,6 +154,7 @@
     "Rewards": [
       {
         "templateId": "AthenaDance:spid_090_dancefloorbox",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -168,6 +176,7 @@
     "Rewards": [
       {
         "templateId": "AthenaGlider:glider_id_129_fireelf",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -189,6 +198,7 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
         "quantity": 100
       }
     ],
@@ -210,6 +220,7 @@
     "Rewards": [
       {
         "templateId": "AthenaPickaxe:pickaxe_id_167_medusa",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -231,6 +242,7 @@
     "Rewards": [
       {
         "templateId": "HomebaseBannerIcon:brs8treasurechest",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -252,6 +264,7 @@
     "Rewards": [
       {
         "templateId": "AthenaDance:eid_youboreme",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -273,6 +286,7 @@
     "Rewards": [
       {
         "templateId": "AthenaLoadingScreen:lsid_098_dragonninja",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -294,6 +308,7 @@
     "Rewards": [
       {
         "templateId": "AthenaMusicPack:musicpack_008_coral",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -315,6 +330,7 @@
     "Rewards": [
       {
         "templateId": "AthenaDance:emoji_ggjellyfish",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],
@@ -336,6 +352,7 @@
     "Rewards": [
       {
         "templateId": "AthenaDance:spid_093_theend",
+        "connectedTemplate": "",
         "quantity": 1
       }
     ],

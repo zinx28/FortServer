@@ -9,10 +9,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "AthenaDance:emoji_lol",
-                "quantity": 1
-            }
+          {
+            "templateId": "AthenaDance:emoji_lol",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 2
     },
@@ -26,10 +27,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "AthenaDance:eid_wave",
-                "quantity": 1
-            }
+          {
+            "templateId": "AthenaDance:eid_wave",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 5
     },
@@ -43,10 +45,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "HomebaseBannerIcon:brseason02salt",
-                "quantity": 1
-            }
+          {
+            "templateId": "HomebaseBannerIcon:brseason02salt",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 8
     },
@@ -60,10 +63,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "AthenaDance:emoji_hearthands",
-                "quantity": 1
-            }
+          {
+            "templateId": "AthenaDance:emoji_hearthands",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 11
     },
@@ -77,10 +81,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "Currency:mtxgiveaway",
-                "quantity": 100
-            }
+          {
+            "templateId": "Currency:mtxgiveaway",
+            "connectedTemplate": "",
+            "quantity": 100
+          }
         ],
         "Level": 14
     },
@@ -94,10 +99,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "AthenaDance:emoji_bullseye",
-                "quantity": 1
-            }
+          {
+            "templateId": "AthenaDance:emoji_bullseye",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 17
     },
@@ -111,10 +117,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "AthenaDance:eid_ridethepony_athena",
-                "quantity": 1
-            }
+          {
+            "templateId": "AthenaDance:eid_ridethepony_athena",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 20
     },
@@ -128,10 +135,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "AccountResource:athenaseasonalxp",
-                "quantity": 1000
-            }
+          {
+            "templateId": "AccountResource:athenaseasonalxp",
+            "connectedTemplate": "",
+            "quantity": 1000
+          }
         ],
         "Level": 23
     },
@@ -145,10 +153,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "HomebaseBannerIcon:brseason02crosshair",
-                "quantity": 1
-            }
+          {
+            "templateId": "HomebaseBannerIcon:brseason02crosshair",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 26
     },
@@ -162,10 +171,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "Currency:mtxgiveaway",
-                "quantity": 100
-            }
+          {
+            "templateId": "Currency:mtxgiveaway",
+            "connectedTemplate": "",
+            "quantity": 100
+          }
         ],
         "Level": 29
     },
@@ -179,10 +189,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "HomebaseBannerIcon:brseason02shark",
-                "quantity": 1
-            }
+          {
+            "templateId": "HomebaseBannerIcon:brseason02shark",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 32
     },
@@ -196,10 +207,11 @@
     },
     {
         "Rewards": [
-            {
-                "templateId": "AthenaGlider:glider_id_002_medieval",
-                "quantity": 1
-            }
+          {
+            "templateId": "AthenaGlider:glider_id_002_medieval",
+            "connectedTemplate": "",
+            "quantity": 1
+          }
         ],
         "Level": 35
     },

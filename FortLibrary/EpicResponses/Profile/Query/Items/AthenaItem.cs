@@ -50,6 +50,6 @@ namespace FortLibrary.EpicResponses.Profile.Query.Items
         [JsonProperty("active")]
         public string active { get; set; } = string.Empty;
         [JsonProperty("owned")]
-        public string[] owned { get; set; } = { };
+        public List<string> owned { get; set; } = new List<string>();
     }
 }

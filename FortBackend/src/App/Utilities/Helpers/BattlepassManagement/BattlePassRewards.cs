@@ -7,6 +7,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary.MongoDB.Module;
 using FortLibrary.Shop;
+using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 
 namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
@@ -97,7 +98,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                     level = 1,
                                     max_level_bonus = 0,
                                     rnd_sel_cnt = 0,
-                                    variants = new List<AthenaItemVariants>(),
+                                    variants = iteminfo.variants,
                                     xp = 0
                                 },
                                 quantity = iteminfo.Quantity,
@@ -153,6 +154,45 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
                             (FoundSeason, NeedItems) = await LevelUpdater.Init(FoundSeason.SeasonNumber, FoundSeason, NeedItems);
                             NeedItems = true; // force it as we don't want this to become false here
+                        }
+                        else if (iteminfo.TemplateId.Contains("CosmeticVariantToken"))
+                        {
+                            if(!string.IsNullOrEmpty(iteminfo.connectedTemplate))
+                            {
+                                AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == iteminfo.connectedTemplate).Value;
+
+                                if (athenaItem != null)
+                                {
+                                    var AddedVariants = athenaItem.attributes.variants;
+
+                                    var NeedToAdd = iteminfo.new_variants;
+
+                                    foreach ( var variant in NeedToAdd)
+                                    {
+                                        var existingVariant = AddedVariants.FirstOrDefault(v => v.channel == variant.channel);
+                                        if (existingVariant != null)
+                                        {
+                                            existingVariant.owned.AddRange(variant.added);
+                                        }else
+                                        {
+                                            var newVariant = new AthenaItemVariants
+                                            {
+                                                channel = variant.channel,
+                                                active = variant.added.First(),
+                                                owned = variant.added
+                                            };
+                                            AddedVariants.Add(newVariant);
+                                        }
+                                    }
+
+                                    profileCacheEntry.AccountData.athena.Items[iteminfo.connectedTemplate].attributes.variants = AddedVariants;
+                                   // athenaItem.attributes.variants.Add()
+                                }
+                            }
+                            else
+                            {
+                                Logger.Error(iteminfo.TemplateId, "CosmeticVariantToken");
+                            }
                         }
                         else
                         {
@@ -367,8 +407,12 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                     }
                                 }
                             }
+                            else
+                            {
+                                Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
+                            }
                            
-                            Logger.Log($"{iteminfo.TemplateId} is not supported", "ClientQuestLogin");
+                           
                         }
                         
                         /*

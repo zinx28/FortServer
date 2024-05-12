@@ -642,7 +642,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         {
                             changeType = "statModified",
                             itemId = "xp",
-                            quantity = FoundSeason.Level
+                            quantity = FoundSeason.SeasonXP
                         });
 
                        

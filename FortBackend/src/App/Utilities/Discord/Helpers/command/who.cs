@@ -258,14 +258,6 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     }, components.First(e => e.CustomId == "reasontoban").Value, $"<@{command.User.Id}>");
 
                                     await interaction.RespondAsync($"Banned :)", ephemeral: true);
-
-
-                                    if (!string.IsNullOrEmpty(BanAssistUser))
-                                    {
-                                       
-                                    }
-
-                                 
                                 }
                             }
                         }

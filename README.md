@@ -8,10 +8,10 @@
 
 ## About
 - Supports HTTP and HTTPS!
-- Custom OAuth System (🔥) - requires [LunaLauncher](https://github.com/ProjectLunaMP/Launcher)
 - Aiming to support Seasons 3 to 15
 - Arena UI/Playlists! Seasons 8 to 23 (UNFINISHED, NOT WORKED ON ~ not proper scores on seasons 8 and 11)
 - Save the World (STW) is aimed at the very end and might never actually be implemented
+- Ban Assist!
 - You may use added/unfinished config stuff [FortBackend/src/App/Utilities/Saved/Config.cs](https://github.com/zinx28/FortBackend/blob/main/FortBackend/src/App/Utilities/Saved/Config.cs)
 
 ## Discord Bot

@@ -48,7 +48,7 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                             var embed = new EmbedBuilder
                             {
                                 Title = "You have been banned!",
-                                Description = $"You were banned from Luna for {Message}",
+                                Description = $"You were banned from {DeserializeConfig.ProjectName} for {Message}",
                                 Color = Color.Red
                             }.Build();
 

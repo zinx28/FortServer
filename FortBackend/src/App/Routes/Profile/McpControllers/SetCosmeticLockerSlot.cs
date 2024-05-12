@@ -22,7 +22,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             {
                 int BaseRev = profileCacheEntry.AccountData.athena.RVN;
                 List<object> ProfileChanges = new List<object>();
-                var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data;
+                //var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data;
                 var slotName = Body.category.ToLower();
                 var itemToSlot = Body.itemToSlot.ToLower() ?? "";
                 var IndexWithinSlot = Body.slotIndex;
@@ -37,9 +37,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     "cid_random",
                     "glider_random",
                     "pickaxe_random",
+                    "pickaxe_random",
+                    "lsid_random",
                 };
 
-                if (!itemToSlot.Contains(":") || (!SpecialItems.Contains(itemToSlot) && !SpecialItems.Contains(itemToSlot.Split(":")[1])))
+                if (itemToSlot != "" &&
+                        !(itemToSlot.Contains(":") &&
+                        (SpecialItems.Contains(itemToSlot) ||
+                            SpecialItems.Contains(itemToSlot.Split(":")[1]) ||
+                            itemToSlot == ":")))
                 {
                     AthenaItem FoundAccItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key.ToLower() == itemToSlot).Value;
                     if (FoundAccItem == null)
@@ -69,45 +75,74 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         }
 
                         List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
-                        UpdatedData.slots.itemwrap.items = ReplacedItems;
+                        profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots.itemwrap.items = ReplacedItems;
                         ProfileChanges.Add(new
                         {
                             changeType = "itemAttrChanged",
                             itemId = Body.lockerItem,
                             attributeName = "locker_slots_data",
-                            attributeValue = UpdatedData
+                            attributeValue = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data
                         });
                     }
                     else
                     {
-                        UpdatedData.slots.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
+                        profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots.GetSlotName(slotName).items[IndexWithinSlot] = itemToSlot;
                         ProfileChanges.Add(new
                         {
                             changeType = "itemAttrChanged",
                             itemId = Body.lockerItem,
                             attributeName = "locker_slots_data",
-                            attributeValue = UpdatedData
+                            attributeValue = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data
                         });
                     }
                 }
                 else
                 {
-                    UpdatedData.slots.GetSlotName(slotName).items = new List<string>() { itemToSlot };
+                    profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots.GetSlotName(slotName).items = new List<string>() { itemToSlot };
                     ProfileChanges.Add(new
                     {
                         changeType = "itemAttrChanged",
                         itemId = Body.lockerItem,
                         attributeName = "locker_slots_data",
-                        attributeValue = UpdatedData
+                        attributeValue = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data
                     });
                 }
-                
+
+
+                if (Body.variantUpdates.Count > 0)
+                {
+                    if (profileCacheEntry.AccountData.athena.Items[Body.itemToSlot] != null)
+                    {
+                        var Variants = profileCacheEntry.AccountData.athena.Items[Body.itemToSlot].attributes.variants;
+
+                        foreach (var variant in Body.variantUpdates)
+                        {
+                            var FindVar = Variants.FirstOrDefault(e => e.channel == variant.channel);
+                            if (FindVar != null)
+                            {
+                                FindVar.active = variant.active;
+                            }
+                        }
+
+                        ProfileChanges.Add(new
+                        {
+                            changeType = "itemAttrChanged",
+                            itemId = Body.itemToSlot,
+                            attributeName = "variants",
+                            attributeValue = Variants
+                        });
+
+                        profileCacheEntry.AccountData.athena.Items[Body.itemToSlot].attributes.variants = Variants;
+                    }
+
+                }
+
                 if (ProfileChanges.Count > 0)
                 {
                     profileCacheEntry.LastUpdated = DateTime.Now;
                     profileCacheEntry.AccountData.athena.RVN += 1;
                     profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                    profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data = UpdatedData;
+                   // profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data = UpdatedData;
                 }
                 
                 List<dynamic> ProfileChangesV2 = new List<dynamic>();

@@ -258,6 +258,15 @@
       {
         "templateId": "AthenaBackpack:petcarrier_007_woodsy",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat0",
+            "owned": [
+              "Mat0"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],
@@ -605,6 +614,15 @@
       {
         "templateId": "AthenaBackpack:petcarrier_008_fox",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat0",
+            "owned": [
+              "Mat0"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],

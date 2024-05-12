@@ -115,9 +115,17 @@ namespace FortBackend.src.App.Routes.Development
                         "pickaxe_random",
                     };
 
-                    var ResponseIGIDFK = "w";
+                    var ResponseIGIDFK = "s:pickaxe_random";
+                    Console.WriteLine(!ResponseIGIDFK.Contains(":"));
+                    Console.WriteLine(ResponseIGIDFK != "");
+                    Console.WriteLine(
+                        ResponseIGIDFK != "" &&                                              
+                        !(ResponseIGIDFK.Contains(":") &&                                   
+                        (SpecialItems.Contains(ResponseIGIDFK) ||                            
+                            SpecialItems.Contains(ResponseIGIDFK.Split(":")[1]) ||             
+                            ResponseIGIDFK == ":"))                                            
+                    );
 
-                    Console.WriteLine(!ResponseIGIDFK.Contains(":") || (!SpecialItems.Contains(ResponseIGIDFK) && !SpecialItems.Contains(ResponseIGIDFK.Split(":")[1])));
 
                 }
 

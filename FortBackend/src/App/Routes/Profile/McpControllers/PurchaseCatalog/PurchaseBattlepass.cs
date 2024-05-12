@@ -339,7 +339,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                         if (!NeedItems) break;
                                                         //We don't need this check on purchase as we "WANT" the user to get them items
                                                         //if (BookLevelOG <= BattlePass.Level) continue;
-                                                        if (BattlePass.Level > seasonObject.Level) break;
+                                                        if (BattlePass.Level > seasonObject.BookLevel) break;
                                                         
                                                         (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
                                                     }
@@ -348,7 +348,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                     {
                                                         if (!NeedItems) break;
                                                         //if (BookLevelOG <= BattlePass.Level) continue;
-                                                        if (BattlePass.Level > seasonObject.Level) break;
+                                                        if (BattlePass.Level > seasonObject.BookLevel) break;
                                                        
 
                                                         (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);

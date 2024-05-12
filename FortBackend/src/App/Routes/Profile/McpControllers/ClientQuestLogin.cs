@@ -456,8 +456,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 foreach (var BattlePass in FreeTier)
                                                 {
                                                     if (!NeedItems) break;
-                                                    if (BookLevelOG <= BattlePass.Level) continue;
-                                                    if (BattlePass.Level > FoundSeason.Level) break;
+                                                    //if (BookLevelOG <= BattlePass.Level) continue;
+                                                    if (BattlePass.Level > FoundSeason.BookLevel) break;
 
                                                     List<NotificationsItemsClassOG> unlessfunc;
                                                     (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
@@ -466,8 +466,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                 foreach (var BattlePass in PaidTier)
                                                 {
                                                     if (!NeedItems) break;
-                                                    if (BookLevelOG <= BattlePass.Level) continue;
-                                                    if (BattlePass.Level > FoundSeason.Level) break;
+                                                    //if (BookLevelOG <= BattlePass.Level) continue;
+                                                    if (BattlePass.Level > FoundSeason.BookLevel) break;
 
                                                     List<NotificationsItemsClassOG> unlessfunc;
                                                     (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
@@ -520,7 +520,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
 
                         List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
-                        int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
+                        int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.BookLevel)).XpTotal;
                         int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
 
                         foreach (var Quests in FoundSeason.Quests)

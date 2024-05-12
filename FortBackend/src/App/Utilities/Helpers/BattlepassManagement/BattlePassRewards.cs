@@ -16,7 +16,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
         public static async Task<(ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems, List<NotificationsItemsClassOG> applyProfileChanges)> Init(List<ItemInfo> Rewards, ProfileCacheEntry profileCacheEntry, SeasonClass FoundSeason, List<object> MultiUpdates, CommonCoreItem currencyItem, bool NeedItems, List<NotificationsItemsClassOG> applyProfileChanges = null)
         {
             List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
-            int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.Level)).XpTotal;
+            int BeforeLevelXP = SeasonXpIg.FirstOrDefault(e => e.Level == (FoundSeason.BookLevel)).XpTotal;
             int CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpToNextLevel >= (BeforeLevelXP + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
 
 

@@ -633,14 +633,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         MultiUpdates.Add(new
                         {
-                            changeType = "itemQuantityChanged",
+                            changeType = "statModified",
                             itemId = "book_xp",
                             quantity = FoundSeason.BookXP
                         });
 
                         MultiUpdates.Add(new
                         {
-                            changeType = "itemQuantityChanged",
+                            changeType = "statModified",
                             itemId = "xp",
                             quantity = FoundSeason.Level
                         });

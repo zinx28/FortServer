@@ -512,7 +512,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     if (BattlePass.Level > FoundSeason.BookLevel) break;
 
                                                    // List<NotificationsItemsClassOG> unlessfunc;
-                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
+                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc);
                                                 }
 
                                                 foreach (var BattlePass in PaidTier)
@@ -522,7 +522,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     if (BattlePass.Level > FoundSeason.BookLevel) break;
 
                                                    // List<NotificationsItemsClassOG> unlessfunc;
-                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems);
+                                                    (profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, FoundSeason, MultiUpdates, currencyItem, NeedItems, unlessfunc);
                                                 }
 
 

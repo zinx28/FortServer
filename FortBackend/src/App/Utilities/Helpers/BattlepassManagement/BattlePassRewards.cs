@@ -433,7 +433,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                            
                            
                         }
-                        
+
                         /*
                          * [ClientQuestLogin]: ChallengeBundleSchedule:season8_paid_schedule is not supported
                             [ClientQuestLogin]: ChallengeBundleSchedule:season8_cumulative_schedule is not supported

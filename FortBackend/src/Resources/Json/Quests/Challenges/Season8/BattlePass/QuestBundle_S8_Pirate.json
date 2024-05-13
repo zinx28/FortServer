@@ -4,15 +4,18 @@
   "BundleRequired": {
     "RequiredLevel": 1
   },
-  "FreeBundleObject": [],
-  "PaidBundleObject": [
+  "BundlesObject": [
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_133_Pirate_StageB",
+            "TemplateId": "VTID_133_Pirate_StageB",
             "Quantity": 1
           }
         ]
@@ -27,11 +30,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_134_Pirate_StageC",
+            "TemplateId": "VTID_134_Pirate_StageC",
             "Quantity": 1
           }
         ]
@@ -46,11 +53,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_135_Pirate_StageD",
+            "TemplateId": "VTID_135_Pirate_StageD",
             "Quantity": 1
           }
         ]
@@ -65,11 +76,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "Pickaxe_ID_163_PirateOctopus",
+            "TemplateId": "Pickaxe_ID_163_PirateOctopus",
             "Quantity": 1
           }
         ]
@@ -84,11 +99,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_136_Pirate_StageE",
+            "TemplateId": "VTID_136_Pirate_StageE",
             "Quantity": 1
           }
         ]
@@ -103,11 +122,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_06",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_137_Pirate_StageF",
+            "TemplateId": "VTID_137_Pirate_StageF",
             "Quantity": 1
           }
         ]
@@ -122,11 +145,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_07",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_138_Pirate_StageG",
+            "TemplateId": "VTID_138_Pirate_StageG",
             "Quantity": 1
           }
         ]
@@ -141,11 +168,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_08",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_139_Pirate_StageH",
+            "TemplateId": "VTID_139_Pirate_StageH",
             "Quantity": 1
           }
         ]
@@ -160,11 +191,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_09",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_139_Pirate_StageH",
+            "TemplateId": "VTID_139_Pirate_StageH",
             "Quantity": 1
           }
         ]
@@ -179,11 +214,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_140_Pirate_ClothingB",
+            "TemplateId": "VTID_140_Pirate_ClothingB",
             "Quantity": 1
           }
         ]
@@ -198,11 +237,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_141_Pirate_ClothingC",
+            "TemplateId": "VTID_141_Pirate_ClothingC",
             "Quantity": 1
           }
         ]
@@ -217,11 +260,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_142_Pirate_ClothingD",
+            "TemplateId": "VTID_142_Pirate_ClothingD",
             "Quantity": 1
           }
         ]

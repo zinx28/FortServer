@@ -13,8 +13,9 @@ namespace FortLibrary.Dynamics
 
         public WeeklyQuestJsonBundleRequired BundleRequired { get; set; } = new WeeklyQuestJsonBundleRequired();
 
-        public List<WeeklyObjects> FreeBundleObject { get; set; } = new List<WeeklyObjects>();
-        public List<WeeklyObjects> PaidBundleObject { get; set; } = new List<WeeklyObjects>();
+        public List<WeeklyObjects> BundlesObject { get; set; } = new List<WeeklyObjects>();
+       // public List<WeeklyObjects> PaidBundleObject { get; set; } = new List<WeeklyObjects>();
+        //public List<WeeklyObjects> OtherQuests { get; set; } = new List<WeeklyObjects>();
     }
 
     public class WeeklyQuestJsonBundleRequired
@@ -25,8 +26,15 @@ namespace FortLibrary.Dynamics
     public class WeeklyObjects
     {
         public string templateId { get; set; } = string.Empty;
+        public Quest_data quest_data { get; set; } = new Quest_data();
         public WeeklyRewards Rewards { get; set; } = new WeeklyRewards();
         public List<WeeklyObjectsObjectives> Objectives { get; set; } = new List<WeeklyObjectsObjectives>();
+    }
+
+    public class Quest_data
+    {
+        public bool RequireBP { get; set; } = false;
+        public bool ExtraQuests { get; set; } = true;
     }
 
     public class WeeklyObjectsObjectives
@@ -44,7 +52,7 @@ namespace FortLibrary.Dynamics
 
     public class WeeklyRewardsQuest
     {
-        public string PrimaryAssetName { get; set; } = string.Empty;
+        public string TemplateId { get; set; } = string.Empty;
         public int Quantity { get; set; } = 0;
     }
 }

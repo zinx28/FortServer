@@ -20,6 +20,7 @@ using FortLibrary;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortBackend.src.App.Utilities.Quests;
 using FortLibrary.Dynamics;
+using FortBackend.src.App.Utilities.Discord.Helpers.command;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
@@ -198,17 +199,20 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                                        // kvp.BundleRequired.RequiredLevel
                                         List<string> grantedquestinstanceids = new List<string>();
-                                        foreach (var FreeBundles in kvp.FreeBundleObject)
+                                        foreach (var FreeBundles in kvp.BundlesObject)
                                         {
-                                            grantedquestinstanceids.Add(FreeBundles.templateId);
-                                        }
-
-                                        if (seasonObject.BookPurchased)
-                                        {
-                                            foreach (var PaidBundles in kvp.PaidBundleObject)
+                                            if (FreeBundles.quest_data.RequireBP)
                                             {
-                                                grantedquestinstanceids.Add(PaidBundles.templateId);
+                                                if (seasonObject.BookPurchased)
+                                                {
+                                                    grantedquestinstanceids.Add(FreeBundles.templateId);
+                                                }
                                             }
+                                            else
+                                            {
+                                                grantedquestinstanceids.Add(FreeBundles.templateId);
+                                            }
+
                                         }
                                         //challenge_bundle_schedule_id
                                         var AthenaItemChallengeBundle = new AthenaItemDynamic
@@ -284,10 +288,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                     }
                                                     // kvp.BundleSchedule
                                                     List<string> TEST2FRFR = new List<string>();
-                                                    foreach (var test in kvp.PaidBundleObject)
+                                                    foreach (var test in kvp.BundlesObject)
                                                     {
+                                                        if (!test.quest_data.RequireBP) continue;
+
                                                         TEST2FRFR.Add("Quest:" + test.templateId);
                                                     }
+
 
 
                                                     var AthenaItemBPData = new AthenaItemDynamic
@@ -398,6 +405,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                                     Value.attributes.ObjectiveState.ForEach(e =>
                                     {
+                                        Console.WriteLine(e.Name);
                                         AthenaItemDynamicData.attributes.Add(e.Name, e.Value);
                                     });
 

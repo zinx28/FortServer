@@ -4,15 +4,18 @@
   "BundleRequired": {
     "RequiredLevel": 100
   },
-  "FreeBundleObject": [],
-  "PaidBundleObject": [
+  "BundlesObject": [
     {
       "templateId": "Quest_BR_S8_Shiny_Outlive_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "Pickaxe_ID_166_Shiny",
+            "TemplateId": "Pickaxe_ID_166_Shiny",
             "Quantity": 1
           }
         ]
@@ -27,11 +30,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Shiny_Outlive_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_155_Shiny_ClothingB",
+            "TemplateId": "VTID_155_Shiny_ClothingB",
             "Quantity": 1
           }
         ]
@@ -46,11 +53,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Shiny_Outlive_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "BID_217_ShinyFemale",
+            "TemplateId": "BID_217_ShinyFemale",
             "Quantity": 1
           }
         ]
@@ -65,11 +76,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Shiny_Outlive_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_156_Shiny_ClothingC",
+            "TemplateId": "VTID_156_Shiny_ClothingC",
             "Quantity": 1
           }
         ]
@@ -84,11 +99,15 @@
     },
     {
       "templateId": "Quest_BR_S8_Shiny_Outlive_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "EID_Shiny",
+            "TemplateId": "EID_Shiny",
             "Quantity": 1
           }
         ]
@@ -103,15 +122,19 @@
     },
     {
       "templateId": "Quest_BR_S8_Shiny_Outlive_06",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 0,
         "Quest": [
           {
-            "PrimaryAssetName": "VTID_157_Shiny_ClothingD",
+            "TemplateId": "VTID_157_Shiny_ClothingD",
             "Quantity": 1
           },
           {
-            "PrimaryAssetName": "VTID_158_Shiny_BackBlingB",
+            "TemplateId": "VTID_158_Shiny_BackBlingB",
             "Quantity": 1
           }
         ]

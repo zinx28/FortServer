@@ -143,52 +143,52 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                             ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
 
                                                             List<string> QuestTestResponse = new List<string>();
-                                                            foreach (var FreeBundles in kvp.FreeBundleObject)
+                                                            foreach (var Bundle in kvp.BundlesObject)
                                                             {
-                                                                QuestTestResponse.Add(FreeBundles.templateId);
-                                                            }
+                                                                if (Bundle.quest_data.ExtraQuests) continue; // sigma!
 
-                                                            foreach (var PaidBundles in kvp.PaidBundleObject)
-                                                            {
-                                                                QuestTestResponse.Add(PaidBundles.templateId);
-                                                                // grantedquestinstanceids.Add(PaidBundles.templateId);
+                                                                QuestTestResponse.Add(Bundle.templateId);
 
-                                                                DailyQuestsData QuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == PaidBundles.templateId).Value;
-                                                                if (QuestData == null)
+                                                                if (Bundle.quest_data.RequireBP)
                                                                 {
-                                                                    ShouldAddQuests = true;
+                                                                    QuestTestResponse.Add(Bundle.templateId);
 
-                                                                    List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
-
-                                                                    foreach (WeeklyObjectsObjectives ObjectiveItems in PaidBundles.Objectives)
+                                                                    DailyQuestsData QuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == Bundle.templateId).Value;
+                                                                    if (QuestData == null)
                                                                     {
-                                                                        //season_xp_gained
+                                                                        ShouldAddQuests = true;
 
-                                                                        QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                                        List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+
+                                                                        foreach (WeeklyObjectsObjectives ObjectiveItems in Bundle.Objectives)
                                                                         {
-                                                                            Name = $"completion_{ObjectiveItems.BackendName}",
-                                                                            Value = 0,
-                                                                            MaxValue = ObjectiveItems.Count
+                                                                            //season_xp_gained
+
+                                                                            QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                                            {
+                                                                                Name = $"completion_{ObjectiveItems.BackendName}",
+                                                                                Value = 0,
+                                                                                MaxValue = ObjectiveItems.Count
+                                                                            });
+                                                                        }
+
+                                                                        seasonObject.Quests.Add($"{Bundle.templateId}", new DailyQuestsData
+                                                                        {
+                                                                            templateId = $"{Bundle.templateId}",
+                                                                            attributes = new DailyQuestsDataDB
+                                                                            {
+                                                                                challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
+                                                                                sent_new_notification = false,
+                                                                                ObjectiveState = QuestObjectStats
+                                                                            },
+                                                                            quantity = 1
                                                                         });
-                                                                    }
 
-                                                                    seasonObject.Quests.Add($"{PaidBundles.templateId}", new DailyQuestsData
-                                                                    {
-                                                                        templateId = $"{PaidBundles.templateId}",
-                                                                        attributes = new DailyQuestsDataDB
+
+                                                                        var ItemObjectResponse = new
                                                                         {
-                                                                            challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
-                                                                            sent_new_notification = false,
-                                                                            ObjectiveState = QuestObjectStats
-                                                                        },
-                                                                        quantity = 1
-                                                                    });
-
-
-                                                                    var ItemObjectResponse = new
-                                                                    {
-                                                                        templateId = $"{PaidBundles.templateId}",
-                                                                        attributes = new Dictionary<string, object>
+                                                                            templateId = $"{Bundle.templateId}",
+                                                                            attributes = new Dictionary<string, object>
                                                                             {
                                                                                 { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                                                 { "level", -1 },
@@ -209,24 +209,24 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                                 { "favorite", false },
                                                                                 // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
                                                                             },
-                                                                        quantity = 1
-                                                                    };
+                                                                            quantity = 1
+                                                                        };
 
-                                                                    foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
-                                                                    {
-                                                                        ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                                                        foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                                                                        {
+                                                                            ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                                                        }
+
+                                                                        ApplyProfileChanges.Add(new MultiUpdateClass
+                                                                        {
+                                                                            changeType = "itemAdded",
+                                                                            itemId = $"{Bundle.templateId}",
+                                                                            item = ItemObjectResponse
+                                                                        });
                                                                     }
 
-                                                                    ApplyProfileChanges.Add(new MultiUpdateClass
-                                                                    {
-                                                                        changeType = "itemAdded",
-                                                                        itemId = $"{PaidBundles.templateId}",
-                                                                        item = ItemObjectResponse
-                                                                    });
+
                                                                 }
-
-
-
                                                             }
 
                                                             if (ShouldAddQuests)
@@ -510,25 +510,21 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                 ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
 
                                                                 List<string> QuestTestResponse = new List<string>();
-                                                                foreach (var FreeBundles in kvp.FreeBundleObject)
+                                                                foreach (var Bundles in kvp.BundlesObject)
                                                                 {
-                                                                    QuestTestResponse.Add(FreeBundles.templateId);
-                                                                }
+                                                                    if (Bundles.quest_data.ExtraQuests) continue;
 
-                                                                foreach (var PaidBundles in kvp.PaidBundleObject)
-                                                                {
-                                                                    QuestTestResponse.Add(PaidBundles.templateId);
-                                                                    // grantedquestinstanceids.Add(PaidBundles.templateId);
+                                                                    QuestTestResponse.Add(Bundles.templateId);
 
-                                                                    DailyQuestsData QuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == PaidBundles.templateId).Value;
+                                                                    DailyQuestsData QuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == Bundles.templateId).Value;
                                                                     if (QuestData == null)
                                                                     {
                                                                         List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
 
-                                                                        foreach (WeeklyObjectsObjectives ObjectiveItems in PaidBundles.Objectives)
+                                                                        foreach (WeeklyObjectsObjectives ObjectiveItems in Bundles.Objectives)
                                                                         {
                                                                             //season_xp_gained
-                                                                          
+
                                                                             QuestObjectStats.Add(new DailyQuestsObjectiveStates
                                                                             {
                                                                                 Name = $"completion_{ObjectiveItems.BackendName}",
@@ -537,9 +533,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                             });
                                                                         }
 
-                                                                        seasonObject.Quests.Add($"{PaidBundles.templateId}", new DailyQuestsData
+                                                                        seasonObject.Quests.Add($"{Bundles.templateId}", new DailyQuestsData
                                                                         {
-                                                                            templateId = $"{PaidBundles.templateId}",
+                                                                            templateId = $"{Bundles.templateId}",
                                                                             attributes = new DailyQuestsDataDB
                                                                             {
                                                                                 challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
@@ -552,7 +548,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
                                                                         var ItemObjectResponse = new
                                                                         {
-                                                                            templateId = $"{PaidBundles.templateId}",
+                                                                            templateId = $"{Bundles.templateId}",
                                                                             attributes = new Dictionary<string, object>
                                                                             {
                                                                                 { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
@@ -585,15 +581,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                         ApplyProfileChanges.Add(new MultiUpdateClass
                                                                         {
                                                                             changeType = "itemAdded",
-                                                                            itemId = $"{PaidBundles.templateId}",
+                                                                            itemId = $"{Bundles.templateId}",
                                                                             item = ItemObjectResponse
                                                                         });
                                                                     }
-
-
-
                                                                 }
-
 
                                                                 var AthenaItemChallengeBundle = new AthenaItemDynamic
                                                                 {

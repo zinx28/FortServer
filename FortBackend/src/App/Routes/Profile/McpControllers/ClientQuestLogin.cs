@@ -235,154 +235,199 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 //ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
                                 //kvp.BundleId
                                 List<string> grantedquestinstanceids = new List<string>();
-                                foreach (var FreeBundles in kvp.FreeBundleObject)
+
+
+                                // THIS SHOULD SUPPORT ANY QUESTS.. IF DOESNT SAD!
+                                foreach(var AllBundles in kvp.BundlesObject)
                                 {
-                                    
-                                    //grantedquestinstanceids.Add(FreeBundles.templateId);
-                                    DailyQuestsData QuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == FreeBundles.templateId).Value;
-                                    if (QuestData == null)
+                                    bool ShouldGrantItems = true;
+                                    if(AllBundles.quest_data.RequireBP)
                                     {
-                                        List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
-
-                                        foreach (WeeklyObjectsObjectives ObjectiveItems in FreeBundles.Objectives)
+                                        if(!FoundSeason.BookPurchased)
                                         {
-                                            QuestObjectStats.Add(new DailyQuestsObjectiveStates
-                                            {
-                                                Name = $"completion_{ObjectiveItems.BackendName}",
-                                                Value = 0,
-                                                MaxValue = ObjectiveItems.Count
-                                            });
+                                            ShouldGrantItems = false;
                                         }
-
-                                        FoundSeason.Quests.Add($"{FreeBundles.templateId}", new DailyQuestsData
-                                        {
-                                            templateId = $"{FreeBundles.templateId}",
-                                            attributes = new DailyQuestsDataDB
-                                            {
-                                                challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
-                                                sent_new_notification = false,
-                                                ObjectiveState = QuestObjectStats,
-                                            },
-                                            quantity = 1
-                                        });
-
-
-                                        var ItemObjectResponse = new
-                                        {
-                                            templateId = $"{FreeBundles.templateId}",
-                                            attributes = new Dictionary<string, object>
-                                            {
-                                                { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                { "level", -1 },
-                                                { "item_seen", false },
-                                                { "playlists", new List<object>() },
-                                                { "sent_new_notification", true },
-                                                { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
-                                                { "xp_reward_scalar", 1 },
-                                                { "challenge_linked_quest_given", "" },
-                                                { "quest_pool", "" },
-                                                { "quest_state", "Active" },
-                                                { "bucket", "" },
-                                                { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                { "challenge_linked_quest_parent", "" },
-                                                { "max_level_bonus", 0 },
-                                                { "xp", 0 },
-                                                { "quest_rarity", "uncommon" },
-                                                { "favorite", false },
-                                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                            },
-                                            quantity = 1
-                                        };
-
-                                        foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
-                                        {
-                                            ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                                        }
-
-                                        MultiUpdates.Add(new MultiUpdateClass
-                                        {
-                                            changeType = "itemAdded",
-                                            itemId = $"{FreeBundles.templateId}",
-                                            item = ItemObjectResponse
-                                        });
                                     }
-                                }
 
-                                if (FoundSeason.BookPurchased)
-                                {
-                                    foreach (var PaidBundles in kvp.PaidBundleObject)
+                                    if (ShouldGrantItems)
                                     {
-                                        // grantedquestinstanceids.Add(PaidBundles.templateId);
-
-                                        DailyQuestsData QuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == PaidBundles.templateId).Value;
+                                        DailyQuestsData QuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == AllBundles.templateId).Value;
                                         if (QuestData == null)
                                         {
-                                            List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
-
-                                            foreach (WeeklyObjectsObjectives ObjectiveItems in PaidBundles.Objectives)
+                                            if (!AllBundles.quest_data.ExtraQuests)
                                             {
-                                                QuestObjectStats.Add(new DailyQuestsObjectiveStates
+
+                                                List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+
+                                                foreach (WeeklyObjectsObjectives ObjectiveItems in AllBundles.Objectives)
                                                 {
-                                                    Name = $"completion_{ObjectiveItems.BackendName}",
-                                                    Value = 0,
-                                                    MaxValue = ObjectiveItems.Count
+                                                    QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                    {
+                                                        Name = $"completion_{ObjectiveItems.BackendName}",
+                                                        Value = 0,
+                                                        MaxValue = ObjectiveItems.Count
+                                                    });
+                                                }
+
+                                                FoundSeason.Quests.Add($"{AllBundles.templateId}", new DailyQuestsData
+                                                {
+                                                    templateId = $"{AllBundles.templateId}",
+                                                    attributes = new DailyQuestsDataDB
+                                                    {
+                                                        challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
+                                                        sent_new_notification = false,
+                                                        ObjectiveState = QuestObjectStats,
+                                                    },
+                                                    quantity = 1
+                                                });
+
+
+                                                var ItemObjectResponse = new
+                                                {
+                                                    templateId = $"{AllBundles.templateId}",
+                                                    attributes = new Dictionary<string, object>
+                                                    {
+                                                        { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "level", -1 },
+                                                        { "item_seen", false },
+                                                        { "playlists", new List<object>() },
+                                                        { "sent_new_notification", true },
+                                                        { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
+                                                        { "xp_reward_scalar", 1 },
+                                                        { "challenge_linked_quest_given", "" },
+                                                        { "quest_pool", "" },
+                                                        { "quest_state", "Active" },
+                                                        { "bucket", "" },
+                                                        { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "challenge_linked_quest_parent", "" },
+                                                        { "max_level_bonus", 0 },
+                                                        { "xp", 0 },
+                                                        { "quest_rarity", "uncommon" },
+                                                        { "favorite", false },
+                                                        // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                                    },
+                                                    quantity = 1
+                                                };
+
+                                                foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                                                {
+                                                    ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                                }
+
+                                                MultiUpdates.Add(new MultiUpdateClass
+                                                {
+                                                    changeType = "itemAdded",
+                                                    itemId = $"{AllBundles.templateId}",
+                                                    item = ItemObjectResponse
                                                 });
                                             }
-
-                                            FoundSeason.Quests.Add($"{PaidBundles.templateId}", new DailyQuestsData
-                                            {
-                                                templateId = $"{PaidBundles.templateId}",
-                                                attributes = new DailyQuestsDataDB
-                                                {
-                                                    challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
-                                                    sent_new_notification = false,
-                                                    ObjectiveState = QuestObjectStats
-                                                },
-                                                quantity = 1
-                                            });
-
-
-                                            var ItemObjectResponse = new
-                                            {
-                                                templateId = $"{PaidBundles.templateId}",
-                                                attributes = new Dictionary<string, object>
-                                                {
-                                                    { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                    { "level", -1 },
-                                                    { "item_seen", false },
-                                                    { "playlists", new List<object>() },
-                                                    { "sent_new_notification", false },
-                                                    { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
-                                                    { "xp_reward_scalar", 1 },
-                                                    { "challenge_linked_quest_given", "" },
-                                                    { "quest_pool", "" },
-                                                    { "quest_state", "Active" },
-                                                    { "bucket", "" },
-                                                    { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                    { "challenge_linked_quest_parent", "" },
-                                                    { "max_level_bonus", 0 },
-                                                    { "xp", 0 },
-                                                    { "quest_rarity", "uncommon" },
-                                                    { "favorite", false },
-                                                    // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                },
-                                                quantity = 1
-                                            };
-
-                                            foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
-                                            {
-                                                ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                                            }
-
-                                            MultiUpdates.Add(new MultiUpdateClass
-                                            {
-                                                changeType = "itemAdded",
-                                                itemId = $"{PaidBundles.templateId}",
-                                                item = ItemObjectResponse
-                                            });
                                         }
+                                        else
+                                        {
+                                            // HANDLE CLAIMING
 
+                                            if (FoundSeason.Quests[AllBundles.templateId].attributes.quest_state != "Claimed")
+                                            {
+                                                bool ShouldClaim = true;
+                                                int Index = 0;
+                                                foreach (DailyQuestsObjectiveStates ObjectiveState in FoundSeason.Quests[AllBundles.templateId].attributes.ObjectiveState)
+                                                {
+                                                    if (ObjectiveState.Value != ObjectiveState.MaxValue)
+                                                    {
+                                                        ShouldClaim = false;
+                                                    }
+                                                    //FoundSeason.Quests[FreeBundles.templateId].attributes.ObjectiveState[Index].Value
+                                                    Index += 1;
+                                                }
+
+                                                if (ShouldClaim)
+                                                {
+                                                    FoundSeason.Quests[AllBundles.templateId].attributes.quest_state = "Claimed";
+                                                    FoundSeason.BookXP += AllBundles.Rewards.BattleStars;
+
+
+                                                    foreach (var Quests in AllBundles.Rewards.Quest)
+                                                    {
+                                                        var FoundNewQuest = kvp.BundlesObject.FirstOrDefault(e => e.templateId == Quests.TemplateId);
+                                                        if (FoundNewQuest != null)
+                                                        {
+                                                            // ADD NEW QUESTS
+                                                            Console.WriteLine($"I WANT TO ADD {FoundNewQuest.templateId}");
+
+                                                            List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+
+                                                            foreach (WeeklyObjectsObjectives ObjectiveItems in FoundNewQuest.Objectives)
+                                                            {
+                                                                QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                                                {
+                                                                    Name = $"completion_{ObjectiveItems.BackendName}",
+                                                                    Value = 0,
+                                                                    MaxValue = ObjectiveItems.Count
+                                                                });
+                                                            }
+
+                                                            FoundSeason.Quests.Add($"{FoundNewQuest.templateId}", new DailyQuestsData
+                                                            {
+                                                                templateId = $"{FoundNewQuest.templateId}",
+                                                                attributes = new DailyQuestsDataDB
+                                                                {
+                                                                    challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
+                                                                    sent_new_notification = false,
+                                                                    ObjectiveState = QuestObjectStats,
+                                                                },
+                                                                quantity = 1
+                                                            });
+
+
+                                                            var ItemObjectResponse = new
+                                                            {
+                                                                templateId = $"{FoundNewQuest.templateId}",
+                                                                attributes = new Dictionary<string, object>
+                                                                {
+                                                                    { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                                    { "level", -1 },
+                                                                    { "item_seen", false },
+                                                                    { "playlists", new List<object>() },
+                                                                    { "sent_new_notification", true },
+                                                                    { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
+                                                                    { "xp_reward_scalar", 1 },
+                                                                    { "challenge_linked_quest_given", "" },
+                                                                    { "quest_pool", "" },
+                                                                    { "quest_state", "Active" },
+                                                                    { "bucket", "" },
+                                                                    { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                                    { "challenge_linked_quest_parent", "" },
+                                                                    { "max_level_bonus", 0 },
+                                                                    { "xp", 0 },
+                                                                    { "quest_rarity", "uncommon" },
+                                                                    { "favorite", false },
+                                                                    // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                                                },
+                                                                quantity = 1
+                                                            };
+
+                                                            foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                                                            {
+                                                                ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                                            }
+
+                                                            MultiUpdates.Add(new MultiUpdateClass
+                                                            {
+                                                                changeType = "itemAdded",
+                                                                itemId = $"{FoundNewQuest.templateId}",
+                                                                item = ItemObjectResponse
+                                                            });
+                                                        }
+                                                        else
+                                                        {
+                                                            Console.WriteLine("I DONT SUPPORT " + Quests.TemplateId);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
+                                   
                                 }
                             }
 

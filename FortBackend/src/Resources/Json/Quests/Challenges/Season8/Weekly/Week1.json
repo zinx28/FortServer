@@ -4,9 +4,13 @@
   "BundleRequired": {
     "RequiredLevel": 1
   },
-  "FreeBundleObject": [
+  "BundlesObject": [
     {
       "templateId": "Quest:Quest_BR_Visit_PirateCamps",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 5,
         "Quest": []
@@ -51,6 +55,10 @@
     },
     {
       "templateId": "Quest:Quest_BR_Interact_Chests_TwoLocations_01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 5,
         "Quest": []
@@ -65,27 +73,38 @@
     },
     {
       "templateId": "Quest:Quest_BR_Damage_Chain_Dual_A",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 3,
         "Quest": [
           {
-            "PrimaryAssetName": "Quest_BR_Damage_Chain_Dual_B",
+            "TemplateId": "Quest:Quest_BR_Damage_Chain_Dual_B",
             "Quantity": 1
           }
         ]
       },
       "Objectives": [
         {
-          "BackendName": "battlepass_interact_chests_twolocations_01",
-          "Count": 7,
+          "BackendName": "battlepass_damage_athena_player_chain_dual_a_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_dual_a_2",
+          "Count": 1,
           "Stage": -1
         }
       ]
-    }
-  ],
-  "PaidBundleObject": [
+    },
     {
       "templateId": "Quest:Quest_BR_Visit_GiantFaces",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 5,
         "Quest": []
@@ -110,6 +129,10 @@
     },
     {
       "templateId": "Quest:Quest_BR_Use_Geyser_DifferentMatches",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 5,
         "Quest": []
@@ -124,6 +147,10 @@
     },
     {
       "templateId": "Quest:Quest_BR_Eliminate_ExploShotGunAR",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 10,
         "Quest": []
@@ -148,6 +175,10 @@
     },
     {
       "templateId": "Quest:Quest_BR_Damage_Vehicle_Opponent",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
       "Rewards": {
         "BattleStars": 10,
         "Quest": []
@@ -156,6 +187,57 @@
         {
           "BackendName": "battlepass_damage_athena_vehicle_with_opponent_inside",
           "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Chain_Dual_B",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Damage_Chain_Dual_C",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_dual_b_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_dual_b_2",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Chain_Dual_C",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true
+      },
+      "Rewards": {
+        "BattleStars": 4,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_dual_c_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_dual_c_2",
+          "Count": 1,
           "Stage": -1
         }
       ]

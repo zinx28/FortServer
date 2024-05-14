@@ -13,7 +13,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "Pickaxe_ID_166_Shiny",
             "Quantity": 1
@@ -36,7 +37,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_155_Shiny_ClothingB",
             "Quantity": 1
@@ -59,7 +61,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "BID_217_ShinyFemale",
             "Quantity": 1
@@ -82,7 +85,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_156_Shiny_ClothingC",
             "Quantity": 1
@@ -105,7 +109,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "EID_Shiny",
             "Quantity": 1
@@ -124,17 +129,19 @@
       "templateId": "Quest_BR_S8_Shiny_Outlive_06",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": false
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
-            "TemplateId": "VTID_157_Shiny_ClothingD",
+            "TemplateId": "VTID_158_Shiny_BackBlingB",
             "Quantity": 1
           },
           {
-            "TemplateId": "VTID_158_Shiny_BackBlingB",
+            "TemplateId": "VTID_157_Shiny_ClothingD",
             "Quantity": 1
           }
         ]

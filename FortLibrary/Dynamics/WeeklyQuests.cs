@@ -35,6 +35,9 @@ namespace FortLibrary.Dynamics
     {
         public bool RequireBP { get; set; } = false;
         public bool ExtraQuests { get; set; } = true;
+        public bool Steps { get; set; } = false;
+
+        public bool IsWeekly { get; set; } = false;
     }
 
     public class WeeklyObjectsObjectives
@@ -48,6 +51,7 @@ namespace FortLibrary.Dynamics
     {
         public int BattleStars { get; set; } = 0;
         public List<WeeklyRewardsQuest> Quest { get; set; } = new List<WeeklyRewardsQuest>();
+        public List<WeeklyRewardsQuest> GrantedItems { get; set; } = new List<WeeklyRewardsQuest>();
     }
 
     public class WeeklyRewardsQuest

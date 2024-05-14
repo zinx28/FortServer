@@ -13,7 +13,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_133_Pirate_StageB",
             "Quantity": 1
@@ -36,7 +37,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_134_Pirate_StageC",
             "Quantity": 1
@@ -59,7 +61,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_135_Pirate_StageD",
             "Quantity": 1
@@ -82,7 +85,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "Pickaxe_ID_163_PirateOctopus",
             "Quantity": 1
@@ -105,7 +109,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_136_Pirate_StageE",
             "Quantity": 1
@@ -128,7 +133,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_137_Pirate_StageF",
             "Quantity": 1
@@ -151,7 +157,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_138_Pirate_StageG",
             "Quantity": 1
@@ -179,6 +186,12 @@
             "TemplateId": "VTID_139_Pirate_StageH",
             "Quantity": 1
           }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "VTID_139_Pirate_StageH",
+            "Quantity": 1
+          }
         ]
       },
       "Objectives": [
@@ -197,9 +210,10 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
-            "TemplateId": "VTID_139_Pirate_StageH",
+            "TemplateId": "BID_216_PirateProgressive",
             "Quantity": 1
           }
         ]
@@ -216,11 +230,13 @@
       "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_01",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_140_Pirate_ClothingB",
             "Quantity": 1
@@ -239,11 +255,13 @@
       "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_02",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_141_Pirate_ClothingC",
             "Quantity": 1
@@ -262,11 +280,13 @@
       "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_03",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_142_Pirate_ClothingD",
             "Quantity": 1

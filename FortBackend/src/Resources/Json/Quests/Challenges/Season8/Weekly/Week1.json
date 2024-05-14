@@ -75,7 +75,8 @@
       "templateId": "Quest:Quest_BR_Damage_Chain_Dual_A",
       "quest_data": {
         "RequireBP": false,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "Steps": true
       },
       "Rewards": {
         "BattleStars": 3,
@@ -195,7 +196,8 @@
       "templateId": "Quest:Quest_BR_Damage_Chain_Dual_B",
       "quest_data": {
         "RequireBP": false,
-        "ExtraQuests": true
+        "ExtraQuests": true,
+        "Steps": true
       },
       "Rewards": {
         "BattleStars": 3,
@@ -223,7 +225,8 @@
       "templateId": "Quest:Quest_BR_Damage_Chain_Dual_C",
       "quest_data": {
         "RequireBP": false,
-        "ExtraQuests": true
+        "ExtraQuests": false,
+        "Steps": false
       },
       "Rewards": {
         "BattleStars": 4,

@@ -15,11 +15,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "CID_378_Athena_Commando_M_FurnaceFace",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Season8_Ruin_Schedule",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "CID_378_Athena_Commando_M_FurnaceFace",
             "Quantity": 1
           }
         ]
@@ -46,11 +48,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_01",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest01",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_01",
             "Quantity": 1
           }
         ]
@@ -73,11 +77,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_02",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest02",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_02",
             "Quantity": 1
           },
           {
@@ -104,11 +110,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_03",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest03",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_03",
             "Quantity": 1
           },
           {
@@ -135,11 +143,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_04",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest04",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_04",
             "Quantity": 1
           },
           {
@@ -166,11 +176,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_05",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest05",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_05",
             "Quantity": 1
           },
           {
@@ -197,11 +209,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_06",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest06",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_06",
             "Quantity": 1
           },
           {
@@ -228,11 +242,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_07",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest07",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_07",
             "Quantity": 1
           },
           {
@@ -259,11 +275,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_08",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest08",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_08",
             "Quantity": 1
           },
           {
@@ -290,11 +308,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_09",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest09",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_09",
             "Quantity": 1
           },
           {
@@ -321,11 +341,13 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Athena_Fake_LS_S8_10",
-            "Quantity": 1
-          },
-          {
             "TemplateId": "Quest_BR_S8_Cumulative_Quest10",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "Athena_Fake_LS_S8_10",
             "Quantity": 1
           },
           {

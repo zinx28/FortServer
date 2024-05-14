@@ -89,10 +89,16 @@ namespace FortLibrary.EpicResponses.Profile.Quests
 
 
         // THIS IS NORMALLY DYNAMIC BUT BaCkEnD hAtEs ThAt IdEa
-
+        public QuestData questData { get; set; } = new QuestData();
         public List<DailyQuestsObjectiveStates> ObjectiveState { get; set; } = new List<DailyQuestsObjectiveStates>();
     }
 
+    public class QuestData
+    {
+        public string QuestType = "";
+
+        public bool LastQuest = false;
+    }
     public class DailyQuestsObjectiveStates
     {
         public string Name { get; set; } = string.Empty;

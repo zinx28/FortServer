@@ -13,7 +13,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "Pickaxe_ID_164_DragonNinja",
             "Quantity": 1
@@ -36,7 +37,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_143_DragonNinja_StageB",
             "Quantity": 1
@@ -59,7 +61,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_149_DragonNinja_DragonSkinB",
             "Quantity": 1
@@ -82,7 +85,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "AthenaToken_BRSeason08_DragonNinja_PickaxeStyles",
             "Quantity": 1
@@ -117,7 +121,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_144_DragonNinja_StageC",
             "Quantity": 1
@@ -140,7 +145,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_150_DragonNinja_DragonSkinC",
             "Quantity": 1
@@ -163,7 +169,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "EID_Shinobi",
             "Quantity": 1
@@ -186,7 +193,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_151_DragonNinja_DragonSkinD",
             "Quantity": 1
@@ -209,7 +217,8 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_145_DragonNinja_StageD",
             "Quantity": 1
@@ -228,11 +237,13 @@
       "templateId": "Quest_BR_S8_DragonNinja_Complete_WeeklyChallenges_01",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_146_DragonNinja_ClothingB",
             "Quantity": 1
@@ -251,11 +262,13 @@
       "templateId": "Quest_BR_S8_DragonNinja_Complete_WeeklyChallenges_02",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_147_DragonNinja_ClothingC",
             "Quantity": 1
@@ -274,11 +287,13 @@
       "templateId": "Quest_BR_S8_DragonNinja_Complete_WeeklyChallenges_03",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "Quest": [],
+        "GrantedItems": [
           {
             "TemplateId": "VTID_148_DragonNinja_ClothingD",
             "Quantity": 1

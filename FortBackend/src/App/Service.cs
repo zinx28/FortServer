@@ -141,6 +141,8 @@ namespace FortBackend.src.App
 
             AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
             {
+                //XmppServer.Join(); ~ i can't trust 
+               
                 CacheMiddleware.ShutDown().Wait();
                 Console.WriteLine("Done");
             };

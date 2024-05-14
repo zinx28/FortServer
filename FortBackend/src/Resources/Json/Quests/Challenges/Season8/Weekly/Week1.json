@@ -9,7 +9,8 @@
       "templateId": "Quest:Quest_BR_Visit_PirateCamps",
       "quest_data": {
         "RequireBP": false,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 5,
@@ -57,7 +58,8 @@
       "templateId": "Quest:Quest_BR_Interact_Chests_TwoLocations_01",
       "quest_data": {
         "RequireBP": false,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 5,
@@ -76,7 +78,8 @@
       "quest_data": {
         "RequireBP": false,
         "ExtraQuests": false,
-        "Steps": true
+        "Steps": true,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 3,
@@ -104,7 +107,8 @@
       "templateId": "Quest:Quest_BR_Visit_GiantFaces",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 5,
@@ -132,7 +136,8 @@
       "templateId": "Quest:Quest_BR_Use_Geyser_DifferentMatches",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 5,
@@ -150,7 +155,8 @@
       "templateId": "Quest:Quest_BR_Eliminate_ExploShotGunAR",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 10,
@@ -178,7 +184,8 @@
       "templateId": "Quest:Quest_BR_Damage_Vehicle_Opponent",
       "quest_data": {
         "RequireBP": true,
-        "ExtraQuests": false
+        "ExtraQuests": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 10,
@@ -197,7 +204,8 @@
       "quest_data": {
         "RequireBP": false,
         "ExtraQuests": true,
-        "Steps": true
+        "Steps": true,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 3,
@@ -226,7 +234,8 @@
       "quest_data": {
         "RequireBP": false,
         "ExtraQuests": false,
-        "Steps": false
+        "Steps": false,
+        "IsWeekly": true
       },
       "Rewards": {
         "BattleStars": 4,

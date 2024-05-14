@@ -197,7 +197,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                                         if (kvp.BundleRequired.RequiredLevel > seasonObject.Level) continue;
 
-                                       // kvp.BundleRequired.RequiredLevel
+                                        // kvp.BundleRequired.RequiredLevel
+
+                                        int CompletedNum = 0;
                                         List<string> grantedquestinstanceids = new List<string>();
                                         foreach (var FreeBundles in kvp.BundlesObject)
                                         {
@@ -213,6 +215,23 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 grantedquestinstanceids.Add(FreeBundles.templateId);
                                             }
 
+                                            if (FreeBundles.quest_data.IsWeekly && !FreeBundles.quest_data.ExtraQuests)
+                                            {
+                                                if (!FreeBundles.quest_data.Steps)
+                                                {
+                                                    Console.Write("TEST " + FreeBundles.templateId);
+                                                    var GrabQuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == FreeBundles.templateId).Value;
+                                                    if (GrabQuestData != null)
+                                                    {
+                                                        if (GrabQuestData.attributes.quest_state == "Claimed")
+                                                        {
+                                                            CompletedNum += 1;
+                                                        }
+                                                    }
+                                                }
+                                               
+                                            }
+
                                         }
                                         //challenge_bundle_schedule_id
                                         var AthenaItemChallengeBundle = new AthenaItemDynamic
@@ -221,7 +240,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             attributes = new Dictionary<string, object>
                                             {
                                                 { "has_unlock_by_completion", false },
-                                                { "num_quests_completed", 0 },
+                                                { "num_quests_completed", CompletedNum },
                                                 { "level", 0 },
                                                 { "grantedquestinstanceids", grantedquestinstanceids.ToArray() },
                                                 { "item_seen",  true },
@@ -229,7 +248,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 { "num_granted_bundle_quests", grantedquestinstanceids.Count() },
                                                 { "max_level_bonus", 0 },
                                                 { "challenge_bundle_schedule_id", ResponseId },
-                                                { "num_progress_quests_completed", 0 },
+                                                { "num_progress_quests_completed", CompletedNum },
                                                 { "xp", 0 },
                                                 { "favorite", false }
                                             },
@@ -373,7 +392,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             foreach (var kvp in seasonObject.Quests)
                             {
                                 var Value = kvp.Value;
-                                Console.WriteLine(Value.templateId);
+                               // Console.WriteLine(Value.templateId);
      
                                 if (Value.templateId.Contains("Quest:"))
                                 {

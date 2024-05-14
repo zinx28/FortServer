@@ -18,10 +18,12 @@
 ## Discord Bot
 - Make sure you set up the bot in the configs, and the /test command works
 - Discord Bot Disabled On "DEVELOPMENT"
+- ActivityType max is 5 (check in config cs file!! for more details)
 
 ### Commands
 - /test
 - /who (this command only works if the user has a role, let's say moderator.. ig)
+- /register
 
 ## HTTP
 - Just build on Release
@@ -29,14 +31,14 @@
 ## HTTPS
 - First, go to [FortBackend/src/resources/certificates](https://github.com/zinx28/FortBackend/tree/main/FortBackend/src/Resources/Certificates)
 - Remove .temp from the file then replace it with your .pfx (If you have cert and the key just look up how to make it a pfx)
-- Before you run the project, make sure you change the build type from (Release) to HTTPS
+- Before you run the project, make sure you change the build type from Release to HTTPS
 
 ## Added/Not Added 
 - MCP [!]
 - OAUTH (Season 10 login is skunked.. i will need to look at this + login issues on older seasons - like season 4) [!]
-- Timeline [+]
+- Timeline [+] (Doesnt support custom events yet... well just fortnite events)
 - Cloudstorage, ClientSaving [+]
-- 24/7 Shop (WIP - could be so random, items in wrong places) [!]
+- 24/7 Shop (WIP - could be so random, items in wrong places - THIS WILL CRASH ON OLDER VERSIONS AS IT TRIES TO GENERATE ITEMS ON SEASONS ITS NOT FOR!) [!]
 - XMPP (WIP PartyV2) [!]
 - Friends [-]
 - Matchmaker (Won't connect as I haven't coded the WS server) [-]

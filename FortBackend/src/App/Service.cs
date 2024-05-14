@@ -99,10 +99,12 @@ namespace FortBackend.src.App
             DiscordBotServer.Start();
 #endif
 
-
+          
             var XmppServer = new Thread(() =>
             {
                 Xmpp_Server.Intiliazation(args);
+
+               // FortBackend.src.App.XMPP_Server.XMPP.XmppServer.STOP();
             });
             XmppServer.Start();
 
@@ -139,15 +141,20 @@ namespace FortBackend.src.App
 
             var shutdownTask = app.WaitForShutdownAsync();
 
+        
             AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
             {
+                
                 //XmppServer.Join(); ~ i can't trust 
-               
+
                 CacheMiddleware.ShutDown().Wait();
                 Console.WriteLine("Done");
             };
             //app.Run();
             await shutdownTask;
+
+            Console.WriteLine("SHUTDOINW");
+            FortBackend.src.App.XMPP_Server.XMPP.XmppServer.STOP();
         }
 
         async static Task GenerateItemShop(int i)

@@ -121,5 +121,21 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
             Logger.Log("XMPP STARTING", "XMPP");
             app.Run();
         }
+
+        public static void STOP()
+        {
+            Console.WriteLine("XMPP SHUTDOWN");
+            foreach (var item in GlobalData.Clients)
+            {
+                if(item.Game_Client != null)
+                {
+                    try
+                    {
+                        item.Game_Client.CloseAsync(WebSocketCloseStatus.NormalClosure, "SERVER SHUTDONW", CancellationToken.None);
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }

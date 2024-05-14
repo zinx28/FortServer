@@ -51,11 +51,11 @@ namespace FortBackend.src.App.Utilities
                 app.UseDeveloperExceptionPage();
             }
 
-            #if DEBUG
+            if (Saved.Saved.DeserializeConfig.EnableLogs)
+            {
+                Logger.Log("Enabled Logs", "SETUP");
                 app.UseMiddleware<LoggingMiddleware>();
-            #endif
-
-           
+            }
 
             app.UseRouting();
 

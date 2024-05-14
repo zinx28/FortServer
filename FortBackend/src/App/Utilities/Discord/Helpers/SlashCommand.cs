@@ -62,6 +62,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                 {
                     await Who.Respond(command);
                 }
+            }else if(command.CommandName == "register")
+            {
+                await Create.Respond(command);
             }
         }
     }

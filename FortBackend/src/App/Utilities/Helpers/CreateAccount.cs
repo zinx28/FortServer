@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using static FortLibrary.DiscordAuth;
+using FortBackend.src.App.Utilities.MongoDB.Management;
+using FortLibrary.MongoDB;
 
 namespace FortBackend.src.App.Utilities.Helpers
 {
@@ -86,209 +88,16 @@ namespace FortBackend.src.App.Utilities.Helpers
                     }
                 }
 
-                User UserData = new User
+                await MongoDBCreateAccount.Init(new CreateAccountArg
                 {
-                    AccountId = AccountId,
                     DiscordId = DiscordId,
-                    Username = Global ? GlobalName : username,
+                    DisplayName = Global ? GlobalName : username,
                     Email = Generate.RandomString(10) + "@fortbackend.com",
-                    accesstoken = NewAccessToken,
+                    Password = Generate.RandomString(15),
                     UserIps = UserIp,
-                    banned = BanUser,
-                    Password = Generate.RandomString(15)
-                };
+                    banned = BanUser
+                });
 
-                UserFriends UserFriendsData = new UserFriends
-                {
-                    AccountId = AccountId,
-                    DiscordId = DiscordId
-                };
-
-                Account AccountData = new Account
-                {
-                    AccountId = AccountId,
-                    athena = new Athena()
-                    {
-                        Items = new Dictionary<string, AthenaItem>()
-                        {
-                            ["AthenaPickaxe:DefaultPickaxe"] = new AthenaItem
-                            {
-                                templateId = "AthenaPickaxe:DefaultPickaxe",
-                                attributes = new AthenaItemAttributes
-                                {
-                                    item_seen = true
-                                }
-                            },
-                            ["AthenaGlider:DefaultGlider"] = new AthenaItem
-                            {
-                                templateId = "AthenaGlider:DefaultGlider",
-                                attributes = new AthenaItemAttributes
-                                {
-                                    item_seen = true
-                                }
-                            },
-                            ["AthenaDance:EID_DanceMoves"] = new AthenaItem
-                            {
-                                templateId = "AthenaDance:EID_DanceMoves",
-                                attributes = new AthenaItemAttributes
-                                {
-                                    item_seen = true
-                                }
-                            }
-                        },
-                        loadouts_data = new Dictionary<string, SandboxLoadout>()
-                        {
-                            ["sandbox_loadout"] = new SandboxLoadout() // dont need much just the default obj
-                            {
-                                templateId = "CosmeticLocker:cosmeticlocker_athena",
-                                attributes = new SandboxLoadoutAttributes
-                                {
-                                    locker_slots_data = new SandboxLoadoutSlots
-                                    {
-                                        slots = new LockerSlotsData
-                                        {
-                                            musicpack = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                }
-                                            },
-                                            character = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                },
-                                                activevariants = new List<object>()
-                                            },
-                                            backpack = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                },
-                                                activevariants = new List<object>()
-                                            },
-                                            pickaxe = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                },
-                                                activevariants = new List<object>()
-                                            },
-                                            skydivecontrail = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                }
-                                            },
-                                            dance = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    ""
-                                                }
-                                            },
-                                            loadingscreen = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                }
-                                            },
-                                            glider = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    ""
-                                                }
-                                            },
-                                            itemwrap = new Slots
-                                            {
-                                                items = new List<string>
-                                                {
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    "",
-                                                    ""
-                                                }
-                                            }
-                                        }
-                                    },
-                                    use_count = 0,
-                                    banner_color_template = "",
-                                    banner_icon_template = "",
-                                    locker_name = "",
-                                    item_seen = false,
-                                    favorite = false
-                                },
-                                quantity = 1
-                            }
-                        }
-                    },
-                    commoncore = new CommonCore()
-                    {
-                        Items = new Dictionary<string, CommonCoreItem>()
-                        {
-                            ["Currency"] = new CommonCoreItem
-                            {
-                                templateId = "Currency:MtxPurchased",
-                                //attributes = new CommonCoreItemAttributes
-                                //{
-                                //     platform = "EpicPC"
-                                // },
-                                quantity = 1000
-                            }
-                        }
-                    },
-                    DiscordId = DiscordId
-                };
-
-                StatsInfo statsData = new StatsInfo()
-                {
-                    AccountId = AccountId,
-                    DiscordId = DiscordId,
-                    Gamemodes = new List<GamemodeStatsData>()
-                    {
-                        new GamemodeStatsData
-                        {
-                            Gamemode = "solo"
-                        },
-                        new GamemodeStatsData
-                        {
-                            Gamemode = "duos"
-                        },
-                        new GamemodeStatsData
-                        {
-                            Gamemode = "trios"
-                        },
-                        new GamemodeStatsData
-                        {
-                            Gamemode = "squad"
-                        },
-                        new GamemodeStatsData
-                        {
-                            Gamemode = "ltm"
-                        }
-                    }
-                };
-
-                await Accountcollection.InsertOneAsync(AccountData); // first if it fails then tell the user
-                Usercollection.InsertOne(UserData);
-                UserFriendscollection.InsertOne(UserFriendsData);
-                Statscollection.InsertOne(statsData); // stats data
                 return NewAccessToken;
             }
             catch (Exception ex)

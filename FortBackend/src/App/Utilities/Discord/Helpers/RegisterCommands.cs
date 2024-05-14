@@ -10,21 +10,40 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
     {
         public static async Task Connect(FortConfig config, SocketGuild guild)
         {
-            
+
 
             // This overwrites everything
-            //await Guild.BulkOverwriteApplicationCommandAsync(Array.Empty<SlashCommandProperties>());
-
+          //  await guild.BulkOverwriteApplicationCommandAsync(Array.Empty<SlashCommandProperties>());
 
             var TempCommand = new SlashCommandBuilder()
                 .WithName("test")
                 .WithDescription("FortBackend Test Command / Check if backend is online")
-                .WithDMPermission(false);
+                .WithContextTypes(InteractionContextType.Guild);
+
+            var CreateCommand = new SlashCommandBuilder()
+            .WithName("register")
+            .WithDescription("Create an account using FortBackend")
+            .WithContextTypes(InteractionContextType.Guild)
+            .AddOption(new SlashCommandOptionBuilder()
+                .WithName("displayname")
+                .WithDescription("Choose a username for your account!")
+                .WithRequired(true)
+                .WithType(ApplicationCommandOptionType.String))
+            .AddOption(new SlashCommandOptionBuilder()
+                .WithName("email")
+                .WithDescription("Set an Email For Your FortBackend Account!")
+                .WithRequired(true)
+                .WithType(ApplicationCommandOptionType.String))
+            .AddOption(new SlashCommandOptionBuilder()
+                .WithName("password")
+                .WithDescription("Set a Password for your account!")
+                .WithRequired(true)
+                .WithType(ApplicationCommandOptionType.String));
 
             var WhoCommand = new SlashCommandBuilder()
                 .WithName("who")
-                .WithDescription("Find a user who has a account on FortBackend!")
-                .WithDMPermission(false)
+                .WithDescription("Find a user who has an account on FortBackend!")
+                .WithContextTypes(InteractionContextType.Guild)
                 .AddOption(new SlashCommandOptionBuilder()
                     .WithName("mention")
                     .WithDescription("Mention a user you need to search up")
@@ -37,12 +56,13 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                     .WithType(ApplicationCommandOptionType.String))
                 .AddOption(new SlashCommandOptionBuilder()
                     .WithName("ign")
-                    .WithDescription("ingame name")
+                    .WithDescription("in-game name")
                     .WithRequired(false)
                     .WithType(ApplicationCommandOptionType.String));
 
             await guild.CreateApplicationCommandAsync(TempCommand.Build());
             await guild.CreateApplicationCommandAsync(WhoCommand.Build());
+            await guild.CreateApplicationCommandAsync(CreateCommand.Build());
         }
     }
 }

@@ -16,8 +16,8 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("DiscordId")]
         public string DiscordId { get; set; } = string.Empty;
 
-        [BsonElement("gamemodes")]
-        public List<GamemodeStatsData> Gamemodes { get; set; } = new List<GamemodeStatsData>();
+      //  [BsonElement("gamemodes")]
+        //public List<GamemodeStatsData> Gamemodes { get; set; } = new List<GamemodeStatsData>();
 
 
         [BsonElement("stats")]

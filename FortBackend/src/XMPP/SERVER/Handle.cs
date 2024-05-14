@@ -69,7 +69,7 @@ namespace FortBackend.src.App.SERVER
                                         Open.Init(webSocket, UserDataSaved, clientId);
                                         break;
                                     case "auth":
-                                        Auth.Init(webSocket, xmlDoc, clientId, UserDataSaved);
+                                        Auth.Init(webSocket, xmlDoc, clientId, UserDataSaved, IP);
                                         break;
                                     case "iq":
                                         Iq.Init(webSocket, xmlDoc, clientId, UserDataSaved);

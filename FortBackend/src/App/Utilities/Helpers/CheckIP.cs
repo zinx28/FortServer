@@ -2,6 +2,7 @@
 using FortBackend.src.App.Utilities.Helpers.UserManagement;
 using FortBackend.src.App.Utilities.MongoDB;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.XMPP.Data;
 using FortLibrary.MongoDB.Module;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
@@ -49,6 +50,12 @@ namespace FortBackend.src.App.Utilities.Helpers
                 {
                     try
                     {
+                        var FindAccessToken = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == UserData.AccountId);
+                        if(FindAccessToken != null)
+                        {
+                            GlobalData.AccessToken.Remove(FindAccessToken);
+                        }
+                        
                         await MongoSaveData.SaveToDB(UserData.AccountId);
                         CacheMiddleware.GlobalCacheProfiles.Remove(UserData.AccountId);
                     }

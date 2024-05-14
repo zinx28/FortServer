@@ -25,6 +25,10 @@ namespace FortBackend.src.App.Utilities.Discord
                 return;
             }
 
+            if(DeserializeConfig.ActivityType > 5)
+            {
+                DeserializeConfig.ActivityType = 3; // Watching
+            }
             DiscordSocketConfig config = new DiscordSocketConfig
             {
                 UseInteractionSnowflakeDate = true//, // lets say discord sucks right... discord loves snow right right this just fixes the blank responses
@@ -44,7 +48,7 @@ namespace FortBackend.src.App.Utilities.Discord
             await Client.StartAsync();
             if(DeserializeConfig.bShowBotMessage)
             {
-                await Client.SetActivityAsync(new Game(DeserializeConfig.DiscordBotMessage, ActivityType.Playing));
+                await Client.SetActivityAsync(new Game(DeserializeConfig.DiscordBotMessage, (ActivityType)DeserializeConfig.ActivityType));
             }
         }
 
@@ -71,6 +75,7 @@ namespace FortBackend.src.App.Utilities.Discord
 
         private static Task OnDisconnected(Exception exception)
         {
+            Logger.Log("DISCONNECTED", "Discord");
             DiscordBot.Client.Ready -= OnReady;
            // DiscordBot.Client.InteractionCreated -= OnInteractionCreated;
             return Task.CompletedTask;

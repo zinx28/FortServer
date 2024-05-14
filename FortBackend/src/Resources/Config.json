@@ -20,7 +20,9 @@
     "Cloudflare": false,
     "bShowBotMessage": true,
     "DiscordBotMessage": "FortBackend",
+    "ActivityType": 3,
 
     "AdminEmail": "Admin@gmail.com",
-    "AdminPassword": "AdminPassword123"
+    "AdminPassword": "AdminPassword123",
+    "EnableLogs": false
 }

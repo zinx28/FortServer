@@ -16,7 +16,7 @@ namespace FortBackend.src.App.Routes.API
         [HttpPost("game/v2/grant_access/{accountId}")]
         public IActionResult GrantAccess(string accountId)
         {
-            return Ok(new {});
+            return StatusCode(204);
         }
 
 

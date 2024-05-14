@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.SERVER;
 using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.XMPP.Data;
 using Microsoft.AspNetCore.Http;
@@ -66,6 +67,8 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                             {
                                 Ip = context.Connection.RemoteIpAddress!.ToString();
                             }
+
+                            
                             string clientId = Guid.NewGuid().ToString();
                             WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
                             await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId, Ip);

@@ -61,6 +61,20 @@ namespace FortLibrary.ConfigHelpers
 
 
         public string DiscordBotMessage { get; set; } = "FortBackend";
+        public int ActivityType { get; set; } = 3; // This is the activity types
+
+        // 
+        //public enum ActivityType // modifed
+        //{
+        //    Playing = 0
+        //    Streaming = 1
+        //    Listening = 2
+        //    Watching = 3
+        //    CustomStatus = 4
+        //    Competing = 5
+        //}
+
+
         public bool bShowBotMessage { get; set; } = true; // Show bot message
 
         // -- //
@@ -71,6 +85,7 @@ namespace FortLibrary.ConfigHelpers
 
         // -- //
 
+        public bool EnableLogs { get; set; } = false;
 
         public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
 

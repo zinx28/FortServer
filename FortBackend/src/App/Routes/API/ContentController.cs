@@ -37,7 +37,7 @@ namespace FortBackend.src.App.Routes.API
 
                 if (string.IsNullOrEmpty(AcceptLanguage))
                 {
-                    AcceptLanguage = "eu"; // weird
+                    AcceptLanguage = "en"; // weird
                 }
 
                 Console.WriteLine(AcceptLanguage);
@@ -52,7 +52,13 @@ namespace FortBackend.src.App.Routes.API
 
 
                 var ContentJsonResponse = new ContentJson();
-                ContentJsonResponse = NewsManager.ContentJsonResponse.FirstOrDefault(e => e.Key == AcceptLanguage).Value;
+                if(NewsManager.ContentJsonResponse.TryGetValue(AcceptLanguage, out ContentJson Test)){
+                    ContentJsonResponse = Test;
+                }
+                else
+                {
+                    ContentJsonResponse = NewsManager.ContentJsonResponse.FirstOrDefault(e => e.Key == "en").Value;
+                }
 
                 ContentJsonResponse.dynamicbackgrounds = new DynamicBackground()
                 {
@@ -70,7 +76,6 @@ namespace FortBackend.src.App.Routes.API
 
                     }
                 };
-
                 //NewsManager
 
 

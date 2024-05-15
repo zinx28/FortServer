@@ -1,47 +1,38 @@
-﻿using System;
+﻿using FortLauncher.Pages;
+using FortLauncher.Services.Globals;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfApp1.Services.Saved;
+using System.Windows.Threading;
 
-namespace WpfApp1.Services.Pages
+namespace FortLauncher.Services.Utils
 {
-    /// <summary>
-    /// Interaction logic for LoginPage.xaml
-    /// </summary>
-    public partial class LoginPage : Page
+    public class DiscordLogin
     {
-        public LoginPage()
+        private LoginPage loginPage;
+
+        public DiscordLogin(LoginPage mainNav)
         {
-            InitializeComponent();
+            this.loginPage = mainNav;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public async void Init()
         {
-            Process openbrowser = Process.Start(new ProcessStartInfo("PUT YOUR LOGIN LINK HERE") { UseShellExecute = true });
+            Process openbrowser = Process.Start(new ProcessStartInfo(LauncherConfig.DiscordURl) { UseShellExecute = true });
 
-            Task.Run(async () =>
+            await Task.Run(async () =>
             {
-                Dispatcher.Invoke(() =>
+                loginPage.Dispatcher.Invoke(() =>
                 {
-                    CallBackButton.IsEnabled = false;
-                    CallBackButton.Content = "Waiting for callback";
+                    loginPage.CallBackButton.IsEnabled = false;
+                    loginPage.CallBackButton.Content = "Waiting for callback";
                 });
 
                 var listener = new HttpListener();
-		// THIS IS FOR THE LAUNCHER DONT CHANGE THE PORT
+                // THIS IS FOR THE LAUNCHER DONT CHANGE THE PORT
                 listener.Prefixes.Add("http://127.0.0.1:2158/launcher/api/v1/callback/");
                 listener.Start();
 
@@ -49,7 +40,7 @@ namespace WpfApp1.Services.Pages
                 HttpListenerContext context = listener.GetContext();
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
-                
+
                 byte[] Buffer = System.Text.Encoding.UTF8.GetBytes("<!DOCTYPE html><head><title>CLOSE THIS PAGE</title></head><body>If you see this we couldnt close the page just close this! this is just for us to you into the launcher! <script> function test() { window.close(); } setInterval(function() { test(); }, 1000)</script></body>");
                 response.ContentEncoding = Encoding.UTF8;
                 response.ContentType = "text/html";
@@ -58,15 +49,15 @@ namespace WpfApp1.Services.Pages
                 response.OutputStream.Close();
                 var code = request.QueryString.Get("code");
                 response.Close();
-              
 
-                Dispatcher.Invoke(() =>
+
+                loginPage.Dispatcher.Invoke(() =>
                 {
                     UserData.Token = code;
-                    NavigationService.Navigate(new Home());
+                    loginPage.NavigationService.Navigate(new Home());
                 });
 
-               
+
 
                 await Task.Delay(1000);
 

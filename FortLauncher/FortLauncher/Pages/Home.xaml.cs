@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.Services.Saved;
+using FortLauncher.Services.Globals;
 
-namespace WpfApp1.Services.Pages
+namespace FortLauncher.Pages
 {
     /// <summary>
     /// Interaction logic for Home.xaml

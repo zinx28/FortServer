@@ -1,15 +1,15 @@
-﻿<Page x:Class="WpfApp1.Services.Pages.Home"
+﻿<Page x:Class="FortLauncher.Pages.Home"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp1.Services.Pages"
+      xmlns:local="clr-namespace:FortLauncher.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
       Height="710" Width="1160"
       Title="Home">
 
     <Grid>
-        <ui:TextBlock x:Name="TestBox" Text="TEST" Margin="57,138,230,260" />
+        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="57,138,230,260" />
     </Grid>
 </Page>

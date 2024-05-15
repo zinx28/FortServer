@@ -10,6 +10,7 @@
         ExtendsContentIntoTitleBar="True"
         Title="Login" ResizeMode="NoResize" Height="710" Width="1160">
     <Grid>
+
         <Frame x:Name="MainFrame"/>
         <ui:TitleBar Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}" ShowMaximize="False" />
     </Grid>

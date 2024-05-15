@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using FortLauncher.Pages;
+using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Windows;
@@ -12,8 +13,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
-using WpfApp1.Services.Pages;
-using WpfApp1.Services.Saved;
 
 namespace WpfApp1
 {

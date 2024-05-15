@@ -23,6 +23,91 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
             _database = database;
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginEndpoint()
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                var email = "";
+                var password = "";
+                var FormRequest = HttpContext.Request.Form;
+
+                if (FormRequest.TryGetValue("email", out var emailL))
+                {
+                    email = emailL;
+                }
+                if (FormRequest.TryGetValue("password", out var passwordL))
+                {
+                    password = passwordL;
+                }
+
+                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                {
+                    return BadRequest(new Dictionary<string, dynamic>()
+                    {
+                        ["status-code"] = 400,
+                        ["message"] = "Invalid Data"
+                    });
+                }
+
+
+                var FindEmailAcc = await Handlers.FindOne<User>("Email", email);
+                if (FindEmailAcc != "Error")
+                {
+                    User UserData = JsonConvert.DeserializeObject<User[]>(FindEmailAcc)?[0]!;
+                    if (CryptoGen.VerifyPassword(password, UserData.Password))
+                    {
+                        if(UserData.banned)
+                        {
+                            return BadRequest(new Dictionary<string, dynamic>()
+                            {
+                                ["status-code"] = 400,
+                                ["message"] = $"You are banned from ${Saved.DeserializeConfig.ProjectName}"
+                            });
+                        }
+
+                        // TODO CLEAN THE IP BANS, ADD OPTION TO DISABLE +
+
+                        string NewAccessToken = JWT.GenerateRandomJwtToken(15, Saved.DeserializeConfig.JWTKEY);
+
+                        var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
+                        {
+                            { "accesstoken", NewAccessToken }
+                        });
+
+                        return Ok(new Dictionary<string, dynamic>()
+                        {
+                            ["status-code"] = 200,
+                            ["message"] = "Correct",
+                            ["token"] = NewAccessToken
+                        });
+                    }
+                    else
+                    {
+                        return BadRequest(new Dictionary<string, dynamic>()
+                        {
+                            ["status-code"] = 400,
+                            ["message"] = "Incorrect Email Or Password"
+                        });
+                    }
+                }
+                else
+                {
+                    return BadRequest(new Dictionary<string, dynamic>()
+                    {
+                        ["status-code"] = 400,
+                        ["message"] = "Incorrect Email Or Password"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+            }
+
+            return BadRequest(new { Error = "Unknown Issue!" });
+        }
 
         [HttpGet("callback")]
         public async Task<IActionResult> CallBack([FromQuery] string code)

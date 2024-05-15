@@ -9,15 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Services\Resources\LoginImage.png" />
+    <None Remove="Resources\LoginImage.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WPF-UI" Version="3.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="WPF-UI" Version="3.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Services\Resources\LoginImage.png" />
+    <Resource Include="Resources\LoginImage.png" />
   </ItemGroup>
 
 </Project>

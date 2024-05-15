@@ -1,28 +1,132 @@
 {
   "loginmessage": {
-    "title": "FortBackend",
-    "body": "FortBackend News \nFortBackend is a Universal Private Server for fortnite"
+    "title": {
+      "en": "FortBackend",
+      "es": "FortBackend",
+      "es-419": "FortBackend",
+      "fr": "FortBackend",
+      "it": "FortBackend",
+      "ja": "FortBackend",
+      "ko": "FortBackend",
+      "pl": "FortBackend",
+      "pt-BR": "FortBackend",
+      "ru": "FortBackend",
+      "tr": "FortBackend",
+      "de": "FortBackend"
+    },
+    "body": {
+      "en": "FortBackend is a Universal Private Server for Fortnite",
+      "es": "FortBackend es un servidor privado universal para Fortnite",
+      "es-419": "FortBackend es un servidor privado universal para Fortnite",
+      "fr": "FortBackend est un serveur privé universel pour Fortnite",
+      "it": "FortBackend è un server privato universale per Fortnite",
+      "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
+      "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
+      "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
+      "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
+      "ru": "FortBackend - универсальный частный сервер для Fortnite",
+      "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
+      "de": "FortBackend ist ein universeller privater Server für Fortnite"
+    }
   },
     "battleroyalenews": {
         "motds": [
           {
             "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "title": "FortBackend",
-            "body": "FortBackend is a Universal Private Server for fortnite"
-          }
+            "title": {
+              "en": "FortBackend",
+              "es": "FortBackend",
+              "es-419": "FortBackend",
+              "fr": "FortBackend",
+              "it": "FortBackend",
+              "ja": "FortBackend",
+              "ko": "FortBackend",
+              "pl": "FortBackend",
+              "pt-BR": "FortBackend",
+              "ru": "FortBackend",
+              "tr": "FortBackend",
+              "de": "FortBackend"
+            },
+            "body": {
+              "en": "FortBackend is a Universal Private Server for Fortnite",
+              "es": "FortBackend es un servidor privado universal para Fortnite",
+              "es-419": "FortBackend es un servidor privado universal para Fortnite",
+              "fr": "FortBackend est un serveur privé universel pour Fortnite",
+              "it": "FortBackend è un server privato universale per Fortnite",
+              "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
+              "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
+              "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
+              "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
+              "ru": "FortBackend - универсальный частный сервер для Fortnite",
+              "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
+              "de": "FortBackend ist ein universeller privater Server für Fortnite"
+            }
+            }
         ],
         "messages": [
           {
             "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "title": "FortBackend",
-            "body": "FortBackend is a Universal Private Server for fortnite"
+            "title": {
+              "en": "FortBackend",
+              "es": "FortBackend",
+              "es-419": "FortBackend",
+              "fr": "FortBackend",
+              "it": "FortBackend",
+              "ja": "FortBackend",
+              "ko": "FortBackend",
+              "pl": "FortBackend",
+              "pt-BR": "FortBackend",
+              "ru": "FortBackend",
+              "tr": "FortBackend",
+              "de": "FortBackend"
+            },
+            "body": {
+              "en": "FortBackend is a Universal Private Server for Fortnite",
+              "es": "FortBackend es un servidor privado universal para Fortnite",
+              "es-419": "FortBackend es un servidor privado universal para Fortnite",
+              "fr": "FortBackend est un serveur privé universel pour Fortnite",
+              "it": "FortBackend è un server privato universale per Fortnite",
+              "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
+              "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
+              "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
+              "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
+              "ru": "FortBackend - универсальный частный сервер для Fortnite",
+              "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
+              "de": "FortBackend ist ein universeller privater Server für Fortnite"
+            }
           }
         ]
     },
     "emergencynotice": [
       {
-        "title": "FortBackend",
-        "body": "FortBackend is a Universal Private Server for fortnite"
+        "title": {
+          "en": "FortBackend",
+          "es": "FortBackend",
+          "es-419": "FortBackend",
+          "fr": "FortBackend",
+          "it": "FortBackend",
+          "ja": "FortBackend",
+          "ko": "FortBackend",
+          "pl": "FortBackend",
+          "pt-BR": "FortBackend",
+          "ru": "FortBackend",
+          "tr": "FortBackend",
+          "de": "FortBackend"
+        },
+        "body": {
+          "en": "FortBackend is a Universal Private Server for Fortnite",
+          "es": "FortBackend es un servidor privado universal para Fortnite",
+          "es-419": "FortBackend es un servidor privado universal para Fortnite",
+          "fr": "FortBackend est un serveur privé universel pour Fortnite",
+          "it": "FortBackend è un server privato universale per Fortnite",
+          "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
+          "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
+          "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
+          "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
+          "ru": "FortBackend - универсальный частный сервер для Fortnite",
+          "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
+          "de": "FortBackend ist ein universeller privater Server für Fortnite"
+        }
       }
     ],
     "shopSections": [

@@ -35,7 +35,7 @@ namespace FortBackend.src.App.Routes.API
                     season = "x";
                 }
 
-                if(string.IsNullOrEmpty(AcceptLanguage))
+                if (string.IsNullOrEmpty(AcceptLanguage))
                 {
                     AcceptLanguage = "eu"; // weird
                 }
@@ -46,13 +46,13 @@ namespace FortBackend.src.App.Routes.API
                 var cacheKey = $"ContentEndpointKey-{season}";
                 if (memoryCache.TryGetValue(cacheKey, out ContentJson? cachedResult))
                 {
-                    if(cachedResult != null) { return cachedResult; }  
+                    if (cachedResult != null) { return cachedResult; }
                 }
 
 
 
                 var ContentJsonResponse = new ContentJson();
-                ContentJsonResponse = NewsManager.ContentJsonResponse;
+                ContentJsonResponse = NewsManager.ContentJsonResponse.FirstOrDefault(e => e.Key == AcceptLanguage).Value;
 
                 ContentJsonResponse.dynamicbackgrounds = new DynamicBackground()
                 {

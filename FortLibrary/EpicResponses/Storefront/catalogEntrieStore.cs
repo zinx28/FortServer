@@ -1,4 +1,5 @@
-﻿using FortLibrary.Shop;
+﻿using FortLibrary.Dynamics;
+using FortLibrary.Shop;
 using Newtonsoft.Json;
 using System.Net;
 using System.Text.Json.Serialization;
@@ -67,26 +68,7 @@ namespace FortLibrary.EpicResponses.Storefront
         }
     }
 
-    public class Languages
-    {
-        public string en { get; set; } = string.Empty;
-        public string es { get; set; } = string.Empty;
-        [JsonPropertyName("es-419")]
-        [JsonProperty("es-419")]
-        public string es_419 { get; set; } = string.Empty;
-        public string fr { get; set; } = string.Empty;
-        public string it { get; set; } = string.Empty;
-        public string ja { get; set; } = string.Empty;
-        public string ko { get; set; } = string.Empty;
-        public string pl { get; set; } = string.Empty;
-        [JsonPropertyName("pt-BR")]
-        [JsonProperty("pt-BR")]
-        public string pt_BR { get; set; } = string.Empty;
-        public string ru { get; set; } = string.Empty;
-        public string tr { get; set; } = string.Empty;
-        public string de { get; set; } = string.Empty;
-
-    }
+  
 
     /*saleType*/
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]

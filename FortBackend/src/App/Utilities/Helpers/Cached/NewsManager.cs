@@ -3,88 +3,103 @@ using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.FortniteServices.Content;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace FortBackend.src.App.Utilities.Helpers.Cached
 {
     public class NewsManager
     {
-        public static ContentJson ContentJsonResponse = new ContentJson();
+        public static Dictionary<string, ContentJson> ContentJsonResponse = new Dictionary<string, ContentJson>();
+      //  public static ContentJson ContentJsonResponse = new ContentJson();
         public static ContentConfig ContentConfig = new ContentConfig();
 
+      
         public static void Init()
         {
             var jsonData = System.IO.File.ReadAllText(PathConstants.Content);
 
             if (!string.IsNullOrEmpty(jsonData))
             {
-                ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData)!;
-
-                if (ContentConfig != null)
+                Logger.Log("Loading News", "News");
+                PropertyInfo[] properties = typeof(Languages).GetProperties();
+                foreach (PropertyInfo property in properties)
                 {
-                    ContentConfig.battleroyalenews.motds.ForEach(x =>
+                    string propertyName = property.Name;
+
+                    ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(jsonData)!;
+
+                    if (ContentConfig != null)
                     {
-                        ContentJsonResponse.battleroyalenews.news.motds.Add(new NewContentMotds()
+                        ContentJson contentJson = new ContentJson();
+
+                        ContentConfig.battleroyalenews.motds.ForEach(x =>
                         {
-                            image = x.image,
-                            title = x.title,
-                            body = x.body,
+                            contentJson.battleroyalenews.news.motds.Add(new NewContentMotds()
+                            {
+                                image = x.image,
+                                title = x.GetLanguage(x.title, propertyName),
+                                body = x.GetLanguage(x.body, propertyName),
+                            });
+
+                            contentJson.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
+                            {
+                                image = x.image,
+                                title = x.GetLanguage(x.title, propertyName),
+                                body = x.GetLanguage(x.body, propertyName),
+                            });
                         });
 
-                        ContentJsonResponse.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
-                        {
-                            image = x.image,
-                            title = x.title,
-                            body = x.body,
-                        });
-                    });
+                        contentJson.loginMessage.loginmessage.message.title = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.title, propertyName);
+                        contentJson.loginMessage.loginmessage.message.body = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.body, propertyName);
 
-                    ContentJsonResponse.loginMessage.loginmessage.message.title = ContentConfig.loginmessage.title;
-                    ContentJsonResponse.loginMessage.loginmessage.message.body = ContentConfig.loginmessage.body;
-
-                    ContentConfig.battleroyalenews.messages.ForEach(x =>
-                    {
-                        ContentJsonResponse.battleroyalenews.news.messages.Add(new NewContentMessages()
+                        ContentConfig.battleroyalenews.messages.ForEach(x =>
                         {
-                            image = x.image,
-                            title = x.title,
-                            body = x.body,
-                        });
-                    });
-
-                    ContentConfig.emergencynotice.ForEach(x =>
-                    {
-                        ContentJsonResponse.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
-                        {
-                            title = x.title,
-                            body = x.body,
+                            contentJson.battleroyalenews.news.messages.Add(new NewContentMessages()
+                            {
+                                image = x.image,
+                                title = x.GetLanguage(x.title, propertyName),
+                                body = x.GetLanguage(x.body, propertyName),
+                            });
                         });
 
-                        ContentJsonResponse.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
+                        ContentConfig.emergencynotice.ForEach(x =>
                         {
-                            title = x.title,
-                            body = x.body,
-                        });
-                    });
+                            contentJson.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
+                            {
+                                title = x.GetLanguage(x.title, propertyName),
+                                body = x.GetLanguage(x.body, propertyName),
+                            });
 
-                    ContentConfig.shopSections.ForEach(x =>
-                    {
-                        ContentJsonResponse.shopSections.sectionList.sections.Add(new ShopSectionsSectionsSEctions
+                            contentJson.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
+                            {
+                                title = x.GetLanguage(x.title, propertyName),
+                                body = x.GetLanguage(x.body, propertyName),
+                            });
+                        });
+
+                        ContentConfig.shopSections.ForEach(x =>
                         {
-                            sectionId = x.sectionId,
-                            sectionDisplayName = x.sectionDisplayName,
-                            landingPriority = x.landingPriority,
+                            contentJson.shopSections.sectionList.sections.Add(new ShopSectionsSectionsSEctions
+                            {
+                                sectionId = x.sectionId,
+                                sectionDisplayName = x.sectionDisplayName,
+                                landingPriority = x.landingPriority,
+                            });
                         });
-                    });
 
-                    ContentConfig.tournamentinformation.ForEach(x =>
-                    {
-                        ContentJsonResponse.tournamentinformation.tournament_info.tournaments.Add(x);
-                    });
+                        ContentConfig.tournamentinformation.ForEach(x =>
+                        {
+                            contentJson.tournamentinformation.tournament_info.tournaments.Add(x);
+                        });
 
-                    ContentConfig.playlistinformation.ForEach(x =>
-                    {
-                        ContentJsonResponse.playlistinformation.playlist_info.playlists.Add(x);
-                    });
+                        ContentConfig.playlistinformation.ForEach(x =>
+                        {
+                            contentJson.playlistinformation.playlist_info.playlists.Add(x);
+                        });
+
+                        Logger.Log($"Adding {propertyName}", "News");
+                        ContentJsonResponse.Add(propertyName, contentJson);
+                    }
                 }
                 Logger.Log("RE-LOADED NEWS CONFIG");
             }
@@ -98,76 +113,87 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
         public static void Update()
         {
-            ContentJsonResponse = new ContentJson(); // clear ofc
+            ContentJsonResponse = new Dictionary<string, ContentJson>(); // clear ofc
 
             if (ContentConfig != null)
             {
                 System.IO.File.WriteAllText(PathConstants.Content, JsonConvert.SerializeObject(ContentConfig));
 
-                ContentConfig.battleroyalenews.motds.ForEach(x =>
+                
+                PropertyInfo[] properties = typeof(Languages).GetProperties();
+                foreach (PropertyInfo property in properties)
                 {
-                    ContentJsonResponse.battleroyalenews.news.motds.Add(new NewContentMotds()
+                    string propertyName = property.Name;
+
+                    ContentJson contentJson = new ContentJson();
+
+                    ContentConfig.battleroyalenews.motds.ForEach(x =>
                     {
-                        image = x.image,
-                        title = x.title,
-                        body = x.body,
+                        contentJson.battleroyalenews.news.motds.Add(new NewContentMotds()
+                        {
+                            image = x.image,
+                            title = x.GetLanguage(x.title, propertyName),
+                            body = x.GetLanguage(x.body, propertyName),
+                        });
+
+                        contentJson.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
+                        {
+                            image = x.image,
+                            title = x.GetLanguage(x.title, propertyName),
+                            body = x.GetLanguage(x.body, propertyName),
+                        });
                     });
 
-                    ContentJsonResponse.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
-                    {
-                        image = x.image,
-                        title = x.title,
-                        body = x.body,
-                    });
-                });
+                    contentJson.loginMessage.loginmessage.message.title = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.title, propertyName);
+                    contentJson.loginMessage.loginmessage.message.body = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.body, propertyName);
 
-                ContentJsonResponse.loginMessage.loginmessage.message.title = ContentConfig.loginmessage.title;
-                ContentJsonResponse.loginMessage.loginmessage.message.body = ContentConfig.loginmessage.body;
-
-                ContentConfig.battleroyalenews.messages.ForEach(x =>
-                {
-                    ContentJsonResponse.battleroyalenews.news.messages.Add(new NewContentMessages()
+                    ContentConfig.battleroyalenews.messages.ForEach(x =>
                     {
-                        image = x.image,
-                        title = x.title,
-                        body = x.body,
-                    });
-                });
-
-                ContentConfig.emergencynotice.ForEach(x =>
-                {
-                    ContentJsonResponse.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
-                    {
-                        title = x.title,
-                        body = x.body,
+                        contentJson.battleroyalenews.news.messages.Add(new NewContentMessages()
+                        {
+                            image = x.image,
+                            title = x.GetLanguage(x.title, propertyName),
+                            body = x.GetLanguage(x.body, propertyName),
+                        });
                     });
 
-                    ContentJsonResponse.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
+                    ContentConfig.emergencynotice.ForEach(x =>
                     {
-                        title = x.title,
-                        body = x.body,
-                    });
-                });
+                        contentJson.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
+                        {
+                            title = x.GetLanguage(x.title, propertyName),
+                            body = x.GetLanguage(x.body, propertyName),
+                        });
 
-                ContentConfig.shopSections.ForEach(x =>
-                {
-                    ContentJsonResponse.shopSections.sectionList.sections.Add(new ShopSectionsSectionsSEctions
+                        contentJson.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
+                        {
+                            title = x.GetLanguage(x.title, propertyName),
+                            body = x.GetLanguage(x.body, propertyName),
+                        });
+                    });
+
+                    ContentConfig.shopSections.ForEach(x =>
                     {
-                        sectionId = x.sectionId,
-                        sectionDisplayName = x.sectionDisplayName,
-                        landingPriority = x.landingPriority,
+                        contentJson.shopSections.sectionList.sections.Add(new ShopSectionsSectionsSEctions
+                        {
+                            sectionId = x.sectionId,
+                            sectionDisplayName = x.sectionDisplayName,
+                            landingPriority = x.landingPriority,
+                        });
                     });
-                });
 
-                ContentConfig.tournamentinformation.ForEach(x =>
-                {
-                    ContentJsonResponse.tournamentinformation.tournament_info.tournaments.Add(x);
-                });
+                    ContentConfig.tournamentinformation.ForEach(x =>
+                    {
+                        contentJson.tournamentinformation.tournament_info.tournaments.Add(x);
+                    });
 
-                ContentConfig.playlistinformation.ForEach(x =>
-                {
-                    ContentJsonResponse.playlistinformation.playlist_info.playlists.Add(x);
-                });
+                    ContentConfig.playlistinformation.ForEach(x =>
+                    {
+                        contentJson.playlistinformation.playlist_info.playlists.Add(x);
+                    });
+
+                    ContentJsonResponse.Add(propertyName, contentJson);
+                }
             }
             Logger.Log("RE-LOADED NEWS CONFIG");
         }

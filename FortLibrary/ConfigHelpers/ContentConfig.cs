@@ -1,4 +1,6 @@
-﻿using FortLibrary.EpicResponses.FortniteServices.Content;
+﻿using FortLibrary.Dynamics;
+using FortLibrary.EpicResponses.FortniteServices.Content;
+using FortLibrary.EpicResponses.Storefront;
 using Newtonsoft.Json;
 
 namespace FortLibrary.ConfigHelpers
@@ -81,18 +83,123 @@ namespace FortLibrary.ConfigHelpers
     public class TempMotds
     {
         public string image { get; set; } = "";
-        public string title { get; set; } = "FortBackend";
-        public string body { get; set; } = "Play Universal on fort the backend yippeee";
+        public Languages title { get; set; } = new Languages();
+        public Languages body { get; set; } = new Languages();
+
+        public string GetLanguage(Languages value, string acceptLanguage)
+        {
+            switch (acceptLanguage)
+            {
+                case "en":
+                    return value.en;
+                case "es":
+                    return value.es;
+                case "es-419":
+                    return value.es_419;
+                case "fr":
+                    return value.fr;
+                case "it":
+                    return value.it;
+                case "ja":
+                    return value.ja;
+                case "ko":
+                    return value.ko;
+                case "pl":
+                    return value.pl;
+                case "pt-BR":
+                    return value.pt_BR;
+                case "ru":
+                    return value.ru;
+                case "tr":
+                    return value.tr;
+                case "de":
+                    return value.de;
+
+                default:
+                    return value.en;
+            }
+        }
+
+
     }
     public class Emergencynoticecontent
     {
-        public string title { get; set; } = "FortBackend";
-        public string body { get; set; } = "Play Universal on fort the backend yippeee";
+        public Languages title { get; set; } = new Languages();
+        public Languages body { get; set; } = new Languages();
+
+        public string GetLanguage(Languages value, string acceptLanguage)
+        {
+            switch (acceptLanguage)
+            {
+                case "en":
+                    return value.en;
+                case "es":
+                    return value.es;
+                case "es-419":
+                    return value.es_419;
+                case "fr":
+                    return value.fr;
+                case "it":
+                    return value.it;
+                case "ja":
+                    return value.ja;
+                case "ko":
+                    return value.ko;
+                case "pl":
+                    return value.pl;
+                case "pt-BR":
+                    return value.pt_BR;
+                case "ru":
+                    return value.ru;
+                case "tr":
+                    return value.tr;
+                case "de":
+                    return value.de;
+
+                default:
+                    return value.en;
+            }
+        }
     }
 
     public class LoginMessageContent
     {
-        public string title { get; set; } = "FortBackend";
-        public string body { get; set; } = "FortBackend News";
+        public Languages title { get; set; } = new Languages();
+        public Languages body { get; set; } = new Languages();
+
+
+        public string GetLanguage(Languages value, string acceptLanguage)
+        {
+            switch (acceptLanguage)
+            {
+                case "en":
+                    return value.en;
+                case "es":
+                    return value.es;
+                case "es-419":
+                    return value.es_419;
+                case "fr":
+                    return value.fr;
+                case "it":
+                    return value.it;
+                case "ja":
+                    return value.ja;
+                case "ko":
+                    return value.ko;
+                case "pl":
+                    return value.pl;
+                case "pt-BR":
+                    return value.pt_BR;
+                case "ru":
+                    return value.ru;
+                case "tr":
+                    return value.tr;
+                case "de":
+                    return value.de;
+
+                default:
+                    return value.en;
+            }
+        }
     }
 }

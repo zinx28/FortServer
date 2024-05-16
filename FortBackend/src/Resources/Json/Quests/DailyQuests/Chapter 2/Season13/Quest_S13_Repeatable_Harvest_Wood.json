@@ -1,0 +1,27 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Harvest_Wood",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Harvest Wood",
+      "Description": "Harvest Wood",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Harvest_Wood",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Harvest Wood",
+          "HudShortDescription": "Harvest Wood",
+          "Count": 500,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }
+

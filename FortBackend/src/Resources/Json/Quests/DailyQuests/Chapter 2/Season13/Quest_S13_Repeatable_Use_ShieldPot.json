@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Use_ShieldPot",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Use shield potions",
+      "Description": "Use shield potions",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Use_ShieldPot",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Use shield potions",
+          "HudShortDescription": "Use shield potions",
+          "Count": 3,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

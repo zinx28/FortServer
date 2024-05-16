@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_UseWhirlpool",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Use a Whirlpool",
+      "Description": "Use a Whirlpool",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_UseWhirlpool",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Use a Whirlpool",
+          "HudShortDescription": "Use a Whirlpool",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

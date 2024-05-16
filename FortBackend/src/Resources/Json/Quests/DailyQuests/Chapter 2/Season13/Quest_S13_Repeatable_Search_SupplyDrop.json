@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Search_SupplyDrop",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Search a Supply Drop",
+      "Description": "Search a Supply Drop",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Search_SupplyDrop",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Search a Supply Drop",
+          "HudShortDescription": "Search a Supply Drop",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

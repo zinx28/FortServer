@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Harvest_Stone",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Harvest Stone",
+      "Description": "Harvest Stone",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Harvest_Stone",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Harvest Stone",
+          "HudShortDescription": "Harvest Stone",
+          "Count": 500,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

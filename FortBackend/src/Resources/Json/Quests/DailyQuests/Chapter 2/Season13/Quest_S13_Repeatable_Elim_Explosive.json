@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Elim_Explosive",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Explosive weapon Eliminations",
+      "Description": "Explosive weapon Eliminations",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Elim_Explosive",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Explosive weapon Eliminations",
+          "HudShortDescription": "Explosive weapon Eliminations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

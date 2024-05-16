@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Damage_SMG",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Deal damage with SMGs",
+      "Description": "Deal damage with SMGs",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Damage_SMG",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Deal damage with SMGs",
+          "HudShortDescription": "Deal damage with SMGs",
+          "Count": 300,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Elim_Shotgun",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Shotgun Eliminations",
+      "Description": "Shotgun Eliminations",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Elim_Shotgun",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Shotgun Eliminations",
+          "HudShortDescription": "Shotgun Eliminations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

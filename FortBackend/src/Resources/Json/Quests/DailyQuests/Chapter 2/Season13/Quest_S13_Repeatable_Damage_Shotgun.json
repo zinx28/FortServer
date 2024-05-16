@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Damage_Shotgun",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Deal damage with Shotguns",
+      "Description": "Deal damage with Shotguns",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Damage_Shotgun",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Deal damage with Shotguns",
+          "HudShortDescription": "Deal damage with Shotguns",
+          "Count": 300,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

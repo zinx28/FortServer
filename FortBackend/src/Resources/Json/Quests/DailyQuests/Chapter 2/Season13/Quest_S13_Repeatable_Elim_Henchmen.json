@@ -1,0 +1,27 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Elim_Henchmen",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Eliminate Henchmen",
+      "Description": "Eliminate Henchmen",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Elim_Henchmen",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Eliminate Henchmen",
+          "HudShortDescription": "Eliminate Henchmen",
+          "Count": 3,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }
+

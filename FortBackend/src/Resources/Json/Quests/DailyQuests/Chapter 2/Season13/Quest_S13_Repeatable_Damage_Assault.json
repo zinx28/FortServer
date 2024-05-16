@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Damage_Assault",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Deal damage with Assault Rifles",
+      "Description": "Deal damage with Assault Rifles",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Damage_Assault",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Deal damage with Assault Rifles",
+          "HudShortDescription": "Deal damage with Assault Rifles",
+          "Count": 300,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

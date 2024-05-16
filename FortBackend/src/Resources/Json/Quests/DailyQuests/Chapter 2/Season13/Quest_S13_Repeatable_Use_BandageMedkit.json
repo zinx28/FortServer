@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Use_BandageMedkit",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Use bandages or med kits",
+      "Description": "Use bandages or med kits",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Use_BandageMedkit",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Use bandages or med kits",
+          "HudShortDescription": "Use bandages or med kits",
+          "Count": 3,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

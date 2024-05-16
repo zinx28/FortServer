@@ -1,0 +1,218 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_VisitDifferentNamedLocs",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Visit different Named Locations",
+      "Description": "Visit different Named Locations",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_00",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_01",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_02",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_03",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_04",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_05",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_06",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_07",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_08",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_09",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_10",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_11",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_12",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_13",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_14",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_15",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_16",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Visit different Named Locations",
+          "HudShortDescription": "Visit different Named Locations",
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

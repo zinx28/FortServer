@@ -1,0 +1,1494 @@
+[
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_VisitDifferentNamedLocs",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "bShouldDisplayOverallQuestInformation": true,
+      "ObjectiveCompletionCount": 5,
+      "RewardsTable": {
+        "ObjectName": "DataTable'AthenaChallengeRewardS13MiniChallenge'",
+        "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/Rewards/Season13/AthenaChallengeRewardS13MiniChallenge.0"
+      },
+      "HiddenRewards": [
+        {
+          "TemplateId": "Token:athena_dailychallenge_token",
+          "Quantity": 1
+        }
+      ],
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_00",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.MountainMeadow"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_01",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.RetailRow"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_02",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.LazyLake"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_03",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.HollyHedges"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_04",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.FrenzyFarm"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_05",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.PowerPlant"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_06",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.SunnyShores"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_07",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.PleasantPark"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_08",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.SaltySprings"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_09",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.ShadowAgency"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_10",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.Fortilla"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_11",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.OilrigIslands"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_12",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.CattyCorner"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_13",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.BeachyBluffs"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_14",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.WeepingWoods"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_15",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.SlurpySwamp"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "Quest_S13_Repeatable_VisitDifferentNamedLocs_16",
+          "InlineObjectiveStats": [
+            {
+              "TagConditions": [
+                {
+                  "Tag": {
+                    "TagName": "Athena.Playlist"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Context",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Homebase.Class"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                },
+                {
+                  "Tag": {
+                    "TagName": "Athena.Location.POI.DirtyDocks"
+                  },
+                  "Type": "EInlineObjectiveStatTagCheckEntryType::Source",
+                  "Require": true
+                }
+              ],
+              "Condition": "",
+              "TemplateIds": [],
+              "Type": "EFortQuestObjectiveStatEvent::Visit",
+              "bHasInclusiveTargetTags": false,
+              "bHasInclusiveSourceTags": true,
+              "bHasInclusiveContextTags": true
+            }
+          ],
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnComplete",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "A39136DB4493C505739B9A89A4736D87",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "6795596240A57863B65A5F9A2B9E53DF",
+            "SourceString": "Visit different Named Locations",
+            "LocalizedString": "Visit different Named Locations"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 1.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        }
+      ],
+      "Weight": 0.0,
+      "Category": {
+        "DataTable": {
+          "ObjectName": "DataTable'QuestCategoryTable'",
+          "ObjectPath": "FortniteGame/Content/Quests/QuestCategoryTable.0"
+        },
+        "RowName": "BRDailyChallenges"
+      },
+      "CompletionText": {
+        "Namespace": "",
+        "Key": "DA4AA8B54B69B9E33D03CEAFA1DB9822",
+        "SourceString": "Challenge Completed!",
+        "LocalizedString": "Challenge Completed!"
+      },
+      "DisplayName": {
+        "Namespace": "",
+        "Key": "F05CCBB54EF43C551EA7B69D36A10343",
+        "SourceString": "Visit different Named Locations",
+        "LocalizedString": "Visit different Named Locations"
+      },
+      "ShortDescription": {
+        "Namespace": "",
+        "Key": "47AC9A6D420BC5641C8E50964C997A6B",
+        "SourceString": "Visit different Named Locations",
+        "LocalizedString": "Visit different Named Locations"
+      },
+      "Description": {
+        "Namespace": "",
+        "Key": "F5EA8EB049F6AE0A1EBED2905BAC1389",
+        "SourceString": "Visit different Named Locations",
+        "LocalizedString": "Visit different Named Locations"
+      },
+      "GameplayTags": [
+        "Quest.Metadata.HideInAllChallengesMap"
+      ],
+      "SmallPreviewImage": {
+        "AssetPathName": "/Game/Athena/UI/Challenges/Art/MiniChallenges/T_UI_Icon_Mini_VisitLocations.T_UI_Icon_Mini_VisitLocations",
+        "SubPathString": ""
+      },
+      "LargePreviewImage": {
+        "AssetPathName": "/Game/Athena/UI/Challenges/Art/MiniChallenges/T_UI_Icon_Mini_VisitLocations.T_UI_Icon_Mini_VisitLocations",
+        "SubPathString": ""
+      }
+    }
+  }
+]

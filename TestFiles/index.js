@@ -28,7 +28,7 @@ for(var index in datafile) {
 }
 console.log(JSON.stringify(Data));*/
 
-
+/*
 const datafile = require("./BattlePass.json");
 var Data = [];
 var Level = 0;
@@ -105,6 +105,7 @@ for(var index in datafile){
 }
 
 console.log(JSON.stringify(Data));
+*/
 
 /*
 const datafile = require("./SeasonStars.json");
@@ -202,3 +203,77 @@ for(var index in datafile) {
 
   console.log(JSON.stringify(temp))
 }*/
+
+const datafile = require("./QuestS13.json")
+var tesa =0;
+for(var index in datafile) {
+  
+  tesa += 1;
+  var dataHa = datafile[index];
+ // console.log({
+   // "Level": dataHa.Level,
+  //  "XpToNextLevel": dataHa.XpToNextLevel,
+ //   "XpTotal": dataHa.XpTotal
+ // })
+  var SeasonXP = 0;
+  var SeasonBattleStars = 0;
+  //for(var RewardsIndex in dataHa.Properties.Rewards) {
+    //var Rewards = dataHa.Properties.Rewards[RewardsIndex];
+      //console.log(Rewards);
+
+      // V1 Quests (season 1 -> 1.9.1) i think (i dont have other versions)
+      //if(!Rewards.ItemDefinition.includes("AthenaSeasonalXP")) {
+        //throw "ERROR REWARDS"
+      //}
+
+      //SeasonXP = Rewards.Quantity
+
+      // V2 / V3 (idk why it's v3 after a few versions)
+      //if(Rewards.ItemDefinition.AssetPathName.includes("AthenaSeasonalXP")) {
+          SeasonXP = "14000";
+      //}
+
+      //if(Rewards.ItemDefinition.AssetPathName.includes("AthenaSeasonalBP")) {
+       //  SeasonBattleStars = Rewards.Quantity
+      //}
+
+    
+   
+ // }
+  
+  var temp = []
+  var temp2 = []
+ // if(dataHa.ChaseRewardTemplateId != "") {
+  var OBjectives = dataHa.Properties.Objectives
+  OBjectives.forEach(element => {
+    temp2.push({
+      "BackendName": element.BackendName,
+      "ObjectiveState": element.ObjectiveStatHandle.RowName,
+      "ItemEvent": element.ItemEvent,
+     // "ItemReference": element.ItemReference,
+      "ItemReference": "", // idk what htis was for
+      "ItemTemplateIdOverride": element.ItemTemplateIdOverride,
+      "Description": element.Description.SourceString,
+      "HudShortDescription": element.HudShortDescription.SourceString,
+      "Count": element.Count,
+      "Stage": element.Stage,
+      "bHidden": element.bHidden
+    })
+  });
+    temp.push({
+      "Type": dataHa.Type,
+      "Name": dataHa.Name,
+      "Class": dataHa.Class,
+      "Properties": {
+        "DisplayName": dataHa.Properties.DisplayName.LocalizedString,
+        "Description": dataHa.Properties.Description.LocalizedString,
+        "SeasonXP": SeasonXP,
+        "SeasonBattleStars": SeasonBattleStars,
+        "Objectives": temp2
+      }
+    })
+  //}
+  
+  console.log("THIS IS FOR SEASON 13 DAILY QUESTYS SO ITS MORE FORCED")
+  console.log(JSON.stringify(temp))
+}

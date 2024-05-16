@@ -1,0 +1,26 @@
+
+  {
+    "Type": "AthenaDailyQuestDefinition",
+    "Name": "Quest_S13_Repeatable_Damage_Explosive",
+    "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+    "Properties": {
+      "DisplayName": "Deal damage with Explosive weapons",
+      "Description": "Deal damage with Explosive weapons",
+      "SeasonXP": "14000",
+      "SeasonBattleStars": 0,
+      "Objectives": [
+        {
+          "BackendName": "Quest_S13_Repeatable_Damage_Explosive",
+          "ObjectiveState": "None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemReference": "",
+          "ItemTemplateIdOverride": "",
+          "Description": "Deal damage with Explosive weapons",
+          "HudShortDescription": "Deal damage with Explosive weapons",
+          "Count": 200,
+          "Stage": -1,
+          "bHidden": false
+        }
+      ]
+    }
+  }

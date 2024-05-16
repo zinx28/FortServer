@@ -15,12 +15,16 @@ namespace FortBackend.src.App.Utilities.Quests
         public static async Task<DailyQuestsJson> GrabRandomQuest(SeasonClass seasonClass)
         {
             Random random = new Random();
-            if (seasonClass.SeasonNumber <= 10) // eh
+            if (seasonClass.SeasonNumber <= 10 || seasonClass.SeasonNumber == 13) // eh
             {
                 var FindKey = "SeasonsAbove";
                 if (seasonClass.SeasonNumber == 1)
                 {
                     FindKey = "Season1";
+                }
+                else if (seasonClass.SeasonNumber == 13)
+                {
+                    FindKey = "Season13";
                 }
 
                 if (DailyQuestsSeasonAboveDictionary.Count() > 0)
@@ -47,6 +51,7 @@ namespace FortBackend.src.App.Utilities.Quests
                 }
 
             }
+       
             //if (seasonClass.SeasonNumber == 1)
             //{
             //    if (DailyQuestsSeason1Objects.Count() > 0)

@@ -109,7 +109,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         if (!(FoundSeason.DailyQuests.Daily_Quests.Count > 3) || FoundSeason.SeasonNumber == 13 && !(FoundSeason.DailyQuests.Daily_Quests.Count > 5))
                         {
-                            var DailyCount = FoundSeason.SeasonNumber != 13 ? 3 : 5 - FoundSeason.DailyQuests.Daily_Quests.Count;
+                            var DailyCount = FoundSeason.SeasonNumber != 13 ? 3 - FoundSeason.DailyQuests.Daily_Quests.Count : 5 - FoundSeason.DailyQuests.Daily_Quests.Count;
                                
                             for (int i = 0; i < DailyCount; i++)
                             {

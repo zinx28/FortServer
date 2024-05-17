@@ -68,7 +68,7 @@
                 Directory.CreateDirectory(ClientSettingsDir);
             }
 
-            return Path.Combine(LocalAppData, ClientSettingsDir, ClientId);
+            return Path.Combine(ClientSettingsDir, ClientId);
         }
 
        

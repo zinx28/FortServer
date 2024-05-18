@@ -41,6 +41,15 @@
         "GrantedItems": [
           {
             "TemplateId": "CosmeticVariantToken:VTID_155_Shiny_ClothingB",
+            "connectedTemplate": "AthenaCharacter:cid_352_athena_commando_f_shiny",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -65,6 +74,15 @@
         "GrantedItems": [
           {
             "TemplateId": "AthenaBackpack:BID_217_ShinyFemale",
+            "variants": [
+              {
+                "channel": "Material",
+                "active": "Mat0",
+                "owned": [
+                  "Mat0"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -89,6 +107,15 @@
         "GrantedItems": [
           {
             "TemplateId": "CosmeticVariantToken:VTID_156_Shiny_ClothingC",
+            "connectedTemplate": "AthenaCharacter:cid_352_athena_commando_f_shiny",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -138,11 +165,28 @@
         "GrantedItems": [
           {
             "TemplateId": "CosmeticVariantToken:VTID_158_Shiny_BackBlingB",
-            "connectedTemplate": null,
+            "connectedTemplate": "AthenaBackpack:BID_217_ShinyFemale",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
             "Quantity": 1
           },
           {
             "TemplateId": "CosmeticVariantToken:VTID_157_Shiny_ClothingD",
+            "connectedTemplate": "AthenaCharacter:cid_352_athena_commando_f_shiny",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat4"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]

@@ -233,7 +233,7 @@
       "templateId": "Quest:Quest_BR_Damage_Chain_Dual_C",
       "quest_data": {
         "RequireBP": false,
-        "ExtraQuests": false,
+        "ExtraQuests": true,
         "Steps": false,
         "IsWeekly": true
       },

@@ -1,0 +1,123 @@
+{
+  "BundleId": "QuestBundle_S8_Cumulative_Ruin",
+  "BundleSchedule": "ChallengeBundleSchedule:season8_ruin_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Ruin_Destroy_Trees",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_ruin_destroy_athena_trees",
+          "Count": 50,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Ruin_Destroy_Rocks",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_ruin_destroy_athena_rocks",
+          "Count": 35,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Ruin_Destroy_Cars",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_ruin_destroy_athena_cars",
+          "Count": 20,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Ruin_Damage_Enemy_Structures",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_ruin_athena_enemy_building",
+          "Count": 10000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Ruin_Outlast",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_ruin_outlast",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Ruin_Complete_Daily_Challenges",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_ruin_complete_daily_challenges_01",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

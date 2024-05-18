@@ -15,7 +15,7 @@
         "BattleStars": 0,
         "Quest": [
           {
-            "TemplateId": "Season8_Ruin_Schedule",
+            "TemplateId": "ChallengeBundleSchedule:Season8_Ruin_Schedule",
             "Quantity": 1
           }
         ],

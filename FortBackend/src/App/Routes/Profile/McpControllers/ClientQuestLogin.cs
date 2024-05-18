@@ -223,36 +223,26 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     // START OF BATTLE PASS QUESTS SYSTEM
 
                     // Until i work on a season that changes this (season 10 omg) i need to redo this
-                    (MultiUpdates, MultiUpdatesForCommonCore) = await QuestsDealer.Init(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore);
+                    (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry) = await QuestsDealer.Init(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
                     
                     // END OF BATTLE PASS QUESTS SYSTEM
 
                     // LEVEL SYSTEM & XP
-
-
-                  
-                    var SeasonBattleStarsFolder = Path.Combine(PathConstants.BaseDir, $"Json\\Season\\Season{Season.Season}\\SeasonBP.json");
 
                     List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
                     // unsupported seasons will not go though.. so it doesn't break stuff
                     // I will try to add it for most seasons when i'm not doing other things
                     if (SeasonXpIg != null)
                     {
-
-                     
-
                         // Levels Up & Grant Items Live (if your proper) ~ i'm not
                         (profileCacheEntry, MultiUpdates, MultiUpdatesForCommonCore) = await BattlePassLevelUp.Init(Season, FoundSeason, profileCacheEntry, MultiUpdates, MultiUpdatesForCommonCore);
 
-                        (MultiUpdates, MultiUpdatesForCommonCore) = await QuestClaimer.Init(SeasonXpIg, FoundSeason, MultiUpdates, MultiUpdatesForCommonCore);
-
-
+                        (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry) = await QuestClaimer.Init(SeasonXpIg, FoundSeason, MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
 
                         // END OF BATTLE PASS SYSTEM
 
                         /// TO-DO ONLY USE THIS IF THE STAT IS CHANGING
 
-                        // need to check if they need to actually need to be updated
                         MultiUpdates.Add(new
                         {
                             changeType = "statModified",
@@ -296,6 +286,25 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         profileCacheEntry.AccountData.athena.CommandRevision += 1;
                     }
 
+                    List<object> MultiCommonCoreUpdate = new List<object>();
+                    if(MultiUpdatesForCommonCore.Count > 0)
+                    {
+                        var BeofreUpdate = profileCacheEntry.AccountData.commoncore.RVN;
+                        profileCacheEntry.LastUpdated = DateTime.Now;
+                        profileCacheEntry.AccountData.commoncore.RVN += 1;
+                        profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+
+                        MultiCommonCoreUpdate.Add(new
+                        {
+                            profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
+                            profileId = "common_core",
+                            profileChangesBaseRevision = BeofreUpdate,
+                            profileChanges = MultiUpdatesForCommonCore,
+                            profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
+                        });
+                    }
+
+
                     if (BaseRev != RVN)
                     {
                         Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
@@ -319,7 +328,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         profileId = ProfileId,
                         profileChangesBaseRevision = BaseRev,
                         profileChanges = MultiUpdates,
-                        multiUpdate = MultiUpdatesForCommonCore,
+                        multiUpdate = MultiCommonCoreUpdate,
                         profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                         serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         responseVersion = 1

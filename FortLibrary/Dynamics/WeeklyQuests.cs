@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FortLibrary.EpicResponses.Profile.Query.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,6 +58,9 @@ namespace FortLibrary.Dynamics
     public class WeeklyRewardsQuest
     {
         public string TemplateId { get; set; } = string.Empty;
+        public List<AthenaItemVariants> variants { get; set; } = new List<AthenaItemVariants>();
+        public List<NewAddedItemVariants> new_variants { get; set; } = new List<NewAddedItemVariants>();
+        public string connectedTemplate { get; set; } = string.Empty;
         public int Quantity { get; set; } = 0;
     }
 }

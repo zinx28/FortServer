@@ -1,4 +1,5 @@
-﻿using FortLibrary.Dynamics;
+﻿using FortLibrary;
+using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary.MongoDB.Module;
@@ -7,7 +8,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
 {
     public class QuestClaimer
     {
-        public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore)> Init(List<SeasonXP> SeasonXpIg, SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore)
+        public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)> Init(List<SeasonXP> SeasonXpIg, SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)
         {
             var beforeLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.Level == FoundSeason.Level);
             //
@@ -42,9 +43,10 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                         {
                             if (FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value != CurrentLevelXP)
                             {
-                                NeedUpdating = true;
                                 FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = CurrentLevelXP;
                             }
+
+                            NeedUpdating = true;
                         }
 
                         FoundSeason.Quests[Quests.Key].attributes.creation_time = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
@@ -119,11 +121,11 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
 
             if (testerfnmp)
             {
-                (MultiUpdates, MultiUpdatesForCommonCore) = await QuestsDealer.Init(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore);
+                (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry) = await QuestsDealer.Init(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
 
             }
 
-            return (MultiUpdates, MultiUpdatesForCommonCore);
+            return (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
         }
     }
 }

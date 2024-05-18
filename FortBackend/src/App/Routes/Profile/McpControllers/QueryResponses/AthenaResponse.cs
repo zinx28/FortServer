@@ -311,7 +311,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                     {
                                                         if (!test.quest_data.RequireBP) continue;
 
-                                                        TEST2FRFR.Add("Quest:" + test.templateId);
+                                                        TEST2FRFR.Add(test.templateId);
                                                     }
 
 

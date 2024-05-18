@@ -80,34 +80,21 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                             quantity = 1
                                         });
 
-                                        var BeofreUpdate = profileCacheEntry.AccountData.commoncore.RVN;
-                                        profileCacheEntry.AccountData.commoncore.RVN += 1;
-                                        profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
-
-                                        MultiUpdatesForCommonCore.Add(new
+                                        MultiUpdatesForCommonCore.Add( new ApplyProfileChangesClassV2
                                         {
-                                            profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
-                                            profileId = "common_core",
-                                            profileChangesBaseRevision = BeofreUpdate,
-                                            profileChanges = new List<object>() {
-                                                        new ApplyProfileChangesClassV2
-                                                        {
-                                                            changeType = "itemAdded",
-                                                            itemId = RandomOfferId,
-                                                            item = new
-                                                            {
-                                                                templateId = "GiftBox:gb_battlepass",
-                                                                attributes = new
-                                                                {
-                                                                    max_level_bonus = 0,
-                                                                    fromAccountId = "",
-                                                                    lootList = unlessfunc
-                                                                },
-                                                                quantity = 1
-                                                            }
-                                                        }
-                                                    },
-                                            profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
+                                            changeType = "itemAdded",
+                                            itemId = RandomOfferId,
+                                            item = new
+                                            {
+                                                templateId = "GiftBox:gb_battlepass",
+                                                attributes = new
+                                                {
+                                                    max_level_bonus = 0,
+                                                    fromAccountId = "",
+                                                    lootList = unlessfunc
+                                                },
+                                                quantity = 1
+                                            }
                                         });
 
 

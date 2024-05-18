@@ -6,7 +6,7 @@
   },
   "BundlesObject": [
     {
-      "templateId": "Quest_BR_S8_Shiny_Outlive_01",
+      "templateId": "Quest:Quest_BR_S8_Shiny_Outlive_01",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -16,7 +16,7 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "Pickaxe_ID_166_Shiny",
+            "TemplateId": "AthenaPickaxe:Pickaxe_ID_166_Shiny",
             "Quantity": 1
           }
         ]
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Shiny_Outlive_02",
+      "templateId": "Quest:Quest_BR_S8_Shiny_Outlive_02",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -40,7 +40,7 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_155_Shiny_ClothingB",
+            "TemplateId": "CosmeticVariantToken:VTID_155_Shiny_ClothingB",
             "Quantity": 1
           }
         ]
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Shiny_Outlive_03",
+      "templateId": "Quest:Quest_BR_S8_Shiny_Outlive_03",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -64,7 +64,7 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "BID_217_ShinyFemale",
+            "TemplateId": "AthenaBackpack:BID_217_ShinyFemale",
             "Quantity": 1
           }
         ]
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Shiny_Outlive_04",
+      "templateId": "Quest:Quest_BR_S8_Shiny_Outlive_04",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -88,7 +88,7 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_156_Shiny_ClothingC",
+            "TemplateId": "CosmeticVariantToken:VTID_156_Shiny_ClothingC",
             "Quantity": 1
           }
         ]
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Shiny_Outlive_05",
+      "templateId": "Quest:Quest_BR_S8_Shiny_Outlive_05",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -112,7 +112,7 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "EID_Shiny",
+            "TemplateId": "AthenaDance:EID_Shiny",
             "Quantity": 1
           }
         ]
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Shiny_Outlive_06",
+      "templateId": "Quest:Quest_BR_S8_Shiny_Outlive_06",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false,
@@ -137,11 +137,12 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_158_Shiny_BackBlingB",
+            "TemplateId": "CosmeticVariantToken:VTID_158_Shiny_BackBlingB",
+            "connectedTemplate": null,
             "Quantity": 1
           },
           {
-            "TemplateId": "VTID_157_Shiny_ClothingD",
+            "TemplateId": "CosmeticVariantToken:VTID_157_Shiny_ClothingD",
             "Quantity": 1
           }
         ]

@@ -6,7 +6,7 @@
   },
   "BundlesObject": [
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_01",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_01",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -16,7 +16,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_133_Pirate_StageB",
+            "TemplateId": "CosmeticVariantToken:VTID_133_Pirate_StageB",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -30,7 +39,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_02",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_02",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -40,7 +49,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_134_Pirate_StageC",
+            "TemplateId": "CosmeticVariantToken:VTID_134_Pirate_StageC",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -54,7 +72,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_03",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_03",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -64,7 +82,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_135_Pirate_StageD",
+            "TemplateId": "CosmeticVariantToken:VTID_135_Pirate_StageD",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -78,7 +105,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_04",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_04",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -88,7 +115,7 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "Pickaxe_ID_163_PirateOctopus",
+            "TemplateId": "AthenaPickaxe:Pickaxe_ID_163_PirateOctopus",
             "Quantity": 1
           }
         ]
@@ -102,7 +129,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_05",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_05",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -112,7 +139,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_136_Pirate_StageE",
+            "TemplateId": "CosmeticVariantToken:VTID_136_Pirate_StageE",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -126,7 +162,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_06",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_06",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -136,7 +172,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_137_Pirate_StageF",
+            "TemplateId": "CosmeticVariantToken:VTID_137_Pirate_StageF",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage6"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -150,7 +195,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_07",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_07",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -160,7 +205,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_138_Pirate_StageG",
+            "TemplateId": "CosmeticVariantToken:VTID_138_Pirate_StageG",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage7"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -174,22 +228,26 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_08",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_08",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
-          {
-            "TemplateId": "VTID_139_Pirate_StageH",
-            "Quantity": 1
-          }
-        ],
+        "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_139_Pirate_StageH",
+            "TemplateId": "CosmeticVariantToken:VTID_139_Pirate_StageH",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage7"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -203,7 +261,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Gain_SeasonXP_09",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Gain_SeasonXP_09",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false
@@ -213,7 +271,7 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "BID_216_PirateProgressive",
+            "TemplateId": "AthenaBackpack:BID_216_PirateProgressive",
             "Quantity": 1
           }
         ]
@@ -227,7 +285,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_01",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Complete_WeeklyChallenges_01",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false,
@@ -238,7 +296,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_140_Pirate_ClothingB",
+            "TemplateId": "CosmeticVariantToken:VTID_140_Pirate_ClothingB",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "ClothingColor",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -252,7 +319,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_02",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Complete_WeeklyChallenges_02",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false,
@@ -263,7 +330,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_141_Pirate_ClothingC",
+            "TemplateId": "CosmeticVariantToken:VTID_141_Pirate_ClothingC",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "ClothingColor",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]
@@ -277,7 +353,7 @@
       ]
     },
     {
-      "templateId": "Quest_BR_S8_Pirate_Complete_WeeklyChallenges_03",
+      "templateId": "Quest:Quest_BR_S8_Pirate_Complete_WeeklyChallenges_03",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": false,
@@ -288,7 +364,16 @@
         "Quest": [],
         "GrantedItems": [
           {
-            "TemplateId": "VTID_142_Pirate_ClothingD",
+            "TemplateId": "CosmeticVariantToken:VTID_142_Pirate_ClothingD",
+            "connectedTemplate": "AthenaCharacter:cid_347_athena_commando_m_pirateprogressive",
+            "new_variants": [
+              {
+                "channel": "ClothingColor",
+                "added": [
+                  "Mat4"
+                ]
+              }
+            ],
             "Quantity": 1
           }
         ]

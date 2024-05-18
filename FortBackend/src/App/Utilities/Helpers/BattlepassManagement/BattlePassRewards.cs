@@ -46,6 +46,21 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 },
                                 quantity = iteminfo.Quantity,
                             });
+
+                            MultiUpdates.Add(new MultiUpdateClass
+                            {
+                                changeType = "itemAdded",
+                                itemId = iteminfo.TemplateId,
+                                item = new AthenaItem
+                                {
+                                    templateId = iteminfo.TemplateId,
+                                    attributes = new AthenaItemAttributes
+                                    {
+                                        item_seen = false,
+                                    },
+                                    quantity = 1
+                                }
+                            });
                         }
                         else if (iteminfo.TemplateId.Contains("Athena"))
                         {
@@ -287,9 +302,9 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
                                                     }
 
-                                                    FoundSeason.Quests.Add($"Quest:{Quests.templateId}", new DailyQuestsData
+                                                    FoundSeason.Quests.Add($"{Quests.templateId}", new DailyQuestsData
                                                     {
-                                                        templateId = $"Quest:{Quests.templateId}",
+                                                        templateId = $"{Quests.templateId}",
                                                         attributes = new DailyQuestsDataDB
                                                         {
                                                             challenge_bundle_id = $"ChallengeBundle:{QuestJson.BundleId}",
@@ -301,7 +316,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
                                                     var ItemObjectResponse = new
                                                     {
-                                                        templateId = $"Quest:{Quests.templateId}",
+                                                        templateId = $"{Quests.templateId}",
                                                         attributes = new Dictionary<string, object>
                                                     {
                                                         { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
@@ -334,7 +349,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                     MultiUpdates.Add(new MultiUpdateClass
                                                     {
                                                         changeType = "itemAdded",
-                                                        itemId = $"Quest:{Quests.templateId}",
+                                                        itemId = $"{Quests.templateId}",
                                                         item = ItemObjectResponse
                                                     });
                                                 }

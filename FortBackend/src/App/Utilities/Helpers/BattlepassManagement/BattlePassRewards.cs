@@ -256,7 +256,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                                 if (Quests.quest_data.ExtraQuests) continue;
 
 
-                                                OkayIG.Add("Quest:" + Quests.templateId);
+                                                OkayIG.Add(Quests.templateId);
 
                                      
                                                 DailyQuestsData QyestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == Quests.templateId).Value;

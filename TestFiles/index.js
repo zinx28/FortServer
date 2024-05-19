@@ -28,10 +28,115 @@ for(var index in datafile) {
 }
 console.log(JSON.stringify(Data));*/
 
-/*
-const datafile = require("./BattlePass.json");
+
+const DataFile = require("./SingleQuest.json");
+var DataResponse = [];
+var Level = 0;
+
+for(var index in DataFile){
+  var Data = DataFile[index];
+  
+  var BattleStars = 0;
+
+  var GrantedItems = [];
+  var Quest = [];
+
+  for(var test in Data.Properties.Rewards){
+    var Test = Data.Properties.Rewards[test];
+
+    if(Test.ItemPrimaryAssetId.PrimaryAssetType.Name == "AccountResource"){
+      if(Test.ItemPrimaryAssetId.PrimaryAssetName == "athenabattlestar"){
+        BattleStars += Test.Quantity
+      }else {
+        console.log("EREPREPREPREOPRPE{ ACCOUNTTN RE SIOURCES");
+      }
+    }
+    else
+    if(Test.ItemPrimaryAssetId.PrimaryAssetType.Name == "Quest"){
+      Quest.push({
+        TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
+        Quantity: Test.Quantity
+      })
+    }
+    else if (Test.ItemPrimaryAssetId.PrimaryAssetType.Name.includes("Athena")){
+      GrantedItems.push({
+        TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
+        Quantity: Test.Quantity
+      })
+    }
+    else {
+      console.error("woah!?!?!?!!??!?!")
+      GrantedItems.push({
+        TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
+        connectedTemplate: "",
+        Quantity: Test.Quantity
+      })
+    }
+  }
+  
+  if(Data.Properties.HiddenRewards){
+    for(var test in Data.Properties.HiddenRewards){
+      var Test = Data.Properties.HiddenRewards[test];
+  
+      if(Test.TemplateId.includes("Quest")){
+        Quest.push({
+          TemplateId: `${Test.TemplateId}`,
+          Quantity: Test.Quantity
+        })
+      }
+      else if (Test.TemplateId.includes("Athena")){
+        GrantedItems.push({
+          TemplateId: `${Test.TemplateId}`,
+          Quantity: Test.Quantity
+        })
+      }
+      else {
+        console.error("woah!?!?!?!!??!?!")
+        GrantedItems.push({
+          TemplateId: `${Test.TemplateId}`,
+          connectedTemplate: "",
+          Quantity: Test.Quantity
+        })
+      }
+    }
+    
+  }
+
+  //HiddenRewards
+
+  var Objectives = [];
+  for(var testObjectives in Data.Properties.Objectives){
+    var TestObjectives = Data.Properties.Objectives[testObjectives];
+
+    Objectives.push({
+       "BackendName": TestObjectives.BackendName,
+       "Count": TestObjectives.Count,
+       "Stage": TestObjectives.Stage
+    })
+  }
+
+  DataResponse.push({
+     "templateId": `Quest:${Data.Name}`,
+     "quest_data": {
+      "RequireBP": true,
+      "ExtraQuests": false,
+      "Steps": false
+     },
+     "Rewards": {
+        "BattleStars": BattleStars,
+        "Quest": Quest,
+        "GrantedItems": GrantedItems
+     },
+     "Objectives": Objectives
+  })
+}
+
+console.log(JSON.stringify(DataResponse, null, 2));
+
+/*const datafile = require("./BattlePass.json");
 var Data = [];
 var Level = 0;
+
 
 for(var index in datafile){
   var dataha = datafile[index];
@@ -106,7 +211,6 @@ for(var index in datafile){
 
 console.log(JSON.stringify(Data));
 */
-
 /*
 const datafile = require("./SeasonStars.json");
 var Data = [];
@@ -204,6 +308,7 @@ for(var index in datafile) {
   console.log(JSON.stringify(temp))
 }*/
 
+/*
 const datafile = require("./QuestS13.json")
 var tesa =0;
 for(var index in datafile) {
@@ -276,4 +381,4 @@ for(var index in datafile) {
   
   console.log("THIS IS FOR SEASON 13 DAILY QUESTYS SO ITS MORE FORCED")
   console.log(JSON.stringify(temp))
-}
+}*/

@@ -1,0 +1,75 @@
+{
+  "BundleId": "QuestBundle_S9_Architect",
+  "BundleSchedule": "ChallengeBundleSchedule:season9_architect_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Architect_Fortbyte_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_242_F_BattleSuit_StageB",
+            "connectedTemplate": "AthenaCharacter:CID_469_Athena_Commando_F_BattleSuit",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "architect_collect_fortbytes_95",
+          "Count": 95,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Architect_Fortbyte_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_243_F_BattleSuit_StageC",
+            "connectedTemplate": "AthenaCharacter:CID_469_Athena_Commando_F_BattleSuit",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "architect_collect_fortbytes_100",
+          "Count": 100,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

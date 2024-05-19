@@ -40,7 +40,7 @@
       },
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_347_Athena_Commando_M_PirateProgressive.CID_347_Athena_Commando_M_PirateProgressive",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_408_Athena_Commando_F_StrawberryPilot.CID_408_Athena_Commando_F_StrawberryPilot",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -57,7 +57,7 @@
       },
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_346_Athena_Commando_M_DragonNinja.CID_346_Athena_Commando_M_DragonNinja",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_403_Athena_Commando_M_Rooster.CID_403_Athena_Commando_M_Rooster",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -74,7 +74,7 @@
       },
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season8/Season8_Paid_Schedule.Season8_Paid_Schedule",
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_Paid_Schedule.Season9_Paid_Schedule",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -91,7 +91,24 @@
       },
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season8/Season8_Cumulative_Schedule.Season8_Cumulative_Schedule",
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_Cumulative_Schedule.Season9_Cumulative_Schedule",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::HiddenReward"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_FortByte_Schedule.Season9_Fortbyte_Schedule",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -167,10 +184,10 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "None",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_TomatoHead.Emoji_TomatoHead",
           "SubPathString": ""
         },
-        "TemplateId": "HomebaseBannerIcon:brs8pineapple",
+        "TemplateId": "",
         "Quantity": 1,
         "RewardGiftBox": {
           "GiftBoxToUse": {
@@ -209,7 +226,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_020_TropicalCamo.Wrap_020_TropicalCamo",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_060_Rooster.Wrap_060_Rooster",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -230,7 +247,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_091_DragonNinja.SPID_091_DragonNinja",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_109_StrawberryPilot.SPID_109_StrawberryPilot",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -251,7 +268,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Backpacks/BID_218_Medusa.BID_218_Medusa",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Pickaxes/Pickaxe_ID_211_BunkerMan_1H.Pickaxe_ID_211_BunkerMan_1H",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -275,7 +292,7 @@
           "AssetPathName": "None",
           "SubPathString": ""
         },
-        "TemplateId": "HomebaseBannerIcon:brs8jellyfish",
+        "TemplateId": "HomebaseBannerIcon:brs9chair",
         "Quantity": 1,
         "RewardGiftBox": {
           "GiftBoxToUse": {
@@ -314,7 +331,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_106_TreasureMap.LSID_106_TreasureMap",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_126_FloorIsLava.LSID_126_FloorIsLava",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -356,7 +373,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/MusicPacks/MusicPack_007_Pirate.MusicPack_007_Pirate",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/MusicPacks/MusicPack_015_GoodVibes.MusicPack_015_GoodVibes",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -377,7 +394,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_PalmTree.Emoji_PalmTree",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_RexHead.Emoji_RexHead",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -398,7 +415,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_092_BananaPeel.SPID_092_BananaPeel",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_118_ChevronLeft.SPID_118_ChevronLeft",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -419,7 +436,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Gliders/Glider_ID_124_Medusa.Glider_ID_124_Medusa",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Gliders/Glider_ID_144_StrawberryPilot.Glider_ID_144_StrawberryPilot",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -440,7 +457,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_OctoPirate.Emoji_OctoPirate",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_DriftHead.Emoji_DriftHead",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -503,7 +520,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/PetCarriers/PetCarrier_007_Woodsy.PetCarrier_007_Woodsy",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_057_Banana.Wrap_057_Banana",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -524,175 +541,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_103_Mermaid.SPID_103_Mermaid",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_046_Clover.Trails_ID_046_Clover",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_100_StPattyDay.LSID_100_StPattyDay",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_348_Athena_Commando_F_Medusa.CID_348_Athena_Commando_F_Medusa",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_4LeafClover.Emoji_4LeafClover",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Toys/TOY_014_BouncyBall.TOY_014_BouncyBall",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_021_Pirate.Wrap_021_Pirate",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_115_PixelJonesy.SPID_115_PixelJonesy",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -716,7 +565,7 @@
           "AssetPathName": "None",
           "SubPathString": ""
         },
-        "TemplateId": "HomebaseBannerIcon:brs8ziggurat",
+        "TemplateId": "HomebaseBannerIcon:brs9bone",
         "Quantity": 1,
         "RewardGiftBox": {
           "GiftBoxToUse": {
@@ -734,49 +583,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_101_IceQueen.LSID_101_IceQueen",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/EID_Conga.EID_Conga",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_Spicy.Emoji_Spicy",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_130_StrawberryPilot.LSID_130_StrawberryPilot",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -797,1414 +604,7 @@
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_129_PetCarrier_Woodsy_StyleB.VTID_129_PetCarrier_Woodsy_StyleB",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_099_Key.SPID_099_Key",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_048_Spectral.Trails_ID_048_Spectral",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "TemplateId": "HomebaseBannerIcon:brs8coconuts",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Gliders/Glider_ID_123_MasterKey.Glider_ID_123_MasterKey",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_102_TriceraOps.LSID_102_TriceraOps",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_023_Aztec.Wrap_023_Aztec",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_094_WootDog.SPID_094_WootDog",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1000,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_SkullBrite.Emoji_SkullBrite",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_349_Athena_Commando_M_Banana.CID_349_Athena_Commando_M_Banana",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_095_LoveRanger.SPID_095_LoveRanger",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "TemplateId": "HomebaseBannerIcon:brs8foxhead",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/PetCarriers/PetCarrier_008_Fox.PetCarrier_008_Fox",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_AztecMask.Emoji_AztecMask",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_096_FallenLoveRanger.SPID_096_FallenLoveRanger",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Pickaxes/Pickaxe_ID_165_MasterKey.Pickaxe_ID_165_MasterKey",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "TemplateId": "HomebaseBannerIcon:brs8roach",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_044_Lava.Trails_ID_044_Lava",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_017_DragonNinja.Wrap_017_DragonNinja",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1000,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "TemplateId": "HomebaseBannerIcon:brs8whaletail",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/EID_Banana.EID_Banana",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_103_SprayCollage.LSID_103_SprayCollage",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1000,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_131_PetCarrier_Fox_StyleB.VTID_131_PetCarrier_Fox_StyleB",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_101_BriteBomber.SPID_101_BriteBomber",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_200m.Emoji_200m",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_351_Athena_Commando_F_FireElf.CID_351_Athena_Commando_F_FireElf",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "TemplateId": "HomebaseBannerIcon:brs8tigerstripes",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_097_PowerChord.LSID_097_PowerChord",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_097_FireElf.SPID_097_FireElf",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_019_Tiger.Wrap_019_Tiger",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_Cuddle.Emoji_Cuddle",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Gliders/Glider_ID_128_BootyBuoy.Glider_ID_128_BootyBuoy",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_100_Salty.SPID_100_Salty",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_130_PetCarrier_Woodsy_StyleC.VTID_130_PetCarrier_Woodsy_StyleC",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_104_MasterKey.LSID_104_MasterKey",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_047_AmmoBelt.Trails_ID_047_AmmoBelt",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "TemplateId": "HomebaseBannerIcon:brs8crystalllama",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_350_Athena_Commando_M_MasterKey.CID_350_Athena_Commando_M_MasterKey",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_AngryVolcano.Emoji_AngryVolcano",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_098_Shiny.SPID_098_Shiny",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/MusicPacks/MusicPack_009_StarPower.MusicPack_009_StarPower",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_132_PetCarrier_Fox_StyleC.VTID_132_PetCarrier_Fox_StyleC",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_105_BlackWidow.LSID_105_BlackWidow",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/EID_HulaHoop.EID_HulaHoop",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 100,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_022_Gemstone.Wrap_022_Gemstone",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_128_MasterKey_StyleB.VTID_128_MasterKey_StyleB",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_352_Athena_Commando_F_Shiny.CID_352_Athena_Commando_F_Shiny",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_409_Athena_Commando_M_BunkerMan.CID_409_Athena_Commando_M_BunkerMan",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -2221,7 +621,1692 @@
       },
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season8/Season8_Shiny_Schedule.Season8_Shiny_Schedule",
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_BunkerMan_Schedule.Season9_BunkerMan_Schedule",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_SilentMaven.Emoji_SilentMaven",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_054_KpopGlow.Trails_ID_054_KpopGlow",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/PetCarriers/PetCarrier_010_RoboKitty.PetCarrier_010_RoboKitty",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9x",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_121_Vikings.LSID_121_Vikings",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/EID_ChickenMoves.EID_ChickenMoves",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_LoveRanger.Emoji_LoveRanger",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Toys/TOY_017_FlyingDisc.TOY_017_FlyingDisc",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_119_ChevronRight.SPID_119_ChevronRight",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_127_UnicornPickaxe.LSID_127_UnicornPickaxe",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9bacon",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Gliders/Glider_ID_146_Masako.Glider_ID_146_Masako",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_108_Fate.SPID_108_Fate",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_062_NeoTag.Wrap_062_NeoTag",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_ScreamingWukong.Emoji_ScreamingWukong",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1000,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_199_PetCarrier_RoboKitty_StyleB.VTID_199_PetCarrier_RoboKitty_StyleB",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_404_Athena_Commando_F_BountyHunter.CID_404_Athena_Commando_F_BountyHunter",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_BountyHunter_Schedule.Season9_BountyHunter_Schedule",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_055_Bananas.Trails_ID_055_Bananas",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9roar",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9violin",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_DurrburgerHead.Emoji_DurrburgerHead",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_117_NoSymbol.SPID_117_NoSymbol",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Pickaxes/Pickaxe_ID_205_StrawberryPilot.Pickaxe_ID_205_StrawberryPilot",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_113_NanaNana.SPID_113_NanaNana",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_061_PurpleSplatter.Wrap_061_PurpleSplatter",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_201_PetCarrier_RoboKitty_StyleD.VTID_201_PetCarrier_RoboKitty_StyleD",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1000,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9cone",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/EID_SignSpinner.EID_SignSpinner",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_125_LavaLegends.LSID_125_LavaLegends",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_111_Ark.SPID_111_Ark",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Toys/TOY_018_FancyFlyingDisc.TOY_018_FancyFlyingDisc",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1000,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9target",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_406_Athena_Commando_M_StormTracker.CID_406_Athena_Commando_M_StormTracker",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_StormTracker_Schedule.Season9_StormTracker_Schedule",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_SkepticalFishstix.Emoji_SkepticalFishstix",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_200_PetCarrier_RoboKitty_StyleC.VTID_200_PetCarrier_RoboKitty_StyleC",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_129_Stormtracker.LSID_129_Stormtracker",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_056_StormTracker.Trails_ID_056_StormTracker",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9blast",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Gliders/Glider_ID_143_BattleSuit.Glider_ID_143_BattleSuit",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_123_Inferno.LSID_123_Inferno",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_WhiteFlag.Emoji_WhiteFlag",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_058_Storm.Wrap_058_Storm",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_116_Robot.SPID_116_Robot",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9spade",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_405_Athena_Commando_F_Masako.CID_405_Athena_Commando_F_Masako",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_Masako_Schedule.Season9_Masako_Schedule",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonFriendXpBoost.AthenaSeasonFriendXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_057_BattleSuit.Trails_ID_057_BattleSuit",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_110_Rooster.SPID_110_Rooster",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/MusicPacks/MusicPack_014_S9Cine.MusicPack_014_S9Cine",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_SupDood.Emoji_SupDood",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_128_AuroraGlow.LSID_128_AuroraGlow",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/EID_GabbyHipHop_01.EID_GabbyHipHop_01",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Tokens/AthenaSeasonXpBoost.AthenaSeasonXpBoost",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_059_BattleSuit.Wrap_059_BattleSuit",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/CosmeticVariantTokens/VTID_202_Rooster_StyleB.VTID_202_Rooster_StyleB",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Characters/CID_407_Athena_Commando_M_BattleSuit.CID_407_Athena_Commando_M_BattleSuit",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/ChallengeBundleSchedules/Season9/Season9_BattleSuit_Schedule.Season9_BattleSuit_Schedule",
           "SubPathString": ""
         },
         "TemplateId": "",

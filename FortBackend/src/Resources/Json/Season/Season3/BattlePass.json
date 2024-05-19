@@ -1,0 +1,244 @@
+{
+  "name": "BRSeason3",
+  "catalogEntries": [
+    {
+      "offerId": "2331626809474871A3A44C47C1D8742E",
+      "devName": "BR.Season3.BattlePass.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 950,
+          "finalPrice": 950,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 950
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "2331626809474871A3A44C47C1D8742E",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 1,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Season 3",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 3: Feb 22 - April 30\r\n\r\nInstantly get these items valued at over 2000 V-Bucks.\r\n  • Mission Specialist Outfit\r\n  • 50% Bonus Season Match XP\r\n  • 10% Bonus Season Friend Match XP\r\n  • Access to Weekly Challenges\r\n\r\nPlay to level up your Battle Pass, unlocking up to 100 rewards (typically takes 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy tiers any time!\r\n  • The Reaper plus 4 other outfits\r\n  • 2 Harvesting Tools\r\n  • 2 Gliders\r\n  • 2 Back Blings\r\n  • 5 Skydiving Trails\r\n  • 1300 V-Bucks\r\n  • and so much more!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season3_BattlePass.DA_BR_Season3_BattlePass",
+      "itemGrants": []
+    },
+    {
+      "offerId": "E2D7975EFEC54A45900D8D9A6D9D273C",
+      "devName": "BR.Season3.SingleTier.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 150,
+          "dynamicRegularPrice": -1,
+          "finalPrice": 150,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 150
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "eu": "Battle Pass Level",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "shortDescription": {
+        "en": "",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Get great rewards now!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "",
+      "itemGrants": []
+    },
+    {
+      "offerId": "70487F4C4673CC98F2FEBEBB26505F44",
+      "devName": "BR.Season8.BattleBundle.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 4700,
+          "finalPrice": 2800,
+          "saleType": "PercentOff",
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 2800
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "70487F4C4673CC98F2FEBEBB26505F44",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Battle Pass + 25 tiers!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 3: Feb 22 - April 30\r\n\r\nInstantly get these items valued at over 8000 V-Bucks.\r\n  • Mission Specialist Outfit\r\n  • Rust Lord Outfit\r\n  • Sawtooth Harvesting Tool\r\n  • Rainbow Rider Glider\r\n  • Rainbow Skydiving Trail\r\n  • 70% Bonus Season Match XP\r\n  • 20% Bonus Season Friend Match XP\r\n  • Access to Weekly Challenges\r\n  • and more!\r\n\r\nPlay to level up your Battle Pass, unlocking up to 75+ more rewards (typically takes 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy tiers any time!\r\n  • The Reaper plus 3 other outfits\r\n  • 1 Harvesting Tool\r\n  • 1 Glider\r\n  • 2 Back Blings\r\n  • 4 Skydiving Trails\r\n  • 1300 V-Bucks\r\n  • and so much more!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season3_BattlePassWithLevels.DA_BR_Season3_BattlePassWithLevels",
+      "itemGrants": []
+    }
+  ]
+}

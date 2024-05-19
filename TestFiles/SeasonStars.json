@@ -2081,6 +2081,84 @@
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_S9Lvl100.Emoji_S9Lvl100",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "/Game/Items/GiftBoxes/GenericGiftboxes/GB_Generic.GB_Generic",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": [
+            {
+              "StringAssetType": "HeaderAssetString",
+              "StringData": "Header.Congratulations"
+            },
+            {
+              "StringAssetType": "BodyAssetString",
+              "StringData": "Reward.GenericGift5"
+            }
+          ]
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_120_S9Lvl100.SPID_120_S9Lvl100",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "/Game/Items/GiftBoxes/GenericGiftboxes/GB_Generic.GB_Generic",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": [
+            {
+              "StringAssetType": "HeaderAssetString",
+              "StringData": "Header.Congratulations"
+            },
+            {
+              "StringAssetType": "BodyAssetString",
+              "StringData": "Reward.GenericGift5"
+            }
+          ]
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "TemplateId": "HomebaseBannerIcon:brs9lvl100",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "/Game/Items/GiftBoxes/GenericGiftboxes/GB_Generic.GB_Generic",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": [
+            {
+              "StringAssetType": "HeaderAssetString",
+              "StringData": "Header.Congratulations"
+            },
+            {
+              "StringAssetType": "BodyAssetString",
+              "StringData": "Reward.GenericGift5"
+            }
+          ]
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
       }
     ]
   }

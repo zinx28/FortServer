@@ -183,12 +183,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
 
                             // THIS IS INST THE PROPER WAY BUT IT'S BETTER NTO STORING THIS IN THE CODE UNLESS IS ACTUALLY NEEDED
+                            var ResponseId = "";
                             if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
                             {
                                 if(WeeklyQuestsArray.Count > 0)
                                 {
                                     List<string> ResponseIgIdrk = new List<string>();
-                                    var ResponseId = "";
+                            
                                     foreach(var kvp in WeeklyQuestsArray)
                                     {
                                         ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
@@ -219,7 +220,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             {
                                                 if (!FreeBundles.quest_data.Steps)
                                                 {
-                                                    Console.Write("TEST " + FreeBundles.templateId);
+                                                   // Console.Write("TEST " + FreeBundles.templateId);
                                                     var GrabQuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == FreeBundles.templateId).Value;
                                                     if (GrabQuestData != null)
                                                     {
@@ -275,51 +276,58 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     };
 
                                     ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
+                                }
+                            }
 
-                                    // BELOW IS JUST FOR PAID
+                            foreach(var key in WeeklyQuestManager.BPSeasonBundleScheduleDictionary)
+                            {
+                                Console.WriteLine(key.Key);
+                            }
 
-                                    if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> BPQuestsArray))
+                            if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> BPQuestsArray))
+                            {
+                                Console.WriteLine(seasonObject.SeasonNumber);
+                                Console.WriteLine(seasonObject.BookPurchased);
+                                if (seasonObject.BookPurchased)
+                                {
+                                    if (BPQuestsArray.Count > 0)
                                     {
-
-                                        if (seasonObject.BookPurchased)
+                                        var ResponseIG = new Dictionary<string, List<string>>();
+                                        //List<string> ResponseIgIdrk = new List<string>();
+                                        // var ResponseId = "";
+                                        foreach (var kvp in BPQuestsArray)
                                         {
-                                            if (BPQuestsArray.Count > 0)
+                                            
+                                            if (kvp.BundleRequired.RequiredLevel > seasonObject.Level) continue;
+
+                                            List<string> FindFirstOrDe = ResponseIG.FirstOrDefault(e => e.Key == kvp.BundleSchedule).Value;
+                                            if (FindFirstOrDe == null || FindFirstOrDe.Count() == 0)
                                             {
-                                                var ResponseIG = new Dictionary<string, List<string>>();
-                                                //List<string> ResponseIgIdrk = new List<string>();
-                                                // var ResponseId = "";
-                                                foreach (var kvp in BPQuestsArray)
-                                                {
-                                                    if (kvp.BundleRequired.RequiredLevel > seasonObject.Level) continue;
+                                                ResponseIG[kvp.BundleSchedule] = new List<string> { $"ChallengeBundle:{kvp.BundleId}" };
+                                                //ResponseIG.Add(kvp.BundleSchedule, new List<string>
+                                                //{
+                                                //    kvp.BundleId
+                                                //});
+                                            }
+                                            else
+                                            {
+                                                FindFirstOrDe.Add($"ChallengeBundle:{kvp.BundleId}");
+                                            }
+                                            // kvp.BundleSchedule
+                                            List<string> TEST2FRFR = new List<string>();
+                                            foreach (var test in kvp.BundlesObject)
+                                            {
+                                                if (!test.quest_data.RequireBP) continue;
 
-                                                    List<string> FindFirstOrDe = ResponseIG.FirstOrDefault(e => e.Key == kvp.BundleSchedule).Value;
-                                                    if (FindFirstOrDe == null || FindFirstOrDe.Count() == 0)
-                                                    {
-                                                        ResponseIG[kvp.BundleSchedule] = new List<string> { $"ChallengeBundle:{kvp.BundleId}" };
-                                                        //ResponseIG.Add(kvp.BundleSchedule, new List<string>
-                                                        //{
-                                                        //    kvp.BundleId
-                                                        //});
-                                                    }
-                                                    else
-                                                    {
-                                                        FindFirstOrDe.Add($"ChallengeBundle:{kvp.BundleId}");
-                                                    }
-                                                    // kvp.BundleSchedule
-                                                    List<string> TEST2FRFR = new List<string>();
-                                                    foreach (var test in kvp.BundlesObject)
-                                                    {
-                                                        if (!test.quest_data.RequireBP) continue;
-
-                                                        TEST2FRFR.Add(test.templateId);
-                                                    }
+                                                TEST2FRFR.Add(test.templateId);
+                                            }
 
 
 
-                                                    var AthenaItemBPData = new AthenaItemDynamic
-                                                    {
-                                                        templateId = $"ChallengeBundle:{kvp.BundleId}",
-                                                        attributes = new Dictionary<string, object>
+                                            var AthenaItemBPData = new AthenaItemDynamic
+                                            {
+                                                templateId = $"ChallengeBundle:{kvp.BundleId}",
+                                                attributes = new Dictionary<string, object>
                                                         {
                                                             { "has_unlock_by_completion", false },
                                                             { "num_quests_completed", 0 },
@@ -329,24 +337,24 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                             { "max_allowed_bundle_level", 0 },
                                                             { "num_granted_bundle_quests", TEST2FRFR.Count() },
                                                             { "max_level_bonus", 0 },
-                                                            { "challenge_bundle_schedule_id", ResponseId },
+                                                            { "challenge_bundle_schedule_id", kvp.BundleSchedule },
                                                             { "num_progress_quests_completed", 0 },
                                                             { "xp", 0 },
                                                             { "favorite", false }
                                                         },
-                                                        quantity = 1,
-                                                    };
+                                                quantity = 1,
+                                            };
 
-                                                    ProfileChange.Profile.items.Add($"ChallengeBundle:{kvp.BundleId}", AthenaItemBPData);
+                                            ProfileChange.Profile.items.Add($"ChallengeBundle:{kvp.BundleId}", AthenaItemBPData);
 
-                                                }
+                                        }
 
-                                                foreach(var kvp in ResponseIG)
-                                                {
-                                                    var AthenaItemBPData = new AthenaItemDynamic
-                                                    {
-                                                        templateId = kvp.Key,
-                                                        attributes = new Dictionary<string, object>
+                                        foreach (var kvp in ResponseIG)
+                                        {
+                                            var AthenaItemBPData = new AthenaItemDynamic
+                                            {
+                                                templateId = kvp.Key,
+                                                attributes = new Dictionary<string, object>
                                                         {
                                                             { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                             { "max_level_bonus", 0 },
@@ -356,38 +364,35 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                             { "favorite", false },
                                                             { "granted_bundles", kvp.Value.ToArray() }
                                                         },
-                                                        quantity = 1,
-                                                    };
+                                                quantity = 1,
+                                            };
 
-                                                    ProfileChange.Profile.items.Add(kvp.Key, AthenaItemBPData);
-                                                }
-
-                                            }
-                                            //QuestBundle_S8_Cumulative
-                                            //var AthenaItemDynamicData = new AthenaItemDynamic
-                                            //{
-                                            //    templateId = $"ChallengeBundleSchedule:",
-                                            //    attributes = new Dictionary<string, object>
-                                            //    {
-                                            //        { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                            //        { "max_level_bonus", 0 },
-                                            //        { "level", 0 },
-                                            //        { "item_seen", true },
-                                            //        { "xp", 0 },
-                                            //        { "favorite", false },
-                                            //        { "granted_bundles", ResponseIgIdrk.ToArray() }
-                                            //    },
-                                            //    quantity = 1,
-                                            //};
-
-                                            //ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
+                                            ProfileChange.Profile.items.Add(kvp.Key, AthenaItemBPData);
                                         }
-                                    }
 
+                                    }
+                                    //QuestBundle_S8_Cumulative
+                                    //var AthenaItemDynamicData = new AthenaItemDynamic
+                                    //{
+                                    //    templateId = $"ChallengeBundleSchedule:",
+                                    //    attributes = new Dictionary<string, object>
+                                    //    {
+                                    //        { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                    //        { "max_level_bonus", 0 },
+                                    //        { "level", 0 },
+                                    //        { "item_seen", true },
+                                    //        { "xp", 0 },
+                                    //        { "favorite", false },
+                                    //        { "granted_bundles", ResponseIgIdrk.ToArray() }
+                                    //    },
+                                    //    quantity = 1,
+                                    //};
+
+                                    //ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
                                 }
                             }
 
-                            
+
 
                             foreach (var kvp in seasonObject.Quests)
                             {

@@ -1,0 +1,244 @@
+{
+  "name": "BRSeason9",
+  "catalogEntries": [
+    {
+      "offerId": "C7190ACA4E5E228A94CA3CB9C3FC7AE9",
+      "devName": "BR.Season9.BattlePass.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 950,
+          "finalPrice": 950,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 950
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "C7190ACA4E5E228A94CA3CB9C3FC7AE9",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 1,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Season 9",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 9 Now through August 1.\n\nInstantly get these items <Bold>valued at over 10,000 V-Bucks</>.\n  • <ItemName>Rox</> Progressive Outfit\n  • <ItemName>Sentinel</> Outfit\n  • <ItemName>Bunker Jonesy</> Outfit\n  • <ItemName>Sentinel</> Wrap\n  • <ItemName>Ripe Rippers</> Harvesting Tool\n  • <ItemName>Turbo Spin</> Glider\n  • <ItemName>Ripe</> Wrap\n  • 300 V-Bucks\n  • 1 Music Track\n  • <Bold>70% Bonus</> Season Match XP\n  • <Bold>20% Bonus</> Season Friend Match XP\n  • <Bold>Extra Weekly Challenges</>\n  • and more!\n\nPlay to level up your Battle Pass, unlocking <Bold>over 75 rewards</> (typically takes 75 to 150 hours of play).\n  • <Bold>4 more Outfits</>\n  • <Bold>1,000 V-Bucks</>\n  • 6 Emotes\n  • 4 Wraps\n  • 2 Gliders\n  • 6 Back Blings\n  • 6 Harvesting Tools\n  • 4 Contrails\n  • 1 Pet\n  • 2 Music Tracks\n  • and so much more!\nWant it all faster? You can use V-Bucks to buy tiers any time!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season9_BattlePass.DA_BR_Season9_BattlePass",
+      "itemGrants": []
+    },
+    {
+      "offerId": "33E185A84ED7B64F2856E69AADFD092C",
+      "devName": "BR.Season8.SingleTier.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 150,
+          "dynamicRegularPrice": -1,
+          "finalPrice": 150,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 150
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "eu": "Battle Pass Level",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "shortDescription": {
+        "en": "",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Get great rewards now!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "",
+      "itemGrants": []
+    },
+    {
+      "offerId": "73E6EE6F4526EF97450D1592C3DB0EF5",
+      "devName": "BR.Season9.BattleBundle.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 4700,
+          "finalPrice": 2800,
+          "saleType": "PercentOff",
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 2800
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "73E6EE6F4526EF97450D1592C3DB0EF5",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Battle Pass + 25 tiers!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 9 Now through August 1.\n\nInstantly get these items <Bold>valued at over 3,500 V-Bucks</>.\n  • <ItemName>Rox</> Progressive Outfit\n  • <ItemName>Sentinel</> Outfit\n  • <Bold>50% Bonus</> Season Match XP\n  • <Bold>60% Bonus</> Season Friend Match XP\n  • <Bold>Extra Weekly Challenges</>\n\nPlay to level up your Battle Pass, unlocking <Bold>over 100 rewards</> (typically takes 75 to 150 hours of play).\n  • <ItemName>Bunker Jonesy</> and <Bold>4 more Outfits</>\n  • <Bold>1,300 V-Bucks</>\n  • 7 Emotes\n  • 6 Wraps\n  • 7 Harvesting Tools\n  • 1 Pet\n  • 4 Gliders\n  • 6 Back Blings\n  • 5 Contrails\n  • 13 Sprays\n  • 3 Music Tracks\n  • 1 Toy\n  • 20 Loading Screens\n  • and so much more!\nWant it all faster? You can use V-Bucks to buy tiers any time!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season9_BattlePassWithLevels.DA_BR_Season9_BattlePassWithLevels",
+      "itemGrants": []
+    }
+  ]
+}

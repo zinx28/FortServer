@@ -1,0 +1,107 @@
+{
+  "BundleId": "QuestBundle_S9_Rooster",
+  "BundleSchedule": "ChallengeBundleSchedule:season9_paid_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S9_Rooster_CollectGlyphs_01_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S9_Rooster_CollectGlyphs_01_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaBackpack:BID_261_Rooster",
+            "variants": [
+              {
+                "channel": "Particle",
+                "active": "Particle1",
+                "owned": [
+                  "Particle1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_rooster_collectglyphs_01_a",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_Rooster_CollectGlyphs_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaDance:EID_RoosterMech",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_rooster_collectglyphs_02",
+          "Count": 20,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_Rooster_CollectGlyphs_01_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_203_Rooster_BackBling_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_261_Rooster",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_rooster_collectglyphs_01_b",
+          "Count": 99,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

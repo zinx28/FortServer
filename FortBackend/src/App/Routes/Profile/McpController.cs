@@ -104,15 +104,53 @@ namespace FortBackend.src.App.Routes.Profile
                         var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
                         var token = tokenArray.Length > 1 ? tokenArray[1] : "";
 
-                        bool FoundAccount = GlobalData.AccessToken.Any(e => e.token == token) ||
-                            GlobalData.ClientToken.Any(e => e.token == token) ||
-                            GlobalData.RefreshToken.Any(e => e.token == token);
+                        //bool FoundAccount = GlobalData.AccessToken.Any(e => e.token == token) ||
+                        //    GlobalData.ClientToken.Any(e => e.token == token) ||
+                        //    GlobalData.RefreshToken.Any(e => e.token == token);
 
-                        if (FoundAccount)
-                        {
-                            ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                        //if (FoundAccount)
+                        //{
+                            var FindAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
+                            if(FindAccount == null)
+                            {
+                                FindAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
+                                if(FindAccount == null)
+                                {
+                                    FindAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
 
-                            if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                                    if (FindAccount == null)
+                                    {
+                                        throw new BaseError
+                                        {
+                                            errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                                            errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                            messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                                            numericErrorCode = 1032,
+                                            originatingService = "any",
+                                            intent = "prod",
+                                            error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                        };
+                                    }
+                                }
+                            }
+
+                            if (string.IsNullOrEmpty(FindAccount.accountId))
+                            {
+                                throw new BaseError
+                                {
+                                    errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                                    errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                    messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                                    numericErrorCode = 1032,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                };
+                            }
+                           
+                            ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FindAccount.accountId);
+
+                            if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.AccountId == accountId)
                             {
 
 
@@ -167,23 +205,35 @@ namespace FortBackend.src.App.Routes.Profile
                                         };
                                         break;
                                 }
+                            }else
+                            {
+                                throw new BaseError
+                                {
+                                    errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                                    errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                    messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                                    numericErrorCode = 1032,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                };
                             }
 
                             return response;
-                        }
-                        else
-                        {
-                            throw new BaseError
-                            {
-                                errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
-                                errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                                messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
-                                numericErrorCode = 1032,
-                                originatingService = "any",
-                                intent = "prod",
-                                error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                            };
-                        }
+                        //}
+                        //else
+                        //{
+                        //    throw new BaseError
+                        //    {
+                        //        errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                        //        errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                        //        messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                        //        numericErrorCode = 1032,
+                        //        originatingService = "any",
+                        //        intent = "prod",
+                        //        error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                        //    };
+                        //}
                     }
                 }
             }

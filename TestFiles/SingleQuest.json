@@ -1,0 +1,102 @@
+[
+    {
+      "Type": "FortQuestItemDefinition",
+      "Name": "Quest_BR_S9_Fortbyte_00",
+      "Class": "UScriptClass'FortQuestItemDefinition'",
+      "Properties": {
+        "QuestType": "EFortQuestType::AthenaChallengeBundleQuest",
+        "bIncludedInCategories": false,
+        "Rewards": [
+          {
+            "ItemPrimaryAssetId": {
+              "PrimaryAssetType": {
+                "Name": "Token"
+              },
+              "PrimaryAssetName": "AthenaFortbyte"
+            },
+            "Quantity": 1
+          }
+        ],
+        "Objectives": [
+          {
+            "BackendName": "glyph_00",
+            "ObjectiveStatHandle": {
+              "DataTable": null,
+              "RowName": "None"
+            },
+            "AlternativeStatHandles": [],
+            "ItemEvent": "EFortQuestObjectiveItemEvent::HasAccumulatedItem",
+            "bHidden": false,
+            "bRequirePrimaryMissionCompletion": false,
+            "bCanProgressInZone": true,
+            "bDisplayDynamicAnnouncementUpdate": false,
+            "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnPercent",
+            "LinkVaultTab": "EFortInventoryFilter::Max_None",
+            "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+            "ItemReference": {
+              "AssetPathName": "/Game/Items/Tokens/AthenaBattlePass_WeeklyChallenge_Token.AthenaBattlePass_WeeklyChallenge_Token",
+              "SubPathString": ""
+            },
+            "ItemTemplateIdOverride": "",
+            "LinkSquadID": "None",
+            "LinkSquadIndex": 0,
+            "Description": {
+              "Namespace": "",
+              "Key": "6A2B01CE4BFCB4594DC57489127E68EC",
+              "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
+              "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+            },
+            "HudShortDescription": {
+              "Namespace": "",
+              "Key": "5971E76544AF4238BD6245A647975A9C",
+              "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
+              "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+            },
+            "HudIcon": {
+              "AssetPathName": "None",
+              "SubPathString": ""
+            },
+            "Count": 70,
+            "Stage": -1,
+            "DynamicStatusUpdatePercentInterval": 25,
+            "DynamicUpdateCompletionDelay": 1.0,
+            "ScriptedAction": {
+              "AssetPathName": "None",
+              "SubPathString": ""
+            }
+          }
+        ],
+        "Weight": 45.0,
+        "CompletionText": {
+          "Namespace": "",
+          "Key": "8D69DB0243E362E363047393A823F489",
+          "SourceString": "Challenge Completed!",
+          "LocalizedString": "Challenge Completed!"
+        },
+        "GrantToProfileType": "athena",
+        "DisplayName": {
+          "Namespace": "",
+          "Key": "2EC514B64326E1C159EC6AA12232DBCE",
+          "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
+          "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+        },
+        "Description": {
+          "Namespace": "",
+          "Key": "DC670D374405B7F97FF545A5C3713AA1",
+          "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
+          "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+        },
+        "GameplayTags": [
+          "Quest.Metadata.Glyph"
+        ],
+        "SmallPreviewImage": {
+          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
+          "SubPathString": ""
+        },
+        "LargePreviewImage": {
+          "AssetPathName": "/Game/Athena/UI/Challenges/Art/FortByte/slices/Img_s9_45.Img_s9_45",
+          "SubPathString": ""
+        }
+      }
+    }
+  ]

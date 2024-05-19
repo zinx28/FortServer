@@ -1,0 +1,374 @@
+{
+  "BundleId": "QuestBundle_S7_NeonCat",
+  "BundleSchedule": "ChallengeBundleSchedule:season7_progressivea_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaPickaxe:Pickaxe_ID_131_NeonCat",
+            "variants": [
+              {
+                "channel": "Emissive",
+                "active": "Emissive0",
+                "owned": [
+                  "Emissive0"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 10000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_071_NeonCat_StageB",
+            "connectedTemplate": "AthenaCharacter:cid_286_athena_commando_f_neoncat",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 30000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_076_NeonCat_PickaxeB",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_131_NeonCat",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 75000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_072_NeonCat_StageC",
+            "connectedTemplate": "AthenaCharacter:cid_286_athena_commando_f_neoncat",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 125000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_077_NeonCat_PickaxeC",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_131_NeonCat",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 175000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_06",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaDance:EID_Kittycat",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 225000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_07",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_078_NeonCat_PickaxeD",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_131_NeonCat",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 275000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Gain_SeasonXP_08",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_088_NeonCat_StageD",
+            "connectedTemplate": "AthenaCharacter:cid_286_athena_commando_f_neoncat",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 325000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Complete_WeeklyChallenges_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_073_NeonCat_ClothingB",
+            "connectedTemplate": "AthenaCharacter:cid_286_athena_commando_f_neoncat",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_neoncat_complete_weeklychallenges_01",
+          "Count": 15,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Complete_WeeklyChallenges_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_074_NeonCat_ClothingC",
+            "connectedTemplate": "AthenaCharacter:cid_286_athena_commando_f_neoncat",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_neoncat_complete_weeklychallenges_02",
+          "Count": 35,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_NeonCat_Complete_WeeklyChallenges_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_075_NeonCat_ClothingD",
+            "connectedTemplate": "AthenaCharacter:cid_286_athena_commando_f_neoncat",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_neoncat_complete_weeklychallenges_03",
+          "Count": 55,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

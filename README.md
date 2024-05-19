@@ -9,7 +9,7 @@
 ## About
 - Supports HTTP and HTTPS!
 - Aiming to support Seasons 3 to 15
-- 1:1 Quests
+- 1:1 Quests (currently some seasons support less / or just not at all)
 - Arena UI/Playlists! Seasons 8 to 23 (UNFINISHED, NOT WORKED ON ~ not proper scores on seasons 8 and 11)
 - Save the World (STW) is aimed at the very end and might never actually be implemented
 - Ban Assist!

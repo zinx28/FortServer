@@ -1,0 +1,77 @@
+{
+  "BundleId": "QuestBundle_S7_SgtWinter",
+  "BundleSchedule": "ChallengeBundleSchedule:season7_sgtwinter_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 23
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S7_SgtWinter_Complete_Daily_Challenges_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_058_TacticalSanta_StyleB",
+            "connectedTemplate": "AthenaCharacter:cid_279_athena_commando_m_tacticalsanta",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_sgtwinter_complete_daily_challenges_01",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_SgtWinter_Complete_Daily_Challenges_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_059_TacticalSanta_StyleC",
+            "connectedTemplate": "AthenaCharacter:cid_279_athena_commando_m_tacticalsanta",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_sgtwinter_complete_daily_challenges_02",
+          "Count": 14,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

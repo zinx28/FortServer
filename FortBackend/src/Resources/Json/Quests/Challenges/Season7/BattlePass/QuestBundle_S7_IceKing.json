@@ -1,0 +1,269 @@
+{
+  "BundleId": "QuestBundle_S7_IceKing",
+  "BundleSchedule": "ChallengeBundleSchedule:season7_iceking_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 100
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S7_IceKing_Outlive_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaBackpack:BID_163_IceKing",
+            "variants": [
+              {
+                "channel": "Material",
+                "active": "Mat0",
+                "owned": [
+                  "Mat0"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_iceking_outlive_01",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_IceKing_Outlive_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_060_IceKing_ColorB",
+            "connectedTemplate": "AthenaCharacter:cid_288_athena_commando_m_iceking",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_079_IceKing_BackBlingB",
+            "connectedTemplate": "AthenaBackpack:BID_163_IceKing",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_iceking_outlive_02",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_IceKing_Outlive_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaPickaxe:Pickaxe_ID_133_IceKing",
+            "variants": [
+              {
+                "channel": "Emissive",
+                "active": "Emissive0",
+                "owned": [
+                  "Emissive0"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_iceking_outlive_03",
+          "Count": 2500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_IceKing_Outlive_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_061_IceKing_ColorC",
+            "connectedTemplate": "AthenaCharacter:cid_288_athena_commando_m_iceking",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_080_IceKing_BackBlingC",
+            "connectedTemplate": "AthenaBackpack:BID_163_IceKing",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_082_IceKing_PickaxeC",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_133_IceKing",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_iceking_outlive_04",
+          "Count": 7500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_IceKing_Outlive_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaDance:EID_IceKing",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_iceking_outlive_05",
+          "Count": 15000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S7_IceKing_Outlive_06",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_062_IceKing_ColorD",
+            "connectedTemplate": "AthenaCharacter:cid_288_athena_commando_m_iceking",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_081_IceKing_BackBlingD",
+            "connectedTemplate": "AthenaBackpack:BID_163_IceKing",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_083_IceKing_PickaxeD",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_133_IceKing",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_iceking_outlive_06",
+          "Count": 25000,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

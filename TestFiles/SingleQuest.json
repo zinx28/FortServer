@@ -1,7 +1,7 @@
 [
     {
       "Type": "FortQuestItemDefinition",
-      "Name": "Quest_BR_S9_Fortbyte_00",
+      "Name": "Quest_BR_S7_IceKing_Outlive_06",
       "Class": "UScriptClass'FortQuestItemDefinition'",
       "Properties": {
         "QuestType": "EFortQuestType::AthenaChallengeBundleQuest",
@@ -10,22 +10,43 @@
           {
             "ItemPrimaryAssetId": {
               "PrimaryAssetType": {
-                "Name": "Token"
+                "Name": "CosmeticVariantToken"
               },
-              "PrimaryAssetName": "AthenaFortbyte"
+              "PrimaryAssetName": "VTID_062_IceKing_ColorD"
+            },
+            "Quantity": 1
+          },
+          {
+            "ItemPrimaryAssetId": {
+              "PrimaryAssetType": {
+                "Name": "CosmeticVariantToken"
+              },
+              "PrimaryAssetName": "VTID_081_IceKing_BackBlingD"
+            },
+            "Quantity": 1
+          },
+          {
+            "ItemPrimaryAssetId": {
+              "PrimaryAssetType": {
+                "Name": "CosmeticVariantToken"
+              },
+              "PrimaryAssetName": "VTID_083_IceKing_PickaxeD"
             },
             "Quantity": 1
           }
         ],
         "Objectives": [
           {
-            "BackendName": "glyph_00",
+            "BackendName": "athena_iceking_outlive_06",
             "ObjectiveStatHandle": {
-              "DataTable": null,
-              "RowName": "None"
+              "DataTable": {
+                "ObjectName": "DataTable'ObjectiveStatTable'",
+                "ObjectPath": "FortniteGame/Content/Quests/ObjectiveStatTable.0"
+              },
+              "RowName": "outlive_athena"
             },
             "AlternativeStatHandles": [],
-            "ItemEvent": "EFortQuestObjectiveItemEvent::HasAccumulatedItem",
+            "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
             "bHidden": false,
             "bRequirePrimaryMissionCompletion": false,
             "bCanProgressInZone": true,
@@ -34,7 +55,7 @@
             "LinkVaultTab": "EFortInventoryFilter::Max_None",
             "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
             "ItemReference": {
-              "AssetPathName": "/Game/Items/Tokens/AthenaBattlePass_WeeklyChallenge_Token.AthenaBattlePass_WeeklyChallenge_Token",
+              "AssetPathName": "None",
               "SubPathString": ""
             },
             "ItemTemplateIdOverride": "",
@@ -42,21 +63,21 @@
             "LinkSquadIndex": 0,
             "Description": {
               "Namespace": "",
-              "Key": "6A2B01CE4BFCB4594DC57489127E68EC",
-              "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
-              "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+              "Key": "2AACB7324EF988C7DEFC0A87A4DF23B2",
+              "SourceString": "Outlast Opponents",
+              "LocalizedString": "Outlast Opponents"
             },
             "HudShortDescription": {
               "Namespace": "",
-              "Key": "5971E76544AF4238BD6245A647975A9C",
-              "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
-              "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+              "Key": "1579EA1049B980DC7A238D99AFBA7BCB",
+              "SourceString": "Outlast Opponents",
+              "LocalizedString": "Outlast Opponents"
             },
             "HudIcon": {
               "AssetPathName": "None",
               "SubPathString": ""
             },
-            "Count": 70,
+            "Count": 25000,
             "Stage": -1,
             "DynamicStatusUpdatePercentInterval": 25,
             "DynamicUpdateCompletionDelay": 1.0,
@@ -66,35 +87,31 @@
             }
           }
         ],
-        "Weight": 45.0,
         "CompletionText": {
           "Namespace": "",
-          "Key": "8D69DB0243E362E363047393A823F489",
+          "Key": "52C85A0D46BA3BAB679479AEC66C5E2B",
           "SourceString": "Challenge Completed!",
           "LocalizedString": "Challenge Completed!"
         },
         "GrantToProfileType": "athena",
         "DisplayName": {
           "Namespace": "",
-          "Key": "2EC514B64326E1C159EC6AA12232DBCE",
-          "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
-          "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+          "Key": "9AB82FCD44F3E63DF6EE90B9933AE518",
+          "SourceString": "Outlast Opponents",
+          "LocalizedString": "Outlast Opponents"
         },
         "Description": {
           "Namespace": "",
-          "Key": "DC670D374405B7F97FF545A5C3713AA1",
-          "SourceString": "Awarded for completing all Season 9 Weekly Challenges",
-          "LocalizedString": "Awarded for completing all Season 9 Weekly Challenges"
+          "Key": "B947E0E64D0E49CB5C7FB3BD2BC1D8F8",
+          "SourceString": "Outlast Opponents",
+          "LocalizedString": "Outlast Opponents"
         },
-        "GameplayTags": [
-          "Quest.Metadata.Glyph"
-        ],
         "SmallPreviewImage": {
           "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
           "SubPathString": ""
         },
         "LargePreviewImage": {
-          "AssetPathName": "/Game/Athena/UI/Challenges/Art/FortByte/slices/Img_s9_45.Img_s9_45",
+          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
           "SubPathString": ""
         }
       }

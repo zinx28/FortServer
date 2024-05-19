@@ -460,9 +460,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 int BookLevelOG = seasonObject.BookLevel;
 
                                 // We dont want this to be skunked
-                                if(!(seasonObject.BookLevel >= 15))
+                                if(!(seasonObject.BookLevel >= 25))
                                 {
-                                    seasonObject.BookLevel = 15;
+                                    seasonObject.BookLevel = 25;
                                 }
 
                                 ApplyProfileChanges.Add(new

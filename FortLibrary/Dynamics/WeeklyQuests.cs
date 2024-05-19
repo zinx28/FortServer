@@ -22,7 +22,8 @@ namespace FortLibrary.Dynamics
     public class WeeklyQuestJsonBundleRequired
     {
         public int RequiredLevel { get; set; } = 1;
-    }
+        public WeeklyRewards CompleteItems { get; set; } = new WeeklyRewards();
+}
 
     public class WeeklyObjects
     {

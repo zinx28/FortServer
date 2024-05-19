@@ -1787,7 +1787,7 @@
       },
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_S7Lvl100.Emoji_S7Lvl100",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_S6Lvl100.Emoji_S6Lvl100",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -1801,7 +1801,7 @@
       },
       {
         "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_080_S7Lvl100.SPID_080_S7Lvl100",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_064_S6Lvl100.SPID_064_S6Lvl100",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -1818,7 +1818,7 @@
           "AssetPathName": "None",
           "SubPathString": ""
         },
-        "TemplateId": "HomebaseBannerIcon:brseason07seasonlevel100",
+        "TemplateId": "HomebaseBannerIcon:brseason06seasonlevel100",
         "Quantity": 1,
         "GiftBoxToUse": {
           "AssetPathName": "/Game/Items/GiftBoxes/GB_ReachedSeasonLevel100.GB_ReachedSeasonLevel100",

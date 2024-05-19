@@ -1,7 +1,7 @@
 [
     {
       "Type": "FortQuestItemDefinition",
-      "Name": "Quest_BR_S7_IceKing_Outlive_06",
+      "Name": "Quest_BR_S6_Complete_WeeklyChallenges_ProgressiveB_03",
       "Class": "UScriptClass'FortQuestItemDefinition'",
       "Properties": {
         "QuestType": "EFortQuestType::AthenaChallengeBundleQuest",
@@ -12,50 +12,29 @@
               "PrimaryAssetType": {
                 "Name": "CosmeticVariantToken"
               },
-              "PrimaryAssetName": "VTID_062_IceKing_ColorD"
-            },
-            "Quantity": 1
-          },
-          {
-            "ItemPrimaryAssetId": {
-              "PrimaryAssetType": {
-                "Name": "CosmeticVariantToken"
-              },
-              "PrimaryAssetName": "VTID_081_IceKing_BackBlingD"
-            },
-            "Quantity": 1
-          },
-          {
-            "ItemPrimaryAssetId": {
-              "PrimaryAssetType": {
-                "Name": "CosmeticVariantToken"
-              },
-              "PrimaryAssetName": "VTID_083_IceKing_PickaxeD"
+              "PrimaryAssetName": "VTID_040_Werewolf_Color3"
             },
             "Quantity": 1
           }
         ],
         "Objectives": [
           {
-            "BackendName": "athena_iceking_outlive_06",
+            "BackendName": "athena_s6_season_complete_weeklychallenges_progressive_b_03",
             "ObjectiveStatHandle": {
-              "DataTable": {
-                "ObjectName": "DataTable'ObjectiveStatTable'",
-                "ObjectPath": "FortniteGame/Content/Quests/ObjectiveStatTable.0"
-              },
-              "RowName": "outlive_athena"
+              "DataTable": null,
+              "RowName": "None"
             },
             "AlternativeStatHandles": [],
-            "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+            "ItemEvent": "EFortQuestObjectiveItemEvent::HasAccumulatedItem",
             "bHidden": false,
             "bRequirePrimaryMissionCompletion": false,
-            "bCanProgressInZone": true,
+            "bCanProgressInZone": false,
             "bDisplayDynamicAnnouncementUpdate": false,
-            "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::OnPercent",
+            "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Never",
             "LinkVaultTab": "EFortInventoryFilter::Max_None",
             "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
             "ItemReference": {
-              "AssetPathName": "None",
+              "AssetPathName": "/Game/Items/Tokens/AthenaBattlePass_WeeklyChallenge_Token.AthenaBattlePass_WeeklyChallenge_Token",
               "SubPathString": ""
             },
             "ItemTemplateIdOverride": "",
@@ -63,21 +42,21 @@
             "LinkSquadIndex": 0,
             "Description": {
               "Namespace": "",
-              "Key": "2AACB7324EF988C7DEFC0A87A4DF23B2",
-              "SourceString": "Outlast Opponents",
-              "LocalizedString": "Outlast Opponents"
+              "Key": "5F3325F64111AFC0E975A4BC0560B8E6",
+              "SourceString": "Complete 60 Weekly Challenges",
+              "LocalizedString": "Complete 60 Weekly Challenges"
             },
             "HudShortDescription": {
               "Namespace": "",
-              "Key": "1579EA1049B980DC7A238D99AFBA7BCB",
-              "SourceString": "Outlast Opponents",
-              "LocalizedString": "Outlast Opponents"
+              "Key": "FB42386D4E1BCAC5749279A6359A67A2",
+              "SourceString": "Complete 60 Weekly Challenges",
+              "LocalizedString": "Complete 60 Weekly Challenges"
             },
             "HudIcon": {
               "AssetPathName": "None",
               "SubPathString": ""
             },
-            "Count": 25000,
+            "Count": 60,
             "Stage": -1,
             "DynamicStatusUpdatePercentInterval": 25,
             "DynamicUpdateCompletionDelay": 1.0,
@@ -89,29 +68,29 @@
         ],
         "CompletionText": {
           "Namespace": "",
-          "Key": "52C85A0D46BA3BAB679479AEC66C5E2B",
+          "Key": "9BBD6E1C4230571502CEBEB5CA023A06",
           "SourceString": "Challenge Completed!",
           "LocalizedString": "Challenge Completed!"
         },
         "GrantToProfileType": "athena",
         "DisplayName": {
           "Namespace": "",
-          "Key": "9AB82FCD44F3E63DF6EE90B9933AE518",
-          "SourceString": "Outlast Opponents",
-          "LocalizedString": "Outlast Opponents"
+          "Key": "C8A0273449495A049037FD89F776BCDC",
+          "SourceString": "Complete 60 Weekly Challenges",
+          "LocalizedString": "Complete 60 Weekly Challenges"
         },
         "Description": {
           "Namespace": "",
-          "Key": "B947E0E64D0E49CB5C7FB3BD2BC1D8F8",
-          "SourceString": "Outlast Opponents",
-          "LocalizedString": "Outlast Opponents"
+          "Key": "7F88999E467F00D6D17D589B458657A2",
+          "SourceString": "Complete 60 Weekly Challenges",
+          "LocalizedString": "Complete 60 Weekly Challenges"
         },
         "SmallPreviewImage": {
-          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
+          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Horde-BuildBase-128.T-Icon-Horde-BuildBase-128",
           "SubPathString": ""
         },
         "LargePreviewImage": {
-          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
+          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Horde-BuildBase-128.T-Icon-Horde-BuildBase-128",
           "SubPathString": ""
         }
       }

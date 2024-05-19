@@ -1,0 +1,287 @@
+{
+  "BundleId": "QuestBundle_S6_ProgressiveB",
+  "BundleSchedule": "ChallengeBundleSchedule:season6_progressiveb_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 100,
+    "CompleteItems": [
+      {
+        "TemplateId": "AthenaBackpack:BID_120_Werewolf",
+        "Quantity": 1
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S6_Gain_SeasonXP_ProgressiveB_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_037_Werewolf_Stage1",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 30000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S6_Gain_SeasonXP_ProgressiveB_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_038_Werewolf_Stage2",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 70000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S6_Gain_SeasonXP_ProgressiveB_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_049_Werewolf_Stage3",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 120000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S6_Gain_SeasonXP_ProgressiveB_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_050_Werewolf_Stage4",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 180000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S6_Gain_SeasonXP_ProgressiveB_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_051_Werewolf_Stage5",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 250000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S6_Complete_WeeklyChallenges_ProgressiveB_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_039_Werewolf_Color1",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "ClothingColor",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s6_season_complete_weeklychallenges_progressive_b_01",
+          "Count": 20,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S6_Complete_WeeklyChallenges_ProgressiveB_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_040_Werewolf_Color2",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "ClothingColor",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s6_season_complete_weeklychallenges_progressive_b_02",
+          "Count": 40,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S6_Complete_WeeklyChallenges_ProgressiveB_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_040_Werewolf_Color3",
+            "connectedTemplate": "AthenaCharacter:cid_230_athena_commando_m_werewolf",
+            "new_variants": [
+              {
+                "channel": "ClothingColor",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s6_season_complete_weeklychallenges_progressive_b_03",
+          "Count": 60,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

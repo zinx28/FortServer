@@ -1,0 +1,242 @@
+{
+  "BundleId": "S3_Week7_QuestBundle",
+  "BundleSchedule": "ChallengeBundleSchedule:Season3_Challenge_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "Token:AthenaSeasonalXP",
+        "Quantity": 4000
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Location_LonelyLodge",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest_lonelylodge",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Shotgun",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_Damage_athena_player_shotgun",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ChestAmmoBoxSupplyDrop_SingleMatch",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_ammobox",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_supplydrop",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_MountainPeaks",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_07",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_08",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_09",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_11",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_14",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_mountain_summit_15",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_TreasureMap_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_07",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_SuppressedWeapon",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_with_suppressed_weapon",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Location_ShiftyShafts",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_shiftyshafts",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

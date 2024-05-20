@@ -1,0 +1,232 @@
+{
+  "BundleId": "S3_Week2_QuestBundle",
+  "BundleSchedule": "ChallengeBundleSchedule:Season3_Challenge_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "Token:AthenaSeasonalXP",
+        "Quantity": 4000
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Use_Launchpad",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_jumppad",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_AssaultRifle",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_asssult",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Location_WailingWoods",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest_walingwoods",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Dance_ScavengerHunt_Forbidden",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_07",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_08",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_09",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_11",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_14",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_dance_athena_location_forbidden_15",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_Triangulate_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Weapon_SMG",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_smg",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Location_GreasyGrove",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_greasygrove",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

@@ -44,34 +44,56 @@ for(var index in DataFile){
   for(var test in Data.Properties.Rewards){
     var Test = Data.Properties.Rewards[test];
 
-    if(Test.ItemPrimaryAssetId.PrimaryAssetType.Name == "AccountResource"){
-      if(Test.ItemPrimaryAssetId.PrimaryAssetName == "athenabattlestar"){
-        BattleStars += Test.Quantity
-      }else {
-        console.log("EREPREPREPREOPRPE{ ACCOUNTTN RE SIOURCES");
+    if(Test.ItemPrimaryAssetId != null && Test.ItemPrimaryAssetId.PrimaryAssetType != null){
+      if(Test.ItemPrimaryAssetId.PrimaryAssetType.Name == "AccountResource"){
+        if(Test.ItemPrimaryAssetId.PrimaryAssetName == "athenabattlestar"){
+          BattleStars += Test.Quantity
+        }else {
+          console.log("EREPREPREPREOPRPE{ ACCOUNTTN RE SIOURCES");
+        }
       }
+      else
+      if(Test.ItemPrimaryAssetId.PrimaryAssetType.Name == "Quest"){
+        Quest.push({
+          TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
+          Quantity: Test.Quantity
+        })
+      }
+      else if (Test.ItemPrimaryAssetId.PrimaryAssetType.Name.includes("Athena")){
+        GrantedItems.push({
+          TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
+          Quantity: Test.Quantity
+        })
+      }
+      else {
+        console.error("woah!?!?!?!!??!?!")
+        GrantedItems.push({
+          TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
+          connectedTemplate: "",
+          Quantity: Test.Quantity
+        })
+      }
+    }else {
+
+      if(Test.ItemDefinition != null){
+        if(Test.ItemDefinition.AssetPathName.includes("AthenaSeasonalBP")) {
+           BattleStars += Test.Quantity
+        }else if(Test.ItemDefinition.AssetPathName.includes("AthenaSeasonalXP")){
+          GrantedItems.push({
+            TemplateId: `Token:AthenaSeasonalXP`,
+            Quantity: Test.Quantity
+          })
+        }
+        else {
+          console.error(Test.ItemDefinition);
+        }
+      
+      }else {
+        console.error("what!!?!?!")
+      }
+     
     }
-    else
-    if(Test.ItemPrimaryAssetId.PrimaryAssetType.Name == "Quest"){
-      Quest.push({
-        TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
-        Quantity: Test.Quantity
-      })
-    }
-    else if (Test.ItemPrimaryAssetId.PrimaryAssetType.Name.includes("Athena")){
-      GrantedItems.push({
-        TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
-        Quantity: Test.Quantity
-      })
-    }
-    else {
-      console.error("woah!?!?!?!!??!?!")
-      GrantedItems.push({
-        TemplateId: `${Test.ItemPrimaryAssetId.PrimaryAssetType.Name}:${Test.ItemPrimaryAssetId.PrimaryAssetName}`,
-        connectedTemplate: "",
-        Quantity: Test.Quantity
-      })
-    }
+   
   }
   
   if(Data.Properties.HiddenRewards){
@@ -197,7 +219,7 @@ for(var index in datafile){
      rewards.push({
         templateId: templatePush,
         connectedTemplate: "",
-        quantity: e.Quantity
+        quantity: e.Quantityd
      })
   })
 

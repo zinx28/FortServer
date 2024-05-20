@@ -1,0 +1,314 @@
+{
+  "BundleId": "QuestBundle_S4_Week_001",
+  "BundleSchedule": "season4_challenge_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "Token:AthenaSeasonalXP",
+        "Quantity": 5000
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Damage_SniperRifle",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_Damage_athena_player_sniper",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Location_HauntedHills",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest_hauntedhills",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Use_PortaFort",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_portafort",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_FORTNITE",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_07",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_08",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_09",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_11",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_14",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_15",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_16",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_17",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_18",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_19",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_FORTNITE_Letters_20",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_TreasureMap_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Weapon_Pistol",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_pistol",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Location_FlushFactory",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_flushfactory",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S4W1_Cumulative_CompleteAll",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaBattlePass_S4_WeeklyChallenge_Token",
+            "connectedTemplate": "",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_completed_s4w1_quest1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s4w1_quest2",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s4w1_quest3",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s4w1_quest4",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s4w1_quest5",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s4w1_quest6",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s4w1_quest7",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

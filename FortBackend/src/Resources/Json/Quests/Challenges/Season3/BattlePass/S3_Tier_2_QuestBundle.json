@@ -1,0 +1,255 @@
+{
+  "BundleId": "S3_Tier_2_QuestBundle",
+  "BundleSchedule": "ChallengeBundleSchedule:season3_tier_2_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 2,
+    "CompleteItems": []
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Outlive",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_outlive_players",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Play_Min1Friend",
+      "quest_data": {
+        "RequireBP": false  ,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_friend",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player",
+          "Count": 5000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Locations_Different",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_location_anarchyacres",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_dustydivot",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_fatalfields",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_flushfactory",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_greasygrove",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_hauntedhills",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_junkjunction",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_lonelylodge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_lootlake",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_moistymire",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_pleasantpark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_retailrow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_shiftyshafts",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_saltysprings",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_snobbyshores",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_tiltedtowers",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_tomatotown",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_wailingwoods",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_luckylanding",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_land_athena_location_riskyreels",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Play",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaDance:Emoji_Ace",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_play_matches",
+          "Count": 50,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_25",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup",
+          "Count": 25,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Place_Win",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaDance:Emoji_VictoryRoyale",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_win_match",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

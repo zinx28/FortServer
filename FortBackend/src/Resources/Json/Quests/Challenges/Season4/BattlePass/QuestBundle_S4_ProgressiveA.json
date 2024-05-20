@@ -1,0 +1,219 @@
+{
+  "BundleId": "QuestBundle_S4_ProgressiveA",
+  "BundleSchedule": "ChallengeBundleSchedule:season4_challenge_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": []
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveA_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_002_CarbideBlue_Stage1",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_a_01",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveA_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_003_CarbideBlue_Stage2",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_a_02",
+          "Count": 20,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveA_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_004_CarbideBlue_Stage3",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_a_03",
+          "Count": 30,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveA_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_005_CarbideBlue_Stage4",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_a_04",
+          "Count": 40,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveA_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_006_CarbideBlue_Stage5",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_012_CarbideBlue_Emissive1",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_013_CarbideBlue_Emissive2",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_014_CarbideBlue_Emissive3",
+            "connectedTemplate": "AthenaCharacter:cid_115_athena_commando_m_carbideblue",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_a_05",
+          "Count": 65,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

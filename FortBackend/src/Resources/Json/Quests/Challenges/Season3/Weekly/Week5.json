@@ -1,0 +1,207 @@
+{
+  "BundleId": "S3_Week5_QuestBundle",
+  "BundleSchedule": "ChallengeBundleSchedule:Season3_Challenge_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "Token:AthenaSeasonalXP",
+        "Quantity": 4000
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Interact_SupplyDrops",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_supply_drop",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Location_MoistyMire",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest_moistymire",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Pickaxe",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_Damage_athena_player_pickaxe",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_GasStations_SingleMatch",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_07",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_08",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_09",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_gas_station_10",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_TreasureMap_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_05",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Weapon_Pistol",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_pistol",
+          "Count": 4,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Location_TiltedTowers",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_tiltedtowers",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

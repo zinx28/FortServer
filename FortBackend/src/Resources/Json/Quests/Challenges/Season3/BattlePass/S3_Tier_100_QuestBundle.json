@@ -1,0 +1,185 @@
+{
+  "BundleId": "S3_Tier_100_QuestBundle",
+  "BundleSchedule": "ChallengeBundleSchedule:season3_tier_100_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 100,
+    "CompleteItems": []
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_SingleMatch",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaSeasonalXP",
+            "Quantity": 1000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_loot_chest_single_match",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Play_Min1Elimination",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaSeasonalXP",
+            "Quantity": 1000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_complete_athena_with_killingblow",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_SingleMatch",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaSeasonalXP",
+            "Quantity": 1000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_single_match",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Weapon_Pickaxe",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaSeasonalXP",
+            "Quantity": 1000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_pickaxe",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Singel_Match_Elemeinations",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaSeasonalXP",
+            "Quantity": 1000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_athena_player_singlematch",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Place_Top10_Solo",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaSeasonalXP",
+            "Quantity": 1000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_place_solo_top_10",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Place_Top3_Squad",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaSeasonalXP",
+            "Quantity": 1000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_place_squad_top_3",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

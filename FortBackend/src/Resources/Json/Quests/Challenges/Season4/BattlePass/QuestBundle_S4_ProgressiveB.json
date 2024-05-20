@@ -1,0 +1,224 @@
+{
+  "BundleId": "QuestBundle_S4_ProgressiveB",
+  "BundleSchedule": "ChallengeBundleSchedule:season4_progressiveb_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "AthenaPickaxe:Pickaxe_ID_048_CarbideBlack",
+        "Quantity": 1
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveB_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_007_CarbideBlack_Stage1",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_b_01",
+          "Count": 25,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveB_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_008_CarbideBlack_Stage2",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_b_02",
+          "Count": 35,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveB_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_009_CarbideBlack_Stage3",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_b_03",
+          "Count": 45,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveB_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_010_CarbideBlack_Stage4",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_b_04",
+          "Count": 55,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_LevelUp_SeasonLevel_ProgressiveB_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_011_CarbideBlack_Stage5",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_016_CarbideBlack_Emissive1",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_017_CarbideBlack_Emissive2",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_018_CarbideBlack_Emissive3",
+            "connectedTemplate": "AthenaCharacter:cid_116_athena_commando_m_carbideblack",
+            "new_variants": [
+              {
+                "channel": "Emissive",
+                "added": [
+                  "Emissive3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_levelup_progressive_b_05",
+          "Count": 80,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

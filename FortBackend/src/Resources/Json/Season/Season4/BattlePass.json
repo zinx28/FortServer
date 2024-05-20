@@ -1,0 +1,244 @@
+{
+  "name": "BRSeason4",
+  "catalogEntries": [
+    {
+      "offerId": "884CE68998C44AC58D85C5A9883DE1A6",
+      "devName": "BR.Season4.BattlePass.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 950,
+          "finalPrice": 950,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 950
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "884CE68998C44AC58D85C5A9883DE1A6",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 1,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Season 4",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 4: Now thru July 9\n\nInstantly get these items valued at over 10,000 V-Bucks.\n  • Carbide Outfit\n  • Battlehawk Outfit\n  • Teknique Outfit \n  • Gale Force Pickaxe\n  • Sugar Crash Glider\n  • Standard Issue Back Bling\n  • 4 Sprays\n  • Retro Sci-fi Skydiving Trail\n  • 70% Bonus Season Match XP\n  • 20% Bonus Season Friend Match XP\n  • Access to Weekly Challenges\n  • Access to Blockbuster Challenges\n  • Access to Carbide Challenges\n  • and more!\n\nPlay to level up your Battle Pass, unlocking up to 75+ more rewards (typically takes 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy tiers any time!\n\n  • Omega plus 3 other outfits\n  • 3 Pickaxes\n  • 4 Emotes\n  • 2 Gliders\n  • 1 Back Bling\n  • 4 Skydiving Trails\n  • 16 Sprays\n  • 1300 V-Bucks\n  • and so much more!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season4_BattlePass.DA_BR_Season4_BattlePass",
+      "itemGrants": []
+    },
+    {
+      "offerId": "E9527AF46F4B4A9CAE98D91F2AA53CB6",
+      "devName": "BR.Season4.SingleTier.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 150,
+          "dynamicRegularPrice": -1,
+          "finalPrice": 150,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 150
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "eu": "Battle Pass Level",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "shortDescription": {
+        "en": "",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Get great rewards now!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "",
+      "itemGrants": []
+    },
+    {
+      "offerId": "76EA7FE9787744B09B79FF3FC5E39D0C",
+      "devName": "BR.Season4.BattleBundle.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 4700,
+          "finalPrice": 2800,
+          "saleType": "PercentOff",
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 2800
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "76EA7FE9787744B09B79FF3FC5E39D0C",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Battle Pass + 25 tiers!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 4: Now thru July 9\n\nInstantly get these items valued at over 3,500 V-Bucks.\n  • Carbide Outfit\n  • Battlehawk Outfit\n  • 50% Bonus Season Match XP\n  • 10% Bonus Season Friend Match XP\n  • Access to Weekly Challenges\n  • Access to Blockbuster Challenges\n  • Access to Carbide Challenges\n\nPlay to level up your Battle Pass, unlocking over  100 rewards (typically takes 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy tiers any time!\n  • Omega plus 4 other outfits\n  • 4 Pickaxes\n  • 5 Emotes\n  • 3 Gliders\n  • 2 Back Blings\n  • 5 Skydiving Trails\n  • 20 Sprays\n  • 1300 V-Bucks\n  • and so much more!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season4_BattlePassWithLevels.DA_BR_Season4_BattlePassWithLevels",
+      "itemGrants": []
+    }
+  ]
+}

@@ -43,7 +43,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         }
                         else
                         {
-                            Logger.Error($"Failed To Load {season}", "BattlepassManager");
+                            Logger.Error($"Failed To Load Season {season} ({Path.GetFileName(SeasonXPFolder)})", "BattlepassManager");
                         }
                         //JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
                     }
@@ -65,7 +65,8 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         }
                         else
                         {
-                            Logger.Error($"Failed To Load {season}", "BattlepassManager");
+                            if(season > 1)
+                                Logger.Error($"Failed To Load Season {season} ({Path.GetFileName(SeasonBattleStarsFolder)})", "BattlepassManager");
                         }
                         //JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
                     }
@@ -87,7 +88,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         }
                         else
                         {
-                            Logger.Error($"Failed To Load {season}", "BattlepassManager");
+                            Logger.Error($"Failed To Load Season {season} (${Path.GetFileName(battlepassFilePath)})", "BattlepassManager");
                         }
                     }
                 }

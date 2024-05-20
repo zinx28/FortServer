@@ -1,0 +1,244 @@
+{
+  "name": "BRSeason5",
+  "catalogEntries": [
+    {
+      "offerId": "FF77356F424644529049280AFC8A795E",
+      "devName": "BR.Season5.BattlePass.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 950,
+          "finalPrice": 950,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 950
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "FF77356F424644529049280AFC8A795E",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 1,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Season 5",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 5: Now thru Sept 25\n\nInstantly get these items valued at over 10,000 V-Bucks.\n  • “Huntress” Outfit\n  • “Drift” Outfit\n  • “Redline” Outfit\n  • “Balloon Axe” Pickaxe\n  • “Uplink” Back Bling\n  • “Lanterns” Skydiving Trail\n  • 2 Gliders\n  • 4 Sprays\n  • 70% Bonus Season Match XP\n  • 20% Bonus Season Friend Match XP\n  • Extra Weekly Challenges\n  • Drift Progressive Challenges\n  • and more!\n\nPlay to level up your Battle Pass, unlocking up to 75+ more rewards (typically takes 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy tiers any time!\n  • “Ragnarok” plus 4 other outfits\n  • 3 Pickaxes\n  • 4 Emotes\n  • 2 Gliders\n  • 4 Back Blings\n  • 4 Skydiving Trails\n  • 11 Sprays\n  • 1,300 V-Bucks\n  • and so much more!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season5_BattlePass.DA_BR_Season5_BattlePass",
+      "itemGrants": []
+    },
+    {
+      "offerId": "4B2E310BC1AE40B292A16D5AAD747E0A",
+      "devName": "BR.Season5.SingleTier.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 150,
+          "dynamicRegularPrice": -1,
+          "finalPrice": 150,
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 150
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "eu": "Battle Pass Level",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "shortDescription": {
+        "en": "",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Get great rewards now!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "",
+      "itemGrants": []
+    },
+    {
+      "offerId": "D51A2F28AAF843C0B208F14197FBFE91",
+      "devName": "BR.Season5.BattleBundle.01",
+      "offerType": "StaticPrice",
+      "prices": [
+        {
+          "currencyType": "MtxCurrency",
+          "currencySubType": "",
+          "regularPrice": 4700,
+          "finalPrice": 2800,
+          "saleType": "PercentOff",
+          "saleExpiration": "9999-12-31T23:59:59.999Z",
+          "basePrice": 2800
+        }
+      ],
+      "categories": [],
+      "dailyLimit": -1,
+      "weeklyLimit": -1,
+      "monthlyLimit": -1,
+      "refundable": false,
+      "appStoreId": [ "", "", "", "", "", "", "", "", "", "", "", "" ],
+      "requirements": [
+        {
+          "requirementType": "DenyOnFulfillment",
+          "requiredId": "D51A2F28AAF843C0B208F14197FBFE91",
+          "minQuantity": 1
+        }
+      ],
+      "metaInfo": [
+        {
+          "key": "Preroll",
+          "value": "False"
+        }
+      ],
+      "catalogGroup": "",
+      "catalogGroupPriority": 0,
+      "sortPriority": 0,
+      "title": {
+        "en": "Battle Pass",
+        "es": "Pase de batalla",
+        "es-419": "Pase de batalla",
+        "fr": "Passe de combat",
+        "it": "Pass battaglia",
+        "ja": "バトルパス",
+        "ko": "배틀 패스",
+        "pl": "Pakiet bojowy",
+        "pt-BR": "Passe de Batalha",
+        "ru": "Боевой пропуск",
+        "tr": "Savaş Bileti",
+        "de": "Kampfpass"
+      },
+      "shortDescription": {
+        "en": "Battle Pass + 25 tiers!",
+        "es": "",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "description": {
+        "en": "Season 5: Now thru Sept 25\n\nInstantly get these items valued at over 3,500 V-Bucks.\n  • Huntress Outfit\n  • Drift Outfit\n  • 50% Bonus Season Match XP\n  • 10% Bonus Season Friend Match XP\n  • Extra Weekly Challenges\n  • Drift Progressive Challenges\n\nPlay to level up your Battle Pass, unlocking over 100 rewards (typically takes 75 to 150 hours of play). Want it all faster? You can use V-Bucks to buy tiers any time!\n  • “Ragnarok” plus 5 other outfits\n  • 4 Pickaxes\n  • 5 Emotes\n  • 4 Gliders\n  • 5 Back Blings\n  • 5 Skydiving Trails\n  • 15 Sprays\n  • 1,300 V-Bucks\n  • and so much more!",
+        "es": "pp",
+        "es-419": "",
+        "fr": "",
+        "it": "",
+        "ja": "",
+        "ko": "",
+        "pl": "",
+        "pt-BR": "",
+        "ru": "",
+        "tr": "",
+        "de": ""
+      },
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season5_BattlePassWithLevels.DA_BR_Season5_BattlePassWithLevels",
+      "itemGrants": []
+    }
+  ]
+}

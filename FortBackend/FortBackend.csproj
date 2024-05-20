@@ -52,9 +52,7 @@
     <Folder Include="src\Resources\Json\Quests\Challenges\Season4\BattlePass\" />
     <Folder Include="src\Resources\Json\Quests\Challenges\Season4\Special\" />
     <Folder Include="src\Resources\Json\Quests\Challenges\Season4\Weekly\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season5\BattlePass\" />
     <Folder Include="src\Resources\Json\Quests\Challenges\Season5\Special\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season5\Weekly\" />
     <Folder Include="src\Resources\Json\Quests\Challenges\Season6\Special\" />
     <Folder Include="src\Resources\Json\Quests\Challenges\Season7\Special\" />
     <Folder Include="src\Resources\Json\Quests\Challenges\Season8\Special\" />

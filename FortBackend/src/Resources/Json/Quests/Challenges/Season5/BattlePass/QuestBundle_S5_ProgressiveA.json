@@ -1,0 +1,185 @@
+{
+  "BundleId": "QuestBundle_S5_ProgressiveA",
+  "BundleSchedule": "ChallengeBundleSchedule:Season5_ProgressiveA_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "AthenaPickaxe:Pickaxe_ID_068_Drift",
+        "Quantity": 1
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveA_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_019_Drift_Stage1",
+            "connectedTemplate": "AthenaCharacter:cid_161_athena_commando_m_drift",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_a_01",
+          "Count": 10000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveA_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_020_Drift_Stage2",
+            "connectedTemplate": "AthenaCharacter:cid_161_athena_commando_m_drift",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_a_02",
+          "Count": 25000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveA_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_021_Drift_Stage3",
+            "connectedTemplate": "AthenaCharacter:cid_161_athena_commando_m_drift",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_a_03",
+          "Count": 50000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveA_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_022_Drift_Stage4",
+            "connectedTemplate": "AthenaCharacter:cid_161_athena_commando_m_drift",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_a_04",
+          "Count": 100000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveA_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_023_Drift_Stage5",
+            "connectedTemplate": "AthenaCharacter:cid_161_athena_commando_m_drift",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_a_05",
+          "Count": 200000,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

@@ -1784,48 +1784,6 @@
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
-      },
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_S6Lvl100.Emoji_S6Lvl100",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "GiftBoxToUse": {
-          "AssetPathName": "/Game/Items/GiftBoxes/GB_ReachedSeasonLevel100.GB_ReachedSeasonLevel100",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      },
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_064_S6Lvl100.SPID_064_S6Lvl100",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "GiftBoxToUse": {
-          "AssetPathName": "/Game/Items/GiftBoxes/GB_ReachedSeasonLevel100.GB_ReachedSeasonLevel100",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      },
-      {
-        "ItemDefinition": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "TemplateId": "HomebaseBannerIcon:brseason06seasonlevel100",
-        "Quantity": 1,
-        "GiftBoxToUse": {
-          "AssetPathName": "/Game/Items/GiftBoxes/GB_ReachedSeasonLevel100.GB_ReachedSeasonLevel100",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
       }
     ]
   }

@@ -1,0 +1,550 @@
+{
+  "BundleId": "QuestBundle_S5_Cumulative",
+  "BundleSchedule": "ChallengeBundleSchedule:Season5_Paid_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "AthenaCharacter:CID_200_Athena_Commando_M_DarkPaintballer",
+        "Quantity": 1
+      },
+      {
+        "TemplateId": "AthenaBackpack:BID_100_DarkPaintballer",
+        "Quantity": 1
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest1",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_027_S5Cumulative1",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token1",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest1",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest2",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_028_S5Cumulative2",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token2",
+          "Count": 2,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest2",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest3",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_029_S5Cumulative3",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token3",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest3",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_03",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest4",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_030_S5Cumulative4",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token4",
+          "Count": 4,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest4",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_04",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest5",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_031_S5Cumulative5",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token5",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest5",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_05",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_06",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest6",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_032_S5Cumulative6",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token6",
+          "Count": 6,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest6",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_06",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_07",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest7",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_033_S5Cumulative7",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token7",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest7",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_07",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_08",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest8",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_047_S5Cumulative8",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token8",
+          "Count": 8,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest8",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "HomebaseBannerIcon:brseason05crown",
+            "connectedTemplate": "",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_08",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_CollectTokens_09",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Quest9",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "Quest:Quest_BR_S5_Cumulative_Final",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_048_S5Cumulative9",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_season5_cumulative_token9",
+          "Count": 9,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Quest9",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "HomebaseBannerIcon:brseason05glyph",
+            "connectedTemplate": "",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_s5_cumulative_quest_09",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Cumulative_Final",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaLoadingScreen:LSID_049_S5Cumulative10",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest2",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest3",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest4",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest5",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest6",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest7",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest8",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_completed_s5_cumulative_quest9",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "BundleId": "QuestBundle_S5_Week_001",
+  "BundleSchedule": "Season5_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Damage_SMG",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_smg",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_SupplyLlamas",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_open_athena_supply_llama",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_ThrownWeapon",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_with_thrownweapon",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Location_SnobbyShores",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest_snobbyshores",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Floating_Object",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_07",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_08",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_09",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_11",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_14",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_15",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_16",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_17",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_18",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_19",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_generic_collect_a_20",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_TreasureMap_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Location_RetailRow",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_retailrow",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

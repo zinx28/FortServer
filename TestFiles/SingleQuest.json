@@ -1,7 +1,7 @@
 [
     {
       "Type": "FortQuestItemDefinition",
-      "Name": "Quest_BR_S6_Complete_WeeklyChallenges_ProgressiveB_03",
+      "Name": "Quest_BR_S5_Gain_SeasonXP_ProgressiveB_05",
       "Class": "UScriptClass'FortQuestItemDefinition'",
       "Properties": {
         "QuestType": "EFortQuestType::AthenaChallengeBundleQuest",
@@ -12,20 +12,20 @@
               "PrimaryAssetType": {
                 "Name": "CosmeticVariantToken"
               },
-              "PrimaryAssetName": "VTID_040_Werewolf_Color3"
+              "PrimaryAssetName": "VTID_031_DarkViking_Stage5"
             },
             "Quantity": 1
           }
         ],
         "Objectives": [
           {
-            "BackendName": "athena_s6_season_complete_weeklychallenges_progressive_b_03",
+            "BackendName": "athena_s5_season_gain_xp_progressive_b_05",
             "ObjectiveStatHandle": {
               "DataTable": null,
               "RowName": "None"
             },
             "AlternativeStatHandles": [],
-            "ItemEvent": "EFortQuestObjectiveItemEvent::HasAccumulatedItem",
+            "ItemEvent": "EFortQuestObjectiveItemEvent::HasGainedAthenaSeasonXp",
             "bHidden": false,
             "bRequirePrimaryMissionCompletion": false,
             "bCanProgressInZone": false,
@@ -34,7 +34,7 @@
             "LinkVaultTab": "EFortInventoryFilter::Max_None",
             "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
             "ItemReference": {
-              "AssetPathName": "/Game/Items/Tokens/AthenaBattlePass_WeeklyChallenge_Token.AthenaBattlePass_WeeklyChallenge_Token",
+              "AssetPathName": "None",
               "SubPathString": ""
             },
             "ItemTemplateIdOverride": "",
@@ -42,21 +42,21 @@
             "LinkSquadIndex": 0,
             "Description": {
               "Namespace": "",
-              "Key": "5F3325F64111AFC0E975A4BC0560B8E6",
-              "SourceString": "Complete 60 Weekly Challenges",
-              "LocalizedString": "Complete 60 Weekly Challenges"
+              "Key": "1D141E6E41128B9B41E205836E3A8D7A",
+              "SourceString": "Gain 500,000 XP",
+              "LocalizedString": "Gain 500,000 XP"
             },
             "HudShortDescription": {
               "Namespace": "",
-              "Key": "FB42386D4E1BCAC5749279A6359A67A2",
-              "SourceString": "Complete 60 Weekly Challenges",
-              "LocalizedString": "Complete 60 Weekly Challenges"
+              "Key": "413CA5104257CAF1E0A6199B661536DE",
+              "SourceString": "Gain 500,000 XP",
+              "LocalizedString": "Gain 500,000 XP"
             },
             "HudIcon": {
               "AssetPathName": "None",
               "SubPathString": ""
             },
-            "Count": 60,
+            "Count": 500000,
             "Stage": -1,
             "DynamicStatusUpdatePercentInterval": 25,
             "DynamicUpdateCompletionDelay": 1.0,
@@ -68,29 +68,29 @@
         ],
         "CompletionText": {
           "Namespace": "",
-          "Key": "9BBD6E1C4230571502CEBEB5CA023A06",
+          "Key": "84C96BD949AFFA3FA651238FB7FADDA0",
           "SourceString": "Challenge Completed!",
           "LocalizedString": "Challenge Completed!"
         },
         "GrantToProfileType": "athena",
         "DisplayName": {
           "Namespace": "",
-          "Key": "C8A0273449495A049037FD89F776BCDC",
-          "SourceString": "Complete 60 Weekly Challenges",
-          "LocalizedString": "Complete 60 Weekly Challenges"
+          "Key": "4A9A30054924D4E638BCFE8449F13BF6",
+          "SourceString": "Gain 500,000 XP",
+          "LocalizedString": "Gain 500,000 XP"
         },
         "Description": {
           "Namespace": "",
-          "Key": "7F88999E467F00D6D17D589B458657A2",
-          "SourceString": "Complete 60 Weekly Challenges",
-          "LocalizedString": "Complete 60 Weekly Challenges"
+          "Key": "CC4819FB4B76FF300214C3953762BF39",
+          "SourceString": "Gain 500,000 XP",
+          "LocalizedString": "Gain 500,000 XP"
         },
         "SmallPreviewImage": {
-          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Horde-BuildBase-128.T-Icon-Horde-BuildBase-128",
+          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
           "SubPathString": ""
         },
         "LargePreviewImage": {
-          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Horde-BuildBase-128.T-Icon-Horde-BuildBase-128",
+          "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Exterminate-128.T-Icon-Exterminate-128",
           "SubPathString": ""
         }
       }

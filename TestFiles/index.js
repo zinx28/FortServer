@@ -132,6 +132,8 @@ for(var index in DataFile){
 }
 
 console.log(JSON.stringify(DataResponse, null, 2));
+
+
 /*
 const datafile = require("./BattlePass.json");
 var Data = [];
@@ -211,6 +213,7 @@ for(var index in datafile){
 
 console.log(JSON.stringify(Data));
 */
+
 
 /*
 const datafile = require("./SeasonStars.json");

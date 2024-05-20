@@ -1,0 +1,183 @@
+{
+  "BundleId": "QuestBundle_S5_ProgressiveB",
+  "BundleSchedule": "ChallengeBundleSchedule:season5_progressiveb_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 100
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveB_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_027_DarkViking_Stage1",
+            "connectedTemplate": "AthenaCharacter:cid_165_athena_commando_m_darkviking",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_b_01",
+          "Count": 35000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveB_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_028_DarkViking_Stage2",
+            "connectedTemplate": "AthenaCharacter:cid_165_athena_commando_m_darkviking",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_b_02",
+          "Count": 75000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveB_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_029_DarkViking_Stage3",
+            "connectedTemplate": "AthenaCharacter:cid_165_athena_commando_m_darkviking",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "AthenaBackpack:BID_073_DarkViking",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_b_03",
+          "Count": 125000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveB_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_030_DarkViking_Stage4",
+            "connectedTemplate": "AthenaCharacter:cid_165_athena_commando_m_darkviking",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_b_04",
+          "Count": 250000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S5_Gain_SeasonXP_ProgressiveB_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_031_DarkViking_Stage5",
+            "connectedTemplate": "AthenaCharacter:cid_165_athena_commando_m_darkviking",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_s5_season_gain_xp_progressive_b_05",
+          "Count": 500000,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

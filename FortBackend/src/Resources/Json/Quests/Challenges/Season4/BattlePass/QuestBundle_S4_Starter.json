@@ -226,7 +226,7 @@
       "Objectives": [
         {
           "BackendName": "battlepass_complete_athena_with_killingblow",
-          "Count": 5,
+          "Count": 10,
           "Stage": -1
         }
       ]

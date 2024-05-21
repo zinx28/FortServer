@@ -1,33 +1,30 @@
 [
   {
     "Type": "FortQuestItemDefinition",
-    "Name": "Quest_BR_Place_Top3_Squad",
+    "Name": "Quest_BR_S4W10_Cumulative_CompleteAll",
     "Class": "UScriptClass'FortQuestItemDefinition'",
     "Properties": {
       "QuestType": "EFortQuestType::AthenaChallengeBundleQuest",
       "Rewards": [
         {
           "ItemDefinition": {
-            "AssetPathName": "/Game/Items/PersistentResources/AthenaSeasonalXP.AthenaSeasonalXP",
+            "AssetPathName": "/Game/Items/Tokens/AthenaBattlePass_S4_WeeklyChallenge_Token.AthenaBattlePass_S4_WeeklyChallenge_Token",
             "SubPathString": ""
           },
-          "Quantity": 1000
+          "Quantity": 1
         }
       ],
       "Objectives": [
         {
-          "BackendName": "battlepass_athena_place_squad_top_3",
+          "BackendName": "battlepass_completed_s4w10_quest1",
           "ObjectiveStatHandle": {
-            "DataTable": {
-              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
-              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
-            },
-            "RowName": "complete_athena_squad_top_3"
+            "DataTable": null,
+            "RowName": "None"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
           "ItemReference": {
-            "AssetPathName": "None",
+            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Interact_Chests_Location_JunkJunction.Quest_BR_Interact_Chests_Location_JunkJunction",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
@@ -35,71 +32,252 @@
           "LinkSquadIndex": 0,
           "LinkVaultTab": "EFortInventoryFilter::Max_None",
           "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": {
-            "Namespace": "",
-            "Key": "E8CC3CA449BD8DBC5B6BCAB50745324D",
-            "SourceString": "Place Top 3 in Squads",
-            "LocalizedString": "Place Top 3 in Squads"
-          },
-          "HudShortDescription": {
-            "Namespace": "",
-            "Key": "2D07394F4AF2DDAFE3E2FFB3A7E9E281",
-            "SourceString": "Place Top 3 in Squads",
-            "LocalizedString": "Place Top 3 in Squads"
-          },
+          "Description": null,
+          "HudShortDescription": null,
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
-          "Count": 3,
+          "Count": 1,
           "Stage": -1,
           "bHidden": false,
           "bRequirePrimaryMissionCompletion": false,
           "bCanProgressInZone": true,
           "bDisplayDynamicAnnouncementUpdate": false,
-          "bDisplayDynamicStatusUpdate": true,
-          "DynamicUpdateCompletionDelay": 1.0,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "battlepass_completed_s4w10_quest2",
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemReference": {
+            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Damage_Enemy_Buildings.Quest_BR_Damage_Enemy_Buildings",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "Description": null,
+          "HudShortDescription": null,
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "battlepass_completed_s4w10_quest3",
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemReference": {
+            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Interact_ChestAmmoBoxSupplyDrop_SingleMatch.Quest_BR_Interact_ChestAmmoBoxSupplyDrop_SingleMatch",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "Description": null,
+          "HudShortDescription": null,
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "battlepass_completed_s4w10_quest4",
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemReference": {
+            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Skydive_Rings.Quest_BR_Skydive_Rings",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "Description": null,
+          "HudShortDescription": null,
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "battlepass_completed_s4w10_quest5",
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemReference": {
+            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Interact_ScavengerHunt_Triangulate_05.Quest_BR_Interact_ScavengerHunt_Triangulate_05",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "Description": null,
+          "HudShortDescription": null,
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "battlepass_completed_s4w10_quest6",
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemReference": {
+            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Eliminate.Quest_BR_Eliminate",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "Description": null,
+          "HudShortDescription": null,
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "battlepass_completed_s4w10_quest7",
+          "ObjectiveStatHandle": {
+            "DataTable": null,
+            "RowName": "None"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemReference": {
+            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Eliminate_Location_FatalFields.Quest_BR_Eliminate_Location_FatalFields",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "Description": null,
+          "HudShortDescription": null,
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         }
       ],
-      "Category": {
-        "DataTable": {
-          "ObjectName": "DataTable'QuestCategoryTable'",
-          "ObjectPath": "FortniteGame/Content/Quests/QuestCategoryTable.0"
-        },
-        "RowName": "BRDailyChallenges"
-      },
-      "CompletionText": {
-        "Namespace": "",
-        "Key": "FF497BE144FCFF377E13BE9CD0AB840B",
-        "SourceString": "Challenge Completed!",
-        "LocalizedString": "Challenge Completed!"
-      },
       "bHidden": true,
-      "GrantToProfileType": "athena",
-      "DisplayName": {
-        "Namespace": "",
-        "Key": "B0D8CE5C41F04BF1FD92E9942A44A886",
-        "SourceString": "Place Top 3 in Squads",
-        "LocalizedString": "Place Top 3 in Squads"
-      },
-      "Description": {
-        "Namespace": "",
-        "Key": "F8138D4A4417A4547AD15DB0AAFAA223",
-        "SourceString": "Place Top 3 in Squads",
-        "LocalizedString": "Place Top 3 in Squads"
-      },
-      "SmallPreviewImage": {
-        "ObjectName": "Texture2D'T-Icon-Trophy-128'",
-        "ObjectPath": "FortniteGame/Content/UI/Foundation/Textures/Icons/Quest/T-Icon-Trophy-128.0"
-      },
-      "LargePreviewImage": {
-        "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Quest/T-Icon-Trophy-128.T-Icon-Trophy-128",
-        "SubPathString": ""
-      }
+      "bIncludedInCategories": false,
+      "GrantToProfileType": "athena"
     }
   }
 ]

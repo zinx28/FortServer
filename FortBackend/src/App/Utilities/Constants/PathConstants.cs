@@ -2,7 +2,7 @@
 {
     public class PathConstants
     {
-        public static readonly string BaseDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src/Resources");
+        public static readonly string BaseDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
         public static readonly string LocalAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Saved.Saved.DeserializeConfig.ProjectName);
        
         public static readonly string ImageDir = Path.Combine(BaseDir, "Image");

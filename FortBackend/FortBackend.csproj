@@ -9,51 +9,49 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="src\Resources\Json\shop\OgShop.json" />
+    <Content Remove="Resources\Json\shop\OgShop.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="src\Resources\CSS\BootStrap.css" />
-    <None Remove="src\Resources\Image\test.png" />
-    <None Remove="src\Resources\Image\Trans_Boykisser.png" />
-    <None Remove="src\Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk" />
-    <None Remove="src\Resources\Ini\CloudDir\Chunks\D0325B15E575E1C3_78BFA09B41126FAE4621918D1446FBF7.chunk" />
-    <None Remove="src\Resources\Ini\CloudDir\FortBackend.chunk" />
-    <None Remove="src\Resources\Ini\CloudDir\Full.ini" />
+    <None Remove="Resources\CSS\BootStrap.css" />
+    <None Remove="Resources\Image\test.png" />
+    <None Remove="Resources\Image\Trans_Boykisser.png" />
+    <None Remove="Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk" />
+    <None Remove="Resources\Ini\CloudDir\Chunks\D0325B15E575E1C3_78BFA09B41126FAE4621918D1446FBF7.chunk" />
+    <None Remove="Resources\Ini\CloudDir\FortBackend.chunk" />
+    <None Remove="Resources\Ini\CloudDir\Full.ini" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="src\Resources\CSS\BootStrap.css">
+    <Content Include="Resources\CSS\BootStrap.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Resources\Image\Trans_Boykisser.png">
+    <Content Include="Resources\Image\Trans_Boykisser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk">
+    <Content Include="Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Resources\Ini\CloudDir\Chunks\D0325B15E575E1C3_78BFA09B41126FAE4621918D1446FBF7.chunk">
+    <Content Include="Resources\Ini\CloudDir\Chunks\D0325B15E575E1C3_78BFA09B41126FAE4621918D1446FBF7.chunk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Resources\Ini\CloudDir\FortBackend.chunk">
+    <Content Include="Resources\Ini\CloudDir\FortBackend.chunk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Resources\Ini\CloudDir\Full.ini">
+    <Content Include="Resources\Ini\CloudDir\Full.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\Resources\Certificates\" />
-    <Folder Include="src\Resources\Json\NewFolder\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season3\Special\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season4\Special\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season5\Special\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season6\Special\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season7\Special\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season8\Special\" />
-    <Folder Include="src\Resources\Json\Quests\Challenges\Season9\Special\" />
-    <Folder Include="src\Resources\Json\templates\" />
+    <Folder Include="Resources\Json\NewFolder\" />
+    <Folder Include="Resources\Json\Quests\Challenges\Season3\Special\" />
+    <Folder Include="Resources\Json\Quests\Challenges\Season4\Special\" />
+    <Folder Include="Resources\Json\Quests\Challenges\Season5\Special\" />
+    <Folder Include="Resources\Json\Quests\Challenges\Season6\Special\" />
+    <Folder Include="Resources\Json\Quests\Challenges\Season7\Special\" />
+    <Folder Include="Resources\Json\Quests\Challenges\Season8\Special\" />
+    <Folder Include="Resources\Json\Quests\Challenges\Season9\Special\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,7 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="src\Resources\Image\test.png">
+    <Content Include="Resources\Image\test.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -76,7 +74,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="src\Resources\Certificates\FortBackend.pfx.temp">
+    <None Update="Resources\Certificates\FortBackend.pfx.temp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

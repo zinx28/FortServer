@@ -1,12 +1,16 @@
-﻿using FortMatchmaker.src.App.Utilities;
+﻿using FortLibrary;
+using FortLibrary.ConfigHelpers;
+using FortMatchmaker.src.App.Utilities;
 using FortMatchmaker.src.App.Utilities.Classes;
+using FortMatchmaker.src.App.Utilities.Constants;
 using FortMatchmaker.src.App.Websocket;
+using System.Runtime.InteropServices;
 
 namespace FortMatchmaker.src.App
 {
     public class Service
     {
-        public static void Intiliazation(string[] args)
+        public static async void Intiliazation(string[] args)
         {
             Console.WriteLine(@"  ______         _   __  __       _       _                     _             
  |  ____|       | | |  \/  |     | |     | |                   | |            
@@ -18,29 +22,28 @@ namespace FortMatchmaker.src.App
                                                                               ");
 
             Logger.Log("MARVELCO MATCHMAKER IS LOADING (marcellowmellow)");
+            Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
+
             var builder = WebApplication.CreateBuilder(args);
-
-
-            var ReadConfig = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "config.json"));
+            var ReadConfig = File.ReadAllText(Path.Combine(PathConstants.BaseDir, "config.json"));
+            
             if (ReadConfig == null)
             {
                 Logger.Error("Couldn't find config", "CONFIG");
                 throw new Exception("Couldn't find config");
             }
 
-            Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<Config>(ReadConfig);
+            Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<FortConfig>(ReadConfig);
+            
             if (Saved.DeserializeConfig == null)
             {
                 Logger.Error("Couldn't deserialize config", "CONFIG");
                 throw new Exception("Couldn't deserialize config");
             }
-            else
-            {
-                Logger.Log("Loaded Config", "CONFIG");
-            }
+            else { Logger.Log("Loaded Config", "CONFIG"); }
 
 #if HTTPS
-                Saved.DeserializeConfig.DefaultProtocol = "https://";
+                Saved.BackendCachedData.DefaultProtocol = "https://";
                 builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.MatchmakerPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
@@ -56,9 +59,9 @@ namespace FortMatchmaker.src.App
                         listenOptions.UseHttps(certificate);
                     });
                 });
-            #else
-                Saved.DeserializeConfig.DefaultProtocol = "http://";
-                builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.MatchmakerPort}");
+#else
+            Saved.BackendCachedData.DefaultProtocol = "http://";
+            builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.MatchmakerPort}");
             #endif
 
 
@@ -138,12 +141,16 @@ namespace FortMatchmaker.src.App
                 }
             });
 
-                //app.UseRouting();
+            app.Run();
 
+            //var shutdownTask = app.WaitForShutdownAsync();
 
+            //AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
+            //{
+            //    Logger.Error("Matchmaker Shuting Down!!");
+            //};
 
-                app.Run();
-
+            //await shutdownTask;
         }
     }
 }

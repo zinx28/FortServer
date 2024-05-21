@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Configurations>Debug;Release;HTTPS;DEVELOPMENT</Configurations>
-    <Platforms>AnyCPU;x64;ARM32</Platforms>
+    <Platforms>AnyCPU;ARM32;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -57,8 +57,7 @@
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="3.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.16" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	<PackageReference Include="MongoDB.Driver" Version="2.25.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
 	<PackageReference Include="SkiaSharp" Version="2.88.7" />
 	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
   </ItemGroup>

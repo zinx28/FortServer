@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Text;
 using static FortLibrary.DiscordAuth;
 using FortLibrary.ConfigHelpers;
+using FortLibrary;
 
 namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {

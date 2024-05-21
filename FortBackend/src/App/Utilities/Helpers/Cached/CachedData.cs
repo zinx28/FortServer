@@ -2,6 +2,7 @@
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Quests;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using Microsoft.IdentityModel.Tokens;

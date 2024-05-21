@@ -3,6 +3,7 @@ using Discord.WebSocket;
 using FortBackend.src.App.Utilities.MongoDB;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.MongoDB.Management;
+using FortLibrary;
 using FortLibrary.Encoders;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.MongoDB;

@@ -14,6 +14,7 @@ using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
 using System.Net.WebSockets;
 using FortLibrary.ConfigHelpers;
+using FortLibrary;
 
 namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {

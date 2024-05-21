@@ -11,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text.RegularExpressions;
 using FortBackend.src.App.Utilities.Constants;
 using FortLibrary.EpicResponses.Profile.Quests;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.API
 {

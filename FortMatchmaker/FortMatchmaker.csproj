@@ -1,19 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Configurations>Debug;Release;DEVELOPMENT</Configurations>
-    <Platforms>AnyCPU;ARM32</Platforms>
+    <Configurations>Debug;Release;HTTPS;DEVELOPMENT</Configurations>
+    <Platforms>AnyCPU;x64;ARM32</Platforms>
+    <BaseOutputPath>..\..\FortBackend\FortBackend\bin\x64</BaseOutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <ProjectReference Include="..\FortLibrary\FortLibrary.csproj" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <Folder Include="src\Resources\Certificates\" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>

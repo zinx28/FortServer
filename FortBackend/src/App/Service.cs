@@ -17,6 +17,7 @@ using FortLibrary.ConfigHelpers;
 using FortBackend.src.App.Utilities.ADMIN;
 using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortLibrary;
 namespace FortBackend.src.App
 {
     public class Service
@@ -42,11 +43,11 @@ namespace FortBackend.src.App
 
             startup.ConfigureServices(builder.Services);
 
-     
 
 
-        #if HTTPS
-                Saved.DeserializeConfig.DefaultProtocol = "https://";
+
+#if HTTPS
+                Saved.BackendCachedData.DefaultProtocol = "https://";
                 builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
@@ -114,19 +115,6 @@ namespace FortBackend.src.App
             });
             LeadBoardLoop.Start();
 
-            //var AdminServerThread = new Thread(() =>
-            //{
-            //    AdminServer.Init(args);
-            //});
-            //AdminServerThread.Start();
-
-            //var TCPXmppServer = new Thread(() =>
-            //{ 
-            //    TcpServer testserver = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
-            //    Task tcpServerTask = testserver.Start();
-            //});
-            //TCPXmppServer.Start();
-
             //var ItemShopGenThread = new Thread(async () =>
             //{
             //    await GenerateItemShop(0);
@@ -146,7 +134,7 @@ namespace FortBackend.src.App
             {
                 
                 //XmppServer.Join(); ~ i can't trust 
-
+             
                 CacheMiddleware.ShutDown().Wait();
                 Console.WriteLine("Done");
             };

@@ -1,4 +1,6 @@
-﻿namespace FortBackend.src.App.Utilities.Constants
+﻿using FortLibrary;
+
+namespace FortBackend.src.App.Utilities.Constants
 {
     public class PathConstants
     {

@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using FortBackend.src.App.Utilities.Discord.Helpers;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using System;
 

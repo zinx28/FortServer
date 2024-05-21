@@ -11,6 +11,7 @@ using System.Net;
 using static FortLibrary.DiscordAuth;
 using FortBackend.src.App.Utilities.MongoDB.Management;
 using FortLibrary.MongoDB;
+using FortLibrary;
 
 namespace FortBackend.src.App.Utilities.Helpers
 {

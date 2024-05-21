@@ -24,6 +24,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
+            Logger.Log("Loading Cache middleware", "CacheMiddleware");
             _cancellationTokenSource = new CancellationTokenSource();
             Task.Run(() => CleanupCache(_cancellationTokenSource.Token), _cancellationTokenSource.Token);
 
@@ -32,6 +33,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
 
         public async Task StopAsync(CancellationToken cancellationToken)
         {
+            Logger.Log("Stopping CacheMiddleware", "CacheMiddleware");
             _cancellationTokenSource.Cancel();
         }
 

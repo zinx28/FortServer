@@ -17,6 +17,7 @@ using System.Xml.Linq;
 using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.Friends
 {

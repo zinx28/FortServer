@@ -7,6 +7,7 @@ using System.Collections;
 using System.Diagnostics.Metrics;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.MongoDB.Module;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.APIS.Accounts
 {

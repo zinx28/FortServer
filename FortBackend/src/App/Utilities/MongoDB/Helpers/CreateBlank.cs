@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using FortLibrary;
+using MongoDB.Driver;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {

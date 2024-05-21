@@ -3,7 +3,8 @@ using FortLibrary.ConfigHelpers;
 using FortMatchmaker.src.App.Utilities;
 using FortMatchmaker.src.App.Utilities.Classes;
 using FortMatchmaker.src.App.Utilities.Constants;
-using FortMatchmaker.src.App.Websocket;
+using FortMatchmaker.src.App.Utilities.MongoDB;
+using Newtonsoft.Json;
 using System.Runtime.InteropServices;
 
 namespace FortMatchmaker.src.App
@@ -25,22 +26,28 @@ namespace FortMatchmaker.src.App
             Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
 
             var builder = WebApplication.CreateBuilder(args);
+            var startup = new Startup(builder.Configuration);
+
             var ReadConfig = File.ReadAllText(Path.Combine(PathConstants.BaseDir, "config.json"));
             
             if (ReadConfig == null)
             {
-                Logger.Error("Couldn't find config", "CONFIG");
-                throw new Exception("Couldn't find config");
+                Logger.Error("Couldn't find config (config.json)", "FortConfig");
+                throw new Exception($"Couldn't find config\n{Path.Combine(PathConstants.BaseDir, "config.json")}");
             }
 
-            Saved.DeserializeConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<FortConfig>(ReadConfig);
+            Saved.DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(ReadConfig)!;
             
             if (Saved.DeserializeConfig == null)
             {
-                Logger.Error("Couldn't deserialize config", "CONFIG");
+                Logger.Error("Couldn't deserialize config", "FortConfig");
                 throw new Exception("Couldn't deserialize config");
             }
-            else { Logger.Log("Loaded Config", "CONFIG"); }
+            else { 
+                Logger.Log("Loaded Config", "FortConfig");
+            }
+
+            startup.ConfigureServices(builder.Services);
 
 #if HTTPS
                 Saved.BackendCachedData.DefaultProtocol = "https://";
@@ -74,72 +81,7 @@ namespace FortMatchmaker.src.App
 
             app.UseWebSockets();
 
-            app.Use(async (context, next) =>
-            {
-                if (context.Request.Path == "//")
-                {
-                    if (context.WebSockets.IsWebSocketRequest)
-                    {
-                        string clientId = Guid.NewGuid().ToString();
-                        try
-                        {
-                            var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-
-                            using (webSocket)
-                            {
-                                Console.WriteLine("CONNECTED!");
-                                await NewConnection.Init(webSocket, context.Request, clientId);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Error(ex.Message, "MATCHMAKER");
-                            context.Response.StatusCode = 500;
-                        }
-                    }
-                    else
-                    {
-                        context.Response.StatusCode = 404;
-                    }
-                }
-                else if (context.Request.Path == "/clients")
-                {
-                    if (!context.WebSockets.IsWebSocketRequest)
-                    {
-                        context.Response.ContentType = "application/json";
-                        var Response = new
-                        {
-                            Amount = MatchmakerData.connected.Count,
-                            Queuing = MatchmakerData.SavedData.Values.GroupBy(UserData => UserData.Region).ToDictionary(f => f.Key, f => f.Count())
-                        };
-
-                        var ChangeToString = System.Text.Json.JsonSerializer.Serialize(Response);
-                        await context.Response.WriteAsync(ChangeToString);
-                    }
-                    else
-                    {
-                        context.Response.StatusCode = 404;
-                    }
-                }
-                else if (context.Request.Path == "/v1/devers/hotfixes")
-                {
-                    context.Response.ContentType = "application/json";
-                    var Servers = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Resources\\json\\HotFixer_V2.json"));
-
-                    await context.Response.WriteAsync(Servers);
-                }
-                else if (context.Request.Path == "/v1/devers/servers")
-                {
-                    context.Response.ContentType = "application/json";
-                    var Servers = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Resources\\json\\servers.json"));
-
-                    await context.Response.WriteAsync(Servers);
-                }
-                else
-                {
-                    await next();
-                }
-            });
+            startup.Configure(app, app.Environment);
 
             app.Run();
 

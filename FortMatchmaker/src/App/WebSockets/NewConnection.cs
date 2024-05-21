@@ -1,10 +1,14 @@
 ﻿using FortLibrary;
+using FortLibrary.EpicResponses.Matchmaker;
 using FortMatchmaker.src.App.Utilities;
 using FortMatchmaker.src.App.Utilities.Classes;
+using FortMatchmaker.src.App.WebSockets.Helpers;
+using FortMatchmaker.src.App.WebSockets.Modules;
+using FortMatchmaker.src.App.WebSockets.Roots;
 using System;
 using System.Net.WebSockets;
 
-namespace FortMatchmaker.src.App.Websocket
+namespace FortMatchmaker.src.App.Websockets
 {
     public class NewConnection
     {
@@ -15,9 +19,38 @@ namespace FortMatchmaker.src.App.Websocket
                 MatchmakerData.connected.TryAdd(clientId, webSocket);
                 byte[] buffer = new byte[1024];
 
-                // code that will make it connect and do stuff but not coded yet
+                while (webSocket.State == WebSocketState.Open)
+                {
+                    var connectingTask = Messages.Send(webSocket, JsonSavedData.connectingPayloadJson(), JsonSavedData.ConnectingDelay);
+                    MatchmakerTicket matchmakerTicket = await Authorization.Init(webSocket, request.Headers);
 
-                // Checks if state is closed after it connects
+                    if (!string.IsNullOrEmpty(matchmakerTicket.accountId))
+                    {
+                        var waitingTask = Messages.Send(webSocket, JsonSavedData.waitingPayloadJson(), JsonSavedData.WaitingDelay);
+
+                        await Task.WhenAll(connectingTask, waitingTask);
+
+                        UserData userData = new UserData
+                        {
+                            Playlist = matchmakerTicket.Playlist,
+                            buildId = matchmakerTicket.BuildId,
+                            Region = matchmakerTicket.Region,
+                            Ticket = Guid.NewGuid().ToString().Replace("-", ""),
+                            AccountId = matchmakerTicket.accountId,
+                            AccessToken = matchmakerTicket.AccessToken,
+                            InsertionTime = DateTime.UtcNow,
+                            CustomCode = matchmakerTicket.CustomKey ?? "NONE",
+                        };
+
+                        MatchmakerData.SavedData.TryAdd(webSocket, userData);
+                    }
+                }
+
+                if (webSocket.State == WebSocketState.CloseReceived)
+                {
+                    await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closed Websocket please try to reconnect", CancellationToken.None);
+                }
+
                 if (webSocket.State == WebSocketState.Closed)
                 {
                     webSocket.Dispose();
@@ -40,6 +73,7 @@ namespace FortMatchmaker.src.App.Websocket
                 {
                     MatchmakerData.SavedData.TryRemove(webSocket, out _);
                 }
+
                 MatchmakerData.connected.TryRemove(clientId, out _);
             }
             catch (Exception ex)

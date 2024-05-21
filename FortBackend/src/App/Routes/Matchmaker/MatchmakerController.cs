@@ -202,7 +202,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 if (tokenParts.Length == 2)
                 {
                     var payloadJson = tokenParts[1];
-                    if (string.IsNullOrEmpty(payloadJson))
+                    if (!string.IsNullOrEmpty(payloadJson))
                     {
                         dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
 
@@ -215,90 +215,83 @@ namespace FortBackend.src.App.Routes.Matchmaker
                         var AccountId = payload.sub;
                         var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
 
-
-
-                        var AccountData = await Handlers.FindOne<Account>("accountId", AccountId);
-                        var UserData = await Handlers.FindOne<User>("accountId", AccountId);
-
-                        if (AccountData != "Error" && UserData != "Error")
+                        if (string.IsNullOrEmpty(AccountId.ToString()))
                         {
-                            Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
+                            Logger.Error("ACCOUNT ID IS NULL AND WILL NOT GO THROUGH WITH THE REUQEST", "MATCHMKAER");
+                            return BadRequest(new { });
+                        }
 
-                            if (AccountDataParsed != null && UserDataParsed != null)
+
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(AccountId.ToString());
+                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                        {
+                            if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
                             {
-                                if (AccountData.ToString().Contains(accessToken))
-                                {
-                                    if (UserDataParsed.banned)
+                                //if (AccountData.ToString().Contains(accessToken))
+                               // {
+                                    if (profileCacheEntry.UserData.banned)
                                     {
                                         return Ok(new { });
                                     }
-                                }
+                                //}
                             }
-                        }
+                            
 
-                        CookieOptions cookieOptions = new CookieOptions
-                        {
-                        };
-
-                        if (string.IsNullOrEmpty(bucketId) || !bucketId.GetType().Equals(typeof(string)))
-                        {
-                            return BadRequest();
-                        }
-
-                        string[] bucketIdParts = bucketId.Split(':');
-                        if (bucketIdParts.Length != 4)
-                        {
-                            return BadRequest();
-                        }
-
-                        if (!string.IsNullOrEmpty(accountId))
-                        {
-                            var AccountData1 = await Handlers.FindOne<Account>("accountId", AccountId);
-                            var UserData1 = await Handlers.FindOne<User>("accountId", AccountId);
-
-                            if (AccountData1 != "Error" && UserData1 != "Error")
+                            CookieOptions cookieOptions = new CookieOptions
                             {
-                                string region = bucketIdParts[2];
-                                string playlist = bucketIdParts[3];
-                                string BuildId = bucketIdParts[0];
-                                var customcode = "";
+                            };
 
-                                try { customcode = HttpContext.Request.Query["player.option.customKey"]; } catch { }
-
-                                Response.Cookies.Append("buildUniqueId", BuildId, cookieOptions);
-
-                                var jsonObject = new
-                                {
-                                    accountId,
-                                    buildId = BuildId,
-                                    playlist = playlist,
-                                    region = region,
-                                    customkey = customcode ?? "NONE",
-                                    accessToken = accessToken,
-                                    priority = false, // THIS ISNT USED ATM Till i code the mathcmaker
-                                    timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                                };
-
-                                string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
-                                string encryptedData = GenerateAES.EncryptAES256(jsonData, "pleasework");
-                                string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
-                                Console.WriteLine(new
-                                {
-                                    serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
-                                    ticketType = "mms-player",
-                                    payload = "account",
-                                    signature = encryptedData
-                                }); // remove please
-
-                                return Ok(new
-                                {
-                                    serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
-                                    ticketType = "mms-player",
-                                    payload = "account",
-                                    signature = encryptedData
-                                });
+                            if (string.IsNullOrEmpty(bucketId) || !bucketId.GetType().Equals(typeof(string)))
+                            {
+                                return BadRequest();
                             }
+
+                            string[] bucketIdParts = bucketId.Split(':');
+                            if (bucketIdParts.Length != 4)
+                            {
+                                return BadRequest();
+                            }
+
+                            string region = bucketIdParts[2];
+                            string playlist = bucketIdParts[3];
+                            string BuildId = bucketIdParts[0];
+                            var customcode = "";
+
+                            try { customcode = HttpContext.Request.Query["player.option.customKey"]; } catch { }
+
+                            Response.Cookies.Append("buildUniqueId", BuildId, cookieOptions);
+
+                            var jsonObject = new MatchmakerTicket
+                            {
+                                accountId = accountId,
+                                BuildId = BuildId,
+                                Playlist = playlist,
+                                Region = region,
+                                CustomKey = customcode ?? "NONE",
+                                AccessToken = profileCacheEntry.UserData.accesstoken,
+                                Priority = false,
+                                timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                            };
+
+                            string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
+                            string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
+                            string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
+
+                            Console.WriteLine(new
+                            {
+                                serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
+                                ticketType = "mms-player",
+                                payload = "account",
+                                signature = encryptedData
+                            }); // remove please
+
+                            return Ok(new
+                            {
+                                serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
+                                ticketType = "mms-player",
+                                payload = "account",
+                                signature = encryptedData
+                            });
                         }
                     }
                 }

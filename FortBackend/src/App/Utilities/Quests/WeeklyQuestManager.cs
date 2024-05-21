@@ -55,7 +55,8 @@ namespace FortBackend.src.App.Utilities.Quests
                                     {
                                         WeeklyFiles = SeasonQuestsDir.Count();
 
-                                        if (WeeklyQuestsList.Count > Saved.Saved.DeserializeGameConfig.WeeklyQuest) continue;
+                                        if ((WeeklyQuestsList.Count + 1) > Saved.Saved.DeserializeGameConfig.WeeklyQuest) continue;
+
                                         string jsonContent = File.ReadAllText(SeasonFolder);
                                         if (jsonContent != null)
                                         {

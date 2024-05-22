@@ -39,8 +39,8 @@ namespace FortMatchmaker.src.App.WebSockets.Roots
 
                                     if (matchmakerTicket != null)
                                     {
-                                        Console.WriteLine(ValidToken);
-                                        Console.WriteLine(SignatureJson);
+                                        //Console.WriteLine(ValidToken);
+                                        //Console.WriteLine(SignatureJson);
                                         
                                         if (DateTime.TryParse(matchmakerTicket.timestamp, out DateTime timestamp))
                                         {

@@ -2,6 +2,7 @@
 using FortMatchmaker.src.App.Utilities.Classes;
 using FortMatchmaker.src.App.Utilities.MongoDB;
 using FortMatchmaker.src.App.Websockets;
+using FortMatchmaker.src.App.WebSockets.Helpers;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -49,6 +50,10 @@ namespace FortMatchmaker.src.App.Utilities
                 app.UseDeveloperExceptionPage();
             }
 
+            new Thread(async () =>
+            {
+                await Breathe.Start();
+            }).Start();
           
             app.UseRouting();
 

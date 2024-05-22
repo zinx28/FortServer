@@ -7,6 +7,7 @@ using FortMatchmaker.src.App.WebSockets.Modules;
 using FortMatchmaker.src.App.WebSockets.Roots;
 using System;
 using System.Net.WebSockets;
+using Server = FortMatchmaker.src.App.WebSockets.Helpers.Server;
 
 namespace FortMatchmaker.src.App.Websockets
 {
@@ -43,6 +44,12 @@ namespace FortMatchmaker.src.App.Websockets
                         };
 
                         MatchmakerData.SavedData.TryAdd(webSocket, userData);
+
+                        var queuedTask = Messages.Send(webSocket, JsonSavedData.queuedPayloadJson(userData, webSocket), 200);
+                        var searchTask = Server.Search(webSocket, matchmakerTicket);
+
+                        await Task.WhenAll(queuedTask, searchTask);
+                        break;
                     }
                 }
 

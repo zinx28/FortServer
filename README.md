@@ -35,7 +35,7 @@
 
 ## Added/Not Added 
 - MCP [!]
-- OAUTH (Season 10 login is skunked.. i will need to look at this + login issues on older seasons - like season 4) [!]
+- OAUTH [+]
 - Timeline [+] (Doesnt support custom events yet... well just fortnite events)
 - Cloudstorage, ClientSaving [+]
 - 24/7 Shop (WIP - could be so random, items in wrong places - THIS WILL CRASH ON OLDER VERSIONS AS IT TRIES TO GENERATE ITEMS ON SEASONS ITS NOT FOR!) [!]

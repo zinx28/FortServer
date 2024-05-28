@@ -47,6 +47,8 @@ namespace FortMatchmaker.src.App
                 Logger.Log("Loaded Config", "FortConfig");
             }
 
+
+
             startup.ConfigureServices(builder.Services);
 
 #if HTTPS

@@ -15,4 +15,13 @@ namespace FortMatchmaker.src.App.Utilities
         // AUTO CHANGES DURING RUN TIME
         public string DefaultProtocol { get; set; } = "http://";
     }
+
+    public class ServerHotFixes
+    {
+        public int max_servers { get; set; } = 1;
+        public int min_players { get; set; } = 20;
+        public List<ServerPlaylists> playlists { get; set; } = new List<ServerPlaylists>();
+    }
+
+    public class ServerPlaylists { public string playlistId { get; set; } = string.Empty; }
 }

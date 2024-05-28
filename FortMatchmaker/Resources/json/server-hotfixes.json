@@ -1,0 +1,12 @@
+{
+  "max_servers": 1,
+  "min_players": 20,
+  "playlists": [
+    {
+      "playlistId": "Playlist_DefaultSolo"
+    },
+    {
+      "playlistId": "Playlist_DefaultDuo"
+    }
+  ]
+}

@@ -223,7 +223,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
 
 
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile(AccountId.ToString());
-                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                        if (profileCacheEntry != null && profileCacheEntry.UserData != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                         {
                             if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
                             {

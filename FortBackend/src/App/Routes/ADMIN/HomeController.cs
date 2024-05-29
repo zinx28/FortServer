@@ -43,10 +43,17 @@ namespace FortBackend.src.App.Routes.ADMIN
             return View("~/src/App/Utilities/ADMIN/Index.cshtml");
         }
 
-        public IActionResult ReturnErrorMessage(string Message = "Server Issue", string PageName = "Index.cshtml")
+        public IActionResult ReturnErrorMessage(string Message, string PageName = "Index.cshtml")
         {
-            ViewBag.ErrorMessage = Message;
-            return View("~/src/App/Utilities/ADMIN/" + PageName);
+            if (!string.IsNullOrEmpty(Message))
+            {
+                ViewBag.ErrorMessage = Message;
+                return View("~/src/App/Utilities/ADMIN/" + PageName);
+            }
+            else
+            {
+                return Redirect("/admin/login");
+            }
         }
 
         [HttpGet("setup")]

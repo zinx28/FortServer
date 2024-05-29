@@ -110,6 +110,7 @@ namespace FortBackend.src.App.SERVER.Root
                 JToken test = "";
                 try
                 {
+                    Console.WriteLine($"PENMIS {body}");
                     test = JToken.Parse(body);
                 }
                 catch

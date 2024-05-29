@@ -57,6 +57,11 @@ namespace FortMatchmaker.src.App.Utilities
           
             app.UseRouting();
 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path == "//")
@@ -118,6 +123,7 @@ namespace FortMatchmaker.src.App.Utilities
 
                     await context.Response.WriteAsync(Servers);
                 }
+               // else if(context.Request.Path == "")
                 else
                 {
                     await next();

@@ -25,6 +25,7 @@
 - /test
 - /who (this command only works if the user has a role, let's say moderator.. ig)
 - /register
+- /change_password
 
 ## HTTP
 - Just build on Release

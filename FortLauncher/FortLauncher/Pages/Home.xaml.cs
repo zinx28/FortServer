@@ -25,6 +25,7 @@ namespace FortLauncher.Pages
         {
             InitializeComponent();
             TestBox.Text = UserData.Token;
+            UserNameBox.Text = UserData.UserName;
         }
     }
 }

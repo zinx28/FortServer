@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\DefaultCharacter.png" />
     <None Remove="Resources\LoginImage.png" />
   </ItemGroup>
 
@@ -19,7 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\DefaultCharacter.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\LoginImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Tabs\" />
   </ItemGroup>
 
 </Project>

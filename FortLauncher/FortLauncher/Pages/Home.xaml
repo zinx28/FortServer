@@ -10,6 +10,17 @@
       Title="Home">
 
     <Grid>
-        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="453,138,230,260" />
+        <Border Margin="0,0,832,0" Background="#FF15131B">
+            <Grid>
+                <ui:TextBlock Text="FortLauncher" FontSize="25" TextAlignment="Center" Foreground="White"  Margin="0,35,0,602" FontFamily="Segoe UI Semibold"></ui:TextBlock>
+                
+                <Border CornerRadius="30" Margin="10,590,10,20" Background="#FF282531">
+                    <Image Margin="10,10,218,10" Source="pack://application:,,,/Resources/DefaultCharacter.png" Stretch="Fill" Height="80" Width="80"/>
+
+                </Border>
+            </Grid>
+        </Border>
+        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="446,124,10,274" />
+        <ui:TextBlock x:Name="UserNameBox" Foreground="White" Text="TEST" Margin="111,626,849,51" FontFamily="Segoe UI Semibold" FontSize="22" />
     </Grid>
 </Page>

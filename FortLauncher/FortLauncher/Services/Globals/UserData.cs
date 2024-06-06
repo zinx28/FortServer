@@ -9,5 +9,6 @@ namespace FortLauncher.Services.Globals
     class UserData
     {
         public static string Token { get; set; }
+        public static string UserName { get; set; }
     }
 }

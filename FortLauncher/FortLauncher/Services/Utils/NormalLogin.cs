@@ -72,7 +72,41 @@ namespace FortLauncher.Services.Utils
         public async void Login(string Token)
         {
             UserData.Token = Token;
-            loginPage.NavigationService.Navigate(new Home());
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", Token);
+                HttpResponseMessage response = await client.GetAsync(LauncherConfig.LoginOauthApi);
+
+                if (response.IsSuccessStatusCode || response.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+    
+                    if (!string.IsNullOrEmpty(responseBody))
+                    {
+                        LoginResponse launcherJson = JsonConvert.DeserializeObject<LoginResponse>(responseBody)!;
+
+                        if (launcherJson != null)
+                        {
+                            if (launcherJson.banned)
+                            {
+                                LoginPage.snackbarService.Show("Error Occurred", "You are banned from FortBackend", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                                return;
+                            }
+                            else
+                            {
+                                UserData.UserName = launcherJson.username;
+
+                                loginPage.NavigationService.Navigate(new Home());
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                LoginPage.snackbarService.Show("Error Occurred", "Server Error", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+            }
+
         }
     }
 }

@@ -10,6 +10,6 @@
       Title="Home">
 
     <Grid>
-        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="57,138,230,260" />
+        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="453,138,230,260" />
     </Grid>
 </Page>

@@ -48,8 +48,8 @@ namespace FortLauncher.Services.Utils
                     {
                         if (!string.IsNullOrEmpty(loginResponse.token))
                         {
-                            UserData.Token = loginResponse.token;
-                            loginPage.NavigationService.Navigate(new Home());
+                            IniHelper.WriteToConfig("Auth", "Token", loginResponse.token);
+                            Login(loginResponse.token);
                         }
 
                         LoginPage.snackbarService.Show("Error Occurred", "ERROR", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
@@ -67,6 +67,12 @@ namespace FortLauncher.Services.Utils
                     LoginPage.snackbarService.Show("Error Occurred", "Server Down?", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                 }
             }
+        }
+
+        public async void Login(string Token)
+        {
+            UserData.Token = Token;
+            loginPage.NavigationService.Navigate(new Home());
         }
     }
 }

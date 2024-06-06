@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
+using WpfApp1;
 
 namespace FortLauncher.Pages
 {
@@ -34,6 +35,17 @@ namespace FortLauncher.Pages
             mainLogin.Init(EmailBox.Text, PasswordBox.Text);
            
            // MainLogin.Init(EmailBox.Text, PasswordBox.Text);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            string Token = IniHelper.ReadValue("Auth", "Token");
+            if (Token != "NONE")
+            {
+                MainLogin mainLogin = new MainLogin(this);
+                mainLogin.Login(Token);
+                //System.Windows.MessageBox.Show("FOUND A TOKEN SAVED" + Token);
+            }
         }
     }
 }

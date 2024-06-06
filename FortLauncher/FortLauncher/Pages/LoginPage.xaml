@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:FortLauncher.Pages"
       mc:Ignorable="d" 
       Height="710" Width="1160"
-      Title="Login">
+      Title="Login" Loaded="Page_Loaded">
 
     <Grid>
         <ui:SnackbarPresenter x:Name="SnackbarPresenter" Margin="580,0,0,0" />

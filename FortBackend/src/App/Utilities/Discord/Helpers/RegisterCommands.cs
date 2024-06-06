@@ -40,6 +40,16 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                 .WithRequired(true)
                 .WithType(ApplicationCommandOptionType.String));
 
+            var PasswordChange = new SlashCommandBuilder()
+              .WithName("change_password")
+              .WithDescription("Change Your FortBackend Account!")
+              .WithContextTypes(InteractionContextType.Guild)
+              .AddOption(new SlashCommandOptionBuilder()
+                  .WithName("password")
+                  .WithDescription("Choose a password for your account")
+                  .WithRequired(true)
+                  .WithType(ApplicationCommandOptionType.String));
+
             var WhoCommand = new SlashCommandBuilder()
                 .WithName("who")
                 .WithDescription("Find a user who has an account on FortBackend!")
@@ -63,6 +73,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             await guild.CreateApplicationCommandAsync(TempCommand.Build());
             await guild.CreateApplicationCommandAsync(WhoCommand.Build());
             await guild.CreateApplicationCommandAsync(CreateCommand.Build());
+            await guild.CreateApplicationCommandAsync(PasswordChange.Build());
         }
     }
 }

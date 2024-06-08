@@ -25,48 +25,62 @@ namespace FortLauncher.Services.Utils
         }
         public async void Init(string email, string password)
         {
-            using (HttpClient client = new HttpClient())
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                var formData = new MultipartFormDataContent();
-                formData.Add(new StringContent(email), "email");
-                formData.Add(new StringContent(password), "password");
+                LoginPage.snackbarService.Show("Error Occurred", "Please Enter Your FortBackend Details", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                return;
+            }
 
-                HttpResponseMessage response = await client.PostAsync(LauncherConfig.LoginOauthApi, formData);
-
-
-                if (response.IsSuccessStatusCode || response.StatusCode == HttpStatusCode.BadRequest)
+            try
+            {
+                using (HttpClient client = new HttpClient())
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    LoginClass loginResponse = JsonConvert.DeserializeObject<LoginClass>(responseBody);
+                    var formData = new MultipartFormDataContent();
+                    formData.Add(new StringContent(email), "email");
+                    formData.Add(new StringContent(password), "password");
 
-                    if(response.StatusCode == HttpStatusCode.BadRequest)
+                    HttpResponseMessage response = await client.PostAsync(LauncherConfig.LoginOauthApi, formData);
+
+
+                    if (response.IsSuccessStatusCode || response.StatusCode == HttpStatusCode.BadRequest)
                     {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        LoginClass loginResponse = JsonConvert.DeserializeObject<LoginClass>(responseBody);
 
-                        LoginPage.snackbarService.Show("Error Occurred", loginResponse.message, ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                        if (response.StatusCode == HttpStatusCode.BadRequest)
+                        {
+
+                            LoginPage.snackbarService.Show("Error Occurred", loginResponse.message, ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(loginResponse.token))
+                            {
+                                IniHelper.WriteToConfig("Auth", "Token", loginResponse.token);
+                                Login(loginResponse.token);
+                            }
+
+                            LoginPage.snackbarService.Show("Error Occurred", "ERROR", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                            //string responseBody = await response.Content.ReadAsStringAsync();
+                            // System.Windows.MessageBox.Show(responseBody);
+                        }
+
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(loginResponse.token))
-                        {
-                            IniHelper.WriteToConfig("Auth", "Token", loginResponse.token);
-                            Login(loginResponse.token);
-                        }
-
-                        LoginPage.snackbarService.Show("Error Occurred", "ERROR", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                         //string responseBody = await response.Content.ReadAsStringAsync();
-                        // System.Windows.MessageBox.Show(responseBody);
-                    }
-                   
-                }
-                else
-                {
-                    //string responseBody = await response.Content.ReadAsStringAsync();
-                    //System.Windows.MessageBox.Show(responseBody);
-                    //System.Windows.MessageBox.Show($"Failed to call API. Status code: {response.StatusCode}");
+                        //System.Windows.MessageBox.Show(responseBody);
+                        //System.Windows.MessageBox.Show($"Failed to call API. Status code: {response.StatusCode}");
 
-                    LoginPage.snackbarService.Show("Error Occurred", "Server Down?", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                        LoginPage.snackbarService.Show("Error Occurred", "Server Down?", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                LoginPage.snackbarService.Show("Error Occurred", "Please Check Server Status.", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+            }
+           
         }
 
         public async void Login(string Token)

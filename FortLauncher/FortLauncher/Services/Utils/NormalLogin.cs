@@ -72,40 +72,48 @@ namespace FortLauncher.Services.Utils
         public async void Login(string Token)
         {
             UserData.Token = Token;
-
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.DefaultRequestHeaders.Add("Authorization", Token);
-                HttpResponseMessage response = await client.GetAsync(LauncherConfig.LoginOauthApi);
-
-                if (response.IsSuccessStatusCode || response.StatusCode == HttpStatusCode.BadRequest)
+                using (HttpClient client = new HttpClient())
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-    
-                    if (!string.IsNullOrEmpty(responseBody))
+                    client.DefaultRequestHeaders.Add("Authorization", Token);
+                    HttpResponseMessage response = await client.GetAsync(LauncherConfig.LoginOauthApi);
+
+                    if (response.IsSuccessStatusCode || response.StatusCode == HttpStatusCode.BadRequest)
                     {
-                        LoginResponse launcherJson = JsonConvert.DeserializeObject<LoginResponse>(responseBody)!;
+                        string responseBody = await response.Content.ReadAsStringAsync();
 
-                        if (launcherJson != null)
+                        if (!string.IsNullOrEmpty(responseBody))
                         {
-                            if (launcherJson.banned)
-                            {
-                                LoginPage.snackbarService.Show("Error Occurred", "You are banned from FortBackend", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
-                                return;
-                            }
-                            else
-                            {
-                                UserData.UserName = launcherJson.username;
+                            LoginResponse launcherJson = JsonConvert.DeserializeObject<LoginResponse>(responseBody)!;
 
-                                loginPage.NavigationService.Navigate(new Home());
-                                return;
+                            if (launcherJson != null)
+                            {
+                                if (launcherJson.banned)
+                                {
+                                    LoginPage.snackbarService.Show("Error Occurred", "You are banned from FortBackend", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                                    return;
+                                }
+                                else
+                                {
+                                    UserData.UserName = launcherJson.username;
+
+                                    loginPage.NavigationService.Navigate(new Home());
+                                    return;
+                                }
                             }
                         }
                     }
-                }
 
+                    LoginPage.snackbarService.Show("Error Occurred", "Server Error", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
+                }
+            }
+            catch (Exception ex)
+            {
+              
                 LoginPage.snackbarService.Show("Error Occurred", "Server Error", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
             }
+          
 
         }
     }

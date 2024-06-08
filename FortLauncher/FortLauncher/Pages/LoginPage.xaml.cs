@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
-using WpfApp1;
+
 
 namespace FortLauncher.Pages
 {

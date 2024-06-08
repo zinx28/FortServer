@@ -13,14 +13,21 @@
         <Border Margin="0,0,832,0" Background="#FF15131B">
             <Grid>
                 <ui:TextBlock Text="FortLauncher" FontSize="25" TextAlignment="Center" Foreground="White"  Margin="0,35,0,602" FontFamily="Segoe UI Semibold"></ui:TextBlock>
-                
-                <Border CornerRadius="30" Margin="10,590,10,20" Background="#FF282531">
-                    <Image Margin="10,10,218,10" Source="pack://application:,,,/Resources/DefaultCharacter.png" Stretch="Fill" Height="80" Width="80"/>
 
+                <Border CornerRadius="30" Margin="10,603,10,20" Background="#FF1F1B29">
+                    <Grid>
+                        <Image Margin="10,10,228,10" Source="pack://application:,,,/Resources/DefaultCharacter.png" Stretch="Fill"/>
+                        <ui:TextBlock x:Name="UserNameBox" Foreground="White" Text="TEST" FontFamily="Segoe UI Semibold" FontSize="22" Margin="80,27,50,0" Height="40" VerticalAlignment="Top" />
+                    </Grid>
+                </Border>
+                <Border CornerRadius="20" Margin="10,113,10,514" Background="#FF1F1B29">
+                    <Grid>
+                        <TextBlock Text="Home" Foreground="White" FontSize="36" VerticalAlignment="Center" TextAlignment="Center"/>
+                    </Grid>
                 </Border>
             </Grid>
         </Border>
-        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="446,124,10,274" />
-        <ui:TextBlock x:Name="UserNameBox" Foreground="White" Text="TEST" Margin="111,626,849,51" FontFamily="Segoe UI Semibold" FontSize="22" />
+        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="407,517,49,51" />
+       
     </Grid>
 </Page>

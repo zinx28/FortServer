@@ -14,9 +14,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -32,9 +35,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -50,189 +56,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": true,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -248,9 +77,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -266,9 +98,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -284,9 +119,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -302,9 +140,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -320,9 +161,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -338,9 +182,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -356,9 +203,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -374,9 +224,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -392,9 +245,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -410,9 +266,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -428,9 +287,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -446,9 +308,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -464,9 +329,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -482,9 +350,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -500,9 +371,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -518,9 +392,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -536,9 +413,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -554,9 +434,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -572,9 +455,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -590,9 +476,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -608,9 +497,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -626,9 +518,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -644,9 +539,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -662,9 +560,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -680,9 +581,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -698,9 +602,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -716,9 +623,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -734,9 +644,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -752,9 +665,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -770,9 +686,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -788,9 +707,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -806,9 +728,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -824,9 +749,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -842,9 +770,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -860,9 +791,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -878,9 +812,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -896,9 +833,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -914,9 +854,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -932,9 +875,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -950,9 +896,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -968,9 +917,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -986,9 +938,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1004,9 +959,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1022,9 +980,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1040,9 +1001,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1058,9 +1022,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1076,9 +1043,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1094,9 +1064,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1112,9 +1085,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1130,9 +1106,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1148,9 +1127,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1166,9 +1148,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1184,9 +1169,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1202,9 +1190,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1220,9 +1211,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1238,9 +1232,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1256,9 +1253,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1274,9 +1274,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1292,9 +1295,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1310,9 +1316,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1328,9 +1337,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1346,9 +1358,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1364,9 +1379,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1382,9 +1400,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1400,9 +1421,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1418,9 +1442,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1436,9 +1463,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1454,9 +1484,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1472,9 +1505,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1490,9 +1526,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1508,9 +1547,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1526,9 +1568,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1544,9 +1589,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1562,9 +1610,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1580,9 +1631,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1598,9 +1652,12 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1616,9 +1673,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1634,9 +1694,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1652,9 +1715,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1670,9 +1736,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1688,9 +1757,12 @@
         },
         "TemplateId": "",
         "Quantity": 5,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": true,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1706,9 +1778,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1724,9 +1799,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1742,9 +1820,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1760,9 +1841,12 @@
         },
         "TemplateId": "",
         "Quantity": 2,
-        "GiftBoxToUse": {
-          "AssetPathName": "None",
-          "SubPathString": ""
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
         },
         "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
@@ -1778,11 +1862,302 @@
         },
         "TemplateId": "",
         "Quantity": 10,
-        "GiftBoxToUse": {
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 5,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 2,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_S10Lvl100.Emoji_S10Lvl100",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "/Game/Items/GiftBoxes/GenericGiftboxes/GB_Generic.GB_Generic",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": [
+            {
+              "StringAssetType": "HeaderAssetString",
+              "StringData": "Header.Congratulations"
+            },
+            {
+              "StringAssetType": "BodyAssetString",
+              "StringData": "Reward.GenericGift5"
+            }
+          ]
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_141_S10Level100.SPID_141_S10Level100",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "/Game/Items/GiftBoxes/GenericGiftboxes/GB_Generic.GB_Generic",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": [
+            {
+              "StringAssetType": "HeaderAssetString",
+              "StringData": "Header.Congratulations"
+            },
+            {
+              "StringAssetType": "BodyAssetString",
+              "StringData": "Reward.GenericGift5"
+            }
+          ]
+        },
+        "IsChaseReward": true,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
           "AssetPathName": "None",
           "SubPathString": ""
         },
-        "IsChaseReward": true,
+        "TemplateId": "HomebaseBannerIcon:brs10level100",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "/Game/Items/GiftBoxes/GenericGiftboxes/GB_Generic.GB_Generic",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": [
+            {
+              "StringAssetType": "HeaderAssetString",
+              "StringData": "Header.Congratulations"
+            },
+            {
+              "StringAssetType": "BodyAssetString",
+              "StringData": "Reward.GenericGift5"
+            }
+          ]
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal"
+      },
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Items/PersistentResources/AthenaBattleStar.AthenaBattleStar",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 10,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
         "RewardType": "EAthenaRewardItemType::Normal"
       }
     ]

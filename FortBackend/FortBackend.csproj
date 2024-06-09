@@ -52,6 +52,7 @@
     <Folder Include="Resources\Json\Quests\Challenges\Season7\Special\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season8\Special\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season9\Special\" />
+    <Folder Include="Resources\Json\Season\Season10\" />
   </ItemGroup>
 
   <ItemGroup>

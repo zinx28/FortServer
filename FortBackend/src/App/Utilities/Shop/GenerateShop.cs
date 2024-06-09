@@ -17,6 +17,7 @@ namespace FortBackend.src.App.Utilities.Shop
         public static async Task Init()
         {
             var stopwatch = Stopwatch.StartNew();
+            Logger.Warn("SHOP WILL BE SKUNKED / MAY HAVE ISSUES");
             Logger.Log("Generating Shop", "ItemShop");
             SavedData savedData = new SavedData();
 

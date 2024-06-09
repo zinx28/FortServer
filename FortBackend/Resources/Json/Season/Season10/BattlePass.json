@@ -1,9 +1,9 @@
 {
-  "name": "BRSeason9",
+  "name": "BRSeason10",
   "catalogEntries": [
     {
-      "offerId": "C7190ACA4E5E228A94CA3CB9C3FC7AE9",
-      "devName": "BR.Season9.BattlePass.01",
+      "offerId": "259920BC42F0AAC7C8672D856C9B622C",
+      "devName": "BR.Season10.BattlePass.01",
       "offerType": "StaticPrice",
       "prices": [
         {
@@ -24,7 +24,7 @@
       "requirements": [
         {
           "requirementType": "DenyOnFulfillment",
-          "requiredId": "C7190ACA4E5E228A94CA3CB9C3FC7AE9",
+          "requiredId": "259920BC42F0AAC7C8672D856C9B622C",
           "minQuantity": 1
         }
       ],
@@ -52,7 +52,7 @@
         "de": "Kampfpass"
       },
       "shortDescription": {
-        "en": "Season 9",
+        "en": "Season X",
         "es": "",
         "es-419": "",
         "fr": "",
@@ -66,7 +66,7 @@
         "de": ""
       },
       "description": {
-        "en": "Season 9 Now through August 1.\n\nInstantly get these items <Bold>valued at over 10,000 V-Bucks</>.\n  • <ItemName>Rox</> Progressive Outfit\n  • <ItemName>Sentinel</> Outfit\n  • <ItemName>Bunker Jonesy</> Outfit\n  • <ItemName>Sentinel</> Wrap\n  • <ItemName>Ripe Rippers</> Harvesting Tool\n  • <ItemName>Turbo Spin</> Glider\n  • <ItemName>Ripe</> Wrap\n  • 300 V-Bucks\n  • 1 Music Track\n  • <Bold>70% Bonus</> Season Match XP\n  • <Bold>20% Bonus</> Season Friend Match XP\n  • <Bold>Extra Weekly Challenges</>\n  • and more!\n\nPlay to level up your Battle Pass, unlocking <Bold>over 75 rewards</> (typically takes 75 to 150 hours of play).\n  • <Bold>4 more Outfits</>\n  • <Bold>1,000 V-Bucks</>\n  • 6 Emotes\n  • 4 Wraps\n  • 2 Gliders\n  • 6 Back Blings\n  • 6 Harvesting Tools\n  • 4 Contrails\n  • 1 Pet\n  • 2 Music Tracks\n  • and so much more!\nWant it all faster? You can use V-Bucks to buy tiers any time!",
+        "en": "Season X Now through October 6.\n\nInstantly get these items <Bold>valued at over 10,000 V-Bucks</>.\n  • <ItemName>X-Lord</> Outfit\n  • <ItemName>Catalyst</> Outfit\n  • <ItemName>Tilted Teknique</> Outfit\n  • <ItemName>Junk Bucket</> Glider\n  • <ItemName>Emote Camo </> Wrap\n  • <ItemName> Rift Lightning </> Contrails\n  • 300 V-Bucks\n  • <ItemName>The Final Showdown </> Music Track\n  • <Bold>70% Bonus</> Season Match XP\n  • <Bold>80% Bonus</> Season Friend Match XP\n  • and more!\n\nPlay to level up your Battle Pass, unlocking <Bold>over 75 rewards</> (typically takes 75 to 150 hours of play).\n  • <Bold>4 more Outfits</>\n  • <Bold>1,000 V-Bucks</>\n  • 6 Emotes\n  • 4 Wraps\n  • 5 Harvesting Tools\n  • 1 Pet\n  • 6 Gliders\n  • 7 Back Blings\n  • 3 Contrails\n  • 13 Sprays\n  • 2 Music Tracks\n  • 1 Toy\n  • 23 Loading Screens\n  • and so much more!\nWant it all faster? You can use V-Bucks to buy tiers any time!",
         "es": "pp",
         "es-419": "",
         "fr": "",
@@ -79,12 +79,12 @@
         "tr": "",
         "de": ""
       },
-      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season9_BattlePass.DA_BR_Season9_BattlePass",
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season10_BattlePass.DA_BR_Season10_BattlePass",
       "itemGrants": []
     },
     {
-      "offerId": "33E185A84ED7B64F2856E69AADFD092C",
-      "devName": "BR.Season9.SingleTier.01",
+      "offerId": "AF1B7AC14A5F6A9ED255B88902120757",
+      "devName": "BR.Season10.SingleTier.01",
       "offerType": "StaticPrice",
       "prices": [
         {
@@ -114,7 +114,7 @@
       "catalogGroupPriority": 0,
       "sortPriority": 0,
       "title": {
-        "eu": "Battle Pass Level",
+        "eu": "Battle Pass Tier",
         "es": "",
         "es-419": "",
         "fr": "",
@@ -160,7 +160,7 @@
     },
     {
       "offerId": "73E6EE6F4526EF97450D1592C3DB0EF5",
-      "devName": "BR.Season9.BattleBundle.01",
+      "devName": "BR.Season10.BattleBundle.01",
       "offerType": "StaticPrice",
       "prices": [
         {
@@ -224,7 +224,7 @@
         "de": ""
       },
       "description": {
-        "en": "Season 9 Now through August 1.\n\nInstantly get these items <Bold>valued at over 3,500 V-Bucks</>.\n  • <ItemName>Rox</> Progressive Outfit\n  • <ItemName>Sentinel</> Outfit\n  • <Bold>50% Bonus</> Season Match XP\n  • <Bold>60% Bonus</> Season Friend Match XP\n  • <Bold>Extra Weekly Challenges</>\n\nPlay to level up your Battle Pass, unlocking <Bold>over 100 rewards</> (typically takes 75 to 150 hours of play).\n  • <ItemName>Bunker Jonesy</> and <Bold>4 more Outfits</>\n  • <Bold>1,300 V-Bucks</>\n  • 7 Emotes\n  • 6 Wraps\n  • 7 Harvesting Tools\n  • 1 Pet\n  • 4 Gliders\n  • 6 Back Blings\n  • 5 Contrails\n  • 13 Sprays\n  • 3 Music Tracks\n  • 1 Toy\n  • 20 Loading Screens\n  • and so much more!\nWant it all faster? You can use V-Bucks to buy tiers any time!",
+        "en": "Season X Now through October 6.\n\nInstantly get these items <Bold>valued at over 3,500 V-Bucks</>.\n  • <ItemName>X-Lord</> Outfit\n  • <ItemName>Catalyst</> Outfit\n  • <Bold>50% Bonus</> Season Match XP\n  • <Bold>60% Bonus</> Season Friend Match XP\n\nPlay to level up your Battle Pass, unlocking <Bold>over 100 rewards</> (typically takes 75 to 150 hours of play).\n  • <ItemName>Ultima Knight</> and <Bold>4 more Outfits</>\n  • <Bold>1,300 V-Bucks</>\n  • 7 Emotes\n  • 6 Wraps\n  • 6 Harvesting Tools\n  • 1 Pet\n  • 7 Gliders\n  • 7 Back Blings\n  • 5 Contrails\n  • 17 Sprays\n  • 3 Music Tracks\n  • 1 Toy\n  • 27 Loading Screens\n  • and so much more!\nWant it all faster? You can use V-Bucks to buy tiers any time!",
         "es": "pp",
         "es-419": "",
         "fr": "",
@@ -237,7 +237,7 @@
         "tr": "",
         "de": ""
       },
-      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season9_BattlePassWithLevels.DA_BR_Season9_BattlePassWithLevels",
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season10_BattlePassWithLevels.DA_BR_Season10_BattlePassWithLevels",
       "itemGrants": []
     }
   ]

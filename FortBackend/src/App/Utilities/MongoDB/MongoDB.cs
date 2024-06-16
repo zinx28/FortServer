@@ -23,7 +23,6 @@ namespace FortBackend.src.App.Utilities.MongoDB
             string connectionString = DeserializeConfig.MongoDBConnectionString;
             string connectionName = DeserializeConfig.MongoDBConnectionName;
 
-
             MongoClient MongoDBStartup = new MongoClient(connectionString);
 
             IMongoDatabase database;
@@ -62,8 +61,6 @@ namespace FortBackend.src.App.Utilities.MongoDB
                     new IgnoreExtraElementsConvention(true)
                 };
                 ConventionRegistry.Register("IgnoreConventions", conventionPack, t => true);
-
-
 
                 return mongoClient.GetDatabase(connectionName);
             });

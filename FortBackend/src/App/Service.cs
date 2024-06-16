@@ -24,7 +24,7 @@ namespace FortBackend.src.App
     {
         public static async void Intiliazation(string[] args)
         {
-            Console.WriteLine(@"  ______         _   ____             _                  _ 
+            Logger.PlainLog(@"  ______         _   ____             _                  _ 
  |  ____|       | | |  _ \           | |                | |
  | |__ ___  _ __| |_| |_) | __ _  ___| | _____ _ __   __| |
  |  __/ _ \| '__| __|  _ < / _` |/ __| |/ / _ \ '_ \ / _` |

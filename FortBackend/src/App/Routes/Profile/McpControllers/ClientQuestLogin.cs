@@ -288,7 +288,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         {
                             profileCacheEntry.AccountData.commoncore.mfa_enabled = true;
 
-                            if (!profileCacheEntry.AccountData.athena.Items.TryGetValue("AthenaDance:EID_BoogieDown"))
+                            if (!profileCacheEntry.AccountData.athena.Items.ContainsKey("AthenaDance:EID_BoogieDown"))
                             {
 
                                 profileCacheEntry.AccountData.athena.Items.Add("AthenaDance:EID_BoogieDown", new AthenaItem

@@ -136,6 +136,8 @@ namespace FortBackend.src.App
                 //XmppServer.Join(); ~ i can't trust 
              
                 CacheMiddleware.ShutDown().Wait();
+
+                Logger.Close();
                 Console.WriteLine("Done");
             };
             //app.Run();

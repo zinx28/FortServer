@@ -9,6 +9,7 @@ namespace FortBackend.src.App.Utilities.Constants
        
         public static readonly string ImageDir = Path.Combine(BaseDir, "Image");
         public static readonly string IniDir = Path.Combine(BaseDir, "Ini");
+        public static readonly string JsonDir = Path.Combine(BaseDir, "Json");
         public static readonly string ClientSettingsDir = Path.Combine(LocalAppData, "ClientSettings");
 
         public class ShopJson
@@ -55,14 +56,15 @@ namespace FortBackend.src.App.Utilities.Constants
 
         }
 
-        public static readonly string EulaTrackingFN = Path.Combine(BaseDir, "Json/EulaTrackingFN.json");
-        public static readonly string Keychain = Path.Combine(BaseDir, "Json/keychain.json");
-        public static readonly string FN_PROD = Path.Combine(BaseDir, "Json/FN_PROD.json");
-        public static readonly string SdkDefault = Path.Combine(BaseDir, "Json/SdkDefault.json");
-        public static readonly string EpicSettings = Path.Combine(BaseDir, "Json/epicsettings.json");
-        public static readonly string Content = Path.Combine(BaseDir, "Json/content.json");
-    
-        
+        public static readonly string EulaTrackingFN = Path.Combine(JsonDir, "EulaTrackingFN.json");
+        public static readonly string Keychain = Path.Combine(JsonDir, "keychain.json");
+        public static readonly string FN_PROD = Path.Combine(JsonDir, "FN_PROD.json");
+        public static readonly string SdkDefault = Path.Combine(JsonDir, "SdkDefault.json");
+        public static readonly string EpicSettings = Path.Combine(JsonDir, "epicsettings.json");
+        public static readonly string Content = Path.Combine(JsonDir, "content.json");
+        public static readonly string Timeline = Path.Combine(JsonDir, "Timeline.json");
+
+
         public static string CloudSettings(string ClientId)
         {
             if (!Directory.Exists(ClientSettingsDir))

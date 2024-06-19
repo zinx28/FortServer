@@ -4,6 +4,7 @@ using FortBackend.src.App.Utilities.Quests;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary;
 using FortLibrary.ConfigHelpers;
+using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -22,6 +23,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             var DefaultBannerPath = PathConstants.CachedPaths.DefaultBanner;
             var DefaultBannerColorsPath = PathConstants.CachedPaths.DefaultBannerColors;
             var IniConfigPath = PathConstants.CloudStorage.IniConfig;
+            var TimelinePath = PathConstants.Timeline;
             // -- //
 
             // -- Verify -- //
@@ -62,9 +64,15 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 throw new Exception("Couldn't find DefaultBannerColors Path (DefaultColors.json)");
             }
 
+            if (!File.Exists(TimelinePath))
+            {
+                Logger.Error("Couldn't find DefaultBannerColors Path (DefaultColors.json)", "DefaultBannerColors-Path");
+                throw new Exception("Couldn't find DefaultBannerColors Path (DefaultColors.json)");
+            }
+
             // -- //
 
-       
+
 
             FortConfig DeserializeConfig = Saved.Saved.DeserializeConfig;
             CachedDataClass BackendCachedData = Saved.Saved.BackendCachedData;
@@ -188,6 +196,15 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 IniManager.IniConfigData = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
             }
             catch (Exception ex) { Logger.Error("IniConfig Data -> " + ex.Message); }
+
+
+            try
+            {
+                string filePath = System.IO.File.ReadAllText(TimelinePath);
+
+                BackendCachedData.TimelineData = JsonConvert.DeserializeObject<Timeline>(filePath)!;
+            }
+            catch (Exception ex) { Logger.Error("Timeline Data -> " + ex.Message); }
 
             Saved.Saved.DeserializeConfig = DeserializeConfig;
             Saved.Saved.DeserializeGameConfig = DeserializeGameConfig;

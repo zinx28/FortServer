@@ -51,5 +51,13 @@ namespace FortLibrary
             writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}] " + Message);
             Console.WriteLine($"\u001B[31m[{Custom}]: {Message}\u001B[0m");
         }
+
+        public static void Close()
+        {
+            // WRITER WONT WORK AFTER CLOSING!¬
+            writer.WriteLine("=================================================================");
+            writer.WriteLine($"END OF LOG: {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}");
+            writer.Close(); 
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.Utilities.ADMIN;
 using FortLibrary.ConfigHelpers;
+using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using System.Text.Json.Serialization;
 
@@ -20,6 +21,7 @@ namespace FortBackend.src.App.Utilities.Saved
         public Dictionary<string, AthenaItem> FullLocker_AthenaItems { get; set; } = new Dictionary<string, AthenaItem>();
         public Dictionary<string, CommonCoreItem> DefaultBanners_Items { get; set; } = new Dictionary<string, CommonCoreItem>();
 
+        public Timeline TimelineData { get; set; } = new Timeline();
 
     }
     // Moved Config to the library.. works the same though- i just feel like it's better

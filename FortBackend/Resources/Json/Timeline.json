@@ -1,7 +1,9 @@
-[
-  {
-    "eventType": "TestEvent",
-    "activeUntil": "9999-01-01T00:00:00.000Z",
-    "activeSince": "2020-01-01T00:00:00.000Z"
-  }
-]
+{
+  "ClientEvents": [
+    {
+      "eventType": "TestEvent",
+      "activeUntil": "9999-01-01T00:00:00.000Z",
+      "activeSince": "9999-01-01T00:00:00.000Z"
+    }
+  ]
+}

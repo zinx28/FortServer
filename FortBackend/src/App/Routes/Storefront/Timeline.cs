@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary.EpicResponses.Storefront;
 using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Matching;
@@ -31,82 +32,69 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 VersionClass season = await SeasonUserAgent(Request);
 
-            
-                var Response = new
+                TimelineResponse Response = new TimelineResponse
                 {
-                    channels = new Dictionary<string, object>
+                    channels = new TimelineResponseChannels
                     {
+                        ClientMatchmaking = new ClientMatchmakingTL() { cacheExpire = shopData?.expiration },
+                        StandaloneStore = new ClientMatchmakingTL()
                         {
-                            "client-matchmaking", new
+                            states = new object[]
                             {
-                                states = new object[] { },
-                                cacheExpire = shopData?.expiration
-                            }
-                        },
-                        {
-                            "standalone-store", new
-                            {
-                                states = new object[]
+                                new
                                 {
-                                    new
+                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new string[0],
+                                    state = new
                                     {
+                                        activePurchaseLimitingEventIds = new string[0],
+                                        storefront = new { },
+                                        rmtPromotionConfig = new string[0],
+                                        storeEnd = Saved.DeserializeGameConfig.SeasonEndDate
+                                    }
+                                }
+                            },
+                            cacheExpire = shopData?.expiration
+                        },
+                        tk = new ClientMatchmakingTL()
+                        {
+                            states = new object[]
+                            {
+                                new
+                                {
                                         validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         activeEvents = new string[0],
                                         state = new
                                         {
-                                            activePurchaseLimitingEventIds = new string[0],
-                                            storefront = new { },
-                                            rmtPromotionConfig = new string[0],
-                                            storeEnd = Saved.DeserializeGameConfig.SeasonEndDate
+                                            k = new string[0]
                                         }
-                                    }
-                                },
-                                cacheExpire = shopData?.expiration
-                            }
+                                }
+                            },
+                            cacheExpire = shopData?.expiration
                         },
+                        CommunityVotes = new ClientMatchmakingTL()
                         {
-                            "tk", new
+                            states = new object[]
                             {
-                                states = new object[]
+                                new
                                 {
-                                    new
+                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new string[0],
+                                    state = new
                                     {
-                                         validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                         activeEvents = new string[0],
-                                         state = new
-                                         {
-                                             k = new string[0]
-                                         }
+                                        electionId = "", // i want to look at this in the future
+                                        candidates = new string[0],
+                                        electionEnds = shopData?.expiration,
+                                        numWinnners = 1
                                     }
-                                },
-                                cacheExpire = shopData?.expiration
-                            }
+                                }
+                            },
+                            cacheExpire = shopData?.expiration
+
                         },
+                        FeaturedIslands = new ClientMatchmakingTL()
                         {
-                            "community-votes", new
-                            {
-                                states = new object[]
-                                {
-                                    new
-                                    {
-                                        validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                        activeEvents = new string[0],
-                                        state = new
-                                        {
-                                            electionId = "", // i want to look at this in the future
-                                            candidates = new string[0],
-                                            electionEnds = shopData?.expiration,
-                                            numWinnners = 1
-                                        }
-                                    }
-                                },
-                                cacheExpire = shopData?.expiration
-                            }
-                        },
-                        {
-                            "featured-islands", new
-                            {
-                                states = new object[]
+                            states = new object[]
                                 {
                                     new
                                     {
@@ -121,57 +109,61 @@ namespace FortBackend.src.App.Routes.Storefront
                                          }
                                     }
                                 },
-                                cacheExpire = shopData?.expiration
-                            }
+                            cacheExpire = shopData?.expiration
                         },
+                        ClientEvents = new ClientEventsTL()
                         {
-                            "client-events", new
+                            states = new List<ClientEventsStates>
                             {
-                                states = new object[]
+                                new ClientEventsStates
                                 {
-                                    new
+                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new List<ActiveEventData>
                                     {
-                                        validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                        activeEvents = new[]
+                                        new ActiveEventData
                                         {
-                                            new
-                                            {
-                                                eventType = $"EventFlag.Season{season.Season}",
-                                                activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                                                activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                                            },
-                                            new
-                                            {
-                                                eventType = $"EventFlag.LobbySeason{season.Season}",
-                                                activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                                                activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                                            }
+                                            eventType = $"EventFlag.Season{season.Season}",
+                                            activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                                            activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                                         },
-                                        state = new
+                                        new ActiveEventData
                                         {
-                                            activeStorefronts = new object[] { },
-                                            eventNamedWeights = new object { },
-                                            seasonNumber = season.Season,
-                                            seasonTemplateId = $"AthenaSeason:athenaseason{season.Season}",
-                                            matchXpBonusPoints = 0,
-                                            seasonBegin = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                            seasonEnd = Saved.DeserializeGameConfig.SeasonEndDate,
-                                            seasonDisplayedEnd = Saved.DeserializeGameConfig.SeasonEndDate,
-                                            weeklyStoreEnd =  shopData?.expiration,
-                                            stwEventStoreEnd = shopData?.expiration,
-                                            stwWeeklyStoreEnd = shopData?.expiration,
-                                            dailyStoreEnd =  shopData?.expiration
+                                            eventType = $"EventFlag.LobbySeason{season.Season}",
+                                            activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                                            activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                                         }
+                                    },
+                                    state = new ClientEventsStatesState
+                                    {
+                                        activeStorefronts = new object[] { },
+                                        eventNamedWeights = new object { },
+                                        seasonNumber = season.Season,
+                                        seasonTemplateId = $"AthenaSeason:athenaseason{season.Season}",
+                                        matchXpBonusPoints = 0,
+                                        seasonBegin = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        seasonEnd = Saved.DeserializeGameConfig.SeasonEndDate,
+                                        seasonDisplayedEnd = Saved.DeserializeGameConfig.SeasonEndDate,
+                                        weeklyStoreEnd =  shopData?.expiration,
+                                        stwEventStoreEnd = shopData?.expiration,
+                                        stwWeeklyStoreEnd = shopData?.expiration,
+                                        dailyStoreEnd =  shopData?.expiration
                                     }
-                                },
-                                cacheExpire = shopData?.expiration
-                            }
+                                }
+                            },
+                            cacheExpire = shopData?.expiration
                         }
                     },
                     eventsTimeOffsetHrs = 0,
                     cacheIntervalMins = 15,
                     currentTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                 };
+
+                // TODO ONLY SHOW THE EVENTS FOR THE ACTUAL SEASON... WILL SHOW ALL UNLESS YOU DONT HAVE IT IN THE TIMELINE FILE DUH
+
+                foreach (var item in Saved.BackendCachedData.TimelineData.ClientEvents)
+                {
+                    Response.channels.ClientEvents.states[0].activeEvents.Add(item);
+                }
                 return Ok(Response);
             }
             catch (Exception ex)

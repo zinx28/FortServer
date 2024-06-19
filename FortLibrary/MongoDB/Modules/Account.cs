@@ -126,6 +126,9 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("mtx_affiliate")]
         public string mtx_affiliate { get; set; } = "";
 
+        [BsonElement("mfa_enabled")]
+        public bool mfa_enabled { get; set; } = false;
+
         [BsonElement("mtx_purchase_history")]
         public MtxPurchaseHistory mtx_purchase_history { get; set; } = new MtxPurchaseHistory();
 

@@ -19,5 +19,7 @@ namespace FortLibrary.ConfigHelpers
         public bool ForceSeason { get; set; } = false; // force season~ means that no matter version you login to will be that season
         public int Season { get; set; } = 0;
         public int WeeklyQuest { get; set; } = 1; // This is the max weekly quests is added to the user profile if they have the battlepass
+
+        public bool MfaClaim { get; set; } = false; // Change this to true for auto claim! -- idk how your going to claim without having it enabled!
     }
 }

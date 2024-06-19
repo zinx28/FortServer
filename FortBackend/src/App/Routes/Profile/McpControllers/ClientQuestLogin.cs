@@ -28,6 +28,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.Linq;
 using FortBackend.src.App.Utilities.Helpers.QuestsManagement;
+using FortBackend.src.App.Utilities.Saved;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -279,6 +280,136 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     // END OF LEVEL SYTEM & XP
 
+                    // START OF AUTO MFA CLAIM
+
+                    if (Saved.DeserializeGameConfig.MfaClaim)
+                    {
+                        if (!profileCacheEntry.AccountData.commoncore.mfa_enabled)
+                        {
+                            profileCacheEntry.AccountData.commoncore.mfa_enabled = true;
+
+                            if (!profileCacheEntry.AccountData.athena.Items.TryGetValue("AthenaDance:EID_BoogieDown"))
+                            {
+
+                                profileCacheEntry.AccountData.athena.Items.Add("AthenaDance:EID_BoogieDown", new AthenaItem
+                                {
+                                    templateId = "AthenaDance:EID_BoogieDown",
+                                    attributes = new AthenaItemAttributes
+                                    {
+                                        item_seen = false
+                                    },
+                                    quantity = 1,
+                                });
+
+                                MultiUpdates.Add(new MultiUpdateClass
+                                {
+                                    changeType = "itemAdded",
+                                    itemId = "AthenaDance:EID_BoogieDown",
+                                    item = new AthenaItem
+                                    {
+                                        templateId = "AthenaDance:EID_BoogieDown",
+                                        attributes = new AthenaItemAttributes
+                                        {
+                                            item_seen = false,
+                                        },
+                                        quantity = 1
+                                    }
+                                });
+
+                                var RandomOfferId = Guid.NewGuid().ToString();
+
+                                profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
+                                {
+                                    templateId = "GiftBox:gb_mfareward",
+                                    attributes = new GiftCommonCoreItemAttributes
+                                    {
+                                        lootList = new List<NotificationsItemsClassOG>
+                                    {
+                                        new NotificationsItemsClassOG
+                                        {
+                                            itemType = "AthenaDance:EID_BoogieDown",
+                                            itemGuid = "AthenaDance:EID_BoogieDown",
+                                            quantity = 1
+                                        }
+                                    }
+                                    },
+                                    quantity = 1
+                                });
+
+                                MultiUpdatesForCommonCore.Add(new ApplyProfileChangesClassV2
+                                {
+                                    changeType = "itemAdded",
+                                    itemId = RandomOfferId,
+                                    item = new
+                                    {
+                                        templateId = "GiftBox:gb_mfareward",
+                                        attributes = new
+                                        {
+                                            max_level_bonus = 0,
+                                            fromAccountId = "",
+                                            lootList = new List<NotificationsItemsClassOG>
+                                            {
+                                                new NotificationsItemsClassOG
+                                                {
+                                                    itemType = "AthenaDance:EID_BoogieDown",
+                                                    itemGuid = "AthenaDance:EID_BoogieDown",
+                                                    quantity = 1
+                                                }
+                                            }
+                                        },
+                                        quantity = 1
+                                    }
+                                });
+
+
+                                if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                                {
+                                    Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+
+                                    if (Client != null)
+                                    {
+                                        string xmlMessage;
+                                        byte[] buffer;
+                                        WebSocket webSocket = Client.Game_Client;
+                                        Console.WriteLine(webSocket.State);
+                                        if (webSocket != null && webSocket.State == WebSocketState.Open)
+                                        {
+                                            XNamespace clientNs = "jabber:client";
+
+                                            var message = new XElement(clientNs + "message",
+                                              new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                              new XAttribute("to", profileCacheEntry.AccountId),
+                                              new XElement(clientNs + "body", Newtonsoft.Json.JsonConvert.SerializeObject(new
+                                              {
+                                                  payload = new { },
+                                                  type = "com.epicgames.gift.received",
+                                                  timestamp = DateTime.UtcNow.ToString("o")
+                                              }))
+                                            );
+
+                                            xmlMessage = message.ToString();
+                                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
+
+                                            Console.WriteLine(xmlMessage);
+
+                                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                        }
+
+                                    }
+                                }
+
+                                MultiUpdatesForCommonCore.Add(new
+                                {
+                                    changeType = "statModified",
+                                    name = "mfa_enabled",
+                                    value = true
+                                });
+                            }
+                        }
+                    }
+
+                    // END OF AUTO MFA CLAIM
+
                     if (MultiUpdates.Count > 0)
                     {
                         profileCacheEntry.LastUpdated = DateTime.Now;
@@ -322,18 +453,18 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     //    responseVersion = 1
                     //}));
 
-                    string mcpJson = Newtonsoft.Json.JsonConvert.SerializeObject(new Mcp
-                    {
-                        profileRevision = profileCacheEntry.AccountData.athena.RVN,
-                        profileId = ProfileId,
-                        profileChangesBaseRevision = BaseRev,
-                        profileChanges = MultiUpdates,
-                        multiUpdate = MultiCommonCoreUpdate,
-                        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
-                        serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                        responseVersion = 1
-                    }, Formatting.Indented);
-                    Console.WriteLine(mcpJson);
+                    //string mcpJson = Newtonsoft.Json.JsonConvert.SerializeObject(new Mcp
+                    //{
+                    //    profileRevision = profileCacheEntry.AccountData.athena.RVN,
+                    //    profileId = ProfileId,
+                    //    profileChangesBaseRevision = BaseRev,
+                    //    profileChanges = MultiUpdates,
+                    //    multiUpdate = MultiCommonCoreUpdate,
+                    //    profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
+                    //    serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    //    responseVersion = 1
+                    //}, Formatting.Indented);
+                    //Console.WriteLine(mcpJson);
 
 
                     return new Mcp

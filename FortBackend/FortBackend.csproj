@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\Json\NewFolder\**" />
+    <Content Remove="Resources\Json\NewFolder\**" />
+    <EmbeddedResource Remove="Resources\Json\NewFolder\**" />
+    <None Remove="Resources\Json\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Resources\Json\shop\OgShop.json" />
   </ItemGroup>
 
@@ -44,7 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Json\NewFolder\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season3\Special\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season4\Special\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season5\Special\" />

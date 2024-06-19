@@ -100,7 +100,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         undo_timeout = "min",
                                         monthly_purchases = new object[0],
                                         allowed_to_send_gifts = profileCacheEntry.AccountData.commoncore.allowed_to_send_gifts,
-                                        mfa_enabled = false,
+                                        mfa_enabled = profileCacheEntry.AccountData.commoncore.mfa_enabled,
                                         allowed_to_receive_gifts = profileCacheEntry.AccountData.commoncore.allowed_to_receive_gifts,
                                         gift_history = new object[0],
                                     }

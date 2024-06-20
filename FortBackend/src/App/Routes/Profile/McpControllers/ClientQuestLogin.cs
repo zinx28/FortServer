@@ -390,8 +390,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             xmlMessage = message.ToString();
                                             buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                            Console.WriteLine(xmlMessage);
-
                                             await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                                         }
 

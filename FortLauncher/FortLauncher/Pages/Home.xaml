@@ -10,24 +10,66 @@
       Title="Home">
 
     <Grid>
-        <Border Margin="0,0,832,0" Background="#FF15131B">
-            <Grid>
-                <ui:TextBlock Text="FortLauncher" FontSize="25" TextAlignment="Center" Foreground="White"  Margin="0,35,0,602" FontFamily="Segoe UI Semibold"></ui:TextBlock>
+        <Border Margin="0,0,0,644" Background="#FF161414">
 
-                <Border CornerRadius="30" Margin="10,603,10,20" Background="#FF1F1B29">
+        </Border>
+        <Border Margin="0,0,865,0" Background="#FF161414">
+            <Grid>
+                <ui:TextBlock Text="FortLauncher" FontSize="25" TextAlignment="Center" Foreground="White"  Margin="0,23,0,644" FontFamily="Segoe UI Semibold"></ui:TextBlock>
+
+                <Border CornerRadius="30" Margin="10,603,10,10" Background="#FF191717">
                     <Grid>
-                        <Image Margin="10,10,228,10" Source="pack://application:,,,/Resources/DefaultCharacter.png" Stretch="Fill"/>
-                        <ui:TextBlock x:Name="UserNameBox" Foreground="White" Text="TEST" FontFamily="Segoe UI Semibold" FontSize="22" Margin="80,27,50,0" Height="40" VerticalAlignment="Top" />
+                        <Image Margin="10,14,195,13" Source="pack://application:,,,/Resources/DefaultCharacter.png" Stretch="Fill" Width="70" Height="70"/>
+                        <ui:TextBlock x:Name="UserNameBox" Foreground="White" Text="TEST" FontFamily="Segoe UI Semibold" Margin="85,0,60,0" Height="26" VerticalAlignment="Center" FontSize="15" />
+                        <Image Margin="220,26,10,25" Source="pack://application:,,,/Resources/SettingsIcon.png" Stretch="Fill" Height="45" Width="45"/>
                     </Grid>
                 </Border>
-                <Border CornerRadius="20" Margin="10,113,10,514" Background="#FF1F1B29">
+                <Button  x:Name="SideBarHome"  Background="#FF191717" Margin="0,101,0,0"   Width="275" VerticalAlignment="Top" Height="73" Click="SideBarHome_Click" HorizontalAlignment="Center">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border x:Name="Border" Background="{TemplateBinding Background}" CornerRadius="9"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="#FF1B1919"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
                     <Grid>
-                        <TextBlock Text="Home" Foreground="White" FontSize="36" VerticalAlignment="Center" TextAlignment="Center"/>
+                        <ui:SymbolIcon Foreground="White" Symbol="Home24"  Width="40" Height="40" FontSize="35" Margin="19,6,136,5" />
+
+                        <TextBlock Text="Home" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="70,0,0,0" />
                     </Grid>
-                </Border>
+                </Button>
+                <Button  x:Name="SideBarLibrary"  Background="Transparent" Margin="0,189,0,0"   Width="275" VerticalAlignment="Top" Height="73" Click="SideBarLibrary_Click" HorizontalAlignment="Center">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Border x:Name="Border" Background="{TemplateBinding Background}" CornerRadius="9"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="#FF1B1919"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Grid>
+                        <ui:SymbolIcon Foreground="White" Symbol="TabDesktopMultiple20"  Width="40" Height="40" FontSize="35" Margin="19,6,136,5" />
+
+                        <TextBlock Text="Library" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="70,0,0,0" />
+                    </Grid>
+                </Button>
             </Grid>
         </Border>
-        <ui:TextBlock x:Name="TestBox" Foreground="White" Text="TEST" Margin="407,517,49,51" />
-       
+        <Frame x:Name="MainFrame" Margin="300,71,0,0" Initialized="MainFrame_Initialized">
+
+        </Frame>
+        <ui:TextBlock x:Name="TestBox" Foreground="White" TextWrapping="WrapWithOverflow" Text="TEST" Margin="31,417,979,181" />
+
     </Grid>
 </Page>

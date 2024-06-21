@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="Resources\DefaultCharacter.png" />
     <None Remove="Resources\LoginImage.png" />
+    <None Remove="Resources\SettingsIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,10 +25,13 @@
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\LoginImage.png" />
+    <Resource Include="Resources\SettingsIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Tabs\" />
+    <Compile Update="Pages\Tabs\LibraryTB.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

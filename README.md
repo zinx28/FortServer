@@ -13,7 +13,7 @@
 - Arena UI/Playlists! Seasons 8 to 23 (UNFINISHED, NOT WORKED ON ~ not proper scores on seasons 8 and 11)
 - Save the World (STW) is aimed at the very end and might never actually be implemented
 - Ban Assist!
-- You may use added/unfinished config stuff [FortBackend/src/App/Utilities/Saved/Config.cs](https://github.com/zinx28/FortBackend/blob/main/FortBackend/src/App/Utilities/Saved/Config.cs)
+- You may use added/unfinished config stuff [FortLibrary/ConfigHelpers/FortConfig.cs](https://github.com/zinx28/FortBackend/blob/main/FortLibrary/ConfigHelpers/FortConfig.cs)
 
 ## Discord Bot
 - Make sure you set up the bot in the configs, and the /test command works
@@ -38,7 +38,7 @@
 ## Added/Not Added 
 - MCP [!]
 - OAUTH [+]
-- Timeline [+] (Doesnt support custom events yet... well just fortnite events)
+- Timeline [+]
 - Cloudstorage, ClientSaving [+]
 - 24/7 Shop (WIP - could be so random, items in wrong places - THIS WILL CRASH ON OLDER VERSIONS AS IT TRIES TO GENERATE ITEMS ON SEASONS ITS NOT FOR!) [!]
 - XMPP [!]

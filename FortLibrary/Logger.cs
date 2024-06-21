@@ -24,36 +24,46 @@ namespace FortLibrary
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Failed to open log file: {ex.Message}");
+                Console.WriteLine($"\u001B[31mFailed to open log file: {ex.Message}\u001B[0m");
             }
         }
 
         public static void PlainLog(string Message)
         {
-            writer.WriteLine(Message);
+            if(writer != null)
+                writer.WriteLine(Message);
+
             Console.WriteLine(Message);
         }
 
         public static void Log(string Message, string Custom = "Log")
         {
-            writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}] " + Message);
+            if (writer != null)
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}] " + Message);
+
             Console.WriteLine($"\u001B[32m[{Custom}]: {Message}\u001B[0m");
         }
 
         public static void Warn(string Message)
         {
-            writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} Warn] " + Message);
+            if (writer != null)
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} Warn] " + Message);
+
             Console.WriteLine($"\u001B[33m[Warn]: {Message}\u001B[0m");
         }
 
         public static void Error(string Message, string Custom = "Error")
         {
-            writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}] " + Message);
+            if (writer != null)
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}] " + Message);
+
             Console.WriteLine($"\u001B[31m[{Custom}]: {Message}\u001B[0m");
         }
 
         public static void Close()
         {
+            if (writer == null) return;
+
             // WRITER WONT WORK AFTER CLOSING!¬
             writer.WriteLine("=================================================================");
             writer.WriteLine($"END OF LOG: {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}");

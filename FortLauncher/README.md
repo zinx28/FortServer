@@ -1,5 +1,4 @@
 # FORTLAUNCHER
-
-This doesn't have any launch code this was made to show how to login with the launcher
-
-- OTHER FEATURES MAY BE IMPLEMENTED IN THE FUTURE (but this was to show how to login with the code)
+this is a fully working launcher that supports SLL bypass to connect to fortbackend 
+<br>
+To add the SLL dll you just go to the settings page and add it there (you can use cobalt)

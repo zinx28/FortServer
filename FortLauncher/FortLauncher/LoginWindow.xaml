@@ -1,0 +1,54 @@
+﻿<Window x:Class="WpfApp6.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="" 
+    Height="330" 
+    Width="600"
+    ResizeMode="NoResize"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    Background="#1f1f1f">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="281*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Your content here -->
+        <Image Margin="0,-42,0,0" Source="/FORTBACKEND.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+        <!-- Your content here -->
+        <Border BorderBrush="#FF111111" BorderThickness="2" CornerRadius="10" Opacity="0.9"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Padding="20" Background="#FF111111" Width="244" Height="226" Grid.Column="1" Margin="140,0,0,0">
+            <StackPanel Margin="0,-12,0,0">
+                <TextBlock TextWrapping="Wrap" Height="37" Width="64" FontWeight="Bold" FontSize="20" FontFamily="Arial Black" Text="Login"/>
+                <TextBlock x:Name="ErrorMessage" Foreground="Red" Height="17" />
+                <TextBox x:Name="Email" Height="32" 
+         Background="Black" Foreground="Gray" Text="Email" 
+         GotFocus="Email_GotFocus" LostFocus="Email_LostFocus" />
+                <TextBlock Text="Email" Foreground="Black" Visibility="Collapsed" Margin="5,0"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Placeholder TextBox -->
+                    <TextBox x:Name="PasswordPlaceholder" Text="Password" 
+             Height="32" VerticalAlignment="Top" 
+             Background="Black" Foreground="Gray" GotFocus="PasswordPlaceholder_GotFocus" 
+             Visibility="Visible" Grid.ColumnSpan="2" Margin="0,5,0,0"/>
+
+                    <!-- Actual PasswordBox -->
+                    <PasswordBox x:Name="PasswordBoxControl" Height="32" Background="Black" 
+             LostFocus="PasswordBox_LostFocus"
+             PasswordChanged="PasswordBox_PasswordChanged" 
+             Visibility="Collapsed" Grid.ColumnSpan="2" Margin="0,5,0,5"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Login button -->
+        <Button Content="Login" Click="Login_Click" Height="30" Background="#357EC7" Foreground="White" FontWeight="Bold" Margin="208,220,0,0" VerticalAlignment="Top" Width="108" Grid.Column="1"/>
+        <CheckBox x:Name="RememberMeCheckBox" Content="Remember Me" Margin="161,183,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+
+    </Grid>
+</Window>

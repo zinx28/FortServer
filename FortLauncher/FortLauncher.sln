@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.9.34622.214
+VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortLauncher", "FortLauncher\FortLauncher.csproj", "{AECE5563-81DA-4E69-A1F4-0539394346A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FortLauncher", "FortLauncher\FortLauncher.csproj", "{355A0DBF-B506-4AFC-9C0E-2884A2169337}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AECE5563-81DA-4E69-A1F4-0539394346A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AECE5563-81DA-4E69-A1F4-0539394346A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AECE5563-81DA-4E69-A1F4-0539394346A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AECE5563-81DA-4E69-A1F4-0539394346A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355A0DBF-B506-4AFC-9C0E-2884A2169337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355A0DBF-B506-4AFC-9C0E-2884A2169337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355A0DBF-B506-4AFC-9C0E-2884A2169337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355A0DBF-B506-4AFC-9C0E-2884A2169337}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4B6C7715-8A5B-4C7C-B83E-40702191D4AB}
+		SolutionGuid = {13A9430D-AC9A-43D0-92CB-D4263C2DCE35}
 	EndGlobalSection
 EndGlobal

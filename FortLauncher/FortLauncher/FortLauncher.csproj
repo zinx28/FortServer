@@ -4,34 +4,50 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <AssemblyName>Fortnite launcher</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\DefaultCharacter.png" />
-    <None Remove="Resources\LoginImage.png" />
-    <None Remove="Resources\SettingsIcon.png" />
+    <None Remove="FORTBACKEND.png" />
+    <None Remove="Pages\Banner.png" />
+    <None Remove="Pages\fortnites12.png" />
+    <None Remove="Pages\github.png" />
+    <None Remove="Pages\trashbin.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DiscordRichPresence" Version="1.2.1.24" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.0" />
+    <PackageReference Include="HMBSbige.SingleInstance" Version="6.0.1" />
     <PackageReference Include="ini-parser" Version="2.5.2" />
+    <PackageReference Include="MaterialDesign.Icons" Version="1.1.0" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="WPF-UI" Version="3.0.4" />
+    <PackageReference Include="SingleInstanceCore" Version="2.2.2" />
+    <PackageReference Include="SingleInstanceHelper" Version="1.0.3" />
+    <PackageReference Include="WindowsAPICodePack.Shell.CommonFileDialogs" Version="1.1.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\DefaultCharacter.png">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
+    <Resource Include="FORTBACKEND.png" />
+    <Resource Include="Pages\Banner.png" />
+    <Resource Include="Pages\fortnites12.png" />
+    <Resource Include="Pages\github.png" />
+    <Resource Include="Pages\trashbin.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\LoginImage.png" />
-    <Resource Include="Resources\SettingsIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\Tabs\LibraryTB.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <None Update="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,17 +1,49 @@
-﻿<ui:FluentWindow x:Class="WpfApp1.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:local="clr-namespace:WpfApp1"
-        mc:Ignorable="d"
-        WindowBackdropType="Mica"
-        ExtendsContentIntoTitleBar="True"
-        Title="Login" ResizeMode="NoResize" Height="710" Width="1160">
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WpfApp6"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    x:Class="WpfApp6.MainWindow"
+    mc:Ignorable="d"
+    Title="FortLauncher" 
+    Height="650" 
+    Width="900"
+    ui:WindowHelper.UseModernWindowStyle="True" 
+    ResizeMode="NoResize"
+    Background="#1f1f1f">
     <Grid>
-
-        <Frame x:Name="MainFrame"/>
-        <ui:TitleBar Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}" ShowMaximize="False" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="101*"/>
+            <RowDefinition Height="533*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <SolidColorBrush Color="#1f1f1f"/>
+        </Grid.Background>
+        <ui:NavigationView x:Name="NavView" Loaded="NavView_Loaded" SelectionChanged="NavView_SelectionChanged" PaneDisplayMode="Left" IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="False" IsPaneOpen="false" HorizontalAlignment="Left" Width="800" Grid.ColumnSpan="7" Grid.RowSpan="2">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem x:Name="HomeItem" Icon="Play" Content="Home" Tag="Home"/>
+                <ui:NavigationViewItem Icon="Help" Content="faq" Tag="faq"/>
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>
+        <ui:Frame x:Name="ContentFrame" Margin="0,10,0,10" Grid.ColumnSpan="4" Background="#1f1f1f" Grid.Column="3" Grid.RowSpan="2">
+            <ui:Frame.ContentTransitions >
+                <ui:TransitionCollection>
+                    <ui:NavigationThemeTransition />
+                </ui:TransitionCollection>
+            </ui:Frame.ContentTransitions>
+        </ui:Frame>
     </Grid>
-</ui:FluentWindow>
+</Window>

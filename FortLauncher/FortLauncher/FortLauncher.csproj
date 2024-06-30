@@ -6,11 +6,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\DefaultCharacter.png" />
     <None Remove="Resources\LoginImage.png" />
+    <None Remove="Resources\plus.png" />
     <None Remove="Resources\SettingsIcon.png" />
   </ItemGroup>
 
@@ -25,6 +27,7 @@
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\LoginImage.png" />
+    <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\SettingsIcon.png" />
   </ItemGroup>
 

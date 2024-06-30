@@ -87,5 +87,10 @@ namespace FortLauncher.Pages
             Navigate(LibraryTB);
           //  MainFrame.Navigate(LibraryTB);
         }
+
+        private void CustomContetnDialog_ButtonClicked(Wpf.Ui.Controls.ContentDialog sender, Wpf.Ui.Controls.ContentDialogButtonClickEventArgs args)
+        {
+
+        }
     }
 }

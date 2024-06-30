@@ -70,6 +70,14 @@
 
         </Frame>
         <ui:TextBlock x:Name="TestBox" Foreground="White" TextWrapping="WrapWithOverflow" Text="TEST" Margin="31,417,979,181" />
+      
+        <ui:ContentDialog x:Name="CustomContetnDialog"
+ButtonClicked="CustomContetnDialog_ButtonClicked"
+CloseButtonText="Close" DefaultButton="Close" PrimaryButtonText="Set"
+DialogMaxWidth="750"  Visibility="Visible" Grid.ColumnSpan="2">
 
+
+
+        </ui:ContentDialog>
     </Grid>
 </Page>

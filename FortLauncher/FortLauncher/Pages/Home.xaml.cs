@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FortLauncher.Pages.Tabs;
 using FortLauncher.Services.Globals;
+using FortLauncher.Services.Utils;
+using Wpf.Ui.Controls;
 
 namespace FortLauncher.Pages
 {
@@ -24,12 +27,15 @@ namespace FortLauncher.Pages
     public partial class Home : Page
     {
         public HomeTB HomeTB { get; set; } = new HomeTB();
-        public LibraryTB  LibraryTB { get; set; } = new LibraryTB();
+        public BlankPage BlankTB { get; set; } = new BlankPage();
+        public LibraryTB LibraryTB { get; set; }
         public Home()
         {
             InitializeComponent();
             TestBox.Text = UserData.Token;
             UserNameBox.Text = UserData.UserName;
+
+            LibraryTB = new LibraryTB(this);
         }
 
         public object LastPageContent;
@@ -88,9 +94,63 @@ namespace FortLauncher.Pages
           //  MainFrame.Navigate(LibraryTB);
         }
 
-        private void CustomContetnDialog_ButtonClicked(Wpf.Ui.Controls.ContentDialog sender, Wpf.Ui.Controls.ContentDialogButtonClickEventArgs args)
+        private async void CustomContetnDialog_ButtonClicked(Wpf.Ui.Controls.ContentDialog sender, Wpf.Ui.Controls.ContentDialogButtonClickEventArgs args)
         {
+            try
+            {
+                if (args.Button == ContentDialogButton.Close)
+                {
+                    CustomContetnDialog.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    if (File.Exists(System.IO.Path.Join(FortnitePath.Text, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe")))
+                    {
+                        this.IsEnabled = false;
+                        bool AddNewBuild = await AddBuilds.AddBuild(FortnitePath.Text, System.IO.Path.Join(FortnitePath.Text, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe"));
+                        this.IsEnabled = true;
+                        if (AddNewBuild)
+                        {
 
+                            CustomContetnDialog.Visibility = Visibility.Collapsed;
+                            Navigate(BlankTB);
+                            LibraryTB.AddBuild(FortnitePath.Text);
+                            await Task.Delay(100);
+                            Navigate(LibraryTB);
+                        }
+                        else
+                        {
+                            ErrorText.Visibility = Visibility.Visible;
+                            ErrorText.Text = "Failed To Add Build";
+
+                        }
+                    }
+                    else
+                    {
+                        ErrorText.Visibility = Visibility.Visible;
+                        ErrorText.Text = "Make sure it contains *FortniteGame* and *Engine*";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string PathSearch = PathSearcher.Open();
+            if (!string.IsNullOrEmpty(PathSearch) && PathSearch != "NotFound")
+            {
+                FortnitePath.Text = PathSearch;
+                ErrorText.Visibility = Visibility.Collapsed;
+            }
+            else if (PathSearch == "NotFound")
+            {
+                ErrorText.Visibility = Visibility.Visible;
+                ErrorText.Text = "Make sure it contains *FortniteGame* and *Engine*";
+            }
         }
     }
 }

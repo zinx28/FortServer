@@ -74,9 +74,31 @@
         <ui:ContentDialog x:Name="CustomContetnDialog"
 ButtonClicked="CustomContetnDialog_ButtonClicked"
 CloseButtonText="Close" DefaultButton="Close" PrimaryButtonText="Set"
-DialogMaxWidth="750"  Visibility="Visible" Grid.ColumnSpan="2">
+DialogMaxWidth="750"  Visibility="Collapsed" Grid.ColumnSpan="2">
 
+            <Grid Height="92" Width="449">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
+                <TextBlock
+        Grid.Row="0"
+        FontSize="18"
+        TextWrapping="WrapWithOverflow" Text="Please Choose a fortnite path" Height="27" VerticalAlignment="Top" FontFamily="Segoe UI Semibold">
+
+                </TextBlock>
+
+                <Grid Height="50" Margin="6,42,6,0">
+                    <ui:TextBox x:Name="FortnitePath" PlaceholderText="Path"  Height="40" Margin="0,5,60,5"/>
+                    <ui:Button Icon="{ui:SymbolIcon Folder24 }" Margin="388,0,0,0" Height="40" Width="49" Click="Button_Click"/>
+                </Grid>
+
+                <TextBlock x:Name="ErrorText" Visibility="Collapsed" TextAlignment="Center" Text="Blah blash text" Foreground="Red" Margin="0,7,0,-40" FontFamily="Segoe UI Semibold" Grid.Row="1">
+
+                </TextBlock>
+
+            </Grid>
 
         </ui:ContentDialog>
     </Grid>

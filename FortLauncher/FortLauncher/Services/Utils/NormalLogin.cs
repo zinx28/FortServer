@@ -12,6 +12,7 @@ using Wpf.Ui;
 using System.Net;
 using Newtonsoft.Json;
 using Wpf.Ui.Extensions;
+using FortLauncher.Services.Utils.Helpers;
 
 namespace FortLauncher.Services.Utils
 {
@@ -27,6 +28,7 @@ namespace FortLauncher.Services.Utils
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
+                Loggers.Log("Please Enter Your FortBackend Details");
                 LoginPage.snackbarService.Show("Error Occurred", "Please Enter Your FortBackend Details", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                 return;
             }
@@ -50,6 +52,7 @@ namespace FortLauncher.Services.Utils
                         if (response.StatusCode == HttpStatusCode.BadRequest)
                         {
 
+                            Loggers.Log(loginResponse.message);
                             LoginPage.snackbarService.Show("Error Occurred", loginResponse.message, ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                         }
                         else
@@ -60,6 +63,7 @@ namespace FortLauncher.Services.Utils
                                 Login(loginResponse.token);
                             }
 
+                            Loggers.Log("ERROR");
                             LoginPage.snackbarService.Show("Error Occurred", "ERROR", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                             //string responseBody = await response.Content.ReadAsStringAsync();
                             // System.Windows.MessageBox.Show(responseBody);
@@ -68,16 +72,14 @@ namespace FortLauncher.Services.Utils
                     }
                     else
                     {
-                        //string responseBody = await response.Content.ReadAsStringAsync();
-                        //System.Windows.MessageBox.Show(responseBody);
-                        //System.Windows.MessageBox.Show($"Failed to call API. Status code: {response.StatusCode}");
-
+                        Loggers.Log("Server Down?");
                         LoginPage.snackbarService.Show("Error Occurred", "Server Down?", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                     }
                 }
             }
             catch (Exception ex)
             {
+                Loggers.Log(ex.Message);
                 LoginPage.snackbarService.Show("Error Occurred", "Please Check Server Status.", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
             }
            
@@ -103,15 +105,17 @@ namespace FortLauncher.Services.Utils
 
                             if (launcherJson != null)
                             {
+                                Loggers.Log($"Logged in as {launcherJson.username}");
+
                                 if (launcherJson.banned)
                                 {
+                                    Loggers.Log("You are banned from FortBackend");
                                     LoginPage.snackbarService.Show("Error Occurred", "You are banned from FortBackend", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                                     return;
                                 }
                                 else
-                                {
+                                {                                 
                                     UserData.UserName = launcherJson.username;
-
                                     loginPage.NavigationService.Navigate(new Home());
                                     return;
                                 }
@@ -119,12 +123,13 @@ namespace FortLauncher.Services.Utils
                         }
                     }
 
+                    Loggers.Log("Server Error");
                     LoginPage.snackbarService.Show("Error Occurred", "Server Error", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
                 }
             }
             catch (Exception ex)
             {
-              
+                Loggers.Log(ex.Message);
                 LoginPage.snackbarService.Show("Error Occurred", "Server Error", ControlAppearance.Danger, null, TimeSpan.FromSeconds(5));
             }
           

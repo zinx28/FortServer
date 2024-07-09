@@ -31,6 +31,7 @@ namespace FortLauncher.Services.Utils
                     loginPage.CallBackButton.Content = "Waiting for callback";
                 });
 
+                // THIS WILL NEED TO BE RECODED - TODO IG?!?!?!!?!?
                 var listener = new HttpListener();
                 // THIS IS FOR THE LAUNCHER DONT CHANGE THE PORT
                 listener.Prefixes.Add("http://127.0.0.1:2158/launcher/api/v1/callback/");

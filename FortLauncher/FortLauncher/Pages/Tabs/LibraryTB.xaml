@@ -14,7 +14,11 @@
             <WrapPanel x:Name="LaunchBuilds" Width="861">
                 <Border CornerRadius="15" Width="215" Height="290">
                     <Grid>
-                        <Border CornerRadius="15"  Width="186" Background="#FF1B1A1A" Margin="14,4,15,53"/>
+                        <Border CornerRadius="15"  Width="186" Margin="14,4,15,53">
+                            <Border.Background>
+                                <ImageBrush  Stretch="UniformToFill"  ImageSource="/Resources/Season1.jpg"/>
+                            </Border.Background>
+                        </Border>
                         <ui:Button Margin="152,242,0,0" VerticalAlignment="Top" Height="43" Width="53">
                             <ui:SymbolIcon Foreground="White" Symbol="Play16"  Width="29" Height="29" FontSize="25"  />
                         </ui:Button>
@@ -22,8 +26,20 @@
                     </Grid>
                 </Border>
                 <Border CornerRadius="15" Width="215" Height="290">
+                  
                     <Grid>
-                        <Border CornerRadius="15"  Width="186" Background="#FF1B1A1A" Margin="14,4,15,53">
+                        
+                        <Border CornerRadius="15"  Width="186"  Margin="14,4,15,53" MouseUp="Border_MouseUp">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="#FF1B1A1A"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#1D1C1C"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
                             <Border Width="115" Height="115">
                                 <Border.Background>
                                     <ImageBrush  Stretch="UniformToFill"  ImageSource="/Resources/plus.png"/>

@@ -105,7 +105,7 @@ namespace FortLauncher.Services.Utils
                             byte[] buffer = new byte[100];
                             int bytesRead = chunkBinaryReader.Read(buffer, 0, buffer.Length);
                             string chunkText2 = Encoding.Unicode.GetString(buffer, 0, bytesRead);
-                            MessageBox.Show(chunkText2);
+                            //MessageBox.Show(chunkText2);
                             if (bytesRead >= 12)
                             {
                                 string chunkText = Encoding.Unicode.GetString(buffer, 0, bytesRead);

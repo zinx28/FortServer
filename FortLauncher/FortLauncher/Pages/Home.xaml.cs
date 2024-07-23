@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,8 +16,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FortLauncher.Pages.Tabs;
+using FortLauncher.Services.Classes;
 using FortLauncher.Services.Globals;
 using FortLauncher.Services.Utils;
+using FortLauncher.Services.Utils.Helpers;
+using FortLauncher.Services.Utils.Launch.Helpers;
+using FortLauncher.Services.Utils.Launch;
 using Wpf.Ui.Controls;
 
 namespace FortLauncher.Pages
@@ -29,6 +34,8 @@ namespace FortLauncher.Pages
         public HomeTB HomeTB { get; set; } = new HomeTB();
         public BlankPage BlankTB { get; set; } = new BlankPage();
         public LibraryTB LibraryTB { get; set; }
+
+        private CancellationTokenSource cancellationTokenSource;
         public Home()
         {
             InitializeComponent();
@@ -91,8 +98,48 @@ namespace FortLauncher.Pages
         private void SideBarLibrary_Click(object sender, RoutedEventArgs e)
         {
             Navigate(LibraryTB);
-          //  MainFrame.Navigate(LibraryTB);
+            //  MainFrame.Navigate(LibraryTB);
         }
+
+        public async Task LaunchFortnite(BuildConfig config, EventArgs e)
+        {
+            cancellationTokenSource = new CancellationTokenSource();
+            try
+            {
+                Launch launch = new Launch(this);
+
+                await launch.Start(config, cancellationTokenSource.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                Loggers.Log("LaunchFortnite was cancelled.");
+
+                PSBasics._FortniteProcess.Kill();
+                //if (FakeAC._FNLauncherProcess != null && FakeAC._FNLauncherProcess.Id != 0)
+                //{
+                //    FakeAC._FNLauncherProcess.Close();
+                //}
+                //if (FakeAC._FNAntiCheatProcess != null && FakeAC._FNAntiCheatProcess.Id != 0)
+                //{
+                //    FakeAC._FNAntiCheatProcess.Close();
+                //}
+                //if(PSBasics._FortniteProcess != null)
+                //{
+                //    PSBasics._FortniteProcess.Kill();
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                Loggers.Log(ex.Message + "~LaunchFortnite~");
+                System.Windows.MessageBox.Show("Please check launcher logs");
+            }
+            finally
+            {
+                cancellationTokenSource.Dispose();
+            }
+        }
+
 
         private async void CustomContetnDialog_ButtonClicked(Wpf.Ui.Controls.ContentDialog sender, Wpf.Ui.Controls.ContentDialogButtonClickEventArgs args)
         {
@@ -151,6 +198,11 @@ namespace FortLauncher.Pages
                 ErrorText.Visibility = Visibility.Visible;
                 ErrorText.Text = "Make sure it contains *FortniteGame* and *Engine*";
             }
+        }
+
+        private void PathDownloader_ButtonClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
         }
     }
 }

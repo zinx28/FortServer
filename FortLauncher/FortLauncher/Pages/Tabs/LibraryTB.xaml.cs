@@ -1,6 +1,7 @@
 ﻿using FortLauncher.Services.Classes;
 using FortLauncher.Services.Utils;
 using FortLauncher.Services.Utils.Helpers;
+using FortLauncher.Services.Utils.Launch.Helpers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace FortLauncher.Pages.Tabs
     /// </summary>
     public partial class LibraryTB : Page
     {
+        MouseButtonEventHandler buttonEventHandler = (sender, e) => { e.Handled = true; };
         public class BorderInfo
         {
             public Border Border { get; set; }
@@ -40,7 +42,7 @@ namespace FortLauncher.Pages.Tabs
         {
             this.MainFrame = MainFrame;
 
-            
+
             InitializeComponent();
         }
 
@@ -90,9 +92,9 @@ namespace FortLauncher.Pages.Tabs
                                     //VersionSorter.BuildInfo buildInfo = VersionSorter.SortOutMyVersion(config.buildID);
                                     await System.Windows.Application.Current.Dispatcher.InvokeAsync(async () =>
                                     {
-                                        Border border = AddBorderBuild(BuildString, VersionBuild, config.buildPath);
+                                        Border border = AddBorderBuild(BuildString, VersionBuild, config);
 
-                                       // border.MouseUp += (sender, e) => ButtonClicked(border, sender, e, config);
+                                       // border.MouseUp += (sender, e) => ButtonClicked(sender, e, config);
 
                                         borderInfoList.Add(new BorderInfo
                                         {
@@ -106,8 +108,8 @@ namespace FortLauncher.Pages.Tabs
                                     Loggers.Log("Added " + config.VersionID);
                                 }
 
-                             }
                             }
+                        }
 
                     });
                 }
@@ -120,7 +122,91 @@ namespace FortLauncher.Pages.Tabs
             LoadBuilds(); // Yes!
         }
 
-        public Border AddBorderBuild(string BuildString, string VersionBuild, string buildPath)
+        public void UpdateAllBuilds(BuildConfig config, bool Launched = false)
+        {
+            BlurEffect blurEffect = new BlurEffect
+            {
+                Radius = 10,
+                KernelType = KernelType.Gaussian
+            };
+            foreach (BorderInfo a in borderInfoList)
+            {
+                //System.Windows.MessageBox.Show(Launched.ToString());
+                if (Launched)
+                {
+                    var mainGrid = a.Border.Child as Grid;
+                    if (mainGrid != null)
+                    {
+                        foreach (var child in mainGrid.Children)
+                        {
+                            if (child is System.Windows.Controls.Button button)
+                            {
+                                button.IsEnabled = false; 
+                            }
+                        }
+                    }
+
+                    a.Border.PreviewMouseDown += buttonEventHandler;
+                    a.Border.PreviewMouseUp += buttonEventHandler;
+                }
+                else
+                {
+                    var mainGrid = a.Border.Child as Grid;
+                    if (mainGrid != null)
+                    {
+                        foreach (var child in mainGrid.Children)
+                        {
+                            if (child is System.Windows.Controls.Button button)
+                            {
+                                button.IsEnabled = true;
+                            }
+                        }
+                    }
+                    a.Border.PreviewMouseDown -= buttonEventHandler;
+                    a.Border.PreviewMouseUp -= buttonEventHandler;
+                }
+
+                if (a.BuildId == config.buildID)
+                {
+                    //((Wpf.Ui.Controls.TextBlock)((Grid)a.Border.Child).Children[0]).Text = Launched ? "Launched" : "Launch";
+                }
+
+            }
+        }
+
+
+        public async void ButtonClicked(/*Wpf.Ui.Controls.Button button, */object s, RoutedEventArgs e, BuildConfig config)
+        {
+           // System.Windows.MessageBox.Show("PENIS");
+           // System.Windows.MessageBox.Show(config.buildPath);
+            //if (e.ChangedButton == MouseButton.Left)
+           // {
+                try
+                {
+                    if (PSBasics._FortniteProcess == null)
+                    {
+                      //  System.Windows.MessageBox.Show(config.buildPath);
+                        if (File.Exists(System.IO.Path.Join(config.buildPath, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe")))
+                        {
+                            UpdateAllBuilds(config, true);
+                            await MainFrame.LaunchFortnite(config, e);
+                            UpdateAllBuilds(config, false);
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("Path is wrong?");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Loggers.Log(ex.Message + " ~L2091~");
+                    System.Windows.MessageBox.Show("Please Check Logs");
+                }
+          //  }
+        }
+
+        public Border AddBorderBuild(string BuildString, string VersionBuild, BuildConfig config)
         {
             //MessageBox.Show(BuildString);
 
@@ -142,7 +228,7 @@ namespace FortLauncher.Pages.Tabs
 
             };
 
-            string SplashPath = Path.Combine(buildPath, "FortniteGame", "Content", "Splash", "Splash.bmp");
+            string SplashPath = Path.Combine(config.buildPath, "FortniteGame", "Content", "Splash", "Splash.bmp");
 
             if (File.Exists(SplashPath))
             {
@@ -163,6 +249,29 @@ namespace FortLauncher.Pages.Tabs
                 };
             }
 
+            Wpf.Ui.Controls.Button LaunchButton = new Wpf.Ui.Controls.Button
+            {
+                Margin = new Thickness(152, 242, 0, 0),
+                VerticalAlignment = VerticalAlignment.Top,
+                Height = 43,
+                Width = 53,
+                Foreground = Brushes.White,
+                Content = symbolIcon
+            };
+
+            LaunchButton.Click += (sender, e) => ButtonClicked(sender, e, config);
+
+            if (PSBasics._FortniteProcess != null && PSBasics._FortniteProcess.Id != 0)
+            {
+            //   ((Border)((Grid)border.Child).Children[4]).Child.Effect = blurEffect;
+            //   ((Border)((Border)((Grid)border.Child).Children[4]).Child).Child = new Border
+            //    {
+            //    Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 50))
+            // };
+            // border.PreviewMouseDown += buttonEventHandler;
+            //  border.PreviewMouseUp += buttonEventHandler;
+            }
+
             Border mainBorder = new Border
             {
                 CornerRadius = new CornerRadius(15),
@@ -173,16 +282,7 @@ namespace FortLauncher.Pages.Tabs
                     Children =
                     {
                         borderte,
-                        new Wpf.Ui.Controls.Button
-                        {
-                            Margin = new Thickness(152, 242, 0, 0),
-                            VerticalAlignment = VerticalAlignment.Top,
-                            Height = 43,
-                            Width = 53,
-                            Foreground = Brushes.White,
-                            Content = symbolIcon
-
-                        },
+                        LaunchButton,
                         new Wpf.Ui.Controls.TextBlock
                         {
                             Text = BuildString,
@@ -195,86 +295,91 @@ namespace FortLauncher.Pages.Tabs
                 }
             };
 
-           
+
+
+
 
             return mainBorder;
 
-        }   
+        }
 
-            public async Task AddBuild(string fortnitepath)
+        public async Task AddBuild(string fortnitepath)
+        {
+            string BaseFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string DataFolder = Path.Combine(BaseFolder, "FortLauncher");
+            string FilePath = Path.Combine(DataFolder, "builds.json");
+
+            try
             {
-                string BaseFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string DataFolder = Path.Combine(BaseFolder, "FortLauncher");
-                string FilePath = Path.Combine(DataFolder, "builds.json");
-
-                try
+                BlurEffect blurEffect = new BlurEffect
                 {
-                    BlurEffect blurEffect = new BlurEffect
+                    Radius = 10,
+                    KernelType = KernelType.Gaussian
+                };
+                if (File.Exists(FilePath))
+                {
+                    string jsonData = await File.ReadAllTextAsync(FilePath);
+                    List<BuildConfig> buildConfig = JsonConvert.DeserializeObject<List<BuildConfig>>(jsonData)!;
+                    if (buildConfig.Count > 0)
                     {
-                        Radius = 10,
-                        KernelType = KernelType.Gaussian
-                    };
-                    if (File.Exists(FilePath))
-                    {
-                        string jsonData = await File.ReadAllTextAsync(FilePath);
-                        List<BuildConfig> buildConfig = JsonConvert.DeserializeObject<List<BuildConfig>>(jsonData)!;
-                        if (buildConfig.Count > 0)
+                        BuildConfig config = buildConfig.FirstOrDefault(e => e.buildPath == fortnitepath)!;
+                        if (config != null)
                         {
-                            BuildConfig config = buildConfig.FirstOrDefault(e => e.buildPath == fortnitepath)!;
-                            if (config != null)
+                            var VersionBuild = "";
+                            string prefix = "++Fortnite+Release-";
+                            if (config.VersionID.Length == 0)
                             {
-                                var VersionBuild = "";
-                                string prefix = "++Fortnite+Release-";
-                                if (config.VersionID.Length == 0)
-                                {
-                                    VersionBuild = "ERROR";
-                                }
-                                else
-                                {
-                                    int startIndex = config.VersionID.IndexOf(prefix);
-                                    if (startIndex != -1)
-                                    {
-                                        startIndex += prefix.Length;
-                                        VersionBuild = config.VersionID.Substring(startIndex);
-                                    }
-                                }
-
-                                var BuildString = FortniteDetect.Init(config.VersionID);
-
-                                Border border = AddBorderBuild(BuildString, VersionBuild, config.buildPath);
-
-                              //  border.MouseUp += (sender, e) => ButtonClicked(border, sender, e, config);
-
-                               // if (PSBasics._FortniteProcess != null && PSBasics._FortniteProcess.Id != 0)
-                               // {
-                                 //   ((Border)((Grid)border.Child).Children[4]).Child.Effect = blurEffect;
-                                //   ((Border)((Border)((Grid)border.Child).Children[4]).Child).Child = new Border
-                                //    {
-                                    //    Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 50))
-                                   // };
-                                   // border.PreviewMouseDown += buttonEventHandler;
-                                  //  border.PreviewMouseUp += buttonEventHandler;
-                               // }
-
-                                borderInfoList.Add(new BorderInfo
-                                {
-                                    Border = border,
-                                    PlacementId = 0,
-                                    BuildId = config.buildID
-                                });
-
-                                LaunchBuilds.Children.Insert(0, border);
+                                VersionBuild = "ERROR";
                             }
-                        }
+                            else
+                            {
+                                int startIndex = config.VersionID.IndexOf(prefix);
+                                if (startIndex != -1)
+                                {
+                                    startIndex += prefix.Length;
+                                    VersionBuild = config.VersionID.Substring(startIndex);
+                                }
+                            }
 
+                            var BuildString = FortniteDetect.Init(config.VersionID);
+
+                            Border border = AddBorderBuild(BuildString, VersionBuild, config);
+                          
+                            //border. += (sender, e) => ButtonClicked(sender, e, config);
+
+                            // if (PSBasics._FortniteProcess != null && PSBasics._FortniteProcess.Id != 0)
+                            // {
+                            //   ((Border)((Grid)border.Child).Children[4]).Child.Effect = blurEffect;
+                            //   ((Border)((Border)((Grid)border.Child).Children[4]).Child).Child = new Border
+                            //    {
+                            //    Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 50))
+                            // };
+                            // border.PreviewMouseDown += buttonEventHandler;
+                            //  border.PreviewMouseUp += buttonEventHandler;
+                            // }
+
+                            borderInfoList.Add(new BorderInfo
+                            {
+                                Border = border,
+                                PlacementId = 0,
+                                BuildId = config.buildID
+                            });
+
+                            LaunchBuilds.Children.Insert(0, border);
+                        }
+                    }
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show($"Couldn't Find {FilePath}");
                 }
             }
             catch (Exception ex)
             {
-               // Loggers.Log(ex.Message + "AddBuild");
+                // Loggers.Log(ex.Message + "AddBuild");
                 System.Windows.MessageBox.Show("Please Check Logs!");
             }
-        }
+        } 
 
 
         private void Border_MouseUp(object sender, MouseButtonEventArgs e)

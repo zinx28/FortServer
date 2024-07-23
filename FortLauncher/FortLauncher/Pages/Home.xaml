@@ -101,5 +101,27 @@ DialogMaxWidth="750"  Visibility="Collapsed" Grid.ColumnSpan="2">
             </Grid>
 
         </ui:ContentDialog>
+
+        <ui:ContentDialog x:Name="PathDownloader"
+ButtonClicked="PathDownloader_ButtonClicked"
+CloseButtonText="Close" 
+DialogMaxWidth="750"  Visibility="Collapsed" Grid.ColumnSpan="2">
+
+
+
+            <Grid Height="134" Width="449">
+
+                <TextBlock
+        Grid.Row="0"
+        FontSize="18" 
+        TextWrapping="WrapWithOverflow" x:Name="LaunchTitle" Text="Launching Fortnite" Height="27" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+
+                <ProgressBar x:Name="LaunchMover" IsIndeterminate="True"  Height="20" />
+
+
+                <TextBlock x:Name="ErrorTextp" Visibility="Collapsed" TextAlignment="Center" Text="Blah blash text" Foreground="Red" Margin="0,7,0,-40" FontFamily="Segoe UI Semibold" Grid.Row="1"/>
+
+            </Grid>
+        </ui:ContentDialog>
     </Grid>
 </Page>

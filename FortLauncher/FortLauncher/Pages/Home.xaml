@@ -70,6 +70,58 @@
 
         </Frame>
         <ui:TextBlock x:Name="TestBox" Foreground="White" TextWrapping="WrapWithOverflow" Text="TEST" Margin="31,417,979,181" />
+      
+        <ui:ContentDialog x:Name="CustomContetnDialog"
+ButtonClicked="CustomContetnDialog_ButtonClicked"
+CloseButtonText="Close" DefaultButton="Close" PrimaryButtonText="Set"
+DialogMaxWidth="750"  Visibility="Collapsed" Grid.ColumnSpan="2">
 
+            <Grid Height="92" Width="449">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+        Grid.Row="0"
+        FontSize="18"
+        TextWrapping="WrapWithOverflow" Text="Please Choose a fortnite path" Height="27" VerticalAlignment="Top" FontFamily="Segoe UI Semibold">
+
+                </TextBlock>
+
+                <Grid Height="50" Margin="6,42,6,0">
+                    <ui:TextBox x:Name="FortnitePath" PlaceholderText="Path"  Height="40" Margin="0,5,60,5"/>
+                    <ui:Button Icon="{ui:SymbolIcon Folder24 }" Margin="388,0,0,0" Height="40" Width="49" Click="Button_Click"/>
+                </Grid>
+
+                <TextBlock x:Name="ErrorText" Visibility="Collapsed" TextAlignment="Center" Text="Blah blash text" Foreground="Red" Margin="0,7,0,-40" FontFamily="Segoe UI Semibold" Grid.Row="1">
+
+                </TextBlock>
+
+            </Grid>
+
+        </ui:ContentDialog>
+
+        <ui:ContentDialog x:Name="PathDownloader"
+ButtonClicked="PathDownloader_ButtonClicked"
+CloseButtonText="Close" 
+DialogMaxWidth="750"  Visibility="Collapsed" Grid.ColumnSpan="2">
+
+
+
+            <Grid Height="134" Width="449">
+
+                <TextBlock
+        Grid.Row="0"
+        FontSize="18" 
+        TextWrapping="WrapWithOverflow" x:Name="LaunchTitle" Text="Launching Fortnite" Height="27" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+
+                <ProgressBar x:Name="LaunchMover" IsIndeterminate="True"  Height="20" />
+
+
+                <TextBlock x:Name="ErrorTextp" Visibility="Collapsed" TextAlignment="Center" Text="Blah blash text" Foreground="Red" Margin="0,7,0,-40" FontFamily="Segoe UI Semibold" Grid.Row="1"/>
+
+            </Grid>
+        </ui:ContentDialog>
     </Grid>
 </Page>

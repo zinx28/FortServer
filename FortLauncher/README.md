@@ -1,5 +1,10 @@
-# FORTLAUNCHER
+# FORTLAUNCHER (WIP)
 
-This doesn't have any launch code this was made to show how to login with the launcher
+This launcher may have issues, won't support latest (detection broke -> 30.20)
 
-- OTHER FEATURES MAY BE IMPLEMENTED IN THE FUTURE (but this was to show how to login with the code)
+
+- any issues check log file this is located in appdata luna luaunchlog
+
+^^ i'll redo this readme in the future ;(
+
+-> THIS REQUIRES THE BACKEND (CHANGED Services/Globals/LauncherConfig.cs -> http://127.0.0.1 to your vps ip/ domain?)

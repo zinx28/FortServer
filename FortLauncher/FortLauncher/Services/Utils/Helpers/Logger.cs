@@ -38,7 +38,7 @@ namespace FortLauncher.Services.Utils.Helpers
         {
             try
             {
-                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Luna"));
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "FortLauncher"));
                 if (!File.Exists(appDataFolderPath))
                 {
                     File.Create(appDataFolderPath).Close();

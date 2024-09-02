@@ -19,7 +19,7 @@
 - Make sure you set up the bot in the configs, and the /test command works
 - Discord Bot Disabled On "DEVELOPMENT"
 - ActivityType max is 5 (check in config cs file!! for more details)
-- More info [here](https://github.com/zinx28/FortBackend/blob/main/DiscordBotSetup.md)
+- More info to setup [here](https://github.com/zinx28/FortBackend/blob/main/DiscordBotSetup.md)
 
 ### Commands
 - /test

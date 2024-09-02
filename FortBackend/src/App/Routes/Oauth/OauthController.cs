@@ -331,30 +331,30 @@ namespace FortBackend.src.App.Routes.Oauth
                 string clientId = "";
                 try
                 {
-                    if (Saved.DeserializeConfig.LunaPROD)
-                    {
-                        //foreach (var header in Request.Headers)
-                        //{
-                        //    Console.WriteLine($"{header.Key}: {header.Value}");
-                        //}
-                        string LunaDevTesting = Request.Headers["lunaprod"]!;
-                        // Console.WriteLine(LunaDevTesting);
-                        if (LunaDevTesting != "verytrue")
-                        {
-                            Logger.Error("FAKE CURL?");
-                            return BadRequest(new BaseError
-                            {
-                                errorCode = "errors.com.epicgames.account.invalid_client",
-                                errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
-                                messageVars = new List<string>(),
-                                numericErrorCode = 1011,
-                                originatingService = "any",
-                                intent = "prod",
-                                error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
-                                error = "invalid_client"
-                            });
-                        }
-                    }
+                    //if (Saved.DeserializeConfig.LunaPROD)
+                    //{
+                    //    //foreach (var header in Request.Headers)
+                    //    //{
+                    //    //    Console.WriteLine($"{header.Key}: {header.Value}");
+                    //    //}
+                    //    string LunaDevTesting = Request.Headers["lunaprod"]!;
+                    //    // Console.WriteLine(LunaDevTesting);
+                    //    if (LunaDevTesting != "verytrue")
+                    //    {
+                    //        Logger.Error("FAKE CURL?");
+                    //        return BadRequest(new BaseError
+                    //        {
+                    //            errorCode = "errors.com.epicgames.account.invalid_client",
+                    //            errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                    //            messageVars = new List<string>(),
+                    //            numericErrorCode = 1011,
+                    //            originatingService = "any",
+                    //            intent = "prod",
+                    //            error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                    //            error = "invalid_client"
+                    //        });
+                    //    }
+                    //}
 
                     string AuthorizationToken = Request.Headers["Authorization"]!;
 
@@ -648,70 +648,70 @@ namespace FortBackend.src.App.Routes.Oauth
 
 
                 // Different Type of o-auth is needed for luna
-                if (Saved.DeserializeConfig.LunaPROD)
-                {
-                    if (GlobalData.AccessToken.Any(e => e.accountId == AccountId))
-                    {
-                        if (GlobalData.RefreshToken.Any(e => e.accountId == AccountId))
-                        {
-                            var AccessData = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == AccountId);
-                            if (AccessData == null) { return BadRequest(new BaseError { }); } // never would call
+                //if (Saved.DeserializeConfig.LunaPROD)
+                //{
+                //    if (GlobalData.AccessToken.Any(e => e.accountId == AccountId))
+                //    {
+                //        if (GlobalData.RefreshToken.Any(e => e.accountId == AccountId))
+                //        {
+                //            var AccessData = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == AccountId);
+                //            if (AccessData == null) { return BadRequest(new BaseError { }); } // never would call
 
-                            var RefreshData = GlobalData.RefreshToken.FirstOrDefault(e => e.accountId == AccountId);
-                            if (RefreshData == null) { return BadRequest(new BaseError { }); }
+                //            var RefreshData = GlobalData.RefreshToken.FirstOrDefault(e => e.accountId == AccountId);
+                //            if (RefreshData == null) { return BadRequest(new BaseError { }); }
 
-                            var AccessToken = AccessData.token.Replace("eg1~", "");
+                //            var AccessToken = AccessData.token.Replace("eg1~", "");
 
-                            var handler = new JwtSecurityTokenHandler();
-                            var decodedToken = handler.ReadJwtToken(AccessToken);
+                //            var handler = new JwtSecurityTokenHandler();
+                //            var decodedToken = handler.ReadJwtToken(AccessToken);
 
-                            var claimsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(decodedToken.Claims.ToDictionary(c => c.Type, c => c.Value)));
+                //            var claimsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(decodedToken.Claims.ToDictionary(c => c.Type, c => c.Value)));
 
-                            if (claimsDictionary != null && claimsDictionary.Count() > 1)
-                            {
+                //            if (claimsDictionary != null && claimsDictionary.Count() > 1)
+                //            {
 
-                                if (!string.IsNullOrEmpty(claimsDictionary["dvid"].ToString()))
-                                {
+                //                if (!string.IsNullOrEmpty(claimsDictionary["dvid"].ToString()))
+                //                {
 
 
-                                    return Ok(new OauthToken
-                                    {
-                                        access_token = $"{AccessData.token}",
-                                        expires_in = 28800,
-                                        expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                        token_type = "bearer",
-                                        account_id = AccountId,
-                                        client_id = clientId,
-                                        internal_client = true,
-                                        client_service = "fortnite",
-                                        refresh_token = $"{RefreshData.token}",
-                                        refresh_expires = 115200,
-                                        refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                        displayName = DisplayName,
-                                        app = "fortnite",
-                                        in_app_id = AccountId,
-                                        device_id = claimsDictionary["dvid"]
-                                    });
-                                }
+                //                    return Ok(new OauthToken
+                //                    {
+                //                        access_token = $"{AccessData.token}",
+                //                        expires_in = 28800,
+                //                        expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                //                        token_type = "bearer",
+                //                        account_id = AccountId,
+                //                        client_id = clientId,
+                //                        internal_client = true,
+                //                        client_service = "fortnite",
+                //                        refresh_token = $"{RefreshData.token}",
+                //                        refresh_expires = 115200,
+                //                        refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                //                        displayName = DisplayName,
+                //                        app = "fortnite",
+                //                        in_app_id = AccountId,
+                //                        device_id = claimsDictionary["dvid"]
+                //                    });
+                //                }
 
-                            }
-                            else
-                            {
-                                Console.WriteLine("FAKE TOKEN?"); // never should happen
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("TOKEN REFRESH NOT FOUND");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("TOKEN ACCESS NOT FOUND");
-                    }
-                }
-                else 
-                {
+                //            }
+                //            else
+                //            {
+                //                Console.WriteLine("FAKE TOKEN?"); // never should happen
+                //            }
+                //        }
+                //        else
+                //        {
+                //            Console.WriteLine("TOKEN REFRESH NOT FOUND");
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine("TOKEN ACCESS NOT FOUND");
+                //    }
+                //}
+                //else 
+                //{
                     if (string.IsNullOrEmpty(DisplayName))
                     {
                         return Ok(new { });
@@ -786,7 +786,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         in_app_id = AccountId,
                         device_id = DeviceID
                     });
-                }
+                //}
             }
             catch (Exception ex)
             {

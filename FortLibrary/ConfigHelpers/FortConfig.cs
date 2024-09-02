@@ -93,12 +93,6 @@ namespace FortLibrary.ConfigHelpers
         public bool FullLockerForEveryone { get; set; } = false; // full locker (should show all up to 29.10 - .20 i forgot)
         // ^^ i need a better name
 
-        // ** //
-
-
-        // THIS IS FOR LUNA TESTING ONLY.... ENABLING WILL BREAK YOUR THE BACKEND~ unless you use the luna launcher
-        public bool LunaPROD { get; set; } = false;
-
         // USELESS ATM
 
         public bool EnableDetections { get; set; } = true; // this isn't used atm

@@ -84,10 +84,9 @@ namespace FortBackend.src.App.SERVER
                                     default: break;
                                 }
 
-                                if (!Saved.DeserializeConfig.LunaPROD)
-                                {
-                                    ClientFix.Init(webSocket, UserDataSaved, clientId);
-                                }
+                         
+                                ClientFix.Init(webSocket, UserDataSaved, clientId);
+                                
                                 receivedMessage = "";
                             }
 

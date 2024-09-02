@@ -1,47 +1,43 @@
-# How to setup FortBackend With "Dicord Stuff"
+# Setting Up FortBackend with Discord Developer Portal (Discord Bot)
 
-- These steps will need to be redone.. but shouldn't be hard to setup!
+*Note: These steps may be updated in the future.*
 
-# Step 1
-- First go to https://discord.com/developers/applications
-- Click New Application
-- Name the application (duh?)
+### Step 1: Create a New Discord Application
+1. Visit [Discord Developer Portal](https://discord.com/developers/applications).
+2. Click **New Application**.
+3. Name your application (you can choose any name).
 
--- VIDEO NOT ADDED
+*(Video not included)*
 
-# Step 2
+### Step 2: Configure the Bot
+1. Go to the **Bot** tab.
+2. Enable all the **Privileged Gateway Intents**.
+3. Reset the **Token** and add it to the `DiscordToken` field in your [Config.Json](https://github.com/zinx28/FortServer/blob/main/FortBackend/Resources/Config.json).
 
-- On the "Bot" Tab
-- Enable all the "Privileged Gateway Intents"
-- The "Token" will need to be reset then after "DiscordToken" that's in the Config.json
+*(Video/Screenshot not included)*
 
-- Video/Screen shot not ADDED
+### Step 3: Set Up OAuth2
+1. In the **OAuth2** tab:
+   - The **Client ID** goes into the `ApplicationClientID` field in your [Config.Json](https://github.com/zinx28/FortServer/blob/main/FortBackend/Resources/Config.json).
+   - The **Client Secret** goes into the `ApplicationSecret` field in the same file.
+2. To invite the bot:
+   - Scroll down to the **OAuth2 URL Generator** section.
+   - Check **bot** and **application.commands**.
+   - Under **Bot Permissions**, select **Administrator**.
+   - Copy and paste the generated link into your browser to invite the bot to your server.
 
-# Step 3
+*(Video/Screenshot not included)*
 
-- On the "OAuth2" Tab
-- The CLIENT ID is the "ApplicationClientID" that's in Config.Json
-- The CLIENT SECRET is the "ApplicationSecret" that's in Config.Json
+### Step 4: Configure Discord Server
+1. Enable [Developer Mode](https://discord.com/developers/docs/activities/building-an-activity#enable-developer-mode-in-your-client) in Discord to copy IDs.
+2. Right-click your Discord server and copy the **Server ID** (this goes into `ServerID` in your [Config.Json](https://github.com/zinx28/FortServer/blob/main/FortBackend/Resources/Config.json)).
+3. In your server settings, go to **Roles** and move the bot's role above the member roles (this is necessary for the bot to ban members).
+4. Create or identify an admin/moderator role, click the three dots, and copy the **Role ID**. Place this ID in the `RoleID` field in your `Config.json`.
 
-- To Invite the Bot to your discord server theres a "OAuth2 URL Generator" with this i would click on "bot" and "application.commands" after that "Bot Permissions" just click on "Administrator" copy the link and just paste it in your borwser
+*(Video/Screenshot not included)*
 
-- Video/Screen shot not ADDED
+---
 
-# Step 4
-- Enable [Developer Mode](https://discord.com/developers/docs/game-sdk/store) to copy ids <- it's very out of topic so just search up how (ill how in the future)
-- Right click your discord server then click discord server id (this is ServerID in Config.json)
-- In your discord server settings go in Roles and move the "discord bot" above the member roles (this will allow you to ban members with the who command) 
-- Also Create a admin/moderator role (or if you already have a role then your fine) click the 3 dots and copy role id.. Put this id in "RoleID" that's in config.json
+*Note: This guide does not cover setting up `ApplicationURI` or Discord webhooks. Only the `DetectedWebhookUrl` is required for bans.*
 
-- Video/Screen shot not ADDED
-
-# This doesn't include ApplicationURI, How to setup a discord webhook (from doing this readme only DetectedWebhookUrl is actually required for bans)
-
-
-
-
-
-
-
-
-
+---

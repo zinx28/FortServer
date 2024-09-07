@@ -73,7 +73,7 @@ namespace FortLauncher.Services.Utils.Launch.Helpers
                 nint CreateThreadResult = CreateRemoteThread(process, 0, 0U, ProcessAddress, dllAddress, 0U, 0);
                 if (CreateThreadResult == 0)
                 {
-                    throw new Exception("CreateTre");
+                    throw new Exception("CreateThread is 0");
                 }
 
                 bool CloseResult = CloseHandle(process);

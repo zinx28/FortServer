@@ -14,7 +14,11 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
       //  public static ContentJson ContentJsonResponse = new ContentJson();
         public static ContentConfig ContentConfig = new ContentConfig();
 
-      
+
+        //public static void Init()
+        //{
+
+        //}
         public static void Init()
         {
             var jsonData = System.IO.File.ReadAllText(PathConstants.Content);

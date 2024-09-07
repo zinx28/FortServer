@@ -1,0 +1,26 @@
+﻿html, body {
+    height: 100%;
+}
+
+body {
+    width: auto;
+    height: 100%;
+    background: #2D3237;
+}
+
+.nav-tabs .nav-link {
+    color: white;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.table {
+    background-color: transparent !important;
+}
+
+.modal-content {
+    background-color: #343a40;
+}

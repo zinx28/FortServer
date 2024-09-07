@@ -10,15 +10,11 @@
 @model FortBackend.src.App.Routes.ADMIN.DashboardContentController
 
 @{
-    string NewsData = JsonConvert.SerializeObject(NewsManager.ContentConfig);
     string DeserializeGameConfig = JsonConvert.SerializeObject(Saved.DeserializeGameConfig);
-    string IniManagerConfig = JsonConvert.SerializeObject(IniManager.IniConfigData);
 
     var INdexIg = -1;
     int counter2 = 0;
 
-    var TempData = NewsData;
-    var TempDataV2 = "";
     var Tab = -1;
 
     bool ForcedSeason = Saved.DeserializeGameConfig.ForceSeason;
@@ -90,11 +86,12 @@
                 <h1>Content Management</h1>
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="news-tab" data-bs-toggle="tab" data-bs-target="#news" type="button" role="tab" aria-controls="news" aria-selected="true">News Updates</button>
+                        <a class="nav-link" id="servers-tab" href="/admin/dashboard/content/news" role="tab" aria-controls="servers" aria-selected="false">
+                        News Updates
+                        </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="servers-tab" data-bs-toggle="tab" data-bs-target="#servers" type="button" role="tab" aria-controls="servers" aria-selected="false">Server Management</button>
+                        <button class="nav-link active" id="servers-tab" data-bs-toggle="tab" data-bs-target="#servers" type="button" role="tab" aria-controls="servers" aria-selected="false">Server Management</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="inimanagement-tab" data-bs-toggle="tab" data-bs-target="#inimanagement" type="button" role="tab" aria-controls="inimanagement" aria-selected="false">INI Management</button>
@@ -105,52 +102,7 @@
                 </ul>
                
                 <div class="tab-content mt-4">
-                    <div class="tab-pane fade show active" id="news" role="tabpanel" aria-labelledby="news-tab">
-
-                        <h2>News Updates</h2>
-
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Body</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>News</td>
-                                    <td>Edit Live News</td>
-                                    <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('news', -1)">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Emergency Nnotice</td>
-                                    <td>Edit Emergency Notice</td>
-                                    <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('emergencynotice', -1)">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Login Message</td>
-                                    <td>Edit Login Message</td>
-                                    <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('loginmessage', -1)">Edit</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Playlist Information</td>
-                                    <td>Edit Playlist Information</td>
-                                    <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalForEdit('playlistinformation', -1)">Edit</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                        <div class="tab-pane fade" id="servers" role="tabpanel" aria-labelledby="servers-tab">
+                    <div class="tab-pane fade show active" id="servers" role="tabpanel" aria-labelledby="servers-tab">
 
                             <h2>Server Management</h2>
 
@@ -174,59 +126,7 @@
                             </table>
 
                         </div>
-                          <div class="tab-pane fade" id="inimanagement" role="tabpanel" aria-labelledby="inimanagement-tab">
 
-                            <h2>INI Management</h2>
-
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                @foreach (var newsItem in JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData)
-                                {
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link @(newsItem.Name == JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData.First().Name ? "active" : "")" id="@($"{newsItem.Name}-tab")" data-bs-toggle="tab" data-bs-target="#@newsItem.Name" type="button" role="tab" aria-controls="@newsItem.Name" aria-selected="true">@newsItem.Name</button>
-                                    </li>
-                                }
-                            </ul>
-
-                            <div class="tab-content">
-                                @foreach (var newsItem in JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData)
-                                {
-                                    <div class="tab-pane fade @(newsItem.Name == JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData.First().Name ? "show active" : "")" id="@newsItem.Name" role="tabpanel" aria-labelledby="@($"{newsItem.Name}-tab")">
-                                        <h2>@newsItem.Name</h2>
-
-                                        <table class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th>Body</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach(var test in newsItem.Data)
-                                            {
-                                                <tr>
-                                                    <td>@test.Title</td>
-                                                    <td>N/A</td>
-                                                    <td>
-                                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalDataIniForEdit(@JsonConvert.SerializeObject(test.Data), '@newsItem.Name', '@test.Title')">Edit</button>
-                                                    </td>
-                                                </tr>
-                                            }
-                                            
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                }
-                            </div>
-
-                           
-
-                        </div>
-                        <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
-
-                            <h2>Shop Configuration</h2>
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -249,18 +149,7 @@
                                         Not Selected
                                     </button>
                                     <ul class="dropdown-menu" id="dropdownmenu" aria-labelledby="dropdownMenuButton">
-                                        @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.motds)
-                                        {
-                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">News @(counter2 + 1) (Motds)</a></li>
-                                            counter2++;
-                                        }
-
-                                        @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.messages)
-                                        {
-                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', @counter2)">News @(counter2 + 1)</a></li>
-                                            counter2++;
-                                        }
-
+                 
 
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
@@ -280,12 +169,7 @@
                                             counter2 = 0;
                                         }
 
-                                        @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).playlistinformation)
-                                        {
-                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('playlistinformation', @counter2)">@newsItem.playlist_name</a></li>
-                                            counter2++;
-                                        }
-
+                                  
 
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
@@ -347,11 +231,11 @@
                                       
                                     </div>
                                     <hr>
-                                    <label for="editBody" class="form-label">Body</label>
+                                    <label for="editBody" class="form-label">Season</label>
                                     <input type="number" min="0" pattern="^[0-9]" class="form-control" max="100" id="IntNumberOnly" name="title">
                                  </div>
 
-                                <p>* changing images from dashboard is unsupported *</p>
+                                
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -368,15 +252,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             var indexIg = @INdexIg;
-            var newsData = @Html.Raw(TempData);
             var BackendConfig = @Html.Raw(DeserializeGameConfig);
             var lastTab = "";
             var newsFiles = [[],[]];
             var IsPlaylist = false;
             var IsForcedSeason = false;
 
-            //var ForcedSeasonData = @ForcedSeason;
-            //var ForcedSeasonNumber = @SeasonForced;
 
             var TempINICache = "";
             var IndexBefore = -1;
@@ -406,11 +287,9 @@
                 IniUIManager.style.display = "";
                 document.getElementById('editInitText').value = "";
                 document.getElementById('editInitText').disabled = true;
-            //editInitText
-                //IniUIManager
+
 
                 var forcedseason_data = document.getElementById('forcedseason-data');
-               // var newsList = document.getElementById('newsList');
                 var newsList_playlist = document.getElementById('newsList-playlist');
 
                 forcedseason_data.style.display = "none";
@@ -442,8 +321,6 @@
                 addNewsItemLink.innerHTML = '<a class="dropdown-item" href="#not implemented">Add News Item</a>';
                 dropdownMenu.appendChild(divider);
                 dropdownMenu.appendChild(addNewsItemLink);
-        
- 
 
                 console.log(data);
             }
@@ -490,100 +367,9 @@
                 forcedseason_data.style.display = "none";
                 newsList_playlist.style.display = 'none';
 
-                if (type === 'news') {
-                    
-                    newsList.style.display = '';
-                   
-                   // ImageSelect.style.display = '';
-                    console.log("should show 1")
-                    if (index >= 0) {
-                        //if (indexIg != index) {
-                            // Add Data Before to be "CACHED";
-                            if (indexIg != -1) { // so it won't break the -1 value
-                                if (newsData.battleroyalenews.motds.length > indexIg) {
-                                    newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
-                                    newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
-                                } else {
-                                    newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].title = document.getElementById('editTitle').value;
-                                    newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].body = document.getElementById('editBody').value;
-                                }
-                               
-                                //if (ImageInputSelect && ImageInputSelect.files && ImageInputSelect.files.length > 0) {
-                                    //if (ImageInputSelect.files == null) {
-                                      //  if (newsFiles[indexIg] != null) {
-                                      //      newsFiles[indexIg] = [];
-                                      //  } else {
-                                       //     newsFiles.push([]);
-                                      ///  }
-                                   // } else {
-                                       // if (newsFiles[indexIg] != null) {
-                                        //    newsFiles[indexIg] = ImageInputSelect.files;
-                                        //} else {
-                                        //    newsFiles.push(ImageInputSelect.files);
-                                        //}
-                                   // }
-                                    //newsFiles.push(ImageInputSelect.files)
-                                    //console.log(ImageInputSelect.files);
+                console.log(BackendConfig);
 
-
-                                //}
-                            }
-                        //}
-                        indexIg = index;
-                        console.log(newsData.battleroyalenews.motds.length < indexIg);
-                        if ((newsData.battleroyalenews.motds.length - 1) >= indexIg) {
-                            selectedItem = newsData.battleroyalenews.motds[indexIg];
-                            document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1) + " (Motds)"
-                        } 
-                        // ik this looks terrible it works fine and we have to + one as the index isnt correct with legth
-                        else if (indexIg - (newsData.battleroyalenews.motds.length) >= 0) {
-                            selectedItem = newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)]
-                            document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1)
-                        }
-                       
-                        console.log(selectedItem)
-                    }
-                } else if (type === 'emergencynotice'){
-                    newsList.style.display = 'none';
-                    //ImageSelect.style.display = 'none';
-                   @(Tab = 2);
-                   // if (index >= 0){
-                        indexIg = index;
-                        selectedItem = newsData.emergencynotice[0];
-                        console.log(selectedItem)
-                   // }
-                }
-                else if (type === 'loginmessage') {
-                    newsList.style.display = 'none';
-                   @(Tab = 3); // not needed + won't be proper during runtime
-                    indexIg = index;
-                    selectedItem = newsData.loginmessage;
-                    console.log(selectedItem)
-                }
-                else if (type === "playlistinformation") {
-                    //newsList-playlist
-                    IsPlaylist = true;
-                    newsList.style.display = 'none';
-                    newsList_playlist.style.display = '';
-                  @(Tab = 4); // not needed + won't be proper during runtime
-                    if (indexIg != -1) {
-                        if (newsData.playlistinformation.length > indexIg) {
-                            newsData.playlistinformation[indexIg].display_name = document.getElementById('editTitle').value;
-                            newsData.playlistinformation[indexIg].description = document.getElementById('editBody').value;
-                        }
-                        
-                    }
-
-                    indexIg = index;
-
-                    if ((newsData.playlistinformation.length - 1) >= indexIg) {
-                        selectedItem = newsData.playlistinformation[indexIg];
-                        document.getElementById('dropdownMenuButton-playlist').textContent = "Playlist " + (index + 1)
-                    }
-                    selectedItem = newsData.playlistinformation[indexIg];
-                    console.log(selectedItem)
-                }
-                else if (type === "forcedseason") {
+                if (type === "forcedseason") {
                     IsForcedSeason = true;
                     forcedseason_data.style.display = '';
                     most_average_thingy.style.display = "none";
@@ -617,35 +403,7 @@
                    // document.getElementById('dropdownMenuButton').textContent = selectedItem.title
                     document.getElementById('editType').value = type;
                     document.getElementById('editIndex').value = index;
-                    if(!IsForcedSeason) {
-                        if (IsPlaylist){
-                            document.getElementById('editTitle').value = selectedItem.display_name;
-                            document.getElementById('editTitle').disabled = false;
-                            document.getElementById('editBody').value = selectedItem.description;
-                            document.getElementById('editBody').disabled = false;
-                        }else {
-                            document.getElementById('editTitle').value = selectedItem.title;
-                            document.getElementById('editTitle').disabled = false;
-                            document.getElementById('editBody').value = selectedItem.body;
-                            document.getElementById('editBody').disabled = false;
-                        }
-                    }
                     
-                  
-                   // console.log(newsFiles[index]);
-                    //if (newsFiles[index] == null || newsFiles[index].length === 0) {
-                    //    document.getElementById('imageInput').value = '';
-                   // }else {
-                   //    
-                    //    document.getElementById('imageInput').files = newsFiles[index];
-                   // }
-
-                    //document.getElementById('imageInput').disabled = false;
-                  
-                    // if (type == "news") {
-                    //     document.getElementById('imageInput').value = selectedItem.image;
-                    // }
-                 
                     $('#editModal').modal('show');
                 } else {
                     console.log("-1")
@@ -665,13 +423,7 @@
                     IniUIManager.style.display = "none";
                     document.getElementById('editInitText').value = "";
                     document.getElementById('editInitText').disabled = true;
-                    //dropdownmenu
-                    //document.getElementById('editBody').value = "";
-                   // document.getElementById('editBody').disabled = true;
-                   // ImageInputSelect.value = '';
-                    //ImageInputSelect.disabled = true;
-                   // UpdateDropdown(type);
-
+         
 
                     $('#editModal').modal('show');
                 }
@@ -682,7 +434,6 @@
                 indexIg = @INdexIg;
                 TempINICache = ""; // eh
                // newsFiles = [];
-                newsData = @Html.Raw(TempData);
             }
 
             function getAuthToken() {
@@ -702,48 +453,17 @@
 
                 // dw chat this is updating it
                 var tf = "gg";
-                if(lastTab == "news"){
-                    // fixes stuff ofc
-                    if (indexIg != -1) {
-                        if ((newsData.battleroyalenews.motds.length - 1) >= indexIg) {
-                            newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
-                            newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
-                        }
-                        else if (indexIg - (newsData.battleroyalenews.motds.length) >= 0) {
-                            newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].title = document.getElementById('editTitle').value;
-                            newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].body = document.getElementById('editBody').value;
-                        }
 
-                      
-                    }
-
-                } 
-                else if (lastTab == "playlistinformation") {
-                    if (indexIg != -1) {
-                        if ((newsData.playlistinformation.length - 1) >= indexIg) {
-                            newsData.playlistinformation[indexIg].title = document.getElementById('editTitle').value;
-                            newsData.playlistinformation[indexIg].body = document.getElementById('editBody').value;
-                        }
+           
+                if(lastTab == "forcedseason"){
+                    BackendConfig.ForceSeason = document.getElementById('dropdownMenuButton-forced').textContent == "True";
+                    var TempNum = parseInt(document.getElementById('IntNumberOnly').value);
+                    if (!isNaN(TempNum)) {
+                        console.log(TempNum);
+                        BackendConfig.Season = TempNum
                     }
                 }
-                else { //
-                    if (lastTab == "emergencynotice") {
-                        newsData.emergencynotice[0].title = document.getElementById('editTitle').value;
-                        newsData.emergencynotice[0].body = document.getElementById('editBody').value;
-                    } else if (lastTab == "loginmessage"){
-                        newsData.loginmessage.title = document.getElementById('editTitle').value;
-                        newsData.loginmessage.body = document.getElementById('editBody').value;
-                    }else if(lastTab == "forcedseason"){
-                        BackendConfig.ForceSeason = document.getElementById('dropdownMenuButton-forced').textContent == "True";
-                        var TempNum = parseInt(document.getElementById('IntNumberOnly').value);
-                        if (!isNaN(TempNum)) {
-                            console.log(TempNum);
-                            BackendConfig.Season = TempNum
-                        }
-                    } else if (lastTab == "IniChanges"){
-                        TempINICache[IndexBefore].Value = document.getElementById('editInitText').value
-                    }
-                }
+                
 
                 indexIg = -1;
 
@@ -756,7 +476,7 @@
                         'Authorization': getAuthToken()
                     },
                     data: JSON.stringify({
-                        data: newsData,
+                        data: [],
                         BackendConfig: BackendConfig,
                         IniChanges: { Title: TempIniName, Body: { Name: TempIniTitle, CachedData: TempINICache } }
                     }),

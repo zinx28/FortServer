@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <None Remove="Resources\CSS\BootStrap.css" />
+    <None Remove="Resources\CSS\content.css" />
     <None Remove="Resources\Image\test.png" />
     <None Remove="Resources\Image\Trans_Boykisser.png" />
     <None Remove="Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk" />
@@ -31,6 +32,9 @@
 
   <ItemGroup>
     <Content Include="Resources\CSS\BootStrap.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CSS\content.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Image\Trans_Boykisser.png">

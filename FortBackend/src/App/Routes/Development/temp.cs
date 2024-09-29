@@ -119,11 +119,11 @@ namespace FortBackend.src.App.Routes.Development
                     Console.WriteLine(!ResponseIGIDFK.Contains(":"));
                     Console.WriteLine(ResponseIGIDFK != "");
                     Console.WriteLine(
-                        ResponseIGIDFK != "" &&                                              
-                        !(ResponseIGIDFK.Contains(":") &&                                   
-                        (SpecialItems.Contains(ResponseIGIDFK) ||                            
-                            SpecialItems.Contains(ResponseIGIDFK.Split(":")[1]) ||             
-                            ResponseIGIDFK == ":"))                                            
+                        ResponseIGIDFK != "" &&
+                        !(ResponseIGIDFK.Contains(":") &&
+                        (SpecialItems.Contains(ResponseIGIDFK) ||
+                            SpecialItems.Contains(ResponseIGIDFK.Split(":")[1]) ||
+                            ResponseIGIDFK == ":"))
                     );
 
 
@@ -184,7 +184,7 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
-      
+
 
         //[HttpGet("/{a}/{s}/{idk}")]
         //public IActionResult GameRating(string a, string s, string idk)
@@ -266,6 +266,38 @@ namespace FortBackend.src.App.Routes.Development
             catch (Exception ex)
             {
                 Logger.Error(ex.Message, "CSS");
+            }
+
+            return NoContent();
+        }
+
+        [HttpGet("/js/{file}")]
+        public IActionResult FileJSResponse(string file)
+        {
+            try
+            {
+                Response.ContentType = "text/javascript";
+
+                if (!Regex.IsMatch(file, @"^[a-zA-Z0-9\-._]+$"))
+                {
+                    return BadRequest("Invalid image parameter");
+                }
+
+                string filePath = Path.Combine(PathConstants.BaseDir, "JS", file);
+
+                //Console.WriteLine(filePath);
+                if (System.IO.File.Exists(filePath))
+                {
+                    string cssContent = System.IO.File.ReadAllText(filePath);
+
+
+                    return Content(cssContent);
+                    // await context.Response.WriteAsync(cssContent);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "JS");
             }
 
             return NoContent();

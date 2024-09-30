@@ -67,7 +67,9 @@ namespace FortLauncher.Services.Utils.Launch
                 {
                     try
                     {
-                        if (float.Parse(FortniteDetect.Init(config.VersionID)) > 15)
+                        //Loggers.Log(config.buildPath);
+                       // Loggers.Log(FortniteDetect.Init(config.VersionID));
+                        if (float.Parse(FortniteDetect.Init(config.VersionID).Split('.')[0]) > 15)
                         {
                             MessageBox.Show("Attemping to launch.. mostly unsupported");
 
@@ -77,17 +79,21 @@ namespace FortLauncher.Services.Utils.Launch
                         }
                         else
                         {
+                            //Loggers.Log(config.buildPath);
                             PSBasics.Start(config.buildPath, "-obfuscationid=2oaCH8bqszvAC9LdV0CSZoTD5AxLCQ -EpicPortal -epicapp=Fortnite -epicenv=Prod -epiclocale=en-us -epicportal -noeac -nobe -fromfl=be -fltoken=h1cdhchd10150221h130eB56 -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiOWM1MDY1MTEwYzdhNGQ3MDk1ODYyZGE1ZWU4MTU5NjIiLCJnZW5lcmF0ZWQiOjE3MTM3MDUwODUsImNhbGRlcmFHdWlkIjoiZWIzYzM4YjctM2U4Yy00NDZiLWE4NTYtMjM5OTUzMTc3ZDRiIiwiYWNQcm92aWRlciI6IkJhdHRsRXllIiwibm90ZXMiOiIiLCJwcmUiOmZhbHNlLCJmYWxsYmFjayI6ZmFsc2V9.QD69Oonbv7SIcXhYHewzQvh4ymnESQ1LRFQh8_Ufvj8M9bwpl_AbY9wpVRX2lz0x-xslYS40Rf4L34GZJpb20A -skippatchcheck ", "unused", UserData.Token);
                             FakeAC.Start(config.buildPath, "FortniteClient-Win64-Shipping_EAC.exe", $" ");
                             FakeAC.Start(config.buildPath, "FortniteLauncher.exe", $"", true);
                         }
+
                         PSBasics._FortniteProcess.WaitForInputIdle();
                     }
                     catch (Exception ex)
                     {
+                        Loggers.Log(ex.Message);
                         System.Windows.MessageBox.Show(ex.Message);
                     }
                 });
+
                 MainNav.PathDownloader.Visibility = Visibility.Collapsed;
 
                 cancellationToken.ThrowIfCancellationRequested();

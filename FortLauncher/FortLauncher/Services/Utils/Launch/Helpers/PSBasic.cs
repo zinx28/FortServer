@@ -21,17 +21,19 @@ namespace FortLauncher.Services.Utils.Launch.Helpers
                 System.Windows.MessageBox.Show("Your Token Was Detected Wrong Try Restarting The Launcher!");
                 return;
             }
-            if (File.Exists(Path.Combine(PATH, "FortniteGame\\Binaries\\Win64\\", "FortniteClient-Win64-Shipping.exe")))
+            if (File.Exists(Path.Combine(PATH, "FortniteGame\\Binaries\\Win64", "FortniteClient-Win64-Shipping.exe")))
             {
                 _FortniteProcess = new Process()
                 {
                     StartInfo = new ProcessStartInfo()
                     {
                         Arguments = args + $"-AUTH_LOGIN={Email} -AUTH_PASSWORD={Password} -AUTH_TYPE=exchangecode ",
-                        FileName = Path.Combine(PATH, "FortniteGame\\Binaries\\Win64\\", "FortniteClient-Win64-Shipping.exe")
+                        FileName = Path.Combine(PATH, "FortniteGame\\Binaries\\Win64", "FortniteClient-Win64-Shipping.exe")
                     },
                     EnableRaisingEvents = true
                 };
+
+                Loggers.Log("STARTED PSBASIC");
 
                 _FortniteProcess.Exited += new EventHandler(OnFortniteExit);
                 _FortniteProcess.Start();

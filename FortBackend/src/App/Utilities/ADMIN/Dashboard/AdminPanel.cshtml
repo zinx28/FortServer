@@ -11,36 +11,12 @@
 @model FortBackend.src.App.Routes.ADMIN.DashboardContentController
 
 @{
-    //var NewsData = new ContentConfig();
     string AdminData = JsonConvert.SerializeObject(GrabAdminData.AdminUsers);
-   // string AdminUsers = JsonConvert.SerializeObject()
-    // if(NewsData == null)
-    // {
-    //     NewsManager.Init();
-    //     NewsData = NewsManager.ContentConfig;
-    //     Console.WriteLine("WHY");
-    // }
+
     var INdexIg = -1;
     int counter2 = 0;
 
     var TempData = AdminData;
-
-
-
-    // bool UpdateContent()
-    // {
-    //     Console.WriteLine("WHY IS THIS BEING CLALED");
-    //     if (!string.IsNullOrEmpty(TempDataV2))
-    //     {
-    //         NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(TempDataV2);
-    //         TempDataV2 = "";
-    //         return true;
-    //     }
-
-
-    //     return false;
-    // }
-
 }
 <!doctype html>
 <html lang="en">
@@ -49,37 +25,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <link href="/css/BootStrap.css" rel="stylesheet" crossorigin="anonymous">
-    <style>
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            width: auto;
-            height: 100%;
-            background: #2D3237;
-        }
-
-        .nav-tabs .nav-link {
-            color: white;
-        }
-
-            .nav-tabs .nav-link.active {
-                background-color: #007bff;
-                border-color: #007bff;
-            }
-
-        .table {
-            background-color: transparent !important;
-        }
-
-        .modal-content {
-            background-color: #343a40;
-        }
-    </style>
+    <link href="/css/content.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
 </head>
 <body>
     <div class="d-flex" style="height: 100%;">
@@ -162,7 +109,7 @@
                             <tbody>
                                 <tr>
                                     <td>Admin</td>
-                                    <td>The Admin Account Is Forced (you cannot edit, delete this)</td>
+                                    <td>The Admin Account Is Forced (you cannot edit or delete this)</td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" disabled>Edit</button>
                                     </td>
@@ -288,7 +235,7 @@
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/JS/bootstrap.bundle.min.js"></script>
 
         @if ((int)ViewData["roleId"] > AdminDashboardRoles.Moderator)
         {

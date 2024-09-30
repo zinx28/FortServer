@@ -96,7 +96,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                         {
                             //if(Password == OtherPassword)
                             //{
-                            string pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$";
+                            string pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&'^\-_\#]{7,}$";
 
 
                             Regex regex = new Regex(pattern);

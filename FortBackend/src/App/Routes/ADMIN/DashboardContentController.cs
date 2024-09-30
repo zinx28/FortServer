@@ -37,6 +37,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                         return Redirect("/admin/setup");
                     }
 
+                    return Redirect("/admin/dashboard/content/news");
                     //Console.WriteLine("Valid User!");
                     ViewData["Username"] = adminData.AdminUserName;
                     return View("~/src/App/Utilities/ADMIN/Dashboard/Content.cshtml");
@@ -46,7 +47,51 @@ namespace FortBackend.src.App.Routes.ADMIN
             return Redirect("/admin/login");
         }
 
-      
+        [HttpGet("news")]
+        public IActionResult NewsPage()
+        {
+            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+            {
+                AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                if (adminData != null)
+                {
+                    if (adminData.bIsSetup)
+                    {
+                        return Redirect("/admin/setup");
+                    }
+
+                    ViewData["Username"] = adminData.AdminUserName;
+                    return View("~/src/App/Utilities/ADMIN/Dashboard/Content/NewsP.cshtml");
+                }
+            }
+
+            return Redirect("/admin/login");
+
+        }
+
+        [HttpGet("server")]
+        public IActionResult ServerPage()
+        {
+            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+            {
+                AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                if (adminData != null)
+                {
+                    if (adminData.bIsSetup)
+                    {
+                        return Redirect("/admin/setup");
+                    }
+
+                    ViewData["Username"] = adminData.AdminUserName;
+                    return View("~/src/App/Utilities/ADMIN/Dashboard/Content/ServerP.cshtml");
+                }
+            }
+
+            return Redirect("/admin/login");
+
+        }
+
+
 
         [HttpPost("update")]
         public IActionResult UpdateTempDataV2([FromBody] JsonElement tempData)
@@ -156,8 +201,17 @@ namespace FortBackend.src.App.Routes.ADMIN
                             //Console.WriteLine(dataValue);
                             if (!string.IsNullOrEmpty(dataValue))
                             {
-                                NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
-                                NewsManager.Update();
+                                if (dataElement.ValueKind == JsonValueKind.Array && dataElement.GetArrayLength() == 0)
+                                {
+                                    Console.WriteLine("Array Empty!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine(dataValue);
+                                    NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
+                                    NewsManager.Update();
+                                }
+                             
                                
                             }
                         }

@@ -18,6 +18,7 @@ using FortBackend.src.App.Utilities.ADMIN;
 using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary;
+using FortBackend.src.App.Utilities.Constants;
 namespace FortBackend.src.App
 {
     public class Service
@@ -44,9 +45,8 @@ namespace FortBackend.src.App
             startup.ConfigureServices(builder.Services);
 
 
-
-
-#if HTTPS
+            if (Saved.DeserializeConfig.HTTPS)
+            {
                 Saved.BackendCachedData.DefaultProtocol = "https://";
                 builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
@@ -54,7 +54,8 @@ namespace FortBackend.src.App
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.BackendPort, listenOptions =>
                     {
                         var certPath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "Certificates", "FortBackend.pfx");
-                        if(!File.Exists(certPath)) {
+                        if (!File.Exists(certPath))
+                        {
                             Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", "CERTIFICATES");
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
@@ -63,15 +64,17 @@ namespace FortBackend.src.App
                         listenOptions.UseHttps(certificate);
                     });
                 });
-#else
+            }
+            else
+            {
                 Saved.BackendCachedData.DefaultProtocol = "http://";
                 builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.BackendPort}");
-            #endif
+            }
 
 
             var app = builder.Build();
 
-           
+
 
             // Fix ips not showing
             //app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -80,9 +83,10 @@ namespace FortBackend.src.App
             //    ForwardedHeaders.XForwardedProto
             //});
 
-#if HTTPS
+            if (Saved.DeserializeConfig.HTTPS)
+            {
                 app.UseHttpsRedirection();
-#endif
+            }
 
             app.UseRouting();
 

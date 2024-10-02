@@ -15,25 +15,15 @@
 - Ban Assist!
 - You may use added/unfinished config stuff [FortLibrary/ConfigHelpers/FortConfig.cs](https://github.com/zinx28/FortBackend/blob/main/FortLibrary/ConfigHelpers/FortConfig.cs)
 
+## Setup FortBackend
+- Requires VisualStudio To Build
+- [Info Here](https://github.com/zinx28/FortServer/blob/main/Setup.md)
+
 ## Discord Bot
 - Make sure you set up the bot in the configs, and the /test command works
 - Discord Bot Disabled On "DEVELOPMENT"
 - ActivityType max is 5 (check in config cs file!! for more details)
-- More info to setup [here](https://github.com/zinx28/FortBackend/blob/main/DiscordBotSetup.md)
-
-### Commands
-- /test
-- /who (this command only works if the user has a role, let's say moderator.. ig)
-- /register
-- /change_password
-
-## HTTP
-- Just build on Release
-
-## HTTPS
-- First, go to [FortBackend/resources/certificates](https://github.com/zinx28/FortBackend/tree/main/FortBackend/Resources/Certificates)
-- Remove .temp from the file then replace it with your .pfx (If you have cert and the key just look up how to make it a pfx)
-- Before you run the project, make sure you change the build type from Release to HTTPS
+- More info to setup and commands [here](https://github.com/zinx28/FortBackend/blob/main/DiscordBotSetup.md)
 
 ## Added/Not Added 
 - MCP [!]

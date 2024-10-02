@@ -29,7 +29,7 @@ Once you have installed all the necessary components:
 
 1. Double-click or run the `build.bat` file.
 
-This will create a project for you. And you're all set!
+This will build the project for you. And you're all set!
 
 ## More Info
 ### Launch in Https (if https causes issues then create a issue)

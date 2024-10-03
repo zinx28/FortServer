@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using FortLibrary.MongoDB.Module;
+using Newtonsoft.Json.Linq;
 
 namespace FortLibrary.EpicResponses.Profile.Query.Attributes
 {
@@ -16,7 +17,8 @@ namespace FortLibrary.EpicResponses.Profile.Query.Attributes
         public string current_mtx_platform { get; set; } = string.Empty;
         public List<Dictionary<string, object>> weekly_purchases { get; set; } = new List<Dictionary<string, object>>();
         public List<Dictionary<string, object>> daily_purchases { get; set; } = new List<Dictionary<string, object>>();
-        public object ban_history { get; set; } = new object();
+        public List<BanHistory> ban_history { get; set; } = new List<BanHistory>(Array.Empty<BanHistory>());
+        public BanStatus ban_status { get; set; } = new BanStatus();
         public object in_app_purchases { get; set; } = new object();
         public List<Dictionary<string, object>> permissions { get; set; } = new List<Dictionary<string, object>>();
         public string undo_timeout { get; set; } = string.Empty;

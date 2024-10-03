@@ -41,3 +41,9 @@
 *Note: This guide does not cover setting up `ApplicationURI` or Discord webhooks. Only the `DetectedWebhookUrl` is required for bans.*
 
 ---
+
+## Bot Commands
+- /test
+- /who (this command only works if the user has a role, let's say moderator.. ig)
+- /register
+- /change_password

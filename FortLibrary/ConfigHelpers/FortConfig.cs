@@ -59,6 +59,9 @@ namespace FortLibrary.ConfigHelpers
 
         // - //
 
+        public bool HTTPS { get; set; } = false;
+
+        // - //
 
         public string DiscordBotMessage { get; set; } = "FortBackend";
         public int ActivityType { get; set; } = 3; // This is the activity types

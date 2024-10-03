@@ -112,13 +112,13 @@ namespace FortLibrary.MongoDB.Module
         [BsonIgnoreIfNull]
         public List<SeasonClass> Seasons { get; set; } = new List<SeasonClass>();
 
-        //[BsonElement("ban_status")]
-        //[BsonIgnoreIfNull]
-        //public BanStatus BanStatus { get; set; } = new BanStatus();
+        [BsonElement("ban_status")]
+        [BsonIgnoreIfNull]
+        public BanStatus ban_status { get; set; }= new BanStatus();
 
-       // [BsonElement("ban_history")]
-       // [BsonIgnoreIfNull]
-       // public BanHistory BanHistory { get; set; } = new BanHistory();
+        // [BsonElement("ban_history")]
+        // [BsonIgnoreIfNull]
+        // public BanHistory BanHistory { get; set; } = new BanHistory();
 
         [BsonElement("current_mtx_platform")]
         public string current_mtx_platform { get; set; } = "EpicPC";
@@ -137,6 +137,9 @@ namespace FortLibrary.MongoDB.Module
 
         [BsonElement("daily_purchases")]
         public List<Dictionary<string, object>> daily_purchases { get; set; } = new List<Dictionary<string, object>>();
+
+        [BsonElement("ban_history")]
+        public List<BanHistory> ban_history { get; set; } = new List<BanHistory>(Array.Empty<BanHistory>());
 
         [BsonElement("allowed_to_send_gifts")]
         public bool allowed_to_send_gifts { get; set; } = true;
@@ -195,28 +198,36 @@ namespace FortLibrary.MongoDB.Module
     public class BanStatus
     {
         [BsonElement("bRequiresUserAck")]
-        public bool RequiresUserAck { get; set; }
+        [JsonProperty("bRequiresUserAck")]
+        public bool bRequiresUserAck { get; set; } = false;
 
         [BsonElement("banReasons")]
-        public List<string> BanReasons { get; set; } = new List<string>();
+        [JsonProperty("banReasons")]
+        public List<string> banReasons { get; set; } = new List<string>();
 
         [BsonElement("bBanHasStarted")]
-        public bool BanHasStarted { get; set; }
+        [JsonProperty("bBanHasStarted")]
+        public bool bBanHasStarted { get; set; } = false;
 
         [BsonElement("banStartTimeUtc")]
-        public DateTime BanStartTime { get; set; }
+        [JsonProperty("banStartTimeUtc")]
+        public DateTime banStartTimeUtc { get; set; }
 
         [BsonElement("banDurationDays")]
-        public double BanDurationDays { get; set; }
+        [JsonProperty("banDurationDays")]
+        public double banDurationDays { get; set; }
 
         [BsonElement("exploitProgramName")]
-        public string ExploitProgramName { get; set; } = "NotProper";
+        [JsonProperty("exploitProgramName")]
+        public string exploitProgramName { get; set; } = "None";
 
         [BsonElement("additionalInfo")]
-        public string AdditionalInfo { get; set; } = "NotProper";
+        [JsonProperty("additionalInfo")]
+        public string additionalInfo { get; set; } = "";
 
         [BsonElement("competitiveBanReason")]
-        public string CompetitiveBanReason { get; set; } = "NotProper";
+        [JsonProperty("competitiveBanReason")]
+        public string competitiveBanReason { get; set; } = "None";
     };
     public class DailyQuests
     {

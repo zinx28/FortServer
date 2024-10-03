@@ -7,6 +7,7 @@ using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Query;
 using FortLibrary.EpicResponses.Profile.Query.Attributes;
 using FortLibrary;
+using FortLibrary.MongoDB.Module;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 {
@@ -18,47 +19,67 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
             {
                 bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
-                //if (!FoundSeasonDataInProfile)
-                //{
-                //    string seasonJson = JsonConvert.SerializeObject(new SeasonClass
-                //    {
-                //        SeasonNumber = Season.Season,
-                //        BookLevel = 1,
-                //        BookXP = 0,
-                //        BookPurchased = false,
-                //        Quests = new List<Dictionary<string, object>>(),
-                //        BattleStars = 0,
-                //        DailyQuests = new DailyQuests
-                //        {
-                //            Interval = "0001-01-01T00:00:00.000Z",
-                //            Rerolls = 1
-                //        },
-                //        arena = new Arena
-                //        {
-                //            tokens = new string[] {
-                //                $"ARENA_S{Season.Season}_Division1"
-                //            }
-                //        }
-                //    });
-
-                //    await Handlers.PushOne<Account>("accountId", AccountId, new Dictionary<string, object>
-                //    {
-                //        {
-                //            "commoncore.Season", BsonDocument.Parse(seasonJson)
-                //        }
-                //    });
-                //}
-
-                //AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
-
-                //if (AccountDataParsed == null)
-                //{
-                //    return new Mcp();
-                //}
-
-
-                Mcp CommonCoreClass = new Mcp()
+                if(profileCacheEntry.AccountData.commoncore.ban_status.banDurationDays == 0)
                 {
+                    profileCacheEntry.AccountData.commoncore.ban_status.bRequiresUserAck = false;
+                    profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted = false;
+                }
+
+                if (profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted)
+                {
+                    DateTime banStartTime = profileCacheEntry.AccountData.commoncore.ban_status.banStartTimeUtc;
+                    double banDurationDays = profileCacheEntry.AccountData.commoncore.ban_status.banDurationDays;
+
+                    DateTime banEndTime = banStartTime.AddDays(banDurationDays);
+                    DateTime currentUtcTime = DateTime.UtcNow;
+
+                    if (currentUtcTime >= banEndTime)
+                    {
+                        profileCacheEntry.AccountData.commoncore.ban_status.bRequiresUserAck = false;
+                        profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted = false;
+                    }
+                }
+                    //if (!FoundSeasonDataInProfile)
+                    //{
+                    //    string seasonJson = JsonConvert.SerializeObject(new SeasonClass
+                    //    {
+                    //        SeasonNumber = Season.Season,
+                    //        BookLevel = 1,
+                    //        BookXP = 0,
+                    //        BookPurchased = false,
+                    //        Quests = new List<Dictionary<string, object>>(),
+                    //        BattleStars = 0,
+                    //        DailyQuests = new DailyQuests
+                    //        {
+                    //            Interval = "0001-01-01T00:00:00.000Z",
+                    //            Rerolls = 1
+                    //        },
+                    //        arena = new Arena
+                    //        {
+                    //            tokens = new string[] {
+                    //                $"ARENA_S{Season.Season}_Division1"
+                    //            }
+                    //        }
+                    //    });
+
+                    //    await Handlers.PushOne<Account>("accountId", AccountId, new Dictionary<string, object>
+                    //    {
+                    //        {
+                    //            "commoncore.Season", BsonDocument.Parse(seasonJson)
+                    //        }
+                    //    });
+                    //}
+
+                    //AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(await Handlers.FindOne<Account>("accountId", AccountId))[0];
+
+                    //if (AccountDataParsed == null)
+                    //{
+                    //    return new Mcp();
+                    //}
+
+
+                    Mcp CommonCoreClass = new Mcp()
+                    {
                     profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
                     profileId = ProfileId,
                     profileChangesBaseRevision = profileCacheEntry.AccountData.commoncore.RVN,
@@ -94,7 +115,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         current_mtx_platform = profileCacheEntry.AccountData.commoncore.current_mtx_platform,
                                         weekly_purchases = profileCacheEntry.AccountData.commoncore.weekly_purchases,
                                         daily_purchases = profileCacheEntry.AccountData.commoncore.daily_purchases,
-                                        ban_history = new object[0],
+                                        ban_history = profileCacheEntry.AccountData.commoncore.ban_history,
+                                        ban_status = profileCacheEntry.AccountData.commoncore.ban_status,
                                         in_app_purchases = new object[0],
                                         permissions = new List<Dictionary<string, object>>(),
                                         undo_timeout = "min",
@@ -138,7 +160,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         ProfileChange.Profile.items.Add(profileChange.Key, profileChange.Value);
                     }
                 }
-
+                
                 return CommonCoreClass;
             }
             catch (Exception ex)

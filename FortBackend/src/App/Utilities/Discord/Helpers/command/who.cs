@@ -140,7 +140,6 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             var modalBuilder = new ModalBuilder()
                             .WithTitle("Reason")
                             .WithCustomId("reasontotempban")
-                           // .AddTextInput("Reason Of Ban", "reasontotempban", placeholder: "Reason Of Ban")
                             .AddTextInput("How long (days)", "reasontotempbanDays", TextInputStyle.Short, "Enter how many days", minLength: 1, maxLength: 3);
                             await interaction.RespondWithModalAsync(modalBuilder.Build());
 
@@ -283,98 +282,95 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             {
                                 InProgess = true;
                                 List<SocketMessageComponentData> components = TempBanComponent.Data.Components.ToList();
-                                if (components.First(e => e.CustomId == "reasontotempban").Value != null && !Banned)
+                                if (components.First(e => e.CustomId == "reasontotempbanDays").Value != null && !Banned)
                                 {
                                     Banned = true;
+                                  
+                                    float Days;
+                                    if (float.TryParse(components.First(e => e.CustomId == "reasontotempbanDays").Value, out Days)){
+                                        ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(RespondBack.DiscordId);
 
-                                    if (components.First(e => e.CustomId == "reasontotempbanDays").Value != null)
-                                    {
-                                        float Days;
-                                        if (float.TryParse(components.First(e => e.CustomId == "reasontotempbanDays").Value, out Days)){
-                                            ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(RespondBack.DiscordId);
-
-                                            if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                                        {
+                                            if (profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted)
                                             {
-                                                if (profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted)
-                                                {
-                                                    //profileCacheEntry.AccountData.commoncore.ban_history.Add(new BanHistory()
-                                                    //{
-                                                    //    BanCount = 1
-                                                    //});
-                                                }
-
-
-                                                profileCacheEntry.AccountData.commoncore.ban_status = new BanStatus()
-                                                {
-                                                    bRequiresUserAck = true,
-                                                    banReasons = new List<string>() { "Exploiting" },
-                                                    bBanHasStarted = true,
-                                                    banStartTimeUtc = DateTime.UtcNow,
-                                                    banDurationDays = Days,
-                                                    exploitProgramName = "Exploiting",
-                                                    additionalInfo = "",
-                                                    competitiveBanReason = "Exploiting"
-                                                };
-
-
-                                                profileCacheEntry.AccountData.commoncore.RVN += 1;
-                                                profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
-
-                                                Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
-
-                                                if (Client != null)
-                                                {
-                                                    string xmlMessage;
-                                                    byte[] buffer;
-                                                    WebSocket webSocket = Client.Game_Client;
-
-                                                    if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                                    {
-                                                        XNamespace clientNs = "jabber:client";
-
-                                                        var message = new XElement(clientNs + "message",
-                                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                            new XAttribute("to", profileCacheEntry.AccountId),
-                                                            new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                                            {
-                                                                payload = new { },
-                                                                type = "com.epicgames.ban_status.received",
-                                                                timestamp = DateTime.UtcNow.ToString("o")
-                                                            }))
-                                                        );
-
-                                                        xmlMessage = message.ToString();
-                                                        buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                                        Console.WriteLine(xmlMessage);
-
-                                                        await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                                    }
-
-                                                }
+                                                //profileCacheEntry.AccountData.commoncore.ban_history.Add(new BanHistory()
+                                                //{
+                                                //    BanCount = 1
+                                                //});
                                             }
 
-                                            //// do this last
-                                            //IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
-                                            //StoreInfo storeinfo = new StoreInfo
-                                            //{
-                                            //    UserIds = new string[] { RespondBack.AccountId },
-                                            //    UserIps = RespondBack.UserIps,
-                                            //    InitialBanReason = components.First(e => e.CustomId == "reasontoban").Value
-                                            //};
-                                            //await StoreInfocollection.InsertOneAsync(storeinfo);
 
-                                            await TempBanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
+                                            profileCacheEntry.AccountData.commoncore.ban_status = new BanStatus()
                                             {
-                                                id = RespondBack.DiscordId,
-                                                username = RespondBack.Username
-                                            }, components.First(e => e.CustomId == "reasontotempban").Value, $"<@{command.User.Id}>");
+                                                bRequiresUserAck = true,
+                                                banReasons = new List<string>() { "Exploiting" },
+                                                bBanHasStarted = true,
+                                                banStartTimeUtc = DateTime.UtcNow,
+                                                banDurationDays = Days,
+                                                exploitProgramName = "Exploiting",
+                                                additionalInfo = "",
+                                                competitiveBanReason = "Exploiting"
+                                            };
 
-                                            await interaction.RespondAsync($"Banned :)", ephemeral: true);
+
+                                            profileCacheEntry.AccountData.commoncore.RVN += 1;
+                                            profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+
+                                            Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+
+                                            if (Client != null)
+                                            {
+                                                string xmlMessage;
+                                                byte[] buffer;
+                                                WebSocket webSocket = Client.Game_Client;
+
+                                                if (webSocket != null && webSocket.State == WebSocketState.Open)
+                                                {
+                                                    XNamespace clientNs = "jabber:client";
+
+                                                    var message = new XElement(clientNs + "message",
+                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                        new XAttribute("to", profileCacheEntry.AccountId),
+                                                        new XElement(clientNs + "body", JsonConvert.SerializeObject(new
+                                                        {
+                                                            payload = new { },
+                                                            type = "com.epicgames.ban_status.received",
+                                                            timestamp = DateTime.UtcNow.ToString("o")
+                                                        }))
+                                                    );
+
+                                                    xmlMessage = message.ToString();
+                                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
+
+                                                  //  Console.WriteLine(xmlMessage);
+
+                                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                                }
+
+                                            }
                                         }
-                                     
+
+                                        //// do this last
+                                        //IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database!.GetCollection<StoreInfo>("StoreInfo");
+                                        //StoreInfo storeinfo = new StoreInfo
+                                        //{
+                                        //    UserIds = new string[] { RespondBack.AccountId },
+                                        //    UserIps = RespondBack.UserIps,
+                                        //    InitialBanReason = components.First(e => e.CustomId == "reasontoban").Value
+                                        //};
+                                        //await StoreInfocollection.InsertOneAsync(storeinfo);
+
+                                
+
+                                        await TempBanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
+                                        {
+                                            id = RespondBack.DiscordId,
+                                            username = RespondBack.Username
+                                        }, components.First(e => e.CustomId == "reasontotempbanDays").Value, $"<@{command.User.Id}>");
+
+                                        await interaction.RespondAsync($"Temp Banned For {Days} Days", ephemeral: true);
                                     }
-                                 
                                 }
                             }
                         }

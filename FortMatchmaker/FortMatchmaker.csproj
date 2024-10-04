@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Resources\Config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FortLibrary\FortLibrary.csproj" />
   </ItemGroup>
   

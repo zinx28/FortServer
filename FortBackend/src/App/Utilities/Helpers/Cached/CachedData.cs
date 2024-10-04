@@ -5,6 +5,7 @@ using FortBackend.src.App.Utilities.Saved;
 using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
+using FortLibrary.Encoders;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -113,6 +114,26 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 Logger.Log("Loaded Config", "FortGameConfig");
             }
 
+            // -- CHECKS -- //
+
+            try
+            {
+                Logger.Log("Testing JTW KEY", "CHECKING");
+                JWT.GenerateRandomJwtToken(24, DeserializeConfig.JWTKEY);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("IDX10653"))  // Checking for specific error message content
+                {
+                    Logger.Error("The JWT KEY is too small. Please ensure the key size is at least 128 bits.", "CHECKING");
+                }else
+                {
+                    Logger.Error(ex.Message, "CHECKING");
+                }
+            }
+               
+
+            // -- //
 
             string FullLockerJson = File.ReadAllText(FullLockerPath);
             if (string.IsNullOrEmpty(FullLockerJson))
@@ -208,6 +229,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             Saved.Saved.DeserializeConfig = DeserializeConfig;
             Saved.Saved.DeserializeGameConfig = DeserializeGameConfig;
+
         }
     }
 }

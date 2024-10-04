@@ -18,7 +18,7 @@ namespace FortMatchmaker.src.App.Utilities.MongoDB
             Logger.Log("Initializing MongoDB", "MongoDB");
             try
             {
-                FortConfig DeserializeConfig = Saved.DeserializeConfig;
+                FortConfigMM DeserializeConfig = Saved.DeserializeConfig;
                 string connectionString = DeserializeConfig.MongoDBConnectionString;
                 string connectionName = DeserializeConfig.MongoDBConnectionName;
 

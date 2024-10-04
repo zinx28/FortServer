@@ -6,7 +6,7 @@ namespace FortMatchmaker.src.App.Utilities
 {
     public class Saved
     {
-        public static FortConfig DeserializeConfig = new FortConfig();
+        public static FortConfigMM DeserializeConfig = new FortConfigMM();
         public static CachedDataClass BackendCachedData = new CachedDataClass();
     }
 

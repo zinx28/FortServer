@@ -4,8 +4,11 @@ using FortMatchmaker.src.App.Utilities;
 using FortMatchmaker.src.App.Utilities.Classes;
 using FortMatchmaker.src.App.Utilities.Constants;
 using FortMatchmaker.src.App.Utilities.MongoDB;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Newtonsoft.Json;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace FortMatchmaker.src.App
 {
@@ -24,6 +27,7 @@ namespace FortMatchmaker.src.App
 
             Logger.Log("MARVELCO MATCHMAKER IS LOADING (marcellowmellow)");
             Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
+            Logger.Error($"Matchmaker Is Unfinished and currently in a non working state");
 
             var builder = WebApplication.CreateBuilder(args);
             var startup = new Startup(builder.Configuration);
@@ -32,26 +36,27 @@ namespace FortMatchmaker.src.App
             
             if (ReadConfig == null)
             {
-                Logger.Error("Couldn't find config (config.json)", "FortConfig");
+                Logger.Error("Couldn't find config (config.json)", "FortConfigMM");
                 throw new Exception($"Couldn't find config\n{Path.Combine(PathConstants.BaseDir, "config.json")}");
             }
 
-            Saved.DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(ReadConfig)!;
+            Saved.DeserializeConfig = JsonConvert.DeserializeObject<FortConfigMM>(ReadConfig)!;
             
             if (Saved.DeserializeConfig == null)
             {
-                Logger.Error("Couldn't deserialize config", "FortConfig");
+                Logger.Error("Couldn't deserialize config", "FortConfigMM");
                 throw new Exception("Couldn't deserialize config");
             }
             else { 
-                Logger.Log("Loaded Config", "FortConfig");
+                Logger.Log("Loaded Config", "FortConfigMM");
             }
 
 
 
             startup.ConfigureServices(builder.Services);
 
-#if HTTPS
+            if (Saved.DeserializeConfig.HTTPS)
+            {
                 Saved.BackendCachedData.DefaultProtocol = "https://";
                 builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.MatchmakerPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
@@ -59,8 +64,9 @@ namespace FortMatchmaker.src.App
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.MatchmakerPort, listenOptions =>
                     {
                         var certPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx");
-                        if(!File.Exists(certPath)) {
-                            Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", CERTIFICATES);
+                        if (!File.Exists(certPath))
+                        {
+                            Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", "CERTIFICATES");
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
                         listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
@@ -68,18 +74,20 @@ namespace FortMatchmaker.src.App
                         listenOptions.UseHttps(certificate);
                     });
                 });
-#else
-            Saved.BackendCachedData.DefaultProtocol = "http://";
-            builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.MatchmakerPort}");
-            #endif
+            }
+            else
+            {
+                Saved.BackendCachedData.DefaultProtocol = "http://";
+                builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.MatchmakerPort}");
+            }
+
 
 
             var app = builder.Build();
 
 
-           #if HTTPS
+            if (Saved.DeserializeConfig.HTTPS)
                 app.UseHttpsRedirection();
-            #endif
 
             app.UseWebSockets();
 

@@ -20,7 +20,7 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
 {
     public class TempBanAndWebHooks
     {
-        public static async Task Init(FortConfig DeserializeConfig, UserInfo userinfo, string Message = "attemping to bypass ban.", string BodyMessage = "Auto Banned", string HowLong = "Exploiting")
+        public static async Task Init(FortConfig DeserializeConfig, UserInfo userinfo, string HowLong = "Idk", string BodyMessage = "Auto Banned", string Message = "Exploiting")
         {
             try
             {
@@ -31,7 +31,9 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                     Logger.Error($"Webhook is null", "BanAndWebhook");
                     return;
                 }
-                          
+
+
+              
 
                 var embed2 = new
                 {
@@ -42,11 +44,12 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                         new { name = "Display Name", value = userinfo.username ?? "Couldn't find username?", inline = false },
                         new { name = "User Id", value = userinfo.id.ToString(), inline = false },
                         new { name = "Reason", value = Message, inline = false },
-                        new { name = "How Long", value = HowLong, inline = false},
+                        new { name = "How Long", value = $"{HowLong} days", inline = false},
                         new { name = "Staff", value = BodyMessage, inline = false }
                     },
                     color = 0x00FFFF
                 };
+
 
                 string jsonPayload2 = JsonConvert.SerializeObject(new { embeds = new[] { embed2 } });
 

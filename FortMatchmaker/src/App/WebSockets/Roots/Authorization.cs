@@ -59,9 +59,12 @@ namespace FortMatchmaker.src.App.WebSockets.Roots
                                                     {
                                                         // Valid Account IG?
 
-                                                        if (!UserDataParsed.banned)
+                                                        if (!UserDataParsed.banned && !UserDataParsed.temp_banned)
                                                         {
                                                             return matchmakerTicket;
+                                                        }else
+                                                        {
+                                                            Logger.Error($"{UserDataParsed.Username} is banned/temp");
                                                         }
                                                     }
                                                 }

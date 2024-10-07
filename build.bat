@@ -29,5 +29,15 @@ if %ERRORLEVEL% neq 0 (
     exit /b
 )
 
+
+echo Publishing FortLauncher to "build/FortLauncher" folder...
+dotnet publish "FortLauncher/FortLauncher/FortLauncher.csproj" --configuration Release --runtime win-x64 --output "%rootOutputDir%/FortLauncher" --self-contained -p:PublishSingleFile=true
+
+if %ERRORLEVEL% neq 0 (
+    echo Publish failed for FortLauncher.
+    pause
+    exit /b
+)
+
 echo All projects published successfully to the "build" folder!
 pause

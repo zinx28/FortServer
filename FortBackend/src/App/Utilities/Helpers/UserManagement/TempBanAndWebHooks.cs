@@ -32,9 +32,6 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                     return;
                 }
 
-
-              
-
                 var embed2 = new
                 {
                     title = "User Temp Banned",

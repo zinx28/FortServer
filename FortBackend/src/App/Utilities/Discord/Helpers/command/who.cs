@@ -300,6 +300,13 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 //});
                                             }
 
+                                            profileCacheEntry.UserData.temp_banned = true;
+
+                                            await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
+                                            {
+                                                { "temp_banned", true }
+                                            });
+
 
                                             profileCacheEntry.AccountData.commoncore.ban_status = new BanStatus()
                                             {

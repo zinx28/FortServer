@@ -38,6 +38,9 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("bAdmin")]
         public bool bAdmin { get; set; } = false;
 
+        [BsonElement("temp_banned")]
+        public bool temp_banned { get; set; } = false;
+
         [BsonElement("banned")]
         public bool banned { get; set; } = false; // idk this might not be used if theres a better system
 

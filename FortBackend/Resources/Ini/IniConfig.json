@@ -72,35 +72,36 @@
                         }
                     ]
                 },
-                {
-                    "Title": "Vivox",
-                    "Data": [
-                        {
-                            "Name": "bEnabled",
-                            "Value": true
-                        },
-                        {
-                            "Name": "ServerUrl",
-                            "Value": "\"https://mt1s.www.vivox.com/api2/\""
-                        },
-                        {
-                            "Name": "ServiceUrl",
-                            "Value": "\"https://mt1s.www.vivox.com/api2/\""
-                        },
-                        {
-                            "Name": "Domain",
-                            "Value": "\"mt1s.vivox.com\""
-                        },
-                        {
-                            "Name": "Issuer",
-                            "Value": "\"martin9374-fo28-dev\""
-                        },
-                        {
-                            "Name": "Domain",
-                            "Value": "\"mt1s.vivox.com\""
-                        }
-                    ]
-                }
+              {
+                "Title": "Vivox",
+                "Data": [
+                  {
+                    "Name": "bEnabled",
+                    "Value": true
+                  },
+                  {
+                    "Name": "ServerUrl",
+                    "Value": "\"https://mt1s.www.vivox.com/api2/\""
+                  },
+                  {
+                    "Name": "ServiceUrl",
+                    "Value": "\"https://mt1s.www.vivox.com/api2/\""
+                  },
+                  {
+                    "Name": "Domain",
+                    "Value": "\"mt1s.vivox.com\""
+                  },
+                  {
+                    "Name": "Issuer",
+                    "Value": "\"martin9374-fo28-dev\""
+                  },
+                  {
+                    "Name": "Domain",
+                    "Value": "\"mt1s.vivox.com\""
+                  }
+                ]
+              }
+             
 
             ]
         },
@@ -357,60 +358,72 @@
             "Data": [
                 {
                     "Title": "/Script/FortniteGame.FortRuntimeOptions",
-                    "Data": [
-                        {
-                            "Name": "CheckStatusURL",
-                            "Value": "\"http://127.0.0.1:1111/discord\""
-                        },
-                        {
-                            "Name": "ListOfCreatorsURL",
-                            "Value": "\"http://127.0.0.1:1111/discord\""
-                        },
-                        {
-                            "Name": "TurnOnMfaURL",
-                            "Value": "\"http://127.0.0.1:1111/discord\""
-                        },
-                        {
-                            "Name": "!DisabledTabsForOutOfSeason",
-                            "Value": "ClearArray"
-                        },
-                        {
-                            "Name": "bMOTDSameNewsForCreative",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bEnableCatabaDynamicBackground",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bShowStoreBanner",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bEnableGlobalChat",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bEnableInGameMatchmaking",
-                            "Value": true
-                        },
-                        {
-                            "Name": "!ExperimentalCohortPercent",
-                            "Value": "ClearArray"
-                        },
-                        {
-                            "Name": "bHabaneroEnabled",
-                            "Value": false
-                        },
-                        {
-                            "Name": "+ExperimentalCohortPercent",
-                            "Value": "(CohortPercent=100,ExperimentNum=20)"
-                        },
-                        {
-                            "Name": "MinimumAccountLevelForTournamentPlay",
-                            "Value": 0
-                        }
-                    ]
+                  "Data": [
+                    {
+                      "Name": "CheckStatusURL",
+                      "Value": "\"http://127.0.0.1:1111/discord\""
+                    },
+                    {
+                      "Name": "ListOfCreatorsURL",
+                      "Value": "\"http://127.0.0.1:1111/discord\""
+                    },
+                    {
+                      "Name": "TurnOnMfaURL",
+                      "Value": "\"http://127.0.0.1:1111/discord\""
+                    },
+                    {
+                      "Name": "!DisabledTabsForOutOfSeason",
+                      "Value": "ClearArray"
+                    },
+                    {
+                      "Name": "bMOTDSameNewsForCreative",
+                      "Value": true
+                    },
+                    {
+                      "Name": "bEnableCatabaDynamicBackground",
+                      "Value": true
+                    },
+                    {
+                      "Name": "bShowStoreBanner",
+                      "Value": true
+                    },
+                    {
+                      "Name": "bEnableGlobalChat",
+                      "Value": true
+                    },
+                    {
+                      "Name": "TotalPlayerTechLevelsToShow",
+                      "Value": 50
+                    },
+                    {
+                      "Name": "bEnableFactionTechScreen",
+                      "Value": true
+                    },
+                    {
+                      "Name": "bRequireFactionChoiceOnInfiltrationPlay",
+                      "Value": true
+                    },
+                    {
+                      "Name": "bEnableInGameMatchmaking",
+                      "Value": true
+                    },
+                    {
+                      "Name": "!ExperimentalCohortPercent",
+                      "Value": "ClearArray"
+                    },
+                    {
+                      "Name": "bHabaneroEnabled",
+                      "Value": false
+                    },
+                    {
+                      "Name": "+ExperimentalCohortPercent",
+                      "Value": "(CohortPercent=100,ExperimentNum=20)"
+                    },
+                    {
+                      "Name": "MinimumAccountLevelForTournamentPlay",
+                      "Value": 0
+                    }
+                  ]
                 }
             ]
         }

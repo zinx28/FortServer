@@ -23,20 +23,22 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                 {
                     profileCacheEntry.AccountData.commoncore.ban_status.bRequiresUserAck = false;
                     profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted = false;
+                    profileCacheEntry.AccountData.commoncore.ban_status.banDurationDays = 0;
+                    profileCacheEntry.UserData.temp_banned = false;
                 }
 
                 if (profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted)
                 {
                     DateTime banStartTime = profileCacheEntry.AccountData.commoncore.ban_status.banStartTimeUtc;
                     double banDurationDays = profileCacheEntry.AccountData.commoncore.ban_status.banDurationDays;
-
                     DateTime banEndTime = banStartTime.AddDays(banDurationDays);
                     DateTime currentUtcTime = DateTime.UtcNow;
-
                     if (currentUtcTime >= banEndTime)
                     {
                         profileCacheEntry.AccountData.commoncore.ban_status.bRequiresUserAck = false;
                         profileCacheEntry.AccountData.commoncore.ban_status.bBanHasStarted = false;
+                        profileCacheEntry.AccountData.commoncore.ban_status.banDurationDays = 0;
+                        profileCacheEntry.UserData.temp_banned = false;
                     }
                 }
                     //if (!FoundSeasonDataInProfile)

@@ -28,7 +28,7 @@ namespace FortLibrary.EpicResponses.Profile.Quests
         public bool item_seen { get; set; } = false;
 
         [JsonProperty("grantedquestinstanceids")]
-        public string[] grantedquestinstanceids { get; set; } = new string[0];
+        public List<string> grantedquestinstanceids { get; set; } = new List<string>();
 
         [JsonProperty("playlists")]
         public List<object> playlists { get; set; } = new List<object>();
@@ -87,6 +87,10 @@ namespace FortLibrary.EpicResponses.Profile.Quests
         [JsonProperty("favorite")]
         public bool favorite { get; set; } = false;
 
+        // For Quest Bundles
+
+        [JsonProperty("challenge_bundle_schedule_id")]
+        public string challenge_bundle_schedule_id { get; set; } = string.Empty;
 
         // THIS IS NORMALLY DYNAMIC BUT BaCkEnD hAtEs ThAt IdEa
         public QuestData questData { get; set; } = new QuestData();
@@ -95,7 +99,12 @@ namespace FortLibrary.EpicResponses.Profile.Quests
 
     public class QuestData
     {
+        // i want to remove but i dont want my quests to be deleted :((
         public string QuestType = "";
+
+        //public bool NeedScheme = false;
+        public string SchemeData = string.Empty;
+
 
         public bool LastQuest = false;
     }

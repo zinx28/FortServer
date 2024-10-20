@@ -44,7 +44,6 @@ namespace FortBackend.src.App
 
             startup.ConfigureServices(builder.Services);
 
-
             if (Saved.DeserializeConfig.HTTPS)
             {
                 Saved.BackendCachedData.DefaultProtocol = "https://";
@@ -53,7 +52,7 @@ namespace FortBackend.src.App
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.BackendPort, listenOptions =>
                     {
-                        var certPath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "Certificates", "FortBackend.pfx");
+                        var certPath = Path.Combine(PathConstants.BaseDir, "Resources", "Certificates", "FortBackend.pfx");
                         if (!File.Exists(certPath))
                         {
                             Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", "CERTIFICATES");
@@ -104,10 +103,11 @@ namespace FortBackend.src.App
             DiscordBotServer.Start();
 #endif
 
-          
+
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
             var XmppServer = new Thread(() =>
             {
-                Xmpp_Server.Intiliazation(args);
+                Xmpp_Server.Intiliazation(args, cancellationTokenSource.Token);
 
                // FortBackend.src.App.XMPP_Server.XMPP.XmppServer.STOP();
             });
@@ -127,28 +127,40 @@ namespace FortBackend.src.App
 
             //GenerateShop.Init();
 
-        
+            try
+            {
+                await app.StartAsync();
+                // FortBackend uses a cache like system, instead of updating data it's updated on mongodb every 15 mins (equiping and many other functions will be faster)
+                Logger.Warn("Make sure to click ctrl + c to not loose data before closing"); 
+            }
+            catch (IOException ex) when (ex.Message.Contains("address already in use")){ 
+                Logger.Error($"The Port {Saved.DeserializeConfig.BackendPort} is already in use", "SERVER");
+                await app.StopAsync();
+            }
+            catch (Exception ex) { Logger.Error(ex.Message); }
 
-            await app.StartAsync();
 
             var shutdownTask = app.WaitForShutdownAsync();
 
         
             AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
             {
-                
+                //FortBackend.src.App.XMPP_Server.XMPP.XmppServer.STOP();
                 //XmppServer.Join(); ~ i can't trust 
-             
+
                 CacheMiddleware.ShutDown().Wait();
 
                 Logger.Close();
-                Console.WriteLine("Done");
+
+                Console.WriteLine("Press any key to close this window . . .");
+                Console.ReadKey();
             };
             //app.Run();
             await shutdownTask;
 
             Console.WriteLine("SHUTDOINW");
-            FortBackend.src.App.XMPP_Server.XMPP.XmppServer.STOP();
+
+            cancellationTokenSource.Cancel();
         }
 
         async static Task GenerateItemShop(int i)

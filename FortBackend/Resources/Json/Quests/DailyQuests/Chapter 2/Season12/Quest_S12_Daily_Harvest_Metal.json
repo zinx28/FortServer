@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Harvest_Metal",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Harvest Metal",
+    "Description": "Harvest Metal",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Harvest_Metal",
+        "ObjectiveState": "collect_building_resources_metal",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Harvest Metal",
+        "HudShortDescription": "Harvest Metal",
+        "Count": 600,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

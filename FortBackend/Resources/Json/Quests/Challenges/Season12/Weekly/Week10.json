@@ -1,0 +1,302 @@
+{
+  "BundleId": "MissionBundle_S12_Week_10",
+  "BundleSchedule": "Season12_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_s12_w10_q01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_athena_player_assault",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "killingblow_athena_player_smg",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "killingblow_athena_player_shotgun",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_athena_treasurechest",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q03",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "eliminate_legendary_or_mythic",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q04",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "heal_bandage_bazooka_teammate",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q05",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "emote_after_down_boss",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q06",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_midas_wrench_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_midas_wrench_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_midas_wrench_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_midas_wrench_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_midas_wrench_05",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q07",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "catch_fish_inhoagie",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q08",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_opponent_agency",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_opponent_yacht",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q09",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "visit_landmark_theagencyhq",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_OvergrownHeads",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_HayHillbilly",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w10_q10",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_henchmen_disguised",
+          "Count": 100,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_FishingHarpoon",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Catch items from fishing spots with a Harpoon Gun",
+    "Description": "Catch items from fishing spots with a Harpoon Gun",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_FishingHarpoon",
+        "ObjectiveState": "catch_item_fishing_harpoon",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Catch items from fishing spots with a Harpoon Gun",
+        "HudShortDescription": "Catch items from fishing spots with a Harpoon Gun",
+        "Count": 3,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

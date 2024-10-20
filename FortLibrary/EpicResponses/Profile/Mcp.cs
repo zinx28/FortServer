@@ -10,7 +10,7 @@ namespace FortLibrary.EpicResponses.Profile
         public int profileChangesBaseRevision { get; set; } = 1;
         public List<dynamic> profileChanges { get; set; } = new List<dynamic>();
      
-        public List<McpNotifications> notifications { get; set; } = new List<McpNotifications>();
+        public List<dynamic> notifications { get; set; } = new List<dynamic>();
 
         public int profileCommandRevision { get; set; } = 1;
         public string serverTime { get; set; }

@@ -14,20 +14,19 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
     public class RemoveGiftBox
     {
-        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, dynamic requestBodyy)
+        public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, RemoveGiftBoxReq requestBodyy)
         {
             string currentDate = DateTime.UtcNow.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-           // Console.WriteLine(ProfileId);
             if (ProfileId == "common_core")
             {
                 int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
 
-             
                 List<object> MultiUpdates = new List<object>();
                 List<object> ProfileChanges = new List<object>();
-                Console.WriteLine(requestBodyy.giftBoxItemId);
-                if(requestBodyy.giftBoxItemId != null)
+
+                if(!string.IsNullOrEmpty(requestBodyy.giftBoxItemId))
                 {
+                    Console.WriteLine(requestBodyy.giftBoxItemId);
                     string GiftBoxID = requestBodyy.giftBoxItemId.ToString();
                     GiftCommonCoreItem tests = profileCacheEntry.AccountData.commoncore.Gifts.FirstOrDefault(e => e.Key == GiftBoxID).Value;
                     if(tests != null)
@@ -40,24 +39,22 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         });
                     }
                 }
-                else if(requestBodyy.giftBoxItemIds != null)
+                else if(requestBodyy.giftBoxItemIds.Count() > 0)
                 {
-                    foreach (var GiftBoxIDJValue in requestBodyy.giftBoxItemIds)
+                    Console.WriteLine(requestBodyy.giftBoxItemIds.Count());
+                    foreach (var GiftBoxID in requestBodyy.giftBoxItemIds)
                     {
-                        string GiftBoxID = GiftBoxIDJValue.ToString();
-                        if(!string.IsNullOrEmpty(GiftBoxID))
+                        GiftCommonCoreItem GiftBoxItem = profileCacheEntry.AccountData.commoncore.Gifts.FirstOrDefault(e => e.Key == GiftBoxID).Value;
+                        if (GiftBoxItem != null)
                         {
-                            GiftCommonCoreItem tests = profileCacheEntry.AccountData.commoncore.Gifts.FirstOrDefault(e => e.Key == GiftBoxID).Value;
-                            if (tests != null)
+                            profileCacheEntry.AccountData.commoncore.Gifts.Remove(GiftBoxID);
+                            MultiUpdates.Add(new
                             {
-                                profileCacheEntry.AccountData.commoncore.Gifts.Remove(GiftBoxID);
-                                MultiUpdates.Add(new
-                                {
-                                    changeType = "itemRemoved",
-                                    itemId = GiftBoxID
-                                });
-                            }
+                                changeType = "itemRemoved",
+                                itemId = GiftBoxID
+                            });
                         }
+                        
                     }
                 }
 
@@ -70,7 +67,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                 if (BaseRev != RVN)
                 {
-                    Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
+                    Mcp test = await CommonCoreResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                     ProfileChanges = test.profileChanges;
                 }
                 else

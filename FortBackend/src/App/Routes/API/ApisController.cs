@@ -53,6 +53,18 @@ namespace FortBackend.src.App.Routes.API
             return Ok();
         }
 
+        [HttpGet("region/check")]
+        public IActionResult RegionCheck()
+        {
+            return Ok(new
+            {
+                content_id = "AF9yLAAsklQALFTy",
+                allowed = true,
+                resolved = true,
+                limit = "Res=656"
+            });
+        }
+
         [HttpGet("v1/Fortnite/get")]
         public IActionResult FortniteGet()
         {

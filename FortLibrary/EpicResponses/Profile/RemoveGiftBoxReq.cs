@@ -9,5 +9,7 @@ namespace FortLibrary.EpicResponses.Profile
     public class RemoveGiftBoxReq
     {
         public string giftBoxItemId { get; set; } = string.Empty;
+
+        public string[] giftBoxItemIds { get; set; } = new string[0];
     }
 }

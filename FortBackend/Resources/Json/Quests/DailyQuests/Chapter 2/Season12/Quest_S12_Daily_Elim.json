@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Elim",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Eliminate opponents",
+    "Description": "Eliminate opponents",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Elim",
+        "ObjectiveState": "killingblow_athena_player",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminate opponents",
+        "HudShortDescription": "Eliminate opponents",
+        "Count": 5,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

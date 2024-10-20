@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Elim_NoADS",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Eliminations without aiming down sights",
+    "Description": "Eliminations without aiming down sights",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Elim_NoADS",
+        "ObjectiveState": "eliminations_no_ads",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminations without aiming down sights",
+        "HudShortDescription": "Eliminations without aiming down sights",
+        "Count": 3,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

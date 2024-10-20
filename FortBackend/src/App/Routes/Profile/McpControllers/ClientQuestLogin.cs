@@ -63,6 +63,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     List<object> MultiUpdatesForCommonCore = new List<object>();
                     int BaseRev = profileCacheEntry.AccountData.athena.RVN;
 
+                    Console.WriteLine(RVN);
+                    Console.WriteLine(BaseRev);
+
                     if (Season.Season == 0)
                     {
                         if (BaseRev != RVN)
@@ -83,7 +86,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         };
                     }
 
-
+                    
                     // Temp data
                     //int AddedXP = 0; // xp added to the users account
                     //int AddedLevel = 0; // level added to the users account
@@ -93,10 +96,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                         
 
-                    if(FoundSeason.DailyQuests.Interval != currentDate)
+                    if(FoundSeason.DailyQuests.Interval != currentDate && !(FoundSeason.DailyQuests.Daily_Quests.Count > 3))
                     {
                         FoundSeason.DailyQuests.Interval = currentDate;
-                        FoundSeason.DailyQuests.Rerolls = 1; // give 1 reroll everyday
+                        FoundSeason.DailyQuests.Rerolls += 1; // give 1 reroll everyday
                              
                         MultiUpdates.Add(new MultiUpdateClassV2
                         {
@@ -105,7 +108,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             value = new
                             {
                                 dailyLoginInterval = currentDate,
-                                dailyQuestRerolls = 1
+                                dailyQuestRerolls = FoundSeason.DailyQuests.Rerolls
                             }
                         });
 
@@ -186,7 +189,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                     {
                                         Logger.Error("GRABBED EMPTY STUFF FOR DAUKY QUESTS?", "DAILY QUESTS!");
                                     }
-                                }catch (Exception ex)
+                                }
+                                catch (Exception ex)
                                 {
                                     Logger.Error(ex.Message, "DAILY QUESTS!");
                                 }
@@ -405,8 +409,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             }
                         }
                     }
-
-                    ///ss
 
                     // END OF AUTO MFA CLAIM
 

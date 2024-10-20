@@ -237,7 +237,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         profileId = ProfileId,
                         profileChangesBaseRevision = BaseRev,
                         profileChanges = ApplyProfileChanges,
-                        notifications = new List<McpNotifications>()
+                        notifications = new List<object>()
                         {
                             new McpNotifications
                             {
@@ -403,7 +403,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 profileId = ProfileId,
                                 profileChangesBaseRevision = BaseRev,
                                 profileChanges = ApplyProfileChanges,
-                                notifications = new List<McpNotifications>()
+                                notifications = new List<object>()
                                 {
                                     new McpNotifications
                                     {

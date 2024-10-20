@@ -36,6 +36,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
         {
             try
             {
+                Console.WriteLine(RVN);
                 bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 if (!FoundSeasonDataInProfile)
@@ -74,13 +75,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                 if (profileCacheEntry.AccountData.commoncore.Seasons != null)
                 {
-                    SeasonClass seasonObject = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season);
+                    SeasonClass seasonObject = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season)!;
 
                     if (seasonObject != null)
                     {
+                        Console.WriteLine("e " + profileCacheEntry.AccountData.athena.RVN);
+                        Console.WriteLine("e2 " + profileCacheEntry.AccountData.athena.CommandRevision);
                         if (profileCacheEntry.AccountData.athena.RVN == profileCacheEntry.AccountData.athena.CommandRevision)
                         {
-                            profileCacheEntry.AccountData.athena.RVN = +1;
+                            profileCacheEntry.AccountData.athena.RVN =+ 1;
                         }
 
                         DailyQuests quest_manager = seasonObject.DailyQuests;
@@ -197,6 +200,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         //kvp.BundleId
 
                                         if (kvp.BundleRequired.RequiredLevel > seasonObject.Level) continue;
+                                        //if (kvp.BundleRequired.Weekly)
+                                        //{
+                                        
+                                        //}
 
                                         // kvp.BundleRequired.RequiredLevel
 
@@ -208,12 +215,18 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             {
                                                 if (seasonObject.BookPurchased)
                                                 {
-                                                    grantedquestinstanceids.Add(FreeBundles.templateId);
+                                                    if (seasonObject.Quests.TryGetValue(FreeBundles.templateId, out DailyQuestsData value))
+                                                    {
+                                                        grantedquestinstanceids.Add(FreeBundles.templateId);
+                                                    }
                                                 }
                                             }
                                             else
                                             {
-                                                grantedquestinstanceids.Add(FreeBundles.templateId);
+                                                if (seasonObject.Quests.TryGetValue(FreeBundles.templateId, out DailyQuestsData value))
+                                                {
+                                                    grantedquestinstanceids.Add(FreeBundles.templateId);
+                                                }
                                             }
 
                                             if (FreeBundles.quest_data.IsWeekly && !FreeBundles.quest_data.ExtraQuests)
@@ -234,6 +247,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             }
 
                                         }
+
+                                        
+
                                         //challenge_bundle_schedule_id
                                         var AthenaItemChallengeBundle = new AthenaItemDynamic
                                         {
@@ -279,15 +295,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                 }
                             }
 
-                            foreach(var key in WeeklyQuestManager.BPSeasonBundleScheduleDictionary)
-                            {
-                                Console.WriteLine(key.Key);
-                            }
+                            //foreach(var key in WeeklyQuestManager.BPSeasonBundleScheduleDictionary)
+                            //{
+                            //    Console.WriteLine(key.Key);
+                            //}
 
                             if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> BPQuestsArray))
                             {
-                                Console.WriteLine(seasonObject.SeasonNumber);
-                                Console.WriteLine(seasonObject.BookPurchased);
+                                //Console.WriteLine(seasonObject.SeasonNumber);
+                                //Console.WriteLine(seasonObject.BookPurchased);
                                 if (seasonObject.BookPurchased)
                                 {
                                     if (BPQuestsArray.Count > 0)
@@ -328,20 +344,20 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             {
                                                 templateId = $"ChallengeBundle:{kvp.BundleId}",
                                                 attributes = new Dictionary<string, object>
-                                                        {
-                                                            { "has_unlock_by_completion", false },
-                                                            { "num_quests_completed", 0 },
-                                                            { "level", 0 },
-                                                            { "grantedquestinstanceids", TEST2FRFR.ToArray() },
-                                                            { "item_seen",  true },
-                                                            { "max_allowed_bundle_level", 0 },
-                                                            { "num_granted_bundle_quests", TEST2FRFR.Count() },
-                                                            { "max_level_bonus", 0 },
-                                                            { "challenge_bundle_schedule_id", kvp.BundleSchedule },
-                                                            { "num_progress_quests_completed", 0 },
-                                                            { "xp", 0 },
-                                                            { "favorite", false }
-                                                        },
+                                                {
+                                                    { "has_unlock_by_completion", false },
+                                                    { "num_quests_completed", 0 },
+                                                    { "level", 0 },
+                                                    { "grantedquestinstanceids", TEST2FRFR.ToArray() },
+                                                    { "item_seen",  true },
+                                                    { "max_allowed_bundle_level", 0 },
+                                                    { "num_granted_bundle_quests", TEST2FRFR.Count() },
+                                                    { "max_level_bonus", 0 },
+                                                    { "challenge_bundle_schedule_id", kvp.BundleSchedule },
+                                                    { "num_progress_quests_completed", 0 },
+                                                    { "xp", 0 },
+                                                    { "favorite", false }
+                                                },
                                                 quantity = 1,
                                             };
 
@@ -355,15 +371,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             {
                                                 templateId = kvp.Key,
                                                 attributes = new Dictionary<string, object>
-                                                        {
-                                                            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "max_level_bonus", 0 },
-                                                            { "level", 0 },
-                                                            { "item_seen", true },
-                                                            { "xp", 0 },
-                                                            { "favorite", false },
-                                                            { "granted_bundles", kvp.Value.ToArray() }
-                                                        },
+                                                {
+                                                    { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                    { "max_level_bonus", 0 },
+                                                    { "level", 0 },
+                                                    { "item_seen", true },
+                                                    { "xp", 0 },
+                                                    { "favorite", false },
+                                                    { "granted_bundles", kvp.Value.ToArray() }
+                                                },
                                                 quantity = 1,
                                             };
 
@@ -371,24 +387,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         }
 
                                     }
-                                    //QuestBundle_S8_Cumulative
-                                    //var AthenaItemDynamicData = new AthenaItemDynamic
-                                    //{
-                                    //    templateId = $"ChallengeBundleSchedule:",
-                                    //    attributes = new Dictionary<string, object>
-                                    //    {
-                                    //        { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                    //        { "max_level_bonus", 0 },
-                                    //        { "level", 0 },
-                                    //        { "item_seen", true },
-                                    //        { "xp", 0 },
-                                    //        { "favorite", false },
-                                    //        { "granted_bundles", ResponseIgIdrk.ToArray() }
-                                    //    },
-                                    //    quantity = 1,
-                                    //};
-
-                                    //ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
                                 }
                             }
 
@@ -429,13 +427,17 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                                     Value.attributes.ObjectiveState.ForEach(e =>
                                     {
-                                        Console.WriteLine(e.Name);
+                                        //Console.WriteLine(e.Name);
                                         AthenaItemDynamicData.attributes.Add(e.Name, e.Value);
                                     });
 
 
                                     ProfileChange.Profile.items.Add(kvp.Key, AthenaItemDynamicData);
                                 }
+                                //else if()
+                                //{
+
+                                //}
                             }
 
                             foreach (var kvp in seasonObject.DailyQuests.Daily_Quests)
@@ -535,7 +537,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                     }
                                 }
                             }
-                        }else
+                        }
+                        else
                         {
                             Logger.Error("WHY IS THIS NULL WTFFFFFFFFFFF");
                         }

@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Damage_Below",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Deal damage to opponents from below",
+    "Description": "Deal damage to opponents from below",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Damage_Below",
+        "ObjectiveState": "damage_athena_player_from_below",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Deal damage to opponents from below",
+        "HudShortDescription": "Deal damage to opponents from below",
+        "Count": 1000,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

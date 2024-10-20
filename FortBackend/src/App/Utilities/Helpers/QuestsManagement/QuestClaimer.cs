@@ -24,7 +24,6 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
             foreach (var Quests in FoundSeason.Quests)
             {
                 int TempIntNum = 0;
-                bool NeedUpdating = false;
 
                 // NEEDS TO SOME WHAT BE DYANMIC !?!?! BUT IT'S HARD WITHOUT HAVING SOME FORCED STUFF
                 foreach (var objectiveState in Quests.Value.attributes.ObjectiveState)
@@ -36,7 +35,6 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                         DailyQuestsObjectiveStates ValueIsSoProper = FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum];
                         if (CurrentLevelXP >= objectiveState.MaxValue)
                         {
-                            NeedUpdating = true;
                             FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = ValueIsSoProper.MaxValue;
                         }
                         else
@@ -46,10 +44,18 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                 FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value = CurrentLevelXP;
                             }
 
-                            NeedUpdating = true;
                         }
 
                         FoundSeason.Quests[Quests.Key].attributes.creation_time = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+
+                        testerfnmp = true;
+                        MultiUpdates.Add(new
+                        {
+                            changeType = "itemAttrChanged",
+                            ItemId = Quests.Key,
+                            attributeName = FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Name,
+                            attributeValue = FoundSeason.Quests[Quests.Key].attributes.ObjectiveState[TempIntNum].Value
+                        });
                         //DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
 
                     }
@@ -65,56 +71,56 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                 }
 
                 // IF THERE IS A BETTER METHOD PLEASE PULL REQUEST OR TELL ME (or ill just look in the future)
-                if (NeedUpdating)
-                {
-                    testerfnmp = true;
-                    var AthenaItemChallengeBundle = new
-                    {
-                        templateId = Quests.Value.templateId,
-                        attributes = new Dictionary<string, object>
-                        {
-                            { "creation_time", Quests.Value.attributes.creation_time },
-                            { "level", -1 },
-                            { "item_seen", false },
-                            { "playlists", new List<object>() },
-                            { "sent_new_notification", true },
-                            { "challenge_bundle_id", Quests.Value.attributes.challenge_bundle_id },
-                            { "xp_reward_scalar", 1 },
-                            { "challenge_linked_quest_given", "" },
-                            { "quest_pool", "" },
-                            { "quest_state", "Active" },
-                            { "bucket", "" },
-                            { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                            { "challenge_linked_quest_parent", "" },
-                            { "max_level_bonus", 0 },
-                            { "xp", 0 },
-                            { "quest_rarity", "uncommon" },
-                            { "favorite", false },
-                        },
-                        quantity = 1,
-                    };
+                //if (NeedUpdating)
+                //{
+                //    testerfnmp = true;
+                //    var AthenaItemChallengeBundle = new
+                //    {
+                //        templateId = Quests.Value.templateId,
+                //        attributes = new Dictionary<string, object>
+                //        {
+                //            { "creation_time", Quests.Value.attributes.creation_time },
+                //            { "level", -1 },
+                //            { "item_seen", false },
+                //            { "playlists", new List<object>() },
+                //            { "sent_new_notification", true },
+                //            { "challenge_bundle_id", Quests.Value.attributes.challenge_bundle_id },
+                //            { "xp_reward_scalar", 1 },
+                //            { "challenge_linked_quest_given", "" },
+                //            { "quest_pool", "" },
+                //            { "quest_state", "Active" },
+                //            { "bucket", "" },
+                //            { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                //            { "challenge_linked_quest_parent", "" },
+                //            { "max_level_bonus", 0 },
+                //            { "xp", 0 },
+                //            { "quest_rarity", "uncommon" },
+                //            { "favorite", false },
+                //        },
+                //        quantity = 1,
+                //    };
 
-                    foreach (DailyQuestsObjectiveStates yklist in FoundSeason.Quests[Quests.Key].attributes.ObjectiveState)
-                    {
-                        AthenaItemChallengeBundle.attributes.Add(yklist.Name, yklist.Value);
-                    }
+                //    foreach (DailyQuestsObjectiveStates yklist in FoundSeason.Quests[Quests.Key].attributes.ObjectiveState)
+                //    {
+                //        AthenaItemChallengeBundle.attributes.Add(yklist.Name, yklist.Value);
+                //    }
 
-                    MultiUpdates.Add(new
-                    {
-                        changeType = "itemRemoved",
-                        itemId = Quests.Value.templateId,
-                    });
+                //    MultiUpdates.Add(new
+                //    {
+                //        changeType = "itemRemoved",
+                //        itemId = Quests.Value.templateId,
+                //    });
 
-                    MultiUpdates.Add(new MultiUpdateClass
-                    {
-                        changeType = "itemAdded",
-                        itemId = Quests.Value.templateId,
-                        item = AthenaItemChallengeBundle
-                    });
+                //    MultiUpdates.Add(new MultiUpdateClass
+                //    {
+                //        changeType = "itemAdded",
+                //        itemId = Quests.Value.templateId,
+                //        item = AthenaItemChallengeBundle
+                //    });
 
 
 
-                }
+                //}
 
 
             }

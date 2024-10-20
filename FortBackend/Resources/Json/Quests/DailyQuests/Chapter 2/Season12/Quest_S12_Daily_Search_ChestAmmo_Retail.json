@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Search_ChestAmmo_Retail",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Chests or Ammo Boxes at Retail Row",
+    "Description": "Search Chests or Ammo Boxes at Retail Row",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Search_ChestAmmo_Retail",
+        "ObjectiveState": "interact_athena_chest_ammo_retail",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Chests or Ammo Boxes at Retail Row",
+        "HudShortDescription": "Search Chests or Ammo Boxes at Retail Row",
+        "Count": 7,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

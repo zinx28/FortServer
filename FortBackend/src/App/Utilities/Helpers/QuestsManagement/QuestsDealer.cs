@@ -19,967 +19,742 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
     {
         public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)> Init(SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)
         {
-            List<NotificationsItemsClassOG> TestIG = new List<NotificationsItemsClassOG>();
-            
-
-
             if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
             {
                 if (WeeklyQuestsArray.Count > 0)
                 {
-                    List<string> ResponseIgIdrk = new List<string>();
-                    var ResponseId = "";
-                    foreach (var kvp in WeeklyQuestsArray)
+                    (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry) = await QuestGrabber(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry, WeeklyQuestsArray);
+                }
+            }
+
+            if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> BPQuestsArray))
+            {
+                if (BPQuestsArray.Count > 0)
+                {
+                    (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry) = await QuestGrabber(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry, BPQuestsArray);
+                }
+            }
+
+
+            return (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
+        }
+
+        public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)> QuestGrabber(SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry, List<WeeklyQuestsJson> WeeklyQuestsArray)
+        {
+            List<NotificationsItemsClassOG> GiftClassList = new List<NotificationsItemsClassOG>();
+            List<string> AddedBundles = new List<string>();
+            var ResponseId = "";
+
+         //   bool bNewQuest = false;
+          //  int NewBundleCount = 0;
+         //   bool bAddMoreBundles = false;
+            foreach (WeeklyQuestsJson WeeklyQuests in WeeklyQuestsArray)
+            {
+                if(
+                    !string.IsNullOrEmpty(ResponseId) &&
+                    ResponseId != $"ChallengeBundleSchedule:{WeeklyQuests.BundleSchedule}"
+                )
+                {
+                    var ItemObj = new
                     {
-                        ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
-                        ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
-                        //ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
-                        //ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
-                        //kvp.BundleId
-                        List<string> grantedquestinstanceids = new List<string>();
-
-
-                        // THIS SHOULD SUPPORT ANY QUESTS.. IF DOESNT SAD!
-                        foreach (var AllBundles in kvp.BundlesObject)
+                        templateId = ResponseId,
+                        attributes = new Dictionary<string, object>
                         {
-                           // Console.WriteLine(AllBundles.templateId);
-                            bool ShouldGrantItems = true;
-                            if (AllBundles.quest_data.RequireBP)
+                            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                            { "max_level_bonus", 0 },
+                            { "level", 0 },
+                            { "item_seen", true },
+                            { "xp", 0 },
+                            { "favorite", false },
+                            { "granted_bundles", AddedBundles.ToArray() }
+                        },
+                        quantity = 1,
+                    };
+
+                    MultiUpdates.Add(new
+                    {
+                        changeType = "itemAttrChanged",
+                        ItemId = ResponseId,
+                        attributeName = $"granted_bundles",
+                        attributeValue = AddedBundles.ToArray()
+                    });
+
+                    AddedBundles.Clear();
+                }
+
+
+                AddedBundles.Add($"ChallengeBundle:{WeeklyQuests.BundleId}");
+                ResponseId = $"ChallengeBundleSchedule:{WeeklyQuests.BundleSchedule}";
+
+                List<string> grantedquestinstanceids = new List<string>();
+                foreach (var AllBundles in WeeklyQuests.BundlesObject)
+                {
+                    if (AllBundles.quest_data.RequireBP)
+                    {
+                        if (!FoundSeason.BookPurchased)
+                        {
+                            continue;
+                        }
+                    }
+
+
+                    grantedquestinstanceids.Add(AllBundles.templateId);
+
+                    DailyQuestsData QuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == AllBundles.templateId).Value;
+
+                    if (QuestData != null)
+                    {
+                        bool bShouldGrantItems = false;
+                        if (FoundSeason.Quests[AllBundles.templateId].attributes.quest_state != "Claimed")
+                        {
+                            bool bShouldClaim = true;
+                            int Index = 0;
+
+                            foreach (DailyQuestsObjectiveStates ObjectiveState in FoundSeason.Quests[AllBundles.templateId].attributes.ObjectiveState)
                             {
-                                if (!FoundSeason.BookPurchased)
+                                //Logger.Warn(AllBundles.templateId + " " + ObjectiveState.Value.ToString());
+                                //Logger.Warn(ObjectiveState.MaxValue.ToString());
+                                if (ObjectiveState.Value != ObjectiveState.MaxValue)
                                 {
-                                    ShouldGrantItems = false;
+                                    bShouldClaim = false;
                                 }
+
+                                Index += 1;
                             }
 
-                            if (ShouldGrantItems)
+                            if (bShouldClaim)
                             {
-                                DailyQuestsData QuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == AllBundles.templateId).Value;
-                                if (QuestData == null)
+                                FoundSeason.Quests[AllBundles.templateId].attributes.quest_state = "Claimed";
+
+                                FoundSeason.BookXP += AllBundles.Rewards.BattleStars; // Should stay 0 above s10
+
+                                MultiUpdates.Add(new
                                 {
-                                    if (!AllBundles.quest_data.ExtraQuests)
+                                    changeType = "itemAttrChanged",
+                                    ItemId = AllBundles.templateId,
+                                    attributeName = $"quest_state",
+                                    attributeValue = FoundSeason.Quests[AllBundles.templateId].attributes.quest_state
+                                });
+
+                                Console.WriteLine(!AllBundles.quest_data.ExtraQuests && !AllBundles.quest_data.Steps);
+
+                                if (!AllBundles.quest_data.ExtraQuests && !AllBundles.quest_data.Steps)
+                                {
+                                    foreach (var item in FoundSeason.Quests)
                                     {
+                                        if (item.Value.attributes.quest_state == "Claimed") continue; // We don't want to loop through claimed quests
 
-                                        List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+                                        var Data = item.Value.attributes.ObjectiveState.FindIndex(e => e.Name.ToLower().Contains("weeklychallenges"));
 
-                                        foreach (WeeklyObjectsObjectives ObjectiveItems in AllBundles.Objectives)
+                                        if (Data != -1)
                                         {
-                                            QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                            FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data].Value += 1;
+
+                                            var ObjectiveStateQuestData = FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data];
+
+                                            var FindQuestData = WeeklyQuestsArray.FirstOrDefault(e => e.BundleId.Contains(FoundSeason.Quests[item.Key].attributes.challenge_bundle_id));
+                                            if (FindQuestData != null)
                                             {
-                                                Name = $"completion_{ObjectiveItems.BackendName}",
-                                                Value = 0,
-                                                MaxValue = ObjectiveItems.Count
+                                                if (ObjectiveStateQuestData.Value == ObjectiveStateQuestData.MaxValue)
+                                                {
+                                                    // sets it to claimed but we still need to find the item to give
+                                                    FoundSeason.Quests[item.Key].attributes.quest_state = "Claimed";
+
+                                                    MultiUpdates.Add(new
+                                                    {
+                                                        changeType = "itemAttrChanged",
+                                                        ItemId = item.Key,
+                                                        attributeName = $"quest_state",
+                                                        attributeValue = FoundSeason.Quests[item.Key].attributes.quest_state
+                                                    });
+
+                                                    foreach (var FindItems in FindQuestData.BundlesObject)
+                                                    {
+                                                        if (!FindItems.quest_data.IsWeekly) continue;
+
+                                                        foreach (var Item in FindItems.Objectives)
+                                                        {
+                                                            if (Item.BackendName.Contains(FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data].Name.Split("completion_")[1]))
+                                                            {
+                                                                FoundSeason.BookXP += FindItems.Rewards.BattleStars;
+
+                                                                foreach (WeeklyRewardsQuest Quest in FindItems.Rewards.Quest)
+                                                                {
+                                                                    Logger.Error(Quest.TemplateId);
+                                                                }
+
+                                                                foreach (WeeklyRewardsQuest GrantedItems in FindItems.Rewards.GrantedItems)
+                                                                {
+                                                                    Logger.Error(GrantedItems.TemplateId);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                bShouldGrantItems = true;
+                             
+                            }
+                        }
+                        else
+                        {
+                            if(!string.IsNullOrEmpty(FoundSeason.Quests[AllBundles.templateId].attributes.questData.SchemeData))
+                            {
+                                bShouldGrantItems = true;
+                            }
+                        }
+
+                        if (bShouldGrantItems)
+                        {
+                            foreach (var GrantedItems in AllBundles.Rewards.GrantedItems)
+                            {
+                                Logger.Error("I WANT TO GIVE " + GrantedItems.TemplateId);
+                                if (!profileCacheEntry.AccountData.athena.Items.ContainsKey(GrantedItems.TemplateId))
+                                {
+                                    if (!profileCacheEntry.AccountData.commoncore.Items.ContainsKey(GrantedItems.TemplateId))
+                                    {
+                                        Logger.Error(GrantedItems.TemplateId);
+                                        if (GrantedItems.TemplateId.Contains("HomebaseBannerIcon"))
+                                        {
+                                            profileCacheEntry.AccountData.commoncore.Items.Add(GrantedItems.TemplateId, new CommonCoreItem
+                                            {
+                                                templateId = GrantedItems.TemplateId,
+                                                attributes = new CommonCoreItemAttributes
+                                                {
+                                                    item_seen = false
+                                                },
+                                                quantity = GrantedItems.Quantity,
+                                            });
+
+                                            MultiUpdates.Add(new MultiUpdateClass
+                                            {
+                                                changeType = "itemAdded",
+                                                itemId = GrantedItems.TemplateId,
+                                                item = new AthenaItem
+                                                {
+                                                    templateId = GrantedItems.TemplateId,
+                                                    attributes = new AthenaItemAttributes
+                                                    {
+                                                        item_seen = false,
+                                                    },
+                                                    quantity = 1
+                                                }
                                             });
                                         }
-
-                                        FoundSeason.Quests.Add($"{AllBundles.templateId}", new DailyQuestsData
+                                        else if (GrantedItems.TemplateId.Contains("Athena"))
                                         {
-                                            templateId = $"{AllBundles.templateId}",
-                                            attributes = new DailyQuestsDataDB
+                                            MultiUpdates.Add(new MultiUpdateClass
                                             {
-                                                challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
-                                                sent_new_notification = false,
-                                                ObjectiveState = QuestObjectStats,
-                                            },
-                                            quantity = 1
-                                        });
+                                                changeType = "itemAdded",
+                                                itemId = GrantedItems.TemplateId,
+                                                item = new AthenaItem
+                                                {
+                                                    templateId = GrantedItems.TemplateId,
+                                                    attributes = new AthenaItemAttributes
+                                                    {
+                                                        item_seen = false,
+                                                    },
+                                                    quantity = 1
+                                                }
+                                            });
 
 
-                                        var ItemObjectResponse = new
-                                        {
-                                            templateId = $"{AllBundles.templateId}",
-                                            attributes = new Dictionary<string, object>
+                                            profileCacheEntry.AccountData.athena.Items.Add(GrantedItems.TemplateId, new AthenaItem
                                             {
-                                                { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                { "level", -1 },
-                                                { "item_seen", false },
-                                                { "playlists", new List<object>() },
-                                                { "sent_new_notification", true },
-                                                { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
-                                                { "xp_reward_scalar", 1 },
-                                                { "challenge_linked_quest_given", "" },
-                                                { "quest_pool", "" },
-                                                { "quest_state", "Active" },
-                                                { "bucket", "" },
-                                                { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                { "challenge_linked_quest_parent", "" },
-                                                { "max_level_bonus", 0 },
-                                                { "xp", 0 },
-                                                { "quest_rarity", "uncommon" },
-                                                { "favorite", false },
-                                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                            },
-                                            quantity = 1
-                                        };
+                                                templateId = GrantedItems.TemplateId,
+                                                attributes = new AthenaItemAttributes
+                                                {
+                                                    favorite = false,
+                                                    item_seen = false,
+                                                    level = 1,
+                                                    max_level_bonus = 0,
+                                                    rnd_sel_cnt = 0,
+                                                    variants = GrantedItems.variants,
+                                                    xp = 0
+                                                },
+                                                quantity = GrantedItems.Quantity,
+                                            });
 
-                                        foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                                            GiftClassList.Add(new NotificationsItemsClassOG
+                                            {
+                                                itemType = GrantedItems.TemplateId,
+                                                itemGuid = GrantedItems.TemplateId,
+                                                quantity = 1
+                                            });
+
+                                           
+                                        }
+                                        else if (GrantedItems.TemplateId.Contains("CosmeticVariantToken:"))
                                         {
-                                            ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                            Console.WriteLine(GrantedItems.connectedTemplate);
+                                            if (!string.IsNullOrEmpty(GrantedItems.connectedTemplate))
+                                            {
+                                                AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == GrantedItems.connectedTemplate).Value;
+
+                                                if (athenaItem != null)
+                                                {
+                                                    var AddedVariants = athenaItem.attributes.variants;
+
+                                                    var NeedToAdd = GrantedItems.new_variants;
+
+                                                    foreach (var variant in NeedToAdd)
+                                                    {
+                                                        var existingVariant = AddedVariants.FirstOrDefault(v => v.channel == variant.channel);
+                                                        if (existingVariant != null)
+                                                        {
+                                                            existingVariant.owned.AddRange(variant.added);
+                                                        }
+                                                        else
+                                                        {
+                                                            var newVariant = new AthenaItemVariants
+                                                            {
+                                                                channel = variant.channel,
+                                                                active = variant.added.First(),
+                                                                owned = variant.added
+                                                            };
+                                                            AddedVariants.Add(newVariant);
+                                                        }
+                                                    }
+
+                                                    profileCacheEntry.AccountData.athena.Items[GrantedItems.connectedTemplate].attributes.variants = AddedVariants;
+                                                    // athenaItem.attributes.variants.Add()
+
+
+                                                    MultiUpdates.Add(new
+                                                    {
+                                                        changeType = "itemAttrChanged",
+                                                        itemId = GrantedItems.connectedTemplate,
+                                                        attributeName = "variants",
+                                                        attributeValue = AddedVariants
+                                                    });
+                                                }
+                                                else
+                                                {
+                                                    Logger.Error(GrantedItems.connectedTemplate, "DONT EVEN OWN");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Logger.Error(GrantedItems.TemplateId, "CosmeticVariantToken");
+                                            }
+                                        }
+                                        else if (GrantedItems.TemplateId.Contains("Token:"))
+                                        {
+                                            if (GrantedItems.TemplateId.Contains("athenaseasonfriendxpboost"))
+                                            {
+                                                FoundSeason.season_friend_match_boost += GrantedItems.Quantity;
+
+                                                MultiUpdates.Add(new
+                                                {
+                                                    changeType = "statModified",
+                                                    name = "season_match_boost",
+                                                    value = FoundSeason.season_friend_match_boost
+                                                });
+                                            }
+                                            else if (GrantedItems.TemplateId.Contains("athenaseasonxpboost"))
+                                            {
+                                                //  season_match_boost
+                                                FoundSeason.season_match_boost += GrantedItems.Quantity;
+
+                                                MultiUpdates.Add(new
+                                                {
+                                                    changeType = "statModified",
+                                                    name = "season_friend_match_boost",
+                                                    value = FoundSeason.season_match_boost
+                                                });
+                                            }
+                                            else if (GrantedItems.TemplateId.Contains("athenaseasonmergedxpboosts"))
+                                            {
+                                                //FoundSeason.season_merged_boosts += iteminfo.Quantity;
+
+                                                //MultiUpdates.Add(new
+                                                //{
+                                                //    changeType = "statModified",
+                                                //    name = ""
+                                                //})
+                                            }
+
+                                            //else if (// ... //) {
+                                            //   WeeklyQuestsArray.Find(e => e.BundleSchedule == )
+                                            // }
+                                            else
+                                            {
+                                                Logger.Log($"{GrantedItems.TemplateId} is not supported", "ClientQuestLogin");
+                                            }
+                                        }
+                                        else if (GrantedItems.TemplateId.Contains("Quest:"))
+                                        {
+                                            // Gives User Quest Items
+                                            WeeklyObjects QuestJson = WeeklyQuests.BundlesObject.Find(e => e.templateId == GrantedItems.TemplateId);
+
+                                            if (QuestJson != null)
+                                            {
+                                                //bNewQuest = true;
+                                                (FoundSeason, MultiUpdates) = await QuestDataHandler.Add(QuestJson, FoundSeason, WeeklyQuests, MultiUpdates);
+                                            }
+                                        }
+                                        else if (GrantedItems.TemplateId.Contains("ChallengeBundle:"))
+                                        {
+                                            WeeklyQuestsJson WeeklyQuestsARR = WeeklyQuestsArray.Find(e => $"ChallengeBundle:{e.BundleId}" == GrantedItems.TemplateId)!;
+                                            if (WeeklyQuestsARR != null)
+                                            {
+                                                List<WeeklyObjects> WeeklyQuestsBundle = WeeklyQuestsARR.BundlesObject;
+                                                if (WeeklyQuestsBundle.Count > 0)
+                                                {
+                                                    WeeklyObjects DPData = WeeklyQuestsBundle[0];
+
+                                                    if (DPData != null)
+                                                    {
+                                                      //  bNewQuest = true;
+                                                        (FoundSeason, MultiUpdates) = await QuestDataHandler.Add(DPData, FoundSeason, WeeklyQuestsARR, MultiUpdates);
+
+                                                        FoundSeason.Quests[AllBundles.templateId].attributes.questData.SchemeData = "";
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                FoundSeason.Quests[AllBundles.templateId].attributes.questData.SchemeData = GrantedItems.TemplateId;
+
+                                                //NeedScheme
+                                            }
+                                            // WeeklyObjects QuestJson = WeeklyQuests.BundlesObject.Find(e => e.templateId == GrantedItems.TemplateId);
                                         }
 
-                                        MultiUpdates.Add(new MultiUpdateClass
+                                        //
+                                        //else if (FuckThisLoop.TemplateId.Contains("Currency:"))
+                                        //{
+                                        //    currencyItem.quantity += FuckThisLoop.Quantity;
+                                        //}
+                                        //else if (FuckThisLoop.TemplateId.Contains("AccountResource:"))
+                                        //{
+                                        //    FoundSeason.SeasonXP += FuckThisLoop.Quantity;
+
+                                        //    (FoundSeason, NeedItems) = await LevelUpdater.Init(FoundSeason.SeasonNumber, FoundSeason, NeedItems);
+                                        //    NeedItems = true; // force it as we don't want this to become false here
+                                        //}
+                                        else
                                         {
-                                            changeType = "itemAdded",
-                                            itemId = $"{AllBundles.templateId}",
-                                            item = ItemObjectResponse
+                                            Logger.Log($"{GrantedItems.TemplateId} is not supported!", "QuestsDealer");
+                                        }
+
+                                        //TestIG.Add(new NotificationsItemsClassOG
+                                        //{
+                                        //    itemType = GrantedItems.TemplateId,
+                                        //    itemGuid = GrantedItems.TemplateId,
+                                        //    quantity = GrantedItems.Quantity,
+                                        //});
+                                    }
+                                }
+                                //var GiveItenToUser = profileCacheEntry.AccountData.athena.
+                            }
+
+                            foreach (var Quests in AllBundles.Rewards.Quest)
+                            {
+                                var FoundNewQuest = WeeklyQuests.BundlesObject.FirstOrDefault(e => e.templateId == Quests.TemplateId);
+                                if (FoundNewQuest != null)
+                                {
+                                    // ADD NEW QUESTS
+                                    Console.WriteLine($"I WANT TO ADD {FoundNewQuest.templateId}");
+
+                                    List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+
+                                    foreach (WeeklyObjectsObjectives ObjectiveItems in FoundNewQuest.Objectives)
+                                    {
+                                        QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                        {
+                                            Name = $"completion_{ObjectiveItems.BackendName}",
+                                            Value = 0,
+                                            MaxValue = ObjectiveItems.Count
                                         });
                                     }
+
+                                    FoundSeason.Quests.Add($"{FoundNewQuest.templateId}", new DailyQuestsData
+                                    {
+                                        templateId = $"{FoundNewQuest.templateId}",
+                                        attributes = new DailyQuestsDataDB
+                                        {
+                                            challenge_bundle_id = $"ChallengeBundle:{WeeklyQuests.BundleId}",
+                                            sent_new_notification = false,
+                                            ObjectiveState = QuestObjectStats,
+                                        },
+                                        quantity = 1
+                                    });
+
+
+                                    var ItemObjectResponse = new
+                                    {
+                                        templateId = $"{FoundNewQuest.templateId}",
+                                        attributes = new Dictionary<string, object>
+                                        {
+                                            { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                            { "level", -1 },
+                                            { "item_seen", false },
+                                            { "playlists", new List<object>() },
+                                            { "sent_new_notification", true },
+                                            { "challenge_bundle_id", $"ChallengeBundle:{WeeklyQuests.BundleId}" },
+                                            { "xp_reward_scalar", 1 },
+                                            { "challenge_linked_quest_given", "" },
+                                            { "quest_pool", "" },
+                                            { "quest_state", "Active" },
+                                            { "bucket", "" },
+                                            { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                            { "challenge_linked_quest_parent", "" },
+                                            { "max_level_bonus", 0 },
+                                            { "xp", 0 },
+                                            { "quest_rarity", "uncommon" },
+                                            { "favorite", false },
+                                        },
+                                        quantity = 1
+                                    };
+
+                                    foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                                    {
+                                        ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                    }
+
+                                    MultiUpdates.Add(new MultiUpdateClass
+                                    {
+                                        changeType = "itemAdded",
+                                        itemId = $"{FoundNewQuest.templateId}",
+                                        item = ItemObjectResponse
+                                    });
                                 }
                                 else
                                 {
-                                    // HANDLE CLAIMING
-                                    Logger.Error("TEST");
-                                    if (FoundSeason.Quests[AllBundles.templateId].attributes.quest_state != "Claimed")
-                                    {
-                                        bool ShouldClaim = true;
-                                        int Index = 0;
-                                        foreach (DailyQuestsObjectiveStates ObjectiveState in FoundSeason.Quests[AllBundles.templateId].attributes.ObjectiveState)
-                                        {
-                                            if (ObjectiveState.Value != ObjectiveState.MaxValue)
-                                            {
-                                                ShouldClaim = false;
-                                            }
-                                            //FoundSeason.Quests[FreeBundles.templateId].attributes.ObjectiveState[Index].Value
-                                            Index += 1;
-                                        }
-
-                                     //   Console.WriteLine(AllBundles.templateId);
-
-                                        if (ShouldClaim)
-                                        {
-                                            FoundSeason.Quests[AllBundles.templateId].attributes.quest_state = "Claimed";
-                                            FoundSeason.BookXP += AllBundles.Rewards.BattleStars;
-
-                                            // TO-DO only call this if theres 0 quests to add
-                                            var ItemObjectResponse2 = new
-                                            {
-                                                templateId = $"{AllBundles.templateId}",
-                                                attributes = new Dictionary<string, object>
-                                                {
-                                                        { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                        { "level", -1 },
-                                                        { "item_seen", false },
-                                                        { "playlists", new List<object>() },
-                                                        { "sent_new_notification", true },
-                                                        { "challenge_bundle_id", FoundSeason.Quests[AllBundles.templateId].attributes.challenge_bundle_id },
-                                                        { "xp_reward_scalar", 1 },
-                                                        { "challenge_linked_quest_given", "" },
-                                                        { "quest_pool", "" },
-                                                        { "quest_state", "Claimed" },
-                                                        { "bucket", "" },
-                                                        { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                        { "challenge_linked_quest_parent", "" },
-                                                        { "max_level_bonus", 0 },
-                                                        { "xp", 0 },
-                                                        { "quest_rarity", "uncommon" },
-                                                        { "favorite", false },
-                                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                },
-                                                quantity = 1
-                                            };
-
-                                            foreach (DailyQuestsObjectiveStates yklist in FoundSeason.Quests[AllBundles.templateId].attributes.ObjectiveState)
-                                            {
-                                                ItemObjectResponse2.attributes.Add(yklist.Name, yklist.Value);
-                                            }
-
-                                            MultiUpdates.Add(new
-                                            {
-                                                changeType = "itemRemoved",
-                                                itemId = AllBundles.templateId,
-                                            });
-
-                                            MultiUpdates.Add(new MultiUpdateClass
-                                            {
-                                                changeType = "itemAdded",
-                                                itemId = $"{AllBundles.templateId}",
-                                                item = ItemObjectResponse2
-                                            });
-
-
-                                            Logger.Error("TEST2");
-                                            //WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary
-                                            //  FoundSeason.Quests[Quests.Key].attributes.quest_state
-
-                                            // might be used might not!
-                                            if (!AllBundles.quest_data.ExtraQuests && !AllBundles.quest_data.Steps)
-                                            {
-                                                Logger.Error("TEST3");
-                                                foreach (var item in FoundSeason.Quests)
-                                                {
-                                                    if (item.Value.attributes.quest_state == "Claimed") continue; // dw!
-                                                    Logger.Error(item.Key);
-                                                    //if (item.Value.attributes.questData.QuestType == "Normal")
-                                                    //{
-                                                    var Data = item.Value.attributes.ObjectiveState.FindIndex(e => e.Name.ToLower().Contains("weeklychallenges"));
-                                                    if (Data != -1)
-                                                    {
-                                                        FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data].Value += 1;
-
-                                                        // we need to now check if we want to claim this
-                                                        var ObjectiveStateQuestData = FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data];
-
-                                                        var FindQuestData = WeeklyQuestsArray.FirstOrDefault(e => e.BundleId.Contains(FoundSeason.Quests[item.Key].attributes.challenge_bundle_id));
-                                                        if (FindQuestData != null)
-                                                        {
-                                                            if (ObjectiveStateQuestData.Value == ObjectiveStateQuestData.MaxValue)
-                                                            {
-                                                                // sets it to claimed but we still need to find the item to give
-                                                                FoundSeason.Quests[item.Key].attributes.quest_state = "Claimed";
-
-                                                                //var FindQuestData = WeeklyQuestsArray.FirstOrDefault(e => e.BundleId.Contains(FoundSeason.Quests[item.Key].attributes.challenge_bundle_id)).BundlesObject;
-
-
-                                                                foreach (var FindItems in FindQuestData.BundlesObject)
-                                                                {
-                                                                    //if (!FindItems.templateId.ToLower().Contains("weeklychallenges")) continue;
-                                                                    if (!FindItems.quest_data.IsWeekly) continue;
-
-                                                                    foreach (var Item in FindItems.Objectives)
-                                                                    {
-                                                                        if (Item.BackendName.Contains(FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data].Name.Split("tion_")[1]))
-                                                                        {
-                                                                            FoundSeason.BookXP += FindItems.Rewards.BattleStars;
-
-                                                                            foreach (var FuckThisLoop in FindItems.Rewards.Quest)
-                                                                            {
-                                                                                Logger.Error(FuckThisLoop.TemplateId);
-                                                                            }
-
-                                                                            foreach (var FuckThisLoop in FindItems.Rewards.GrantedItems)
-                                                                            {
-                                                                                Logger.Error(FuckThisLoop.TemplateId);
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-
-                                                        // We need to remove and add back to update it live!
-
-                                                        var ItemObjectResponse = new
-                                                        {
-                                                            templateId = $"{item.Key}",
-                                                            attributes = new Dictionary<string, object>
-                                                            {
-                                                                    { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                    { "level", -1 },
-                                                                    { "item_seen", false },
-                                                                    { "playlists", new List<object>() },
-                                                                    { "sent_new_notification", true },
-                                                                    { "challenge_bundle_id", item.Value.attributes.challenge_bundle_id },
-                                                                    { "xp_reward_scalar", 1 },
-                                                                    { "challenge_linked_quest_given", "" },
-                                                                    { "quest_pool", "" },
-                                                                    { "quest_state", "Active" },
-                                                                    { "bucket", "" },
-                                                                    { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                    { "challenge_linked_quest_parent", "" },
-                                                                    { "max_level_bonus", 0 },
-                                                                    { "xp", 0 },
-                                                                    { "quest_rarity", "uncommon" },
-                                                                    { "favorite", false },
-                                                            // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                            },
-                                                            quantity = 1
-                                                        };
-
-                                                        foreach (DailyQuestsObjectiveStates yklist in FoundSeason.Quests[item.Key].attributes.ObjectiveState)
-                                                        {
-                                                            ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                                                        }
-
-                                                        MultiUpdates.Add(new
-                                                        {
-                                                            changeType = "itemRemoved",
-                                                            itemId = item.Key,
-                                                        });
-
-                                                        MultiUpdates.Add(new MultiUpdateClass
-                                                        {
-                                                            changeType = "itemAdded",
-                                                            itemId = $"{item.Key}",
-                                                            item = ItemObjectResponse
-                                                        });
-
-                                                    }
-                                                    //  }
-                                                }
-                                            }
-
-                                            foreach (var GrantedItems in AllBundles.Rewards.GrantedItems)
-                                            {
-                                                Logger.Error("I WANT TO GIVE " + GrantedItems.TemplateId);
-                                                //var GiveItenToUser = profileCacheEntry.AccountData.athena.
-                                            }
-
-                                            foreach (var Quests in AllBundles.Rewards.Quest)
-                                            {
-                                                var FoundNewQuest = kvp.BundlesObject.FirstOrDefault(e => e.templateId == Quests.TemplateId);
-                                                if (FoundNewQuest != null)
-                                                {
-                                                    // ADD NEW QUESTS
-                                                    Console.WriteLine($"I WANT TO ADD {FoundNewQuest.templateId}");
-
-                                                    List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
-
-                                                    foreach (WeeklyObjectsObjectives ObjectiveItems in FoundNewQuest.Objectives)
-                                                    {
-                                                        QuestObjectStats.Add(new DailyQuestsObjectiveStates
-                                                        {
-                                                            Name = $"completion_{ObjectiveItems.BackendName}",
-                                                            Value = 0,
-                                                            MaxValue = ObjectiveItems.Count
-                                                        });
-                                                    }
-
-                                                    FoundSeason.Quests.Add($"{FoundNewQuest.templateId}", new DailyQuestsData
-                                                    {
-                                                        templateId = $"{FoundNewQuest.templateId}",
-                                                        attributes = new DailyQuestsDataDB
-                                                        {
-                                                            challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
-                                                            sent_new_notification = false,
-                                                            ObjectiveState = QuestObjectStats,
-                                                        },
-                                                        quantity = 1
-                                                    });
-
-
-                                                    var ItemObjectResponse = new
-                                                    {
-                                                        templateId = $"{FoundNewQuest.templateId}",
-                                                        attributes = new Dictionary<string, object>
-                                                        {
-                                                            { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "level", -1 },
-                                                            { "item_seen", false },
-                                                            { "playlists", new List<object>() },
-                                                            { "sent_new_notification", true },
-                                                            { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
-                                                            { "xp_reward_scalar", 1 },
-                                                            { "challenge_linked_quest_given", "" },
-                                                            { "quest_pool", "" },
-                                                            { "quest_state", "Active" },
-                                                            { "bucket", "" },
-                                                            { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "challenge_linked_quest_parent", "" },
-                                                            { "max_level_bonus", 0 },
-                                                            { "xp", 0 },
-                                                            { "quest_rarity", "uncommon" },
-                                                            { "favorite", false },
-                                                            // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                        },
-                                                        quantity = 1
-                                                    };
-
-                                                    foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
-                                                    {
-                                                        ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                                                    }
-
-                                                    MultiUpdates.Add(new MultiUpdateClass
-                                                    {
-                                                        changeType = "itemAdded",
-                                                        itemId = $"{FoundNewQuest.templateId}",
-                                                        item = ItemObjectResponse
-                                                    });
-                                                }
-                                                else
-                                                {
-                                                    Console.WriteLine("I DONT SUPPORT " + Quests.TemplateId);
-                                                }
-                                            }
-                                        }
-                                    }
+                                    Console.WriteLine("I DONT SUPPORT " + Quests.TemplateId);
                                 }
                             }
 
                         }
                     }
-
-                    var ItemTestObjectResponse = new
+                    else
                     {
-                        templateId = ResponseId,
-                        attributes = new Dictionary<string, object>
-                                {
-                                    { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                    { "max_level_bonus", 0 },
-                                    { "level", 0 },
-                                    { "item_seen", true },
-                                    { "xp", 0 },
-                                    { "favorite", false },
-                                    { "granted_bundles", ResponseIgIdrk.ToArray() }
-                                },
-                        quantity = 1,
-                    };
+                        if (AllBundles.quest_data.ExtraQuests) continue;
+                        // Don't even own the quest wow!
 
-                    MultiUpdates.Add(new
-                    {
-                        changeType = "itemRemoved",
-                        itemId = ResponseId,
-                    });
-
-
-                    MultiUpdates.Add(new MultiUpdateClass
-                    {
-                        changeType = "itemAdded",
-                        itemId = ResponseId,
-                        item = ItemTestObjectResponse
-                    });
-
-                    // ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
-
-
-                }
-            }
-
-            if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> QuestsArray))
-            {
-                if (QuestsArray.Count > 0)
-                {
-                    //Console.WriteLine("T");
-                    List<string> ResponseIgIdrk = new List<string>();
-                    var ResponseId = "";
-                    foreach (var kvp in QuestsArray)
-                    {
-                        ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
-                        ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
-                        //ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
-                        //ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
-                        //kvp.BundleId
-                        List<string> grantedquestinstanceids = new List<string>();
-
-
-                        // THIS SHOULD SUPPORT ANY QUESTS.. IF DOESNT SAD!
-                        foreach (var AllBundles in kvp.BundlesObject)
+                        List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+                        //  int AmountCompleted = 0;
+                        foreach (WeeklyObjectsObjectives ObjectiveItems in AllBundles.Objectives)
                         {
-                            // Console.WriteLine(AllBundles.templateId);
-                            //Console.WriteLine(AllBundles.quest_data.RequireBP);
-                           // Console.WriteLine(AllBundles.templateId);
-                            bool ShouldGrantItems = true;
-                            if (AllBundles.quest_data.RequireBP)
+                            //CurrentLevelXP
+                            if (ObjectiveItems.BackendName.ToLower().Contains("_xp_"))
                             {
-                                if (!FoundSeason.BookPurchased)
+                                if (FoundSeason.Level >= ObjectiveItems.Count)
                                 {
-                                    ShouldGrantItems = false;
+                                    //  AmountCompleted += 1;
+                                    QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                    {
+                                        Name = $"completion_{ObjectiveItems.BackendName}",
+                                        Value = ObjectiveItems.Count,
+                                        MaxValue = ObjectiveItems.Count
+                                    });
+                                }
+                                else
+                                {
+                                    List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+                                    var beforeLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.Level == FoundSeason.Level);
+
+                                    int CurrentLevelXP;
+                                    if (beforeLevelXPElement != null && SeasonXpIg.IndexOf(beforeLevelXPElement) == SeasonXpIg.Count - 1)
+                                    {
+                                        FoundSeason.SeasonXP = 0;
+                                    }
+
+                                    CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+                                    QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                    {
+                                        Name = $"completion_{ObjectiveItems.BackendName}",
+                                        Value = CurrentLevelXP,
+                                        MaxValue = ObjectiveItems.Count
+                                    });
                                 }
                             }
-
-                            if (ShouldGrantItems)
+                            else
                             {
-                                DailyQuestsData QuestData = FoundSeason.Quests.FirstOrDefault(e => e.Key == AllBundles.templateId).Value;
-                                if (QuestData != null)
+                                QuestObjectStats.Add(new DailyQuestsObjectiveStates
                                 {
-                                    // HANDLE CLAIMING
-                                    //Logger.Error("TEST");
-                                    if (FoundSeason.Quests[AllBundles.templateId].attributes.quest_state != "Claimed")
-                                    {
-                                        bool ShouldClaim = true;
-                                        int Index = 0;
-                                       // Console.WriteLine(AllBundles.templateId);
-                                        foreach (DailyQuestsObjectiveStates ObjectiveState in FoundSeason.Quests[AllBundles.templateId].attributes.ObjectiveState)
-                                        {
-                                            
-                                          //  Console.WriteLine(ObjectiveState.Value);
-                                           // Console.WriteLine(ObjectiveState.MaxValue);
-                                            if (ObjectiveState.Value != ObjectiveState.MaxValue)
-                                            {
-                                                ShouldClaim = false;
-                                            }
-                                            //FoundSeason.Quests[FreeBundles.templateId].attributes.ObjectiveState[Index].Value
-                                            Index += 1;
-                                        }
-
-                                        //   Console.WriteLine(AllBundles.templateId);
-
-                                        if (ShouldClaim)
-                                        {
-                                            FoundSeason.Quests[AllBundles.templateId].attributes.quest_state = "Claimed";
-                                            FoundSeason.BookXP += AllBundles.Rewards.BattleStars;
-
-                                            // TO-DO only call this if theres 0 quests to add
-                                            var ItemObjectResponse2 = new
-                                            {
-                                                templateId = $"{AllBundles.templateId}",
-                                                attributes = new Dictionary<string, object>
-                                                {
-                                                        { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                        { "level", -1 },
-                                                        { "item_seen", false },
-                                                        { "playlists", new List<object>() },
-                                                        { "sent_new_notification", true },
-                                                        { "challenge_bundle_id", FoundSeason.Quests[AllBundles.templateId].attributes.challenge_bundle_id },
-                                                        { "xp_reward_scalar", 1 },
-                                                        { "challenge_linked_quest_given", "" },
-                                                        { "quest_pool", "" },
-                                                        { "quest_state", "Claimed" },
-                                                        { "bucket", "" },
-                                                        { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                        { "challenge_linked_quest_parent", "" },
-                                                        { "max_level_bonus", 0 },
-                                                        { "xp", 0 },
-                                                        { "quest_rarity", "uncommon" },
-                                                        { "favorite", false },
-                                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                },
-                                                quantity = 1
-                                            };
-
-                                            foreach (DailyQuestsObjectiveStates yklist in FoundSeason.Quests[AllBundles.templateId].attributes.ObjectiveState)
-                                            {
-                                                ItemObjectResponse2.attributes.Add(yklist.Name, yklist.Value);
-                                            }
-
-                                            MultiUpdates.Add(new
-                                            {
-                                                changeType = "itemRemoved",
-                                                itemId = AllBundles.templateId,
-                                            });
-
-                                            MultiUpdates.Add(new MultiUpdateClass
-                                            {
-                                                changeType = "itemAdded",
-                                                itemId = $"{AllBundles.templateId}",
-                                                item = ItemObjectResponse2
-                                            });
-
-
-                                          //  Logger.Error("TEST2");
-                                            //WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary
-                                            //  FoundSeason.Quests[Quests.Key].attributes.quest_state
-
-                                            // might be used might not!
-                                            if (!AllBundles.quest_data.ExtraQuests && !AllBundles.quest_data.Steps)
-                                            {
-                                               // Logger.Error("TEST3");
-                                                foreach (var item in FoundSeason.Quests)
-                                                {
-                                                    if (item.Value.attributes.quest_state == "Claimed") continue; // dw!
-                                                   // Logger.Error(item.Key);
-                                                    //if (item.Value.attributes.questData.QuestType == "Normal")
-                                                    //{
-                                                    var Data = item.Value.attributes.ObjectiveState.FindIndex(e => e.Name.ToLower().Contains("weeklychallenges"));
-                                                    if (Data != -1)
-                                                    {
-                                                        FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data].Value += 1;
-
-                                                        // we need to now check if we want to claim this
-                                                        var ObjectiveStateQuestData = FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data];
-
-                                                        var FindQuestData = WeeklyQuestsArray.FirstOrDefault(e => e.BundleId.Contains(FoundSeason.Quests[item.Key].attributes.challenge_bundle_id));
-                                                        if (FindQuestData != null)
-                                                        {
-                                                            if (ObjectiveStateQuestData.Value == ObjectiveStateQuestData.MaxValue)
-                                                            {
-                                                                // sets it to claimed but we still need to find the item to give
-                                                                FoundSeason.Quests[item.Key].attributes.quest_state = "Claimed";
-
-                                                                //var FindQuestData = WeeklyQuestsArray.FirstOrDefault(e => e.BundleId.Contains(FoundSeason.Quests[item.Key].attributes.challenge_bundle_id)).BundlesObject;
-
-
-                                                                foreach (var FindItems in FindQuestData.BundlesObject)
-                                                                {
-                                                                    //if (!FindItems.templateId.ToLower().Contains("weeklychallenges")) continue;
-                                                                    if (!FindItems.quest_data.IsWeekly) continue;
-
-                                                                    foreach (var Item in FindItems.Objectives)
-                                                                    {
-                                                                        if (Item.BackendName.Contains(FoundSeason.Quests[item.Key].attributes.ObjectiveState[Data].Name.Split("tion_")[1]))
-                                                                        {
-                                                                            FoundSeason.BookXP += FindItems.Rewards.BattleStars;
-
-                                                                            foreach (var FuckThisLoop in FindItems.Rewards.Quest)
-                                                                            {
-                                                                                Logger.Error(FuckThisLoop.TemplateId);
-
-                                                                            }
-
-                                                                            foreach (var FuckThisLoop in FindItems.Rewards.GrantedItems)
-                                                                            {
-                                                                                Logger.Error(FuckThisLoop.TemplateId);
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-
-                                                        // We need to remove and add back to update it live!
-
-                                                        var ItemObjectResponse = new
-                                                        {
-                                                            templateId = $"{item.Key}",
-                                                            attributes = new Dictionary<string, object>
-                                                            {
-                                                                    { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                    { "level", -1 },
-                                                                    { "item_seen", false },
-                                                                    { "playlists", new List<object>() },
-                                                                    { "sent_new_notification", true },
-                                                                    { "challenge_bundle_id", item.Value.attributes.challenge_bundle_id },
-                                                                    { "xp_reward_scalar", 1 },
-                                                                    { "challenge_linked_quest_given", "" },
-                                                                    { "quest_pool", "" },
-                                                                    { "quest_state", "Active" },
-                                                                    { "bucket", "" },
-                                                                    { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                    { "challenge_linked_quest_parent", "" },
-                                                                    { "max_level_bonus", 0 },
-                                                                    { "xp", 0 },
-                                                                    { "quest_rarity", "uncommon" },
-                                                                    { "favorite", false },
-                                                            // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                            },
-                                                            quantity = 1
-                                                        };
-
-                                                        foreach (DailyQuestsObjectiveStates yklist in FoundSeason.Quests[item.Key].attributes.ObjectiveState)
-                                                        {
-                                                            ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                                                        }
-
-                                                        MultiUpdates.Add(new
-                                                        {
-                                                            changeType = "itemRemoved",
-                                                            itemId = item.Key,
-                                                        });
-
-                                                        MultiUpdates.Add(new MultiUpdateClass
-                                                        {
-                                                            changeType = "itemAdded",
-                                                            itemId = $"{item.Key}",
-                                                            item = ItemObjectResponse
-                                                        });
-
-                                                    }
-                                                    //  }
-                                                }
-                                            }
-
-                                            foreach (var GrantedItems in AllBundles.Rewards.GrantedItems)
-                                            {
-                                                Logger.Error("I WANT TO GIVE " + GrantedItems.TemplateId);
-                                                if (!profileCacheEntry.AccountData.athena.Items.ContainsKey(GrantedItems.TemplateId))
-                                                {
-                                                    if (!profileCacheEntry.AccountData.commoncore.Items.ContainsKey(GrantedItems.TemplateId))
-                                                    {
-                                                        Logger.Error(GrantedItems.TemplateId);
-                                                        if (GrantedItems.TemplateId.Contains("HomebaseBannerIcon"))
-                                                        {
-                                                            profileCacheEntry.AccountData.commoncore.Items.Add(GrantedItems.TemplateId, new CommonCoreItem
-                                                            {
-                                                                templateId = GrantedItems.TemplateId,
-                                                                attributes = new CommonCoreItemAttributes
-                                                                {
-                                                                    item_seen = false
-                                                                },
-                                                                quantity = GrantedItems.Quantity,
-                                                            });
-
-                                                            MultiUpdates.Add(new MultiUpdateClass
-                                                            {
-                                                                changeType = "itemAdded",
-                                                                itemId = GrantedItems.TemplateId,
-                                                                item = new AthenaItem
-                                                                {
-                                                                    templateId = GrantedItems.TemplateId,
-                                                                    attributes = new AthenaItemAttributes
-                                                                    {
-                                                                        item_seen = false,
-                                                                    },
-                                                                    quantity = 1
-                                                                }
-                                                            });
-                                                        }
-                                                        else if (GrantedItems.TemplateId.Contains("Athena"))
-                                                        {
-                                                            MultiUpdates.Add(new MultiUpdateClass
-                                                            {
-                                                                changeType = "itemAdded",
-                                                                itemId = GrantedItems.TemplateId,
-                                                                item = new AthenaItem
-                                                                {
-                                                                    templateId = GrantedItems.TemplateId,
-                                                                    attributes = new AthenaItemAttributes
-                                                                    {
-                                                                        item_seen = false,
-                                                                    },
-                                                                    quantity = 1
-                                                                }
-                                                            });
-
-
-                                                            profileCacheEntry.AccountData.athena.Items.Add(GrantedItems.TemplateId, new AthenaItem
-                                                            {
-                                                                templateId = GrantedItems.TemplateId,
-                                                                attributes = new AthenaItemAttributes
-                                                                {
-                                                                    favorite = false,
-                                                                    item_seen = false,
-                                                                    level = 1,
-                                                                    max_level_bonus = 0,
-                                                                    rnd_sel_cnt = 0,
-                                                                    variants = GrantedItems.variants,
-                                                                    xp = 0
-                                                                },
-                                                                quantity = GrantedItems.Quantity,
-                                                            });
-                                                        }
-                                                        else if (GrantedItems.TemplateId.Contains("CosmeticVariantToken:"))
-                                                        {
-                                                            Console.WriteLine(GrantedItems.connectedTemplate);
-                                                            if (!string.IsNullOrEmpty(GrantedItems.connectedTemplate))
-                                                            {
-                                                                AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == GrantedItems.connectedTemplate).Value;
-
-                                                                if (athenaItem != null)
-                                                                {
-                                                                    var AddedVariants = athenaItem.attributes.variants;
-
-                                                                    var NeedToAdd = GrantedItems.new_variants;
-
-                                                                    foreach (var variant in NeedToAdd)
-                                                                    {
-                                                                        var existingVariant = AddedVariants.FirstOrDefault(v => v.channel == variant.channel);
-                                                                        if (existingVariant != null)
-                                                                        {
-                                                                            existingVariant.owned.AddRange(variant.added);
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            var newVariant = new AthenaItemVariants
-                                                                            {
-                                                                                channel = variant.channel,
-                                                                                active = variant.added.First(),
-                                                                                owned = variant.added
-                                                                            };
-                                                                            AddedVariants.Add(newVariant);
-                                                                        }
-                                                                    }
-
-                                                                    profileCacheEntry.AccountData.athena.Items[GrantedItems.connectedTemplate].attributes.variants = AddedVariants;
-                                                                    // athenaItem.attributes.variants.Add()
-
-
-                                                                    MultiUpdates.Add(new
-                                                                    {
-                                                                        changeType = "itemAttrChanged",
-                                                                        itemId = GrantedItems.connectedTemplate,
-                                                                        attributeName = "variants",
-                                                                        attributeValue = AddedVariants
-                                                                    });
-                                                                }
-                                                                else
-                                                                {
-                                                                    Logger.Error(GrantedItems.connectedTemplate, "DONT EVEN OWN");
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                Logger.Error(GrantedItems.TemplateId, "CosmeticVariantToken");
-                                                            }
-                                                        }
-                                                        else if (GrantedItems.TemplateId.Contains("Token:"))
-                                                        {
-                                                            if (GrantedItems.TemplateId.Contains("athenaseasonfriendxpboost"))
-                                                            {
-                                                                FoundSeason.season_friend_match_boost += GrantedItems.Quantity;
-
-                                                                MultiUpdates.Add(new
-                                                                {
-                                                                    changeType = "statModified",
-                                                                    name = "season_match_boost",
-                                                                    value = FoundSeason.season_friend_match_boost
-                                                                });
-                                                            }
-                                                            else if (GrantedItems.TemplateId.Contains("athenaseasonxpboost"))
-                                                            {
-                                                                //  season_match_boost
-                                                                FoundSeason.season_match_boost += GrantedItems.Quantity;
-
-                                                                MultiUpdates.Add(new
-                                                                {
-                                                                    changeType = "statModified",
-                                                                    name = "season_friend_match_boost",
-                                                                    value = FoundSeason.season_match_boost
-                                                                });
-                                                            }
-                                                            else if (GrantedItems.TemplateId.Contains("athenaseasonmergedxpboosts"))
-                                                            {
-                                                                //FoundSeason.season_merged_boosts += iteminfo.Quantity;
-
-                                                                //MultiUpdates.Add(new
-                                                                //{
-                                                                //    changeType = "statModified",
-                                                                //    name = ""
-                                                                //})
-                                                            }
-                                                            else
-                                                            {
-                                                                Logger.Log($"{GrantedItems.TemplateId} is not supported", "ClientQuestLogin");
-                                                            }
-                                                        }
-                                                        //else if (FuckThisLoop.TemplateId.Contains("Currency:"))
-                                                        //{
-                                                        //    currencyItem.quantity += FuckThisLoop.Quantity;
-                                                        //}
-                                                        //else if (FuckThisLoop.TemplateId.Contains("AccountResource:"))
-                                                        //{
-                                                        //    FoundSeason.SeasonXP += FuckThisLoop.Quantity;
-
-                                                        //    (FoundSeason, NeedItems) = await LevelUpdater.Init(FoundSeason.SeasonNumber, FoundSeason, NeedItems);
-                                                        //    NeedItems = true; // force it as we don't want this to become false here
-                                                        //}
-                                                        else
-                                                        {
-                                                            Logger.Log($"{GrantedItems.TemplateId} is not supported!", "QuestsDealer");
-                                                        }
-
-                                                        TestIG.Add(new NotificationsItemsClassOG
-                                                        {
-                                                            itemType = GrantedItems.TemplateId,
-                                                            itemGuid = GrantedItems.TemplateId,
-                                                            quantity = GrantedItems.Quantity,
-                                                        });
-                                                    }
-                                                }
-                                                //var GiveItenToUser = profileCacheEntry.AccountData.athena.
-                                            }
-
-                                            foreach (var Quests in AllBundles.Rewards.Quest)
-                                            {
-                                                var FoundNewQuest = kvp.BundlesObject.FirstOrDefault(e => e.templateId == Quests.TemplateId);
-                                                if (FoundNewQuest != null)
-                                                {
-                                                    // ADD NEW QUESTS
-                                                    Console.WriteLine($"I WANT TO ADD {FoundNewQuest.templateId}");
-
-                                                    List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
-
-                                                    foreach (WeeklyObjectsObjectives ObjectiveItems in FoundNewQuest.Objectives)
-                                                    {
-                                                        QuestObjectStats.Add(new DailyQuestsObjectiveStates
-                                                        {
-                                                            Name = $"completion_{ObjectiveItems.BackendName}",
-                                                            Value = 0,
-                                                            MaxValue = ObjectiveItems.Count
-                                                        });
-                                                    }
-
-                                                    FoundSeason.Quests.Add($"{FoundNewQuest.templateId}", new DailyQuestsData
-                                                    {
-                                                        templateId = $"{FoundNewQuest.templateId}",
-                                                        attributes = new DailyQuestsDataDB
-                                                        {
-                                                            challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
-                                                            sent_new_notification = false,
-                                                            ObjectiveState = QuestObjectStats,
-                                                        },
-                                                        quantity = 1
-                                                    });
-
-
-                                                    var ItemObjectResponse = new
-                                                    {
-                                                        templateId = $"{FoundNewQuest.templateId}",
-                                                        attributes = new Dictionary<string, object>
-                                                                {
-                                                                    { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                    { "level", -1 },
-                                                                    { "item_seen", false },
-                                                                    { "playlists", new List<object>() },
-                                                                    { "sent_new_notification", true },
-                                                                    { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
-                                                                    { "xp_reward_scalar", 1 },
-                                                                    { "challenge_linked_quest_given", "" },
-                                                                    { "quest_pool", "" },
-                                                                    { "quest_state", "Active" },
-                                                                    { "bucket", "" },
-                                                                    { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                    { "challenge_linked_quest_parent", "" },
-                                                                    { "max_level_bonus", 0 },
-                                                                    { "xp", 0 },
-                                                                    { "quest_rarity", "uncommon" },
-                                                                    { "favorite", false },
-                                                                    // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                                },
-                                                        quantity = 1
-                                                    };
-
-                                                    foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
-                                                    {
-                                                        ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                                                    }
-
-                                                    MultiUpdates.Add(new MultiUpdateClass
-                                                    {
-                                                        changeType = "itemAdded",
-                                                        itemId = $"{FoundNewQuest.templateId}",
-                                                        item = ItemObjectResponse
-                                                    });
-                                                }
-                                                else
-                                                {
-                                                    Console.WriteLine("I DONT SUPPORT " + Quests.TemplateId);
-                                                }
-                                            }
-                                       }
-                                    }
-                                }
+                                    Name = $"completion_{ObjectiveItems.BackendName}",
+                                    Value = 0,
+                                    MaxValue = ObjectiveItems.Count
+                                });
                             }
 
                         }
+
+                        FoundSeason.Quests.Add($"{AllBundles.templateId}", new DailyQuestsData
+                        {
+                            templateId = $"{AllBundles.templateId}",
+                            attributes = new DailyQuestsDataDB
+                            {
+                                challenge_bundle_id = $"ChallengeBundle:{WeeklyQuests.BundleId}",
+                                sent_new_notification = false,
+                                ObjectiveState = QuestObjectStats
+                            },
+                            quantity = 1
+                        });
+
+                        var ItemObjectResponse = new
+                        {
+                            templateId = $"{AllBundles.templateId}",
+                            attributes = new Dictionary<string, object>
+                            {
+                                { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                { "level", -1 },
+                                { "item_seen", false },
+                                { "playlists", new List<object>() },
+                                { "sent_new_notification", true },
+                                { "challenge_bundle_id", $"ChallengeBundle:{WeeklyQuests.BundleId}" },
+                                { "xp_reward_scalar", 1 },
+                                { "challenge_linked_quest_given", "" },
+                                { "quest_pool", "" },
+                                { "quest_state", "Active" },
+                                { "bucket", "" },
+                                { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                { "challenge_linked_quest_parent", "" },
+                                { "max_level_bonus", 0 },
+                                { "xp", 0 },
+                                { "quest_rarity", "uncommon" },
+                                { "favorite", false },
+                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                            },
+                            quantity = 1
+                        };
+
+                        foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                        {
+                            ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                        }
+
+                        MultiUpdates.Add(new MultiUpdateClass
+                        {
+                            changeType = "itemAdded",
+                            itemId = $"{AllBundles.templateId}",
+                            item = ItemObjectResponse
+                        });
                     }
-
-                    var ItemTestObjectResponse = new
-                    {
-                        templateId = ResponseId,
-                        attributes = new Dictionary<string, object>
-                                {
-                                    { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                    { "max_level_bonus", 0 },
-                                    { "level", 0 },
-                                    { "item_seen", true },
-                                    { "xp", 0 },
-                                    { "favorite", false },
-                                    { "granted_bundles", ResponseIgIdrk.ToArray() }
-                                },
-                        quantity = 1,
-                    };
-
-                    MultiUpdates.Add(new
-                    {
-                        changeType = "itemRemoved",
-                        itemId = ResponseId,
-                    });
-
-
-                    MultiUpdates.Add(new MultiUpdateClass
-                    {
-                        changeType = "itemAdded",
-                        itemId = ResponseId,
-                        item = ItemTestObjectResponse
-                    });
-
-                    // ProfileChange.Profile.items.Add(ResponseId, AthenaItemDynamicData);
-
-
                 }
 
+                
+                //if (!FoundSeason.Quests.TryGetValue(WeeklyQuests.BundleId, out DailyQuestsData value))
+                //{
+                //    NewBundleCount += 1;
+
+                //    var AthenaItemChallengeBundle = new AthenaItemDynamic
+                //    {
+                //        templateId = $"ChallengeBundle:{WeeklyQuests.BundleId}",
+                //        attributes = new Dictionary<string, object>
+                //        {
+                //            { "has_unlock_by_completion", false },
+                //            { "num_quests_completed", 0 }, // gotta do this as well gulp
+                //            { "level", 0 },
+                //            { "grantedquestinstanceids", grantedquestinstanceids.ToArray() },
+                //            { "item_seen",  true },
+                //            { "max_allowed_bundle_level", 0 },
+                //            { "num_granted_bundle_quests", grantedquestinstanceids.Count() },
+                //            { "max_level_bonus", 0 },
+                //            { "challenge_bundle_schedule_id", ResponseId },
+                //            { "num_progress_quests_completed", 0 },
+                //            { "xp", 0 },
+                //            { "favorite", false }
+                //        },
+                //        quantity = 1,
+                //    };
+
+                //    FoundSeason.Quests.Add(WeeklyQuests.BundleId, new DailyQuestsData
+                //    {
+                //        templateId = $"ChallengeBundle:{WeeklyQuests.BundleId}",
+                //        attributes = new DailyQuestsDataDB
+                //        {
+                //            challenge_bundle_id = $"ChallengeBundle:{WeeklyQuests.BundleId}",
+                //            grantedquestinstanceids = grantedquestinstanceids,
+                //            item_seen = true,
+                //            num_granted_bundle_quests = grantedquestinstanceids.Count(),
+                //            challenge_bundle_schedule_id = ResponseId,
+                //            sent_new_notification = false,
+                            
+                //        },
+                //        quantity = 1
+                //    });
+
+                //    MultiUpdates.Add(new MultiUpdateClass
+                //    {
+                //        changeType = "itemAdded",
+                //        itemId = $"ChallengeBundle:{WeeklyQuests.BundleId}",
+                //        item = AthenaItemChallengeBundle
+                //    });
+                //}
+               // else
+                //{
+                   // if(value.attributes.grantedquestinstanceids != grantedquestinstanceids)
+                   // {
+                        MultiUpdates.Add(new
+                        {
+                            changeType = "itemAttrChanged",
+                            ItemId = ResponseId,
+                            attributeName = $"grantedquestinstanceids",
+                            attributeValue = grantedquestinstanceids
+                        });
+                   // }
+                // }
             }
 
-            if (TestIG.Count() > 0)
+            //if(NewBundleCount == AddedBundles.Count)
+            //{
+            //    var ItemTestObjectResponse = new
+            //    {
+            //        templateId = ResponseId,
+            //        attributes = new Dictionary<string, object>
+            //        {
+            //            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+            //            { "max_level_bonus", 0 },
+            //            { "level", 0 },
+            //            { "item_seen", true },
+            //            { "xp", 0 },
+            //            { "favorite", false },
+            //            { "granted_bundles", AddedBundles.ToArray() }
+            //        },
+            //        quantity = 1,
+            //    };
+
+
+            //    MultiUpdates.Add(new MultiUpdateClass
+            //    {
+            //        changeType = "itemAdded",
+            //        itemId = ResponseId,
+            //        item = ItemTestObjectResponse
+            //    });
+
+            //}
+            //else
+            //{
+               
+             //   if(AddedBundles.Count > NewBundleCount)
+              //  {
+                    MultiUpdates.Add(new
+                    {
+                        changeType = "itemAttrChanged",
+                        ItemId = ResponseId,
+                        attributeName = $"granted_bundles",
+                        attributeValue = AddedBundles
+                    });
+            // }
+            // }
+
+            if(GiftClassList.Count > 0)
             {
                 var RandomOfferId = Guid.NewGuid().ToString();
 
                 profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
                 {
-                    templateId = "GiftBox:gb_challengecomplete",
+                    templateId = "GiftBox:gb_generic",
                     attributes = new GiftCommonCoreItemAttributes
                     {
-                        lootList = TestIG
+                        lootList = GiftClassList
                     },
                     quantity = 1
                 });
@@ -990,12 +765,12 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                     itemId = RandomOfferId,
                     item = new
                     {
-                        templateId = "GiftBox:gb_challengecomplete",
+                        templateId = "GiftBox:gb_generic",
                         attributes = new
                         {
                             max_level_bonus = 0,
-                            fromAccountId = "",
-                            lootList = TestIG
+                            fromAccountId = "Server",
+                            lootList = GiftClassList
                         },
                         quantity = 1
                     }
@@ -1029,8 +804,6 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                             xmlMessage = message.ToString();
                             buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                            Console.WriteLine(xmlMessage);
-
                             await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                         }
 
@@ -1038,6 +811,8 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                 }
 
             }
+
+
 
             return (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
         }

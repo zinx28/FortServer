@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Search_ChestAmmo_Holly",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Chests or Ammo Boxes at Holly Hedges",
+    "Description": "Search Chests or Ammo Boxes at Holly Hedges",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Search_ChestAmmo_Holly",
+        "ObjectiveState": "interact_athena_chest_ammo_holly",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Chests or Ammo Boxes at Holly Hedges",
+        "HudShortDescription": "Search Chests or Ammo Boxes at Holly Hedges",
+        "Count": 7,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

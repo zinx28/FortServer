@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Search_ChestAmmo_Sweaty",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Chests or Ammo Boxes at Sweaty Sands",
+    "Description": "Search Chests or Ammo Boxes at Sweaty Sands",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Search_ChestAmmo_Sweaty",
+        "ObjectiveState": "interact_athena_chest_ammo_sweaty",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Chests or Ammo Boxes at Sweaty Sands",
+        "HudShortDescription": "Search Chests or Ammo Boxes at Sweaty Sands",
+        "Count": 7,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

@@ -32,6 +32,27 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     {
                         profileCacheEntry.AccountData.commoncore.Items[item].attributes.item_seen = true;
                     }
+                    else
+                    {
+
+                        SeasonClass seasonObject = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(season => season.SeasonNumber == Season.Season)!;
+
+                        // Wow MartItemSeen Works On Quests
+                        if (seasonObject != null)
+                        {
+                            Console.WriteLine("2");
+                            if (seasonObject.Quests.ContainsKey(item))
+                            {
+                                Console.WriteLine("JHAHAHAH");
+                                seasonObject.Quests[item].attributes.item_seen = true;
+                            }
+                            else if (seasonObject.DailyQuests.Daily_Quests.ContainsKey(item))
+                            {
+                                seasonObject.DailyQuests.Daily_Quests[item].attributes.item_seen = true;
+                            }
+                        }
+
+                    }
 
                     MultiUpdates.Add(new
                     {

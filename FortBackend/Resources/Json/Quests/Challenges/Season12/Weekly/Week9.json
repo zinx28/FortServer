@@ -1,0 +1,343 @@
+{
+  "BundleId": "MissionBundle_S12_Week_09",
+  "BundleSchedule": "Season12_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_s12_w9_q01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 5
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_BeachyBluffs",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_DirtyDocks",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_FrenzyFarm",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_HollyHedges",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_LazyLake",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_MountainMeadow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_PowerPlant",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_SlurpySwamp",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_SunnyShores",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "Interact_treasurechest_Apollo_Location_WeepingWoods",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_retailrow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_saltysprings",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_pleasantpark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_chest_grotto",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_chest_rig",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_chest_yacht",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_chest_shark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_chest_agency",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_athena_player_sniper",
+          "Count": 300,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q03",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "use_upgradebench_legendary",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q04",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_llama_legendarychest_supplycrate",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q05",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_piloted_hoagie",
+          "Count": 100,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q06",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "collect_xpcoins",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q07",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "carry_bear_distance",
+          "Count": 100,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q08",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_midas_statue",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q09",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "collect_intel_spygames",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w9_q10",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_survival_combat_scavenger_medals",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,4 @@
-
-  {
+{
     "Type": "FortQuestItemDefinition",
     "Name": "AthenaDaily_Outlive_Solo",
     "Class": "UScriptClass'FortQuestItemDefinition'",

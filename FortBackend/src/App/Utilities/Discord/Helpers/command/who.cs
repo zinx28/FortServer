@@ -6,6 +6,7 @@ using FortBackend.src.App.Utilities.MongoDB;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.XMPP.Data;
 using FortLibrary;
+using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.MongoDB.Module;
 using FortLibrary.XMPP;
@@ -73,8 +74,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         return;
                     }
 
-                    var banButton = new ComponentBuilder().WithButton("Ban", "ban", ButtonStyle.Danger).WithButton("Temp Ban", "temp-ban", ButtonStyle.Danger).Build();
-                    var unbanButton = new ComponentBuilder().WithButton("Unban", "unban", ButtonStyle.Danger).Build();
+                   // var banButton = new ComponentBuilder().WithButton("Ban", "ban", ButtonStyle.Danger).WithButton("Temp Ban", "temp-ban", ButtonStyle.Danger).Build();
+                   // var unbanButton = new ComponentBuilder().WithButton("Unban", "unban", ButtonStyle.Danger).Build();
 
                     var WhoIsField = new EmbedFieldBuilder()
                         .WithName("Banned")
@@ -93,12 +94,33 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         .WithColor(Color.Blue)
                         .WithCurrentTimestamp();
 
+                    // ill need to redo this line
+                    var selectMenu = new SelectMenuBuilder()
+                     .WithCustomId("select_action")
+                     .WithPlaceholder("Choose an action")
+                     .AddOption(RespondBack.banned ? "Unban" : "Ban", RespondBack.banned ? "unban" : "ban", RespondBack.banned ? "Ban the user" : "Unban the user", null, true)
+                     .AddOption("Temp Ban", "temp-ban", "Temporarily ban the user, set days to 0 to unban")
+                     .AddOption("Add VBucks", "add-vbucks", "Add VBucks to user account");
+
+                    var confirmButton = new ButtonBuilder()
+                        .WithLabel("Confirm")
+                        .WithStyle(ButtonStyle.Success)
+                        .WithCustomId("confirm_button");
+
+                    var component = new ComponentBuilder()
+                        .WithSelectMenu(selectMenu)
+                        .AddRow(new ActionRowBuilder().WithButton(confirmButton));
 
 
-                    await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: RespondBack.banned ? unbanButton : banButton);
-                   
+
+
+                    await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: component.Build());
+                    //await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: RespondBack.banned ? unbanButton : banButton);
+
+
                     bool Banned = RespondBack.banned;
                     bool InProgess = false;
+                    string SelectedAction = RespondBack.banned ? "unban" : "ban";
                     DiscordBot.Client.InteractionCreated += async (interaction) =>
                     {
                         if (InProgess || interaction.User.Id != command.User.Id)
@@ -106,52 +128,163 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             return;
                         }
 
-                        if (interaction is SocketMessageComponent componentInteraction &&
-                            componentInteraction.Data.CustomId == "ban" &&
-                            componentInteraction.User.Id == command.User.Id)
+                        if(interaction is SocketMessageComponent MessageComp && MessageComp.User.Id == command.User.Id)
                         {
-                            ulong messageId = componentInteraction.Message.Id;
-                            InProgess = true;
-                            var modalBuilder = new ModalBuilder()
-                            .WithTitle("Reason")
-                            .WithCustomId("reasontoban")
-                            .AddTextInput("Reason to ban the user", "reasontoban", placeholder: "Reason to ban the user")
-                            .AddTextInput("Ban Assist", "banAssist", placeholder: "Place other person discords id (who reported)", required: false);
-                            await interaction.RespondWithModalAsync(modalBuilder.Build());
+                            if (MessageComp.Data.CustomId == "select_action")
+                            {
+                                await MessageComp.DeferAsync();
+                                var selectedValue = MessageComp.Data.Values.First();
+                                SelectedAction = selectedValue;
+                            }
+                            else if (MessageComp.Data.CustomId == "confirm_button")
+                            {
+                                ulong messageId = MessageComp.Message.Id;
+                                InProgess = true;
+                                Console.WriteLine(SelectedAction);
+                                if (SelectedAction == "ban")
+                                {
+                                    var modalBuilder = new ModalBuilder()
+                                    .WithTitle("Reason")
+                                    .WithCustomId("reasontoban")
+                                    .AddTextInput("Reason to ban the user", "reasontoban", placeholder: "Reason to ban the user")
+                                    .AddTextInput("Ban Assist", "banAssist", placeholder: "Place other person discords id (who reported)", required: false);
+                                    await interaction.RespondWithModalAsync(modalBuilder.Build());
+                                }
+                                else if (SelectedAction == "unban")
+                                {
+                                    var modalBuilder = new ModalBuilder()
+                                    .WithTitle("Reason")
+                                    .WithCustomId("reasontouban")
+                                    .AddTextInput("Reason to unban the user", "reasontouban", placeholder: "Reason to unban the user");
 
-                        }
-                        else if (interaction is SocketMessageComponent unbanComponent &&
-                        unbanComponent.Data.CustomId == "unban" && unbanComponent.User.Id == command.User.Id)
-                        {
-                            ulong messageId = unbanComponent.Message.Id;
-                            InProgess = true;
-                            var modalBuilder = new ModalBuilder()
-                            .WithTitle("Reason")
-                            .WithCustomId("reasontouban")
-                            .AddTextInput("Reason to unban the user", "reasontouban", placeholder: "Reason to unban the user");
-                           
-                            await interaction.RespondWithModalAsync(modalBuilder.Build());
-                        }else if (interaction is SocketMessageComponent TempBancomponentInteraction &&
-                            TempBancomponentInteraction.Data.CustomId == "temp-ban" &&
-                            TempBancomponentInteraction.User.Id == command.User.Id)
-                        {
-                            ulong messageId = TempBancomponentInteraction.Message.Id;
-                            InProgess = true;
-                            var modalBuilder = new ModalBuilder()
-                            .WithTitle("Reason")
-                            .WithCustomId("reasontotempban")
-                            .AddTextInput("How long (days)", "reasontotempbanDays", TextInputStyle.Short, "Enter how many days", minLength: 1, maxLength: 3);
-                            await interaction.RespondWithModalAsync(modalBuilder.Build());
+                                    await interaction.RespondWithModalAsync(modalBuilder.Build());
+                                }
+                                else if (SelectedAction == "temp-ban")
+                                {
+                                    var modalBuilder = new ModalBuilder()
+                                    .WithTitle("Reason")
+                                    .WithCustomId("reasontotempban")
+                                    .AddTextInput("How long (days)", "reasontotempbanDays", TextInputStyle.Short, "Enter how many days", minLength: 1, maxLength: 3);
+                                    await interaction.RespondWithModalAsync(modalBuilder.Build());
+                                }
+                                else if (SelectedAction == "add-vbucks")
+                                {
+                                    var modalBuilder = new ModalBuilder()
+                                    .WithTitle("Reason")
+                                    .WithCustomId("reasontoaddvbucks")
+                                    .AddTextInput("Add Vbucks", "Vbucks", TextInputStyle.Short, "How Many Vbucks", minLength: 1, maxLength: 10);
 
+                                    await interaction.RespondWithModalAsync(modalBuilder.Build());
+                                }
+                                else
+                                {
+                                    var modalBuilder = new ModalBuilder()
+                                      .WithTitle("GUlp")
+                                      .WithCustomId("sadsa")
+                                      .AddTextInput("?????", "sa", TextInputStyle.Short, "bypassed?", minLength: 1, maxLength: 3);
+                                    await interaction.RespondWithModalAsync(modalBuilder.Build());
+                                }
+                            }
                         }
-                        else if (interaction is SocketModal BanComponent &&
-                        BanComponent.Data.CustomId == "reasontoban" && BanComponent.User.Id == command.User.Id && !Banned)
+
+                        if (interaction is SocketModal SocketComp && SocketComp.User.Id == command.User.Id)
                         {
-                            if (BanComponent.Message != null)
+
+                            if (SocketComp.Message != null)
                             {
                                 InProgess = true;
-                                List<SocketMessageComponentData> components = BanComponent.Data.Components.ToList();
-                                if (components.First(e => e.CustomId == "reasontoban").Value != null && !Banned)
+
+                                List<SocketMessageComponentData> components = SocketComp.Data.Components.ToList();
+                                if(components.Count == 0)
+                                {
+                                    return; // shouldn't work
+                                }
+
+                                if (SocketComp.Data.CustomId == "reasontoaddvbucks")
+                                {
+                                    if (int.TryParse(components.First(e => e.CustomId == "Vbucks").Value, out int Vbucks))
+                                    {
+                                        ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(RespondBack.DiscordId);
+
+                                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                                        {
+                                            int GrabPlacement3 = profileCacheEntry.AccountData.commoncore.Items.Select((pair, index) => (pair.Key, pair.Value, index))
+                                             .TakeWhile(pair => !pair.Key.Equals("Currency")).Count();
+
+                                            if (GrabPlacement3 != -1)
+                                            {
+                                                var Value = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+
+                                                if (Value.templateId != null || Value != null)
+                                                {
+                                                    if (Value.templateId == "Currency:MtxPurchased")
+                                                    {
+                                                        Value.quantity += Vbucks;
+                                                    }
+                                                }
+                                            }
+                                            var RandomOfferId = Guid.NewGuid().ToString();
+                                            profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
+                                            {
+                                                templateId = "GiftBox:GB_RMTOffer",
+                                                attributes = new GiftCommonCoreItemAttributes {
+                                                    lootList = new List<NotificationsItemsClassOG>()
+                                                    {
+                                                        new NotificationsItemsClassOG
+                                                        {
+                                                            itemGuid = "Currency:MtxPurchased",
+                                                            itemType = "Currency:MtxPurchased",
+                                                            quantity =  Vbucks
+                                                        }
+                                                    }
+                                                },
+                                                quantity = 1
+                                            });
+                                            profileCacheEntry.AccountData.commoncore.RVN += 1;
+                                            profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+
+                                            Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+
+                                            if (Client != null)
+                                            {
+                                                string xmlMessage;
+                                                byte[] buffer;
+                                                WebSocket webSocket = Client.Game_Client;
+
+                                                if (webSocket != null && webSocket.State == WebSocketState.Open)
+                                                {
+                                                    XNamespace clientNs = "jabber:client";
+
+                                                    var message = new XElement(clientNs + "message",
+                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                        new XAttribute("to", profileCacheEntry.AccountId),
+                                                        new XElement(clientNs + "body", JsonConvert.SerializeObject(new
+                                                        {
+                                                            payload = new { },
+                                                            type = "com.epicgames.gift.received",
+                                                            timestamp = DateTime.UtcNow.ToString("o")
+                                                        }))
+                                                    );
+
+                                                    xmlMessage = message.ToString();
+                                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
+
+                                                    //  Console.WriteLine(xmlMessage);
+
+                                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                                }
+
+                                            }
+
+                                            await interaction.RespondAsync($"Gave {Vbucks} to {profileCacheEntry.UserData.Username}", ephemeral: true);
+                                        }
+                                        else
+                                        {
+                                            await interaction.RespondAsync($"Failed To Grab Users Acc Info", ephemeral: true);
+                                        }
+                                    }
+                                }
+                                else if (SocketComp.Data.CustomId == "reasontoban" && !Banned)
                                 {
                                     Banned = true;
 
@@ -211,7 +344,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                             }
                                         }
                                     }
-                                  
+
                                     bool FoundAccount = GlobalData.AccessToken.Any(e => e.accountId == RespondBack.AccountId);
 
                                     if (FoundAccount)
@@ -223,7 +356,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                             if (AccessTokenIndex != -1)
                                             {
                                                 var AccessToken = GlobalData.AccessToken[AccessTokenIndex];
-                                                if(AccessToken != null)
+                                                if (AccessToken != null)
                                                 {
                                                     GlobalData.AccessToken.RemoveAt(AccessTokenIndex);
 
@@ -246,7 +379,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                             await MongoSaveData.SaveToDB(RespondBack.AccountId);
                                             CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId);
                                         }
-                                        catch {} // idfk
+                                        catch { } // idfk
                                     }
 
                                     // Ban user after deleting token and killing cached data
@@ -273,21 +406,10 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 
                                     await interaction.RespondAsync($"Banned :)", ephemeral: true);
                                 }
-                            }
-                        }
-                        else if (interaction is SocketModal TempBanComponent &&
-                      TempBanComponent.Data.CustomId == "reasontotempban" && TempBanComponent.User.Id == command.User.Id && !Banned)
-                        {
-                            if (TempBanComponent.Message != null)
-                            {
-                                InProgess = true;
-                                List<SocketMessageComponentData> components = TempBanComponent.Data.Components.ToList();
-                                if (components.First(e => e.CustomId == "reasontotempbanDays").Value != null && !Banned)
+                                else if (SocketComp.Data.CustomId == "reasontotempban" && !Banned) // why temp ban while banned
                                 {
-                                    Banned = true;
-                                  
-                                    float Days;
-                                    if (float.TryParse(components.First(e => e.CustomId == "reasontotempbanDays").Value, out Days)){
+                                    if (float.TryParse(components.First(e => e.CustomId == "reasontotempbanDays").Value, out float Days))
+                                    {
                                         ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(RespondBack.DiscordId);
 
                                         if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
@@ -350,7 +472,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                     xmlMessage = message.ToString();
                                                     buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                                  //  Console.WriteLine(xmlMessage);
+                                                    //  Console.WriteLine(xmlMessage);
 
                                                     await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                                                 }
@@ -368,7 +490,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                         //};
                                         //await StoreInfocollection.InsertOneAsync(storeinfo);
 
-                                
+
 
                                         await TempBanAndWebHooks.Init(Saved.Saved.DeserializeConfig, new UserInfo()
                                         {
@@ -379,17 +501,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                         await interaction.RespondAsync($"Temp Banned For {Days} Days", ephemeral: true);
                                     }
                                 }
-                            }
-                        }
-                        else if (interaction is SocketModal unbanInteraction &&
-                        unbanInteraction.Data.CustomId == "reasontouban" &&
-                        unbanInteraction.User.Id == command.User.Id && Banned)
-                        {
-                            if (unbanInteraction.Message != null)
-                            {
-                                InProgess = true;
-                                List<SocketMessageComponentData> components = unbanInteraction.Data.Components.ToList();
-                                if (components.First(e => e.CustomId == "reasontouban").Value != null && Banned)
+                                else if (SocketComp.Data.CustomId == "reasontouban" && Banned)
                                 {
                                     try
                                     {
@@ -423,6 +535,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                 }
                             }
                         }
+
 
                         InProgess = false;
                     };

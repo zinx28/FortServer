@@ -17,7 +17,7 @@ namespace FortBackend.src.App.SERVER
     public class Handle
     {
 
-        public static async Task HandleWebSocketConnection(WebSocket webSocket, HttpRequest context, string clientId, string IP)
+        public static async Task HandleWebSocketConnection(WebSocket webSocket, HttpRequest context, string clientId, string IP, CancellationToken serverShutdownToken)
         {
             string receivedMessage = ""; // so skunky but works fine
             //string AccountId = ""; // for both clients to know the main
@@ -29,17 +29,17 @@ namespace FortBackend.src.App.SERVER
                 var buffer = new byte[0];
                 XDocument xmlDoc = null;
 
-                while (webSocket.State == WebSocketState.Open)
+                while (!serverShutdownToken.IsCancellationRequested && webSocket.State == WebSocketState.Open)
                 {
                     buffer = new byte[1024];
-                    WebSocketReceiveResult result = await webSocket.ReceiveAsync(buffer, CancellationToken.None);
+                    WebSocketReceiveResult result = await webSocket.ReceiveAsync(buffer, serverShutdownToken);
                     while (!result.CloseStatus.HasValue)
                     {
                         string chunk = Encoding.UTF8.GetString(buffer, 0, result.Count);
                         receivedMessage += chunk;
                         if (result.EndOfMessage)
                         {
-                            Console.WriteLine("Received WebSocket message: " + receivedMessage);
+                            //Console.WriteLine("Received WebSocket message: " + receivedMessage);
                             JToken test = "";
                             try
                             {
@@ -56,15 +56,16 @@ namespace FortBackend.src.App.SERVER
                             }
                             catch { }
 
-                            if (xmlDoc != null) {
+                            if (xmlDoc != null)
+                            {
 
-                               //Console.WriteLine(xmlDoc.Root?.Name.LocalName);
+                                //Console.WriteLine(xmlDoc.Root?.Name.LocalName);
                                 switch (xmlDoc.Root?.Name.LocalName)
                                 {
                                     // LOGIN IS USED BY THE LUNA LAUNCHER THIS WILL NOT WORK WITH OTHERS
-                                   // case "login":
-                                        //Login.Init(webSocket, xmlDoc, clientId, IP);
-                                       // break;
+                                    // case "login":
+                                    //Login.Init(webSocket, xmlDoc, clientId, IP);
+                                    // break;
                                     // THIS PUSH WILL BREAK THE LUNA XMPP AND FIX THE NORMAL XMPP.. ILL THINK OF SOMETHING ELSE
                                     case "open":
                                         Open.Init(webSocket, UserDataSaved, clientId);
@@ -84,13 +85,13 @@ namespace FortBackend.src.App.SERVER
                                     default: break;
                                 }
 
-                         
+
                                 ClientFix.Init(webSocket, UserDataSaved, clientId);
-                                
+
                                 receivedMessage = "";
                             }
 
-                           
+
                         }
                         break;
                     }
@@ -106,6 +107,7 @@ namespace FortBackend.src.App.SERVER
             {
                 Console.WriteLine(ex.Message);
             }
+            catch (OperationCanceledException) { }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
@@ -115,7 +117,7 @@ namespace FortBackend.src.App.SERVER
                 Console.WriteLine("XMPP CLOSE");
                 try
                 {
-                    if (webSocket.State == WebSocketState.Open || webSocket.State == WebSocketState.CloseReceived)
+                    if (!serverShutdownToken.IsCancellationRequested && webSocket.State == WebSocketState.Open || webSocket.State == WebSocketState.CloseReceived)
                     {
                         await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Too Late Buddy I Turned You Off", CancellationToken.None);
                     }
@@ -144,7 +146,7 @@ namespace FortBackend.src.App.SERVER
                     {
                         Logger.Error("CLIENT IS NOT FOUND WTFFFF");
                     }
-                         
+
                     //}
                 }
                 catch (Exception ex)

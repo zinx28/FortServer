@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Harvest_Brick",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Harvest Stone",
+    "Description": "Harvest Stone",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Harvest_Brick",
+        "ObjectiveState": "collect_building_resources_stone",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Harvest Stone",
+        "HudShortDescription": "Harvest Stone",
+        "Count": 800,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

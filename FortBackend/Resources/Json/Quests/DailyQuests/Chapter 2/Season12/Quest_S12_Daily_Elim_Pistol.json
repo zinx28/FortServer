@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Elim_Pistol",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Pistol Eliminations",
+    "Description": "Pistol Eliminations",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Elim_Pistol",
+        "ObjectiveState": "killingblow_athena_player_pistol",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Pistol Eliminations",
+        "HudShortDescription": "Pistol Eliminations",
+        "Count": 2,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

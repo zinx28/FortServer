@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_PickUp_Legendary_DifferentMatches",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Pick up a Legendary Item in different matches",
+    "Description": "Pick up a Legendary Item in different matches",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_PickUp_Legendary_DifferentMatches",
+        "ObjectiveState": "collect_legendary_rarity_item",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Pick up a Legendary Item in different matches",
+        "HudShortDescription": "Pick up a Legendary Item in different matches",
+        "Count": 2,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

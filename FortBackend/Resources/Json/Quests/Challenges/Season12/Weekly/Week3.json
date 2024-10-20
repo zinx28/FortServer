@@ -1,0 +1,651 @@
+{
+  "BundleId": "MissionBundle_S12_Week_03",
+  "BundleSchedule": "Season12_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_s12_w3_q01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_apollo_explosives",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_treasurechest_hollyhedges_or_retail",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q03",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "destroy_structures_propanetank",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q04",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "meatball_getair",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q05",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 15
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "visit_landmark_MilitaryCamp.01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MilitaryCamp.02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MilitaryCamp.03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MilitaryCamp.04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MilitaryCamp.05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_CrashedAirplane",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_AngryApples",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_CampCod",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_CoralCove",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_Lighthouse",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_FortRuin",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BeachsideMansion",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_DigSite",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BonfireCampsite",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_RiskyReels",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_RadioStation",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_ScrapYard",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_PowerDam",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_WeatherStation",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_IslandLodge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_WaterfallGorge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_CanoeRentals",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MountainVault",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_SwampVille",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_CliffsideRuinedHouses",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_SawMill",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_PipePlayground",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_PipePerson",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_HayHillbilly",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_LawnmowerRaces",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_ShipwreckCove",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_TallestMountain",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BeachBus",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BobsBluff",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BuoyBoat",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_Chair",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_ForkKnifeTruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_DurrBurgerTruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_SnowConeTruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_PizzaPeteTruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BeachRentals",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_OvergrownHeads",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_LoversLookout",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_ToiletThrone",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_HatchA",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_HatchB",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_HatchC",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BigBridgeBlue",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BigBridgeRed",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BigBridgeYellow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BigBridgeGreen",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BigBridgePurple",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_CaptainCarpsTruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MountH7",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MountF8",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BaseCampHotel",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BaseCampFoxtrot",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BaseCampGolf",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_LazyLakeIsland",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BoatLaunch",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_CrashedCargo",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_HomelyHills",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_FlopperPond",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_HilltopHouse",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_StackShack",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_UnremarkableShack",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_RapidsRest",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_BushFace",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_MountainDanceClub",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_undergroundsoccerfield",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_undergroundgasstation",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_undergroundradiostation",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_boxfactory",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_teddybearspies",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_recruitmentofficeego",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_recruitmentofficealter",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_spybase_spyobstaclecourse",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_StumpyRidge",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q06",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "hide_in_prop_phonebooth",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q07",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_henchmen_boss",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q08",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "land_location_unnamed_sawmill",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "land_location_unnamed_powerdam",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "land_location_namedpoi_spybase_oilrig",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q09",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "destry_sentry_alarm_or_turret",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q10",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_apollo_twoplayers_nohealing",
+          "Count": 2,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

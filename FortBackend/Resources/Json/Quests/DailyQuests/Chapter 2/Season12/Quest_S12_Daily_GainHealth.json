@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_GainHealth",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Gain health",
+    "Description": "Gain health",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_GainHealth",
+        "ObjectiveState": "heal_player_health",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Gain health",
+        "HudShortDescription": "Gain health",
+        "Count": 250,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

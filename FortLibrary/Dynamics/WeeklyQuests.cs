@@ -1,4 +1,5 @@
 ﻿using FortLibrary.EpicResponses.Profile.Query.Items;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace FortLibrary.Dynamics
     public class WeeklyQuestJsonBundleRequired
     {
         public int RequiredLevel { get; set; } = 1;
+        public bool GrantByQuest { get; set; } = false;
+        public bool Weekly { get; set; } = false;
+     
         public List<WeeklyRewards> CompleteItems { get; set; } = new List<WeeklyRewards>();
 }
 
@@ -38,7 +42,7 @@ namespace FortLibrary.Dynamics
         public bool RequireBP { get; set; } = false;
         public bool ExtraQuests { get; set; } = true;
         public bool Steps { get; set; } = false;
-
+        public int Count { get; set; } = 0; // if 0 it shouldnt matter how to count
         public bool IsWeekly { get; set; } = false;
     }
 

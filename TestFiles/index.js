@@ -1,6 +1,7 @@
 /*const datafile = require("./Data.json")
 var tesa = 0;
 var Data = [];
+var XpTotalCal = 7490000; // require to change on each one
 for(var index in datafile) {
   tesa += 1;
   var dataHa = datafile[index];
@@ -18,12 +19,23 @@ for(var index in datafile) {
     //  "Quantity": 1
     //})
   //}
+  XpTotalCal += dataHa.XpPerLevel
+  if(dataHa.Level) {
+    Data.push({
+      "Level": dataHa.Level,
+      "XpToNextLevel": dataHa.XpToNextLevel,
+      "XpTotal": dataHa.XpTotal
+    })
+  }else {
+    Data.push({
+      "Level": dataHa.UntilLevel - 1,
+      "XpToNextLevel": dataHa.XpPerLevel,
+      "XpTotal": XpTotalCal
+    })
+   
+  }
 
-  Data.push({
-     "Level": dataHa.Level,
-     "XpToNextLevel": dataHa.XpToNextLevel,
-     "XpTotal": dataHa.XpTotal
-   })
+ 
   //console.log({ "Rewards": temp })
 }
 console.log(JSON.stringify(Data));*/
@@ -155,7 +167,7 @@ for(var index in DataFile){
 
 console.log(JSON.stringify(DataResponse, null, 2));*/
 
-
+/*
 
 const datafile = require("./BattlePass.json");
 var Data = [];
@@ -210,7 +222,9 @@ for(var index in datafile){
               templatePush = `AthenaMusicPack:${test}`
             }else if(test.includes("bid") || test.includes("petcarrier")){
               templatePush = `AthenaBackpack:${test}`
-            }
+            }//else if(test.includes("")){
+            //  templatePush = `HomebaseBannerIcon:${test}`
+            //}
 
             console.log(templatePush)
         }
@@ -235,7 +249,7 @@ for(var index in datafile){
 
 console.log(JSON.stringify(Data));
 
-
+*/
 
 /*
 const datafile = require("./SeasonStars.json");
@@ -262,7 +276,7 @@ for(var index in datafile){
 
 console.log(JSON.stringify(Data));*/
 
-/*
+
 const datafile = require("./Quest.json")
 var tesa =0;
 for(var index in datafile) {
@@ -308,7 +322,7 @@ for(var index in datafile) {
       "BackendName": element.BackendName,
       "ObjectiveState": element.ObjectiveStatHandle.RowName,
       "ItemEvent": element.ItemEvent,
-      "ItemReference": element.ItemReference,
+      "ItemReference": element.ItemReference.SubPathString,
       "ItemTemplateIdOverride": element.ItemTemplateIdOverride,
       "Description": element.Description.SourceString,
       "HudShortDescription": element.HudShortDescription.SourceString,
@@ -331,8 +345,8 @@ for(var index in datafile) {
     })
   //}
 
-  console.log(JSON.stringify(temp))
-}*/
+  console.log(JSON.stringify(temp[0]))
+}
 
 /*
 const datafile = require("./QuestS13.json")

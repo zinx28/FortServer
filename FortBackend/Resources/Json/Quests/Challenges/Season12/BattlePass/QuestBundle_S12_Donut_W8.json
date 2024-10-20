@@ -1,0 +1,75 @@
+{
+  "BundleId": "QuestBundle_S12_Donut_W8",
+  "BundleSchedule": "ChallengeBundleSchedule:season12_donut_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "GrantByQuest": true,
+    "Weekly": true
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S12_Donut_W8_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Quest:Quest_S12_Donut_W8_B",
+            "Quantity": 1
+          }
+
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_w8_startquest",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S12_Donut_W8_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "ChallengeBundle:QuestBundle_S12_Donut_W9",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_587_Donut_StyleB",
+            "connectedTemplate": "AthenaCharacter:CID_705_Athena_Commando_M_Donut",
+            "new_variants": [
+              {
+                "channel": "Parts",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_dance_pool_party",
+          "Count": 1
+        }
+      ]
+    }
+  ]
+}

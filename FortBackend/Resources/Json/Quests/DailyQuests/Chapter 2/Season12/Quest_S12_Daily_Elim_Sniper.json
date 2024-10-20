@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Elim_Sniper",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Sniper Rifle Eliminations",
+    "Description": "Sniper Rifle Eliminations",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Elim_Sniper",
+        "ObjectiveState": "killingblow_athena_player_sniper",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Sniper Rifle Eliminations",
+        "HudShortDescription": "Sniper Rifle Eliminations",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

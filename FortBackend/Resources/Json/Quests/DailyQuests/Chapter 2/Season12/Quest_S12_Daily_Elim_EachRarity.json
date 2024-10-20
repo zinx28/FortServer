@@ -1,0 +1,73 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Elim_EachRarity",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Eliminate opponents with a weapon of each rarity",
+    "Description": "Eliminate opponents with a weapon of each rarity",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Elim_EachRarity_00",
+        "ObjectiveState": "killingblow_athena_player_rarity_grey",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminate opponents with a weapon of each rarity",
+        "HudShortDescription": "Eliminate opponents with a weapon of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S12_Daily_Elim_EachRarity_01",
+        "ObjectiveState": "killingblow_athena_player_rarity_green",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminate opponents with a weapon of each rarity",
+        "HudShortDescription": "Eliminate opponents with a weapon of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S12_Daily_Elim_EachRarity_02",
+        "ObjectiveState": "killingblow_athena_player_rarity_blue",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminate opponents with a weapon of each rarity",
+        "HudShortDescription": "Eliminate opponents with a weapon of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S12_Daily_Elim_EachRarity_03",
+        "ObjectiveState": "killingblow_athena_player_rarity_purple",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminate opponents with a weapon of each rarity",
+        "HudShortDescription": "Eliminate opponents with a weapon of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S12_Daily_Elim_EachRarity_04",
+        "ObjectiveState": "killingblow_athena_player_rarity_gold",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminate opponents with a weapon of each rarity",
+        "HudShortDescription": "Eliminate opponents with a weapon of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

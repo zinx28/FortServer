@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_SurviveStormPhases",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Survive Storm phases",
+    "Description": "Survive Storm phases",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_SurviveStormPhases",
+        "ObjectiveState": "outlive_athena_stormcircles",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Survive Storm phases",
+        "HudShortDescription": "Survive Storm phases",
+        "Count": 10,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

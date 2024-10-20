@@ -1,0 +1,79 @@
+{
+  "BundleId": "QuestBundle_S12_Donut_W7",
+  "BundleSchedule": "ChallengeBundleSchedule:season12_donut_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "GrantByQuest": true,
+    "Weekly": true
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S12_Donut_W7_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Quest:Quest_S12_Donut_W7_B",
+            "Quantity": 1
+          }
+
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_pistol_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "donut_pistol_2",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S12_Donut_W7_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "ChallengeBundle:QuestBundle_S12_Donut_W8",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "AthenaCharacter:CID_705_Athena_Commando_M_Donut",
+            "variants": [
+              {
+                "channel": "Parts",
+                "active": "Stage1",
+                "owned": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_enter_porta_or_phone",
+          "Count": 1
+        }
+      ]
+    }
+  ]
+}

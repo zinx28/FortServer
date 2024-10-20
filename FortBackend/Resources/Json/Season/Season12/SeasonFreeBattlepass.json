@@ -1,0 +1,511 @@
+[
+  {
+    "Rewards": [],
+    "Level": 0
+  },
+  {
+    "Rewards": [],
+    "Level": 1
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_callme",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 2
+  },
+  {
+    "Rewards": [],
+    "Level": 3
+  },
+  {
+    "Rewards": [],
+    "Level": 4
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 5
+  },
+  {
+    "Rewards": [],
+    "Level": 6
+  },
+  {
+    "Rewards": [],
+    "Level": 7
+  },
+  {
+    "Rewards": [],
+    "Level": 8
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s12_skulldude",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 9
+  },
+  {
+    "Rewards": [],
+    "Level": 10
+  },
+  {
+    "Rewards": [],
+    "Level": 11
+  },
+  {
+    "Rewards": [],
+    "Level": 12
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_219_alterego",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 13
+  },
+  {
+    "Rewards": [],
+    "Level": 14
+  },
+  {
+    "Rewards": [],
+    "Level": 15
+  },
+  {
+    "Rewards": [],
+    "Level": 16
+  },
+  {
+    "Rewards": [],
+    "Level": 17
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_189_skulldude",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 18
+  },
+  {
+    "Rewards": [],
+    "Level": 19
+  },
+  {
+    "Rewards": [],
+    "Level": 20
+  },
+  {
+    "Rewards": [],
+    "Level": 21
+  },
+  {
+    "Rewards": [],
+    "Level": 22
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_472_desertopscamo",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 23
+  },
+  {
+    "Rewards": [],
+    "Level": 24
+  },
+  {
+    "Rewards": [],
+    "Level": 25
+  },
+  {
+    "Rewards": [],
+    "Level": 26
+  },
+  {
+    "Rewards": [],
+    "Level": 27
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_211_tntina",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 28
+  },
+  {
+    "Rewards": [],
+    "Level": 29
+  },
+  {
+    "Rewards": [],
+    "Level": 30
+  },
+  {
+    "Rewards": [],
+    "Level": 31
+  },
+  {
+    "Rewards": [],
+    "Level": 32
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs12_cowboy",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 33
+  },
+  {
+    "Rewards": [],
+    "Level": 34
+  },
+  {
+    "Rewards": [],
+    "Level": 35
+  },
+  {
+    "Rewards": [],
+    "Level": 36
+  },
+  {
+    "Rewards": [],
+    "Level": 37
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaMusicPack:musicpack_042_bunnyhop",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 38
+  },
+  {
+    "Rewards": [],
+    "Level": 39
+  },
+  {
+    "Rewards": [],
+    "Level": 40
+  },
+  {
+    "Rewards": [],
+    "Level": 41
+  },
+  {
+    "Rewards": [],
+    "Level": 42
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_368_bananaagent",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 43
+  },
+  {
+    "Rewards": [],
+    "Level": 44
+  },
+  {
+    "Rewards": [],
+    "Level": 45
+  },
+  {
+    "Rewards": [],
+    "Level": 46
+  },
+  {
+    "Rewards": [],
+    "Level": 47
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_194_dumpsterfire",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 48
+  },
+  {
+    "Rewards": [],
+    "Level": 49
+  },
+  {
+    "Rewards": [],
+    "Level": 50
+  },
+  {
+    "Rewards": [],
+    "Level": 51
+  },
+  {
+    "Rewards": [],
+    "Level": 52
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_195_buffcatmale",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 53
+  },
+  {
+    "Rewards": [],
+    "Level": 54
+  },
+  {
+    "Rewards": [],
+    "Level": 55
+  },
+  {
+    "Rewards": [],
+    "Level": 56
+  },
+  {
+    "Rewards": [],
+    "Level": 57
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_226_threemeowscles",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 58
+  },
+  {
+    "Rewards": [],
+    "Level": 59
+  },
+  {
+    "Rewards": [],
+    "Level": 60
+  },
+  {
+    "Rewards": [],
+    "Level": 61
+  },
+  {
+    "Rewards": [],
+    "Level": 62
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 63
+  },
+  {
+    "Rewards": [],
+    "Level": 64
+  },
+  {
+    "Rewards": [],
+    "Level": 65
+  },
+  {
+    "Rewards": [],
+    "Level": 66
+  },
+  {
+    "Rewards": [],
+    "Level": 67
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_truckerhorn",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 68
+  },
+  {
+    "Rewards": [],
+    "Level": 69
+  },
+  {
+    "Rewards": [],
+    "Level": 70
+  },
+  {
+    "Rewards": [],
+    "Level": 71
+  },
+  {
+    "Rewards": [],
+    "Level": 72
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_223_sharkisland",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 73
+  },
+  {
+    "Rewards": [],
+    "Level": 74
+  },
+  {
+    "Rewards": [],
+    "Level": 75
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Token:Athena_S12_NoBattleBundleOption_Token",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 76
+  },
+  {
+    "Rewards": [],
+    "Level": 77
+  },
+  {
+    "Rewards": [],
+    "Level": 78
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_206_photographer",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 79
+  },
+  {
+    "Rewards": [],
+    "Level": 80
+  },
+  {
+    "Rewards": [],
+    "Level": 81
+  },
+  {
+    "Rewards": [],
+    "Level": 82
+  },
+  {
+    "Rewards": [],
+    "Level": 83
+  },
+  {
+    "Rewards": [],
+    "Level": 84
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaSkyDiveContrail:trails_id_086_snowstorm",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 85
+  },
+  {
+    "Rewards": [],
+    "Level": 86
+  },
+  {
+    "Rewards": [],
+    "Level": 87
+  },
+  {
+    "Rewards": [],
+    "Level": 88
+  },
+  {
+    "Rewards": [],
+    "Level": 89
+  },
+  {
+    "Rewards": [],
+    "Level": 90
+  },
+  {
+    "Rewards": [],
+    "Level": 91
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs12_bananaagent",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 92
+  },
+  {
+    "Rewards": [],
+    "Level": 93
+  },
+  {
+    "Rewards": [],
+    "Level": 94
+  },
+  {
+    "Rewards": [],
+    "Level": 95
+  },
+  {
+    "Rewards": [],
+    "Level": 96
+  },
+  {
+    "Rewards": [],
+    "Level": 97
+  },
+  {
+    "Rewards": [],
+    "Level": 98
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": ""
+      }
+    ],
+    "Level": 99
+  },
+  {
+    "Rewards": [],
+    "Level": 100
+  }
+]

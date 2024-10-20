@@ -1,0 +1,65 @@
+{
+  "BundleId": "QuestBundle_S12_Donut_W1",
+  "BundleSchedule": "ChallengeBundleSchedule:season12_donut_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "Weekly": true
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S12_Donut_W1_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Quest:Quest_S12_Donut_W1_B",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_w1_startquest",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S12_Donut_W1_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "ChallengeBundle:QuestBundle_S12_Donut_W2",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "HomebaseBannerIcon:brs12_donut",
+            "Quantity": 1
+          }
+
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "dont_thank_bus_driver",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

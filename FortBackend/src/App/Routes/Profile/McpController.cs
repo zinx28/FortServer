@@ -184,11 +184,18 @@ namespace FortBackend.src.App.Routes.Profile
                                         response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody)!);
                                         break;
                                     case "RemoveGiftBox":
-                                        response = await RemoveGiftBox.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject(requestbody));
+                                        response = await RemoveGiftBox.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<RemoveGiftBoxReq>(requestbody)!);
                                         break;
+                                    case "FortRerollDailyQuest":
+                                        response = await FortRerollDailyQuest.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<FortRerollDailyQuestReq>(requestbody)!);
+                                    break;
+                                case "UpdateQuestClientObjectives":
+                                    response = await UpdateQuestClientObjectives.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<UpdateQuestClientObjectivesReq>(requestbody)!);
+                                    break;
                                     case "BulkEquipBattleRoyaleCustomization":
                                         response = await BulkEquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<BulkEquipBattleRoyaleCustomizationResponse>(requestbody)!);
-                                        break; // not proper
+                                        break; 
+                                    // not proper
                                                //case "CopyCosmeticLoadout":
                                                //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
                                                //    break;

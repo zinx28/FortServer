@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Harvest_Wood",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Harvest Wood",
+    "Description": "Harvest Wood",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Harvest_Wood",
+        "ObjectiveState": "collect_building_resources_wood",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Harvest Wood",
+        "HudShortDescription": "Harvest Wood",
+        "Count": 1000,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

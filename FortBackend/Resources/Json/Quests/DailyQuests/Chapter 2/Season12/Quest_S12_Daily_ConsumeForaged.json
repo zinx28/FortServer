@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_ConsumeForaged",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Consume Foraged Items",
+    "Description": "Consume Foraged Items",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_ConsumeForaged",
+        "ObjectiveState": "interact_athena_forageditems",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Consume Foraged Items",
+        "HudShortDescription": "Consume Foraged Items",
+        "Count": 10,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

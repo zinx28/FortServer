@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Search_ChestAmmo_Grotto",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Chests or Ammo Boxes at The Grotto",
+    "Description": "Search Chests or Ammo Boxes at The Grotto",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Search_ChestAmmo_Grotto",
+        "ObjectiveState": "interact_athena_chest_ammo_grotto",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Chests or Ammo Boxes at The Grotto",
+        "HudShortDescription": "Search Chests or Ammo Boxes at The Grotto",
+        "Count": 5,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

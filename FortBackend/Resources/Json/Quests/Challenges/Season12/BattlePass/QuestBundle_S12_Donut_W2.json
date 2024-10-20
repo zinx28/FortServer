@@ -1,0 +1,77 @@
+{
+  "BundleId": "QuestBundle_S12_Donut_W2",
+  "BundleSchedule": "ChallengeBundleSchedule:season12_donut_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "GrantByQuest": true,
+    "Weekly": true
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S12_Donut_W2_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Quest:Quest_S12_Donut_W2_B",
+            "Quantity": 1
+          }
+
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_w2_startquest",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S12_Donut_W2_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "ChallengeBundle:QuestBundle_S12_Donut_W3",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "AthenaDance:SPID_201_DonutA",
+            "Quantity": 1
+          }
+
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_chimi_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "donut_chimi_2",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "donut_chimi_3",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

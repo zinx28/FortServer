@@ -1,0 +1,277 @@
+{
+  "BundleId": "MissionBundle_S12_Week_05",
+  "BundleSchedule": "Season12_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_s12_w5_q01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_athena_chests_salty_or_mistymeadows",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "kill_player_greaterthan50_assaultrifle",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q03",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "heal_player_fish",
+          "Count": 400,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q04",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_player_creepincardboard",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q05",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "survive_fall_5stories",
+          "Count": 9,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q06",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_athena_henchmen_pickaxe",
+          "Count": 100,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q07",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "visit_coralcove_noswimming",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_stackshack_noswimming",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_crashsite_noswimming",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q08",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "kick_soccerball",
+          "Count": 100,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q09",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_athena_lmg_minigun",
+          "Count": 400,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w5_q10",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "visit_landmark_ShipwreckCove",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_namedpoi_spybase_yacht",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_FlopperPond",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

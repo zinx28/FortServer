@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Damage_Shotgun",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Deal damage with Shotguns to opponents",
+    "Description": "Deal damage with Shotguns to opponents",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Damage_Shotgun",
+        "ObjectiveState": "damage_athena_player_shotgun",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Deal damage with Shotguns to opponents",
+        "HudShortDescription": "Deal damage with Shotguns to opponents",
+        "Count": 1000,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

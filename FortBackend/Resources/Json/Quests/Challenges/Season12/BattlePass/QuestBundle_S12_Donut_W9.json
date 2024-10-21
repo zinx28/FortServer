@@ -30,19 +30,6 @@
           "BackendName": "donut_w9_startquest",
           "Count": 1,
           "Stage": -1
-        },
-        {
-          "TemplateId": "CosmeticVariantToken:VTID_588_Donut_ColorB",
-          "connectedTemplate": "AthenaCharacter:CID_705_Athena_Commando_M_Donut",
-          "new_variants": [
-            {
-              "channel": "Material",
-              "added": [
-                "Mat2"
-              ]
-            }
-          ],
-          "Quantity": 1
         }
       ]
     },
@@ -56,7 +43,21 @@
       "Rewards": {
         "BattleStars": 0,
         "Quest": [],
-        "GrantedItems": []
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_588_Donut_ColorB",
+            "connectedTemplate": "AthenaCharacter:CID_705_Athena_Commando_M_Donut",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
       },
       "Objectives": [
         {

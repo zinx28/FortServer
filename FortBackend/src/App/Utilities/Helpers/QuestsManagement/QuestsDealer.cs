@@ -1,4 +1,5 @@
-﻿using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+﻿using Discord;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Quests;
 using FortBackend.src.XMPP.Data;
 using FortLibrary;
@@ -7,6 +8,7 @@ using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary.MongoDB.Module;
+using FortLibrary.Shop;
 using FortLibrary.XMPP;
 using System.Net;
 using System.Net.WebSockets;
@@ -39,9 +41,16 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
             return (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
         }
 
+        public class GiftClass
+        {
+            public string GiftBox { get; set; } = "GiftBox:gb_generic";
+            public List<NotificationsItemsClassOG> GiftClassList { get; set; } = new List<NotificationsItemsClassOG>();
+        }
         public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)> QuestGrabber(SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry, List<WeeklyQuestsJson> WeeklyQuestsArray)
         {
-            List<NotificationsItemsClassOG> GiftClassList = new List<NotificationsItemsClassOG>();
+            List<GiftClass> GiftClassList = new List<GiftClass>();
+           // List<NotificationsItemsClassOG> ItemClassOG = new List<NotificationsItemsClassOG>();
+
             List<string> AddedBundles = new List<string>();
             var ResponseId = "";
 
@@ -218,7 +227,121 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                     if (!profileCacheEntry.AccountData.commoncore.Items.ContainsKey(GrantedItems.TemplateId))
                                     {
                                         Logger.Error(GrantedItems.TemplateId);
-                                        if (GrantedItems.TemplateId.Contains("HomebaseBannerIcon"))
+                                        //if (GrantedItems.TemplateId.Contains("RewardEventGraphPurchaseToken")){
+                                        //    MultiUpdates.Add(new MultiUpdateClass
+                                        //    {
+                                        //        changeType = "itemAdded",
+                                        //        itemId = GrantedItems.TemplateId,
+                                        //        item = new AthenaItem
+                                        //        {
+                                        //            templateId = GrantedItems.TemplateId,
+                                        //            attributes = new AthenaItemA
+                                        //            {
+                                        //                item_seen = false,
+                                        //            },
+                                        //            quantity = 1
+                                        //        }
+                                        //    });
+
+                                        //    profileCacheEntry.AccountData.commoncore.Items.Add(GrantedItems.TemplateId, new CommonCoreItem
+                                        //    {
+                                        //        templateId = GrantedItems.TemplateId,
+                                        //        attributes = new CommonCoreItemAttributes
+                                        //        {
+                                        //            item_seen = false,
+                                        //            level = 1,
+                                        //        },
+                                        //        quantity = GrantedItems.Quantity,
+                                        //    });
+                                        //}
+                                        //else
+                                        if (GrantedItems.TemplateId.Contains("Token:"))
+                                        {
+                                            if (GrantedItems.TemplateId.Contains("athenaseasonfriendxpboost"))
+                                            {
+                                                FoundSeason.season_friend_match_boost += GrantedItems.Quantity;
+
+                                                MultiUpdates.Add(new
+                                                {
+                                                    changeType = "statModified",
+                                                    name = "season_match_boost",
+                                                    value = FoundSeason.season_friend_match_boost
+                                                });
+                                            }
+                                            else if (GrantedItems.TemplateId.Contains("athenaseasonxpboost"))
+                                            {
+                                                //  season_match_boost
+                                                FoundSeason.season_match_boost += GrantedItems.Quantity;
+
+                                                MultiUpdates.Add(new
+                                                {
+                                                    changeType = "statModified",
+                                                    name = "season_friend_match_boost",
+                                                    value = FoundSeason.season_match_boost
+                                                });
+                                            }
+                                            else if (GrantedItems.TemplateId.Contains("athenaseasonmergedxpboosts"))
+                                            {
+                                                //FoundSeason.season_merged_boosts += iteminfo.Quantity;
+
+                                                //MultiUpdates.Add(new
+                                                //{
+                                                //    changeType = "statModified",
+                                                //    name = ""
+                                                //})
+                                            }
+                                            else if (GrantedItems.TemplateId.Contains("HeroSelection"))
+                                            {
+                                                MultiUpdatesForCommonCore.Add(new MultiUpdateClass
+                                                {
+                                                    changeType = "itemAdded",
+                                                    itemId = GrantedItems.TemplateId,
+                                                    item = new CommonCoreItem
+                                                    {
+                                                        templateId = GrantedItems.TemplateId,
+                                                        attributes = new CommonCoreItemAttributes
+                                                        {
+                                                            item_seen = false,
+                                                        },
+                                                        quantity = 1
+                                                    }
+                                                });
+
+                                                profileCacheEntry.AccountData.commoncore.Items.Add(GrantedItems.TemplateId, new CommonCoreItem
+                                                {
+                                                    templateId = GrantedItems.TemplateId,
+                                                    attributes = new CommonCoreItemAttributes
+                                                    {
+                                                        item_seen = false,
+                                                        level = 1,
+                                                    },
+                                                    quantity = GrantedItems.Quantity,
+                                                });
+
+                                                GiftClassList.Add(new GiftClass
+                                                {
+                                                    GiftBox = "GiftBox:gb_paperdoll",
+                                                    GiftClassList = new List<NotificationsItemsClassOG> {
+                                                        new NotificationsItemsClassOG
+                                                        {
+                                                            itemType = GrantedItems.TemplateId,
+                                                            itemGuid = GrantedItems.TemplateId,
+                                                            quantity = 1
+                                                        }
+                                                    }
+                                                });
+
+
+                                            }
+                                            //else if (// ... //) {
+                                            //   WeeklyQuestsArray.Find(e => e.BundleSchedule == )
+                                            // }
+                                            else
+                                            {
+                                                Logger.Log($"{GrantedItems.TemplateId} is not supported", "ClientQuestLogin");
+                                            }
+                                        }
+                                        else if (GrantedItems.TemplateId.Contains("HomebaseBannerIcon"))
                                         {
                                             profileCacheEntry.AccountData.commoncore.Items.Add(GrantedItems.TemplateId, new CommonCoreItem
                                             {
@@ -279,14 +402,32 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                                 quantity = GrantedItems.Quantity,
                                             });
 
-                                            GiftClassList.Add(new NotificationsItemsClassOG
+                                            GiftClass existingGiftClass = GiftClassList.FirstOrDefault(g => g.GiftBox == "GiftBox:gb_generic");
+                                            if (existingGiftClass != null)
                                             {
-                                                itemType = GrantedItems.TemplateId,
-                                                itemGuid = GrantedItems.TemplateId,
-                                                quantity = 1
-                                            });
+                                                existingGiftClass.GiftClassList.Add(new NotificationsItemsClassOG
+                                                {
+                                                    itemType = GrantedItems.TemplateId,
+                                                    itemGuid = GrantedItems.TemplateId,
+                                                    quantity = 1
+                                                });
+                                            }
+                                            else
+                                            {
+                                                GiftClass newGiftClass = new GiftClass
+                                                {
+                                                    GiftClassList = new List<NotificationsItemsClassOG> { 
+                                                        new NotificationsItemsClassOG
+                                                        {
+                                                            itemType = GrantedItems.TemplateId,
+                                                            itemGuid = GrantedItems.TemplateId,
+                                                            quantity = 1
+                                                        } 
+                                                    } 
+                                                };
 
-                                           
+                                                GiftClassList.Add(newGiftClass);
+                                            }
                                         }
                                         else if (GrantedItems.TemplateId.Contains("CosmeticVariantToken:"))
                                         {
@@ -340,50 +481,6 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                             else
                                             {
                                                 Logger.Error(GrantedItems.TemplateId, "CosmeticVariantToken");
-                                            }
-                                        }
-                                        else if (GrantedItems.TemplateId.Contains("Token:"))
-                                        {
-                                            if (GrantedItems.TemplateId.Contains("athenaseasonfriendxpboost"))
-                                            {
-                                                FoundSeason.season_friend_match_boost += GrantedItems.Quantity;
-
-                                                MultiUpdates.Add(new
-                                                {
-                                                    changeType = "statModified",
-                                                    name = "season_match_boost",
-                                                    value = FoundSeason.season_friend_match_boost
-                                                });
-                                            }
-                                            else if (GrantedItems.TemplateId.Contains("athenaseasonxpboost"))
-                                            {
-                                                //  season_match_boost
-                                                FoundSeason.season_match_boost += GrantedItems.Quantity;
-
-                                                MultiUpdates.Add(new
-                                                {
-                                                    changeType = "statModified",
-                                                    name = "season_friend_match_boost",
-                                                    value = FoundSeason.season_match_boost
-                                                });
-                                            }
-                                            else if (GrantedItems.TemplateId.Contains("athenaseasonmergedxpboosts"))
-                                            {
-                                                //FoundSeason.season_merged_boosts += iteminfo.Quantity;
-
-                                                //MultiUpdates.Add(new
-                                                //{
-                                                //    changeType = "statModified",
-                                                //    name = ""
-                                                //})
-                                            }
-
-                                            //else if (// ... //) {
-                                            //   WeeklyQuestsArray.Find(e => e.BundleSchedule == )
-                                            // }
-                                            else
-                                            {
-                                                Logger.Log($"{GrantedItems.TemplateId} is not supported", "ClientQuestLogin");
                                             }
                                         }
                                         else if (GrantedItems.TemplateId.Contains("Quest:"))
@@ -535,6 +632,9 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                     else
                     {
                         if (AllBundles.quest_data.ExtraQuests) continue;
+
+                        if (AllBundles.quest_data.WeekQuest > Saved.Saved.DeserializeGameConfig.WeeklyQuest) continue;
+
                         // Don't even own the quest wow!
 
                         List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
@@ -747,34 +847,38 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
 
             if(GiftClassList.Count > 0)
             {
-                var RandomOfferId = Guid.NewGuid().ToString();
-
-                profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
+                foreach(var gift in GiftClassList)
                 {
-                    templateId = "GiftBox:gb_generic",
-                    attributes = new GiftCommonCoreItemAttributes
-                    {
-                        lootList = GiftClassList
-                    },
-                    quantity = 1
-                });
+                    var RandomOfferId = Guid.NewGuid().ToString();
 
-                MultiUpdatesForCommonCore.Add(new ApplyProfileChangesClassV2
-                {
-                    changeType = "itemAdded",
-                    itemId = RandomOfferId,
-                    item = new
+                    profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
                     {
-                        templateId = "GiftBox:gb_generic",
-                        attributes = new
+                        templateId = gift.GiftBox,
+                        attributes = new GiftCommonCoreItemAttributes
                         {
-                            max_level_bonus = 0,
-                            fromAccountId = "Server",
-                            lootList = GiftClassList
+                            lootList = gift.GiftClassList
                         },
                         quantity = 1
-                    }
-                });
+                    });
+
+                    MultiUpdatesForCommonCore.Add(new ApplyProfileChangesClassV2
+                    {
+                        changeType = "itemAdded",
+                        itemId = RandomOfferId,
+                        item = new
+                        {
+                            templateId = gift.GiftBox,
+                            attributes = new
+                            {
+                                max_level_bonus = 0,
+                                fromAccountId = "Server",
+                                lootList = gift.GiftClassList
+                            },
+                            quantity = 1
+                        }
+                    });
+                }
+               
 
                 if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {

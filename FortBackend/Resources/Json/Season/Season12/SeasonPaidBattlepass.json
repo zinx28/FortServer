@@ -11,14 +11,23 @@
       },
       {
         "templateId": "AthenaCharacter:cid_701_athena_commando_m_bananaagent",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ]
       },
       {
         "templateId": "ChallengeBundleSchedule:bundleschedule_styles_paperdoll",
         "connectedTemplate": ""
       },
       {
-        "templateId": "EventPurchaseToken:S12_HeroSelections_PurchaseToken",
+        "templateId": "RewardEventGraphPurchaseToken:S12_HeroSelections_PurchaseToken",
         "connectedTemplate": ""
       },
       {
@@ -107,7 +116,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 12
@@ -147,7 +157,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 17
@@ -187,7 +198,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 22
@@ -240,7 +252,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 29
@@ -280,7 +293,15 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_560_bananaagent_styleb",
-        "connectedTemplate": ""
+        "connectedTemplate": "AthenaBackpack:cid_701_athena_commando_m_bananaagent",
+        "new_variants": [
+          {
+            "channel": "Progressive",
+            "added": [
+              "Stage2"
+            ]
+          }
+        ]
       }
     ],
     "Level": 34
@@ -289,7 +310,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 35
@@ -329,7 +351,16 @@
     "Rewards": [
       {
         "templateId": "AthenaCharacter:cid_691_athena_commando_f_tntina",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ]
       }
     ],
     "Level": 40
@@ -360,7 +391,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 44
@@ -418,7 +450,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 51
@@ -467,7 +500,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 57
@@ -489,7 +523,16 @@
     "Rewards": [
       {
         "templateId": "AthenaCharacter:cid_693_athena_commando_m_buffcat",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ]
       }
     ],
     "Level": 60
@@ -578,7 +621,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 71
@@ -618,7 +662,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 76
@@ -627,7 +672,15 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_561_bananaagent_stylec",
-        "connectedTemplate": ""
+        "connectedTemplate": "AthenaBackpack:cid_701_athena_commando_m_bananaagent",
+        "new_variants": [
+          {
+            "channel": "Progressive",
+            "added": [
+              "Stage3"
+            ]
+          }
+        ]
       }
     ],
     "Level": 77
@@ -649,7 +702,16 @@
     "Rewards": [
       {
         "templateId": "AthenaCharacter:cid_690_athena_commando_f_photographer",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ]
       }
     ],
     "Level": 80
@@ -698,7 +760,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 86
@@ -756,7 +819,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 93
@@ -773,7 +837,7 @@
   {
     "Rewards": [
       {
-        "templateId": "",
+        "templateId": "HomebaseBannerIcon:brs12_midas",
         "connectedTemplate": ""
       }
     ],
@@ -814,7 +878,16 @@
     "Rewards": [
       {
         "templateId": "AthenaCharacter:cid_694_athena_commando_m_catburglar",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ]
       }
     ],
     "Level": 100

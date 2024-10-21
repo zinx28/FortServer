@@ -44,6 +44,7 @@ namespace FortLibrary.Dynamics
         public bool Steps { get; set; } = false;
         public int Count { get; set; } = 0; // if 0 it shouldnt matter how to count
         public bool IsWeekly { get; set; } = false;
+        public int WeekQuest { get; set; } = -1;
     }
 
     public class WeeklyObjectsObjectives

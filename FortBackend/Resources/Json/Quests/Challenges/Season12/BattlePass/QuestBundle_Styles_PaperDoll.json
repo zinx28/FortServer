@@ -1,0 +1,271 @@
+{
+  "BundleId": "QuestBundle_Styles_PaperDoll",
+  "BundleSchedule": "ChallengeBundleSchedule:bundleschedule_styles_paperdoll",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_s12_styles1_q01_accolade_ar",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 1
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_01",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_assault_specialist",
+          "quest_data": {
+            "RequireBP": true,
+            "ExtraQuests": false
+          },
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q02_accolade_combat",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 2
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_04",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_battlemedal_bronze",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q03_accolade_shotgun",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 3
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_05",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_shotgun_specialist",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q04_athenarank",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 4
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_02",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "complete_athena_top_20",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q05_accolade_pistol",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 5
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_03",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_pistol_specialist",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q06_accolade_survival",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 6
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_06",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_silver_survival",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q07_accolade_sniper",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 7
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_02",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athenarank_remix_twostar_solos",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q08_accolade_scavenger",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 8
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_08",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_silver_scavenger",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q09_accolade_smg",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "WeekQuest": 9
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_07",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "accolade_smg_specialist",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_styles1_q10_athenaoutlive",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Token:AthenaToken_BRS12_HeroSelection_09",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "outlive_athena",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

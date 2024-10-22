@@ -1,0 +1,73 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_PickUp_EachRarity",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Pick up an Item of each rarity",
+    "Description": "Pick up an Item of each rarity",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_PickUp_EachRarity_0",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Pick up an Item of each rarity",
+        "HudShortDescription": "Pick up an Item of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S11_Daily_PickUp_EachRarity_1",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Pick up an Item of each rarity",
+        "HudShortDescription": "Pick up an Item of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S11_Daily_PickUp_EachRarity_2",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Pick up an Item of each rarity",
+        "HudShortDescription": "Pick up an Item of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S11_Daily_PickUp_EachRarity_3",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Pick up an Item of each rarity",
+        "HudShortDescription": "Pick up an Item of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      },
+      {
+        "BackendName": "Quest_S11_Daily_PickUp_EachRarity_4",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Pick up an Item of each rarity",
+        "HudShortDescription": "Pick up an Item of each rarity",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

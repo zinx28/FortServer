@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Search_ChestAmmo_Frezy",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Chests or Ammo Boxes at Frenzy Farm",
+    "Description": "Search Chests or Ammo Boxes at Frenzy Farm",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Search_ChestAmmo_Frezy",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Chests or Ammo Boxes at Frenzy Farm",
+        "HudShortDescription": "Search Chests or Ammo Boxes at Frenzy Farm",
+        "Count": 14,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

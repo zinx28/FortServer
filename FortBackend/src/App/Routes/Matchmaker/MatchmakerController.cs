@@ -37,47 +37,102 @@ namespace FortBackend.src.App.Routes.Matchmaker
             {
                 FortConfig config = Saved.DeserializeConfig;
                 CachedDataClass BackendCachedData = Saved.BackendCachedData;
-                string JsonContent = ""; // no idea
 
-                try
+                string JsonContent = ""; // no idea
+                if (!config.CustomMatchmaker)
                 {
-                    HttpResponseMessage response = await client.GetAsync($"{BackendCachedData.DefaultProtocol}{config.MatchmakerIP}:{config.MatchmakerPort}/v1/devers/servers");
-                    response.EnsureSuccessStatusCode();
-                    JsonContent = await response.Content.ReadAsStringAsync(); // just guess if its on the same server
-                    if (JsonContent == null)
+                    try
                     {
+                        HttpResponseMessage response = await client.GetAsync($"{BackendCachedData.DefaultProtocol}{config.MatchmakerIP}:{config.MatchmakerPort}/v1/devers/servers");
+                        response.EnsureSuccessStatusCode();
+                        JsonContent = await response.Content.ReadAsStringAsync(); // just guess if its on the same server
+                        if (JsonContent == null)
+                        {
+                            return Ok(new { });
+                        }
+                    }
+                    catch (WebException ex)
+                    {
+                        Logger.Error(ex.Message, "MatchmakerSession");
                         return Ok(new { });
                     }
                 }
-                catch (WebException ex)
-                {
-                    Logger.Error(ex.Message, "MatchmakerSession");
-                    return Ok(new { });
-                }
-                if (JsonContent == null) { return Ok(new { }); }
 
-                List<Server> servers = JsonConvert.DeserializeObject<List<Server>>(JsonContent)!;
-                if (servers != null && servers.Count > 0)
-                {
-                    var filteredServers = servers.Where(server => server.Session == sessionId).ToList();
-
-                    if (filteredServers.Any())
+                var jsonObject = new Dictionary<string, object>();
+                if (!string.IsNullOrEmpty(JsonContent)) {
+                    List<Server> servers = JsonConvert.DeserializeObject<List<Server>>(JsonContent)!;
+                    if (servers != null && servers.Count > 0)
                     {
-                        var jsonObject = new Dictionary<string, object>
+                        var filteredServers = servers.Where(server => server.Session == sessionId).ToList();
+
+                        if (filteredServers.Any())
+                        {
+                            jsonObject = new Dictionary<string, object>
+                            {
+                                { "id", sessionId },
+                                { "ownerId", Guid.NewGuid().ToString("N").ToUpper() },
+                                { "ownerName", filteredServers[0].Name },
+                                { "serverName", filteredServers[0].Name },
+                                { "serverAddress", filteredServers[0].Ip },
+                                { "serverPort", filteredServers[0].Port },
+                                { "maxPublicPlayers", filteredServers[0].MaxPlayers },
+                                { "openPublicPlayers", 100 },
+                                { "maxPrivatePlayers", 0 },
+                                { "openPrivatePlayers", 0 },
+                                { "attributes",  new Dictionary<string, object>
+                                    {
+                                        { "REGION_s", filteredServers[0].Region.ToUpper() },
+                                        { "GAMEMODE_s", "FORTATHENA" },
+                                        { "ALLOWBROADCASTING_b", true },
+                                        { "SUBREGION_s", "GB" },
+                                        { "DCID_s", "FORTNITE-LIVEEUGCEC1C2E30UBRCORE0A-49459394" },
+                                        { "tenant_s", "Fortnite" },
+                                        { "MATCHMAKINGPOOL_s", "Any" },
+                                        { "STORMSHIELDDEFENSETYPE_i" , 0 },
+                                        { "HOTFIXVERSION_i", 0 },
+                                        { "PLAYLISTNAME_s", filteredServers[0].Playlist },
+                                        { "SESSIONKEY_s", Guid.NewGuid().ToString("N").ToUpper() },
+                                        { "TENANT_s", "Fortnite" },
+                                        { "BEACONPORT_i", 15009 }
+                                    }
+                                },
+                                { "publicPlayers", Array.Empty<string>() },
+                                { "privatePlayers", Array.Empty<string>() },
+                                { "totalPlayers", filteredServers[0].Current },
+                                { "allowJoinInProgress", filteredServers[0].JoinAble },
+                                { "shouldAdvertise", false },
+                                { "isDedicated", false },
+                                { "usesStats", false },
+                                { "allowInvites", filteredServers[0].JoinAble },
+                                { "usesPresence", false },
+                                { "allowJoinViaPresence", true },
+                                { "allowJoinViaPresenceFriendsOnly", false },
+                                { "buildUniqueId", Request.Cookies["buildUniqueId"] ?? "0" },
+                                { "lastUpdate", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                { "started", false }
+                            };
+                        }
+                    }
+                }
+                else
+                {
+                    if (config.CustomMatchmaker)
+                    {
+                        jsonObject = new Dictionary<string, object>
                         {
                             { "id", sessionId },
                             { "ownerId", Guid.NewGuid().ToString("N").ToUpper() },
-                            { "ownerName", filteredServers[0].Name },
-                            { "serverName", filteredServers[0].Name },
-                            { "serverAddress", filteredServers[0].Ip },
-                            { "serverPort", filteredServers[0].Port },
-                            { "maxPublicPlayers", filteredServers[0].MaxPlayers },
+                            { "ownerName", "FortBackend" },
+                            { "serverName", "FortBackend" },
+                            { "serverAddress", config.GameServerIP },
+                            { "serverPort", config.GameServerPort },
+                            { "maxPublicPlayers", 100 },
                             { "openPublicPlayers", 100 },
                             { "maxPrivatePlayers", 0 },
                             { "openPrivatePlayers", 0 },
                             { "attributes",  new Dictionary<string, object>
                                 {
-                                    { "REGION_s", filteredServers[0].Region.ToUpper() },
+                                    { "REGION_s", "EU" },
                                     { "GAMEMODE_s", "FORTATHENA" },
                                     { "ALLOWBROADCASTING_b", true },
                                     { "SUBREGION_s", "GB" },
@@ -86,7 +141,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
                                     { "MATCHMAKINGPOOL_s", "Any" },
                                     { "STORMSHIELDDEFENSETYPE_i" , 0 },
                                     { "HOTFIXVERSION_i", 0 },
-                                    { "PLAYLISTNAME_s", filteredServers[0].Playlist },
+                                    { "PLAYLISTNAME_s", "Playlist_DefaultSolo" },
                                     { "SESSIONKEY_s", Guid.NewGuid().ToString("N").ToUpper() },
                                     { "TENANT_s", "Fortnite" },
                                     { "BEACONPORT_i", 15009 }
@@ -94,12 +149,12 @@ namespace FortBackend.src.App.Routes.Matchmaker
                             },
                             { "publicPlayers", Array.Empty<string>() },
                             { "privatePlayers", Array.Empty<string>() },
-                            { "totalPlayers", filteredServers[0].Current },
-                            { "allowJoinInProgress", filteredServers[0].JoinAble },
+                            { "totalPlayers", 69 },
+                            { "allowJoinInProgress", false },
                             { "shouldAdvertise", false },
                             { "isDedicated", false },
                             { "usesStats", false },
-                            { "allowInvites", filteredServers[0].JoinAble },
+                            { "allowInvites", false  },
                             { "usesPresence", false },
                             { "allowJoinViaPresence", true },
                             { "allowJoinViaPresenceFriendsOnly", false },
@@ -108,14 +163,21 @@ namespace FortBackend.src.App.Routes.Matchmaker
                             { "started", false }
                         };
 
-                        string json = System.Text.Json.JsonSerializer.Serialize(jsonObject, new JsonSerializerOptions
-                        {
-                            WriteIndented = true
-                        });
-
-                        return Content(json);
+                        Console.WriteLine("THIS");
                     }
                 }
+
+             
+               
+
+
+
+                string json = System.Text.Json.JsonSerializer.Serialize(jsonObject, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+
+                return Content(json);
             }
             catch (Exception ex)
             {

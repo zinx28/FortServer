@@ -5,6 +5,7 @@
   "BackendPort": 1111,
   "MatchmakerPort": 2121,
   "XmppPort": 443,
+  "CustomMatchmaker": false,
   "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
   "MongoDBConnectionName": "FortBackend",
   "DiscordToken": "",

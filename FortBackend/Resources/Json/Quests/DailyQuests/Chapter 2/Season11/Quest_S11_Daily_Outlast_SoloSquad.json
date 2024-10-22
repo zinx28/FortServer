@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Outlast_SoloSquad",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Outlast opponents in Solos or Squads Matches",
+    "Description": "Outlast opponents in Solos or Squads Matches",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Outlast_SoloSquad",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Outlast opponents in Solos or Squads Matches",
+        "HudShortDescription": "Outlast opponents in Solos or Squads Matches",
+        "Count": 150,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Before you start Make sure you have Visual Studio installed with the following components.
+Before you start make sure you downloaded/extracted FortServer
 
 ### Step 1: Install Visual Studio
 
@@ -23,6 +23,10 @@ Switch to tab **Individual components** and make sure you have:
 
 Choose above and install!
 
+### Step 4: Install MongoDB Server
+
+Download and install [Mongodb Server](https://www.mongodb.com/try/download/community) if you have not already installed it.
+
 ## Run the project
 
 Once you have installed all the necessary components:
@@ -38,3 +42,10 @@ This will build the project for you. And you're all set!
 - Change HTTPS from false to true
 - After, go to [FortBackend/resources/certificates](https://github.com/zinx28/FortBackend/tree/main/FortBackend/Resources/Certificates)
 - Remove .temp from the file then replace it with your .pfx (If you have cert and the key just look up how to make it a pfx)
+
+### Custom Matchmaker Setup
+- In the `config.json` file, set `MatchmakerIP` to your Matchmaker IP, with `"127.0.0.1"` as the default value.
+- Set `MatchmakerPort` to your matchmaker port.
+- Set `CustomMatchmaker` to `true` to enable the custom matchmaker.
+- Add `GameServerIP` to the config and set it to your game server's IP, with `"127.0.0.1"` as the default.
+- Optional! add `GameServerPort` to the config and set it to your game server's port. The default is `"7777"`, which is commonly used unless a custom port is set.

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Before you start Make sure you have Visual Studio installed with the following components.
+Before you start make sure you downloaded/extracted FortServer
 
 ### Step 1: Install Visual Studio
 
@@ -22,6 +22,10 @@ Switch to tab **Individual components** and make sure you have:
 - **.NET 7.0 Runtime**
 
 Choose above and install!
+
+### Step 4: Install MongoDB Server
+
+Download and install [Mongodb Server](https://www.mongodb.com/try/download/community) if you have not already installed it.
 
 ## Run the project
 

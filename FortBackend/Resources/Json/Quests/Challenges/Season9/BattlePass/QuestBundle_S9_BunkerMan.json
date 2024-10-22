@@ -1,0 +1,68 @@
+{
+  "BundleId": "QuestBundle_S9_BunkerMan",
+  "BundleSchedule": "ChallengeBundleSchedule:season9_bunkerman_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 7
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S9_BunkerJonesy_CollectGlyphs_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_216_BunkerMan_1H_PickaxeB",
+            "connectedTemplate": "AthenaPickaxe:pickaxe_id_211_bunkerman_1h",
+            "new_variants": [
+              {
+                "channel": "Mesh",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_bunkerjonesy_collectglyphs_01",
+          "Count": 30,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BunkerJonesy_CollectGlyphs_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaBackpack:BID_266_BunkerMan",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_bunkerjonesy_collectglyphs_02",
+          "Count": 40,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

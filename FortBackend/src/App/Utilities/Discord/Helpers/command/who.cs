@@ -226,7 +226,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                             var RandomOfferId = Guid.NewGuid().ToString();
                                             profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
                                             {
-                                                templateId = "GiftBox:GB_RMTOffer",
+                                                templateId = "GiftBox:GB_RMTOffer", // use gb_default instead if giftbox doesnt work
                                                 attributes = new GiftCommonCoreItemAttributes {
                                                     lootList = new List<NotificationsItemsClassOG>()
                                                     {

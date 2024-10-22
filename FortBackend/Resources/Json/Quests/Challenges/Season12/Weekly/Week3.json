@@ -14,13 +14,12 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
           }
-        ],
-        "GrantedItems": []
+        ]
       },
       "Objectives": [
         {
@@ -39,7 +38,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -64,7 +63,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -89,7 +88,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -114,7 +113,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -523,7 +522,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -547,7 +546,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -572,7 +571,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -607,7 +606,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000
@@ -632,7 +631,7 @@
       },
       "Rewards": {
         "BattleStars": 0,
-        "Quest": [
+        "GrantedItems": [
           {
             "TemplateId": "AccountResource:athenaseasonalxp",
             "Quantity": 40000

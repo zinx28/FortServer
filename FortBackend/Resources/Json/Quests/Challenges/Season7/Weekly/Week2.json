@@ -1,0 +1,365 @@
+{
+  "BundleId": "QuestBundle_S7_Week_002",
+  "BundleSchedule": "Season7_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Locations_Different",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 7
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_lazylinks",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_dustydivot",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_fatalfields",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_flushfactory",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_greasygrove",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_hauntedhills",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_junkjunction",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_luckylanding",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_lonelylodge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_lootlake",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_paradisepalms",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_pleasantpark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_retailrow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_shiftyshafts",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_saltysprings",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_snobbyshores",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_tiltedtowers",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_tomatotemple",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_wailingwoods",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_riskyreels",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_polarpeak",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_chest_athena_location_different_frostyflights",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_happyhamlet",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Weapons_Different",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 5
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_weapons_different_pistol",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_weapons_different_assault",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_weapons_different_shotgun",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_weapons_different_sniper",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_weapons_different_explosives",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_weapons_different_smg",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_damage_athena_weapons_different_minigun",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_TwoLocations_01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_twolocations_snobbyshores",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_01_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_01_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_snobbyshores_chain_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_pleasantpark_chain_01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_01_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_01_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_lonelylodge_chain_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_dustydivot_chain_01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_01_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_frostyflights_chain_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_tomatotemple_chain_01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_PianoChain_Play_Piano1",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_piano_chain_play_piano_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_piano_chain_play_piano_2",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Dance_ScavengerHunt_DanceOff_Abandoned_Mansion",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_danceoff_athena_scavengerhunt_abandoned_mansion",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_MinDistance",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_players_mindistance",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

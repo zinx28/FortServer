@@ -1,0 +1,616 @@
+{
+  "BundleId": "QuestBundle_S7_Week_006",
+  "BundleSchedule": "Season7_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_02A",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false,
+        "Count": 7
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_lazylinks",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_dustydivot",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_fatalfields",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_polarpeaks",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_frostyflights",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_hauntedhills",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_junkjunction",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_luckylanding",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_lonelylodge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_lootlake",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_paradisepalms",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_pleasantpark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_retailrow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_shiftyshafts",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_saltysprings",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_snobbyshores",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_tiltedtowers",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_tomatotown",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_wailingwoods",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_ammo_athena_location_different_happyhamlet",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_GniceGnomes",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false,
+        "Count": 7
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_07",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_08",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_09",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_11",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_interact_athena_gnice_gnome_14",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_TwoLocations_02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_twolocations_lucky_tilted",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_02_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_02_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_polarpeak_chain_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_tiltedtowers_chain_02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_02_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_02_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_luckylanding_chain_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_retailrow_chain_02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_02_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_02_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_luckylanding_chain_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_retailrow_chain_02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_TwoNamedLocs_Chain_02_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_location_lazylinks_chain_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_location_shiftyshafts_chain_02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Throw_PuckToy_MinDistance",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_slidepuck_mindistance",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Chain_02_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Damage_Chain_02_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_02_smg",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Damage_Chain_02_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Damage_Chain_02_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_02_ar",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Chain_02_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 4,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_chain_pistol_thrownweapons",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Damage_Weapons_Different_AllTypes",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true,
+        "Count": 5
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaDance:eid_taketheelf",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_athena_weapons_different_assault_standard",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_minigun",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_assault_burst",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_assault_scoped",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_grenade_launcher",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_rocket_launcher",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_quad_launcher",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_pistol_handcannon",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_pistol_standard",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_pistol_suppressed",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_shotgun_tactical",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_shotgun_heavy",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_shotgun_pump",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_sniper_bolt",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_sniper_hunting",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_assault_thermal",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_smg_pdw",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_sniper_heavy",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_assault_silenced",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_pistol_sixshooter",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_assault_heavy",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_sword",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_sniper_silenced",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_grenade_standard",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_grenade_gas",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_grenade_tnt",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_trap_spike",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_turret",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "damage_athena_weapons_different_crossbow",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

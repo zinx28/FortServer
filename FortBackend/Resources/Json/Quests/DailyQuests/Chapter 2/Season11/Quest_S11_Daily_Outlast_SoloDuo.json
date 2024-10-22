@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Outlast_SoloDuo",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Outlast opponents in Solos or Duos Matches",
+    "Description": "Outlast opponents in Solos or Duos Matches",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Outlast_SoloDuo",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Outlast opponents in Solos or Duos Matches",
+        "HudShortDescription": "Outlast opponents in Solos or Duos Matches",
+        "Count": 150,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

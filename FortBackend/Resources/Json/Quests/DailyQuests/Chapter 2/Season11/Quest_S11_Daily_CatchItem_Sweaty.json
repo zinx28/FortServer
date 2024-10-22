@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_CatchItem_Sweaty",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Catch items from fishing spots at Sweaty Sands",
+    "Description": "Catch items from fishing spots at Sweaty Sands",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_CatchItem_Sweaty",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Catch items from fishing spots at Sweaty Sands",
+        "HudShortDescription": "Catch items from fishing spots at Sweaty Sands",
+        "Count": 5,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

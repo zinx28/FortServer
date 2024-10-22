@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Placement_SoloDuo",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Place Top 10 in Solos or Duos",
+    "Description": "Place Top 10 in Solos or Duos",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Placement_SoloDuo",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Place Top 10 in Solos or Duos",
+        "HudShortDescription": "Place Top 10 in Solos or Duos",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_ApplyShields",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Apply shields",
+    "Description": "Apply shields",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_ApplyShields",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Apply shields",
+        "HudShortDescription": "Apply shields",
+        "Count": 500,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

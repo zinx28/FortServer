@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Search_ChestAmmo_Misty",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Chests or Ammo Boxes at Misty Meadows",
+    "Description": "Search Chests or Ammo Boxes at Misty Meadows",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Search_ChestAmmo_Misty",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Chests or Ammo Boxes at Misty Meadows",
+        "HudShortDescription": "Search Chests or Ammo Boxes at Misty Meadows",
+        "Count": 14,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

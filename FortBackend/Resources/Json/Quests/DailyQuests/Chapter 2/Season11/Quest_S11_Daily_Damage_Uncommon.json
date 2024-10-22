@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Damage_Uncommon",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Deal damage with Uncommon weapons",
+    "Description": "Deal damage with Uncommon weapons",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Damage_Uncommon",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Deal damage with Uncommon weapons",
+        "HudShortDescription": "Deal damage with Uncommon weapons",
+        "Count": 1000,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

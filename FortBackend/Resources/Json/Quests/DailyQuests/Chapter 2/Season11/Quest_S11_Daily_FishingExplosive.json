@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_FishingExplosive",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Blow up a fishing spot with an Explosive weapon",
+    "Description": "Blow up a fishing spot with an Explosive weapon",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_FishingExplosive",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Blow up a fishing spot with an Explosive weapon",
+        "HudShortDescription": "Blow up a fishing spot with an Explosive weapon",
+        "Count": 1,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

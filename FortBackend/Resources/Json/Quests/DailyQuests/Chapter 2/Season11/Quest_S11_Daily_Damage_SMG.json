@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Damage_SMG",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Deal damage with SMGs to opponents",
+    "Description": "Deal damage with SMGs to opponents",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Damage_SMG",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Deal damage with SMGs to opponents",
+        "HudShortDescription": "Deal damage with SMGs to opponents",
+        "Count": 1000,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

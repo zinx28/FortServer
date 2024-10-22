@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Damage_Explosive",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Deal damage with Explosive weapons to opponents",
+    "Description": "Deal damage with Explosive weapons to opponents",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Damage_Explosive",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Deal damage with Explosive weapons to opponents",
+        "HudShortDescription": "Deal damage with Explosive weapons to opponents",
+        "Count": 300,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

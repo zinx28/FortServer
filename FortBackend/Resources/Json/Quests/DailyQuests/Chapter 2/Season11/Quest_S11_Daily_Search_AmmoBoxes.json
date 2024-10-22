@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Search_AmmoBoxes",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Ammo Boxes",
+    "Description": "Search Ammo Boxes",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Search_AmmoBoxes",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Ammo Boxes",
+        "HudShortDescription": "Search Ammo Boxes",
+        "Count": 14,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

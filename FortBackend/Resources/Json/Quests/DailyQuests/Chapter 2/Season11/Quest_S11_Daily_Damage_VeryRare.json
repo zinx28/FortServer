@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Damage_VeryRare",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Deal damage with Epic weapons",
+    "Description": "Deal damage with Epic weapons",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Damage_VeryRare",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Deal damage with Epic weapons",
+        "HudShortDescription": "Deal damage with Epic weapons",
+        "Count": 500,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

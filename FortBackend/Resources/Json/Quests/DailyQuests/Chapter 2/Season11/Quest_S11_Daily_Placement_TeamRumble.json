@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S11_Daily_Placement_TeamRumble",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Win Team Rumble matches",
+    "Description": "Win Team Rumble matches",
+    "SeasonXP": 12500,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S11_Daily_Placement_TeamRumble",
+        "ObjectiveState": "None",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Win Team Rumble matches",
+        "HudShortDescription": "Win Team Rumble matches",
+        "Count": 2,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

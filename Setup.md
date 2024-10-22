@@ -45,7 +45,7 @@ This will build the project for you. And you're all set!
 
 ### Custom Matchmaker Setup
 - In the `config.json` file, set `MatchmakerIP` to your Matchmaker IP, with `"127.0.0.1"` as the default value.
-- Change `MatchmakerPort` to your matchmaker port.
+- Set `MatchmakerPort` to your matchmaker port.
 - Set `CustomMatchmaker` to `true` to enable the custom matchmaker.
 - Add `GameServerIP` to the config and set it to your game server's IP, with `"127.0.0.1"` as the default.
 - Optional! add `GameServerPort` to the config and set it to your game server's port. The default is `"7777"`, which is commonly used unless a custom port is set.

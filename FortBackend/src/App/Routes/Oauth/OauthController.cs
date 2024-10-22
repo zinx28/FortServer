@@ -547,6 +547,7 @@ namespace FortBackend.src.App.Routes.Oauth
                             });
                         }
 
+
                         Logger.Error(refresh_token);
 
                         // REFRESH TOKEN SHOULD HAVE, AccountId, DeviceId and Secret
@@ -727,7 +728,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         new Claim("dvid", DeviceID),
                         new Claim("clid", clientId),
                         new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
-                        new Claim("am", "exchange_code"),
+                        new Claim("am", grant_type),
                         new Claim("jti", Hex.GenerateRandomHexString(32)),
                     }, 24);
 
@@ -739,7 +740,7 @@ namespace FortBackend.src.App.Routes.Oauth
                             new Claim("mver", "false"),
                             new Claim("clid", clientId),
                             new Claim("dn",  DisplayName!),
-                            new Claim("am", "exchange_code"),
+                            new Claim("am", grant_type),
                             new Claim("sec", "1"),
                             new Claim("p", Hex.GenerateRandomHexString(256)),
                             new Claim("iai",  AccountId),

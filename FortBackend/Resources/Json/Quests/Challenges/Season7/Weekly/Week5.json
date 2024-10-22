@@ -1,0 +1,314 @@
+{
+  "BundleId": "QuestBundle_S7_Week_005",
+  "BundleSchedule": "Season7_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_02A",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_02B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_location_lonely_polarpeak_02a",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_02B",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_02C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_location_fatalfields_02b",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_02C",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_02D",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_location_tomatotemple_02c",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_02D",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_02E",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_location_leakylake_02d",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_02E",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_location_snobbyshores_chain_02e",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Damage_Enemy_Buildings",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_Damage_athena_player_buildings",
+          "Count": 5000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_SuppressedWeapon",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_with_suppressed_weapon",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Dance_Chain_ScavengerHunt_Locations_02_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Dance_Chain_ScavengerHunt_Locations_02_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_dance_chain_athena_scavengerhunt_locations_02_a",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Dance_Chain_ScavengerHunt_Locations_02_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Dance_Chain_ScavengerHunt_Locations_02_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_dance_chain_athena_scavengerhunt_locations_02_b",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Dance_Chain_ScavengerHunt_Locations_02_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_dance_chain_athena_scavengerhunt_locations_02_c",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_TwoLocations_ParadiseWailing",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest_wailing_or_paradise",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_Triangulate_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_MaxDistance",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_players_maxdistance",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

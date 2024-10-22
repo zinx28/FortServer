@@ -1,0 +1,240 @@
+{
+  "BundleId": "QuestBundle_S7_Week_010",
+  "BundleSchedule": "Season7_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Use_Turret_Or_DamageTrap",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_place_athena_turret_or_damagetrap",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_TwoLocations_LazyDusty",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_chests_twolocations_lazydusty",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Weapon_AssaultRifle",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_assault",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_ScopedWeapon",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_scoped_weapon",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Shoot_SpecificTargets_Chain_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Shoot_SpecificTargets_Chain_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_shoot_specifictargets_chain_a",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Shoot_SpecificTargets_Chain_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Shoot_SpecificTargets_Chain_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_shoot_specifictargets_chain_b",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Shoot_SpecificTargets_Chain_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 2,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_shoot_specifictargets_chain_c",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Visit_ExplorerOutposts_SingleMatch",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false,
+        "Count": 4
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_visit_athena_expeditionoutpost_singlematch_a",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_expeditionoutpost_singlematch_b",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_expeditionoutpost_singlematch_c",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_expeditionoutpost_singlematch_d",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_expeditionoutpost_singlematch_e",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_expeditionoutpost_singlematch_f",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_visit_athena_expeditionoutpost_singlematch_g",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Hit_Enemies_Boogie_ChillerGrenade",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_hit_opponent_chiller_or_boogie",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

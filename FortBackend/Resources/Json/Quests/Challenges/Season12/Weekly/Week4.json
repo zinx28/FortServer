@@ -1,0 +1,377 @@
+{
+  "BundleId": "MissionBundle_S12_Week_04",
+  "BundleSchedule": "Season12_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_s12_w4_q01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_athena_treasurechest_pleasant_or_slurpy",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "destroy_player_structures_c4_or_proxi",
+          "Count": 20,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q03",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "catch_item_fishing_explosive",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q04",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_hq_or_sunnyshores",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q05",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 7
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_athena_ammobox_craggycliffs",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_dirtydocks",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_frenzyfarm",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_hollyhedges",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_lazylake",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_mistymeadows",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_slurpyswamp",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_steamystacks",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_sweatysands",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_weepingwoods",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_apollo_ammobox_spybase_mountainbase",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_apollo_ammobox_spybase_oilrig",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_apollo_ammobox_spybase_yacht",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_apollo_ammobox_spybase_shark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_apollo_ammobox_spybase_hq",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_retailrow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_pleasantpark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_ammobox_saltysprings",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q06",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "throw_decoygrenade",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q07",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_player_from_boat",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q08",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "scan_henchmen",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w4_q09",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "visit_landmark_BushFace",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_LawnmowerRaces",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_RiskyReels",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w3_q10",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "collect_bossweapon_brutus_minigun",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "collect_bossweapon_jas_auto",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "collect_bossweapon_meowscles_heavy",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "collect_bossweapon_midas_drum",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "collect_bossweapon_brutus_tntina_explosive",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "collect_bossweapon_jas_grappy",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

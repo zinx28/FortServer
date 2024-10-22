@@ -1,0 +1,325 @@
+{
+  "BundleId": "QuestBundle_S5_Week_008",
+  "BundleSchedule": "Season5_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Use_Trap",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_place_athena_trap",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Location_WailingWoods",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_treasurechest_walingwoods",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_Weapon_Shotgun",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_shotgun",
+          "Count": 4,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Pickaxe",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_Damage_athena_player_pickaxe",
+          "Count": 250,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Use_RiftPortal_DifferentLocations",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true,
+        "Count": 10
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_06",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_07",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_08",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_09",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_11",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_14",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_15",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_16",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_17",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_18",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_19",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_20",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_21",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_22",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_23",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_athena_use_location_riftportal_24",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_Triangulate_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_08",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_QuestChain_01_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Interact_Chests_QuestChain_01_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_questchain_greasygrove",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_QuestChain_01_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Eliminate_QuestChain_01_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_questchain_lonelylodge",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_QuestChain_01_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 4,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_questchain_fatalfields",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

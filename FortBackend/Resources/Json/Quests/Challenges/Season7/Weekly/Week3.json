@@ -1,0 +1,433 @@
+{
+  "BundleId": "QuestBundle_S7_Week_003",
+  "BundleSchedule": "Season7_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Use_Zipline_DifferentMatches",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_use_item_zipline",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_A",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_chain_lonely_01_a_",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_B",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_chain_pleasant_01_B",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_C",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_D",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_chain_lucky_01_C",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_D",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_E",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_chain_lonely_01_D",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_D",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_land_athena_chain_tilted_01_E",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_WeaponRarity_Legendary",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_killingblow_athena_player_goldrarity",
+          "Count": 2,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_TwoLocations_PolarTomato",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_chests_twolocations_polartomato",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_RingDoorbell_DifferentHouses",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 2
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_3",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_4",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_5",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_6",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_7",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_8",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_14",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_15",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_16",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_17",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_18",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_19",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_20",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_21",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_22",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_23",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_24",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_25",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_26",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_27",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "battlepass_ringdoorbell_differenthouses_poi_28",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_ScavengerHunt_Triangulate_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_interact_athena_hidden_star_01",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Chain_WeaponDamage_01_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Chain_WeaponDamage_01_B",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_shotguns_chain_01",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_BR_Chain_WeaponDamage_01_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Chain_WeaponDamage_01_C",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_pistols_chain_01",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Chain_WeaponDamage_01_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 4,
+        "Quest": [],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "battlepass_damage_athena_player_snipers_chain_01",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

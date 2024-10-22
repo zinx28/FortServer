@@ -301,7 +301,7 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("Quests")]
         [JsonProperty("Quests")]
         [BsonIgnoreIfNull]
-        public Dictionary<string, DailyQuestsData> Quests { get; set; } = new Dictionary<string, DailyQuestsData>();
+        public Dictionary<string, DailyQuestsData> Quests { get; set; } = new Dictionary<string, DailyQuestsData>(StringComparer.OrdinalIgnoreCase);
 
         [BsonElement("quest_manager")]
         [JsonProperty("quest_manager")]

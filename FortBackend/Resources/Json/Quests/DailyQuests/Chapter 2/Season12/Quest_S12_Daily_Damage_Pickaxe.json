@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Damage_Pickaxe",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Deal damage with Pickaxes to opponents",
+    "Description": "Deal damage with Pickaxes to opponents",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Damage_Pickaxe",
+        "ObjectiveState": "damage_athena_player_with_pickaxe",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Deal damage with Pickaxes to opponents",
+        "HudShortDescription": "Deal damage with Pickaxes to opponents",
+        "Count": 100,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

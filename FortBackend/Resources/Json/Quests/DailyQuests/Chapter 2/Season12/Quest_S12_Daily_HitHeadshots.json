@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_HitHeadshots",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Hit Headshots",
+    "Description": "Hit Headshots",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_HitHeadshots",
+        "ObjectiveState": "hit_headshots",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Hit Headshots",
+        "HudShortDescription": "Hit Headshots",
+        "Count": 10,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

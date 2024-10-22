@@ -1,0 +1,411 @@
+{
+  "BundleId": "QuestBundle_S9_BattleSuit",
+  "BundleSchedule": "ChallengeBundleSchedule:season9_battlesuit_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 100
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Gain_SeasonXP_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_189_BattleSuit_StageB",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 20000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Gain_SeasonXP_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_190_BattleSuit_StageC",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 75000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Gain_SeasonXP_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_191_BattleSuit_StageD",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 150000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Gain_SeasonXP_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_192_BattleSuit_StageE",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 250000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Complete_WeeklyChallenges_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_196_BattleSuit_FlameColorB",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlesuit_complete_weeklychallenges_01",
+          "Count": 45,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Complete_WeeklyChallenges_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaBackpack:BID_265_BattleSuit",
+            "variants": [
+              {
+                "channel": "Particle",
+                "active": "Particle0",
+                "owned": [
+                  "Particle0",
+                  "Particle1",
+                  "Particle2",
+                  "Particle3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlesuit_complete_weeklychallenges_02",
+          "Count": 55,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Complete_WeeklyChallenges_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_193_BattleSuit_ClothingB",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlesuit_complete_weeklychallenges_03",
+          "Count": 65,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Outlive_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_197_BattleSuit_FlameColorC",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_battlesuit_outlive_01",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Outlive_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaPickaxe:Pickaxe_ID_209_BattleSuit",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_battlesuit_outlive_02",
+          "Count": 5000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_Outlive_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_194_BattleSuit_ClothingC",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_battlesuit_outlive_03",
+          "Count": 10000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_CollectGlyphs_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_198_BattleSuit_FlameColorD",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_battlesuit_collectglyphs_01",
+          "Count": 80,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BattleSuit_CollectGlyphs_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_195_BattleSuit_ClothingD",
+            "connectedTemplate": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_battlesuit_collectglyphs_02",
+          "Count": 85,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

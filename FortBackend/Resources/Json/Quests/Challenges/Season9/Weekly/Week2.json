@@ -1,0 +1,411 @@
+{
+  "BundleId": "QuestBundle_S9_Week_002",
+  "BundleSchedule": "Season9_Free_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_Use_HVAC_DifferentMatches",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Use_WindTunnel_Chain_MegaMall",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "use_hvac",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_A",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_B",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "land_location_snobbyshores",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_TwoLocations_01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_athena_player_sunny_or_shifty",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Damage_Pistol",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_athena_player_pistol",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Visit_ThreeQuestProps",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 5,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "visit_location_generic_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_location_generic_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_location_generic_03",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Interact_Chests_Locations_Different_SingleMatch",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 3
+      },
+      "Rewards": {
+        "BattleStars": 10,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_athena_treasurechest_dustydivot",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_fatalfields",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_frostyflights",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_happyhamlet",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_hauntedhills",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_junkjunction",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_lazylagoon",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_lonelylodge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_lootlake",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_luckylanding",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_paradisepalms",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_pleasantpark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_polarpeak",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_pressureplant",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_retailrow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_saltysprings",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_shiftyshafts",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_snobbyshores",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_sunnysteps",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_theblock",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_treasurechest_tiltedtowers",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_MinDistance_Chain_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Eliminate_MinDistance_Chain_B",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_athena_player_mindistance_a",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_C",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "land_location_fatalfields",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_C",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_D",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "land_location_sunnysteps",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_D",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Land_Chain_01_E",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "land_location_dustydivot",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Land_Chain_01_E",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 1,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "land_location_happyhamlet",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_MinDistance_Chain_B",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "Steps": true,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 3,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_BR_Eliminate_MinDistance_Chain_C",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_athena_player_mindistance_b",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_Eliminate_MinDistance_Chain_C",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": true,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 4,
+        "Quest": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_athena_player_mindistance_c",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

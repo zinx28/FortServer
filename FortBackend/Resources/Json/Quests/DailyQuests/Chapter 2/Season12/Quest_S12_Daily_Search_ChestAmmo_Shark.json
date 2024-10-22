@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Search_ChestAmmo_Shark",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Search Chests or Ammo Boxes at The Shark",
+    "Description": "Search Chests or Ammo Boxes at The Shark",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Search_ChestAmmo_Shark",
+        "ObjectiveState": "interact_athena_chest_ammo_shark",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Search Chests or Ammo Boxes at The Shark",
+        "HudShortDescription": "Search Chests or Ammo Boxes at The Shark",
+        "Count": 5,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

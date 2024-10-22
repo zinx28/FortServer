@@ -1,6 +1,8 @@
 ﻿using FortBackend.src.App.SERVER;
 using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Helpers;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.XMPP.Data;
 using FortLibrary;
@@ -14,21 +16,25 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
 {
     public class XmppServer
     {
-        public static void Intiliazation(string[] args)
+        static WebApplication app;
+   
+        public static void Intiliazation(string[] args, CancellationToken cancellationToken)
         {
             Logger.Log("Initializing Xmpp", "Xmpp");
 
 
             var builder = WebApplication.CreateBuilder(args);
 
-            #if HTTPS
+            if (Saved.DeserializeConfig.HTTPS)
+            {
                 builder.WebHost.UseUrls($"https://0.0.0.0:{Saved.DeserializeConfig.XmppPort}");
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.XmppPort, listenOptions =>
                     {
-                        var certPath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "Certificates", "FortBackend.pfx");
-                        if(!File.Exists(certPath)) {
+                        var certPath = Path.Combine(PathConstants.BaseDir, "Resources", "Certificates", "FortBackend.pfx");
+                        if (!File.Exists(certPath))
+                        {
                             Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
@@ -37,16 +43,17 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                         listenOptions.UseHttps(certificate);
                     });
                 });
-            #else
+            }
+            else
+            {
                 builder.WebHost.UseUrls($"http://0.0.0.0:{Saved.DeserializeConfig.XmppPort}");
-            #endif
+            }
 
 
-            var app = builder.Build();
+            app = builder.Build();
 
-            #if HTTPS
+            if (Saved.DeserializeConfig.HTTPS)
                 app.UseHttpsRedirection();
-            #endif
 
             app.UseWebSockets();
 
@@ -72,7 +79,7 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                             
                             string clientId = Guid.NewGuid().ToString();
                             WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                            await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId, Ip);
+                            await Handle.HandleWebSocketConnection(webSocket, context.Request, clientId, Ip, cancellationToken);
                         }
                         catch (Exception ex)
                         {
@@ -123,23 +130,34 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
             });
 
             Logger.Log("XMPP STARTING", "XMPP");
-            app.Run();
+
+            try
+            {
+                app.Run();
+            }
+            catch (IOException ex) when (ex.Message.Contains("address already in use")) { Logger.Error($"The Port {Saved.DeserializeConfig.XmppPort} is already in use", "XMPP"); }
+
+         
+
         }
 
-        public static void STOP()
-        {
-            Console.WriteLine("XMPP SHUTDOWN");
-            foreach (var item in GlobalData.Clients)
-            {
-                if(item.Game_Client != null)
-                {
-                    try
-                    {
-                        item.Game_Client.CloseAsync(WebSocketCloseStatus.NormalClosure, "SERVER SHUTDONW", CancellationToken.None);
-                    }
-                    catch { }
-                }
-            }
-        }
+        //public static void STOP()
+        //{
+        //    Console.WriteLine("XMPP SHUTDOWN");
+        //    //app.();
+        //    foreach (var item in GlobalData.Clients)
+        //    {
+        //        if(item.Game_Client != null)
+        //        {
+        //            try
+        //            {
+        //             //   item.Game_Client.State = WebSocketState.CloseSent;
+        //             //   item.Game_Client.Dispose();
+        //                //item.Game_Client.CloseAsync(WebSocketCloseStatus.NormalClosure, "SERVER SHUTDONW", CancellationToken.None);
+        //            }
+        //            catch { }
+        //        }
+        //    }
+        //}
     }
 }

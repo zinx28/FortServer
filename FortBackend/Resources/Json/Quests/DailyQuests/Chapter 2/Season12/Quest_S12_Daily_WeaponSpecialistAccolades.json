@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_WeaponSpecialistAccolades",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Achieve Weapon Specialist Accolades by dealing damage with weapons",
+    "Description": "Achieve Weapon Specialist Accolades by dealing damage with weapons",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_WeaponSpecialistAccolades",
+        "ObjectiveState": "accolade_weapon_specialist",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Achieve Weapon Specialist Accolades by dealing damage with weapons",
+        "HudShortDescription": "Achieve Weapon Specialist Accolades by dealing damage with weapons",
+        "Count": 5,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

@@ -14,6 +14,24 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 {
     public class CachedData
     {
+        public static FortConfig DeserializeConfig
+        {
+            get => Saved.Saved.DeserializeConfig;
+            set => Saved.Saved.DeserializeConfig = value;
+        }
+
+        public static CachedDataClass BackendCachedData
+        {
+            get => Saved.Saved.BackendCachedData;
+            set => Saved.Saved.BackendCachedData = value;
+        }
+
+        public static FortGameConfig DeserializeGameConfig
+        {
+            get => Saved.Saved.DeserializeGameConfig;
+            set => Saved.Saved.DeserializeGameConfig = value;
+        }
+
         public static async Task Init()
         {
             // -- All Paths -- //
@@ -72,14 +90,6 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
 
             // -- //
-
-
-
-            FortConfig DeserializeConfig = Saved.Saved.DeserializeConfig;
-            CachedDataClass BackendCachedData = Saved.Saved.BackendCachedData;
-            FortGameConfig DeserializeGameConfig = Saved.Saved.DeserializeGameConfig;
-
-
             var ReadFortConfig = File.ReadAllText(FortConfigPath);
             if (string.IsNullOrEmpty(ReadFortConfig)) { throw new Exception("Error reading ReadFortConfig"); } // well should've thrown a different error
 
@@ -227,8 +237,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
             catch (Exception ex) { Logger.Error("Timeline Data -> " + ex.Message); }
 
-            Saved.Saved.DeserializeConfig = DeserializeConfig;
-            Saved.Saved.DeserializeGameConfig = DeserializeGameConfig;
+         
 
         }
     }

@@ -1,0 +1,71 @@
+{
+  "BundleId": "QuestBundle_S12_Donut_W4",
+  "BundleSchedule": "ChallengeBundleSchedule:season12_donut_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "GrantByQuest": true,
+    "Weekly": true
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S12_Donut_W4_A",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "Quest:Quest_S12_Donut_W4_B",
+            "Quantity": 1
+          }
+
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "donut_katana_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "donut_katana_2",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S12_Donut_W4_B",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "ChallengeBundle:QuestBundle_S12_Donut_W5",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "AthenaBackpack:BID_480_Donut",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "damage_athena_enemy_building",
+          "Count": 10000,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

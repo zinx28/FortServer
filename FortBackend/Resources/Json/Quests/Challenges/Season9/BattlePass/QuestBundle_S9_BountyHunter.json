@@ -1,0 +1,138 @@
+{
+  "BundleId": "QuestBundle_S9_BountyHunter",
+  "BundleSchedule": "ChallengeBundleSchedule:season9_bountyhunter_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 47
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S9_BountyHunter_Outlive_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaBackpack:BID_262_BountyHunterFemale",
+            "variants": [
+              {
+                "channel": "Material",
+                "active": "Mat1",
+                "owned": [
+                  "Mat1",
+                  "Mat2",
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_bountyhunter_outlive_01",
+          "Count": 2500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BountyHunter_Outlive_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_204_BountyHunter_StyleB",
+            "connectedTemplate": "AthenaCharacter:cid_404_athena_commando_f_bountyhunter",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_bountyhunter_outlive_02",
+          "Count": 7500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BountyHunter_CollectGlyphs_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_205_BountyHunter_StyleC",
+            "connectedTemplate": "AthenaCharacter:cid_404_athena_commando_f_bountyhunter",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_bountyhunter_collectglyphs_01",
+          "Count": 50,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_BountyHunter_CollectGlyphs_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaPickaxe:Pickaxe_ID_207_BountyHunter",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_bountyhunter_collectglyphs_02",
+          "Count": 55,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

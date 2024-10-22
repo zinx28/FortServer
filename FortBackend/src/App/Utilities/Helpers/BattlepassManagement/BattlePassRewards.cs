@@ -454,13 +454,15 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                             [ClientQuestLogin]: ChallengeBundleSchedule:season8_cumulative_schedule is not supported
                             [ClientQuestLogin]: Token:athenaseasonmergedxpboosts is not supported
                         */
-
-                        applyProfileChanges.Add(new NotificationsItemsClassOG
+                        if (!iteminfo.TemplateId.Contains("ChallengeBundleSchedule:"))
                         {
-                            itemType = iteminfo.TemplateId,
-                            itemGuid = iteminfo.TemplateId,
-                            quantity = iteminfo.Quantity,
-                        });
+                            applyProfileChanges.Add(new NotificationsItemsClassOG
+                            {
+                                itemType = iteminfo.TemplateId,
+                                itemGuid = iteminfo.TemplateId,
+                                quantity = iteminfo.Quantity,
+                            });
+                        }
                     }
                 }
             }

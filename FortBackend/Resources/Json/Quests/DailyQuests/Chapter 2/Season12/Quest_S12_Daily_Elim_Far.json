@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Elim_Far",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Eliminations from at least 50 meters away",
+    "Description": "Eliminations from at least 50 meters away",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Elim_Far",
+        "ObjectiveState": "killingblow_athena_player_over_50_meters",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Eliminations from at least 50 meters away",
+        "HudShortDescription": "Eliminations from at least 50 meters away",
+        "Count": 2,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

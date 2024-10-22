@@ -1,0 +1,59 @@
+{
+  "BundleId": "QuestBundle_S9_StormTracker",
+  "BundleSchedule": "ChallengeBundleSchedule:season9_stormtracker_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 71
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_BR_S9_StormTracker_CollectGlyphs_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaGlider:Glider_ID_145_StormTracker",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_stormtracker_collectglyphs_01",
+          "Count": 60,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StormTracker_CollectGlyphs_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaBackpack:BID_264_StormTracker",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_stormtracker_collectglyphs_02",
+          "Count": 65,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

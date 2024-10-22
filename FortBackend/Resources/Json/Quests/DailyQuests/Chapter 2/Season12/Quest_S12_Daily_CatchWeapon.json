@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_CatchWeapon",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Catch weapons from fishing spots",
+    "Description": "Catch weapons from fishing spots",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_CatchWeapon",
+        "ObjectiveState": "catch_fish_weapon",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Catch weapons from fishing spots",
+        "HudShortDescription": "Catch weapons from fishing spots",
+        "Count": 3,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

@@ -18,11 +18,43 @@
       {
         "templateId": "AthenaCharacter:cid_408_athena_commando_f_strawberrypilot",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          },
+          {
+            "channel": "Particle",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          },
+          {
+            "channel": "Material",
+            "active": "Mat1",
+            "owned": [
+              "Mat1"
+            ]
+          }
+        ],
         "quantity": 1
       },
       {
         "templateId": "AthenaCharacter:cid_403_athena_commando_m_rooster",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Parts",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
         "quantity": 1
       },
       {
@@ -108,6 +140,15 @@
       {
         "templateId": "AthenaPickaxe:pickaxe_id_211_bunkerman_1h",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Mesh",
+            "active": "Stage0",
+            "owned": [
+              "Stage0"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],
@@ -268,6 +309,15 @@
       {
         "templateId": "AthenaCharacter:cid_409_athena_commando_m_bunkerman",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat1",
+            "owned": [
+              "Mat1"
+            ]
+          }
+        ],
         "quantity": 1
       },
       {
@@ -323,6 +373,15 @@
       {
         "templateId": "AthenaBackpack:petcarrier_010_robokitty",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat1",
+            "owned": [
+              "Mat1"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],
@@ -502,7 +561,15 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_199_petcarrier_robokitty_styleb",
-        "connectedTemplate": "",
+        "connectedTemplate": "AthenaBackpack:petcarrier_010_robokitty",
+        "new_variants": [
+          {
+            "channel": "Material",
+            "added": [
+              "Mat2"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],
@@ -513,6 +580,15 @@
       {
         "templateId": "AthenaCharacter:cid_404_athena_commando_f_bountyhunter",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat1",
+            "owned": [
+              "Mat1"
+            ]
+          }
+        ],
         "quantity": 1
       },
       {
@@ -647,7 +723,15 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_201_petcarrier_robokitty_styled",
-        "connectedTemplate": "",
+        "connectedTemplate": "AthenaBackpack:petcarrier_010_robokitty",
+        "new_variants": [
+          {
+            "channel": "Material",
+            "added": [
+              "Mat4"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],
@@ -758,6 +842,15 @@
       {
         "templateId": "AthenaCharacter:cid_406_athena_commando_m_stormtracker",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat1",
+            "owned": [
+              "Mat1"
+            ]
+          }
+        ],
         "quantity": 1
       },
       {
@@ -792,7 +885,15 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_200_petcarrier_robokitty_stylec",
-        "connectedTemplate": "",
+        "connectedTemplate": "AthenaBackpack:petcarrier_010_robokitty",
+        "new_variants": [
+          {
+            "channel": "Material",
+            "added": [
+              "Mat3"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],
@@ -923,6 +1024,22 @@
       {
         "templateId": "AthenaCharacter:cid_405_athena_commando_f_masako",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Parts",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          },
+          {
+            "channel": "Material",
+            "active": "Mat1",
+            "owned": [
+              "Mat1"
+            ]
+          }
+        ],
         "quantity": 1
       },
       {
@@ -1047,7 +1164,15 @@
     "Rewards": [
       {
         "templateId": "CosmeticVariantToken:vtid_202_rooster_styleb",
-        "connectedTemplate": "",
+        "connectedTemplate": "AthenaCharacter:cid_403_athena_commando_m_rooster",
+        "new_variants": [
+          {
+            "channel": "Parts",
+            "added": [
+              "Stage2"
+            ]
+          }
+        ],
         "quantity": 1
       }
     ],
@@ -1058,6 +1183,29 @@
       {
         "templateId": "AthenaCharacter:cid_407_athena_commando_m_battlesuit",
         "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          },
+          {
+            "channel": "Material",
+            "active": "Mat1",
+            "owned": [
+              "Mat1"
+            ]
+          },
+          {
+            "channel": "Particle",
+            "active": "Particle1",
+            "owned": [
+              "Particle1"
+            ]
+          }
+        ],
         "quantity": 1
       },
       {

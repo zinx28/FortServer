@@ -77,6 +77,371 @@
           "Stage": -1
         }
       ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_Gain_SeasonXP_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_179_StrawberryPilot_StageB",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 10000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_Gain_SeasonXP_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_180_StrawberryPilot_StageC",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 50000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_Gain_SeasonXP_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_181_StrawberryPilot_StageD",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 100000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_Gain_SeasonXP_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_182_StrawberryPilot_StageE",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage5"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_season_xp_gained",
+          "Count": 200000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_Complete_WeeklyChallenges_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_186_StrawberryPilot_SecondaryColorB",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_strawberrypilot_complete_weeklychallenges_01",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_Complete_WeeklyChallenges_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaDance:EID_StrawberryPilotKpop",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_strawberrypilot_complete_weeklychallenges_02",
+          "Count": 20,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_Complete_WeeklyChallenges_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_183_StrawberryPilot_ClothingB",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_strawberrypilot_complete_weeklychallenges_03",
+          "Count": 30,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_CollectGlyphs_01",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_187_StrawberryPilot_SecondaryColorC",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_strawberrypilot_collectglyphs_01",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_CollectGlyphs_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_184_StrawberryPilot_ClothingC",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_strawberrypilot_collectglyphs_02",
+          "Count": 15,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_CollectGlyphs_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_188_StrawberryPilot_SecondaryColorD",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_strawberrypilot_collectglyphs_03",
+          "Count": 25,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_BR_S9_StrawberryPilot_CollectGlyphs_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_185_StrawberryPilot_ClothingD",
+            "connectedTemplate": "AthenaBackpack:cid_408_athena_commando_f_strawberrypilot",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "athena_battlepass_strawberrypilot_collectglyphs_04",
+          "Count": 35,
+          "Stage": -1
+        }
+      ]
     }
   ]
 }

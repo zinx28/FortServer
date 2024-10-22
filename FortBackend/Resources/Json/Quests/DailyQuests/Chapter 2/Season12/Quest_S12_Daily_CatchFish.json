@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_CatchFish",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "Catch fish",
+    "Description": "Catch fish",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_CatchFish",
+        "ObjectiveState": "catch_fish",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "Catch fish",
+        "HudShortDescription": "Catch fish",
+        "Count": 7,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

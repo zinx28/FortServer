@@ -1,0 +1,25 @@
+{
+  "Type": "AthenaDailyQuestDefinition",
+  "Name": "Quest_S12_Daily_Elim_SMG",
+  "Class": "UScriptClass'AthenaDailyQuestDefinition'",
+  "Properties": {
+    "DisplayName": "SMG Eliminations",
+    "Description": "SMG Eliminations",
+    "SeasonXP": 0,
+    "SeasonBattleStars": 0,
+    "Objectives": [
+      {
+        "BackendName": "Quest_S12_Daily_Elim_SMG",
+        "ObjectiveState": "killingblow_athena_player_smg",
+        "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+        "ItemReference": "",
+        "ItemTemplateIdOverride": "",
+        "Description": "SMG Eliminations",
+        "HudShortDescription": "SMG Eliminations",
+        "Count": 3,
+        "Stage": -1,
+        "bHidden": false
+      }
+    ]
+  }
+}

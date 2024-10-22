@@ -9,14 +9,14 @@ namespace FortBackend.src.App.XMPP_V2
     public class Xmpp_Server
     {
         // Goal at some point is to just have tcp xmpp only
-        public static void Intiliazation(string[] args)
+        public static void Intiliazation(string[] args, CancellationToken cancellationToken)
         {
             Logger.Log("Initializing Xmpp", "Xmpp");
 
 
             new Thread(() =>
             {
-                XmppServer.Intiliazation(args);
+                XmppServer.Intiliazation(args, cancellationToken);
             }).Start();
 
             new Thread(() =>

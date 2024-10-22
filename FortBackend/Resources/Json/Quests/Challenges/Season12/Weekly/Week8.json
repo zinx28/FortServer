@@ -1,0 +1,351 @@
+{
+  "BundleId": "MissionBundle_S12_Week_08",
+  "BundleSchedule": "Season12_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_s12_w8_q01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_treasurechest_landmarks",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "killingblow_athena_player_under_15_meters_smg",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q03",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "harvest_weak_point_consecutive",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q04",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "fly_underbridge_red_hoagie",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "fly_underbridge_blue_hoagie",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "fly_underbridge_purple_hoagie",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q05",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_athena_mushroom",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_athena_forageditems_apples",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "stoke_campfire",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q06",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "land_spybase_shark",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "visit_landmark_theagencyhq",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q07",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "pistol_headshots",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q08",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "interact_skye_sword_1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_2",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_3",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_4",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_5",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_6",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_7",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_8",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_9",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_10",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_11",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_12",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_13",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_14",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "interact_skye_sword_15",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q09",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "block_damage_unclebrolly",
+          "Count": 200,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_s12_w8_q10",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 40000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "use_applesun",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

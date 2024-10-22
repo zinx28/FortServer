@@ -35,6 +35,10 @@ namespace FortLibrary.ConfigHelpers
         public int TCPXmppPort { get; set; } = 8443; // Tcp doesn't work.. i can't get it to connect on the vps with the cert
         public int XmppPort { get; set; } = 443; // 443 default ig
 
+        public string GameServerIP { get; set; } = "127.0.0.1";
+        public int GameServerPort { get; set; } = 7777;
+        public bool CustomMatchmaker { get; set; } = false; // Enable to use other matchmakers
+
         // -- //
 
         // MongoDBConnectionString is set to the default local host port for mongodbserver you may change this to your needs!

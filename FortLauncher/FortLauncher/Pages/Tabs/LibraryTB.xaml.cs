@@ -206,39 +206,32 @@ namespace FortLauncher.Pages.Tabs
 
         public async void ButtonClicked(/*Wpf.Ui.Controls.Button button, */object s, RoutedEventArgs e, BuildConfig config)
         {
-           // System.Windows.MessageBox.Show("PENIS");
-           // System.Windows.MessageBox.Show(config.buildPath);
-            //if (e.ChangedButton == MouseButton.Left)
-           // {
-                try
+            try
+            {
+                if (PSBasics._FortniteProcess == null)
                 {
-                    if (PSBasics._FortniteProcess == null)
+                    //  System.Windows.MessageBox.Show(config.buildPath);
+                    if (File.Exists(System.IO.Path.Join(config.buildPath, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe")))
                     {
-                      //  System.Windows.MessageBox.Show(config.buildPath);
-                        if (File.Exists(System.IO.Path.Join(config.buildPath, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe")))
-                        {
-                            UpdateAllBuilds(config, true);
-                            await MainFrame.LaunchFortnite(config, e);
-                            UpdateAllBuilds(config, false);
-                        }
-                        else
-                        {
-                            System.Windows.MessageBox.Show("Path is wrong?");
-                        }
+                        UpdateAllBuilds(config, true);
+                        await MainFrame.LaunchFortnite(config, e);
+                        UpdateAllBuilds(config, false);
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Path is wrong?");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Loggers.Log(ex.Message + " ~L2091~");
-                    System.Windows.MessageBox.Show("Please Check Logs");
-                }
-          //  }
+            }
+            catch (Exception ex)
+            {
+                Loggers.Log(ex.Message, "L2091");
+                System.Windows.MessageBox.Show("Please Check Logs");
+            }
         }
 
         public Border AddBorderBuild(string BuildString, string VersionBuild, BuildConfig config)
         {
-            //MessageBox.Show(BuildString);
-
             Wpf.Ui.Controls.SymbolIcon symbolIcon = new SymbolIcon
             {
                 Foreground = Brushes.White,

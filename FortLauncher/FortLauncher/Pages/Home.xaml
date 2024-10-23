@@ -102,8 +102,8 @@ DialogMaxWidth="750"  Visibility="Collapsed" Grid.ColumnSpan="2">
 
         </ui:ContentDialog>
 
-        <ui:ContentDialog x:Name="PathDownloader"
-ButtonClicked="PathDownloader_ButtonClicked"
+        <ui:ContentDialog x:Name="LaunchingUI"
+ButtonClicked="LaunchingUI_ButtonClicked"
 CloseButtonText="Close" 
 DialogMaxWidth="750"  Visibility="Collapsed" Grid.ColumnSpan="2">
 

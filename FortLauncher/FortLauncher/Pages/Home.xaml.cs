@@ -181,7 +181,7 @@ namespace FortLauncher.Pages
             }
             catch (Exception ex)
             {
-
+                Loggers.Log(ex.Message + "~CustomContetnDialog~");
             }
         }
 
@@ -200,9 +200,14 @@ namespace FortLauncher.Pages
             }
         }
 
-        private void PathDownloader_ButtonClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void LaunchingUI_ButtonClicked(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-
+            if (PSBasics._FortniteProcess != null && !PSBasics._FortniteProcess.HasExited)
+                PSBasics._FortniteProcess.Kill();
+            if (FakeAC._FNLauncherProcess != null && !FakeAC._FNLauncherProcess.HasExited)
+                FakeAC._FNLauncherProcess.Kill();
+            if (FakeAC._FNAntiCheatProcess != null && !FakeAC._FNAntiCheatProcess.HasExited)
+                FakeAC._FNAntiCheatProcess.Kill();
         }
     }
 }

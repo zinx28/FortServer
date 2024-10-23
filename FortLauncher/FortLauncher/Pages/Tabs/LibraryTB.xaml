@@ -10,7 +10,7 @@
 
     <Grid Loaded="Grid_Loaded">
 
-        <ScrollViewer Height="639" VerticalAlignment="Top" Margin="0,85,0,0">
+        <ScrollViewer Height="554" VerticalAlignment="Top" Margin="-24,85,0,0">
             <WrapPanel x:Name="LaunchBuilds" Width="861">
                 <Border CornerRadius="15" Width="215" Height="290">
                     <Grid>

@@ -6,7 +6,7 @@
         public string privacy { get; set; } = "PUBLIC";
         public string created_at { get; set; } = string.Empty;
         public string updated_at { get; set; } = string.Empty;
-        public object config { get; set; } = new object();
+        public Dictionary<string, object> config { get; set; } = new Dictionary<string, object>();
         public List<Members> members { get; set; } = new List<Members>();
         public List<object> applicants { get; set; } = new List<object>();
         public Dictionary<string, object> meta { get; set; } = new Dictionary<string, object>();

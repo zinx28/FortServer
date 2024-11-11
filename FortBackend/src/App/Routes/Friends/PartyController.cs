@@ -18,6 +18,9 @@ using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
 using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
 using FortLibrary;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Newtonsoft.Json.Linq;
 
 namespace FortBackend.src.App.Routes.Friends
 {
@@ -35,33 +38,22 @@ namespace FortBackend.src.App.Routes.Friends
 
                 if (UserData != "Error")
                 {
-                    var CurrentParty = GlobalData.parties.Find(e => e.members.Any(a => a.account_id == accountId));
-                   // List<Pings> CurrentPartysPing = new List<Pings>();
-                   // List<Pings> CurrentPartysPending = new List<Pings>();
-                    if (CurrentParty != null)
-                    {
-                       //CurrentPartysPing = GlobalData.pings.FindAll(e => e.sent_to == accountId);
-                       // CurrentPartysPending = GlobalData.pings.FindAll(e => e.sent_by == accountId);
-                    }
+                    var CurrentParty = GlobalData.parties.FindAll(e => e.members.Any(a => a.account_id == accountId));
+                    var Pings = GlobalData.pings.FindAll(e => e.sent_to == accountId);
 
+                    //Console.WriteLine(new
+                    //{
+                    //    current = CurrentParty != null ? CurrentParty : new List<Parties>(),
+                    //    pending = Array.Empty<object>(),
+                    //    invites = Array.Empty<object>(),
+                    //    pings = Pings != null ? Pings : new List<Pings>()
+                    //});
                     return Ok(new
                     {
-                        current = CurrentParty != null ? new List<Parties> { CurrentParty } : new List<Parties>(),
+                        current = CurrentParty != null ? CurrentParty : new List<Parties>(),
                         pending = Array.Empty<object>(),
                         invites = Array.Empty<object>(),
-                        pings = Array.Empty<object>()
-                    });
-                }else
-                {
-                    return BadRequest(new BaseError
-                    {
-                        errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
-                        errorMessage = $"Authentication failed for /api/v1/Fortnite/user/{accountId}",
-                        messageVars = new List<string> { $"/api/v1/Fortnite/user/{accountId}" },
-                        numericErrorCode = 1032,
-                        originatingService = "party",
-                        intent = "prod",
-                        error_description = $"Authentication failed for /api/v1/Fortnite/user/{accountId}",
+                        pings = Pings != null ? Pings : new List<Pings>()
                     });
                 }
             }
@@ -72,9 +64,9 @@ namespace FortBackend.src.App.Routes.Friends
 
             return BadRequest(new BaseError
             {
-                errorCode = "errors.com.epicgames.iforgot",
-                errorMessage = $"NGL for /party/api/v1/Fortnite/user/{accountId}",
-                messageVars = new List<string> { $"/party/api/v1/Fortnite/user/{accountId}" },
+                errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                errorMessage = $"Authentication failed for /api/v1/Fortnite/user/{accountId}",
+                messageVars = new List<string> { $"/api/v1/Fortnite/user/{accountId}" },
                 numericErrorCode = 1032,
                 originatingService = "party",
                 intent = "prod",
@@ -127,6 +119,7 @@ namespace FortBackend.src.App.Routes.Friends
             {
                 Response.ContentType = "application/json";
                 var Party = GlobalData.parties.Find(x => x.id == partyId);
+                Console.WriteLine("TESTAAA " + Party);
                 if(Party != null)
                 {
                     return Content(JsonConvert.SerializeObject(Party), "application/json");
@@ -158,7 +151,7 @@ namespace FortBackend.src.App.Routes.Friends
                 Response.ContentType = "application/json";
 
                 var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                Console.WriteLine(token);
+              //  Console.WriteLine(token);
                 var accessToken = token.Replace("eg1~", "");
                 var handler = new JwtSecurityTokenHandler();
                 var decodedToken = handler.ReadJwtToken(accessToken);
@@ -171,12 +164,10 @@ namespace FortBackend.src.App.Routes.Friends
                     var UserData = await Handlers.FindOne<User>("accountId", AccountId);
                     if (UserData != "Error")
                     {
-
-
                         using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
                             string requestBody = await reader.ReadToEndAsync();
-                            Console.WriteLine("TEST + " + requestBody);
+                      
                             if (string.IsNullOrEmpty(requestBody))
                             {
                                 throw new BaseError
@@ -191,45 +182,36 @@ namespace FortBackend.src.App.Routes.Friends
                                 };
                             }
 
-                            int index = GlobalData.parties.FindIndex(x => x.id == partyId);
-                            if (index != -1)
+                            int PartyIndex = GlobalData.parties.FindIndex(x => x.id == partyId);
+                            if (PartyIndex != -1)
                             {
-                                var Parties = GlobalData.parties[index];
+                                var Parties = GlobalData.parties[PartyIndex];
+
+
                                 var ClientIndex = GlobalData.Clients.FindIndex(x => x.accountId == AccountId);
-                                if (ClientIndex == -1)
-                                {
-                                    Console.WriteLine("CLIENTINDEX IS NULL!!!");
-                                }
-                                else
+                                if (ClientIndex != -1)
                                 {
                                     var Client = GlobalData.Clients[ClientIndex];
 
-                                    PatchPartiesC PartiesGR = JsonConvert.DeserializeObject<PatchPartiesC>(requestBody)!;
+                                    PatchPartiesC PatchPartyResponse = JsonConvert.DeserializeObject<PatchPartiesC>(requestBody)!;
                                     //PatchPatiesC
-                                    if (Parties != null && PartiesGR != null)
+                                    if (Parties != null && PatchPartyResponse != null)
                                     {
-                                        Console.WriteLine("before changes " + JsonConvert.SerializeObject(Parties));
-                                        if (PartiesGR.config != null)
+                                        Console.WriteLine("yeah " + PatchPartyResponse.config);
+                                        foreach (var prop in PatchPartyResponse.config.GetType().GetProperties())
                                         {
-                                            foreach (var prop in PartiesGR.config.GetType().GetProperties())
-                                            {
-                                                var configDictionary = Parties.config as Dictionary<string, object>;
-
-                                                if (configDictionary != null && prop != null)
-                                                {
-                                                    configDictionary[prop.Name] = prop?.GetValue(PartiesGR.config)!;
-                                                }
-                                            }
+                                            Parties.config[prop.Name] = prop.GetValue(PatchPartyResponse.config)!;
+                                            Logger.Warn($"{prop.Name}: {prop.GetValue(PatchPartyResponse.config)}");
                                         }
 
-                                        if (PartiesGR.meta != null)
+                                        if (PatchPartyResponse.meta != null)
                                         {
-                                            foreach (var prop in PartiesGR.meta.delete)
+                                            foreach (var prop in PatchPartyResponse.meta.delete)
                                             {
                                                 Parties.meta.Remove(prop);
                                             }
 
-                                            foreach (var prop in PartiesGR.meta.update)
+                                            foreach (var prop in PatchPartyResponse.meta.update)
                                             {
                                                 if (!Parties.meta.ContainsKey(prop.Key))
                                                 {
@@ -251,8 +233,8 @@ namespace FortBackend.src.App.Routes.Friends
                                         if (captain != null)
                                         {
                        
-                                            Console.WriteLine("r " + JsonConvert.SerializeObject(PartiesGR));
-                                            Console.WriteLine("f " + JsonConvert.SerializeObject(Parties));
+                                           // Console.WriteLine("r " + JsonConvert.SerializeObject(PartiesGR));
+                                           // Console.WriteLine("f " + JsonConvert.SerializeObject(Parties));
                                             
                                             Parties.members.ForEach(async x =>
                                             {
@@ -262,27 +244,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                 {
                                                     XElement message;
                                                     XNamespace clientNs = "jabber:client";
-                                                    /*
-                                                     * @"{
-                                                            ""captain_id"": """ + captain.account_id + @""",
-                                                            ""created_at"": """ + Parties.created_at + @""",
-                                                            ""invite_ttl_seconds"": " + 14400 + @",
-                                                            ""max_number_of_members"": " + 16 + @",
-                                                            ""ns"": ""Fortnite"",
-                                                            ""party_id"": """ + Parties.id + @""",
-                                                            ""party_privacy_type"": ""PUBLIC"",
-                                                            ""party_state_overriden"": " + new { } + @",
-                                                            ""party_state_removed"": " + PartiesGR.meta.delete + @",
-                                                            ""party_state_updated"": " + PartiesGR.meta.update + @",
-                                                            ""party_sub_type"": ""default"",
-                                                            ""party_type"": ""DEFAULT"",
-                                                            ""revision"": " + Parties.revision + @",
-                                                            ""sent"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
-                                                            ""type"": ""com.epicgames.social.party.notification.v0.PARTY_UPDATED"",
-                                                            ""updated_at"": """ + Parties.updated_at + @"""
-                                                        }"
-                                                    *
-                                                    */
+               
                                                     message = new XElement(clientNs + "message",
                                                         new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
                                                         new XAttribute("to", foundClient.jid),
@@ -293,11 +255,11 @@ namespace FortBackend.src.App.Routes.Friends
                                                             max_number_of_members = 16,
                                                             ns = "Fortnite",
                                                             party_id = Parties.id,
-                                                            party_privacy_type = "PUBLIC",
+                                                            party_privacy_type = Parties.privacy,
                                                             party_state_overriden = new { },
-                                                            party_state_removed = PartiesGR.meta?.delete,
-                                                            party_state_updated = PartiesGR.meta?.update,
-                                                            party_sub_type = "default",
+                                                            party_state_removed = PatchPartyResponse.meta?.delete,
+                                                            party_state_updated = PatchPartyResponse.meta?.update,
+                                                            party_sub_type = Parties.meta["urn:epic:cfg:party-type-id_s"],
                                                             party_type = "DEFAULT",
                                                             revision = Parties.revision,
                                                             sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
@@ -316,6 +278,10 @@ namespace FortBackend.src.App.Routes.Friends
                                         }
 
                                     }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("CLIENTINDEX IS NULL!!!");
                                 }
                             }
                         }
@@ -349,8 +315,8 @@ namespace FortBackend.src.App.Routes.Friends
     [HttpPatch("api/v1/Fortnite/parties/{partyId}/members/{accountId}/meta")]
     public async Task<IActionResult> FortnitePartyPatch(string partyId, string accountId)
     {
-        try
-        {
+        try 
+        { 
             Response.ContentType = "application/json";
 
 
@@ -358,7 +324,7 @@ namespace FortBackend.src.App.Routes.Friends
             using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
             {
                 string requestBody = await reader.ReadToEndAsync();
-                Console.WriteLine("TEST11 + " + requestBody);
+              //  Console.WriteLine("TEST11 + " + requestBody);
                 if (string.IsNullOrEmpty(requestBody))
                 {
                     throw new BaseError
@@ -435,13 +401,13 @@ namespace FortBackend.src.App.Routes.Friends
                                             ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_STATE_UPDATED""
                                         }"
                                     */
-                                    Console.WriteLine(Parties.members[members].meta);
+                                  //  Console.WriteLine(Parties.members[members].meta);
                                     message = new XElement(clientNs + "message",
                                         new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
                                         new XAttribute("to", foundClient.jid),
                                         new XElement("body", JsonConvert.SerializeObject(new {
                                             account_id = accountId,
-                                            account_dn = Parties.members[members].meta?["urn:epic:member:dn_s"].ToString() ?? "",
+                                            account_dn = x.meta["urn:epic:member:dn_s"],
                                             member_state_updated = PartiesGR.update,
                                             member_state_removed = PartiesGR.delete,
                                             member_state_overridden = new { },
@@ -500,7 +466,7 @@ namespace FortBackend.src.App.Routes.Friends
             try
             {
                 Response.ContentType = "application/json";
-
+                VersionClass season = await SeasonUserAgent(Request);
                 var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
                 var accessToken = token.Replace("eg1~", "");
                 var handler = new JwtSecurityTokenHandler();
@@ -513,51 +479,74 @@ namespace FortBackend.src.App.Routes.Friends
 
                     if (UserData != "Error")
                     {
-                        using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+          
+                        //List<Parties> CurrentPartysPing = GlobalData.pings.FindAll(e => e.sent_to == accountId);
+
+                        //  List<Pings> filteredParties = GlobalData.pings.Where(x => x.sent_to == accountId).FirstOrDefault(x => x.sent_by == pingerId);
+
+                        var matchingPing = GlobalData.pings.FirstOrDefault(x => x.sent_to == accountId && x.sent_by == pingerId);
+
+                        if (matchingPing != null)
                         {
-                            string requestBody = await reader.ReadToEndAsync();
-                            Console.WriteLine("TEST11 + " + requestBody);
-                            if (string.IsNullOrEmpty(requestBody))
-                            {
-                                throw new BaseError
-                                {
-                                    errorCode = "errors.com.epicgames.iforgot",
-                                    errorMessage = $"NGL for /party/api/v1/Fortnite/user/{accountId}/pings/{pingerId}",
-                                    messageVars = new List<string> { $"/party/api/v1/Fortnite/user/{accountId}/pings/{pingerId}" },
-                                    numericErrorCode = 1032,
-                                    originatingService = "party",
-                                    intent = "prod",
-                                    error_description = $"NGL for /party/api/v1/Fortnite/user/{accountId}/pings/{pingerId}",
-                                };
-                            }
-                            //List<Parties> CurrentPartysPing = GlobalData.pings.FindAll(e => e.sent_to == accountId);
+                            GlobalData.pings.RemoveAll(x => x.sent_to == accountId);
+                        }
 
-                            //  List<Pings> filteredParties = GlobalData.pings.Where(x => x.sent_to == accountId).FirstOrDefault(x => x.sent_by == pingerId);
+                        
 
-                            var matchingPing = GlobalData.pings.FirstOrDefault(x => x.sent_to == accountId && x.sent_by == pingerId);
+                        var PingResp = new
+                        {
+                            sent_to = accountId,
+                            sent_by = pingerId,
+                            sent_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                            expires_at = DateTime.UtcNow.AddHours(1).ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                            meta = new { },
+                        };
 
-                            if (matchingPing != null)
+                        GlobalData.pings.Add(new Pings
+                        {
+                            sent_to = accountId,
+                            sent_by = pingerId,
+                            time = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
+                        });
+
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(pingerId);
+
+                        if (profileCacheEntry != null)
+                        {
+                            var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId);
+
+                            if (foundClient != null)
                             {
-                                GlobalData.pings.RemoveAll(x => x.sent_to == accountId);
-                            }
-                            else
-                            {
-                                GlobalData.pings.Add(new Pings
-                                {
-                                    sent_to = accountId,
-                                    sent_by = pingerId,
-                                    time = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
-                                });
+                                XElement message;
+                                XNamespace clientNs = "jabber:client";
+
+                                message = new XElement(clientNs + "message",
+                                    new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                    new XAttribute("to", foundClient.jid),
+                                    new XElement("body", JsonConvert.SerializeObject(new
+                                    {
+                                        account_id = accountId,
+                                        meta = new { },
+                                        ns = "Fortnite",
+                                        pinger_dn = profileCacheEntry.UserData.Username,
+                                        pinger_id = pingerId,
+                                        sent = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                        version = season.SeasonFull,
+                                        type = "com.epicgames.social.party.notification.v0.PING"
+                                    }))
+                                );
+
+                                await SERVER.Send.Client.SendClientMessage(foundClient, message);
                             }
                         }
 
-                        return StatusCode(204);
+                        return Content(JsonConvert.SerializeObject(PingResp), "application/json");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error("FortniteParty: " + ex.Message);
+                Logger.Error("FortnitePartyPings: " + ex.Message);
 
             }
 
@@ -583,7 +572,7 @@ namespace FortBackend.src.App.Routes.Friends
             using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
             {
                 string requestBody = await reader.ReadToEndAsync();
-                Console.WriteLine("TEST + " + requestBody);
+             //   Console.WriteLine("TEST + " + requestBody);
                 if (string.IsNullOrEmpty(requestBody))
                 {
                     throw new BaseError
@@ -607,7 +596,7 @@ namespace FortBackend.src.App.Routes.Friends
                     var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == Parties.join_info.connection.id.Split('@')[0]);
                     if (foundClient != null)
                     {
-                        var AccountId = Parties.join_info.connection.id.Split("@prod")[0];
+                     //   var AccountId = Parties.join_info.connection.id.Split("@")[0];
                         foundClient.id = Guid.NewGuid().ToString().Replace("-", "");
                         foundClient.meta = Parties.meta;
 
@@ -621,7 +610,7 @@ namespace FortBackend.src.App.Routes.Friends
                             members = new List<Members>() {
                                 new Members
                                 {
-                                    account_id = AccountId,
+                                    account_id = Parties.join_info.connection.id.Split("@")[0],
                                     meta = Parties.join_info.meta,
                                     connections = new List<Dictionary<string, object>>()
                                     {
@@ -640,8 +629,8 @@ namespace FortBackend.src.App.Routes.Friends
                                     role = "CAPTAIN"
                                 }
                             },
-                         //   applicants = new List<object>(),
-                            meta = foundClient.meta,
+                            applicants = new List<object>(),
+                            meta = Parties.meta,
                             invites = new List<object>(),
                             revision = 0,
                             intentions = new List<object>(),
@@ -652,7 +641,7 @@ namespace FortBackend.src.App.Routes.Friends
                         {
                             GlobalData.parties.Add(ResponseParty);
                         }
-                        Console.WriteLine(JsonConvert.SerializeObject(ResponseParty));
+                        //Console.WriteLine(JsonConvert.SerializeObject(ResponseParty));
                         return Content(JsonConvert.SerializeObject(ResponseParty), "application/json");
                     }
                 }
@@ -699,10 +688,6 @@ namespace FortBackend.src.App.Routes.Friends
                     {
                         var RemovedMember = Party.members[MemberIndex];
 
-                        Party.members.Remove(RemovedMember);
-                        Party.revision += 1;
-                        Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
-
                         Party.members.ForEach(async x =>
                         {
                             var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
@@ -726,21 +711,34 @@ namespace FortBackend.src.App.Routes.Friends
                                     message = new XElement(clientNs + "message",
                                     new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
                                     new XAttribute("to", foundClient.jid),
-                                    new XElement("body", JsonConvert.SerializeObject(new { 
+                                    new XElement("body", JsonConvert.SerializeObject(new {
                                         account_id = accountId,
+                                        //member_state_update = new { },
                                         party_id = Party.id,
-                                        kicked = true,
-                                        updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                       // kicked = true,
+                                        //updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                         sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                         revision = Party.revision,
                                         ns = "Fortnite",
-                                        type = "com.epicgames.social.party.notification.v0.MEMBER_KICKED"
+                                        type = "com.epicgames.social.party.notification.v0.MEMBER_LEFT"
                                     }))
                                 );
 
                                 await SERVER.Send.Client.SendClientMessage(foundClient, message);
                             }
                         });
+
+                        Party.members.Remove(RemovedMember);
+                        if (Party.members.Count != 0)
+                        {
+                            Party.revision += 1;
+                            Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+                        }
+                        else
+                        {
+                            GlobalData.parties.Remove(Party);
+                        }
+
                         return StatusCode(204);
                     }
                 }
@@ -790,7 +788,7 @@ namespace FortBackend.src.App.Routes.Friends
                             using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                             {
                                 string requestBody = await reader.ReadToEndAsync();
-                                Console.WriteLine("TESTdsa + " + requestBody);
+                               // Console.WriteLine("TESTdsa + " + requestBody);
                                 if (string.IsNullOrEmpty(requestBody))
                                 {
                                     throw new BaseError
@@ -827,12 +825,12 @@ namespace FortBackend.src.App.Routes.Friends
                                         {
                                             var Member = new Members
                                             {
-                                                account_id = JoinParty.connection.id.Split("@prod")[0],
+                                                account_id = JoinParty.connection.id.Split("@")[0],
                                                 meta = JoinParty.meta,
                                                 connections =  new List<Dictionary<string, object>>() {
                                                    new Dictionary<string, object>
                                                     {
-                                                        { "id", JoinParty.connection.id },
+                                                        { "id", JoinParty.connection.id.Split("@")[0] },
                                                         { "connected_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") },
                                                         { "updated_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")},
                                                         { "yield_leadership", JoinParty.connection.yield_leadership ? true : false },
@@ -851,7 +849,7 @@ namespace FortBackend.src.App.Routes.Friends
 
                                             if (Party.meta.TryGetValue(v, out var metaValue) && metaValue is string stringValue)
                                             {
-                                                Console.WriteLine(stringValue);
+                                               //Console.WriteLine(stringValue);
                                                 //{"RawSquadAssignments":[{"memberId":"88e30971-b97d-451d-ba55-e6322bcfe31f","absoluteMemberIdx":0}]}
                                                 var rsa = JsonConvert.DeserializeObject<RawSquadAssignmentsWrapper>(stringValue);
                                                 if (rsa != null)
@@ -859,7 +857,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                     rsa.RawSquadAssignments ??= new List<RawSquadAssignment>();
                                                     rsa.RawSquadAssignments.Add(new RawSquadAssignment
                                                     {
-                                                        memberId = JoinParty.connection.id.Split("@prod")[0],
+                                                        memberId = JoinParty.connection.id.Split("@")[0],
                                                         absoluteMemberIdx = Party.members.Count - 1
                                                     });
                                                 }
@@ -879,41 +877,29 @@ namespace FortBackend.src.App.Routes.Friends
                                                     {
                                                         var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
 
-                                                        if (foundClient != null /*&& foundClient.Client.CloseStatus == 0*/)
+                                                        if (foundClient != null)
                                                         {
                                                             XElement message;
                                                             XNamespace clientNs = "jabber:client";
-                                                            /*
-                                                             * @"{
-                                                            ""account_id"": """ + JoinParty.connection.meta["urn:epic:member:dn_s"] + @""",
-                                                            ""account_dn"": """ + JoinParty.connection.id.Split("@prod")[0] + @""",
-                                                            ""connection"": {
-                                                                ""connected_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
-                                                                ""id"": """ + JoinParty.connection.id + @""",
-                                                                ""meta"": """ + JsonConvert.SerializeObject(JoinParty.connection.meta) + @""",
-                                                                ""updated_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @"""
-                                                            },
-                                                            ""joined_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
-                                                            ""member_state_updated"": """ + JsonConvert.SerializeObject(JoinParty.meta) + @""",
-                                                            ""ns"": ""Fortnite"",
-                                                            ""party_id"": """ + Party.id + @""",
-                                                            ""revision"": " + Party.revision + @",
-                                                            ""sent"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""", 
-                                                            ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_JOINED"",
-                                                            ""updated_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @"""                                                 
-                                                            }"
-                                                            */
-                                                            //JsonConvert.SerializeObject(
-                                                            //if(foundClient.accountId != accountId)
-                                                            // {
+                                                            Console.WriteLine(JoinParty.connection.meta);
+                                                            foreach(var testig in JoinParty.connection.meta)
+                                                            {
+                                                                Console.WriteLine(testig.Key + " " + testig.Value);
+                                                            }
                                                             message = new XElement(clientNs + "message",
                                                             new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
                                                             new XAttribute("to", foundClient.jid),
                                                             new XElement("body", JsonConvert.SerializeObject(new
                                                                         {
-                                                                            account_id = Member.account_id,
-                                                                            account_dn = JoinParty.connection.id.Split("@prod")[0],
-                                                                            connection = Member.connections,
+                                                                            account_id = JoinParty.connection.meta["urn:epic:member:dn_s"],
+                                                                            account_dn = JoinParty.connection.id.Split("@")[0],
+                                                                            connection = new
+                                                                            {
+                                                                                connected_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                                                                id = JoinParty.connection.id,
+                                                                                meta = JoinParty.connection.meta,
+                                                                                updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
+                                                                            },
                                                                             joined_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                                                             member_state_updated = JoinParty.meta,
                                                                             ns = "Fortnite",
@@ -947,31 +933,31 @@ namespace FortBackend.src.App.Routes.Friends
                                                                 ""type"": ""com.epicgames.social.party.notification.v0.PARTY_UPDATED"",
                                                                 ""updated_at"": """ + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @"""
                                                             }"*/
-                                                            message = new XElement(clientNs + "message",
-                                                                new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                                new XAttribute("to", foundClient.jid),
-                                                                new XElement("body", JsonConvert.SerializeObject(new
-                                                                {
-                                                                    captain_id = Captain.account_id,
-                                                                    created_at = Party.created_at,
-                                                                    invite_ttl_seconds = 14400,
-                                                                    max_number_of_members = 16,
-                                                                    ns = "Fortnite",
-                                                                    party_id = Party.id,
-                                                                    party_privacy_type = "PUBLIC",
-                                                                    party_state_overriden = new { },
-                                                                    party_state_removed = new List<string>(),
-                                                                    party_state_updated = rsa,
-                                                                    party_sub_type = "default",
-                                                                    party_type = "DEFAULT",
-                                                                    revision = Party.revision,
-                                                                    sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
-                                                                    type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
-                                                                    updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
-                                                                }))
-                                                            );
+                                                            //message = new XElement(clientNs + "message",
+                                                            //    new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                                            //    new XAttribute("to", foundClient.jid),
+                                                            //    new XElement("body", JsonConvert.SerializeObject(new
+                                                            //    {
+                                                            //        captain_id = Captain.account_id,
+                                                            //        created_at = Party.created_at,
+                                                            //        invite_ttl_seconds = 14400,
+                                                            //        max_number_of_members = 16,
+                                                            //        ns = "Fortnite",
+                                                            //        party_id = Party.id,
+                                                            //        party_privacy_type = "PUBLIC",
+                                                            //        party_state_overriden = new { },
+                                                            //        party_state_removed = new List<string>(),
+                                                            //        party_state_updated = rsa,
+                                                            //        party_sub_type = "default",
+                                                            //        party_type = "DEFAULT",
+                                                            //        revision = Party.revision,
+                                                            //        sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
+                                                            //        type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
+                                                            //        updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK")
+                                                            //    }))
+                                                            //);
 
-                                                            await SERVER.Send.Client.SendClientMessage(foundClient, message);
+                                                            //await SERVER.Send.Client.SendClientMessage(foundClient, message);
                                                             Console.WriteLine("joined PARTY");
                                                         }
                                                     });

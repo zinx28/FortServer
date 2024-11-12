@@ -2,6 +2,7 @@
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Quests;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.Utilities.Shop;
 using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
@@ -266,15 +267,14 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             {
                 string filePath = System.IO.File.ReadAllText(ShopBundlesPath);
 
-                var shopBundlesList = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!;
+                BackendCachedData.ShopBundles = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!; ;
+                BackendCachedData.ShopBundlesFiltered = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!; ;
 
-                BackendCachedData.ShopBundles = shopBundlesList;
-
-                BackendCachedData.ShopBundlesFiltered = shopBundlesList.ToList();
-
-                BackendCachedData.LoadAndFilterShopBundles(DeserializeGameConfig.Season);
+                LoadShopCache.LoadAndFilterShopBundles(DeserializeGameConfig.Season);
+                LoadShopCache.LoadItems(DeserializeGameConfig.Season);
             }
             catch (Exception ex) { Logger.Error("ShopBundles Data -> " + ex.Message); }
         }
     }
 }
+ 

@@ -13,7 +13,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
 
 
             // This overwrites everything
-          //  await guild.BulkOverwriteApplicationCommandAsync(Array.Empty<SlashCommandProperties>());
+            //await guild.BulkOverwriteApplicationCommandAsync(Array.Empty<SlashCommandProperties>());
 
             var TempCommand = new SlashCommandBuilder()
                 .WithName("test")

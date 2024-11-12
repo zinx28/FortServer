@@ -28,36 +28,14 @@ namespace FortBackend.src.App.Utilities.Saved
         public List<ShopBundles> ShopBundles { get; set; } = new List<ShopBundles>();
         public List<ShopBundles> ShopBundlesFiltered { get; set; } = new List<ShopBundles>();
 
-        public void LoadAndFilterShopBundles(int currentSeason)
-        {
-
-            Console.WriteLine($"{ShopBundlesFiltered.Count()} / {ShopBundles.Count()}");
-
-            List<ShopBundles> bundlesToRemove = new List<ShopBundles>();
-
-            foreach (var bundle in ShopBundlesFiltered)
-            {
-                bundle.Daily = bundle.Daily
-                    .Where(item => item.season <= currentSeason)
-                    .ToList();
-
-                bundle.Weekly = bundle.Weekly
-                    .Where(item => item.season <= currentSeason)
-                    .ToList();
-
-                if (!bundle.Daily.Any() && !bundle.Weekly.Any())
-                {
-                    bundlesToRemove.Add(bundle);
-                }
-            }
-
-            foreach (var bundle in bundlesToRemove)
-            {
-                ShopBundlesFiltered.Remove(bundle);
-            }
-
-            Console.WriteLine($"{ShopBundlesFiltered.Count()} / {ShopBundles.Count()}");
-        }
+        
+        public List<ShopItems> ShopSkinItems { get; set; } = new List<ShopItems>();
+        public List<ShopItems> ShopPickaxesItems { get; set; } = new List<ShopItems>();
+        public List<ShopItems> ShopEmotesItems { get; set; } = new List<ShopItems>();
+        public List<ShopItems> ShopGlidersItems { get; set; } = new List<ShopItems>();
+        public List<ShopItems> ShopWrapItems { get; set; } = new List<ShopItems>();
+        
+      
     }
 
     /*

@@ -23,6 +23,7 @@ namespace FortLibrary.Shop
         public List<AthenaItemVariants> variants { get; set; } = new List<AthenaItemVariants>();
         public string rarity { get; set; } = string.Empty;
         public string LastShownDate { get; set; } = string.Empty;
+        public int season { get; set; } = -1;
     }
 
     public class ShopBundlesItem

@@ -30,15 +30,18 @@ namespace FortBackend.src.App.Utilities.Discord
             {
                 DeserializeConfig.ActivityType = 3; // Watching
             }
+
             DiscordSocketConfig config = new DiscordSocketConfig
             {
-                UseInteractionSnowflakeDate = true//, // lets say discord sucks right... discord loves snow right right this just fixes the blank responses
-               // GatewayIntents = GatewayIntents.All
+                UseInteractionSnowflakeDate = true,//, // lets say discord sucks right... discord loves snow right right this just fixes the blank responses
+                                                   // GatewayIntents = GatewayIntents.All
+              //  GatewayIntents = GatewayIntents.Guilds | GatewayIntents.GuildMessages
             };
 
             Client = new(config);
             CommandService = new CommandService();
 
+            //Client.Log += DiscLog;
             Client.Ready += OnReady;
             Client.Connected += OnReconnected;
             Client.Disconnected += OnDisconnected;
@@ -52,19 +55,29 @@ namespace FortBackend.src.App.Utilities.Discord
                 await Client.SetActivityAsync(new Game(DeserializeConfig.DiscordBotMessage, (ActivityType)DeserializeConfig.ActivityType));
             }
         }
+        private static Task DiscLog(LogMessage DiscordBotMessage)
+        {
+            Logger.Log(DiscordBotMessage.Message, "DiscordBot");
+            return Task.CompletedTask;
+        }
+
 
         private static async Task OnReady()
         {
             Logger.Log("Discord Bot is connected", "Discord");
-            guild = DiscordBot.Client.GetGuild(Saved.Saved.DeserializeConfig.ServerID);
+
+            Client.InteractionCreated -= OnInteractionCreated;
+            Client.InteractionCreated += OnInteractionCreated;
+
+            guild = Client.GetGuild(Saved.Saved.DeserializeConfig.ServerID);
             await RegisterCommands.Connect(Saved.Saved.DeserializeConfig, guild);
         }
 
         private static Task OnReconnected()
         {
             Logger.Log("RECONNECTING", "Discord");
-            DiscordBot.Client.Ready -= OnReady;
-            DiscordBot.Client.Ready += OnReady;
+            Client.Ready -= OnReady;
+            Client.Ready += OnReady;
            /// DiscordBot.Client.InteractionCreated += OnInteractionCreated;
             return Task.CompletedTask;
         }

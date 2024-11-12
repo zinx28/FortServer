@@ -1,74 +1,83 @@
 [
-    {
-        "id": "qLLbFQaiCiuWQ1Q0b2WqqlbToC8CxXfFWQap6liP",
-        "item": "AthenaItemWrap:Wrap_011_HotCold",
-        "name": "Hot & Cold",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "bwrb99RnSez8eDvwUt2wk7npetXyuZ09n8wUHtB5",
-        "item": "AthenaItemWrap:Wrap_012_DragonMask",
-        "name": "Golden Clouds",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "gqiDwGaiJUi4yOmzP-l3Ta1ZTQJbpbxH6Wzv1mES",
-        "item": "AthenaItemWrap:Wrap_014_IceCream",
-        "name": "Sprinkles",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "nmTVoe0TFvZNwEuUj9VheoX3skuW9uObGlRC0qKB",
-        "item": "AthenaItemWrap:Wrap_015_Snowboard",
-        "name": "Chromatic",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "Dsa4-Sm-5li6Gq3DnK8L8qMJDjVFCghI93adw5P9",
-        "item": "AthenaItemWrap:Wrap_017_DragonNinja",
-        "name": "Dragon Scales",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "UG7hUfZkurfmFNNafj5LkrUSXPmNJLwsuJQdgElo",
-        "item": "AthenaItemWrap:Wrap_018_magma",
-        "name": "Magma",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "rUfsmPHuc8aTku103LBXBppHQ2RwsqxlZzCqGNIi",
-        "item": "AthenaItemWrap:Wrap_024_StealthBlack",
-        "name": "Stealth Black",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "Opl2UNKYdw82zhc1FMUZPlJkqGsdSREgxNyGr-oT",
-        "item": "AthenaItemWrap:Wrap_028_DevilLace",
-        "name": "Heat",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "H-roeNIl4IvhREVoseW3To54EDWXWWbHko2XVJ2w",
-        "item": "AthenaItemWrap:Wrap_034_Waypoint",
-        "name": "Rivet",
-        "description": "Show your style.",
-        "items": [],
-        "rarity": "uncommon"
-    }
+  {
+    "id": "qLLbFQaiCiuWQ1Q0b2WqqlbToC8CxXfFWQap6liP",
+    "item": "AthenaItemWrap:Wrap_011_HotCold",
+    "name": "Hot & Cold",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "bwrb99RnSez8eDvwUt2wk7npetXyuZ09n8wUHtB5",
+    "item": "AthenaItemWrap:Wrap_012_DragonMask",
+    "name": "Golden Clouds",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "gqiDwGaiJUi4yOmzP-l3Ta1ZTQJbpbxH6Wzv1mES",
+    "item": "AthenaItemWrap:Wrap_014_IceCream",
+    "name": "Sprinkles",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "uncommon",
+    "season": 7 
+  }, 
+  {
+    "id": "nmTVoe0TFvZNwEuUj9VheoX3skuW9uObGlRC0qKB",
+    "item": "AthenaItemWrap:Wrap_015_Snowboard",
+    "name": "Chromatic",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "Dsa4-Sm-5li6Gq3DnK8L8qMJDjVFCghI93adw5P9",
+    "item": "AthenaItemWrap:Wrap_017_DragonNinja",
+    "name": "Dragon Scales",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "UG7hUfZkurfmFNNafj5LkrUSXPmNJLwsuJQdgElo",
+    "item": "AthenaItemWrap:Wrap_018_magma",
+    "name": "Magma",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "epic",
+    "season": 8
+  },
+  {
+    "id": "rUfsmPHuc8aTku103LBXBppHQ2RwsqxlZzCqGNIi",
+    "item": "AthenaItemWrap:Wrap_024_StealthBlack",
+    "name": "Stealth Black",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "Opl2UNKYdw82zhc1FMUZPlJkqGsdSREgxNyGr-oT",
+    "item": "AthenaItemWrap:Wrap_028_DevilLace",
+    "name": "Heat",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "H-roeNIl4IvhREVoseW3To54EDWXWWbHko2XVJ2w",
+    "item": "AthenaItemWrap:Wrap_034_Waypoint",
+    "name": "Rivet",
+    "description": "Show your style.",
+    "items": [],
+    "rarity": "uncommon",
+    "season": 8
+  }
 ]

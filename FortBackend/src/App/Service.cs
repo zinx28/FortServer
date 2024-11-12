@@ -121,14 +121,15 @@ namespace FortBackend.src.App
 
             if(Saved.DeserializeGameConfig.ShopRotation)
             {
-                //var ItemShopGenThread = new Thread(async () =>
-                //{
-                //    await GenerateItemShop(0);
-                //});
-                //ItemShopGenThread.Start();
-                
+                var ItemShopGenThread = new Thread(async () =>
+                {
+                   // Logger.Log("Generating Shop at")
+                    await GenerateItemShop(0);
+                });
+                ItemShopGenThread.Start();
+
                 // ENABLE TO ONLY RUN ON STARTUP
-                GenerateShop.Init();
+                //GenerateShop.Init();
             }
 
 

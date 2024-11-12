@@ -50,6 +50,7 @@ namespace FortLibrary.ConfigHelpers
         public int icon { get; set; }
         public int dc { get; set; }
         public int dark { get; set; }
+        public int marvel { get; set; }
     }
 
     public class Wrap

@@ -47,30 +47,38 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
         }
         public static async Task Handler(FortConfig config, SocketSlashCommand command, SocketGuild guild)
         {
-            // no BOTS gr
-            if(command.User.IsBot)
+            try
             {
-                return;
-            }
-
-            if (command.CommandName == "test")
-            {
-                await Test.Respond(command);
-            }
-            else if(command.CommandName == "who")
-            {
-                if(CheckIfRole(config, command, guild))
+                // no BOTS gr
+                if (command.User.IsBot)
                 {
-                    await Who.Respond(command);
+                    return;
+                }
+
+                if (command.CommandName == "test")
+                {
+                    await Test.Respond(command);
+                }
+                else if (command.CommandName == "who")
+                {
+                    if (CheckIfRole(config, command, guild))
+                    {
+                        await Who.Respond(command);
+                    }
+                }
+                else if (command.CommandName == "register")
+                {
+                    await Create.Respond(command);
+                }
+                else if (command.CommandName == "change_password")
+                {
+                    await PasswordUpdate.Respond(command);
                 }
             }
-            else if(command.CommandName == "register")
+            catch (Exception ex)
             {
-                await Create.Respond(command);
-            }
-            else if(command.CommandName == "change_password")
-            {
-                await PasswordUpdate.Respond(command);
+                Console.WriteLine($"Error handling command: {ex.Message}");
+              //  await command.RespondAsync("testr", ephemeral: true);
             }
         }
     }

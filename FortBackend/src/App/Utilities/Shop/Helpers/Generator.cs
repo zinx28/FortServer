@@ -43,12 +43,21 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             return -1;
         }
 
-        public static string[] itemTypes1 = {
-            "skins",
-            "emotes",
-            "gliders",
-            "pickaxes",
-            "wrap"
+        public static List<string> itemTypes1 = new List<string> {
+            //"skins",
+            //"emotes",
+            //"gliders",
+            //"pickaxes",
+            //"wrap"
+        };
+
+        public static Dictionary<string, Func<List<ShopItems>>> itemTypeMap = new Dictionary<string, Func<List<ShopItems>>>()
+        {
+            { "skins", () => Saved.Saved.BackendCachedData.ShopSkinItems },
+            { "emotes", () => Saved.Saved.BackendCachedData.ShopEmotesItems },
+            { "pickaxes", () => Saved.Saved.BackendCachedData.ShopPickaxesItems },
+            { "gliders", () => Saved.Saved.BackendCachedData.ShopGlidersItems },
+            { "wrap", () => Saved.Saved.BackendCachedData.ShopWrapItems }
         };
 
         public static double[] rarityProb1 = {
@@ -97,6 +106,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     }
                 }
                 Logger.Log("Generating left over items", "ItemShop");
+
+
 
                 await Generate.RandomItems(DailyItems, savedData.Daily, "Normal");
                 await Generate.RandomItems(WeeklyItems, savedData.Weekly, "Normal");

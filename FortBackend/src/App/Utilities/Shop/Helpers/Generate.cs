@@ -18,10 +18,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
             Random random = new Random();
 
-            Logger.Error("TEST");
-
-
-
             List<ShopBundles> skinItems = Saved.Saved.BackendCachedData.ShopBundlesFiltered;
             if (skinItems != null)
             {
@@ -70,11 +66,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             Price = Item.singleprice;
                         }
                         else
-                        {
-                            //foreach (Item item in Item.items)
-                            //{
-                            //    string itemType = item.item.Split(":")[0];
-
+                        { 
                             switch (Item.item.Split(":")[0])
                             {
                                 case "AthenaCharacter":
@@ -155,7 +147,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         });
                         Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                     }
-                    Generator.DailyItems -= HowManyTurns;
+                    Generator.DailyItems -= 1;
                 }
 
                 List<ShopBundlesItem> WeeklyArray = RandomSkinItem.Weekly;
@@ -261,7 +253,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         });
                         Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                     }
-                    Generator.WeeklyItems -= HowManyTurns;
+                    Generator.WeeklyItems -= 1;
                 }
             }
             else
@@ -282,10 +274,11 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
         }
 
-        public static async Task SingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, string[] itemType, double[] rarityProb, string type = "Small")
+        public static async Task SingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, List<string> itemType, double[] rarityProb, string type = "Small")
         {
             Random random = new Random();
-            string ChosenItem = string.Empty;
+            List<ShopItems> ChosenItem = new List<ShopItems>();
+            var ChosenItemString = "";
             int Price = -1;
             double y = 0.0;
             double randomValue = random.NextDouble();
@@ -295,30 +288,25 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 y += rarityProb[i];
                 if (randomValue < y)
                 {
-                    ChosenItem = itemType[i];
+                    ChosenItemString = itemType[i];
+                    if (Generator.itemTypeMap.ContainsKey(ChosenItemString))
+                    {
+                        ChosenItem = Generator.itemTypeMap[ChosenItemString]();
+
+                        if(ChosenItem.Count != 0)
+                        {
+                            break;
+                        }
+                    }
+                    //ChosenItem = (itemType[i]);
                     break;
                 }
             }
 
-           // Console.WriteLine("TEST");
-
-            string filePath = Path.Combine(PathConstants.BaseDir, $"json/shop/{ChosenItem}.json");
-          //  Console.WriteLine(filePath);
-            if (!File.Exists(filePath))
+            if (ChosenItem != null && ChosenItem.Count > 0)
             {
-                Logger.Error("Chosen Item: " + ChosenItem + " Path isnt found :(");
-                return;
-            }
-            string jsonContent = File.ReadAllText(filePath);
-            //Console.WriteLine(jsonContent);
-          
-
-            List<ShopItems> skinItems = JsonConvert.DeserializeObject<List<ShopItems>>(jsonContent)!;
-
-            if (skinItems != null)
-            {
-                int randomIndex = random.Next(skinItems.Count);
-                ShopItems RandomSkinItem = skinItems[randomIndex];
+                int randomIndex = random.Next(ChosenItem.Count);
+                ShopItems RandomSkinItem = ChosenItem[randomIndex];
                 Random random1 = new Random();
 
                 DateTime lastShownDate;
@@ -332,15 +320,26 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 }
 
                 RandomSkinItem.LastShownDate = DateTime.Now.ToString("yyyy-MM-dd");
-                string updatedJsonContent = JsonConvert.SerializeObject(skinItems, Formatting.Indented);
-                File.WriteAllText(filePath, updatedJsonContent);
+
+                // enable if you want doesnt really matter (epic has the same items in the shop 24/7 now)
+                
+                //string filePath = Path.Combine(PathConstants.BaseDir, $"json/shop/{ChosenItemString}.json");
+                //if (!File.Exists(filePath))
+                //{
+                //    Logger.Error("Chosen Item: " + ChosenItemString + " Path isnt found :(");
+                //    return;
+                //}
+                //string updatedJsonContent = JsonConvert.SerializeObject(ChosenItem, Formatting.Indented);
+                //File.WriteAllText(filePath, updatedJsonContent);
+
+                //
 
                 int price = 0;
-                Console.WriteLine(ChosenItem);
-                Console.WriteLine(Generator.categoryMap.ContainsKey(ChosenItem));
-                if (Generator.categoryMap.ContainsKey(ChosenItem))
+                Console.WriteLine(ChosenItemString);
+                Console.WriteLine(Generator.categoryMap.ContainsKey(ChosenItemString));
+                if (Generator.categoryMap.ContainsKey(ChosenItemString))
                 {
-                    price = Generator.categoryMap[ChosenItem](RandomSkinItem.rarity);
+                    price = Generator.categoryMap[ChosenItemString](RandomSkinItem.rarity);
                     Console.WriteLine(price);
                     if (price != 0)
                     {
@@ -372,7 +371,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
             else
             {
-                Logger.Error($"Failed To Generate Item: {ChosenItem}:Unknown ofc", "ItemShop");
+                Logger.Error($"Failed To Generate Item: {ChosenItemString}:Unknown ofc", "ItemShop");
             }
         }
     }

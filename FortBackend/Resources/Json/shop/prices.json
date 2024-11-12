@@ -28,7 +28,8 @@
     "legendary": 1500,
     "icon": 500,
     "dc": 1200,
-    "dark": 500
+    "dark": 500,
+    "marvel": 1200
   },
   "wrap": {
     "uncommon": 300,

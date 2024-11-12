@@ -8,7 +8,7 @@
 
 ## About
 - Supports HTTP and HTTPS!
-- Aiming to support Seasons 3 to 15
+- Aiming to support Seasons 3 to 15 (~ season shop for season 1)
 - 1:1 Quests (currently some seasons support less / or just not at all)
 - Arena UI/Playlists! Seasons 8 to 23 (UNFINISHED, NOT WORKED ON ~ not proper scores on seasons 8 and 11)
 - Save the World (STW) is aimed at the very end and might never actually be implemented
@@ -30,10 +30,10 @@
 - OAUTH [+]
 - Timeline [+]
 - Cloudstorage, ClientSaving [+]
-- 24/7 Shop (WIP - could be so random, items in wrong places - THIS WILL CRASH ON OLDER VERSIONS AS IT TRIES TO GENERATE ITEMS ON SEASONS ITS NOT FOR!) [!]
+- 24/7 Shop (WIP) [!]
 - XMPP [!]
 - PartyV2 [-]
-- Friends [-]
+- Friends [!]
 - Matchmaker (WIP) [-]
 
 ## Admin Panel (STILL WORK IN PROGRESS MAY HAVE ISSUES, OR LACK OF FEATURES)

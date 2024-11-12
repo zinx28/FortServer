@@ -21,5 +21,7 @@ namespace FortLibrary.ConfigHelpers
         public int WeeklyQuest { get; set; } = 1; // This is the max weekly quests is added to the user profile if they have the battlepass
 
         public bool MfaClaim { get; set; } = false; // Change this to true for auto claim! -- idk how your going to claim without having it enabled!
+
+        public bool ShopRotation { get; set; } = false; // THIS IS STILL WIP AND MIGHT GIVE WEIRD SHOPS
     }
 }

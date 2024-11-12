@@ -6,6 +6,10 @@ namespace FortLibrary.Shop
     {
         public List<ItemsSaved> Weekly { get; set; } = new List<ItemsSaved>();
         public List<ItemsSaved> Daily { get; set; } = new List<ItemsSaved>();
+
+        public int Season = 15;
+        public int WeeklyItems;
+        public int DailyItems;
     }
 
     public class ItemsSaved

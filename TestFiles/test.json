@@ -1,0 +1,2012 @@
+[
+    {
+        "id": "lefnK3M3VWjjYKz3ReAGy7UGPYSyh3pYnwegMesu",
+        "item": "AthenaDance:EID_Accolades",
+        "name": "Accolades",
+        "description": "Soak it all in.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "LIvs-VNnBDXQdV4wsCIZzrqlwMlNOs5giVzWL1Y2",
+        "item": "AthenaDance:EID_AcrobaticSuperhero",
+        "name": "Ground Pound",
+        "description": "Take it for a spin.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 7
+    },
+    {
+        "id": "Czp50swAJNSm0hEYYpU3pTj94CSxdwTctcBNcU13",
+        "item": "AthenaDance:EID_Aerobics",
+        "name": "Work It Out",
+        "description": "Break a sweat.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "H9fvYWWQlU9xtv0cSivWBWtcmnHlWHiufGP-abr9",
+        "item": "AthenaDance:EID_AfroHouse",
+        "name": "Bombastic",
+        "description": "Step up and show 'em what you've got.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "UKAmF0Kck47txp6C7aafPXCAZKofsXaYbNfqNR7Y",
+        "item": "AthenaDance:EID_AirHorn",
+        "name": "Air Horn",
+        "description": "Subtle.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 7
+    },
+    {
+        "id": "gpnp47J6llh9oQvsaCS2DUfwVclNJTA58SJwnKhc",
+        "item": "AthenaDance:EID_AirHornRaisin",
+        "name": "Air Horn",
+        "description": "Subtle.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 7
+    },
+    {
+        "id": "cUOFI8k4i3qWnC8k9v0IuQHJpS3leO4BBBUxKSn4",
+        "item": "AthenaDance:EID_Alien",
+        "name": "Extraterrestrial",
+        "description": "Interplanetary groove.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "AnfjmWw6YXz17X9bM8KuROOXMYLsVwOMTZ7KfoOX",
+        "item": "AthenaDance:EID_AlienSupport",
+        "name": "Team Space",
+        "description": "Humanity had its chance.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "c5ZcWu0Yjd5SyHiPYvyKUyHCvlyndsniXG-s77Ss",
+        "item": "AthenaDance:EID_AntiVisitorProtest",
+        "name": "Go home!",
+        "description": "Leave us alone!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "Fu2K28dAGiFDpZfmEE1wm3rSOlXg4fdYnkPTh1D7",
+        "item": "AthenaDance:EID_ArmUpDance",
+        "name": "Backstroke",
+        "description": "Put your back into it.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "5AIEsu5RZuORS5Hwqs6WS9-9DRVLcjGJZoHZDH3F",
+        "item": "AthenaDance:EID_AssassinSalute",
+        "name": "Be Seeing You",
+        "description": "Not if I see you first.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "MyUvm82A17QVnACxmJJrkg612JEceiciANgbtgPf",
+        "item": "AthenaDance:EID_AssassinVest",
+        "name": "Bulletproof",
+        "description": "Brush it off.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "ysaqCLNqSvyVw72bSZvFb6MUtHdeBJy1gy-zPGS2",
+        "item": "AthenaDance:EID_Backflip",
+        "name": "Flippin' Incredible",
+        "description": "Flip on 'em. Flex on 'em.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "EOuefQDclSRLn5lsrEGZ-1yzclHqynbnnc1PNUJ6",
+        "item": "AthenaDance:EID_Basketball",
+        "name": "Baller",
+        "description": "Show off your moves.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "IdNlL9u-UlKkDyequhldB5E5e7NsGax7NSXcruMT",
+        "item": "AthenaDance:EID_Bendy",
+        "name": "Zany",
+        "description": "Go ahead, get weird with it.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "aCu0t6fV8pc7cyzXXrJxVHeYb-oJnwx6bSFmQf75",
+        "item": "AthenaDance:EID_BillyBounce",
+        "name": "Billy Bounce",
+        "description": "You do you.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "jyARKc0cEylWTX7Q7FahNWzn7qcdAjDaZfI-xBFq",
+        "item": "AthenaDance:EID_BlackMondayFemale_6HO4L",
+        "name": "Whipcrack",
+        "description": "Whip up some action.",
+        "items": [],
+        "variants": [],
+        "rarity": "dc",
+        "season": 10
+    },
+    {
+        "id": "cV4ksIjOSJzOt0fSENxYGFYubr01omQkzmA-9F2o",
+        "item": "AthenaDance:EID_BlackMondayMale2",
+        "name": "Martial Arts Master",
+        "description": "Master the art of battle.",
+        "items": [],
+        "variants": [],
+        "rarity": "dc",
+        "season": 10
+    },
+    {
+        "id": "IdqP8ASHmujvOuDHFxduTP5oPIyAwv8SCr-IlAeW",
+        "item": "AthenaDance:EID_BlackMondayMale_E0VSB",
+        "name": "Bat Signal",
+        "description": "Did somebody order a Batman?",
+        "items": [],
+        "variants": [],
+        "rarity": "dc",
+        "season": 10
+    },
+    {
+        "id": "jWDg6SlKDpxRQ2o76HvUqJgqfONMeF63SynRaEDa",
+        "item": "AthenaDance:EID_Boneless",
+        "name": "Boneless",
+        "description": "Beyond bendy.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "nqs2Qd2B-qsJ3mwZVl1x0aKIoYpmhxw8lbHxIpWi",
+        "item": "AthenaDance:EID_Breakboy",
+        "name": "Switchstep",
+        "description": "Switch it up.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "PbHRhSZXGLV5-TgiZXR-51kBUqFSy1jLQlE2QFSO",
+        "item": "AthenaDance:EID_BreakDance",
+        "name": "Breakin'",
+        "description": "Bust a move!",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 3
+    },
+    {
+        "id": "JZ7mFMV-XXNQUrU4RBJrZg2D6xgQ97t3gpLWDT61",
+        "item": "AthenaDance:EID_BreakYou",
+        "name": "Breaking Point",
+        "description": "Give 'em a break.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 3
+    },
+    {
+        "id": "vFYv64EaVnnCKE8K6zlb7g2cTZwr8l2afNyic-QW",
+        "item": "AthenaDance:EID_BringItOn",
+        "name": "Bring It",
+        "description": "Let's see what you've got.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "GPqzhds-JHor2PSw0Tc7n9wzULRIo1v4YRmz-M5Y",
+        "item": "AthenaDance:EID_Bunnyhop",
+        "name": "Bunny Hop",
+        "description": "Put all your eggs in one basket.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "Qf-zfNrBrxetW-zP5pa5vT53TY4N-cKScw-xVpms",
+        "item": "AthenaDance:EID_BurgerFlipping",
+        "name": "Sizzlin'",
+        "description": "Flip with flavor.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 9
+    },
+    {
+        "id": "SHy57lhROB4OtGuDod9F0gvcpBD8Q8joB3Ot6PkE",
+        "item": "AthenaDance:EID_Burpee",
+        "name": "Burpee",
+        "description": "Set a new personal best.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "HiTEXBzrKom7KTh8sgz7b0cUUav8l5I0ethcYQD-",
+        "item": "AthenaDance:EID_CactusTPose",
+        "name": "Prickly Pose",
+        "description": "Completely inconspicuous.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "hFC4qNYe20j7bqPHKYKNsp70OBaTb6OmctQuCBpU",
+        "item": "AthenaDance:EID_CandyDance",
+        "name": "Sugar Rush",
+        "description": "Shake it til you crash.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "YYRliTDLh5onTodk0UhifJycKMlhCgS8an825PYH",
+        "item": "AthenaDance:EID_Capoeira",
+        "name": "Capoeira",
+        "description": "Are you ready to dance with danger?",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "i8ScCv9qpxsCmbgYn2ylj0OXQaJ0BcpHnGq7qbGf",
+        "item": "AthenaDance:EID_Cartwheel",
+        "name": "Cartwheelin'",
+        "description": "Head over heels.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "Clr7UkLTry9UMJR5nOkg6VUGCIRlGcAhHyz-UeVs",
+        "item": "AthenaDance:EID_Celebration",
+        "name": "Jubilation",
+        "description": "A heaping helping of happiness!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 3
+    },
+    {
+        "id": "8WEm0AMeQM4EU-a8zbAOUKlisXAVmQhYJ6WNBxfJ",
+        "item": "AthenaDance:EID_Cheerleading",
+        "name": "Cheer Up",
+        "description": "Be aggressive. B-E aggressive.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 7
+    },
+    {
+        "id": "OrY3yppLb30OXpfLVfUjsVzcWfsSeqGFIWd-1Jsm",
+        "item": "AthenaDance:EID_Chicken",
+        "name": "Chicken",
+        "description": "Top of the pecking order.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "Mggm4q-P0eYsKE63wHI1r74LbLOA5ZCoDGl5FrXu",
+        "item": "AthenaDance:EID_Chug",
+        "name": "Go! Go! Go!",
+        "description": "You can do it!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 5
+    },
+    {
+        "id": "owNUou60y61FAaPrYZdZY5saUsZxPBNDCL-oJDE5",
+        "item": "AthenaDance:EID_Clapperboard",
+        "name": "Take 14",
+        "description": "...and action!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "MrzB7Uei-uKyDERjwMr1LuOdbLZTQS9Z-HLtnXeW",
+        "item": "AthenaDance:EID_Confused",
+        "name": "Confused",
+        "description": "Seriously. What happened?",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 3
+    },
+    {
+        "id": "uHnHr5eBl-UAkWZm4Ql55NFHQEP9aBNZq4evGJHn",
+        "item": "AthenaDance:EID_CoolRobot",
+        "name": "Overdrive",
+        "description": "Push it past the limit.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "9GsfunGx7XZFcpMeZMuEPU8ujyCU42M2RWk6xO9I",
+        "item": "AthenaDance:EID_CoolRobotRaisin",
+        "name": "Overdrive",
+        "description": "Push it past the limit.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "MiMfrazHCzdNEhhSBVioFtmGehsk4GDzXlauyfNM",
+        "item": "AthenaDance:EID_CowboyDance",
+        "name": "Knee Slapper",
+        "description": "Rustle up the rhythm.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "fVjUll-BQxGZPA2iN5XKqH1W6B5mY6MNqVMewxAB",
+        "item": "AthenaDance:EID_CrabDance",
+        "name": "Crabby",
+        "description": "Ready in a pinch.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "rzF94gw0ivsZYk4jKj5ahFykCl5OdUUi3GCBQnW7",
+        "item": "AthenaDance:EID_CrackshotDance",
+        "name": "Crackdown",
+        "description": "Go nuts.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 7
+    },
+    {
+        "id": "WQFbxmPXThwLnc5scTTZ5BcQBn-dvn4W6p7rijvj",
+        "item": "AthenaDance:EID_CrazyFeet",
+        "name": "Crazy Feet",
+        "description": "Wild and crazy feet!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "HehNOVFoXgfJEis1YWf-eJZ9NFjx-LncC1TxUkxi",
+        "item": "AthenaDance:EID_CrissCross",
+        "name": "Criss Cross",
+        "description": "Get your point across.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "35zrxZ1O4zk0DUvMsSUBaoWWIjVMpy9s5m2YvHzE",
+        "item": "AthenaDance:EID_Cry",
+        "name": "Waterworks",
+        "description": "Show 'em your battle cry.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "LxE8csEneTiD1Lzf68pckvEKjQAuGG63qXtg8rWA",
+        "item": "AthenaDance:EID_Dab",
+        "name": "Dab",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 1
+    },
+    {
+        "id": "b0RYB162HEnc3mgnUxowSPYL34qYxXdeqxBCdBLr",
+        "item": "AthenaDance:EID_DeepDab",
+        "name": "Deep Dab",
+        "description": "Bring 'em down to your level.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "CeYT0pODvTzHp4WFiOooN-ATw8D563oZOpGrFw9B",
+        "item": "AthenaDance:EID_Dinosaur",
+        "name": "Rawr",
+        "description": "Tyrannosaurus royale.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "MVbISVrWeQ53a41Rr2KuxbTZZJXN1rQNgN9xFdo8",
+        "item": "AthenaDance:EID_Disagree",
+        "name": "Denied",
+        "description": "Not this time.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 6
+    },
+    {
+        "id": "f1TEWFe1rAlmSz1DMiLbLC6OJlaiFT7R4UNYcTMS",
+        "item": "AthenaDance:EID_DiscoFever",
+        "name": "Disco Fever",
+        "description": "Heat up the dance floor.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 3
+    },
+    {
+        "id": "FEVtRlnIUPeegYkc5Vqqnres6MQ6msYoLldrvEFR",
+        "item": "AthenaDance:EID_DJ01",
+        "name": "Drop The Bass",
+        "description": "Wait for it...",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 6
+    },
+    {
+        "id": "YBFOqaohSrmwXyWDHOcVnFIKUstAcMAlKAR5AqRZ",
+        "item": "AthenaDance:EID_Doublesnap",
+        "name": "Revel",
+        "description": "Nothing wrong with a little celebration.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "Xd1XYFbOcuQiTG1NstmHKaiSUttEMvmp4HRppjtW",
+        "item": "AthenaDance:EID_DreamFeet",
+        "name": "Dream Feet",
+        "description": "Get some boogie in your boots.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "Ymqk0YCW1pIr-biWm5E7iNRM1yxnl-sTfCupMtDJ",
+        "item": "AthenaDance:EID_DrumMajor",
+        "name": "Drum Major",
+        "description": "Lead the line, and step in time.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "-EwVEefibcCLm9ZZPzuSez2XEoClAPOGdUlfY-l0",
+        "item": "AthenaDance:EID_Dunk",
+        "name": "Buckets",
+        "description": "Own the game.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "WJt7Ptkur09rwKCbsHB1RC63sRsBM0fsegilDnjG",
+        "item": "AthenaDance:EID_DustingHands",
+        "name": "Job Well Done",
+        "description": "That's that.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 5
+    },
+    {
+        "id": "iUIsbAWugnZwMnTTv6f22XDk0SVnjOIhLTn9PKAd",
+        "item": "AthenaDance:EID_DustOffShoulders",
+        "name": "Brush Your Shoulders",
+        "description": "Get that dirt off your shoulder.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 3
+    },
+    {
+        "id": "snd7219XdOvbx7CyPkbTtslLKcaRyg34GuHz4V6S",
+        "item": "AthenaDance:EID_EasternBloc",
+        "name": "Squat Kick",
+        "description": "Don't skip leg day.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 3
+    },
+    {
+        "id": "nrjSAHmm27A-o3vYdf--JUoGdodt-ouiv-BtYlh1",
+        "item": "AthenaDance:EID_ElectroShuffle",
+        "name": "Electro Shuffle",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 1
+    },
+    {
+        "id": "A91DtrSdAyCq5eUSDMWqx0VgHBIl0ijQRMb2mKiJ",
+        "item": "AthenaDance:EID_ElectroShuffle_V2",
+        "name": "Signature Shuffle",
+        "description": "Show off your signature moves.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 9
+    },
+    {
+        "id": "27TgzNJsTUYXpggT1A8WWGbVH7CZK29k5bbAky5q",
+        "item": "AthenaDance:EID_ElectroSwing",
+        "name": "Electro Swing",
+        "description": "Brand new groove, old school swing.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "sPNnqYsInwXTiWtZS0Ag8d85BqrUUZpDM31KpxNu",
+        "item": "AthenaDance:EID_Everytime",
+        "name": "Vivacious",
+        "description": "Never stop dancing.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 5
+    },
+    {
+        "id": "j5XpSq3dHg9pA086dn0v6-ewwwQ5RGW7megC5IoD",
+        "item": "AthenaDance:EID_Facepalm",
+        "name": "Face Palm",
+        "description": "The cringe is real.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 3
+    },
+    {
+        "id": "UsGe2AKc5WXuQ4tDSPZgYCP9Tr8OODSM0TpjHljg",
+        "item": "AthenaDance:EID_FancyFeet",
+        "name": "Fancy Feet",
+        "description": "Show off that footwork.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "oxTY85hxeFssyHfA253T7oEAhgxzOg4FdAd9qaUL",
+        "item": "AthenaDance:EID_FancyWorkout",
+        "name": "Fanciful",
+        "description": "Just a little dance to get the heartrate going.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "ERycOxFkiTJhKgoLSRZ8yvEn0GuLVe1h5ngvO3jr",
+        "item": "AthenaDance:EID_FingerGuns",
+        "name": "Finger Guns",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 1
+    },
+    {
+        "id": "bocr4wrcSaS8zdNQDFETsQOiVaz3iy7wtEo8n7sY",
+        "item": "AthenaDance:EID_FireDance",
+        "name": "Fire Spinner",
+        "description": "Heat it up.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 8
+    },
+    {
+        "id": "Zs6YQBAdF8EXZnEd81uC928sRfWk4upPY7KM04Xn",
+        "item": "AthenaDance:EID_FireworksSpin",
+        "name": "Rocket Spinner",
+        "description": "Don't try this at home!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "o39qC14RAW92VP7QntaEmpyaWkygTeo-arRvEeMB",
+        "item": "AthenaDance:EID_FistPump",
+        "name": "Fist Pump",
+        "description": "Emphatically flailing fists.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 5
+    },
+    {
+        "id": "-WAjcdimI5Vn8lPR2h34ZbgrzrHNCiV2EdAfI-ju",
+        "item": "AthenaDance:EID_Flapper",
+        "name": "Flapper",
+        "description": "It's the bee's knees!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 2
+    },
+    {
+        "id": "cfvPxY3hg3IHLX3ICRiBpApxt6bmwJetJQVti7Ub",
+        "item": "AthenaDance:EID_Flex",
+        "name": "Gun Show",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 2
+    },
+    {
+        "id": "lJWCMg-GZqtuOPt2NwVDZ8nw-PtYAbPTpc57epuf",
+        "item": "AthenaDance:EID_Flex02",
+        "name": "Flex On 'Em",
+        "description": "Let them know.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "S6QeXDR45oE5fAewUqmqmGLMN8t66Ecs3WFUMAbf",
+        "item": "AthenaDance:EID_Floppy",
+        "name": "Fandangle",
+        "description": "Loosen up and prepare for nonsense.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "zr74fAPAw9oROOGYdUoXOpWd6BcZGrObl969zG4Z",
+        "item": "AthenaDance:EID_Fresh",
+        "name": "Fresh",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 1
+    },
+    {
+        "id": "bMEqv8aasUroy-Wvw-nB-xHirFFrVJ8M1oRFfzpl",
+        "item": "AthenaDance:EID_GlowstickDance",
+        "name": "Glowsticks",
+        "description": "Make it glow.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 7
+    },
+    {
+        "id": "-Qua8c1Fl5Q3tgQgC7c-oiyvRz46kDlSBJ9Oc-mT",
+        "item": "AthenaDance:EID_GothDance",
+        "name": "Infectious",
+        "description": "Let it take over.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "Xk1Ow2PAJajKTP-xHra2Hd2FaDB-FTj2LpXYq8bw",
+        "item": "AthenaDance:EID_Grooving",
+        "name": "Vibin'",
+        "description": "Find your flow.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "TK15qwMmvmya4OzWRC2VA1ZNxHenpGo3zcl4cYSG",
+        "item": "AthenaDance:EID_GuitarWalk",
+        "name": "Guitar Walk",
+        "description": "Play on.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "pQGTxkePk2Yead-ZbKw4StjHnGoKtWfoRAyBSemN",
+        "item": "AthenaDance:EID_HandSignals",
+        "name": "Hand Signals",
+        "description": "All signals go?",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "dIfZlFHzPNHy-Y4-JNmYJ9iWf5DHRLZFrSobuDFi",
+        "item": "AthenaDance:EID_HeadBang",
+        "name": "Headbanger",
+        "description": "Bang your head against the air.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "XUkLofJybyAU6vr-91RgPbKClf1l9h2f8zMmaD2p",
+        "item": "AthenaDance:EID_HeadBangRaisin",
+        "name": "Headbanger",
+        "description": "Bang your head against the air.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "MG8L6s5YkrHVYu5sMhDL17AnTIjYnVPiBaJtdtPA",
+        "item": "AthenaDance:EID_HeadShake",
+        "name": "Bobbin'",
+        "description": "Really get into it.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "zZPOQ1fG3LMosb98YckXollaUhiDTdqMUEmrjpVv",
+        "item": "AthenaDance:EID_HeelClick",
+        "name": "Click!",
+        "description": "Jump for joy.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 3
+    },
+    {
+        "id": "6JeoHf2rDzT2GpEAkSaYVbesbJKXFywoN8G9ztfH",
+        "item": "AthenaDance:EID_HiLowWave",
+        "name": "Daydream",
+        "description": "Dance the day away.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 7
+    },
+    {
+        "id": "sRNrUGdj6yyqsl54jr-etanvnynDn-cl54z0YVyf",
+        "item": "AthenaDance:EID_HipToBeSquare",
+        "name": "Business Hips",
+        "description": "Put some swivel in your step.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "hK0DTve77i3uSj8pl42M5Rut-y-asiaFhqjj6r91",
+        "item": "AthenaDance:EID_Hitchhiker",
+        "name": "Hitchhiker",
+        "description": "Take a hike.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "1pmr63Tr3MXuFnYi6Z9cbGjRfRMzI1fzdwo9ycog",
+        "item": "AthenaDance:EID_HoldOnAMinute",
+        "name": "Hang on",
+        "description": "Let's just talk this out...",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "HjEj8nL9uBL1nkx1sgBEjKZynGTSOgL7RsbvtPqB",
+        "item": "AthenaDance:EID_Hopper",
+        "name": "Bouncer",
+        "description": "Hop on.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "44uT1VBc6VisvOyFo5eT9UNdsxhnfmK4nAZtIg9m",
+        "item": "AthenaDance:EID_HotStuff",
+        "name": "Hot Stuff",
+        "description": "Tss!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 5
+    },
+    {
+        "id": "2LPjxEz5UJPQUShK4K2FVw5m9kcwunwpit31wLki",
+        "item": "AthenaDance:EID_Hula",
+        "name": "Hula",
+        "description": "Get the luau started!",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 5
+    },
+    {
+        "id": "upMe72cwZbg-cD0j8PQVk63Bp-ZqIp5N7sjG8dCB",
+        "item": "AthenaDance:EID_IDontKnow",
+        "name": "IDK",
+        "description": "Don't ask me.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 7
+    },
+    {
+        "id": "Trx7RfSmJVKKyRmsW79JUqVmUKKc-aPY9cjzDQD8",
+        "item": "AthenaDance:EID_IndianDance",
+        "name": "Lavish",
+        "description": "Join in the celebration.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "lhcfjVhFZiZtSOVWRlv3D22V9DLTeYUnoXtGRDjX",
+        "item": "AthenaDance:EID_InfiniteDab",
+        "name": "Infinite Dab",
+        "description": "Can't stop, won't stop.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "hRzLPBnyk830Ka-W2wc7pw6JrtifszaBnRxHS0vP",
+        "item": "AthenaDance:EID_InfiniteDabRaisin",
+        "name": "Infinite Dab",
+        "description": "Can't stop, won't stop.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "rcbbmZeonhK-46W8rbEzdSJuyGnnMcq88XLu8P4l",
+        "item": "AthenaDance:EID_Intensity",
+        "name": "Intensity",
+        "description": "Dance like you mean it.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 5
+    },
+    {
+        "id": "iS3NQ4IvoFOQIbr3vAAuqbubN6aeSqsBi07O2FZg",
+        "item": "AthenaDance:EID_IrishJig",
+        "name": "Step It Up",
+        "description": "Do a little jig.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 3
+    },
+    {
+        "id": "TqLN1GZItlgMXMvwYGLaqe-7kZITIeDya6rNnPM8",
+        "item": "AthenaDance:EID_Jammin",
+        "name": "Clean Groove",
+        "description": "Dust off your best moves.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "4PKI0rqoDt2GYEoWkhsczv5kJVdPnL2Z6kmqR0Di",
+        "item": "AthenaDance:EID_JazzDance",
+        "name": "Slick",
+        "description": "Makin' it look easy.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "yTR86KKP8UpZMGSDZWJ121wvsu2C8x4eUBTivI0f",
+        "item": "AthenaDance:EID_JazzHands",
+        "name": "Jazz Hands",
+        "description": "Get jazzy.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 8
+    },
+    {
+        "id": "s3bK-wlp418h19Utea96mqzQ-4hMzI8ba4d0MIID",
+        "item": "AthenaDance:EID_Juggler",
+        "name": "Jugglin'",
+        "description": "Pure concentration.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "N-u3zbImsl2feVcqmEzF9-xi5FEVxyETWvXmUFMD",
+        "item": "AthenaDance:EID_JumpingJack",
+        "name": "Jumping Jacks",
+        "description": "Get jacked!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "-orVt02zYkd2RW4dK6IPtbAjm6wWAOS2vqED04Lq",
+        "item": "AthenaDance:EID_KEagle",
+        "name": "Eagle",
+        "description": "Believe you can fly.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "Lb7FRjwXm0szWfbiJAqSaEklM6MK4xDqqFoXSncF",
+        "item": "AthenaDance:EID_KissKiss",
+        "name": "Kiss Kiss",
+        "description": "Show some love.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 2
+    },
+    {
+        "id": "ceYU2DzuRBAogpqm35xo7ZzZo1bYYIMUPP4bDyaU",
+        "item": "AthenaDance:EID_KPopDance01",
+        "name": "True Heart",
+        "description": "<3",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 4
+    },
+    {
+        "id": "R2T9ioKlqdAV-xnPklG0-eOtCagPHxxlNljpQaqS",
+        "item": "AthenaDance:EID_KPopDance02",
+        "name": "Smooth Moves",
+        "description": "Make them swoon.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 6
+    },
+    {
+        "id": "4ntvsGqq6qoI2TBFrByo7uuaCtvXGDCqsbO9q7u2",
+        "item": "AthenaDance:EID_KpopDance04",
+        "name": "Glitter",
+        "description": "Show your sparkle.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "nNOA8aM2rSj41efmNe2Jq5HP3wQo0VShqzNCrRsW",
+        "item": "AthenaDance:EID_Laugh",
+        "name": "Laugh It Up",
+        "description": "What's so funny?",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "E-IEo385tM4bD-ix1FGuFrLqmdXvwNL9JVxw2Cza",
+        "item": "AthenaDance:EID_LazyShuffle",
+        "name": "Lazy Shuffle",
+        "description": "Keep it lazy.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "5yzflJQ2tyZjdvnjR24ZKtOULK-Ta506e4zkKIsJ",
+        "item": "AthenaDance:EID_LivingLarge",
+        "name": "Living Large",
+        "description": "Life is good.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "G364jcimXOcsSzj8eknDrZKdFj9KriAFv62YTXGP",
+        "item": "AthenaDance:EID_LlamaBell",
+        "name": "Llama Bell",
+        "description": "Clang! Clang! Clang! Clang!",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 5
+    },
+    {
+        "id": "kTflSLejPYTSqfG9W1Fq3uw4Qa6QrfgCyf-WkvPn",
+        "item": "AthenaDance:EID_LlamaMarch",
+        "name": "Llama Conga",
+        "description": "Trot on.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "HU4Vh9gPropRhK3Wilz8Y0aZTDrmjBRgyzFkOaFb",
+        "item": "AthenaDance:EID_LlamaRider_Glitter",
+        "name": "Glitter-up",
+        "description": "What a sparkly mess!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "9n91yJzsO7lN0S4DTS4y8bePSgogbLzUOENeiCnn",
+        "item": "AthenaDance:EID_LockItUp",
+        "name": "Lock It Up",
+        "description": "Snap into place.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "XNS7gA9kejHKVwdCgOckg8KARDD9fCvgbHx4moq-",
+        "item": "AthenaDance:EID_LookAtThis",
+        "name": "Behold!",
+        "description": "Look at this!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 6
+    },
+    {
+        "id": "Z3dRMEgoUpRm1HcMfWtqkf4ffPqGxZFEBM2bosVM",
+        "item": "AthenaDance:EID_MakeItPlantain",
+        "name": "Make It Plantain",
+        "description": "It's bananas.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "98RLZ82e6DY1-pkRfMOqOI6p-HprF4b8fFDtVmDE",
+        "item": "AthenaDance:EID_MakeItRain",
+        "name": "Make It Rain",
+        "description": "Better grab an umbrella!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 3
+    },
+    {
+        "id": "V8gK9pzDuQvzVptYIfapk1u8SYjX5hFvcu5SPDvo",
+        "item": "AthenaDance:EID_MakeItRainV2",
+        "name": "Raining Doubloons",
+        "description": "Make it rain gold.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "Y85kzXcu6lwyHSNKSAWWfw6cMcc2LAeyqM2yuRk7",
+        "item": "AthenaDance:EID_Maracas",
+        "name": "Shake It Up",
+        "description": "Feel the rhythm.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 5
+    },
+    {
+        "id": "G4YQSbSdSqxniYjImEHr4sLPUJnKE-3LjLapClwz",
+        "item": "AthenaDance:EID_MartialArts",
+        "name": "Punched Up",
+        "description": "Show off your form.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 8
+    },
+    {
+        "id": "ATEnb7uW762EKvKRKuddWSntlC9U3WpoTwaFZ60D",
+        "item": "AthenaDance:EID_Mime",
+        "name": "Mime Time",
+        "description": "Please take me seriously!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "PImHIsiMeidq3ys8NP4mC3UegHC9RIC-ysPpy7Uu",
+        "item": "AthenaDance:EID_MindBlown",
+        "name": "Mind Blown",
+        "description": "Rethink everything you know.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 7
+    },
+    {
+        "id": "pd07-sTgXztUyUBmcsiVrd4KHiBytDiCdOrM98Az",
+        "item": "AthenaDance:EID_Moonwalking",
+        "name": "Moon Bounce",
+        "description": "Gravity can't hold you down.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "O6J14dv55qJUuvFjbK8po9QcXuku0-i1YY5Jvfy6",
+        "item": "AthenaDance:EID_MyIdol",
+        "name": "My Idol!",
+        "description": "...in the presence of a legend.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 5
+    },
+    {
+        "id": "hFqPaQcNUNQ1RC05pEyhlskDeFnd0cgGyKo1lUMV",
+        "item": "AthenaDance:EID_NotToday",
+        "name": "Finger Wag",
+        "description": "Not today, my friend.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 5
+    },
+    {
+        "id": "Q3AkIbbHS8ZkDuZP7RxRDv8P6YW3n4oTnUfITStC",
+        "item": "AthenaDance:EID_OG_RunningMan",
+        "name": "Old School",
+        "description": "Never out of style.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "UgC0vw9A0r6deiNsNtuEfmY7IKIj2Ftt6cAt-Ed4",
+        "item": "AthenaDance:EID_OneArmFloss",
+        "name": "No Sweat",
+        "description": "With one hand tied behind your back.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "fSsn6GM7uO653kgLxSZhLBmoOWaPFA6lCRNkKKsP",
+        "item": "AthenaDance:EID_OnTheHook",
+        "name": "On The Hook",
+        "description": "Reel in a prize catch.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "sWhj3IZVeh0OexD0m52VNu6ZlGVj955DxEyh-9E0",
+        "item": "AthenaDance:EID_Pizzatime",
+        "name": "Pizza Party",
+        "description": "Delicious.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "fA7qE7Dg8D-JncWWDYlXmdA38U36cC52pulABMYk",
+        "item": "AthenaDance:EID_PopDance01",
+        "name": "Star Power",
+        "description": "No autographs please.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 4
+    },
+    {
+        "id": "mpiIEsT4lzQGLMDB3mB7Y8-h-6qMaHgt7opWma5q",
+        "item": "AthenaDance:EID_PopLock",
+        "name": "Pop Lock",
+        "description": "Lock it down.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 4
+    },
+    {
+        "id": "gdXl0-oG3ZHMRXNcJtB4zAcRTnJhKBVk6L7D0Evf",
+        "item": "AthenaDance:EID_PraiseTheTomato",
+        "name": "Praise The Tomato",
+        "description": "Splatter unto thee.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "3HfZy-NP3R9MkYbbrLiZCdoAb6WWCEPcdctXqYaU",
+        "item": "AthenaDance:EID_PresentOpening",
+        "name": "Unwrapped",
+        "description": "What did you get me?",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 7
+    },
+    {
+        "id": "8J30xYnbjLvonr-CO4QuDiuYUqnRvalwxEyCEFNf",
+        "item": "AthenaDance:EID_ProVisitorProtest",
+        "name": "Welcome!",
+        "description": "Show us the way!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "Nj5o3uh02UrYMZ43n9UEibH3gSckuxsCuz8MjmZ5",
+        "item": "AthenaDance:EID_Pump",
+        "name": "Pumpernickel",
+        "description": "Get pumped.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "qDclmSnH4EUk8Y0odW5fn5SclXmQ4FLypleLo3xx",
+        "item": "AthenaDance:EID_PureSalt",
+        "name": "Pure Salt",
+        "description": "All-purpose seasoning.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 2
+    },
+    {
+        "id": "DWYOaDgzJJkv7hP4AJfWViT0qF1OpalomDvXOgk3",
+        "item": "AthenaDance:EID_QuickSweeper",
+        "name": "Jamboree",
+        "description": "Celebrate anything and everything.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "g0YzmmpOL4o2SMEHoq5gB95IgHqRwGX96EbQy2la",
+        "item": "AthenaDance:EID_RageQuit",
+        "name": "Rage Quit",
+        "description": "I'm out.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "SQ8asi66TtAVUpOENmacMBavrwioffCTuVaXL3nc",
+        "item": "AthenaDance:EID_RedCard",
+        "name": "Red Card",
+        "description": "Foul play!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "RyHkKqpwGN9BU1xXLscB0NQKiDcpNGboATebkeOv",
+        "item": "AthenaDance:EID_RideThePonyTwo",
+        "name": "Pony Up",
+        "description": "Yeehaw!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "hBLz1ELLuCjegMkZbs3UCrBGSU30T5CWnT05F8RU",
+        "item": "AthenaDance:EID_RocketRodeo",
+        "name": "Rocket Rodeo",
+        "description": "Hang on tight!",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 3
+    },
+    {
+        "id": "2wlgJ9VLwMJ0XnaOtNNX8JHLTo9hBYlPVhHMtLuE",
+        "item": "AthenaDance:EID_RockGuitar",
+        "name": "Rock Out",
+        "description": "Are you ready to rock?!",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 3
+    },
+    {
+        "id": "Hxb8rOEaUwjCVajqxLEZpe0uWO0fVIwS0aB7m-Ly",
+        "item": "AthenaDance:EID_RockPaperScissors",
+        "name": "Rock Paper Scissors",
+        "description": "Best out of three.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 3
+    },
+    {
+        "id": "CCeqwyuxwXIBxhuSW1GNXDyNG91084ldQ1zYrEAV",
+        "item": "AthenaDance:EID_RunningManv3",
+        "name": "Pick It Up",
+        "description": "Pick it up, pick it up, pick it up!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "36aC0Osyf0Mv9K4Gx1J-N6hWoU67JwOAl0KI5Lld",
+        "item": "AthenaDance:EID_Saxophone",
+        "name": "Phone It In",
+        "description": "Lay down a saxy groove.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 6
+    },
+    {
+        "id": "Ap58TYUSJRzebnSk2yQXyoczXq4OYGXT-WU92ENv",
+        "item": "AthenaDance:EID_ScoreCard",
+        "name": "Scorecard",
+        "description": "Consider yourself judged.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 6
+    },
+    {
+        "id": "pIcNlFIk13A4S-SfXPff4sgUjtAR7T0FQld23L56",
+        "item": "AthenaDance:EID_ScoreCardBurger",
+        "name": "Team Burger",
+        "description": "Be beefy.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "R1qozFt5LXAT9I8VZkhPw4wkDccWGZC7eSMSS7QU",
+        "item": "AthenaDance:EID_ScorecardTomato",
+        "name": "Team Tomato",
+        "description": "Stay saucy.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "bNo7AmSD4D52JH6W2W72YjpNqjP6ylRNEOh8cklN",
+        "item": "AthenaDance:EID_SecurityGuard",
+        "name": "Work It",
+        "description": "Split the dancefloor.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "qCS4paa8CElx7nQ3RkVoteKgV9TiF9OkZ70MrLnX",
+        "item": "AthenaDance:EID_SexyFlip",
+        "name": "Flippin' Sexy",
+        "description": "Flip out!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 3
+    },
+    {
+        "id": "UxRW2OZS9h2FEHDUqtQmPOhpNxTN2OY1xYPBsSxN",
+        "item": "AthenaDance:EID_Shadowboxing",
+        "name": "Shadow Boxer",
+        "description": "Stick and move.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 8
+    },
+    {
+        "id": "9YJB5C1KSY1pf2bSRw0MoMqdaj497T21h1IGgD87",
+        "item": "AthenaDance:EID_Shaka",
+        "name": "Hang Loose",
+        "description": "Take it easy.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "AAaSFsai3aGrMVikhMZlytbbthuWHxNnnZIpudep",
+        "item": "AthenaDance:EID_Shaolin",
+        "name": "Shaolin Sit-up",
+        "description": "Mind over body.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 7
+    },
+    {
+        "id": "VQ-k4KdlxeO9VJkY-abYQJznAK8NRAxVcqAhJCLU",
+        "item": "AthenaDance:EID_Showstopper",
+        "name": "Showstopper",
+        "description": "Pull out all the stops.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "nYpQUDRjiwv9gSAkFmD0v8jSJxUe-R-loM6MZyY6",
+        "item": "AthenaDance:EID_SlowClap",
+        "name": "Slow Clap",
+        "description": "Express yourself on the battlefield.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 1
+    },
+    {
+        "id": "4KyJ6qkeQMOq5i6zvaVqnv50PWacQ-OXd5AySV3v",
+        "item": "AthenaDance:EID_SmokeBombFail",
+        "name": "Poof",
+        "description": "Beguile your enemies in a cloud smoke.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "QETlrrAXGAdvBFtwCAINqwzWFAsqM3DvsXuoQzrE",
+        "item": "AthenaDance:EID_Snap",
+        "name": "Snap",
+        "description": "Balance is restored.",
+        "items": [],
+        "variants": [],
+        "rarity": "marvel",
+        "season": 4
+    },
+    {
+        "id": "EMoOfcOZatQuhSM3QUakRpCP87Ysdx18c76j6LdB",
+        "item": "AthenaDance:EID_Snap_DeployPartyRift",
+        "name": "Deploy Party Signal",
+        "description": "Spawn a Party Signal in front of you.",
+        "items": [],
+        "variants": [],
+        "rarity": "marvel",
+        "season": 4
+    },
+    {
+        "id": "bb94QMFRs0KjS6t4k1nCZtQ7OEiSWpyeAsfHeBCz",
+        "item": "AthenaDance:EID_SneakingTraversal",
+        "name": "Very Sneaky",
+        "description": "Stealth mode engaged!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "4NL6A-nRILSEu-7iyw6O0RSdAkriK3u02S94KBLw",
+        "item": "AthenaDance:EID_SoccerJuggling",
+        "name": "Kick Ups",
+        "description": "Look, no hands.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    },
+    {
+        "id": "kKMmQNtGr3Ubf2m2ySEbZr09CmouHkE4ePO6Dj9W",
+        "item": "AthenaDance:EID_SomethingStinks",
+        "name": "Something Stinks",
+        "description": "Whoever smelt it...",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "D43okv0viQqdUdRjIdONFCDxIDCeInyUqvZiJLD9",
+        "item": "AthenaDance:EID_Sparkler",
+        "name": "Sparkler",
+        "description": "So sparkly!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "jlAXgkJAepl42c34BrRAliPH8sXzl8Eo4V4kralO",
+        "item": "AthenaDance:EID_SpeedRun",
+        "name": "Full Tilt",
+        "description": "Lean into it.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "z0v9PhahgPgqHcxoepwLpGlCzFJleXFZToT6dTMj",
+        "item": "AthenaDance:EID_Sprinkler",
+        "name": "Sprinkler",
+        "description": "Sprinkled with style.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "l5p4WMetW3buC41CLgM3N4lklzkQMacL4KJGd3fs",
+        "item": "AthenaDance:EID_Spyglass",
+        "name": "Spyglass",
+        "description": "Land ho!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "PQTYg-Dh-ByP5mDtvuDRI3Iq3hhmEBw-hDJQqjgM",
+        "item": "AthenaDance:EID_StatuePose",
+        "name": "Statuesque",
+        "description": "So lifelike!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 10
+    },
+    {
+        "id": "B2XWmo9LxrsU8217DJOpVjsSH8g56JNbiaIakLeX",
+        "item": "AthenaDance:EID_StrawberryPilotKpop",
+        "name": "Peace Out",
+        "description": "Keep It Positive.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "2HbSsvIFXxBUG4TyzvBQKIOQVht3F3cua7P29VMp",
+        "item": "AthenaDance:EID_SwimDance",
+        "name": "Deep End",
+        "description": "Dive in.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "JZDy2u7FAdj7Z9JTg5-w9PhET4EXoSeO2YcxdyPH",
+        "item": "AthenaDance:EID_SwingDance",
+        "name": "Jitterbug",
+        "description": "We're buggin' out!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "zIFPqQX3qnjoqMgKu9U2Voo1N5cDaaKEERLmuUkX",
+        "item": "AthenaDance:EID_TacoTimeDance",
+        "name": "Taco Time",
+        "description": "Set your tacos free.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "Y5Iv5nntFarSaSIKgJOR79-ORgoXLhJQ1Y8IQnBk",
+        "item": "AthenaDance:EID_TaiChi",
+        "name": "Tai Chi",
+        "description": "Find your balance.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "PqgmVHdWnou91DOPjpJRVrrixOXsI1ovM9elrK0P",
+        "item": "AthenaDance:EID_TakeTheW",
+        "name": "Savor The W",
+        "description": "This is what winning looks like.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 9
+    },
+    {
+        "id": "P11xfl02UGcyszV6mnVeNzMuvmYfC1K5WR33x0Ny",
+        "item": "AthenaDance:EID_TapShuffle",
+        "name": "Hootenanny",
+        "description": "Yee haw!",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 3
+    },
+    {
+        "id": "7XpN6kPkgp4ntmjO3s6h1xMtfPIOfaQjiZrQN151",
+        "item": "AthenaDance:EID_TeamMonster",
+        "name": "Team Monster",
+        "description": "You monster!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "KRCHblmOVCL3fzFBCkwoDw3LDGkpCfazc9t5UIIu",
+        "item": "AthenaDance:EID_TeamRobot",
+        "name": "Team Mech",
+        "description": "Mecha Team Leader Forever!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "Ipk18QdBcYCOt8TCE15hknBq7WlFJs2RPr0IMV1T",
+        "item": "AthenaDance:EID_Texting",
+        "name": "Busy",
+        "description": "I'll be with you in just a moment.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "WJ1tPsE6TqFGRLgZ5V1s1yWGPgowfPerLBo4fmhf",
+        "item": "AthenaDance:EID_ThighSlapper",
+        "name": "Slap Happy",
+        "description": "Stop hitting yourself.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "pSCbL-ORbXjGrp-CRsLx-W7YbsexYXKz7Yx9YuSZ",
+        "item": "AthenaDance:EID_ThumbsDown",
+        "name": "Thumbs Down",
+        "description": "Nah.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "zXHuAOKiqNywf2N7Rjo6LiGd7KLZFtfmm6yyeQiR",
+        "item": "AthenaDance:EID_ThumbsUp",
+        "name": "Thumbs Up",
+        "description": "Aye!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "hiPDNVboA0kQBZv-FRUYnA7DiGub7XOZO1utGtGA",
+        "item": "AthenaDance:EID_Tidy",
+        "name": "Tidy",
+        "description": "Keep it tidy.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 3
+    },
+    {
+        "id": "7mh1qh1Sgh2KeYW96SEprV7d6-ivEpmUHC8kJR5A",
+        "item": "AthenaDance:EID_TimeOut",
+        "name": "Time Out",
+        "description": "Stop the clock.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 6
+    },
+    {
+        "id": "E-jSmzUBXmHdnW7R3Fo44d1zNaoxk16n79nxAVmO",
+        "item": "AthenaDance:EID_TimetravelBackflip",
+        "name": "Spring-Loaded",
+        "description": "Handspring into action.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 8
+    },
+    {
+        "id": "feYIcIpg7MVRja8BrAp7TSm8ur4qxATFXidtHpcF",
+        "item": "AthenaDance:EID_TorchSnuffer",
+        "name": "Tsssss",
+        "description": "Your time here is done.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "cqa8tR9ETN2Z682fjOTIC6pBRb2RNEhv5MDV3XyF",
+        "item": "AthenaDance:EID_Touchdown",
+        "name": "Spike It",
+        "description": "Celebrate a big play.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "4alQnLzsD22b8GVtUaSMOfNYp1N10B9w9AnRpLWc",
+        "item": "AthenaDance:EID_TPose",
+        "name": "T-Pose",
+        "description": "Chin up, arms straight!",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 6
+    },
+    {
+        "id": "lv1THLuXuEsaQ95zlK4bPQQZbvg7LjqQsQfQYgFb",
+        "item": "AthenaDance:EID_TrophyCelebration",
+        "name": "Kiss The Cup",
+        "description": "Relish your victories.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 9
+    },
+    {
+        "id": "WsLAS-fuomLPsIDP5mgoRv2maKgRoQdnAj60ajVJ",
+        "item": "AthenaDance:EID_TrueLove",
+        "name": "True Love",
+        "description": "Get Romantic.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 2
+    },
+    {
+        "id": "aoSfT2Zy2gRSFILNMP7G8l6Hobtoe8klIWCtsrAf",
+        "item": "AthenaDance:EID_Twist",
+        "name": "Twist",
+        "description": "It's all in the hips.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "eK8jGlQUEdOZqjwZvJ1BcGxwLXz9pFv3qEHXUeCa",
+        "item": "AthenaDance:EID_TwistRaisin",
+        "name": "Twist",
+        "description": "It's all in the hips.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 5
+    },
+    {
+        "id": "q02tQN5Yd6kjBQbwokNKkxLmlnEIkprWaq6gLvsn",
+        "item": "AthenaDance:EID_VikingHorn",
+        "name": "Battle Call",
+        "description": "Heed the call.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 5
+    },
+    {
+        "id": "j91G7-GkN8Y4MbwoQTWZNoD7HLOMa6u3aQVaqHxP",
+        "item": "AthenaDance:EID_WackyWavy",
+        "name": "Breezy",
+        "description": "Any way the wind blows.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 8
+    },
+    {
+        "id": "pV5XkcSoKNU8p3lZsgE7LSRzJT-AnmygPZo5LrRy",
+        "item": "AthenaDance:EID_Warehouse",
+        "name": "Dance Therapy",
+        "description": "Let it all out.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 5
+    },
+    {
+        "id": "6F1yWMvfznH7KT-gLTjvVLeYf2aDuv2Nk6wYUNdl",
+        "item": "AthenaDance:EID_WaveDance",
+        "name": "Flux",
+        "description": "Stay in the flow.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "pO3WwYL9BE0eOngD-yEFf0vC5sDymJQud9E6ZN3A",
+        "item": "AthenaDance:EID_WhereIsMatt",
+        "name": "Where Is Matt?",
+        "description": "Show the world your moves.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "4XqfrN-3YPPHk9it-vt-172REFE6Xwis3H84ldUc",
+        "item": "AthenaDance:EID_Whirlwind",
+        "name": "Whirlwind",
+        "description": "Around and around abound.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 7
+    },
+    {
+        "id": "UUfmIhRMIdovamwAH9-HUbXCwWMW1HUxDmyM6ZZz",
+        "item": "AthenaDance:EID_Wiggle",
+        "name": "Wiggle",
+        "description": "Never stop wigglin'.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 3
+    },
+    {
+        "id": "Sbw7ZGkZETxo7I0ORoSM94pnwOltZtnk88VQff9H",
+        "item": "AthenaDance:EID_WindmillFloss",
+        "name": "Windmill Floss",
+        "description": "Take it all the way around.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 10
+    },
+    {
+        "id": "Os6YRMF1LgC8ZZSbz-KM3SzKGdsIlutXALfumrVp",
+        "item": "AthenaDance:EID_WIR",
+        "name": "Hot Marat",
+        "description": "Wreck the dance floor.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 6
+    },
+    {
+        "id": "jRtt192BGsLwOjmHQ3xYGlBnTnaBZhwxj9n8TJXM",
+        "item": "AthenaDance:EID_Wizard",
+        "name": "Llamacadabra",
+        "description": "Don't forget the magic word.",
+        "items": [],
+        "variants": [],
+        "rarity": "epic",
+        "season": 6
+    },
+    {
+        "id": "QnGrSJT3agrP6DPtUf0YHoJ622-AKmkgXibOSn4G",
+        "item": "AthenaDance:EID_WolfHowl",
+        "name": "Howl",
+        "description": "Stand in front of a moon for maximum effect.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 6
+    },
+    {
+        "id": "CRhFtdIeKTjZXROCGMNmMo9NcG9GmZmxgYoIgWmi",
+        "item": "AthenaDance:EID_Yeet",
+        "name": "Dip",
+        "description": "Take a dip.",
+        "items": [],
+        "variants": [],
+        "rarity": "uncommon",
+        "season": 4
+    },
+    {
+        "id": "2fFl3Z1LBTigFukMnkCD8ijEF1Jk4yzPTRQ-3pnD",
+        "item": "AthenaDance:EID_Zippy",
+        "name": "Rambunctious",
+        "description": "The embodiment of boundless energy.",
+        "items": [],
+        "variants": [],
+        "rarity": "rare",
+        "season": 4
+    }
+]

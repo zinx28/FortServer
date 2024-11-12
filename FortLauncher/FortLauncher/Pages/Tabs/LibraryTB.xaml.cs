@@ -36,6 +36,14 @@ namespace FortLauncher.Pages.Tabs
             public string BuildId { get; set; }
         }
 
+        public class TempBorderInfo
+        {
+            public string BuildString { get; set; }
+            public string VersionBuild { get; set; }
+            public BuildConfig Config { get; set; }
+        }
+
+
         List<BorderInfo> borderInfoList = new List<BorderInfo>();
         public Home MainFrame { get; set; }
         public LibraryTB(Home MainFrame)
@@ -56,10 +64,13 @@ namespace FortLauncher.Pages.Tabs
             {
                 if (!(borderInfoList.Count > 0))
                 {
-                    while (LaunchBuilds.Children.Count > 1)
+                    await System.Windows.Application.Current.Dispatcher.InvokeAsync(() =>
                     {
-                        LaunchBuilds.Children.RemoveAt(0);
-                    }
+                        while (LaunchBuilds.Children.Count > 1)
+                        {
+                            LaunchBuilds.Children.RemoveAt(0);
+                        }
+                    });
 
                     await Task.Run(async () =>
                     {
@@ -69,57 +80,75 @@ namespace FortLauncher.Pages.Tabs
                             string jsonData = await File.ReadAllTextAsync(FilePath);
                             List<BuildConfig> buildConfig = JsonConvert.DeserializeObject<List<BuildConfig>>(jsonData)!;
 
-                            if (buildConfig != null)
+                            if (buildConfig != null && buildConfig.Count > 0)
                             {
-                                foreach (BuildConfig config in buildConfig)
-                                {
-                                    var VersionBuild = "";
-                                    string prefix = "++Fortnite+Release-";
-                                    if (config.VersionID.Length == 0)
-                                    {
-                                        VersionBuild = "ERROR";
-                                    }
-                                    else
-                                    {
-                                        int startIndex = config.VersionID.IndexOf(prefix);
-                                        if (startIndex != -1)
-                                        {
-                                            startIndex += prefix.Length;
-                                            VersionBuild = config.VersionID.Substring(startIndex);
-                                        }
-                                    }
-                                    var BuildString = FortniteDetect.Init(config.VersionID);
-                                    //VersionSorter.BuildInfo buildInfo = VersionSorter.SortOutMyVersion(config.buildID);
-                                    await System.Windows.Application.Current.Dispatcher.InvokeAsync(async () =>
-                                    {
-                                        Border border = AddBorderBuild(BuildString, VersionBuild, config);
+                                var borderInfoListToAdd = new List<TempBorderInfo>();
 
-                                       // border.MouseUp += (sender, e) => ButtonClicked(sender, e, config);
+                                await Task.Run(() =>
+                                {
+                                    foreach (BuildConfig config in buildConfig)
+                                    {
+                                    var VersionBuild = "";
+                                        string prefix = "++Fortnite+Release-";
+                                        if (config.VersionID.Length == 0)
+                                        {
+                                            VersionBuild = "ERROR";
+                                        }
+                                        else
+                                        {
+                                            int startIndex = config.VersionID.IndexOf(prefix);
+                                            if (startIndex != -1)
+                                            {
+                                                startIndex += prefix.Length;
+                                                VersionBuild = config.VersionID.Substring(startIndex);
+                                            }
+                                        }
+
+                                        var BuildString = FortniteDetect.Init(config.VersionID);
+
+                                        borderInfoListToAdd.Add(new TempBorderInfo
+                                        {
+                                            BuildString = BuildString,
+                                            VersionBuild = VersionBuild,
+                                            Config = config
+                                        });
+
+
+                                        Loggers.Log("Added " + config.VersionID);
+
+                                    };
+
+
+                                });
+
+                                await Application.Current.Dispatcher.InvokeAsync(() =>
+                                {
+                                    foreach (var borderInfo in borderInfoListToAdd)
+                                    {
+                                        Border border = AddBorderBuild(borderInfo.BuildString, borderInfo.VersionBuild, borderInfo.Config);
 
                                         borderInfoList.Add(new BorderInfo
                                         {
                                             Border = border,
                                             PlacementId = 0,
-                                            BuildId = config.buildID
+                                            BuildId = borderInfo.Config.buildID
                                         });
+
                                         LaunchBuilds.Children.Insert(0, border);
-                                    });
-
-                                    Loggers.Log("Added " + config.VersionID);
-                                }
-
+                                    }
+                                });
                             }
                         }
 
                     });
                 }
             }
-            catch { }
+            catch (Exception ex) { Loggers.Log(ex.Message, "LoadBuild"); }
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadBuilds(); // Yes!
+            await LoadBuilds(); // Yes!
         }
 
         public void UpdateAllBuilds(BuildConfig config, bool Launched = false)
@@ -177,39 +206,32 @@ namespace FortLauncher.Pages.Tabs
 
         public async void ButtonClicked(/*Wpf.Ui.Controls.Button button, */object s, RoutedEventArgs e, BuildConfig config)
         {
-           // System.Windows.MessageBox.Show("PENIS");
-           // System.Windows.MessageBox.Show(config.buildPath);
-            //if (e.ChangedButton == MouseButton.Left)
-           // {
-                try
+            try
+            {
+                if (PSBasics._FortniteProcess == null)
                 {
-                    if (PSBasics._FortniteProcess == null)
+                    //  System.Windows.MessageBox.Show(config.buildPath);
+                    if (File.Exists(System.IO.Path.Join(config.buildPath, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe")))
                     {
-                      //  System.Windows.MessageBox.Show(config.buildPath);
-                        if (File.Exists(System.IO.Path.Join(config.buildPath, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe")))
-                        {
-                            UpdateAllBuilds(config, true);
-                            await MainFrame.LaunchFortnite(config, e);
-                            UpdateAllBuilds(config, false);
-                        }
-                        else
-                        {
-                            System.Windows.MessageBox.Show("Path is wrong?");
-                        }
+                        UpdateAllBuilds(config, true);
+                        await MainFrame.LaunchFortnite(config, e);
+                        UpdateAllBuilds(config, false);
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Path is wrong?");
                     }
                 }
-                catch (Exception ex)
-                {
-                    Loggers.Log(ex.Message + " ~L2091~");
-                    System.Windows.MessageBox.Show("Please Check Logs");
-                }
-          //  }
+            }
+            catch (Exception ex)
+            {
+                Loggers.Log(ex.Message, "L2091");
+                System.Windows.MessageBox.Show("Please Check Logs");
+            }
         }
 
         public Border AddBorderBuild(string BuildString, string VersionBuild, BuildConfig config)
         {
-            //MessageBox.Show(BuildString);
-
             Wpf.Ui.Controls.SymbolIcon symbolIcon = new SymbolIcon
             {
                 Foreground = Brushes.White,

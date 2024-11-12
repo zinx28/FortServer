@@ -18,14 +18,14 @@ namespace FortLauncher.Services.Utils.Helpers
             Log("Initializing");
         }
 
-        public static void Log(string message)
+        public static void Log(string message, string LogInfo = "LOG")
         {
             try
             {
 
                 using (StreamWriter writer = File.AppendText(appDataFolderPath))
                 {
-                    writer.WriteLine($"FortLauncher->{DateTime.Now:yyyy-MM-dd HH:mm:ss}: {message}");
+                    writer.WriteLine($"FortLauncher:{LogInfo}->{DateTime.Now:yyyy-MM-dd HH:mm:ss}: {message}");
                 }
             }
             catch (Exception ex)

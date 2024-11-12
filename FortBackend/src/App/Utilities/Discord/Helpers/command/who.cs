@@ -39,6 +39,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             var userfound = await DiscordBot.Client.Rest.GetUserAsync(userId);
                             UserId = id;
                             UserName = userfound.Username;
+                            Logger.Log($"Found user {UserName}", "DiscordBot");
                         }
                     }
                     else

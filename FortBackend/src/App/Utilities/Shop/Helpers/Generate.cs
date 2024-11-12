@@ -13,29 +13,21 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
             if (Generator.Attempts == 4)
             {
-                Logger.Error("Went pass to many attempts", "ItemShop");
+                Logger.Error("Went pass too many attempts", "ItemShop");
                 return false;
             }
-
             Random random = new Random();
-            string filePath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "json", "shop", "bundles.json");
-            string jsonContent = File.ReadAllText(filePath);
-            if (jsonContent == null)
-            {
-                Logger.Error("Shop generation will be canceled -> bundles is null");
-                return false;
-            }
 
-
-            List<ShopBundles> skinItems = JsonConvert.DeserializeObject<List<ShopBundles>>(jsonContent)!;
+            List<ShopBundles> skinItems = Saved.Saved.BackendCachedData.ShopBundlesFiltered;
             if (skinItems != null)
             {
                 int randomIndex = random.Next(skinItems.Count);
+                Console.WriteLine(randomIndex);
                 ShopBundles RandomSkinItem = skinItems[randomIndex];
-
+                Console.WriteLine(RandomSkinItem);
                 if (RandomSkinItem == null)
                 {
-                    Logger.Error($"Shop generation will be canceled -> RandomSkinItem is null");
+                    Logger.Error($"Shop generation will be canceled -> RandomSkinItem is null", "ItemShop");
                     return false;
                 }
 
@@ -52,9 +44,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                 RandomSkinItem.LastShownDate = DateTime.Now.ToString();
 
-                string updatedJsonContent = JsonConvert.SerializeObject(skinItems, Formatting.Indented);
-                File.WriteAllText(filePath, updatedJsonContent);
-
+                await UpdateShopBundle.UpdateShopData();
 
                 List<ShopBundlesItem> DailyArray = RandomSkinItem.Daily;
                 if (DailyArray != null)
@@ -76,11 +66,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             Price = Item.singleprice;
                         }
                         else
-                        {
-                            //foreach (Item item in Item.items)
-                            //{
-                            //    string itemType = item.item.Split(":")[0];
-
+                        { 
                             switch (Item.item.Split(":")[0])
                             {
                                 case "AthenaCharacter":
@@ -108,10 +94,22 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 return false;
                             }
 
-                            if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            int price = 0;
+                            if (Generator.categoryMap.ContainsKey(ItemTemplateId))
                             {
-                                Price = price;
+                                Console.WriteLine("TEST!!");
+                                price = Generator.categoryMap[ItemTemplateId](Item.rarity);
+
+                                if (price != 0)
+                                {
+                                    Price = price;
+                                }
                             }
+
+                            //if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            //{
+                            //    Price = price;
+                            //}
                         }
 
                         //if (Item.singleprice == -1)
@@ -149,7 +147,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         });
                         Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                     }
-                    Generator.DailyItems -= HowManyTurns;
+                    Generator.DailyItems -= 1;
                 }
 
                 List<ShopBundlesItem> WeeklyArray = RandomSkinItem.Weekly;
@@ -174,12 +172,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         }
                         else
                         {
-                           // Console.WriteLine(Item.name);
-                           // Console.WriteLine(Item.item.Split(":")[0]);
-                            //foreach (Item item in Item.items)
-                            //{
-                            //    string itemType = item.item.Split(":")[0];
-
                             switch (Item.item.Split(":")[0])
                             {
                                 case "AthenaCharacter":
@@ -207,10 +199,21 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 return false;
                             }
 
-                            if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            int price = 0;
+                            if (Generator.categoryMap.ContainsKey(ItemTemplateId))
                             {
-                                Price = price;
+                                price = Generator.categoryMap[ItemTemplateId](Item.rarity);
+
+                                if (price != 0)
+                                {
+                                    Price = price;
+                                }
                             }
+
+                            //if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            //{
+                            //    Price = price;
+                            //}
                         }
 
                        
@@ -250,7 +253,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         });
                         Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                     }
-                    Generator.WeeklyItems -= HowManyTurns;
+                    Generator.WeeklyItems -= 1;
                 }
             }
             else
@@ -271,10 +274,11 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
         }
 
-        public static async Task SingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, string[] itemType, double[] rarityProb, string type = "Small")
+        public static async Task SingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, List<string> itemType, double[] rarityProb, string type = "Small")
         {
             Random random = new Random();
-            string ChosenItem = string.Empty;
+            List<ShopItems> ChosenItem = new List<ShopItems>();
+            var ChosenItemString = "";
             int Price = -1;
             double y = 0.0;
             double randomValue = random.NextDouble();
@@ -284,26 +288,25 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 y += rarityProb[i];
                 if (randomValue < y)
                 {
-                    ChosenItem = itemType[i];
+                    ChosenItemString = itemType[i];
+                    if (Generator.itemTypeMap.ContainsKey(ChosenItemString))
+                    {
+                        ChosenItem = Generator.itemTypeMap[ChosenItemString]();
+
+                        if(ChosenItem.Count != 0)
+                        {
+                            break;
+                        }
+                    }
+                    //ChosenItem = (itemType[i]);
                     break;
                 }
             }
 
-            string filePath = Path.Combine(PathConstants.BaseDir, $"src/Resources/json/shop/{ChosenItem}.json");
-            string jsonContent = File.ReadAllText(filePath);
-
-            if(jsonContent == null)
+            if (ChosenItem != null && ChosenItem.Count > 0)
             {
-                Logger.Error("Chosen Item: " + ChosenItem + " Path isnt found :(");
-                return;
-            }
-
-            List<ShopItems> skinItems = JsonConvert.DeserializeObject<List<ShopItems>>(jsonContent)!;
-
-            if (skinItems != null)
-            {
-                int randomIndex = random.Next(skinItems.Count);
-                ShopItems RandomSkinItem = skinItems[randomIndex];
+                int randomIndex = random.Next(ChosenItem.Count);
+                ShopItems RandomSkinItem = ChosenItem[randomIndex];
                 Random random1 = new Random();
 
                 DateTime lastShownDate;
@@ -317,13 +320,37 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 }
 
                 RandomSkinItem.LastShownDate = DateTime.Now.ToString("yyyy-MM-dd");
-                string updatedJsonContent = JsonConvert.SerializeObject(skinItems, Formatting.Indented);
-                File.WriteAllText(filePath, updatedJsonContent);
 
-                if (Generator.PriceValues.TryGetValue(ChosenItem, out var categoryPrices) && categoryPrices.TryGetValue(RandomSkinItem.rarity, out var price))
+                // enable if you want doesnt really matter (epic has the same items in the shop 24/7 now)
+                
+                //string filePath = Path.Combine(PathConstants.BaseDir, $"json/shop/{ChosenItemString}.json");
+                //if (!File.Exists(filePath))
+                //{
+                //    Logger.Error("Chosen Item: " + ChosenItemString + " Path isnt found :(");
+                //    return;
+                //}
+                //string updatedJsonContent = JsonConvert.SerializeObject(ChosenItem, Formatting.Indented);
+                //File.WriteAllText(filePath, updatedJsonContent);
+
+                //
+
+                int price = 0;
+                Console.WriteLine(ChosenItemString);
+                Console.WriteLine(Generator.categoryMap.ContainsKey(ChosenItemString));
+                if (Generator.categoryMap.ContainsKey(ChosenItemString))
                 {
-                    Price = price;
+                    price = Generator.categoryMap[ChosenItemString](RandomSkinItem.rarity);
+                    Console.WriteLine(price);
+                    if (price != 0)
+                    {
+                        Price = price;
+                    }
                 }
+
+                //if (Generator.PriceValues.TryGetValue(ChosenItem, out var categoryPrices) && categoryPrices.TryGetValue(RandomSkinItem.rarity, out var price))
+                //{
+                //    Price = price;
+                //}
 
                 ListItemSaved.Add(new ItemsSaved
                 {
@@ -344,7 +371,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             }
             else
             {
-                Logger.Error($"Failed To Generate Item: {ChosenItem}:Unknown ofc", "ItemShop");
+                Logger.Error($"Failed To Generate Item: {ChosenItemString}:Unknown ofc", "ItemShop");
             }
         }
     }

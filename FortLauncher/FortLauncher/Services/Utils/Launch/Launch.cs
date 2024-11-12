@@ -27,7 +27,7 @@ namespace FortLauncher.Services.Utils.Launch
         {
             try
             {
-                MainNav.PathDownloader.Visibility = Visibility.Visible;
+                MainNav.LaunchingUI.Visibility = Visibility.Visible;
 
                 string BaseFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 string DllPath = System.IO.Path.Combine(BaseFolder, "FortLauncher", LauncherConfig.CurlDll);
@@ -94,13 +94,13 @@ namespace FortLauncher.Services.Utils.Launch
                     }
                 });
 
-                MainNav.PathDownloader.Visibility = Visibility.Collapsed;
+                MainNav.LaunchingUI.Visibility = Visibility.Collapsed;
 
                 cancellationToken.ThrowIfCancellationRequested();
                 await Task.Run(async () =>
                 {
                     Inject.InjectDll(PSBasics._FortniteProcess.Id, DllPath); // redirect!
-                    PSBasics._FortniteProcess.WaitForExit();
+                    PSBasics._FortniteProcess?.WaitForExit();
                 });
                 //RPC.Update("Logged in as " + UserData.UserName);
                 // PSBasics.test.IsEnabled = true;

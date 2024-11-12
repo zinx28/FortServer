@@ -1,4 +1,5 @@
 ﻿using FortLauncher.Services.Utils.Helpers;
+using FortLauncher.Services.Utils.Launch.Helpers;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
@@ -52,7 +53,15 @@ namespace WpfApp1
             }
         }
 
-        private void Application_Exit(object sender, ExitEventArgs e) { }
+        private void Application_Exit(object sender, ExitEventArgs e) 
+        {
+            if (PSBasics._FortniteProcess != null && !PSBasics._FortniteProcess.HasExited)
+                PSBasics._FortniteProcess.Kill();
+            if (FakeAC._FNLauncherProcess != null && !FakeAC._FNLauncherProcess.HasExited)
+                FakeAC._FNLauncherProcess.Kill();
+            if (FakeAC._FNAntiCheatProcess != null && !FakeAC._FNAntiCheatProcess.HasExited)
+                FakeAC._FNAntiCheatProcess.Kill();
+        }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {

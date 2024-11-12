@@ -694,6 +694,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         {
                                             Logger.Log("COULDNT FIND ACC ON XMPP");
                                         }
+
                                         Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendID)!;
                                         if(targetClient2 != null)
                                         {

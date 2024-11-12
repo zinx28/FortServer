@@ -1,1946 +1,2162 @@
 [
-    {
-        "id": "j7FueLV0BNT2vIK22KwFOYnV35X3jNByOgqD2-ik",
-        "item": "AthenaPickaxe:BoltonPickaxe",
-        "name": "Close Shave",
-        "description": "A stylish pickaxe with bolt on tips.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "5Gruyt18tgAr5-Zh1Qi1R5p9tVeGD8gLHS6245Oc",
-        "item": "AthenaPickaxe:HalloweenScythe",
-        "name": "Reaper",
-        "description": "Harvest resources... and souls.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "n0wdWUdVgILB92SCxaoBT8xiC75pI2XTEU2XPjFf",
-        "item": "AthenaPickaxe:HappyPickaxe",
-        "name": "Lucky",
-        "description": "A sturdy pickaxe with a great attitude.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "T8C48JnFLm9xCOxw9m180SpjQVPjFjhvYCtUxHYZ",
-        "item": "AthenaPickaxe:Pickaxe_Deathvalley",
-        "name": "Death Valley",
-        "description": "Whenever you need a skull on a stick, the Death Valley Pickaxe is there for you.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "0hSJhQo--sYW99sXJWb5BYzyAWNmRQdmggAZBDlQ",
-        "item": "AthenaPickaxe:Pickaxe_Flamingo",
-        "name": "Pink Flamingo",
-        "description": "From suburban lawns to the front lines, the Pink Flamingo Pickaxe is always ready for action.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "20qdw0qi9rpLN39FPTEENsPlYWx3nx0W8ckNb3h4",
-        "item": "AthenaPickaxe:Pickaxe_ID_014_WinterCamo",
-        "name": "Ice Breaker",
-        "description": "A great way to meet your fellow combatants.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "C1sgQinwtrtrKIp43XwB0Uh2BGQVXhSid74QgpLr",
-        "item": "AthenaPickaxe:Pickaxe_ID_016_Disco",
-        "name": "Disco Brawl",
-        "description": "Ready for a ballroom blitz.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "y3GdO77AjSG12ECYhyq3rRnfL7pGoMJU0d8m1e6e",
-        "item": "AthenaPickaxe:Pickaxe_ID_017_Shark",
-        "name": "Chomp Jr.",
-        "description": "They're going to need a bigger fort.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "wS-NXPs-UxG0FRdCWxmgt3EDlEeN01u3G38kUaOl",
-        "item": "AthenaPickaxe:Pickaxe_ID_018_Anchor",
-        "name": "Bottom Feeder",
-        "description": "From the murky depths!",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "BSvzdeVWDjLji4naXPcIK7aVzMDe7ZnHXWJOGvb5",
-        "item": "AthenaPickaxe:Pickaxe_ID_019_Heart",
-        "name": "Tat Axe",
-        "description": "No regerts!",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "cg2t-fvTBeYQE3jhCJrcKnn1mFVPuF888XiYC6ZB",
-        "item": "AthenaPickaxe:Pickaxe_ID_020_Keg",
-        "name": "Party Animal",
-        "description": "Red plastic cups not included.",
-        "items": [],
-        "variants": [],
-        "rarity": "slurp"
-    },
-    {
-        "id": "FNyZ3UUKTk3O8ICdoGkUgFPoV7yfDKEna2qZGBi-",
-        "item": "AthenaPickaxe:Pickaxe_ID_021_Megalodon",
-        "name": "Tooth Pick",
-        "description": "Don't forget to floss.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "T3tX5lwbHEPIbCiJtyNPF85KWy1TCyT0G8jFNtHy",
-        "item": "AthenaPickaxe:Pickaxe_ID_022_HolidayGiftWrap",
-        "name": "You Shouldn't Have!",
-        "description": "For the combatant who has everything.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "cqBHXvqMYRVMafxXuLNHLTYxu4kLpI4EvMMWTP4T",
-        "item": "AthenaPickaxe:Pickaxe_ID_023_SkiBoot",
-        "name": "Ski Boot",
-        "description": "Give 'em the boot.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "yiimKFOebswHjarJZrFL0Xefr6sUATvRp3X59Ki3",
-        "item": "AthenaPickaxe:Pickaxe_ID_024_Plunger",
-        "name": "Plunja",
-        "description": "The competition is circling the drain.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "sqWGsjv95Jsnd8IcDBuCcsTH-MTJX4ovUEs50WN-",
-        "item": "AthenaPickaxe:Pickaxe_ID_025_Dragon",
-        "name": "Dragon Axe",
-        "description": "Forged in dragon fire.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "azVnns3m61Gz0CUQevkaOQMHNY0Z4B8QnI0-lthg",
-        "item": "AthenaPickaxe:Pickaxe_ID_026_Brite",
-        "name": "Rainbow Smash",
-        "description": "Beat the stuffing out of 'em.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "DcEdjQO5SdAPGapy6X2KERXMWtTf7ZswpatSIAUO",
-        "item": "AthenaPickaxe:Pickaxe_ID_030_ArtDeco",
-        "name": "Empire Axe",
-        "description": "Build your empire.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "vPT-ju54pEHHRHpYSuat4GS7lAbw4mGov60m70YX",
-        "item": "AthenaPickaxe:Pickaxe_ID_031_Squeak",
-        "name": "Pick Squeak",
-        "description": "Squeak squeak! Squeak! Squeak squeak squeak!",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "3OQHM1x7QYy3pNz5m1ZzqSTzgtfr9wl4YDkqRKEU",
-        "item": "AthenaPickaxe:Pickaxe_ID_032_Tactical",
-        "name": "Tactical Spade",
-        "description": "Designed for survival.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "W0vPoRDui-18gLgkKYkqOhwlSRxddcPc7DnKGbNw",
-        "item": "AthenaPickaxe:Pickaxe_ID_034_RockerPunk",
-        "name": "Anarchy Axe",
-        "description": "This axe does whatever it wants.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "RP62rU2Pof1IV7qxQ9WhdJx0k1ZEzApp-ltvmMgl",
-        "item": "AthenaPickaxe:Pickaxe_ID_035_Prismatic",
-        "name": "Spectral Axe",
-        "description": "What color is it?",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "HA3OrQ1Q4pSWvud8Gq2POTXZoOY9mcenvZSz0Amf",
-        "item": "AthenaPickaxe:Pickaxe_ID_036_CuChulainn",
-        "name": "Silver Fang",
-        "description": "Loyal. Brave. Very sharp.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "cWqG3eGQDS5qquK68iZBWvQ5WMX-twn6BmLKdgYC",
-        "item": "AthenaPickaxe:Pickaxe_ID_037_Stealth",
-        "name": "Spectre",
-        "description": "They'll never see it coming.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "oaTQPXupdzlZhRVG4-85HyVVN2DYh6DMBZQVy5lT",
-        "item": "AthenaPickaxe:Pickaxe_ID_038_Carrot",
-        "name": "Carrot Stick",
-        "description": "Give 'em 3-5 servings.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "kPaEVf2xbT23FOWVrDcjlN0KFLrzdlNbQGswXIYT",
-        "item": "AthenaPickaxe:Pickaxe_ID_039_TacticalBlack",
-        "name": "Instigator",
-        "description": "Start something.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Xej1abaRSxqRAARJyYXgmxWJqIxxNC-5dC9Gssm-",
-        "item": "AthenaPickaxe:Pickaxe_ID_040_Pizza",
-        "name": "Axeroni",
-        "description": "Victory by the slice!",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "XLHWmXu4yoHFTuFlgfENT7HqcmwQB8m1IXfqbxY1",
-        "item": "AthenaPickaxe:Pickaxe_ID_041_PajamaParty",
-        "name": "Bitemark",
-        "description": "Take a bite out of the competition.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "sVGByr-kumFynWJUfEC2fHftmVp8uQKxNDzc9rQL",
-        "item": "AthenaPickaxe:Pickaxe_ID_042_CircuitBreaker",
-        "name": "Cutting Edge",
-        "description": "Forged in a particle accelerator.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "y59bnUFIEc6p3wM862OEKD9uGcv-2AA6WCoHCHF6",
-        "item": "AthenaPickaxe:Pickaxe_ID_043_OrbitingPlanets",
-        "name": "Global Axe",
-        "description": "Think globally, axe locally.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "juuPIPS69P7loGegI9uZxHpxOiMdLswO5UIc4vVl",
-        "item": "AthenaPickaxe:Pickaxe_ID_044_TacticalUrbanHammer",
-        "name": "Tenderizer",
-        "description": "Leave a good first impression.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "iswOhJAf3cTf6VxfDcCDobrA1XyoqIKFa8LwLnz1",
-        "item": "AthenaPickaxe:Pickaxe_ID_049_Metal",
-        "name": "Persuader",
-        "description": "Very convincing.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "A3ypnBvEmLHr9I60ItkS3labr-ckduSaPoPVUK3W",
-        "item": "AthenaPickaxe:Pickaxe_ID_050_Graffiti",
-        "name": "Renegade Roller",
-        "description": "Go on a roll.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "ieooZ1yE-e1sgP7RCgUeKAqHl8vyfpVwpuWGChJx",
-        "item": "AthenaPickaxe:Pickaxe_ID_051_NeonGlow",
-        "name": "Glow Stick",
-        "description": "Behold, it glows!",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Gpxkwn5pblrGaxLdQXM3eKqOxXiN0eDUvTmBVn-0",
-        "item": "AthenaPickaxe:Pickaxe_ID_052_Hazmat",
-        "name": "Autocleave",
-        "description": "Clean out the competition.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "hnc99l1wbAV8VKq2GfsXDs3yFzrKdExS3PkTd39s",
-        "item": "AthenaPickaxe:Pickaxe_ID_053_Deco",
-        "name": "Airfoil",
-        "description": "Streamlined for optimal aerodynamics.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "6HvIIulWpta0i41h-FZxNaSXNPNWI6MqXBR6ZqjZ",
-        "item": "AthenaPickaxe:Pickaxe_ID_054_FilmCamera",
-        "name": "Director's Cut",
-        "description": "Lights, Camera, Axin'.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "eXBV5kc9LHLJj3H-Irbh4MDq0dOxdWC9aydarS05",
-        "item": "AthenaPickaxe:Pickaxe_ID_055_Stop",
-        "name": "Stop Axe",
-        "description": "Never stop axin'.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "kA-EBqLzeiE6qh76cgiuw4L8P7V6BSYEdAyfPF5W",
-        "item": "AthenaPickaxe:Pickaxe_ID_057_Jailbird",
-        "name": "Nite Owl",
-        "description": "Pull an all-niter.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Jrupm7qCvjHIgzvDuDOuD0IlI0g9aAJmC7K7MaxS",
-        "item": "AthenaPickaxe:Pickaxe_ID_058_Basketball",
-        "name": "Slam Dunk",
-        "description": "It's a... slam dunk.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "y2NDeCmc4mlRDiIrjx6l4b-Uf8KzxdOTRiB5MHjX",
-        "item": "AthenaPickaxe:Pickaxe_ID_059_DarkEagle",
-        "name": "Oracle Axe",
-        "description": "Visions of victory.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "Mf7ffhCU-ZE9tnfau7HIVVYWEML0Ga0DDvtFTpXf",
-        "item": "AthenaPickaxe:Pickaxe_ID_060_DarkNinja",
-        "name": "Fated Frame",
-        "description": "Rise above your fate.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "ZlyRHzwt5FftX2QTNbbBAxoykQi3Ix-NGu6LGZOq",
-        "item": "AthenaPickaxe:Pickaxe_ID_061_WWIIPilot",
-        "name": "Propeller Axe",
-        "description": "Take it for a spin.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "UKPNsTh5y7RFshCfY7zOVIJCiXjJUZ6IOL3YTwFW",
-        "item": "AthenaPickaxe:Pickaxe_ID_062_Soccer",
-        "name": "Elite Cleat",
-        "description": "For those unaccustomed to defeat.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "PHLldWdUNQDlCIs3Ic9y3wLjknFO-bN8uqH61Be2",
-        "item": "AthenaPickaxe:Pickaxe_ID_063_Vuvuzela",
-        "name": "Vuvuzela",
-        "description": "Festively loud.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "wXhzBlReViho6s2NPygA20FncJXd0AiJRSi2GMGL",
-        "item": "AthenaPickaxe:Pickaxe_ID_064_Gumshoe",
-        "name": "Magnifying Axe",
-        "description": "Dust 'em for prints.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "oJrAKsad4Q61SrX-c8uGdaIQQfgFmjKtCBiDhQZm",
-        "item": "AthenaPickaxe:Pickaxe_ID_065_SpeedyRed",
-        "name": "Razor Edge",
-        "description": "On the verge of being too sharp.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "DTKnzEFaWaC4ZDD51cYCHkGzrljbvhpooezgvLr2",
-        "item": "AthenaPickaxe:Pickaxe_ID_066_FlintlockRed",
-        "name": "Crimson Axe",
-        "description": "Wield, smite, repeat.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "MXLK-Ziw7vNSP5p8avrusjV2jlBOR71WyNSh8pDU",
-        "item": "AthenaPickaxe:Pickaxe_ID_067_Taxi",
-        "name": "Victory Lap",
-        "description": "Give it a spin.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "StMHqdrC5qGUVvR3KrxvLKt4HaW5Gh-DbmmThkgQ",
-        "item": "AthenaPickaxe:Pickaxe_ID_070_Viking",
-        "name": "Forebearer",
-        "description": "Wielded by countless generations.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "0C4WF4mTw-Hx5B4vyBZ5bU9r9HMNqfn72AC7BY6L",
-        "item": "AthenaPickaxe:Pickaxe_ID_072_Luchador",
-        "name": "Piledriver",
-        "description": "No holds barred.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Vy785kRQb3dwiIZdAgzUos2gSgFj-Li75IuZAH3w",
-        "item": "AthenaPickaxe:Pickaxe_ID_074_SharpDresser",
-        "name": "Studded Axe",
-        "description": "Edgy.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "EUiPY6m-cH6tNbGSTT4t7mad7yzpDGQSUQPtqTb8",
-        "item": "AthenaPickaxe:Pickaxe_ID_075_Huya",
-        "name": "Pointer",
-        "description": "Get to the point.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "hC-12ZLUFwlxchTW-oZVOOlH4WbwaLQlOmhw1IDd",
-        "item": "AthenaPickaxe:Pickaxe_ID_076_Douyu",
-        "name": "Power Grip",
-        "description": "Get a grip.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Jmo4j2R6EavkRaRp5Gw2Mw6RYyYbsuYM82H4k6BZ",
-        "item": "AthenaPickaxe:Pickaxe_ID_077_CarbideWhite",
-        "name": "Resonator",
-        "description": "Swing with frequency.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "seBRS0v73Y7GRHvr2xWcHlcfhpnRVZeUyIdouzpd",
-        "item": "AthenaPickaxe:Pickaxe_ID_078_Lifeguard",
-        "name": "Rescue Paddle",
-        "description": "Life preserver?",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Dusj3LTTLfvsZLEdn5JTd0z8YHvOZGaeuDL-oxwi",
-        "item": "AthenaPickaxe:Pickaxe_ID_080_Scuba",
-        "name": "Harpoon Axe",
-        "description": "Tip of the spear.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Oh0Ezo5E36sj3I7SCoHwWReQ-07xUkb-UZh4Iwu5",
-        "item": "AthenaPickaxe:Pickaxe_ID_081_StreetRacerCobra",
-        "name": "Clutch Axe",
-        "description": "Pedal to the metal.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "F3YwHF4RAim0XQqUxCA-lSxNvLjYwwWyz3rS-w-M",
-        "item": "AthenaPickaxe:Pickaxe_ID_082_SushiChef",
-        "name": "Filet Axe",
-        "description": "A cut above the rest.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "0y3Drj8W-REjwR9qAEFiaSzDJwV9jo6jeogiXpGt",
-        "item": "AthenaPickaxe:Pickaxe_ID_083_Exercise",
-        "name": "Axercise",
-        "description": "Feel the burn!",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "KZMR9COejXjlMBatrwRM3WfgzcPe1CAVI70kFjOI",
-        "item": "AthenaPickaxe:Pickaxe_ID_084_DurrburgerHero",
-        "name": "Patty Whacker",
-        "description": "If you can't stand the heat...",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "G9jfzUoYSgOrJ6dd6-Hv5FuAK0nB1omWX8Bkg035",
-        "item": "AthenaPickaxe:Pickaxe_ID_085_Wukong",
-        "name": "Jingu Bang",
-        "description": "Fit for a king.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "jCKnormyTREF9lwornKBWx8MudfwFOraIbLXLt9-",
-        "item": "AthenaPickaxe:Pickaxe_ID_086_Biker",
-        "name": "Throttle",
-        "description": "Rev it up!",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "90lEPUEosT-IG6KJRR5bd2sXi-8XIvJBnv2YjunI",
-        "item": "AthenaPickaxe:Pickaxe_ID_087_Hippie",
-        "name": "Drumbeat",
-        "description": "Feel the beat.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "h4WjWST8w6K8OowvgfcUDquhKwFe46a7cD2GQ7tt",
-        "item": "AthenaPickaxe:Pickaxe_ID_088_PSBurnout",
-        "name": "Controller",
-        "description": "Take control.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "44FEQdyPa8sqWceNpdfsln38lyojO0KnRUIb8TZo",
-        "item": "AthenaPickaxe:Pickaxe_ID_089_RavenQuill",
-        "name": "Iron Beak",
-        "description": "Peck away.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "DDliOcEUpbiEpYlN3zuJf55xqzPYd5pO4vfRA9Sm",
-        "item": "AthenaPickaxe:Pickaxe_ID_090_SamuraiBlue",
-        "name": "Cat's Claw",
-        "description": "Scratch and slash.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "hQ1vljAft4Gkwo2QPGd4yknaNAuHWBhfT7DBkO2i",
-        "item": "AthenaPickaxe:Pickaxe_ID_091_Hacivat",
-        "name": "Tree Splitter",
-        "description": "Make like a tree and split.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "I4INuPaient-rFPXgkplLXZFUsqwHp3bnF1zWmH1",
-        "item": "AthenaPickaxe:Pickaxe_ID_092_Bling",
-        "name": "Crowbar",
-        "description": "Pry away.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "1bjW1bW1R8CmL2MLkxedYiGhonsjFZhI5KXymPWN",
-        "item": "AthenaPickaxe:Pickaxe_ID_093_Medic",
-        "name": "Flatliner",
-        "description": "Not on my watch!",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "peAulYTSgPtbfzTKVY9STzTUdFvMpBU7t0oij2aL",
-        "item": "AthenaPickaxe:Pickaxe_ID_094_Football",
-        "name": "Upright Axe",
-        "description": "It's up, and it's good!",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "8Z83Y7KvmUfKBZTEMdIeVJtmF2Qz0QogUHluAXlM",
-        "item": "AthenaPickaxe:Pickaxe_ID_095_FootballTrophy",
-        "name": "Golden Pigskin",
-        "description": "Claim the trophy.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "DBk7IA5p2uuJRS3dHFGklDz151cSYpI1L0jGnOn-",
-        "item": "AthenaPickaxe:Pickaxe_ID_096_FootballReferee",
-        "name": "First Downer",
-        "description": "10 yards to victory.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "3NNi-vd7ntf4CUR6X95DYq0-zJYhMM19DNX3zQLd",
-        "item": "AthenaPickaxe:Pickaxe_ID_098_GarageBand",
-        "name": "Lead Swinger",
-        "description": "Hit the high notes.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "NUp0oQDYNgMxiVOM5d3RPWjPvNWEOh2cYC08TVLf",
-        "item": "AthenaPickaxe:Pickaxe_ID_099_ModernMilitaryRed",
-        "name": "Pinpoint",
-        "description": "Accuracy is paramount.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "UUpr-pEtZysqtL8C8YSxOibDNhcLDy5miKya23zz",
-        "item": "AthenaPickaxe:Pickaxe_ID_100_DieselPunk",
-        "name": "Turbine",
-        "description": "Self-piloted propulsion.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "ZrHNGbjaJ0EKN3C1Vw9V8s-yJbJgrK-1N4-Tjc-6",
-        "item": "AthenaPickaxe:Pickaxe_ID_101_Octoberfest",
-        "name": "Axcordion",
-        "description": "Squeeze out a smashing tune.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "vrDZR-iYtupjvgyJMCraeruzloEFjmEFpa2kxOld",
-        "item": "AthenaPickaxe:Pickaxe_ID_105_Scarecrow",
-        "name": "Harvester",
-        "description": "Reap what you sow.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "es8PSf5QiVqgorpBVBHtDIlu-WvCpxsnAAWASDrk",
-        "item": "AthenaPickaxe:Pickaxe_ID_106_DarkBomber",
-        "name": "Thunder Crash",
-        "description": "Wield the thunder.",
-        "items": [],
-        "variants": [],
-        "rarity": "dark"
-    },
-    {
-        "id": "8DW1eWPPJslgP8sgNofSE5aAMlPKT0ApVWAU89k9",
-        "item": "AthenaPickaxe:Pickaxe_ID_107_HalloweenTomato",
-        "name": "Night Slicer",
-        "description": "Slice twice.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "GcJ3-ae1vnpoZ1vhou0fHh9x1m0pOR0OGsQG8dR0",
-        "item": "AthenaPickaxe:Pickaxe_ID_107_Plague",
-        "name": "Herald's Wand",
-        "description": "It's vital.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "afrc2UcD23jdng-S3RcQrk6wHC1j-fpK6p6QMKvA",
-        "item": "AthenaPickaxe:Pickaxe_ID_108_PumpkinSlice",
-        "name": "Carver",
-        "description": "Honed for the harvest.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "1V9slxuSXN82AzN9MtsfCYfZj2gUM95K9RecVULz",
-        "item": "AthenaPickaxe:Pickaxe_ID_109_SkullTrooper",
-        "name": "Skull Sickle",
-        "description": "Skeleton's choice.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "EoPjKL1bcyx8OYkvUbGmH0QIq7ZVjd6avhxh7vOI",
-        "item": "AthenaPickaxe:Pickaxe_ID_110_Vampire",
-        "name": "Moonrise",
-        "description": "Strike at midnight.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "WyOcSxuH7o1HxuLXyyxmkE59DmSvVmfGhovUopN9",
-        "item": "AthenaPickaxe:Pickaxe_ID_111_BlackWidow",
-        "name": "Web Breaker",
-        "description": "Clear out the cobwebs.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "F07wdrFAHIdRPiF0e7z6LGeMPY1ZrbchPLZvdTfc",
-        "item": "AthenaPickaxe:Pickaxe_ID_112_GuanYu",
-        "name": "Guandao",
-        "description": "Sharpened for battle.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Voi8-kQ3RRTxFo5nTJyGK6qwOHmx3J77eVllh6aA",
-        "item": "AthenaPickaxe:Pickaxe_ID_113_Muertos",
-        "name": "Six String Striker",
-        "description": "Now taking requests. Reactive: Glows in the dark",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "vMFmipQWvoUIruFhesADRTB6lpgr-ocHx5nzSDHF",
-        "item": "AthenaPickaxe:Pickaxe_ID_114_BadassCowboyCowSkull",
-        "name": "Longhorn",
-        "description": "Corral the competition.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "71GpsRfN6BAWuWtJl33u6ez4FAA8KEAlcZj2HCPZ",
-        "item": "AthenaPickaxe:Pickaxe_ID_115_EvilCowboy",
-        "name": "Dark Shard",
-        "description": "Splintered from geometric perfection. Reactive: Transforms by dealing damage, or by outliving other players.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "mBo81odss-XnbLWvaOZQgthAAdPNUvZj8xYPyx91",
-        "item": "AthenaPickaxe:Pickaxe_ID_117_MadCommander",
-        "name": "Splinterstrike",
-        "description": "Pointy whichever way you point it.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "HumFhAGOmH1Zvn8k1yn83cnZLGTI9HEFcy27uNL5",
-        "item": "AthenaPickaxe:Pickaxe_ID_118_StreetOps",
-        "name": "Angular Axe",
-        "description": "Acutely obtuse.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "Aj15CAuHpX-m4q3WqE-EdfSOmKhf-bQ4utDZ1j16",
-        "item": "AthenaPickaxe:Pickaxe_ID_119_AnimalJackets",
-        "name": "Jackspammer",
-        "description": "Swing it over and over and over and over and over...",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "fMMkUrCocqAXYAhOU8knM-MrHXMuqNimb8OoklPA",
-        "item": "AthenaPickaxe:Pickaxe_ID_120_SamuraiUltraArmor",
-        "name": "Jawblade",
-        "description": "Clench victory between your teeth.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "uCspQX4kCwhuoEXhj-mZ0wYxfq5sk3Di-ml05SWl",
-        "item": "AthenaPickaxe:Pickaxe_ID_121_RobotRed",
-        "name": "A.X.E.",
-        "description": "Perfectly programmed pick.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "ETns4gFA9-dQhAPG0qPjyP2kV-PPsJRiGZwEQZCC",
-        "item": "AthenaPickaxe:Pickaxe_ID_122_Witch",
-        "name": "Spellslinger",
-        "description": "Ancient and gnarled.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "3Dtl7afWjmWahe9fBUxR9qFuEInsPJuDUM1O17Be",
-        "item": "AthenaPickaxe:Pickaxe_ID_123_HornedMask",
-        "name": "Gatekeeper",
-        "description": "On the threshold of victory.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "enFhr1PgzEopYkSjhgt1BGPf8lMAMks16c91yR4u",
-        "item": "AthenaPickaxe:Pickaxe_ID_124_Feathers",
-        "name": "Scrambler",
-        "description": "Mix it up.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "GMqJhAnH11P-NoOQwEnFQPyur9vCjoXIeLB4hfUd",
-        "item": "AthenaPickaxe:Pickaxe_ID_125_Moth",
-        "name": "Lamp",
-        "description": "The glow is alluring.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "URYm5snPLGEVRS5u3aLzJUWxAgxXeKeV4q8daSrz",
-        "item": "AthenaPickaxe:Pickaxe_ID_127_Rhino",
-        "name": "Mauler",
-        "description": "Exhaust the competition.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "qBt-ca1Nt4eQi-njlWdn16cZNvwlIZSPPnp62Qvt",
-        "item": "AthenaPickaxe:Pickaxe_ID_131_Nautilus",
-        "name": "Krakenaxe",
-        "description": "The scourge of the seven seas!",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "6Ob3Zb7UFGGejpOmGHgdYzvywt3nbnhBfz1I0nOw",
-        "item": "AthenaPickaxe:Pickaxe_ID_133_Demon",
-        "name": "Evil Eye",
-        "description": "Always watching. Always.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "BbylaO29CRIzQo5GXwTtpcXazhSE-ICZ4c2YZeZa",
-        "item": "AthenaPickaxe:Pickaxe_ID_134_Snowman",
-        "name": "Icicle",
-        "description": "Cold to the touch.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "21feX5sk0Y8eHJdHZ-sIYBclOySeae4VFxdwa2Uh",
-        "item": "AthenaPickaxe:Pickaxe_ID_135_SnowNinja",
-        "name": "Inverted Blade",
-        "description": "Sharp from any direction.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "DaVRqJJOsYhZVFvoZ7VT4jejKQsq3aGW2kMQEsej",
-        "item": "AthenaPickaxe:Pickaxe_ID_136_Math",
-        "name": "T-Square",
-        "description": "Measure twice, chop once.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "iO9V2KI2u7TR8wPjC3bjIdMtmt9OwbvEGOJvNgSz",
-        "item": "AthenaPickaxe:Pickaxe_ID_138_Gnome",
-        "name": "Cold Snap",
-        "description": "Frosted and flowery.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "JOMxmFlqo8jI6XHyyxP1bbtHRDc5wFQ1eMb4FDB6",
-        "item": "AthenaPickaxe:Pickaxe_ID_139_Gingerbread",
-        "name": "Cookie Cutter",
-        "description": "Sweet vengeance.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "w9Kiu2D8BLf8jDtm2P1AYih4NgBngyIYt-bldSSX",
-        "item": "AthenaPickaxe:Pickaxe_ID_140_StreetGoth",
-        "name": "Vision",
-        "description": "Unending gaze.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "W6NBEdoQaLnTF6uQDLjT7U1vXJX8bULTocOFiYuX",
-        "item": "AthenaPickaxe:Pickaxe_ID_141_Krampus",
-        "name": "Brat Catcher",
-        "description": "Be on your best behavior.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "W4XkBmNEyI1lmotAHHCdXktuHkzVXiJAKntpV6Bf",
-        "item": "AthenaPickaxe:Pickaxe_ID_142_TeriyakiFish",
-        "name": "Bootstraps",
-        "description": "Weaponized boot on a stick.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "SCWepSXJB9nHppiBrtqz3-8oPV43AqAgcCqN9DaQ",
-        "item": "AthenaPickaxe:Pickaxe_ID_143_FlintlockWinter",
-        "name": "Frozen Axe",
-        "description": "Once crimson, now coated in permafrost.",
-        "items": [],
-        "variants": [],
-        "rarity": "frozen"
-    },
-    {
-        "id": "NuhP-mbM08VTsQGslSF6p46ToJkKFzpbaMqlgXJm",
-        "item": "AthenaPickaxe:Pickaxe_ID_144_Angel",
-        "name": "Virtue",
-        "description": "Swing forever true.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "aHoV3QfyXQOAzXn6gtgPGZwRDuPLOydI7vGu0xIs",
-        "item": "AthenaPickaxe:Pickaxe_ID_146_MilitaryFashion",
-        "name": "Clean Cut",
-        "description": "Looks sharp. Actually sharp.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "GH5LYfAx5k3N7SEkN5-qUxdeblANZ0rsf6C32GcK",
-        "item": "AthenaPickaxe:Pickaxe_ID_147_TechOps",
-        "name": "Armature",
-        "description": "Experimental prototype.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "CJioHL2PQ7jbgu3mBNp3zQKI49nPnoJLmXuriB4v",
-        "item": "AthenaPickaxe:Pickaxe_ID_148_Barbarian",
-        "name": "Battle Axe",
-        "description": "Truly barbaric.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "PknLIk-9IyR5Aap6h5qW7D0qUeMCQJgGPdUOHgkQ",
-        "item": "AthenaPickaxe:Pickaxe_ID_149_WavyMan",
-        "name": "Flimsie Flail",
-        "description": "Flop til they drop.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "5yDgJsg3KtHfTTGivoxs0YiOKbNWbZPi8xW5lyzZ",
-        "item": "AthenaPickaxe:Pickaxe_ID_151_AlienFishhead",
-        "name": "Squid Striker",
-        "description": "Speak softly and carry a giant squid.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "poo2TTmsx16HVRIli1G1-F8wQa-GyYuSN8GgDoBp",
-        "item": "AthenaPickaxe:Pickaxe_ID_152_DragonMask",
-        "name": "Outburst",
-        "description": "Burning bright.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Om1QrniqPXsxsOxEWPzoJIkBAJt22CT8C5ECmClZ",
-        "item": "AthenaPickaxe:Pickaxe_ID_153_RoseLeader",
-        "name": "Rose Glow",
-        "description": "Put the petal to the metal.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "410rjTYPNFN65Uh-2lo8BvNbpfm-VnxUKmM2brGR",
-        "item": "AthenaPickaxe:Pickaxe_ID_158_FuzzyBear",
-        "name": "Cuddle Paw",
-        "description": "Cuddle up with claws.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "EkxfFhOaU8BJ5B74YqGkOx9B-Yh4Du5mguH1aMJJ",
-        "item": "AthenaPickaxe:Pickaxe_ID_159_RobotTrouble",
-        "name": "Crossroads",
-        "description": "This can go one of two ways...",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "n3Io9JDcQfjzqQQ5hOPAWmJHFYWkddQjpVR2XqLF",
-        "item": "AthenaPickaxe:Pickaxe_ID_160_IceCream",
-        "name": "Ice Pop",
-        "description": "It can take a lickin'.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "8aEsHQNxsFehli1-GspK7ea32eenCEhUY9Ckbuco",
-        "item": "AthenaPickaxe:Pickaxe_ID_161_LoveLlama",
-        "name": "Chocollama",
-        "description": "Double dipped in chocolate.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "ifjTzGyEsxV7AGNQQAYjJ5wet0bmoTr0xVSBeYep",
-        "item": "AthenaPickaxe:Pickaxe_ID_162_SkullBrite",
-        "name": "Skully Splitter",
-        "description": "Color coordinated and battle ready.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "-KAat44qr8XqZfslFf1gzzxFFOvUCljcNsPheo0y",
-        "item": "AthenaPickaxe:Pickaxe_ID_168_Bandolier",
-        "name": "Machete",
-        "description": "Cut through the jungle.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "oHeMF3RqjjwNSnbDawSX9-NfXc1AsLoOxpqZKJK-",
-        "item": "AthenaPickaxe:Pickaxe_ID_169_Farmer",
-        "name": "Gold Digger",
-        "description": "The gold standard.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "gQVxnpZNjmJ0NXNeJ7qBNAgv0bMAonwpCYR1A2Tj",
-        "item": "AthenaPickaxe:Pickaxe_ID_170_Aztec",
-        "name": "Axetec",
-        "description": "Axe of the ancients.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "fvqk9ArEXFGJyInQlSCNIHSwOIXi95Ihb3H9S7rF",
-        "item": "AthenaPickaxe:Pickaxe_ID_171_OrangeCamo",
-        "name": "Brute Force",
-        "description": "Unavoidable.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "-hH-OCPF2CFD2gP5CEX5rfAAMRdERBm2WxHdCZcm",
-        "item": "AthenaPickaxe:Pickaxe_ID_172_BandageNinja",
-        "name": "Quickstrike",
-        "description": "Sharpened in the shadows.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "PaaLBe0xiE6fa1LA3xU3Auy3MlSMnfZ-VgLV9JKb",
-        "item": "AthenaPickaxe:Pickaxe_ID_173_SciOps",
-        "name": "Psionic Edge",
-        "description": "Focus on the perfect strike.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "BVwlvRIi4IbFRimI76YxexIJ4ahEfw1HS08WNXny",
-        "item": "AthenaPickaxe:Pickaxe_ID_174_LuckyRider",
-        "name": "Emerald Smasher",
-        "description": "Mean and green.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "RpvvmLlmX-oer6bT3OH1c6VYoz4BE143nk2nQrJ3",
-        "item": "AthenaPickaxe:Pickaxe_ID_175_Tropical",
-        "name": "Fresh Cut",
-        "description": "Chop down the competition.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "nEzmXQW5sTaX1G0Gq3BeRwimAYkqac0EORSGqJUc",
-        "item": "AthenaPickaxe:Pickaxe_ID_176_DevilRock",
-        "name": "Burning Axe",
-        "description": "Immortal instrument of fire.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "iPSRAl2-BQOoH1k1lXEjENWzZN27WXM8xTFWcCy8",
-        "item": "AthenaPickaxe:Pickaxe_ID_179_StarWand",
-        "name": "Star Wand",
-        "description": "Swing for the stars.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "1YOUSQbFMdNvq2fKUBUCRXzlBZlHcPxyxNuaBSh6",
-        "item": "AthenaPickaxe:Pickaxe_ID_180_TriStar",
-        "name": "Tri-Star",
-        "description": "Thrice the slice.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "ty-FfARFauWfBhCDStxrRFETPTGs3kPGaV5QYCnC",
-        "item": "AthenaPickaxe:Pickaxe_ID_181_Log",
-        "name": "Stumpy",
-        "description": "Count the rings.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "16HeDmr2VuMQXKJawXc9kj3-fY8AEOR1kgI6mS8a",
-        "item": "AthenaPickaxe:Pickaxe_ID_182_PirateWheel",
-        "name": "High Seas",
-        "description": "Steer through the storm.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "n7RRGCiPEYtI8HVosJUrvgg2UKTILTjnEynKWcca",
-        "item": "AthenaPickaxe:Pickaxe_ID_183_BaseballBat2018",
-        "name": "Grand Slammer",
-        "description": "Swing for the fences.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "fmZi0yqxMRHnzsx7b6zCIjAw1Dj0Fr-37E0JQpVs",
-        "item": "AthenaPickaxe:Pickaxe_ID_184_DarkShaman",
-        "name": "Moonbone",
-        "description": "Strike at full moon.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "L8YtxWpqzi3hREDnZLnnUw8DhIJEFyiKrtQe-6Uc",
-        "item": "AthenaPickaxe:Pickaxe_ID_185_BadassCowboyCactus",
-        "name": "Prickly Axe",
-        "description": "Handle with caution.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "1RH5y-RdDHy0gc5GrClXyPPzs8QJFieitcKRial5",
-        "item": "AthenaPickaxe:Pickaxe_ID_186_DemonStone",
-        "name": "Demon Skull",
-        "description": "Imbued with the remnants of a lost soul.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "Es6dJsr2-whkbMLwuxIycqSSjeBph9dk9r7iBb0Q",
-        "item": "AthenaPickaxe:Pickaxe_ID_188_StreetAssassin",
-        "name": "Red Streak",
-        "description": "Find your hot streak.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "nvoj6CLXXNwhtK9RvI7rABMOi2XVXbHeONpQ8471",
-        "item": "AthenaPickaxe:Pickaxe_ID_189_StreetOpsStealth",
-        "name": "Stealth Angular Axe",
-        "description": "Angle for the win.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "agEhMRRSp6Jx4KqKKsQdi1FBatgnLwnq6H0Ge6bJ",
-        "item": "AthenaPickaxe:Pickaxe_ID_190_GolfClub",
-        "name": "Driver",
-        "description": "Swing for the green.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "jRKr9FQT-WFgNkX2cnS1m8uoTQUU1RT0tHGEaXkJ",
-        "item": "AthenaPickaxe:Pickaxe_ID_191_Banana",
-        "name": "Peely Pick",
-        "description": "Wield the power of the peel.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "5J790Sd3PvNzwQ0GrxmIkph6eHHqc4tD7s0PvrS8",
-        "item": "AthenaPickaxe:Pickaxe_ID_192_PalmTree",
-        "name": "Relax Axe",
-        "description": "Victory is in the palm in your hand.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "2bXdvoYfD15A07B5okbIIhsXqXdxlnP8AL2HhZ8C",
-        "item": "AthenaPickaxe:Pickaxe_ID_193_HotDog",
-        "name": "Knockwurst",
-        "description": "Knock em' out.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "NllFVd9RZ27fgbWAc8yE8Z1WpWg7hC06S-FNZLXp",
-        "item": "AthenaPickaxe:Pickaxe_ID_194_TheBomb",
-        "name": "Shrapnel",
-        "description": "Fragments of fun.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "ePr23Q8cJ5aroByVJquSw3IctUnR1V8gw319WKwf",
-        "item": "AthenaPickaxe:Pickaxe_ID_196_EvilBunny",
-        "name": "Steel Carrot",
-        "description": "Hop and chop.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "0kVpsy1TRg5UEX--rQzOaArBsw1WG-yQCj75Guib",
-        "item": "AthenaPickaxe:Pickaxe_ID_197_HoppityHeist",
-        "name": "Bold Bar",
-        "description": "Break in, and stand out.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "4AhXxKY0rOmo72fJ1TO9PPRluSPy8CL7dFBqd2lm",
-        "item": "AthenaPickaxe:Pickaxe_ID_198_BountyBunny",
-        "name": "Sprout",
-        "description": "Get to the root of it.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "ieuky4jVroHhaMhChwcEkOnltHs5oWyhvcgw0Cji",
-        "item": "AthenaPickaxe:Pickaxe_ID_199_ShinyHammer",
-        "name": "Silver Sledge",
-        "description": "Gem studded shine axe.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "dnQeQKbXzkVsxm3FqmFn8GeVwqhlKKBRsNIhkkgg",
-        "item": "AthenaPickaxe:Pickaxe_ID_200_MoonlightAssassin",
-        "name": "Astral Axe",
-        "description": "Swing through the stars.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "3OxyzGza5ZVmyZm6wroMflQfDgPiB8uT62kgVkkm",
-        "item": "AthenaPickaxe:Pickaxe_ID_201_Swashbuckler",
-        "name": "Flint Striker",
-        "description": "Bash with bluster.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "uZ8vixmIVJno9-DPgsYmIAMsoWwhxsk-Qsb4JjjQ",
-        "item": "AthenaPickaxe:Pickaxe_ID_204_Miner",
-        "name": "Rockbreaker",
-        "description": "You know the drill.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "wbTJR1nYlC9LxZMCHo4ogXDjPCcTX5vAiIclnRCK",
-        "item": "AthenaPickaxe:Pickaxe_ID_212_CyberScavenger",
-        "name": "Web Wrecker",
-        "description": "High-tech precision.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "iqVx1uvqvcy7BGH2ZlgpV8VJr9llQOQH7mZDr71V",
-        "item": "AthenaPickaxe:Pickaxe_ID_213_AssassinSuitSledgehammer",
-        "name": "Simple Sledge",
-        "description": "A professional's tool of choice.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "MB9HUPgsDrDqntvzzGoESuYthhTJmgUSgM6S9yhJ",
-        "item": "AthenaPickaxe:Pickaxe_ID_214_Geisha",
-        "name": "Shamisen",
-        "description": "Alluringly destructive.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "wirgL4hR9FrtwcemJobfssZXn3Uxe5Ku8d6cMs1d",
-        "item": "AthenaPickaxe:Pickaxe_ID_215_Pug",
-        "name": "Chew Toy",
-        "description": "Unburied treasure.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "GxTKnOjyDbEjHFaOqx7jzPuEWi2XEdgU8tYd7Oy1",
-        "item": "AthenaPickaxe:Pickaxe_ID_217_UrbanScavenger1H",
-        "name": "Metro Machetes",
-        "description": "Street smart and impossibly sharp.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "7FQ676A1OldZzEe4utNsmw9jgNX1SAjf6Gq1XfAQ",
-        "item": "AthenaPickaxe:Pickaxe_ID_218_StormSoldier",
-        "name": "Storm Bolt",
-        "description": "Strike like lightning.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "W-BOrCm46BWxGFW5sl6p1VRjGvbR5lGZPAh5FQXx",
-        "item": "AthenaPickaxe:Pickaxe_ID_219_BandageNinja1H",
-        "name": "Talons",
-        "description": "Claw your way to the top.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "mGwXtb6xL3h0eiq2LtAQZvkSMZaFbXHB-2-sut3f",
-        "item": "AthenaPickaxe:Pickaxe_ID_220_ForkKnife1H",
-        "name": "Fork Knife",
-        "description": "Don't forget your table manners.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "I4UAvOi9dIoIbmVwMsSSITq61XjaxxjbDWIRu9WJ",
-        "item": "AthenaPickaxe:Pickaxe_ID_223_Jellyfish",
-        "name": "Conch Cleaver",
-        "description": "A gift from the deep.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "AyqdbdL2b42W2ZbtzLGJEAnq4iG6GH2pMNT4E7do",
-        "item": "AthenaPickaxe:Pickaxe_ID_224_Butterfly",
-        "name": "Shard Sickle",
-        "description": "Harness the mysterious butterfly effect.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "biFQIEMJcdmWXPwVsMYCDydIn7lc6JxG1ageKAGl",
-        "item": "AthenaPickaxe:Pickaxe_ID_225_Caterpillar",
-        "name": "Flycatcher",
-        "description": "Never cross a caterpillar.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "thqnFbXHAA3J8VF28kmARs5rJRltTWjFc1iJOMXT",
-        "item": "AthenaPickaxe:Pickaxe_ID_226_CyberFuBlade",
-        "name": "Fixation",
-        "description": "Sharp, focused, and relentless.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "1RJSW2ZuUQsXSNHL29z37KPeL60-0YHKjFTXO7Ss",
-        "item": "AthenaPickaxe:Pickaxe_ID_227_FemaleGlowBro",
-        "name": "Splintered Light",
-        "description": "Share the light.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "thX3IDVgH6xZMLfIyrTCJ3TNk2rQmGzCYF5IcbRM",
-        "item": "AthenaPickaxe:Pickaxe_ID_228_MaleGlowBro",
-        "name": "Vivid Axe",
-        "description": "Brighten the battle.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "xudovMWeE4bdqRDFi1XLJIh7IEkDObeGXtHfDXSe",
-        "item": "AthenaPickaxe:Pickaxe_ID_229_TechMage",
-        "name": "Wild Tangent",
-        "description": "Find the impossible angle.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "RCA3C3iGbW1AhKXIL8jSHd52e5M3cTe-PrXPgHJw",
-        "item": "AthenaPickaxe:Pickaxe_ID_230_Drift1H",
-        "name": "Dual Edge",
-        "description": "Slicing through the dimensional planes.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "D2pDMg1mtLiqcGgtR0GyweQOMim8rRRhetbPNlmw",
-        "item": "AthenaPickaxe:Pickaxe_ID_231_Flamingo2",
-        "name": "Lawnbreaker",
-        "description": "Rule the lawn with an iron beak.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "MHoTqKLBzcJdtGg-Di6jp2WOHKx-H3zElqrj5PjA",
-        "item": "AthenaPickaxe:Pickaxe_ID_232_Grillin1H",
-        "name": "Low 'n Slow",
-        "description": "Lock in the flavor of victory.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "z-pxy7QAionzeW9mgGcxu8ITLVU0KMDyMB6OK82-",
-        "item": "AthenaPickaxe:Pickaxe_ID_233_Birthday2019",
-        "name": "Birthday Slice",
-        "description": "Make a wish and swing away.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "nCH71zBlHBqqasfxywOpeaQ8ElvLFe7FT8V0m50F",
-        "item": "AthenaPickaxe:Pickaxe_ID_234_CyberKarate",
-        "name": "Power Punch",
-        "description": "Overload them.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "b66nNDpuE0oHLP6prsRsJZWUl1CfYJ20kT0lPFv0",
-        "item": "AthenaPickaxe:Pickaxe_ID_236_Multibot1H",
-        "name": "Combo Cleavers",
-        "description": "Swinging force.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "0k-lgfVBYIvHs5xYKeEXW--b2-In95cXw8q5web5",
-        "item": "AthenaPickaxe:Pickaxe_ID_237_Warpaint",
-        "name": "Mean Streak",
-        "description": "Paint the town blue.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "mwq0UfiK2zFxznuWkZkHF9vxUPk4gvlv95gGwNIP",
-        "item": "AthenaPickaxe:Pickaxe_ID_238_Bubblegum",
-        "name": "Bubble Popper",
-        "description": "Swing sweet.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "4juI8wxBwLEZtCb9LaYeTD0iVSwwnQqusgLs20Xa",
-        "item": "AthenaPickaxe:Pickaxe_ID_239_PizzaPitPJ1H",
-        "name": "Pair-peronni",
-        "description": "Double the deliciousness.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "UhPL1s81owYNYyR2jbTKPriI00087qn-tTQIs-iM",
-        "item": "AthenaPickaxe:Pickaxe_ID_246_BlueBadass1H",
-        "name": "Tac Bats",
-        "description": "Tactical combat baton.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "UEQPPT0GJyq12CifcKSfaKtbaCqLTlxuH3l8Fotw",
-        "item": "AthenaPickaxe:Pickaxe_ID_247_BoneWasp",
-        "name": "Primal Sting",
-        "description": "That's gonna leave a mark.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "yNR-leeDF9HArzJRSyPNudUFfzD1TvSNt4pgUot5",
-        "item": "AthenaPickaxe:Pickaxe_ID_248_MechPilot",
-        "name": "Robo Wrecker",
-        "description": "Pinpoint accuracy.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "6DkPSnFVtOHhZULNEgPF4t47oVVfkVIcqY61hiE4",
-        "item": "AthenaPickaxe:Pickaxe_ID_250_Lopex",
-        "name": "Spikeclone",
-        "description": "Sleek and spiky.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "BGclDAiCFJRzQDIJSq6rpYlMRzMvuaV7FYVFP2Zz",
-        "item": "AthenaPickaxe:Pickaxe_ID_251_MascotMilitiaBurger",
-        "name": "Grillcount",
-        "description": "Put some sizzle in your swing.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "8JqFE2ISU6S3w5iS4UNrbVtAxqj1uligCJTA2bDx",
-        "item": "AthenaPickaxe:Pickaxe_ID_252_MascotMilitiaTomato",
-        "name": "Rusty Roller",
-        "description": "Who wants a slice?",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "3FWxewrf0NEu9JJkYwArfuABdAC24en8HS5R2LbB",
-        "item": "AthenaPickaxe:Pickaxe_ID_253_StarWalker",
-        "name": "Star Strike",
-        "description": "Star powered stellar axe.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "utlhzkjsBo5IDVG7q2gF5ADPJtnYx1H0tdRxzI0E",
-        "item": "AthenaPickaxe:Pickaxe_ID_254_Syko",
-        "name": "Plasmatic Edge",
-        "description": "Calibrated for absolute domination.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "UKD-yHUl0F0OCyyKgbWKwe7lSBvgYiAisxhQxSWP",
-        "item": "AthenaPickaxe:Pickaxe_ID_255_WiseMaster",
-        "name": "Wisdom's Edge",
-        "description": "Know your blade as you know yourself.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "Gsy8StlSEcMGoHzfbJOHeUuuWhN0HcqALQqZwUmG",
-        "item": "AthenaPickaxe:Pickaxe_ID_256_TechOpsBlue",
-        "name": "Pneumatic Twin",
-        "description": "Dual-pronged pneumatic pickaxe.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "ufZU0j0WjiYaHhvpLQFSfswxPxVxXLe0jumIALCz",
-        "item": "AthenaPickaxe:Pickaxe_ID_257_FrostMystery1H",
-        "name": "Hyper Edge",
-        "description": "Dominate the zone.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "Jq04slmv8ZsOEmw1jvPnaGuKMpaSSvYoEYDH6Bn5",
-        "item": "AthenaPickaxe:Pickaxe_ID_259_CupidFemale1H",
-        "name": "Cupid's Daggers",
-        "description": "Love hurts.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "BUivD2npyXI1qdZ3X55q3TedjtRl17Q1RIml7iz7",
-        "item": "AthenaPickaxe:Pickaxe_ID_262_FutureBikerWhite",
-        "name": "Chained Cleaver",
-        "description": "Settle the score with an edge.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "1tnUL9Cr3dXUHNRZpI7uORWtTCSW8usmlX4DWUNx",
-        "item": "AthenaPickaxe:Pickaxe_ID_264_LemonLime1H",
-        "name": "Sour Strikers",
-        "description": "Pucker up!",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "cB4AfnjWK-IC9KedBsgv61hZkM-6lwIL30CiO4ZB",
-        "item": "AthenaPickaxe:Pickaxe_ID_265_BarbequeLarry1H",
-        "name": "Psycho Buzz Axes",
-        "description": "*Maniacal laughter intensifies*",
-        "items": [],
-        "variants": [],
-        "rarity": "gaminglegends"
-    },
-    {
-        "id": "ODxinX8zWWt0tWVhry6iQGYlkDAG55g6dHn1mQfY",
-        "item": "AthenaPickaxe:Pickaxe_ID_266_PaddedArmor",
-        "name": "Impact Edge",
-        "description": "Engineered for ultimate impact.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "6OZU7Shtc4Eq6FUZb8mnO9z3KSw8qx4LwmY2usC9",
-        "item": "AthenaPickaxe:Pickaxe_ID_267_RaptorBlackOps",
-        "name": "Blue Bolt",
-        "description": "Infused with the power of blue.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "C-30kmpPeYz3ZOQXD-lBvrUxtSjfGu7ovoI5lErw",
-        "item": "AthenaPickaxe:Pickaxe_ID_268_ToxicKitty1H",
-        "name": "Jagged Edge",
-        "description": "A spiky ray of sunshine.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "foea84yiRFlImmELpX-GB7aaqEYZYQY88aWjdPp4",
-        "item": "AthenaPickaxe:Pickaxe_ID_269_WWIIPilotSciFi",
-        "name": "Aero Axe",
-        "description": "Show your stripes.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "ya8x3o8GOUCFSDQ4BVCFl4PRgN4ePcn5GwIGko9k",
-        "item": "AthenaPickaxe:Pickaxe_ID_270_Jumpstart",
-        "name": "Megavolt",
-        "description": "Overcharged with electric might.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "DiFnOViggMSDtuKxAM4kkG7IeiIVlMVyENPs7fgQ",
-        "item": "AthenaPickaxe:Pickaxe_ID_271_Punchy",
-        "name": "Clobber Axe",
-        "description": "Give 'em the ol' one-two.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "OhNm5Upg3hoTQYYoFTsp6nKc7oJOXCd-PaFRNEWz",
-        "item": "AthenaPickaxe:Pickaxe_ID_273_StreetFashionRed",
-        "name": "Stripe Slicer",
-        "description": "Line em up.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "JDgX4weOhexbu-duvLJg9KVz3SvlhmhOhDtcoGy5",
-        "item": "AthenaPickaxe:Pickaxe_ID_274_StreetUrchin",
-        "name": "Ave Axe",
-        "description": "The route to victory.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "ew8i-hwpMWmcbknbaycRmFFQdijgvgQDrgaNujrA",
-        "item": "AthenaPickaxe:Pickaxe_ID_276_BlackMondayFemale1H_1V4HE",
-        "name": "Cat's Claws",
-        "description": "Show off your catlike reflexes.",
-        "items": [],
-        "variants": [],
-        "rarity": "dc"
-    },
-    {
-        "id": "UBn7TjQvlUhgGBYmM6TKsPfDvF2zjYSuNaRCvNNf",
-        "item": "AthenaPickaxe:Pickaxe_ID_278_BrightGunnerRemix1H",
-        "name": "Brite Bashers",
-        "description": "Pummel them with positivity.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "B78Vzbla8777ZfBzgAvJInYzzuTCWSX-obLsvqoo",
-        "item": "AthenaPickaxe:Pickaxe_ID_279_MaleLlamaHeroMilitia",
-        "name": "Razor Smash",
-        "description": "After the rainbow's end.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "tRgxS3D-UPYqHkxUfU3ArQwYrem9mFgULFRW5vFH",
-        "item": "AthenaPickaxe:Pickaxe_ID_280_MascotMilitiaCuddle1h",
-        "name": "Snack Attackers",
-        "description": "When the craving strikes...",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "RkrPyPd1Scc6Jj9ed9EDBHXnG9f9IklsIDG13Jtb",
-        "item": "AthenaPickaxe:Pickaxe_ID_STW001_Tier_1",
-        "name": "Ol' Woody",
-        "description": "Looks... sturdy.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "EZE9p6NA00980ndaBdPQxNbnEWItJ2Py3KkgEm6u",
-        "item": "AthenaPickaxe:Pickaxe_ID_STW002_Tier_3",
-        "name": "Tech Axe",
-        "description": "Enhanced structural analysis.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "OiB95qpkGM6f0dr96v7LKVhhz-9obCR-cszc94Aq",
-        "item": "AthenaPickaxe:Pickaxe_ID_STW003_Tier_4",
-        "name": "Hydraulic Wrecker",
-        "description": "Piston powered.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "El78BraNW7O5bXBzKAJOzdqszqu70hcbQv45zl9a",
-        "item": "AthenaPickaxe:Pickaxe_ID_STW004_Tier_5",
-        "name": "Vindertech Elite",
-        "description": "Cutting edge harvesting technology.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "4FALQYGkiUh2RboCwXLlGzPErrIkBTIArolAtYhd",
-        "item": "AthenaPickaxe:Pickaxe_ID_STW005_Tier_6",
-        "name": "Laser Pick",
-        "description": "Now with lasers!",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "3aHYw22i0J6EGSeOQRl72qzbiypznRvAsoh3AzkS",
-        "item": "AthenaPickaxe:Pickaxe_ID_STW006_Tier_7",
-        "name": "Axehammer",
-        "description": "Rocket fueled jackhammer pickaxe.",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "S2mu1tfF9Abcx7ogx8GrpKEklNaGNOe8bU-0KSD3",
-        "item": "AthenaPickaxe:Pickaxe_ID_STW007_Basic",
-        "name": "Basic Basher",
-        "description": "Gets the job done!",
-        "items": [],
-        "variants": [],
-        "rarity": "uncommon"
-    },
-    {
-        "id": "EIzClIzGkhdyoR-HLRw3bN2KUIrt4DvIuS8Dw8I2",
-        "item": "AthenaPickaxe:Pickaxe_Lockjaw",
-        "name": "Raider's Revenge",
-        "description": "Wrapped in rusty barbed wire, and ready to settle the score.",
-        "items": [],
-        "variants": [],
-        "rarity": "epic"
-    },
-    {
-        "id": "Y-z89ZAzBtVnaBFqGBp9dCKIihSzMpBO47pzKv0L",
-        "item": "AthenaPickaxe:SickleBatPickaxe",
-        "name": "Batsickle",
-        "description": "Take a crack at harvesting with the Batsickle. It's half bat. Half sickle. All Batsickle.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "JWouwaanSrcHP-TjXzFz6lEvN8-OeqhRPXoNXT6q",
-        "item": "AthenaPickaxe:SkiIcePickaxe",
-        "name": "Cliffhanger",
-        "description": "Climb your way to the top with the mountaineering inspired Cliffhanger Pickaxe.",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    },
-    {
-        "id": "tgkP3KT7ETmwPgb2Tei7w6MtVHtAPZDhOZKtYJuI",
-        "item": "AthenaPickaxe:SpikyPickaxe",
-        "name": "Spiky",
-        "description": "It's a pickaxe with spikes. What's not to like?",
-        "items": [],
-        "variants": [],
-        "rarity": "rare"
-    }
+  {
+    "id": "j7FueLV0BNT2vIK22KwFOYnV35X3jNByOgqD2-ik",
+    "item": "AthenaPickaxe:BoltonPickaxe",
+    "name": "Close Shave",
+    "description": "A stylish pickaxe with bolt on tips.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 1
+  },
+  {
+    "id": "5Gruyt18tgAr5-Zh1Qi1R5p9tVeGD8gLHS6245Oc",
+    "item": "AthenaPickaxe:HalloweenScythe",
+    "name": "Reaper",
+    "description": "Harvest resources... and souls.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 1
+  }, 
+  {
+    "id": "n0wdWUdVgILB92SCxaoBT8xiC75pI2XTEU2XPjFf",
+    "item": "AthenaPickaxe:HappyPickaxe",
+    "name": "Lucky",
+    "description": "A sturdy pickaxe with a great attitude.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 1
+  },
+  {
+    "id": "T8C48JnFLm9xCOxw9m180SpjQVPjFjhvYCtUxHYZ",
+    "item": "AthenaPickaxe:Pickaxe_Deathvalley",
+    "name": "Death Valley",
+    "description": "Whenever you need a skull on a stick, the Death Valley Pickaxe is there for you.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 1
+  },
+  {
+    "id": "0hSJhQo--sYW99sXJWb5BYzyAWNmRQdmggAZBDlQ",
+    "item": "AthenaPickaxe:Pickaxe_Flamingo",
+    "name": "Pink Flamingo",
+    "description": "From suburban lawns to the front lines, the Pink Flamingo Pickaxe is always ready for action.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 1
+  },
+  {
+    "id": "20qdw0qi9rpLN39FPTEENsPlYWx3nx0W8ckNb3h4",
+    "item": "AthenaPickaxe:Pickaxe_ID_014_WinterCamo",
+    "name": "Ice Breaker",
+    "description": "A great way to meet your fellow combatants.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 1
+  },
+  {
+    "id": "C1sgQinwtrtrKIp43XwB0Uh2BGQVXhSid74QgpLr",
+    "item": "AthenaPickaxe:Pickaxe_ID_016_Disco",
+    "name": "Disco Brawl",
+    "description": "Ready for a ballroom blitz.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 1
+  },
+  {
+    "id": "y3GdO77AjSG12ECYhyq3rRnfL7pGoMJU0d8m1e6e",
+    "item": "AthenaPickaxe:Pickaxe_ID_017_Shark",
+    "name": "Chomp Jr.",
+    "description": "They're going to need a bigger fort.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 1
+  },
+  {
+    "id": "wS-NXPs-UxG0FRdCWxmgt3EDlEeN01u3G38kUaOl",
+    "item": "AthenaPickaxe:Pickaxe_ID_018_Anchor",
+    "name": "Bottom Feeder",
+    "description": "From the murky depths!",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 1
+  },
+  {
+    "id": "BSvzdeVWDjLji4naXPcIK7aVzMDe7ZnHXWJOGvb5",
+    "item": "AthenaPickaxe:Pickaxe_ID_019_Heart",
+    "name": "Tat Axe",
+    "description": "No regerts!",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 2
+  },
+  {
+    "id": "cg2t-fvTBeYQE3jhCJrcKnn1mFVPuF888XiYC6ZB",
+    "item": "AthenaPickaxe:Pickaxe_ID_020_Keg",
+    "name": "Party Animal",
+    "description": "Red plastic cups not included.",
+    "items": [],
+    "variants": [],
+    "rarity": "slurp",
+    "season": 1
+  },
+  {
+    "id": "FNyZ3UUKTk3O8ICdoGkUgFPoV7yfDKEna2qZGBi-",
+    "item": "AthenaPickaxe:Pickaxe_ID_021_Megalodon",
+    "name": "Tooth Pick",
+    "description": "Don't forget to floss.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 1
+  },
+  {
+    "id": "T3tX5lwbHEPIbCiJtyNPF85KWy1TCyT0G8jFNtHy",
+    "item": "AthenaPickaxe:Pickaxe_ID_022_HolidayGiftWrap",
+    "name": "You Shouldn't Have!",
+    "description": "For the combatant who has everything.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 1
+  },
+  {
+    "id": "cqBHXvqMYRVMafxXuLNHLTYxu4kLpI4EvMMWTP4T",
+    "item": "AthenaPickaxe:Pickaxe_ID_023_SkiBoot",
+    "name": "Ski Boot",
+    "description": "Give 'em the boot.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 2
+  },
+  {
+    "id": "yiimKFOebswHjarJZrFL0Xefr6sUATvRp3X59Ki3",
+    "item": "AthenaPickaxe:Pickaxe_ID_024_Plunger",
+    "name": "Plunja",
+    "description": "The competition is circling the drain.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 2
+  },
+  {
+    "id": "sqWGsjv95Jsnd8IcDBuCcsTH-MTJX4ovUEs50WN-",
+    "item": "AthenaPickaxe:Pickaxe_ID_025_Dragon",
+    "name": "Dragon Axe",
+    "description": "Forged in dragon fire.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 2
+  },
+  {
+    "id": "azVnns3m61Gz0CUQevkaOQMHNY0Z4B8QnI0-lthg",
+    "item": "AthenaPickaxe:Pickaxe_ID_026_Brite",
+    "name": "Rainbow Smash",
+    "description": "Beat the stuffing out of 'em.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 3
+  },
+  {
+    "id": "DcEdjQO5SdAPGapy6X2KERXMWtTf7ZswpatSIAUO",
+    "item": "AthenaPickaxe:Pickaxe_ID_030_ArtDeco",
+    "name": "Empire Axe",
+    "description": "Build your empire.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "vPT-ju54pEHHRHpYSuat4GS7lAbw4mGov60m70YX",
+    "item": "AthenaPickaxe:Pickaxe_ID_031_Squeak",
+    "name": "Pick Squeak",
+    "description": "Squeak squeak! Squeak! Squeak squeak squeak!",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 3
+  },
+  {
+    "id": "3OQHM1x7QYy3pNz5m1ZzqSTzgtfr9wl4YDkqRKEU",
+    "item": "AthenaPickaxe:Pickaxe_ID_032_Tactical",
+    "name": "Tactical Spade",
+    "description": "Designed for survival.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 3
+  },
+  {
+    "id": "W0vPoRDui-18gLgkKYkqOhwlSRxddcPc7DnKGbNw",
+    "item": "AthenaPickaxe:Pickaxe_ID_034_RockerPunk",
+    "name": "Anarchy Axe",
+    "description": "This axe does whatever it wants.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "RP62rU2Pof1IV7qxQ9WhdJx0k1ZEzApp-ltvmMgl",
+    "item": "AthenaPickaxe:Pickaxe_ID_035_Prismatic",
+    "name": "Spectral Axe",
+    "description": "What color is it?",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "HA3OrQ1Q4pSWvud8Gq2POTXZoOY9mcenvZSz0Amf",
+    "item": "AthenaPickaxe:Pickaxe_ID_036_CuChulainn",
+    "name": "Silver Fang",
+    "description": "Loyal. Brave. Very sharp.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "cWqG3eGQDS5qquK68iZBWvQ5WMX-twn6BmLKdgYC",
+    "item": "AthenaPickaxe:Pickaxe_ID_037_Stealth",
+    "name": "Spectre",
+    "description": "They'll never see it coming.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "oaTQPXupdzlZhRVG4-85HyVVN2DYh6DMBZQVy5lT",
+    "item": "AthenaPickaxe:Pickaxe_ID_038_Carrot",
+    "name": "Carrot Stick",
+    "description": "Give 'em 3-5 servings.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "kPaEVf2xbT23FOWVrDcjlN0KFLrzdlNbQGswXIYT",
+    "item": "AthenaPickaxe:Pickaxe_ID_039_TacticalBlack",
+    "name": "Instigator",
+    "description": "Start something.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "Xej1abaRSxqRAARJyYXgmxWJqIxxNC-5dC9Gssm-",
+    "item": "AthenaPickaxe:Pickaxe_ID_040_Pizza",
+    "name": "Axeroni",
+    "description": "Victory by the slice!",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "XLHWmXu4yoHFTuFlgfENT7HqcmwQB8m1IXfqbxY1",
+    "item": "AthenaPickaxe:Pickaxe_ID_041_PajamaParty",
+    "name": "Bitemark",
+    "description": "Take a bite out of the competition.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 3
+  },
+  {
+    "id": "sVGByr-kumFynWJUfEC2fHftmVp8uQKxNDzc9rQL",
+    "item": "AthenaPickaxe:Pickaxe_ID_042_CircuitBreaker",
+    "name": "Cutting Edge",
+    "description": "Forged in a particle accelerator.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 3
+  },
+  {
+    "id": "y59bnUFIEc6p3wM862OEKD9uGcv-2AA6WCoHCHF6",
+    "item": "AthenaPickaxe:Pickaxe_ID_043_OrbitingPlanets",
+    "name": "Global Axe",
+    "description": "Think globally, axe locally.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 3
+  },
+  {
+    "id": "juuPIPS69P7loGegI9uZxHpxOiMdLswO5UIc4vVl",
+    "item": "AthenaPickaxe:Pickaxe_ID_044_TacticalUrbanHammer",
+    "name": "Tenderizer",
+    "description": "Leave a good first impression.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "iswOhJAf3cTf6VxfDcCDobrA1XyoqIKFa8LwLnz1",
+    "item": "AthenaPickaxe:Pickaxe_ID_049_Metal",
+    "name": "Persuader",
+    "description": "Very convincing.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "A3ypnBvEmLHr9I60ItkS3labr-ckduSaPoPVUK3W",
+    "item": "AthenaPickaxe:Pickaxe_ID_050_Graffiti",
+    "name": "Renegade Roller",
+    "description": "Go on a roll.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 4
+  },
+  {
+    "id": "ieooZ1yE-e1sgP7RCgUeKAqHl8vyfpVwpuWGChJx",
+    "item": "AthenaPickaxe:Pickaxe_ID_051_NeonGlow",
+    "name": "Glow Stick",
+    "description": "Behold, it glows!",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "Gpxkwn5pblrGaxLdQXM3eKqOxXiN0eDUvTmBVn-0",
+    "item": "AthenaPickaxe:Pickaxe_ID_052_Hazmat",
+    "name": "Autocleave",
+    "description": "Clean out the competition.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "hnc99l1wbAV8VKq2GfsXDs3yFzrKdExS3PkTd39s",
+    "item": "AthenaPickaxe:Pickaxe_ID_053_Deco",
+    "name": "Airfoil",
+    "description": "Streamlined for optimal aerodynamics.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "6HvIIulWpta0i41h-FZxNaSXNPNWI6MqXBR6ZqjZ",
+    "item": "AthenaPickaxe:Pickaxe_ID_054_FilmCamera",
+    "name": "Director's Cut",
+    "description": "Lights, Camera, Axin'.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "eXBV5kc9LHLJj3H-Irbh4MDq0dOxdWC9aydarS05",
+    "item": "AthenaPickaxe:Pickaxe_ID_055_Stop",
+    "name": "Stop Axe",
+    "description": "Never stop axin'.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "kA-EBqLzeiE6qh76cgiuw4L8P7V6BSYEdAyfPF5W",
+    "item": "AthenaPickaxe:Pickaxe_ID_057_Jailbird",
+    "name": "Nite Owl",
+    "description": "Pull an all-niter.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "Jrupm7qCvjHIgzvDuDOuD0IlI0g9aAJmC7K7MaxS",
+    "item": "AthenaPickaxe:Pickaxe_ID_058_Basketball",
+    "name": "Slam Dunk",
+    "description": "It's a... slam dunk.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "y2NDeCmc4mlRDiIrjx6l4b-Uf8KzxdOTRiB5MHjX",
+    "item": "AthenaPickaxe:Pickaxe_ID_059_DarkEagle",
+    "name": "Oracle Axe",
+    "description": "Visions of victory.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 4
+  },
+  {
+    "id": "Mf7ffhCU-ZE9tnfau7HIVVYWEML0Ga0DDvtFTpXf",
+    "item": "AthenaPickaxe:Pickaxe_ID_060_DarkNinja",
+    "name": "Fated Frame",
+    "description": "Rise above your fate.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "ZlyRHzwt5FftX2QTNbbBAxoykQi3Ix-NGu6LGZOq",
+    "item": "AthenaPickaxe:Pickaxe_ID_061_WWIIPilot",
+    "name": "Propeller Axe",
+    "description": "Take it for a spin.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "UKPNsTh5y7RFshCfY7zOVIJCiXjJUZ6IOL3YTwFW",
+    "item": "AthenaPickaxe:Pickaxe_ID_062_Soccer",
+    "name": "Elite Cleat",
+    "description": "For those unaccustomed to defeat.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 4
+  },
+  {
+    "id": "PHLldWdUNQDlCIs3Ic9y3wLjknFO-bN8uqH61Be2",
+    "item": "AthenaPickaxe:Pickaxe_ID_063_Vuvuzela",
+    "name": "Vuvuzela",
+    "description": "Festively loud.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "wXhzBlReViho6s2NPygA20FncJXd0AiJRSi2GMGL",
+    "item": "AthenaPickaxe:Pickaxe_ID_064_Gumshoe",
+    "name": "Magnifying Axe",
+    "description": "Dust 'em for prints.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "oJrAKsad4Q61SrX-c8uGdaIQQfgFmjKtCBiDhQZm",
+    "item": "AthenaPickaxe:Pickaxe_ID_065_SpeedyRed",
+    "name": "Razor Edge",
+    "description": "On the verge of being too sharp.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "DTKnzEFaWaC4ZDD51cYCHkGzrljbvhpooezgvLr2",
+    "item": "AthenaPickaxe:Pickaxe_ID_066_FlintlockRed",
+    "name": "Crimson Axe",
+    "description": "Wield, smite, repeat.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 4
+  },
+  {
+    "id": "MXLK-Ziw7vNSP5p8avrusjV2jlBOR71WyNSh8pDU",
+    "item": "AthenaPickaxe:Pickaxe_ID_067_Taxi",
+    "name": "Victory Lap",
+    "description": "Give it a spin.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 4
+  },
+  {
+    "id": "StMHqdrC5qGUVvR3KrxvLKt4HaW5Gh-DbmmThkgQ",
+    "item": "AthenaPickaxe:Pickaxe_ID_070_Viking",
+    "name": "Forebearer",
+    "description": "Wielded by countless generations.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "0C4WF4mTw-Hx5B4vyBZ5bU9r9HMNqfn72AC7BY6L",
+    "item": "AthenaPickaxe:Pickaxe_ID_072_Luchador",
+    "name": "Piledriver",
+    "description": "No holds barred.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "Vy785kRQb3dwiIZdAgzUos2gSgFj-Li75IuZAH3w",
+    "item": "AthenaPickaxe:Pickaxe_ID_074_SharpDresser",
+    "name": "Studded Axe",
+    "description": "Edgy.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "EUiPY6m-cH6tNbGSTT4t7mad7yzpDGQSUQPtqTb8",
+    "item": "AthenaPickaxe:Pickaxe_ID_075_Huya",
+    "name": "Pointer",
+    "description": "Get to the point.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "hC-12ZLUFwlxchTW-oZVOOlH4WbwaLQlOmhw1IDd",
+    "item": "AthenaPickaxe:Pickaxe_ID_076_Douyu",
+    "name": "Power Grip",
+    "description": "Get a grip.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "Jmo4j2R6EavkRaRp5Gw2Mw6RYyYbsuYM82H4k6BZ",
+    "item": "AthenaPickaxe:Pickaxe_ID_077_CarbideWhite",
+    "name": "Resonator",
+    "description": "Swing with frequency.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 6
+  },
+  {
+    "id": "seBRS0v73Y7GRHvr2xWcHlcfhpnRVZeUyIdouzpd",
+    "item": "AthenaPickaxe:Pickaxe_ID_078_Lifeguard",
+    "name": "Rescue Paddle",
+    "description": "Life preserver?",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "Dusj3LTTLfvsZLEdn5JTd0z8YHvOZGaeuDL-oxwi",
+    "item": "AthenaPickaxe:Pickaxe_ID_080_Scuba",
+    "name": "Harpoon Axe",
+    "description": "Tip of the spear.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "Oh0Ezo5E36sj3I7SCoHwWReQ-07xUkb-UZh4Iwu5",
+    "item": "AthenaPickaxe:Pickaxe_ID_081_StreetRacerCobra",
+    "name": "Clutch Axe",
+    "description": "Pedal to the metal.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "F3YwHF4RAim0XQqUxCA-lSxNvLjYwwWyz3rS-w-M",
+    "item": "AthenaPickaxe:Pickaxe_ID_082_SushiChef",
+    "name": "Filet Axe",
+    "description": "A cut above the rest.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "0y3Drj8W-REjwR9qAEFiaSzDJwV9jo6jeogiXpGt",
+    "item": "AthenaPickaxe:Pickaxe_ID_083_Exercise",
+    "name": "Axercise",
+    "description": "Feel the burn!",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 5
+  },
+  {
+    "id": "KZMR9COejXjlMBatrwRM3WfgzcPe1CAVI70kFjOI",
+    "item": "AthenaPickaxe:Pickaxe_ID_084_DurrburgerHero",
+    "name": "Patty Whacker",
+    "description": "If you can't stand the heat...",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 5
+  },
+  {
+    "id": "G9jfzUoYSgOrJ6dd6-Hv5FuAK0nB1omWX8Bkg035",
+    "item": "AthenaPickaxe:Pickaxe_ID_085_Wukong",
+    "name": "Jingu Bang",
+    "description": "Fit for a king.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 5
+  },
+  {
+    "id": "jCKnormyTREF9lwornKBWx8MudfwFOraIbLXLt9-",
+    "item": "AthenaPickaxe:Pickaxe_ID_086_Biker",
+    "name": "Throttle",
+    "description": "Rev it up!",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "90lEPUEosT-IG6KJRR5bd2sXi-8XIvJBnv2YjunI",
+    "item": "AthenaPickaxe:Pickaxe_ID_087_Hippie",
+    "name": "Drumbeat",
+    "description": "Feel the beat.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 5
+  },
+  {
+    "id": "h4WjWST8w6K8OowvgfcUDquhKwFe46a7cD2GQ7tt",
+    "item": "AthenaPickaxe:Pickaxe_ID_088_PSBurnout",
+    "name": "Controller",
+    "description": "Take control.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 5
+  },
+  {
+    "id": "44FEQdyPa8sqWceNpdfsln38lyojO0KnRUIb8TZo",
+    "item": "AthenaPickaxe:Pickaxe_ID_089_RavenQuill",
+    "name": "Iron Beak",
+    "description": "Peck away.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "DDliOcEUpbiEpYlN3zuJf55xqzPYd5pO4vfRA9Sm",
+    "item": "AthenaPickaxe:Pickaxe_ID_090_SamuraiBlue",
+    "name": "Cat's Claw",
+    "description": "Scratch and slash.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "hQ1vljAft4Gkwo2QPGd4yknaNAuHWBhfT7DBkO2i",
+    "item": "AthenaPickaxe:Pickaxe_ID_091_Hacivat",
+    "name": "Tree Splitter",
+    "description": "Make like a tree and split.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 5
+  },
+  {
+    "id": "I4INuPaient-rFPXgkplLXZFUsqwHp3bnF1zWmH1",
+    "item": "AthenaPickaxe:Pickaxe_ID_092_Bling",
+    "name": "Crowbar",
+    "description": "Pry away.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "1bjW1bW1R8CmL2MLkxedYiGhonsjFZhI5KXymPWN",
+    "item": "AthenaPickaxe:Pickaxe_ID_093_Medic",
+    "name": "Flatliner",
+    "description": "Not on my watch!",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 5
+  },
+  {
+    "id": "peAulYTSgPtbfzTKVY9STzTUdFvMpBU7t0oij2aL",
+    "item": "AthenaPickaxe:Pickaxe_ID_094_Football",
+    "name": "Upright Axe",
+    "description": "It's up, and it's good!",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "8Z83Y7KvmUfKBZTEMdIeVJtmF2Qz0QogUHluAXlM",
+    "item": "AthenaPickaxe:Pickaxe_ID_095_FootballTrophy",
+    "name": "Golden Pigskin",
+    "description": "Claim the trophy.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "DBk7IA5p2uuJRS3dHFGklDz151cSYpI1L0jGnOn-",
+    "item": "AthenaPickaxe:Pickaxe_ID_096_FootballReferee",
+    "name": "First Downer",
+    "description": "10 yards to victory.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "3NNi-vd7ntf4CUR6X95DYq0-zJYhMM19DNX3zQLd",
+    "item": "AthenaPickaxe:Pickaxe_ID_098_GarageBand",
+    "name": "Lead Swinger",
+    "description": "Hit the high notes.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 5
+  },
+  {
+    "id": "NUp0oQDYNgMxiVOM5d3RPWjPvNWEOh2cYC08TVLf",
+    "item": "AthenaPickaxe:Pickaxe_ID_099_ModernMilitaryRed",
+    "name": "Pinpoint",
+    "description": "Accuracy is paramount.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "UUpr-pEtZysqtL8C8YSxOibDNhcLDy5miKya23zz",
+    "item": "AthenaPickaxe:Pickaxe_ID_100_DieselPunk",
+    "name": "Turbine",
+    "description": "Self-piloted propulsion.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "ZrHNGbjaJ0EKN3C1Vw9V8s-yJbJgrK-1N4-Tjc-6",
+    "item": "AthenaPickaxe:Pickaxe_ID_101_Octoberfest",
+    "name": "Axcordion",
+    "description": "Squeeze out a smashing tune.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "vrDZR-iYtupjvgyJMCraeruzloEFjmEFpa2kxOld",
+    "item": "AthenaPickaxe:Pickaxe_ID_105_Scarecrow",
+    "name": "Harvester",
+    "description": "Reap what you sow.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "es8PSf5QiVqgorpBVBHtDIlu-WvCpxsnAAWASDrk",
+    "item": "AthenaPickaxe:Pickaxe_ID_106_DarkBomber",
+    "name": "Thunder Crash",
+    "description": "Wield the thunder.",
+    "items": [],
+    "variants": [],
+    "rarity": "dark",
+    "season": 6
+  },
+  {
+    "id": "8DW1eWPPJslgP8sgNofSE5aAMlPKT0ApVWAU89k9",
+    "item": "AthenaPickaxe:Pickaxe_ID_107_HalloweenTomato",
+    "name": "Night Slicer",
+    "description": "Slice twice.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "GcJ3-ae1vnpoZ1vhou0fHh9x1m0pOR0OGsQG8dR0",
+    "item": "AthenaPickaxe:Pickaxe_ID_107_Plague",
+    "name": "Herald's Wand",
+    "description": "It's vital.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "afrc2UcD23jdng-S3RcQrk6wHC1j-fpK6p6QMKvA",
+    "item": "AthenaPickaxe:Pickaxe_ID_108_PumpkinSlice",
+    "name": "Carver",
+    "description": "Honed for the harvest.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "1V9slxuSXN82AzN9MtsfCYfZj2gUM95K9RecVULz",
+    "item": "AthenaPickaxe:Pickaxe_ID_109_SkullTrooper",
+    "name": "Skull Sickle",
+    "description": "Skeleton's choice.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 6
+  },
+  {
+    "id": "EoPjKL1bcyx8OYkvUbGmH0QIq7ZVjd6avhxh7vOI",
+    "item": "AthenaPickaxe:Pickaxe_ID_110_Vampire",
+    "name": "Moonrise",
+    "description": "Strike at midnight.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 6
+  },
+  {
+    "id": "WyOcSxuH7o1HxuLXyyxmkE59DmSvVmfGhovUopN9",
+    "item": "AthenaPickaxe:Pickaxe_ID_111_BlackWidow",
+    "name": "Web Breaker",
+    "description": "Clear out the cobwebs.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "F07wdrFAHIdRPiF0e7z6LGeMPY1ZrbchPLZvdTfc",
+    "item": "AthenaPickaxe:Pickaxe_ID_112_GuanYu",
+    "name": "Guandao",
+    "description": "Sharpened for battle.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "Voi8-kQ3RRTxFo5nTJyGK6qwOHmx3J77eVllh6aA",
+    "item": "AthenaPickaxe:Pickaxe_ID_113_Muertos",
+    "name": "Six String Striker",
+    "description": "Now taking requests. Reactive: Glows in the dark",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 6
+  },
+  {
+    "id": "vMFmipQWvoUIruFhesADRTB6lpgr-ocHx5nzSDHF",
+    "item": "AthenaPickaxe:Pickaxe_ID_114_BadassCowboyCowSkull",
+    "name": "Longhorn",
+    "description": "Corral the competition.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "71GpsRfN6BAWuWtJl33u6ez4FAA8KEAlcZj2HCPZ",
+    "item": "AthenaPickaxe:Pickaxe_ID_115_EvilCowboy",
+    "name": "Dark Shard",
+    "description": "Splintered from geometric perfection. Reactive: Transforms by dealing damage, or by outliving other players.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 6
+  },
+  {
+    "id": "mBo81odss-XnbLWvaOZQgthAAdPNUvZj8xYPyx91",
+    "item": "AthenaPickaxe:Pickaxe_ID_117_MadCommander",
+    "name": "Splinterstrike",
+    "description": "Pointy whichever way you point it.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "HumFhAGOmH1Zvn8k1yn83cnZLGTI9HEFcy27uNL5",
+    "item": "AthenaPickaxe:Pickaxe_ID_118_StreetOps",
+    "name": "Angular Axe",
+    "description": "Acutely obtuse.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "Aj15CAuHpX-m4q3WqE-EdfSOmKhf-bQ4utDZ1j16",
+    "item": "AthenaPickaxe:Pickaxe_ID_119_AnimalJackets",
+    "name": "Jackspammer",
+    "description": "Swing it over and over and over and over and over...",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "fMMkUrCocqAXYAhOU8knM-MrHXMuqNimb8OoklPA",
+    "item": "AthenaPickaxe:Pickaxe_ID_120_SamuraiUltraArmor",
+    "name": "Jawblade",
+    "description": "Clench victory between your teeth.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "uCspQX4kCwhuoEXhj-mZ0wYxfq5sk3Di-ml05SWl",
+    "item": "AthenaPickaxe:Pickaxe_ID_121_RobotRed",
+    "name": "A.X.E.",
+    "description": "Perfectly programmed pick.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "ETns4gFA9-dQhAPG0qPjyP2kV-PPsJRiGZwEQZCC",
+    "item": "AthenaPickaxe:Pickaxe_ID_122_Witch",
+    "name": "Spellslinger",
+    "description": "Ancient and gnarled.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 6
+  },
+  {
+    "id": "3Dtl7afWjmWahe9fBUxR9qFuEInsPJuDUM1O17Be",
+    "item": "AthenaPickaxe:Pickaxe_ID_123_HornedMask",
+    "name": "Gatekeeper",
+    "description": "On the threshold of victory.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "enFhr1PgzEopYkSjhgt1BGPf8lMAMks16c91yR4u",
+    "item": "AthenaPickaxe:Pickaxe_ID_124_Feathers",
+    "name": "Scrambler",
+    "description": "Mix it up.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "GMqJhAnH11P-NoOQwEnFQPyur9vCjoXIeLB4hfUd",
+    "item": "AthenaPickaxe:Pickaxe_ID_125_Moth",
+    "name": "Lamp",
+    "description": "The glow is alluring.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 6
+  },
+  {
+    "id": "URYm5snPLGEVRS5u3aLzJUWxAgxXeKeV4q8daSrz",
+    "item": "AthenaPickaxe:Pickaxe_ID_127_Rhino",
+    "name": "Mauler",
+    "description": "Exhaust the competition.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 8
+  },
+  {
+    "id": "qBt-ca1Nt4eQi-njlWdn16cZNvwlIZSPPnp62Qvt",
+    "item": "AthenaPickaxe:Pickaxe_ID_131_Nautilus",
+    "name": "Krakenaxe",
+    "description": "The scourge of the seven seas!",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "6Ob3Zb7UFGGejpOmGHgdYzvywt3nbnhBfz1I0nOw",
+    "item": "AthenaPickaxe:Pickaxe_ID_133_Demon",
+    "name": "Evil Eye",
+    "description": "Always watching. Always.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 7
+  },
+  {
+    "id": "BbylaO29CRIzQo5GXwTtpcXazhSE-ICZ4c2YZeZa",
+    "item": "AthenaPickaxe:Pickaxe_ID_134_Snowman",
+    "name": "Icicle",
+    "description": "Cold to the touch.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "21feX5sk0Y8eHJdHZ-sIYBclOySeae4VFxdwa2Uh",
+    "item": "AthenaPickaxe:Pickaxe_ID_135_SnowNinja",
+    "name": "Inverted Blade",
+    "description": "Sharp from any direction.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "DaVRqJJOsYhZVFvoZ7VT4jejKQsq3aGW2kMQEsej",
+    "item": "AthenaPickaxe:Pickaxe_ID_136_Math",
+    "name": "T-Square",
+    "description": "Measure twice, chop once.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "iO9V2KI2u7TR8wPjC3bjIdMtmt9OwbvEGOJvNgSz",
+    "item": "AthenaPickaxe:Pickaxe_ID_138_Gnome",
+    "name": "Cold Snap",
+    "description": "Frosted and flowery.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "JOMxmFlqo8jI6XHyyxP1bbtHRDc5wFQ1eMb4FDB6",
+    "item": "AthenaPickaxe:Pickaxe_ID_139_Gingerbread",
+    "name": "Cookie Cutter",
+    "description": "Sweet vengeance.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "w9Kiu2D8BLf8jDtm2P1AYih4NgBngyIYt-bldSSX",
+    "item": "AthenaPickaxe:Pickaxe_ID_140_StreetGoth",
+    "name": "Vision",
+    "description": "Unending gaze.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "W6NBEdoQaLnTF6uQDLjT7U1vXJX8bULTocOFiYuX",
+    "item": "AthenaPickaxe:Pickaxe_ID_141_Krampus",
+    "name": "Brat Catcher",
+    "description": "Be on your best behavior.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "W4XkBmNEyI1lmotAHHCdXktuHkzVXiJAKntpV6Bf",
+    "item": "AthenaPickaxe:Pickaxe_ID_142_TeriyakiFish",
+    "name": "Bootstraps",
+    "description": "Weaponized boot on a stick.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "SCWepSXJB9nHppiBrtqz3-8oPV43AqAgcCqN9DaQ",
+    "item": "AthenaPickaxe:Pickaxe_ID_143_FlintlockWinter",
+    "name": "Frozen Axe",
+    "description": "Once crimson, now coated in permafrost.",
+    "items": [],
+    "variants": [],
+    "rarity": "frozen",
+    "season": 7
+  },
+  {
+    "id": "NuhP-mbM08VTsQGslSF6p46ToJkKFzpbaMqlgXJm",
+    "item": "AthenaPickaxe:Pickaxe_ID_144_Angel",
+    "name": "Virtue",
+    "description": "Swing forever true.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "aHoV3QfyXQOAzXn6gtgPGZwRDuPLOydI7vGu0xIs",
+    "item": "AthenaPickaxe:Pickaxe_ID_146_MilitaryFashion",
+    "name": "Clean Cut",
+    "description": "Looks sharp. Actually sharp.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "GH5LYfAx5k3N7SEkN5-qUxdeblANZ0rsf6C32GcK",
+    "item": "AthenaPickaxe:Pickaxe_ID_147_TechOps",
+    "name": "Armature",
+    "description": "Experimental prototype.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "CJioHL2PQ7jbgu3mBNp3zQKI49nPnoJLmXuriB4v",
+    "item": "AthenaPickaxe:Pickaxe_ID_148_Barbarian",
+    "name": "Battle Axe",
+    "description": "Truly barbaric.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "PknLIk-9IyR5Aap6h5qW7D0qUeMCQJgGPdUOHgkQ",
+    "item": "AthenaPickaxe:Pickaxe_ID_149_WavyMan",
+    "name": "Flimsie Flail",
+    "description": "Flop til they drop.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "5yDgJsg3KtHfTTGivoxs0YiOKbNWbZPi8xW5lyzZ",
+    "item": "AthenaPickaxe:Pickaxe_ID_151_AlienFishhead",
+    "name": "Squid Striker",
+    "description": "Speak softly and carry a giant squid.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "poo2TTmsx16HVRIli1G1-F8wQa-GyYuSN8GgDoBp",
+    "item": "AthenaPickaxe:Pickaxe_ID_152_DragonMask",
+    "name": "Outburst",
+    "description": "Burning bright.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "Om1QrniqPXsxsOxEWPzoJIkBAJt22CT8C5ECmClZ",
+    "item": "AthenaPickaxe:Pickaxe_ID_153_RoseLeader",
+    "name": "Rose Glow",
+    "description": "Put the petal to the metal.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "410rjTYPNFN65Uh-2lo8BvNbpfm-VnxUKmM2brGR",
+    "item": "AthenaPickaxe:Pickaxe_ID_158_FuzzyBear",
+    "name": "Cuddle Paw",
+    "description": "Cuddle up with claws.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "EkxfFhOaU8BJ5B74YqGkOx9B-Yh4Du5mguH1aMJJ",
+    "item": "AthenaPickaxe:Pickaxe_ID_159_RobotTrouble",
+    "name": "Crossroads",
+    "description": "This can go one of two ways...",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "n3Io9JDcQfjzqQQ5hOPAWmJHFYWkddQjpVR2XqLF",
+    "item": "AthenaPickaxe:Pickaxe_ID_160_IceCream",
+    "name": "Ice Pop",
+    "description": "It can take a lickin'.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "8aEsHQNxsFehli1-GspK7ea32eenCEhUY9Ckbuco",
+    "item": "AthenaPickaxe:Pickaxe_ID_161_LoveLlama",
+    "name": "Chocollama",
+    "description": "Double dipped in chocolate.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 7
+  },
+  {
+    "id": "ifjTzGyEsxV7AGNQQAYjJ5wet0bmoTr0xVSBeYep",
+    "item": "AthenaPickaxe:Pickaxe_ID_162_SkullBrite",
+    "name": "Skully Splitter",
+    "description": "Color coordinated and battle ready.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 7
+  },
+  {
+    "id": "-KAat44qr8XqZfslFf1gzzxFFOvUCljcNsPheo0y",
+    "item": "AthenaPickaxe:Pickaxe_ID_168_Bandolier",
+    "name": "Machete",
+    "description": "Cut through the jungle.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "oHeMF3RqjjwNSnbDawSX9-NfXc1AsLoOxpqZKJK-",
+    "item": "AthenaPickaxe:Pickaxe_ID_169_Farmer",
+    "name": "Gold Digger",
+    "description": "The gold standard.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "gQVxnpZNjmJ0NXNeJ7qBNAgv0bMAonwpCYR1A2Tj",
+    "item": "AthenaPickaxe:Pickaxe_ID_170_Aztec",
+    "name": "Axetec",
+    "description": "Axe of the ancients.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "fvqk9ArEXFGJyInQlSCNIHSwOIXi95Ihb3H9S7rF",
+    "item": "AthenaPickaxe:Pickaxe_ID_171_OrangeCamo",
+    "name": "Brute Force",
+    "description": "Unavoidable.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "-hH-OCPF2CFD2gP5CEX5rfAAMRdERBm2WxHdCZcm",
+    "item": "AthenaPickaxe:Pickaxe_ID_172_BandageNinja",
+    "name": "Quickstrike",
+    "description": "Sharpened in the shadows.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "PaaLBe0xiE6fa1LA3xU3Auy3MlSMnfZ-VgLV9JKb",
+    "item": "AthenaPickaxe:Pickaxe_ID_173_SciOps",
+    "name": "Psionic Edge",
+    "description": "Focus on the perfect strike.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "BVwlvRIi4IbFRimI76YxexIJ4ahEfw1HS08WNXny",
+    "item": "AthenaPickaxe:Pickaxe_ID_174_LuckyRider",
+    "name": "Emerald Smasher",
+    "description": "Mean and green.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "RpvvmLlmX-oer6bT3OH1c6VYoz4BE143nk2nQrJ3",
+    "item": "AthenaPickaxe:Pickaxe_ID_175_Tropical",
+    "name": "Fresh Cut",
+    "description": "Chop down the competition.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "nEzmXQW5sTaX1G0Gq3BeRwimAYkqac0EORSGqJUc",
+    "item": "AthenaPickaxe:Pickaxe_ID_176_DevilRock",
+    "name": "Burning Axe",
+    "description": "Immortal instrument of fire.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 8
+  },
+  {
+    "id": "iPSRAl2-BQOoH1k1lXEjENWzZN27WXM8xTFWcCy8",
+    "item": "AthenaPickaxe:Pickaxe_ID_179_StarWand",
+    "name": "Star Wand",
+    "description": "Swing for the stars.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "1YOUSQbFMdNvq2fKUBUCRXzlBZlHcPxyxNuaBSh6",
+    "item": "AthenaPickaxe:Pickaxe_ID_180_TriStar",
+    "name": "Tri-Star",
+    "description": "Thrice the slice.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "ty-FfARFauWfBhCDStxrRFETPTGs3kPGaV5QYCnC",
+    "item": "AthenaPickaxe:Pickaxe_ID_181_Log",
+    "name": "Stumpy",
+    "description": "Count the rings.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "16HeDmr2VuMQXKJawXc9kj3-fY8AEOR1kgI6mS8a",
+    "item": "AthenaPickaxe:Pickaxe_ID_182_PirateWheel",
+    "name": "High Seas",
+    "description": "Steer through the storm.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "n7RRGCiPEYtI8HVosJUrvgg2UKTILTjnEynKWcca",
+    "item": "AthenaPickaxe:Pickaxe_ID_183_BaseballBat2018",
+    "name": "Grand Slammer",
+    "description": "Swing for the fences.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "fmZi0yqxMRHnzsx7b6zCIjAw1Dj0Fr-37E0JQpVs",
+    "item": "AthenaPickaxe:Pickaxe_ID_184_DarkShaman",
+    "name": "Moonbone",
+    "description": "Strike at full moon.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "L8YtxWpqzi3hREDnZLnnUw8DhIJEFyiKrtQe-6Uc",
+    "item": "AthenaPickaxe:Pickaxe_ID_185_BadassCowboyCactus",
+    "name": "Prickly Axe",
+    "description": "Handle with caution.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "1RH5y-RdDHy0gc5GrClXyPPzs8QJFieitcKRial5",
+    "item": "AthenaPickaxe:Pickaxe_ID_186_DemonStone",
+    "name": "Demon Skull",
+    "description": "Imbued with the remnants of a lost soul.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 8
+  },
+  {
+    "id": "Es6dJsr2-whkbMLwuxIycqSSjeBph9dk9r7iBb0Q",
+    "item": "AthenaPickaxe:Pickaxe_ID_188_StreetAssassin",
+    "name": "Red Streak",
+    "description": "Find your hot streak.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "nvoj6CLXXNwhtK9RvI7rABMOi2XVXbHeONpQ8471",
+    "item": "AthenaPickaxe:Pickaxe_ID_189_StreetOpsStealth",
+    "name": "Stealth Angular Axe",
+    "description": "Angle for the win.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "agEhMRRSp6Jx4KqKKsQdi1FBatgnLwnq6H0Ge6bJ",
+    "item": "AthenaPickaxe:Pickaxe_ID_190_GolfClub",
+    "name": "Driver",
+    "description": "Swing for the green.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "jRKr9FQT-WFgNkX2cnS1m8uoTQUU1RT0tHGEaXkJ",
+    "item": "AthenaPickaxe:Pickaxe_ID_191_Banana",
+    "name": "Peely Pick",
+    "description": "Wield the power of the peel.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "5J790Sd3PvNzwQ0GrxmIkph6eHHqc4tD7s0PvrS8",
+    "item": "AthenaPickaxe:Pickaxe_ID_192_PalmTree",
+    "name": "Relax Axe",
+    "description": "Victory is in the palm in your hand.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "2bXdvoYfD15A07B5okbIIhsXqXdxlnP8AL2HhZ8C",
+    "item": "AthenaPickaxe:Pickaxe_ID_193_HotDog",
+    "name": "Knockwurst",
+    "description": "Knock em' out.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "NllFVd9RZ27fgbWAc8yE8Z1WpWg7hC06S-FNZLXp",
+    "item": "AthenaPickaxe:Pickaxe_ID_194_TheBomb",
+    "name": "Shrapnel",
+    "description": "Fragments of fun.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "ePr23Q8cJ5aroByVJquSw3IctUnR1V8gw319WKwf",
+    "item": "AthenaPickaxe:Pickaxe_ID_196_EvilBunny",
+    "name": "Steel Carrot",
+    "description": "Hop and chop.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "0kVpsy1TRg5UEX--rQzOaArBsw1WG-yQCj75Guib",
+    "item": "AthenaPickaxe:Pickaxe_ID_197_HoppityHeist",
+    "name": "Bold Bar",
+    "description": "Break in, and stand out.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "4AhXxKY0rOmo72fJ1TO9PPRluSPy8CL7dFBqd2lm",
+    "item": "AthenaPickaxe:Pickaxe_ID_198_BountyBunny",
+    "name": "Sprout",
+    "description": "Get to the root of it.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "ieuky4jVroHhaMhChwcEkOnltHs5oWyhvcgw0Cji",
+    "item": "AthenaPickaxe:Pickaxe_ID_199_ShinyHammer",
+    "name": "Silver Sledge",
+    "description": "Gem studded shine axe.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "dnQeQKbXzkVsxm3FqmFn8GeVwqhlKKBRsNIhkkgg",
+    "item": "AthenaPickaxe:Pickaxe_ID_200_MoonlightAssassin",
+    "name": "Astral Axe",
+    "description": "Swing through the stars.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 8
+  },
+  {
+    "id": "3OxyzGza5ZVmyZm6wroMflQfDgPiB8uT62kgVkkm",
+    "item": "AthenaPickaxe:Pickaxe_ID_201_Swashbuckler",
+    "name": "Flint Striker",
+    "description": "Bash with bluster.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 8
+  },
+  {
+    "id": "uZ8vixmIVJno9-DPgsYmIAMsoWwhxsk-Qsb4JjjQ",
+    "item": "AthenaPickaxe:Pickaxe_ID_204_Miner",
+    "name": "Rockbreaker",
+    "description": "You know the drill.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 8
+  },
+  {
+    "id": "wbTJR1nYlC9LxZMCHo4ogXDjPCcTX5vAiIclnRCK",
+    "item": "AthenaPickaxe:Pickaxe_ID_212_CyberScavenger",
+    "name": "Web Wrecker",
+    "description": "High-tech precision.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "iqVx1uvqvcy7BGH2ZlgpV8VJr9llQOQH7mZDr71V",
+    "item": "AthenaPickaxe:Pickaxe_ID_213_AssassinSuitSledgehammer",
+    "name": "Simple Sledge",
+    "description": "A professional's tool of choice.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "MB9HUPgsDrDqntvzzGoESuYthhTJmgUSgM6S9yhJ",
+    "item": "AthenaPickaxe:Pickaxe_ID_214_Geisha",
+    "name": "Shamisen",
+    "description": "Alluringly destructive.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "wirgL4hR9FrtwcemJobfssZXn3Uxe5Ku8d6cMs1d",
+    "item": "AthenaPickaxe:Pickaxe_ID_215_Pug",
+    "name": "Chew Toy",
+    "description": "Unburied treasure.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "GxTKnOjyDbEjHFaOqx7jzPuEWi2XEdgU8tYd7Oy1",
+    "item": "AthenaPickaxe:Pickaxe_ID_217_UrbanScavenger1H",
+    "name": "Metro Machetes",
+    "description": "Street smart and impossibly sharp.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "7FQ676A1OldZzEe4utNsmw9jgNX1SAjf6Gq1XfAQ",
+    "item": "AthenaPickaxe:Pickaxe_ID_218_StormSoldier",
+    "name": "Storm Bolt",
+    "description": "Strike like lightning.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 9
+  },
+  {
+    "id": "W-BOrCm46BWxGFW5sl6p1VRjGvbR5lGZPAh5FQXx",
+    "item": "AthenaPickaxe:Pickaxe_ID_219_BandageNinja1H",
+    "name": "Talons",
+    "description": "Claw your way to the top.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "mGwXtb6xL3h0eiq2LtAQZvkSMZaFbXHB-2-sut3f",
+    "item": "AthenaPickaxe:Pickaxe_ID_220_ForkKnife1H",
+    "name": "Fork Knife",
+    "description": "Don't forget your table manners.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "I4UAvOi9dIoIbmVwMsSSITq61XjaxxjbDWIRu9WJ",
+    "item": "AthenaPickaxe:Pickaxe_ID_223_Jellyfish",
+    "name": "Conch Cleaver",
+    "description": "A gift from the deep.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 9
+  },
+  {
+    "id": "AyqdbdL2b42W2ZbtzLGJEAnq4iG6GH2pMNT4E7do",
+    "item": "AthenaPickaxe:Pickaxe_ID_224_Butterfly",
+    "name": "Shard Sickle",
+    "description": "Harness the mysterious butterfly effect.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "biFQIEMJcdmWXPwVsMYCDydIn7lc6JxG1ageKAGl",
+    "item": "AthenaPickaxe:Pickaxe_ID_225_Caterpillar",
+    "name": "Flycatcher",
+    "description": "Never cross a caterpillar.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "thqnFbXHAA3J8VF28kmARs5rJRltTWjFc1iJOMXT",
+    "item": "AthenaPickaxe:Pickaxe_ID_226_CyberFuBlade",
+    "name": "Fixation",
+    "description": "Sharp, focused, and relentless.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "1RJSW2ZuUQsXSNHL29z37KPeL60-0YHKjFTXO7Ss",
+    "item": "AthenaPickaxe:Pickaxe_ID_227_FemaleGlowBro",
+    "name": "Splintered Light",
+    "description": "Share the light.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "thX3IDVgH6xZMLfIyrTCJ3TNk2rQmGzCYF5IcbRM",
+    "item": "AthenaPickaxe:Pickaxe_ID_228_MaleGlowBro",
+    "name": "Vivid Axe",
+    "description": "Brighten the battle.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "xudovMWeE4bdqRDFi1XLJIh7IEkDObeGXtHfDXSe",
+    "item": "AthenaPickaxe:Pickaxe_ID_229_TechMage",
+    "name": "Wild Tangent",
+    "description": "Find the impossible angle.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "RCA3C3iGbW1AhKXIL8jSHd52e5M3cTe-PrXPgHJw",
+    "item": "AthenaPickaxe:Pickaxe_ID_230_Drift1H",
+    "name": "Dual Edge",
+    "description": "Slicing through the dimensional planes.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 9
+  },
+  {
+    "id": "D2pDMg1mtLiqcGgtR0GyweQOMim8rRRhetbPNlmw",
+    "item": "AthenaPickaxe:Pickaxe_ID_231_Flamingo2",
+    "name": "Lawnbreaker",
+    "description": "Rule the lawn with an iron beak.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "MHoTqKLBzcJdtGg-Di6jp2WOHKx-H3zElqrj5PjA",
+    "item": "AthenaPickaxe:Pickaxe_ID_232_Grillin1H",
+    "name": "Low 'n Slow",
+    "description": "Lock in the flavor of victory.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "z-pxy7QAionzeW9mgGcxu8ITLVU0KMDyMB6OK82-",
+    "item": "AthenaPickaxe:Pickaxe_ID_233_Birthday2019",
+    "name": "Birthday Slice",
+    "description": "Make a wish and swing away.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "nCH71zBlHBqqasfxywOpeaQ8ElvLFe7FT8V0m50F",
+    "item": "AthenaPickaxe:Pickaxe_ID_234_CyberKarate",
+    "name": "Power Punch",
+    "description": "Overload them.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 9
+  },
+  {
+    "id": "b66nNDpuE0oHLP6prsRsJZWUl1CfYJ20kT0lPFv0",
+    "item": "AthenaPickaxe:Pickaxe_ID_236_Multibot1H",
+    "name": "Combo Cleavers",
+    "description": "Swinging force.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 9
+  },
+  {
+    "id": "0k-lgfVBYIvHs5xYKeEXW--b2-In95cXw8q5web5",
+    "item": "AthenaPickaxe:Pickaxe_ID_237_Warpaint",
+    "name": "Mean Streak",
+    "description": "Paint the town blue.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 9
+  },
+  {
+    "id": "mwq0UfiK2zFxznuWkZkHF9vxUPk4gvlv95gGwNIP",
+    "item": "AthenaPickaxe:Pickaxe_ID_238_Bubblegum",
+    "name": "Bubble Popper",
+    "description": "Swing sweet.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "4juI8wxBwLEZtCb9LaYeTD0iVSwwnQqusgLs20Xa",
+    "item": "AthenaPickaxe:Pickaxe_ID_239_PizzaPitPJ1H",
+    "name": "Pair-peronni",
+    "description": "Double the deliciousness.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "UhPL1s81owYNYyR2jbTKPriI00087qn-tTQIs-iM",
+    "item": "AthenaPickaxe:Pickaxe_ID_246_BlueBadass1H",
+    "name": "Tac Bats",
+    "description": "Tactical combat baton.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "UEQPPT0GJyq12CifcKSfaKtbaCqLTlxuH3l8Fotw",
+    "item": "AthenaPickaxe:Pickaxe_ID_247_BoneWasp",
+    "name": "Primal Sting",
+    "description": "That's gonna leave a mark.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "yNR-leeDF9HArzJRSyPNudUFfzD1TvSNt4pgUot5",
+    "item": "AthenaPickaxe:Pickaxe_ID_248_MechPilot",
+    "name": "Robo Wrecker",
+    "description": "Pinpoint accuracy.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "6DkPSnFVtOHhZULNEgPF4t47oVVfkVIcqY61hiE4",
+    "item": "AthenaPickaxe:Pickaxe_ID_250_Lopex",
+    "name": "Spikeclone",
+    "description": "Sleek and spiky.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "BGclDAiCFJRzQDIJSq6rpYlMRzMvuaV7FYVFP2Zz",
+    "item": "AthenaPickaxe:Pickaxe_ID_251_MascotMilitiaBurger",
+    "name": "Grillcount",
+    "description": "Put some sizzle in your swing.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "8JqFE2ISU6S3w5iS4UNrbVtAxqj1uligCJTA2bDx",
+    "item": "AthenaPickaxe:Pickaxe_ID_252_MascotMilitiaTomato",
+    "name": "Rusty Roller",
+    "description": "Who wants a slice?",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "3FWxewrf0NEu9JJkYwArfuABdAC24en8HS5R2LbB",
+    "item": "AthenaPickaxe:Pickaxe_ID_253_StarWalker",
+    "name": "Star Strike",
+    "description": "Star powered stellar axe.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "utlhzkjsBo5IDVG7q2gF5ADPJtnYx1H0tdRxzI0E",
+    "item": "AthenaPickaxe:Pickaxe_ID_254_Syko",
+    "name": "Plasmatic Edge",
+    "description": "Calibrated for absolute domination.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "UKD-yHUl0F0OCyyKgbWKwe7lSBvgYiAisxhQxSWP",
+    "item": "AthenaPickaxe:Pickaxe_ID_255_WiseMaster",
+    "name": "Wisdom's Edge",
+    "description": "Know your blade as you know yourself.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "Gsy8StlSEcMGoHzfbJOHeUuuWhN0HcqALQqZwUmG",
+    "item": "AthenaPickaxe:Pickaxe_ID_256_TechOpsBlue",
+    "name": "Pneumatic Twin",
+    "description": "Dual-pronged pneumatic pickaxe.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "ufZU0j0WjiYaHhvpLQFSfswxPxVxXLe0jumIALCz",
+    "item": "AthenaPickaxe:Pickaxe_ID_257_FrostMystery1H",
+    "name": "Hyper Edge",
+    "description": "Dominate the zone.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "Jq04slmv8ZsOEmw1jvPnaGuKMpaSSvYoEYDH6Bn5",
+    "item": "AthenaPickaxe:Pickaxe_ID_259_CupidFemale1H",
+    "name": "Cupid's Daggers",
+    "description": "Love hurts.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "BUivD2npyXI1qdZ3X55q3TedjtRl17Q1RIml7iz7",
+    "item": "AthenaPickaxe:Pickaxe_ID_262_FutureBikerWhite",
+    "name": "Chained Cleaver",
+    "description": "Settle the score with an edge.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "1tnUL9Cr3dXUHNRZpI7uORWtTCSW8usmlX4DWUNx",
+    "item": "AthenaPickaxe:Pickaxe_ID_264_LemonLime1H",
+    "name": "Sour Strikers",
+    "description": "Pucker up!",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "cB4AfnjWK-IC9KedBsgv61hZkM-6lwIL30CiO4ZB",
+    "item": "AthenaPickaxe:Pickaxe_ID_265_BarbequeLarry1H",
+    "name": "Psycho Buzz Axes",
+    "description": "*Maniacal laughter intensifies*",
+    "items": [],
+    "variants": [],
+    "rarity": "gaminglegends",
+    "season": 10
+  },
+  {
+    "id": "ODxinX8zWWt0tWVhry6iQGYlkDAG55g6dHn1mQfY",
+    "item": "AthenaPickaxe:Pickaxe_ID_266_PaddedArmor",
+    "name": "Impact Edge",
+    "description": "Engineered for ultimate impact.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "6OZU7Shtc4Eq6FUZb8mnO9z3KSw8qx4LwmY2usC9",
+    "item": "AthenaPickaxe:Pickaxe_ID_267_RaptorBlackOps",
+    "name": "Blue Bolt",
+    "description": "Infused with the power of blue.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "C-30kmpPeYz3ZOQXD-lBvrUxtSjfGu7ovoI5lErw",
+    "item": "AthenaPickaxe:Pickaxe_ID_268_ToxicKitty1H",
+    "name": "Jagged Edge",
+    "description": "A spiky ray of sunshine.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "foea84yiRFlImmELpX-GB7aaqEYZYQY88aWjdPp4",
+    "item": "AthenaPickaxe:Pickaxe_ID_269_WWIIPilotSciFi",
+    "name": "Aero Axe",
+    "description": "Show your stripes.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "ya8x3o8GOUCFSDQ4BVCFl4PRgN4ePcn5GwIGko9k",
+    "item": "AthenaPickaxe:Pickaxe_ID_270_Jumpstart",
+    "name": "Megavolt",
+    "description": "Overcharged with electric might.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "DiFnOViggMSDtuKxAM4kkG7IeiIVlMVyENPs7fgQ",
+    "item": "AthenaPickaxe:Pickaxe_ID_271_Punchy",
+    "name": "Clobber Axe",
+    "description": "Give 'em the ol' one-two.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "OhNm5Upg3hoTQYYoFTsp6nKc7oJOXCd-PaFRNEWz",
+    "item": "AthenaPickaxe:Pickaxe_ID_273_StreetFashionRed",
+    "name": "Stripe Slicer",
+    "description": "Line em up.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "JDgX4weOhexbu-duvLJg9KVz3SvlhmhOhDtcoGy5",
+    "item": "AthenaPickaxe:Pickaxe_ID_274_StreetUrchin",
+    "name": "Ave Axe",
+    "description": "The route to victory.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "ew8i-hwpMWmcbknbaycRmFFQdijgvgQDrgaNujrA",
+    "item": "AthenaPickaxe:Pickaxe_ID_276_BlackMondayFemale1H_1V4HE",
+    "name": "Cat's Claws",
+    "description": "Show off your catlike reflexes.",
+    "items": [],
+    "variants": [],
+    "rarity": "dc",
+    "season": 10
+  },
+  {
+    "id": "UBn7TjQvlUhgGBYmM6TKsPfDvF2zjYSuNaRCvNNf",
+    "item": "AthenaPickaxe:Pickaxe_ID_278_BrightGunnerRemix1H",
+    "name": "Brite Bashers",
+    "description": "Pummel them with positivity.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "B78Vzbla8777ZfBzgAvJInYzzuTCWSX-obLsvqoo",
+    "item": "AthenaPickaxe:Pickaxe_ID_279_MaleLlamaHeroMilitia",
+    "name": "Razor Smash",
+    "description": "After the rainbow's end.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 10
+  },
+  {
+    "id": "tRgxS3D-UPYqHkxUfU3ArQwYrem9mFgULFRW5vFH",
+    "item": "AthenaPickaxe:Pickaxe_ID_280_MascotMilitiaCuddle1h",
+    "name": "Snack Attackers",
+    "description": "When the craving strikes...",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 10
+  },
+  {
+    "id": "RkrPyPd1Scc6Jj9ed9EDBHXnG9f9IklsIDG13Jtb",
+    "item": "AthenaPickaxe:Pickaxe_ID_STW001_Tier_1",
+    "name": "Ol' Woody",
+    "description": "Looks... sturdy.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "EZE9p6NA00980ndaBdPQxNbnEWItJ2Py3KkgEm6u",
+    "item": "AthenaPickaxe:Pickaxe_ID_STW002_Tier_3",
+    "name": "Tech Axe",
+    "description": "Enhanced structural analysis.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "OiB95qpkGM6f0dr96v7LKVhhz-9obCR-cszc94Aq",
+    "item": "AthenaPickaxe:Pickaxe_ID_STW003_Tier_4",
+    "name": "Hydraulic Wrecker",
+    "description": "Piston powered.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "El78BraNW7O5bXBzKAJOzdqszqu70hcbQv45zl9a",
+    "item": "AthenaPickaxe:Pickaxe_ID_STW004_Tier_5",
+    "name": "Vindertech Elite",
+    "description": "Cutting edge harvesting technology.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "4FALQYGkiUh2RboCwXLlGzPErrIkBTIArolAtYhd",
+    "item": "AthenaPickaxe:Pickaxe_ID_STW005_Tier_6",
+    "name": "Laser Pick",
+    "description": "Now with lasers!",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "3aHYw22i0J6EGSeOQRl72qzbiypznRvAsoh3AzkS",
+    "item": "AthenaPickaxe:Pickaxe_ID_STW006_Tier_7",
+    "name": "Axehammer",
+    "description": "Rocket fueled jackhammer pickaxe.",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "S2mu1tfF9Abcx7ogx8GrpKEklNaGNOe8bU-0KSD3",
+    "item": "AthenaPickaxe:Pickaxe_ID_STW007_Basic",
+    "name": "Basic Basher",
+    "description": "Gets the job done!",
+    "items": [],
+    "variants": [],
+    "rarity": "uncommon",
+    "season": 10
+  },
+  {
+    "id": "EIzClIzGkhdyoR-HLRw3bN2KUIrt4DvIuS8Dw8I2",
+    "item": "AthenaPickaxe:Pickaxe_Lockjaw",
+    "name": "Raider's Revenge",
+    "description": "Wrapped in rusty barbed wire, and ready to settle the score.",
+    "items": [],
+    "variants": [],
+    "rarity": "epic",
+    "season": 1
+  },
+  {
+    "id": "Y-z89ZAzBtVnaBFqGBp9dCKIihSzMpBO47pzKv0L",
+    "item": "AthenaPickaxe:SickleBatPickaxe",
+    "name": "Batsickle",
+    "description": "Take a crack at harvesting with the Batsickle. It's half bat. Half sickle. All Batsickle.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 1
+  },
+  {
+    "id": "JWouwaanSrcHP-TjXzFz6lEvN8-OeqhRPXoNXT6q",
+    "item": "AthenaPickaxe:SkiIcePickaxe",
+    "name": "Cliffhanger",
+    "description": "Climb your way to the top with the mountaineering inspired Cliffhanger Pickaxe.",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 1
+  },
+  {
+    "id": "tgkP3KT7ETmwPgb2Tei7w6MtVHtAPZDhOZKtYJuI",
+    "item": "AthenaPickaxe:SpikyPickaxe",
+    "name": "Spiky",
+    "description": "It's a pickaxe with spikes. What's not to like?",
+    "items": [],
+    "variants": [],
+    "rarity": "rare",
+    "season": 1
+  }
 ]

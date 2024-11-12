@@ -53,7 +53,9 @@ namespace FortBackend.src.App.Routes.API
             return Ok();
         }
 
-        [HttpGet("region/check")]
+        [HttpPost("/region/check")]
+
+
         public IActionResult RegionCheck()
         {
             return Ok(new
@@ -193,7 +195,8 @@ namespace FortBackend.src.App.Routes.API
                                 },
                                 templates = jsonResponse2,
                             }));
-                        }else
+                        }
+                        else
                         {
                             return Content(JsonConvert.SerializeObject(new
                             {

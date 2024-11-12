@@ -4,11 +4,12 @@ namespace FortLibrary.Shop
 {
     public class ShopBundles
     {
+        public int BundleID { get; set; } = 0;
         public List<ShopBundlesItem> Daily { get; set; } = new List<ShopBundlesItem>();
         public List<ShopBundlesItem> Weekly { get; set; } = new List<ShopBundlesItem>();
         public string LastShownDate { get; set; } = string.Empty;
     }
-
+     
     public class ShopItems
     {
         public string id { get; set; } = string.Empty;
@@ -22,6 +23,7 @@ namespace FortLibrary.Shop
         public List<AthenaItemVariants> variants { get; set; } = new List<AthenaItemVariants>();
         public string rarity { get; set; } = string.Empty;
         public string LastShownDate { get; set; } = string.Empty;
+        public int season { get; set; } = -1;
     }
 
     public class ShopBundlesItem
@@ -40,6 +42,8 @@ namespace FortLibrary.Shop
         public int singleprice { get; set; } = -1;
         public int price { get; set; } = -1;
         public string[] categories { get; set; } = new string[0];
+
+        public int season { get; set; } = -1;
     }
 
     public class Item

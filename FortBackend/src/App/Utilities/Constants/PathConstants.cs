@@ -15,6 +15,8 @@ namespace FortBackend.src.App.Utilities.Constants
         public class ShopJson
         {
             public static readonly string Shop = Path.Combine(BaseDir, "Json/shop/shop.json");
+            public static readonly string ShopPrices = Path.Combine(BaseDir, "Json/shop/prices.json");
+            public static readonly string ShopBundles = Path.Combine(BaseDir, "Json/shop/bundles.json");
             public static readonly string SeasonShop = Path.Combine(BaseDir, "Json/shop/special/SeasonShop.json");
         }
 

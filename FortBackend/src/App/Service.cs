@@ -119,13 +119,18 @@ namespace FortBackend.src.App
             });
             LeadBoardLoop.Start();
 
-            //var ItemShopGenThread = new Thread(async () =>
-            //{
-            //    await GenerateItemShop(0);
-            //});
-            //ItemShopGenThread.Start();
+            if(Saved.DeserializeGameConfig.ShopRotation)
+            {
+                //var ItemShopGenThread = new Thread(async () =>
+                //{
+                //    await GenerateItemShop(0);
+                //});
+                //ItemShopGenThread.Start();
+                
+                // ENABLE TO ONLY RUN ON STARTUP
+                GenerateShop.Init();
+            }
 
-            //GenerateShop.Init();
 
             try
             {

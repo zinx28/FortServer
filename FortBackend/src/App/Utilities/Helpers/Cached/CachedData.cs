@@ -7,6 +7,7 @@ using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
 using FortLibrary.Encoders;
 using FortLibrary.EpicResponses.Profile.Query.Items;
+using FortLibrary.Shop;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
@@ -42,10 +43,24 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             var DefaultBannerPath = PathConstants.CachedPaths.DefaultBanner;
             var DefaultBannerColorsPath = PathConstants.CachedPaths.DefaultBannerColors;
             var IniConfigPath = PathConstants.CloudStorage.IniConfig;
+            var ShopPricesPath = PathConstants.ShopJson.ShopPrices;
+            var ShopBundlesPath = PathConstants.ShopJson.ShopBundles;
             var TimelinePath = PathConstants.Timeline;
             // -- //
 
             // -- Verify -- //
+
+            if (!File.Exists(ShopPricesPath))
+            {
+                Logger.Error("Couldn't find ShopPrices Path (shop.json)", "ShopPrices-Path");
+                throw new Exception("Couldn't find ShopPrices Path (shop.json)");
+            }
+
+            if (!File.Exists(ShopBundlesPath))
+            {
+                Logger.Error("Couldn't find ShopBundles Path (bundles.json)", "ShopBundles-Path");
+                throw new Exception("Couldn't find ShopBundles Path (bundles.json)");
+            }
 
             if (!File.Exists(IniConfigPath))
             {
@@ -237,8 +252,29 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
             catch (Exception ex) { Logger.Error("Timeline Data -> " + ex.Message); }
 
-         
 
+
+            try
+            {
+                string filePath = System.IO.File.ReadAllText(ShopPricesPath);
+
+                BackendCachedData.ShopPrices = JsonConvert.DeserializeObject<ItemPricing>(filePath)!;
+            }
+            catch (Exception ex) { Logger.Error("ItemPricing Data -> " + ex.Message); }
+
+            try
+            {
+                string filePath = System.IO.File.ReadAllText(ShopBundlesPath);
+
+                var shopBundlesList = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!;
+
+                BackendCachedData.ShopBundles = shopBundlesList;
+
+                BackendCachedData.ShopBundlesFiltered = shopBundlesList.ToList();
+
+                BackendCachedData.LoadAndFilterShopBundles(DeserializeGameConfig.Season);
+            }
+            catch (Exception ex) { Logger.Error("ShopBundles Data -> " + ex.Message); }
         }
     }
 }

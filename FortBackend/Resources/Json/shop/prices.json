@@ -18,7 +18,8 @@
     "rare": 800,
     "epic": 1200,
     "icon": 500,
-    "dark": 1200
+    "dark": 1200,
+    "marvel": 800
   },
   "gliders": {
     "uncommon": 500,
@@ -26,7 +27,8 @@
     "epic": 1200,
     "legendary": 1500,
     "icon": 500,
-    "dc": 1200
+    "dc": 1200,
+    "dark": 500
   },
   "wrap": {
     "uncommon": 300,

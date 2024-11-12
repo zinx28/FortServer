@@ -13,29 +13,25 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
             if (Generator.Attempts == 4)
             {
-                Logger.Error("Went pass to many attempts", "ItemShop");
+                Logger.Error("Went pass too many attempts", "ItemShop");
                 return false;
             }
-
             Random random = new Random();
-            string filePath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "json", "shop", "bundles.json");
-            string jsonContent = File.ReadAllText(filePath);
-            if (jsonContent == null)
-            {
-                Logger.Error("Shop generation will be canceled -> bundles is null");
-                return false;
-            }
+
+            Logger.Error("TEST");
 
 
-            List<ShopBundles> skinItems = JsonConvert.DeserializeObject<List<ShopBundles>>(jsonContent)!;
+
+            List<ShopBundles> skinItems = Saved.Saved.BackendCachedData.ShopBundlesFiltered;
             if (skinItems != null)
             {
                 int randomIndex = random.Next(skinItems.Count);
+                Console.WriteLine(randomIndex);
                 ShopBundles RandomSkinItem = skinItems[randomIndex];
-
+                Console.WriteLine(RandomSkinItem);
                 if (RandomSkinItem == null)
                 {
-                    Logger.Error($"Shop generation will be canceled -> RandomSkinItem is null");
+                    Logger.Error($"Shop generation will be canceled -> RandomSkinItem is null", "ItemShop");
                     return false;
                 }
 
@@ -52,9 +48,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                 RandomSkinItem.LastShownDate = DateTime.Now.ToString();
 
-                string updatedJsonContent = JsonConvert.SerializeObject(skinItems, Formatting.Indented);
-                File.WriteAllText(filePath, updatedJsonContent);
-
+                await UpdateShopBundle.UpdateShopData();
 
                 List<ShopBundlesItem> DailyArray = RandomSkinItem.Daily;
                 if (DailyArray != null)
@@ -108,10 +102,22 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 return false;
                             }
 
-                            if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            int price = 0;
+                            if (Generator.categoryMap.ContainsKey(ItemTemplateId))
                             {
-                                Price = price;
+                                Console.WriteLine("TEST!!");
+                                price = Generator.categoryMap[ItemTemplateId](Item.rarity);
+
+                                if (price != 0)
+                                {
+                                    Price = price;
+                                }
                             }
+
+                            //if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            //{
+                            //    Price = price;
+                            //}
                         }
 
                         //if (Item.singleprice == -1)
@@ -174,12 +180,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         }
                         else
                         {
-                           // Console.WriteLine(Item.name);
-                           // Console.WriteLine(Item.item.Split(":")[0]);
-                            //foreach (Item item in Item.items)
-                            //{
-                            //    string itemType = item.item.Split(":")[0];
-
                             switch (Item.item.Split(":")[0])
                             {
                                 case "AthenaCharacter":
@@ -207,10 +207,21 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 return false;
                             }
 
-                            if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            int price = 0;
+                            if (Generator.categoryMap.ContainsKey(ItemTemplateId))
                             {
-                                Price = price;
+                                price = Generator.categoryMap[ItemTemplateId](Item.rarity);
+
+                                if (price != 0)
+                                {
+                                    Price = price;
+                                }
                             }
+
+                            //if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
+                            //{
+                            //    Price = price;
+                            //}
                         }
 
                        
@@ -289,14 +300,18 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 }
             }
 
-            string filePath = Path.Combine(PathConstants.BaseDir, $"src/Resources/json/shop/{ChosenItem}.json");
-            string jsonContent = File.ReadAllText(filePath);
+           // Console.WriteLine("TEST");
 
-            if(jsonContent == null)
+            string filePath = Path.Combine(PathConstants.BaseDir, $"json/shop/{ChosenItem}.json");
+          //  Console.WriteLine(filePath);
+            if (!File.Exists(filePath))
             {
                 Logger.Error("Chosen Item: " + ChosenItem + " Path isnt found :(");
                 return;
             }
+            string jsonContent = File.ReadAllText(filePath);
+            //Console.WriteLine(jsonContent);
+          
 
             List<ShopItems> skinItems = JsonConvert.DeserializeObject<List<ShopItems>>(jsonContent)!;
 
@@ -320,10 +335,23 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 string updatedJsonContent = JsonConvert.SerializeObject(skinItems, Formatting.Indented);
                 File.WriteAllText(filePath, updatedJsonContent);
 
-                if (Generator.PriceValues.TryGetValue(ChosenItem, out var categoryPrices) && categoryPrices.TryGetValue(RandomSkinItem.rarity, out var price))
+                int price = 0;
+                Console.WriteLine(ChosenItem);
+                Console.WriteLine(Generator.categoryMap.ContainsKey(ChosenItem));
+                if (Generator.categoryMap.ContainsKey(ChosenItem))
                 {
-                    Price = price;
+                    price = Generator.categoryMap[ChosenItem](RandomSkinItem.rarity);
+                    Console.WriteLine(price);
+                    if (price != 0)
+                    {
+                        Price = price;
+                    }
                 }
+
+                //if (Generator.PriceValues.TryGetValue(ChosenItem, out var categoryPrices) && categoryPrices.TryGetValue(RandomSkinItem.rarity, out var price))
+                //{
+                //    Price = price;
+                //}
 
                 ListItemSaved.Add(new ItemsSaved
                 {

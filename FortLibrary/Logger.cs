@@ -44,12 +44,12 @@ namespace FortLibrary
             Console.WriteLine($"\u001B[32m[{Custom}]: {Message}\u001B[0m");
         }
 
-        public static void Warn(string Message)
+        public static void Warn(string Message, string Custom = "Warn")
         {
             if (writer != null)
-                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} Warn] " + Message);
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}:Warn] " + Message);
 
-            Console.WriteLine($"\u001B[33m[Warn]: {Message}\u001B[0m");
+            Console.WriteLine($"\u001B[33m[{Custom}]: {Message}\u001B[0m");
         }
 
         public static void Error(string Message, string Custom = "Error")

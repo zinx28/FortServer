@@ -195,7 +195,8 @@ namespace FortBackend.src.App.Routes.API
                                 },
                                 templates = jsonResponse2,
                             }));
-                        }else
+                        }
+                        else
                         {
                             return Content(JsonConvert.SerializeObject(new
                             {

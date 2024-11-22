@@ -1,5 +1,4 @@
-﻿using Amazon.Runtime.Internal.Transform;
-using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
+﻿using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Middleware;

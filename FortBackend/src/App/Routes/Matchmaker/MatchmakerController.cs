@@ -9,7 +9,6 @@ using System.IdentityModel.Tokens.Jwt;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities;
 using FortLibrary.Encoders;
-using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
 using FortLibrary.EpicResponses.Matchmaker;
 using FortLibrary.ConfigHelpers;
 using FortLibrary;

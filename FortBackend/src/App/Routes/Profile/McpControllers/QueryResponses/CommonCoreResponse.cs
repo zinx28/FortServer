@@ -2,7 +2,6 @@
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Saved;
-using Amazon.Runtime.Internal.Transform;
 using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Query;
 using FortLibrary.EpicResponses.Profile.Query.Attributes;

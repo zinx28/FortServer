@@ -49,3 +49,22 @@ This will build the project for you. And you're all set!
 - Set `CustomMatchmaker` to `true` to enable the custom matchmaker.
 - Add `GameServerIP` to the config and set it to your game server's IP, with `"127.0.0.1"` as the default.
 - Optional! add `GameServerPort` to the config and set it to your game server's port. The default is `"7777"`, which is commonly used unless a custom port is set.
+
+## Application URI Setup (Launcher and Backend)
+
+1. Open the [Discord Developer Portal](https://discord.com/developers/applications) and navigate to the **OAuth2** tab.
+2. In the **Redirects** section, add a new redirect URL:
+   - Use `http://127.0.0.1:1111/launcher/api/v1/callback` as the redirect (port `1111` is the default for the backend).
+
+3. Scroll down to the **OAuth2 URL Generator**:
+   - Check these scopes: `Identity`, `email`, and `guilds`.
+   - Select the redirect URL you just added.
+
+4. Copy the generated OAuth2 link and paste it into your launcher's source code (this is located at [LauncherConfig.cs](https://github.com/zinx28/FortServer/blob/main/FortLauncher/FortLauncher/Services/Globals/LauncherConfig.cs)).
+
+5. For your backend configuration, use these values:
+   - **ApplicationURI**: `http://127.0.0.1:1111/launcher/api/v1/callback`
+   - **ApplicationClientID**: The "Client ID" from your application (this should be at the top of the discord dev page!!).
+   - **ApplicationSecret**: The "Client Secret" from your application (Same place).
+
+That's it!!!!

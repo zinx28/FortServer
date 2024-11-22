@@ -39,7 +39,7 @@
 ---
 
 *Note: This guide does not cover setting up `ApplicationURI` or Discord webhooks. Only the `DetectedWebhookUrl` is required for bans.*
-
+*If the discord slash commands randomly break... then sync your pc clock*
 ---
 
 ## Bot Commands

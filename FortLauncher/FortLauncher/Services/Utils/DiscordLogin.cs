@@ -22,7 +22,7 @@ namespace FortLauncher.Services.Utils
         }
         public async void Init()
         {
-            Process openbrowser = Process.Start(new ProcessStartInfo(LauncherConfig.DiscordURl) { UseShellExecute = true });
+            Process openbrowser = Process.Start(new ProcessStartInfo(LauncherConfig.DiscordURI) { UseShellExecute = true });
 
             await Task.Run(async () =>
             {

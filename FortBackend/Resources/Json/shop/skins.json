@@ -209,17 +209,6 @@
     "season": 1
   },
   {
-    "id": "-2JFnCIbq7qjYpRava95nTrGsxzEGVFziQfXF2JK",
-    "item": "AthenaCharacter:CID_028_Athena_Commando_F",
-    "name": "Renegade Raider",
-    "variants": [],
-    "description": "Rare renegade raider outfit.",
-    "categories": [],
-    "items": [],
-    "rarity": "rare",
-    "season": 1
-  },
-  {
     "id": "YIiWxX3pZw3qjcNX1ZS1oIPTIFMH0Q7vANpdSB2W",
     "item": "AthenaCharacter:CID_031_Athena_Commando_M_Retro",
     "name": "Raptor",

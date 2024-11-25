@@ -52,6 +52,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     UserId = user.Id.ToString();
                     UserName = user.Username;
                 }
+
                 var FindDiscordID = string.Empty;
                 if (UserId == null && ign != null)
                 {
@@ -74,9 +75,6 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         await command.RespondAsync("Backend issue ;(((", ephemeral: true);
                         return;
                     }
-
-                   // var banButton = new ComponentBuilder().WithButton("Ban", "ban", ButtonStyle.Danger).WithButton("Temp Ban", "temp-ban", ButtonStyle.Danger).Build();
-                   // var unbanButton = new ComponentBuilder().WithButton("Unban", "unban", ButtonStyle.Danger).Build();
 
                     var WhoIsField = new EmbedFieldBuilder()
                         .WithName("Banned")
@@ -116,8 +114,6 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 
 
                     await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: component.Build());
-                    //await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: RespondBack.banned ? unbanButton : banButton);
-
 
                     bool Banned = RespondBack.banned;
                     bool InProgess = false;
@@ -225,9 +221,15 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 }
                                             }
                                             var RandomOfferId = Guid.NewGuid().ToString();
+                                            int Season = -1;
+                                            if (Saved.Saved.DeserializeGameConfig.ForceSeason)
+                                            {
+                                                Season = Saved.Saved.DeserializeGameConfig.Season;
+                                            }
+
                                             profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
                                             {
-                                                templateId = "GiftBox:GB_RMTOffer", // use gb_default instead if giftbox doesnt work
+                                                templateId = Season > 10 ? "GiftBox:GB_RMTOffer" : "GiftBox:GB_Default", // use gb_default instead if giftbox doesnt work
                                                 attributes = new GiftCommonCoreItemAttributes {
                                                     lootList = new List<NotificationsItemsClassOG>()
                                                     {

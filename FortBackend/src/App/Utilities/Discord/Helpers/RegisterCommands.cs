@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using System;
 
@@ -74,6 +75,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             await guild.CreateApplicationCommandAsync(WhoCommand.Build());
             await guild.CreateApplicationCommandAsync(CreateCommand.Build());
             await guild.CreateApplicationCommandAsync(PasswordChange.Build());
+
+            Logger.Log("Registered Commamnds!", "Discord");
         }
     }
 }

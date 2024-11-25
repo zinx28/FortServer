@@ -4,6 +4,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "VQKKxim7gNYEQ+Qh2tVeIKvgHktdahf+",
         "item": "AthenaCharacter:CID_053_Athena_Commando_M_SkiDude",
         "name": "Alpine Ace",
         "description": "So Aerodynamic!",
@@ -20,6 +21,7 @@
         "season": 2
       },
       {
+        "id": "QT4DZKI0ffoHzR3wnXudznjEUDl0ZtOA",
         "item": "AthenaCharacter:CID_054_Athena_Commando_M_SkiDude_USA",
         "name": "Alpine Ace (USA)",
         "description": "So Aerodynamic!",
@@ -36,6 +38,7 @@
         "season": 2
       },
       {
+        "id": "CFz/LK5LYUN1xfy8DuBDl94xeH2nuaQ3",
         "item": "AthenaCharacter:CID_055_Athena_Commando_M_SkiDude_CAN",
         "name": "Alpine Ace (CAN)",
         "description": "So Aerodynamic!",
@@ -52,6 +55,7 @@
         "season": 2
       },
       {
+        "id": "vXhGuPIcg9oN0M/U3Vlx4xpu0TcaFu5q",
         "item": "AthenaCharacter:CID_056_Athena_Commando_M_SkiDude_GBR",
         "name": "Alpine Ace (GBR)",
         "description": "So Aerodynamic!",
@@ -68,6 +72,7 @@
         "season": 2
       },
       {
+        "id": "iz3gGtE8FYkuMQiqTUn6FqdshHyBd8gX",
         "item": "AthenaCharacter:CID_057_Athena_Commando_M_SkiDude_FRA",
         "name": "Alpine Ace (FRA)",
         "description": "So Aerodynamic!",
@@ -84,6 +89,7 @@
         "season": 2
       },
       {
+        "id": "Bf4N4kN3XsPRPEJ6oQ1TRkJMRy627bk+",
         "item": "AthenaCharacter:CID_058_Athena_Commando_M_SkiDude_GER",
         "name": "Alpine Ace (GER)",
         "description": "So Aerodynamic!",
@@ -100,6 +106,7 @@
         "season": 2
       },
       {
+        "id": "36I7/DA9wVCPH4jK8Hrx0idiy/okYapy",
         "item": "AthenaCharacter:CID_059_Athena_Commando_M_SkiDude_CHN",
         "name": "Alpine Ace (CHN)",
         "description": "So Aerodynamic!",
@@ -116,6 +123,7 @@
         "season": 2
       },
       {
+        "id": "WkTmyebbLAmtaAMYd9AlVgEZruwW48Ld",
         "item": "AthenaCharacter:CID_060_Athena_Commando_M_SkiDude_KOR",
         "name": "Alpine Ace (KOR)",
         "description": "So Aerodynamic!",
@@ -132,6 +140,7 @@
         "season": 2
       },
       {
+        "id": "WIebxlFNb53nfXiHVkcTVF/HwqywjkM+",
         "item": "AthenaCharacter:CID_061_Athena_Commando_F_SkiGirl",
         "name": "Mogul Master",
         "description": "Carve through the competition.",
@@ -148,6 +157,7 @@
         "season": 2
       },
       {
+        "id": "XPaG+jxV51h1DtRVIIJeJ1vhRhCd/PG9",
         "item": "AthenaCharacter:CID_062_Athena_Commando_F_SkiGirl_USA",
         "name": "Mogul Master (USA)",
         "description": "Carve through the competition.",
@@ -164,6 +174,7 @@
         "season": 2
       },
       {
+        "id": "zMKSRxM9KUPePz2v6t5hKp3GWgVjDWST",
         "item": "AthenaCharacter:CID_063_Athena_Commando_F_SkiGirl_CAN",
         "name": "Mogul Master (CAN)",
         "description": "Carve through the competition.",
@@ -180,6 +191,7 @@
         "season": 2
       },
       {
+        "id": "kIRFD/T09NZGTKX8T23huvWgcVS9d5VO",
         "item": "AthenaCharacter:CID_064_Athena_Commando_F_SkiGirl_GBR",
         "name": "Mogul Master (GBR)",
         "description": "Carve through the competition.",
@@ -196,6 +208,7 @@
         "season": 2
       },
       {
+        "id": "AI76v2LRV4QFeu9D2G+rp/EzGaqzNM06",
         "item": "AthenaCharacter:CID_065_Athena_Commando_F_SkiGirl_FRA",
         "name": "Mogul Master (FRA)",
         "description": "Carve through the competition.",
@@ -212,6 +225,7 @@
         "season": 2
       },
       {
+        "id": "Xo6b5td1Ipzm147fEu/VLKipPmKNu0hL",
         "item": "AthenaCharacter:CID_066_Athena_Commando_F_SkiGirl_GER",
         "name": "Mogul Master (GER)",
         "description": "Carve through the competition.",
@@ -228,6 +242,7 @@
         "season": 2
       },
       {
+        "id": "EV0h6xY/pMDw1kGzJujqTrzy+5c2AnTb",
         "item": "AthenaCharacter:CID_067_Athena_Commando_F_SkiGirl_CHN",
         "name": "Mogul Master (CHN)",
         "description": "Carve through the competition.",
@@ -244,6 +259,7 @@
         "season": 2
       },
       {
+        "id": "xSY7r6Y5mQlMagSIVClSQJkUJ+M13Q+g",
         "item": "AthenaCharacter:CID_068_Athena_Commando_F_SkiGirl_KOR",
         "name": "Mogul Master (KOR)",
         "description": "Carve through the competition.",
@@ -265,6 +281,7 @@
     "BundleID": 2,
     "Daily": [
       {
+        "id": "YZZiL4Dhi4WrKONP5MIcW9HwYdYmGt5C",
         "item": "AthenaItemWrap:Wrap_175_Slurp",
         "name": "Slurp",
         "description": "Show your style.",
@@ -275,6 +292,7 @@
     ],
     "Weekly": [
       {
+        "id": "S0SX4vYZy84fNfKcgFihjPI/iDDqy4yw",
         "item": "AthenaCharacter:CID_620_Athena_Commando_L_BigChuggus",
         "name": "Big Chuggus",
         "description": "Small chugguses need not apply.",
@@ -288,6 +306,7 @@
         "season": 11
       },
       {
+        "id": "TjXHnhMJ7rF6vqJrxC1gXOLNeP1L5niZ",
         "item": "AthenaPickaxe:Pickaxe_ID_316_BigChuggus",
         "name": "Double Tap",
         "description": "Twice the slurp in one powerful swing.",
@@ -302,6 +321,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "gP5ZKb6w1IBZL5tQfGjcAqKB0r7ztSeb",
         "item": "AthenaCharacter:CID_333_Athena_Commando_M_Squishy",
         "name": "Marshmello",
         "description": "Start the party. Reactive: Lights up while using musical emotes.",
@@ -313,6 +333,7 @@
         "season": 7
       },
       {
+        "id": "MuC/XO+kYZJcCf5opsG4uDXKI53qUG2H",
         "item": "AthenaPickaxe:Pickaxe_ID_249_Squishy1H",
         "name": "Mello Mallets",
         "description": "There X2",
@@ -324,6 +345,7 @@
         "season": 7
       },
       {
+        "id": "g+4zEKyASfZ+hChTDXgI2ZahuNRVaqkF",
         "item": "AthenaDance:EID_SquishyDance",
         "name": "Marsh Walk",
         "description": "Keep it mello.",
@@ -335,6 +357,7 @@
         "season": 7
       },
       {
+        "id": "gggIZkLzJfs/61nUZNiGc+C40Mn1h16C",
         "item": "AthenaDance:EID_SquishyMedley",
         "name": "Keep It Mello",
         "description": "Join in the fun.",
@@ -347,6 +370,7 @@
         "season": 7
       },
       {
+        "id": "JveV1NjFmqh5ToEYMR0wV+OoKl8auHGS",
         "item": "AthenaGlider:Glider_ID_118_Squishy",
         "name": "Mello Rider",
         "description": "Fly happier.",
@@ -364,6 +388,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "hpgWYuMG3EHwV4KWBq9d/nXBOtsT3t0w",
         "item": "AthenaCharacter:CID_515_Athena_Commando_M_BarbequeLarry",
         "name": "Psycho Bundle",
         "singleprice": 2000,
@@ -391,6 +416,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "sgs12ZFGRvz0O50RL0GmQFVyiAErQlAS",
         "item": "AthenaCharacter:CID_535_Athena_Commando_M_Traveler",
         "name": "Traveler Bundle",
         "singleprice": 1600,
@@ -413,6 +439,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "nhWIkOQ1kav1LBevmfJUHZGpBcqBJqSl",
         "item": "AthenaCharacter:CID_424_Athena_Commando_M_Vigilante",
         "name": "Hang Time Bundle",
         "singleprice": 1600,
@@ -435,6 +462,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "KvAgNpM4iFDOqGfKDvjfr+H/URru5hv4",
         "item": "AthenaCharacter:CID_474_Athena_Commando_M_Lasagna",
         "name": "Major Lazer Bundle",
         "singleprice": 1600,
@@ -475,6 +503,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "Bt0CWp384R0HLFMoW5wdV4VFLkfphAY2",
         "item": "AthenaCharacter:CID_442_Athena_Commando_F_BannerA",
         "name": "Banner Trooper",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -486,6 +515,7 @@
         "season": 9
       },
       {
+        "id": "x4j4W2L4oLXRswH1boNWokj/qLWOP5qH",
         "item": "AthenaCharacter:CID_443_Athena_Commando_F_BannerB",
         "name": "Sgt. Sigil",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -497,6 +527,7 @@
         "season": 9
       },
       {
+        "id": "G285weASGqIYxUzfO8mgbAZvppfguFlb",
         "item": "AthenaCharacter:CID_444_Athena_Commando_F_BannerC",
         "name": "Branded Brigadier",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -508,6 +539,7 @@
         "season": 9
       },
       {
+        "id": "NrK0YPFe8ED5aKpGBOSMafMKOgrx1Cr/",
         "item": "AthenaCharacter:CID_445_Athena_Commando_F_BannerD",
         "name": "Marked Marauder",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -519,6 +551,7 @@
         "season": 9
       },
       {
+        "id": "Z5e8MDcbsiSdUXl03VYcG665udj8gWOM",
         "item": "AthenaCharacter:CID_446_Athena_Commando_M_BannerA",
         "name": "Symbol Stalwart",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -530,6 +563,7 @@
         "season": 9
       },
       {
+        "id": "ddeWU76ZFRf+6b8sR0MRh/XxOHxbk46X",
         "item": "AthenaCharacter:CID_447_Athena_Commando_M_BannerB",
         "name": "Signature Sniper",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -541,6 +575,7 @@
         "season": 9
       },
       {
+        "id": "ENLbs1GJGUibgOeu6ZbTzIqa9FkKddIS",
         "item": "AthenaCharacter:CID_448_Athena_Commando_M_BannerC",
         "name": "Branded Brawler",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -552,6 +587,7 @@
         "season": 9
       },
       {
+        "id": "VJxG3yi8F1lwI0s/b6qhllC4nkBVZFWT",
         "item": "AthenaCharacter:CID_449_Athena_Commando_M_BannerD",
         "name": "Lt. Logo",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -563,6 +599,7 @@
         "season": 9
       },
       {
+        "id": "GCoQSirjGIoRJq5aqGxA3ZQgML5sQhYb",
         "item": "AthenaPickaxe:Pickaxe_ID_222_Banner",
         "name": "Emblematic",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -574,6 +611,7 @@
         "season": 9
       },
       {
+        "id": "Igktyzv+ClaO3zHT0bYftmXqgwCiomH6",
         "item": "AthenaBackpack:BID_289_Banner",
         "name": "Banner Cape",
         "description": "Customize your look by choosing a Banner and color in your Locker.",
@@ -586,6 +624,7 @@
         "season": 9
       },
       {
+        "id": "XDMItHt1X2uVVgGxA1s8hQg9hH0izOgd",
         "item": "AthenaGlider:Glider_ID_153_Banner",
         "name": "Custom Cruiser",
         "description": "Fly your banner.",
@@ -603,6 +642,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "NN/bempNXMNwMXcZM8eX5BUbQKXCzLys",
         "item": "AthenaCharacter:CID_400_Athena_Commando_M_AshtonSaltLake",
         "name": "Star-Lord Outfit",
         "description": "Do something good, something bad, a bit of both!",
@@ -617,6 +657,7 @@
         "season": 8
       },
       {
+        "id": "80nXcVcF+pbKv2Hgkl8NtcLIBJi0ElFK",
         "item": "AthenaDance:EID_AshtonSaltLake",
         "name": "Dance Off",
         "description": "A perfect distraction.",
@@ -628,6 +669,7 @@
         "season": 8
       },
       {
+        "id": "HSVf9NQvMlXVdpHZofqzv96V7AP8EZ2w",
         "item": "AthenaPickaxe:Pickaxe_ID_203_AshtonSaltLake",
         "name": "Guardian Axe",
         "description": "Cut down cosmic threats.",
@@ -639,6 +681,7 @@
         "season": 8
       },
       {
+        "id": "jePnapWF6iyBP0QvBnXX4G3aB9bz+LVq",
         "item": "AthenaGlider:Glider_ID_142_AshtonSaltLake",
         "name": "The Milan",
         "description": "Guard the galaxy in style.",
@@ -654,6 +697,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "aGYdL6QD4D6JAHT1P/PWqWlGLG4kmxsl",
         "item": "AthenaCharacter:CID_399_Athena_Commando_F_AshtonBoardwalk",
         "name": "Black Widow Outfit",
         "description": "Whatever it takes.",
@@ -668,6 +712,7 @@
         "season": 8
       },
       {
+        "id": "7r4FFSlraj1ygiVBobjnSewM2RAQNBWc",
         "item": "AthenaDance:EID_AshtonBoardwalk",
         "name": "Widow’s Pirouette",
         "description": "A deadly dance.",
@@ -679,6 +724,7 @@
         "season": 8
       },
       {
+        "id": "B+xyvXfxxTtzbJLusmODIGctiLbuJp7t",
         "item": "AthenaPickaxe:Pickaxe_ID_202_AshtonBoardwalk",
         "name": "Widow’s Bite",
         "description": "Shockingly effective.",
@@ -696,6 +742,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "zRJHE2X9HsTuwv5sUc6gp/KNTUPXR2uH",
         "item": "AthenaCharacter:CID_531_Athena_Commando_M_Sleepytime",
         "name": "Slumber",
         "description": "It's time to say goodnight.",
@@ -710,6 +757,7 @@
         "season": 10
       },
       {
+        "id": "Ee/mpzPt+bbMrGM8AaTm73dSw3ow8Spp",
         "item": "AthenaPickaxe:Pickaxe_ID_272_SleepyTime",
         "name": "Nighty Night",
         "description": "Spread some sweet dreams.",
@@ -721,6 +769,7 @@
         "season": 10
       },
       {
+        "id": "Qc5y3/YCcmB2jCuXgNYUBItT/UrU89rK",
         "item": "AthenaGlider:Glider_ID_174_SleepyTime",
         "name": "Nite Flight",
         "description": "Zzzzzzz.",
@@ -732,6 +781,7 @@
         "season": 10
       },
       {
+        "id": "T+gAXveU/vhbAVL4Zpuw/aXKIHOzqN84",
         "item": "AthenaItemWrap:Wrap_137_SleepyTime",
         "name": "Dreamy",
         "description": "Show your style.",
@@ -749,6 +799,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "Qn4Uj1n2YcRkuMTv2lBx+fi4oyahCBc3",
         "item": "AthenaCharacter:CID_132_Athena_Commando_M_Venus",
         "name": "Flytrap",
         "description": "Deviously inescapable.",
@@ -763,6 +814,7 @@
         "season": 4
       },
       {
+        "id": "VOUxuMCIoOV2N6PdaTwwTnx2i9mVXUtm",
         "item": "AthenaPickaxe:Pickaxe_ID_056_Venus",
         "name": "Tendril",
         "description": "Rooted in fierce competition.",
@@ -774,6 +826,7 @@
         "season": 4
       },
       {
+        "id": "TIa7AQjk+2RnRFfIlrUiy+xhmPX4Kg69",
         "item": "AthenaGlider:Glider_ID_039_Venus",
         "name": "Venus Flyer",
         "description": "Pretty fly.",
@@ -791,6 +844,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "DQVdJ4saD7Pjulsp2sEVNp7VjNIFe/qL",
         "item": "AthenaCharacter:CID_426_Athena_Commando_F_DemonHunter",
         "name": "Callisto",
         "description": "Demons, creeps, and monsters beware.",
@@ -805,6 +859,7 @@
         "season": 9
       },
       {
+        "id": "GgAlXVpMH5ejTwvdGME3tW11GhugB2NE",
         "item": "AthenaCharacter:CID_427_Athena_Commando_M_DemonHunter",
         "name": "Asmodeus",
         "description": "Stare down your enemies.",
@@ -819,6 +874,7 @@
         "season": 9
       },
       {
+        "id": "3Xh+RI6I22mT1GIoKiJd4YPTT4zs6RPi",
         "item": "AthenaPickaxe:Pickaxe_ID_216_DemonHunter1H",
         "name": "Foul Play",
         "description": "Nailed it!",
@@ -830,6 +886,7 @@
         "season": 9
       },
       {
+        "id": "X8d1Vi79o5GIz8AL9iwb9cyncrffv/S4",
         "item": "AthenaGlider:Glider_ID_152_DemonHunter",
         "name": "Batso",
         "description": "Be afraid, be slightly afraid!",
@@ -847,6 +904,7 @@
     "Daily": [],
     "Weekly": [
       {
+        "id": "fCVXnyBeZ4Z1Vf8DRINJCpbhB2yvRC+E",
         "item": "AthenaCharacter:CID_362_Athena_Commando_F_BandageNinja",
         "name": "Kuno",
         "description": "Master the art of deception.",
@@ -863,6 +921,7 @@
         "season": 8
       },
       {
+        "id": "BawPaimwUrMMxCxWIqLPwNgIDKHPdIwO",
         "item": "AthenaCharacter:CID_361_Athena_Commando_M_BandageNinja",
         "name": "Kenji",
         "description": "Strike from the shadows.",

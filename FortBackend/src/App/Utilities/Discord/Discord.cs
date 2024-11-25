@@ -41,7 +41,7 @@ namespace FortBackend.src.App.Utilities.Discord
             Client = new(config);
             CommandService = new CommandService();
 
-            Client.Log += DiscLog;
+            //Client.Log += DiscLog;
             Client.Ready += OnReady;
             Client.Connected += OnReconnected;
             Client.Disconnected += OnDisconnected;

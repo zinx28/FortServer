@@ -19,6 +19,7 @@ using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary;
 using FortBackend.src.App.Utilities.Constants;
+using FortLibrary.Shop;
 namespace FortBackend.src.App
 {
     public class Service
@@ -121,6 +122,31 @@ namespace FortBackend.src.App
 
             if(Saved.DeserializeGameConfig.ShopRotation)
             {
+                string json = System.IO.File.ReadAllText(PathConstants.ShopJson.Shop);
+                if (!string.IsNullOrEmpty(json))
+                {
+                    ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json)!;
+                    if(shopData.ShopItems.Daily.Count == 0 &&
+                        shopData.ShopItems.Weekly.Count == 0)
+                    {
+                        // Shop is empty... how about we generate a new shop
+                        var GeneraterShocked = new Thread(async () => {
+                            await GenerateShop.Init();
+                        });
+
+                        GeneraterShocked.Start();
+                    }
+                }
+                else
+                {
+                    // need to clean this up!
+                    var GeneraterShocked = new Thread(async () => {
+                        await GenerateShop.Init();
+                    });
+
+                    GeneraterShocked.Start();
+                }
+
                 var ItemShopGenThread = new Thread(async () =>
                 {
                    // Logger.Log("Generating Shop at")

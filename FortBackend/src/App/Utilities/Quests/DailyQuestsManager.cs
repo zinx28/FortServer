@@ -27,7 +27,7 @@ namespace FortBackend.src.App.Utilities.Quests
             {
                 FindKey = $"Season{seasonClass.SeasonNumber}";
             }
-            else
+            else if(seasonClass.SeasonNumber > 14)
             {
                 return new DailyQuestsJson();
             }
@@ -81,7 +81,7 @@ namespace FortBackend.src.App.Utilities.Quests
                 {
                     FindKey = $"Season{season}";
                 }
-                else
+                else if (season > 14)
                 {
                     return new DailyQuestsJson();
                 }

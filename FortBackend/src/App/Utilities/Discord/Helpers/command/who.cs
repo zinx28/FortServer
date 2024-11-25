@@ -52,6 +52,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     UserId = user.Id.ToString();
                     UserName = user.Username;
                 }
+
                 var FindDiscordID = string.Empty;
                 if (UserId == null && ign != null)
                 {
@@ -74,9 +75,6 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         await command.RespondAsync("Backend issue ;(((", ephemeral: true);
                         return;
                     }
-
-                   // var banButton = new ComponentBuilder().WithButton("Ban", "ban", ButtonStyle.Danger).WithButton("Temp Ban", "temp-ban", ButtonStyle.Danger).Build();
-                   // var unbanButton = new ComponentBuilder().WithButton("Unban", "unban", ButtonStyle.Danger).Build();
 
                     var WhoIsField = new EmbedFieldBuilder()
                         .WithName("Banned")
@@ -116,8 +114,6 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 
 
                     await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: component.Build());
-                    //await command.RespondAsync(embed: embed.Build(), ephemeral: true, components: RespondBack.banned ? unbanButton : banButton);
-
 
                     bool Banned = RespondBack.banned;
                     bool InProgess = false;

@@ -41,7 +41,7 @@ namespace FortBackend.src.App.Utilities.Discord
             Client = new(config);
             CommandService = new CommandService();
 
-            //Client.Log += DiscLog;
+            Client.Log += DiscLog;
             Client.Ready += OnReady;
             Client.Connected += OnReconnected;
             Client.Disconnected += OnDisconnected;
@@ -66,8 +66,8 @@ namespace FortBackend.src.App.Utilities.Discord
         {
             Logger.Log("Discord Bot is connected", "Discord");
 
-            Client.InteractionCreated -= OnInteractionCreated;
-            Client.InteractionCreated += OnInteractionCreated;
+            //Client.InteractionCreated -= OnInteractionCreated;
+            //Client.InteractionCreated += OnInteractionCreated;
 
             guild = Client.GetGuild(Saved.Saved.DeserializeConfig.ServerID);
             await RegisterCommands.Connect(Saved.Saved.DeserializeConfig, guild);
@@ -82,10 +82,10 @@ namespace FortBackend.src.App.Utilities.Discord
             return Task.CompletedTask;
         }
 
-        private static async Task OnInteractionCreated(SocketInteraction interaction)
-        {
-            await RegisterCommands.Connect(Saved.Saved.DeserializeConfig, guild);
-        }
+        //private static async Task OnInteractionCreated(SocketInteraction interaction)
+        //{
+        //    //await RegisterCommands.Connect(Saved.Saved.DeserializeConfig, guild);
+        //}
 
         private static Task OnDisconnected(Exception exception)
         {

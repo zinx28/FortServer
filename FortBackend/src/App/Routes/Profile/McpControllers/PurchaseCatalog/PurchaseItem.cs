@@ -135,22 +135,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         });
                     }
                     //AthenaItem test = AccountDataParsed.commoncore.Items.FirstOrDefault(e => e.ContainsKey("Currency"))["Currency"] as AthenaItem;
-
-                    // I need to work on this
-                    var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"] as dynamic;
-
-                    try
-                    {
-                        // AthenaItem currencyItem2 = currencyItem as AthenaItem;
-                        Console.WriteLine(currencyItem);
-                        // Console.WriteLine(currencyItem2.quantity);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                    CommonCoreItem CurrentVbucks = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+       
                     //Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"]);
-                    if (currencyItem.quantity == 0)
+                    if (CurrentVbucks.quantity == 0)
                     {
                         throw new BaseError()
                         {
@@ -164,9 +152,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
                     }
 
-                    Console.WriteLine($"Currency Item Quantity: {currencyItem.quantity}");
+                    Console.WriteLine($"Currency Item Quantity: {CurrentVbucks.quantity}");
 
-                    if (ShopContent.price > int.Parse(currencyItem.quantity.ToString()))
+                    if (ShopContent.price > int.Parse(CurrentVbucks.quantity.ToString()))
                     {
                         throw new BaseError()
                         {
@@ -180,7 +168,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
                     }
 
-                    int Price = currencyItem.quantity - ShopContent.price;
+                    int Price = CurrentVbucks.quantity - ShopContent.price;
 
                     ApplyProfileChanges.Add(new ApplyProfileChangesClass
                     {
@@ -334,9 +322,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+                            CommonCoreItem CurrentVbucks = profileCacheEntry.AccountData.commoncore.Items["Currency"];
 
-                            if (currencyItem.quantity == 0)
+                            if (CurrentVbucks.quantity == 0)
                             {
                                 throw new BaseError()
                                 {
@@ -350,7 +338,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            if (ShopContent.price > currencyItem.quantity)
+                            if (ShopContent.price > CurrentVbucks.quantity)
                             {
                                 throw new BaseError()
                                 {
@@ -364,7 +352,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            int Price = currencyItem.quantity - ShopContent.price;
+                            int Price = CurrentVbucks.quantity - ShopContent.price;
 
                             ApplyProfileChanges.Add(new ApplyProfileChangesClass
                             {

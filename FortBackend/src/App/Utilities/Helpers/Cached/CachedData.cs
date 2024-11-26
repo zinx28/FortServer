@@ -11,6 +11,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.Shop;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using SharpCompress.Common;
 
 namespace FortBackend.src.App.Utilities.Helpers.Cached
 {
@@ -44,6 +45,8 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             var DefaultBannerPath = PathConstants.CachedPaths.DefaultBanner;
             var DefaultBannerColorsPath = PathConstants.CachedPaths.DefaultBannerColors;
             var IniConfigPath = PathConstants.CloudStorage.IniConfig;
+            var ShopPath = PathConstants.ShopJson.Shop;
+            var OgShopPath = PathConstants.ShopJson.SeasonShop;
             var ShopPricesPath = PathConstants.ShopJson.ShopPrices;
             var ShopBundlesPath = PathConstants.ShopJson.ShopBundles;
             var TimelinePath = PathConstants.Timeline;
@@ -51,10 +54,22 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             // -- Verify -- //
 
+            if (!File.Exists(ShopPath))
+            {
+                Logger.Error("Couldn't find Shop Path (shop.json)", "Shop-Path");
+                throw new Exception("Couldn't find ShopPrices Path (shop.json)");
+            }
+
+            if (!File.Exists(OgShopPath))
+            {
+                Logger.Error("Couldn't find Og Shop Path (SeasonShop.json)", "OgShop-Path");
+                throw new Exception("Couldn't find ShopPrices Path (SeasonShop.json)");
+            }
+
             if (!File.Exists(ShopPricesPath))
             {
-                Logger.Error("Couldn't find ShopPrices Path (shop.json)", "ShopPrices-Path");
-                throw new Exception("Couldn't find ShopPrices Path (shop.json)");
+                Logger.Error("Couldn't find ShopPrices Path (prices.json)", "ShopPrices-Path");
+                throw new Exception("Couldn't find ShopPrices Path (prices.json)");
             }
 
             if (!File.Exists(ShopBundlesPath))
@@ -120,7 +135,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 Logger.Log("Loaded Config", "FortConfig");
             }
 
-            var ReadFortGameConfig = File.ReadAllText(FortGamePath);
+            var ReadFortGameConfig = await File.ReadAllTextAsync(FortGamePath);
             if (string.IsNullOrEmpty(ReadFortGameConfig)) { throw new Exception("Error reading ReadFortGameConfig"); }
 
 
@@ -161,7 +176,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             // -- //
 
-            string FullLockerJson = File.ReadAllText(FullLockerPath);
+            string FullLockerJson = await File.ReadAllTextAsync(FullLockerPath);
             if (string.IsNullOrEmpty(FullLockerJson))
             {
                 Logger.Error("FULL LOCKER JSON IS NULL", "FullLockerFile");
@@ -175,7 +190,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             }
             catch (Exception ex) { Logger.Error("FULL LOCKER -> " + ex.Message); }
 
-            string DefaultBanners = File.ReadAllText(DefaultBannerPath);
+            string DefaultBanners = await File.ReadAllTextAsync(DefaultBannerPath);
             if (string.IsNullOrEmpty(DefaultBanners))
             {
                 Logger.Error("DefaultBanners JSON IS NULL", "DefaultBannersFile");
@@ -190,7 +205,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             catch (Exception ex) { Logger.Error("DefaultBanners -> " + ex.Message); }
 
 
-            string DefaultColors = File.ReadAllText(DefaultBannerColorsPath);
+            string DefaultColors = await File.ReadAllTextAsync(DefaultBannerColorsPath);
             if (string.IsNullOrEmpty(DefaultColors))
             {
                 Logger.Error("DefaultColors JSON IS NULL", "DefaultColorsFile");
@@ -238,7 +253,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
-                string filePath = System.IO.File.ReadAllText(IniConfigPath);
+                string filePath = await File.ReadAllTextAsync(IniConfigPath);
 
                 IniManager.IniConfigData = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
             }
@@ -247,7 +262,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
-                string filePath = System.IO.File.ReadAllText(TimelinePath);
+                string filePath = await File.ReadAllTextAsync(TimelinePath);
 
                 BackendCachedData.TimelineData = JsonConvert.DeserializeObject<Timeline>(filePath)!;
             }
@@ -257,7 +272,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
-                string filePath = System.IO.File.ReadAllText(ShopPricesPath);
+                string filePath = await File.ReadAllTextAsync(ShopPricesPath);
 
                 BackendCachedData.ShopPrices = JsonConvert.DeserializeObject<ItemPricing>(filePath)!;
             }
@@ -265,7 +280,16 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
-                string filePath = System.IO.File.ReadAllText(ShopBundlesPath);
+                string json = await File.ReadAllTextAsync(ShopPath);
+                string Ogjson = await File.ReadAllTextAsync(OgShopPath);
+
+                BackendCachedData.CurrentShop = JsonConvert.DeserializeObject<ShopJson>(json)!;
+                BackendCachedData.OGShop = JsonConvert.DeserializeObject<List<ItemsSaved>>(Ogjson)!;
+            } catch (Exception ex) { Logger.Error("LOADING SHOP FILES DATA -> " + ex.Message); }
+
+            try
+            {
+                string filePath = await File.ReadAllTextAsync(ShopBundlesPath);
 
                 BackendCachedData.ShopBundles = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!; ;
                 BackendCachedData.ShopBundlesFiltered = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!; ;

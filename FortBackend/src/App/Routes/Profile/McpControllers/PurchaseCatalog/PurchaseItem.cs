@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary;
 using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Saved;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
@@ -18,23 +19,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
     {
         public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, ProfileCacheEntry profileCacheEntry)
         {
-            string filePath = Path.Combine(PathConstants.BaseDir, "json", "shop", "shop.json");
-            string json = File.ReadAllText(filePath);
-
-            if (string.IsNullOrEmpty(json))
-            {
-                throw new BaseError()
-                {
-                    errorCode = "errors.com.epicgames.modules.catalog",
-                    errorMessage = "Server Sided Issue",
-                    messageVars = new List<string> { "PurchaseCatalogEntry" },
-                    numericErrorCode = 12801,
-                    originatingService = "any",
-                    intent = "prod",
-                    error_description = "Server Sided Issue",
-                };
-            }
-            ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
+           
+            ShopJson shopData = Saved.BackendCachedData.CurrentShop;
 
             if (shopData != null)
             {
@@ -135,22 +121,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         });
                     }
                     //AthenaItem test = AccountDataParsed.commoncore.Items.FirstOrDefault(e => e.ContainsKey("Currency"))["Currency"] as AthenaItem;
-
-                    // I need to work on this
-                    var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"] as dynamic;
-
-                    try
-                    {
-                        // AthenaItem currencyItem2 = currencyItem as AthenaItem;
-                        Console.WriteLine(currencyItem);
-                        // Console.WriteLine(currencyItem2.quantity);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                    CommonCoreItem CurrentVbucks = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+       
                     //Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"]);
-                    if (currencyItem.quantity == 0)
+                    if (CurrentVbucks.quantity == 0)
                     {
                         throw new BaseError()
                         {
@@ -164,9 +138,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
                     }
 
-                    Console.WriteLine($"Currency Item Quantity: {currencyItem.quantity}");
+                    Console.WriteLine($"Currency Item Quantity: {CurrentVbucks.quantity}");
 
-                    if (ShopContent.price > int.Parse(currencyItem.quantity.ToString()))
+                    if (ShopContent.price > int.Parse(CurrentVbucks.quantity.ToString()))
                     {
                         throw new BaseError()
                         {
@@ -180,7 +154,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
                     }
 
-                    int Price = currencyItem.quantity - ShopContent.price;
+                    int Price = CurrentVbucks.quantity - ShopContent.price;
 
                     ApplyProfileChanges.Add(new ApplyProfileChangesClass
                     {
@@ -271,24 +245,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                 else
                 {
                     // This should be season shop
-                    string SeasonShopFilePath = Path.Combine(PathConstants.BaseDir, "json", "shop", "special", "SeasonShop.json");
-                    string SeasonShopJson = File.ReadAllText(SeasonShopFilePath);
 
-                    if (string.IsNullOrEmpty(SeasonShopJson))
-                    {
-                        throw new BaseError()
-                        {
-                            errorCode = "errors.com.epicgames.modules.catalog",
-                            errorMessage = "Server Sided Issue",
-                            messageVars = new List<string> { "PurchaseCatalogEntry" },
-                            numericErrorCode = 12801,
-                            originatingService = "any",
-                            intent = "prod",
-                            error_description = "Server Sided Issue",
-                        };
-                    }
 
-                    List<ItemsSaved> SeasonShopData = JsonConvert.DeserializeObject<List<ItemsSaved>>(SeasonShopJson)!;
+                    List<ItemsSaved> SeasonShopData = Saved.BackendCachedData.OGShop;
 
                     foreach (ItemsSaved storefront in SeasonShopData)
                     {
@@ -316,7 +275,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             };
                         }
 
-                        SeasonClass SeasonData = profileCacheEntry.AccountData.commoncore.Seasons.FirstOrDefault(e => e.SeasonNumber == Season.Season);
+                        SeasonClass SeasonData = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(e => e.SeasonNumber == Season.Season)!;
 
                         if(SeasonData != null)
                         {
@@ -334,9 +293,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            var currencyItem = profileCacheEntry.AccountData.commoncore.Items["Currency"];
+                            CommonCoreItem CurrentVbucks = profileCacheEntry.AccountData.commoncore.Items["Currency"];
 
-                            if (currencyItem.quantity == 0)
+                            if (CurrentVbucks.quantity == 0)
                             {
                                 throw new BaseError()
                                 {
@@ -350,7 +309,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            if (ShopContent.price > currencyItem.quantity)
+                            if (ShopContent.price > CurrentVbucks.quantity)
                             {
                                 throw new BaseError()
                                 {
@@ -364,7 +323,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            int Price = currencyItem.quantity - ShopContent.price;
+                            int Price = CurrentVbucks.quantity - ShopContent.price;
 
                             ApplyProfileChanges.Add(new ApplyProfileChangesClass
                             {

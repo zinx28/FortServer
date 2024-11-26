@@ -24,7 +24,7 @@ namespace FortBackend.src.App
 {
     public class Service
     {
-        public static async void Intiliazation(string[] args)
+        public static async Task Intiliazation(string[] args)
         {
             Logger.PlainLog(@"  ______         _   ____             _                  _ 
  |  ____|       | | |  _ \           | |                | |

@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary;
 using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Saved;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
@@ -18,23 +19,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
     {
         public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, ProfileCacheEntry profileCacheEntry)
         {
-            string filePath = Path.Combine(PathConstants.BaseDir, "json", "shop", "shop.json");
-            string json = File.ReadAllText(filePath);
-
-            if (string.IsNullOrEmpty(json))
-            {
-                throw new BaseError()
-                {
-                    errorCode = "errors.com.epicgames.modules.catalog",
-                    errorMessage = "Server Sided Issue",
-                    messageVars = new List<string> { "PurchaseCatalogEntry" },
-                    numericErrorCode = 12801,
-                    originatingService = "any",
-                    intent = "prod",
-                    error_description = "Server Sided Issue",
-                };
-            }
-            ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json);
+           
+            ShopJson shopData = Saved.BackendCachedData.CurrentShop;
 
             if (shopData != null)
             {
@@ -259,24 +245,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                 else
                 {
                     // This should be season shop
-                    string SeasonShopFilePath = Path.Combine(PathConstants.BaseDir, "json", "shop", "special", "SeasonShop.json");
-                    string SeasonShopJson = File.ReadAllText(SeasonShopFilePath);
 
-                    if (string.IsNullOrEmpty(SeasonShopJson))
-                    {
-                        throw new BaseError()
-                        {
-                            errorCode = "errors.com.epicgames.modules.catalog",
-                            errorMessage = "Server Sided Issue",
-                            messageVars = new List<string> { "PurchaseCatalogEntry" },
-                            numericErrorCode = 12801,
-                            originatingService = "any",
-                            intent = "prod",
-                            error_description = "Server Sided Issue",
-                        };
-                    }
 
-                    List<ItemsSaved> SeasonShopData = JsonConvert.DeserializeObject<List<ItemsSaved>>(SeasonShopJson)!;
+                    List<ItemsSaved> SeasonShopData = Saved.BackendCachedData.OGShop;
 
                     foreach (ItemsSaved storefront in SeasonShopData)
                     {
@@ -304,7 +275,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             };
                         }
 
-                        SeasonClass SeasonData = profileCacheEntry.AccountData.commoncore.Seasons.FirstOrDefault(e => e.SeasonNumber == Season.Season);
+                        SeasonClass SeasonData = profileCacheEntry.AccountData.commoncore.Seasons?.FirstOrDefault(e => e.SeasonNumber == Season.Season)!;
 
                         if(SeasonData != null)
                         {

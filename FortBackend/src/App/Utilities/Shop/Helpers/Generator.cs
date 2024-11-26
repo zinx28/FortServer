@@ -133,7 +133,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     }
                 };
 
-         
+                Saved.Saved.BackendCachedData.CurrentShop = shopGen;
                 string updatedJsonContent = JsonConvert.SerializeObject(shopGen, Formatting.Indented);
                 string filePath = Path.Combine(PathConstants.BaseDir, "json/shop/shop.json");
                 if(File.Exists(filePath))

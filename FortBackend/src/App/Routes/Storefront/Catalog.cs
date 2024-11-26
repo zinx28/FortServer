@@ -10,6 +10,7 @@ using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Constants;
 using Microsoft.AspNetCore.Razor.Hosting;
 using FortLibrary;
+using FortBackend.src.App.Utilities.Saved;
 
 namespace FortBackend.src.App.Routes.Storefront
 {
@@ -27,17 +28,9 @@ namespace FortBackend.src.App.Routes.Storefront
                 var AcceptLanguage = Request.Headers["Accept-Language"].ToString();
                 VersionClass season = await SeasonUserAgent(Request);
 
-                string filePath = PathConstants.ShopJson.Shop;
-                string json = System.IO.File.ReadAllText(filePath);
-
-                if (string.IsNullOrEmpty(AcceptLanguage))
+                if(Saved.BackendCachedData.CurrentShop.ShopItems.Daily.Count == 0 &&
+                    Saved.BackendCachedData.CurrentShop.ShopItems.Weekly.Count == 0)
                 {
-                    AcceptLanguage = "eu"; // weird
-                }
-
-                if (string.IsNullOrEmpty(json))
-                {
-                    Logger.Error("Catalog is null -> weird issue");
                     return Ok(new
                     {
                         errorCode = "errors.com.epicgames.common.not_found",
@@ -47,13 +40,16 @@ namespace FortBackend.src.App.Routes.Storefront
                         intent = "prod"
                     });
                 }
-                ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json)!;
 
-                //string filePath1 = Path.Combine(PathConstants.BaseDir, "src/Resources/json/test.json");
-                //string json1 = System.IO.File.ReadAllText(filePath1);
-                //Catalog shopData1 = JsonConvert.DeserializeObject<Catalog>(json1);
-                //return Content(json1);    
-                if (shopData == null)
+                if (string.IsNullOrEmpty(AcceptLanguage))
+                {
+                    AcceptLanguage = "eu"; // weird
+                }
+
+
+                ShopJson shopData = Saved.BackendCachedData.CurrentShop;
+
+                if (shopData == null) // never
                 {
                     Logger.Error("shopData is null -> weird issue");
                     return Ok(new Catalog());
@@ -80,22 +76,7 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 if (season.Season == 1)
                 {
-                    string SeasonShopPath = PathConstants.ShopJson.SeasonShop;
-                    string OGJson = System.IO.File.ReadAllText(SeasonShopPath);
-
-                    if (string.IsNullOrEmpty(OGJson))
-                    {
-                        Logger.Error("SEASON SHOP ISNT FOUND PLEASE MAKE SURE YOU DIDNT DELETE IT");
-                        return Ok(new
-                        {
-                            errorCode = "errors.com.epicgames.common.not_found",
-                            errorMessage = "Sorry the resource you were trying to find could not be found",
-                            numericErrorCode = 0,
-                            originatingService = "Fortnite",
-                            intent = "prod"
-                        });
-                    }
-                    List<ItemsSaved> SeasonShopJson = JsonConvert.DeserializeObject<List<ItemsSaved>>(OGJson)!;
+                    List<ItemsSaved> SeasonShopJson = Saved.BackendCachedData.OGShop;
 
                     if (SeasonShopJson != null)
                     {

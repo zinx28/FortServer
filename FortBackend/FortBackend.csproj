@@ -7,14 +7,7 @@
     <Configurations>Debug;Release;HTTPS;DEVELOPMENT</Configurations>
     <Platforms>AnyCPU;ARM32;x64</Platforms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Resources\Json\NewFolder\**" />
-    <Content Remove="Resources\Json\NewFolder\**" />
-    <EmbeddedResource Remove="Resources\Json\NewFolder\**" />
-    <None Remove="Resources\Json\NewFolder\**" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <Content Remove="Resources\Json\shop\OgShop.json" />
   </ItemGroup>

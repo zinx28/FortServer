@@ -4,7 +4,7 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary;
 using FortLibrary.ConfigHelpers;
-using FortLibrary.Dynamics;
+using FortLibrary.Dynamics.Dashboard;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -103,7 +103,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                             Console.WriteLine(dataValue);
                             if (!string.IsNullOrEmpty(dataValue))
                             {
-                                bool AddAdmin = await GrabAdminData.AddAdmin(dataValue);
+                                bool AddAdmin = await GrabAdminData.AddAdmin(dataValue, adminData);
                                 if (AddAdmin)
                                 {
                                     return Redirect("/admin/dashboard/panel");

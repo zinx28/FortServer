@@ -208,9 +208,9 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 string NewAccessToken = JWT.GenerateRandomJwtToken(15, config.JWTKEY);
 
                                 var UpdateResponse = await Handlers.UpdateOne<User>("DiscordId", id, new Dictionary<string, object>()
-                            {
-                                { "accesstoken", NewAccessToken }
-                            });
+                                {
+                                    { "accesstoken", NewAccessToken }
+                                });
 
                                 var Ip = "";
                                 if (Saved.DeserializeConfig.Cloudflare)
@@ -272,9 +272,9 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                                 await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
 
                                                 await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
-                                            {
-                                                { "banned", true }
-                                            });
+                                                {
+                                                    { "banned", true }
+                                                });
 
                                                 string encodedMessage = Uri.EscapeDataString("You are banned from Luna.");
                                                 return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");

@@ -1,4 +1,4 @@
-﻿using FortLibrary.Dynamics;
+﻿using FortLibrary.Dynamics.Dashboard;
 
 namespace FortBackend.src.App.Utilities.ADMIN
 {

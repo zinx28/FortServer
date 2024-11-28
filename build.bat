@@ -39,5 +39,23 @@ if %ERRORLEVEL% neq 0 (
     exit /b
 )
 
+:: echo Building FortDashboard to "build/FortDashboard" folder...
+:: cd "$ROOT_OUTPUT_DIR/../FortDashboard"
+:: npm install --verbose
+:: if %ERRORLEVEL% neq 0 (
+::    echo npm install failed for FortDashboard.
+::    pause
+::    exit /b
+:: )
+
+:: echo npm install completed successfully.
+
+:: npm run build
+
+
+
+echo "Building FortDashboard..."
+
+
 echo All projects published successfully to the "build" folder!
 pause

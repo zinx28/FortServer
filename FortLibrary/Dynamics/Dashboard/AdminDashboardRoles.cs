@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FortLibrary.Dynamics
+namespace FortLibrary.Dynamics.Dashboard
 {
     public class AdminDashboardRoles
     {

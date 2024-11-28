@@ -38,10 +38,10 @@ namespace FortBackend.src.App
             Logger.Log("MARVELCO IS LOADING (marcellowmellow)");
             Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
 
+            await CachedData.Init();
+
             var builder = WebApplication.CreateBuilder(args);
             var startup = new Startup(builder.Configuration);
-
-            await CachedData.Init();
 
             startup.ConfigureServices(builder.Services);
 

@@ -6,6 +6,7 @@ using FortBackend.src.App.Utilities.ADMIN;
 using FortBackend.src.App.Utilities.Constants;
 using Newtonsoft.Json;
 using FortLibrary.ConfigHelpers;
+using FortLibrary.Dynamics.Dashboard;
 
 namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {
@@ -52,7 +53,72 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             return false;
         }
 
-        public static async Task<bool> AddAdmin(string DiscordIds)
+        // Newer Version (this will take over in a future update)
+        public static async Task<bool> EditAdminV2(string username, AdminDataInfo adminInfo, AdminData adminData)
+        {
+            try
+            {
+                if (MongoDBStart.Database != null)
+                {
+                    IMongoCollection<AdminInfo> AdminInfocollection = MongoDBStart.Database.GetCollection<AdminInfo>("AdminInfo");
+
+                    var filter = Builders<AdminInfo>.Filter.Eq(x => x.DiscordId, adminInfo.DiscordId);
+                    var existingAdmin = await AdminInfocollection.Find(filter).FirstOrDefaultAsync();
+
+                    if (existingAdmin == null) return false;
+
+                    var updateDefinition = Builders<AdminInfo>.Update.Combine();
+
+                    if (existingAdmin.Role != adminInfo.Role)
+                    {
+                        updateDefinition = updateDefinition.Set(x => x.Role, adminInfo.Role);
+                    }
+
+                    if (updateDefinition == Builders<AdminInfo>.Update.Combine()) return false;
+
+
+                    var updateResult = await AdminInfocollection.UpdateOneAsync(filter, updateDefinition);
+
+                    if (updateResult.ModifiedCount > 0)
+                    {
+                        Logger.Warn(adminInfo.AccountId);
+                        AdminProfileCacheEntry checkvalue = AdminUsers.FirstOrDefault(e => e.adminInfo.AccountId == adminInfo.AccountId)!;
+                        if (checkvalue != null)
+                        {
+                            Logger.Warn(checkvalue.profileCacheEntry.UserData.Email);
+                            Logger.Warn(JsonConvert.SerializeObject(Saved.Saved.CachedAdminData.Data));
+                            AdminData cachedAdminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == checkvalue.profileCacheEntry.UserData.Email)!;
+                            if (cachedAdminData != null)
+                            {
+                                Logger.Log("CHANGING ROLES (THIS IS DATA IF THE USER LOGGED IN)");
+
+                                
+                                cachedAdminData.RoleId = adminInfo.Role;
+                            }
+
+                            if (checkvalue.adminInfo.Role != adminInfo.Role)
+                            {
+                                checkvalue.adminInfo.Role = adminInfo.Role;
+                                EditAdminClass.Send(username, existingAdmin, adminInfo, adminData);
+                            }
+                        }
+
+                        //var existingAdmin = await AdminInfocollection.Find(x => x.DiscordId == adminInfo.DiscordId).FirstOrDefaultAsync();
+                        Logger.Log($"Admin with Discord ID {adminInfo.DiscordId} updated successfully.", "ADMIN EDIT PANEL V2");
+
+                        return updateResult.ModifiedCount > 0;
+                    }
+                }   
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "ADMIN ADD PANEL");
+            }
+
+            return false;
+        }
+
+        public static async Task<bool> AddAdmin(string DiscordIds, AdminData adminData)
         {
             try
             {
@@ -75,6 +141,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                             await AdminInfocollection.InsertOneAsync(newAdmin);
 
                             await GrabAdminData.GrabAllAdmin();
+
+                            // Send a message in detection logs
+
+                            NewAdmin.Send(profileCacheEntry.UserData.Username, adminData);
 
                             Logger.Log($"Admin with Discord ID {DiscordIds} added successfully.", "ADMIN ADD PANEL");
 
@@ -108,6 +178,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     foreach (AdminInfo adminInfo in adminInfoList)
                     {
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile(adminInfo.AccountId);
+             
                         if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
                         {
                             Logger.Log(adminInfo.AccountId);

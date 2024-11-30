@@ -88,9 +88,15 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 //var Context = contextL;
                                 string? Title = FormRequest["title"];
                                 string? Body = FormRequest["body"];
-                                string? numberBox = FormRequest["NumberBox"];
-                                string? SectionPart = FormRequest["newsId"];
+                                int numberBox = int.TryParse(FormRequest["NumberBox"], out int tempNumber) ? tempNumber : 0;
+                                string ? SectionPart = FormRequest["newsId"];
                                 string? SectionId = FormRequest["sectionId"];
+                                string? RadioBox = FormRequest["RadioBox"];
+                                bool RadioValue = true;
+                                if (RadioBox == null) {
+                                     RadioValue = false;
+                                }
+
                                 int ArrayIndex = int.TryParse(FormRequest["arrayIndex"], out int tempIndex) ? tempIndex : 0;
 
 
@@ -170,6 +176,24 @@ namespace FortBackend.src.App.Routes.ADMIN
                                         test.description.en = Body;
 
                                         NewsManager.Update();
+
+                                        return Json(new
+                                        {
+                                            message = "Updated Content",
+                                            error = false,
+                                        });
+                                    }
+                                }
+                                else if(Context == "server") 
+                                {
+                                    if (SectionId == "1")
+                                    {
+                                        Console.WriteLine(numberBox);
+
+                                        Saved.DeserializeGameConfig.Season = numberBox;
+                                        Saved.DeserializeGameConfig.ForceSeason = RadioValue;
+
+                                        System.IO.File.WriteAllText(PathConstants.CachedPaths.FortGame, JsonConvert.SerializeObject(Saved.DeserializeGameConfig, Formatting.Indented));
 
                                         return Json(new
                                         {

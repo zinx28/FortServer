@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // This file won't support ini stuff even though its close this api also gives a less big response if you tried
   async function populateModalForEditNewsTab(context, contentID, id) {
     console.log(`Editing context: ${context} with ID: ${contentID}`);
 
@@ -272,6 +273,8 @@ document.addEventListener("DOMContentLoaded", () => {
           toggleSwitch.checked = forceSeason;
           IntNumberOnly.value = JsonParsed.SeasonForced;
         }
+      } else if(context == "ini"){
+        console.log("IDK");
       }
     }
   }

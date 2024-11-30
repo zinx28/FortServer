@@ -55,7 +55,7 @@ export default function (app: Hono) {
               }
             ),
             NewsTab: await ejs.renderFile(path.join(__dirname, `../views/partials/content/NewsTab.ejs`)),
-            NewsForm: await ejs.renderFile(path.join(__dirname, `../views/partials/forms/NewsForm.ejs`))
+            NewsForm: await ejs.renderFile(path.join(__dirname, `../views/partials/forms/NewsForm.ejs`)),
           };
 
           switch (c.req.param("contentID")) {
@@ -64,6 +64,29 @@ export default function (app: Hono) {
               break;
             case "server":
               data.NewsTab = await ejs.renderFile(path.join(__dirname, `../views/partials/content/ServerTab.ejs`));
+              break;
+            case "ini": 
+              const response = await fetch(
+                `http://127.0.0.1:1111/admin/new/dashboard/content/dataV2/ini/1`,
+                {
+                  method: "POST",
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+              const JsonParsed = await response.json();
+              console.log(JSON.stringify(JsonParsed))
+              // lil n
+              if (JsonParsed) {
+                if(JsonParsed.error == null){
+                  data.NewsTab = await ejs.renderFile(path.join(__dirname, `../views/partials/content/IniTab.ejs`), {
+                    IniData: JsonParsed
+                  });
+                }
+                
+              }
               break;
             default:
               data.NewsTab = await ejs.renderFile(path.join(__dirname, `../views/partials/content/NewsTab.ejs`));

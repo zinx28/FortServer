@@ -21,6 +21,54 @@ namespace FortBackend.src.App.Routes.ADMIN
     [Route("/admin/new/dashboard/content")]
     public class DashboardNewContentController : Controller
     {
+        // Shorter data THIS IS SERVER SIDED AND NOT CLIENT SIDED
+        [HttpPost("dataV2/{contentName}/{contentId}")]
+        public async Task<IActionResult> DashboardContentIDIni(string contentName, string contentId)
+        {
+            try
+            {
+                var authToken = Request.Headers["Authorization"].ToString().ToLower().Split("bearer ")[1]; ;
+
+                if (authToken != null)
+                {
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken);
+                    if (adminData != null)
+                    {
+                        object? result = contentName.ToLower() switch
+                        {
+                            "ini" when contentId == "1" => IniManager.IniConfigData.FileData.Select(section => new {
+                                FileName = section.Name,
+                                Data = section.Data.Select(e => new
+                                {
+                                    e.Title,
+                                })
+                            }),
+                            _ => null
+                        };
+
+                        if (result != null)
+                            return Json(result);
+
+                        return Json(new
+                        {
+                            message = "Invalid contentName or contentId provided.",
+                            error = true,
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "DashboardContentIDIni");
+            }
+
+            return Json(new
+            {
+                message = "Couldn't find content",
+                error = true,
+            });
+        }
+
         [HttpPost("data/{contentName}/{contentId}")]
         public async Task<IActionResult> DashboardContentID(string contentName, string contentId)
         {
@@ -42,6 +90,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 ForcedSeason = Saved.DeserializeGameConfig.ForceSeason,
                                 SeasonForced = Saved.DeserializeGameConfig.Season
                             },
+                            
                             _ => null
                         };
 

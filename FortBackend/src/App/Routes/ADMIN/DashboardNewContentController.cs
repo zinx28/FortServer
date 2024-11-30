@@ -26,24 +26,35 @@ namespace FortBackend.src.App.Routes.ADMIN
         {
             try
             {
-                object? result = contentName.ToLower() switch
+                if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
                 {
-                    "news" when contentId == "1" => NewsManager.ContentConfig.battleroyalenews,
-                    "news" when contentId == "2" => NewsManager.ContentConfig.emergencynotice,
-                    "news" when contentId == "3" => NewsManager.ContentConfig.loginmessage,
-                    "news" when contentId == "4" => NewsManager.ContentConfig.playlistinformation,
-                    "server" when contentId == "1" => new
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                    if (adminData != null)
                     {
-                        ForcedSeason = Saved.DeserializeGameConfig.ForceSeason,
-                        SeasonForced = Saved.DeserializeGameConfig.Season
-                    },
-                    _ => null
-                };
+                        object? result = contentName.ToLower() switch
+                        {
+                            "news" when contentId == "1" => NewsManager.ContentConfig.battleroyalenews,
+                            "news" when contentId == "2" => NewsManager.ContentConfig.emergencynotice,
+                            "news" when contentId == "3" => NewsManager.ContentConfig.loginmessage,
+                            "news" when contentId == "4" => NewsManager.ContentConfig.playlistinformation,
+                            "server" when contentId == "1" => new
+                            {
+                                ForcedSeason = Saved.DeserializeGameConfig.ForceSeason,
+                                SeasonForced = Saved.DeserializeGameConfig.Season
+                            },
+                            _ => null
+                        };
 
-                if (result != null)
-                    return Json(result);
+                        if (result != null)
+                            return Json(result);
 
-                return NotFound(new { message = "Invalid contentName or contentId provided." });
+                        return Json(new
+                        {
+                            message = "Invalid contentName or contentId provided.",
+                            error = true,
+                        });
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -53,27 +64,128 @@ namespace FortBackend.src.App.Routes.ADMIN
             return Json(new
             {
                 message = "Couldn't find content",
-                error = false,
+                error = true,
             });
         }
 
 
         [HttpPost("update")]
-        public IActionResult UpdateTempDataV2([FromBody] JsonElement tempData)
+        public IActionResult UpdateTempDataV2()
         {
             try
             {
-                var authToken = Request.Headers["Authorization"].ToString();
-
-                if(authToken != null)
+                if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
                 {
                     AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
-                        if(tempData.TryGetProperty("IniChanges", out JsonElement IniChangesData))
+                        var FormRequest = HttpContext.Request.Form;
+
+                        if (FormRequest.TryGetValue("context", out var Context))
+                        {
+                            if (!string.IsNullOrEmpty(Context))
+                            {
+                                //var Context = contextL;
+                                string? Title = FormRequest["title"];
+                                string? Body = FormRequest["body"];
+                                string? numberBox = FormRequest["NumberBox"];
+                                string? SectionPart = FormRequest["newsId"];
+                                string? SectionId = FormRequest["sectionId"];
+                                int ArrayIndex = int.TryParse(FormRequest["arrayIndex"], out int tempIndex) ? tempIndex : 0;
+
+
+                                if(Context == "news")
+                                {
+                                    if(SectionId == "1")
+                                    {
+                                        if(SectionPart == "Messages")
+                                        {
+                                            var test = NewsManager.ContentConfig.battleroyalenews.messages[ArrayIndex];
+                                            
+                                            test.title.en = Title;
+                                            test.body.en = Body;
+
+                                            NewsManager.Update();
+
+                                            return Json(new
+                                            {
+                                                message = "Updated Content",
+                                                error = false,
+                                            });
+                                        }
+                                        else if(SectionPart == "Motds")
+                                        {
+                                            var test = NewsManager.ContentConfig.battleroyalenews.motds[ArrayIndex];
+
+                                            test.title.en = Title;
+                                            test.body.en = Body;
+
+                                            NewsManager.Update();
+
+                                            return Json(new
+                                            {
+                                                message = "Updated Content",
+                                                error = false,
+                                            });
+                                        }
+                                    } 
+                                    else if (SectionId == "2")
+                                    {
+                                        if (SectionPart == "Emergency")
+                                        {
+                                            var test = NewsManager.ContentConfig.emergencynotice[ArrayIndex];
+
+                                            test.title.en = Title;
+                                            test.body.en = Body;
+
+                                            NewsManager.Update();
+
+                                            return Json(new
+                                            {
+                                                message = "Updated Content",
+                                                error = false,
+                                            });
+                                        }
+                                    }
+                                    else if(SectionId == "3")
+                                    {
+                                        var test = NewsManager.ContentConfig.loginmessage;
+
+                                        test.title.en = Title;
+                                        test.body.en = Body;
+
+                                        NewsManager.Update();
+
+                                        return Json(new
+                                        {
+                                            message = "Updated Content",
+                                            error = false,
+                                        });
+                                    }
+                                    else if(SectionId == "4")
+                                    {
+                                        var test = NewsManager.ContentConfig.playlistinformation[ArrayIndex];
+
+                                        test.display_name.en = Title;
+                                        test.description.en = Body;
+
+                                        NewsManager.Update();
+
+                                        return Json(new
+                                        {
+                                            message = "Updated Content",
+                                            error = false,
+                                        });
+                                    }
+                                }
+                            }
+                        }
+
+                     /*   if (tempData.TryGetProperty("IniChanges", out JsonElement IniChangesData))
                         {
                             string dataValue = IniChangesData.ToString();
                             if (!string.IsNullOrEmpty(dataValue))
+
                             {
                                 Console.WriteLine(dataValue);
 
@@ -179,20 +291,22 @@ namespace FortBackend.src.App.Routes.ADMIN
                              
                                
                             }
-                        }
+                        }*/
 
-                        return Json(true);
                     }
                 }
-
-               
-                return Json(false);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error updating temp data: {ex.Message}");
                 return Json(false);
             }
+
+            return Json(new
+            {
+                message = "Failed To Update Content",
+                error = false,
+            });
         }
     }
 }

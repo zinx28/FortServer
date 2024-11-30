@@ -65,6 +65,10 @@ async function populateModalForEditNewsTab(context, contentID, id) {
 
     const editTabContent = document.getElementById("editTabContent");
     editTabContent.style.display = "none";
+
+    const editCheckBoxContent = document.getElementById("editCheckBoxContent");
+    editCheckBoxContent.style.display = "none";
+
     const dropdownMenu = document.getElementById("dropdownmenu");
     const divider = document.getElementById("dropdown-divider");
 
@@ -73,6 +77,13 @@ async function populateModalForEditNewsTab(context, contentID, id) {
       return;
     }
 
+    const toggleSwitch = document.getElementById("flexSwitchCheckDefault");
+    toggleSwitch.style.display = "none";
+
+    const flexSwitchCheckDefaultLabel = document.querySelector(
+      'label[for="flexSwitchCheckDefault"]'
+    );
+    flexSwitchCheckDefaultLabel.style.display = "none";
     const dynamicItems = dropdownMenu.querySelectorAll(".dynamic-item");
     dynamicItems.forEach((item) => item.remove());
 
@@ -98,9 +109,15 @@ async function populateModalForEditNewsTab(context, contentID, id) {
               "news",
               index,
               newsItem,
-              a.textContent
+              a.textContent,
+              {
+                Section: "Messages",
+                Context: context,
+                ContentID: contentID,
+              }
             )
           );
+
           li.appendChild(a);
 
           dropdownMenu.insertBefore(li, divider);
@@ -118,7 +135,12 @@ async function populateModalForEditNewsTab(context, contentID, id) {
               "motds",
               index,
               motdItem,
-              a.textContent
+              a.textContent,
+              {
+                Section: "Motds",
+                Context: context,
+                ContentID: contentID,
+              }
             )
           );
           li.appendChild(a);
@@ -130,9 +152,14 @@ async function populateModalForEditNewsTab(context, contentID, id) {
           const firstNewsItem = allNews[0];
           populateModalForEditNewsTabDropDown(
             "news",
-            1,
+            0,
             firstNewsItem,
-            `News 1`
+            `News 1`,
+            {
+              Section: "Messages",
+              Context: context,
+              ContentID: contentID,
+            }
           );
         }
       } else if (contentID == 2) {
@@ -154,7 +181,12 @@ async function populateModalForEditNewsTab(context, contentID, id) {
               "news",
               index,
               newsItem,
-              a.textContent
+              a.textContent,
+              {
+                Section: "Emergency",
+                Context: context,
+                ContentID: contentID,
+              }
             )
           );
           li.appendChild(a);
@@ -166,19 +198,34 @@ async function populateModalForEditNewsTab(context, contentID, id) {
           const firstNewsItem = allNews[0];
           populateModalForEditNewsTabDropDown(
             "news",
-            1,
+            0,
             firstNewsItem,
-            `Emergency 1`
+            `Emergency 1`,
+            {
+              Section: "Emergency",
+              Context: context,
+              ContentID: contentID,
+            }
           );
         }
       } else if (contentID == 3) {
         editBody.style.display = "block";
         editTitle.style.display = "block";
-        const editBody = document.getElementById("editBody");
+        editTabContent.style.display = "none";
+
+        const hiddenNewsId = document.getElementById("hiddenNewsId");
+        const hiddensectionId = document.getElementById("hiddenSectionId");
+        const hiddenArrayIndex = document.getElementById("hiddenArrayIndex");
+        const hiddenContext = document.getElementById("hiddenContext");
 
         if (editTitle && editBody) {
           editTitle.value = JsonParsed.title.en;
           editBody.value = JsonParsed.body.en;
+
+          hiddenNewsId.value = "";
+          hiddenArrayIndex.value = "-1";
+          hiddensectionId.value = contentID;
+          hiddenContext.value = context;
         }
       } else if (contentID == 4) {
         editBody.style.display = "block";
@@ -200,7 +247,12 @@ async function populateModalForEditNewsTab(context, contentID, id) {
               "news~p",
               index,
               newsItem,
-              a.textContent
+              a.textContent,
+              {
+                Section: "",
+                Context: context,
+                ContentID: contentID,
+              }
             )
           );
           li.appendChild(a);
@@ -213,8 +265,22 @@ async function populateModalForEditNewsTab(context, contentID, id) {
         IntNumberOnly.style.display = "block";
         editBodyLabel.style.display = "none";
         editTitleLabel.style.display = "none";
+        editCheckBoxContent.style.display = "block";
+        toggleSwitch.style.display = "block";
 
-        const toggleSwitch = document.getElementById("flexSwitchCheckDefault");
+        const hiddenNewsId = document.getElementById("hiddenNewsId");
+        const hiddensectionId = document.getElementById("hiddenSectionId");
+        const hiddenArrayIndex = document.getElementById("hiddenArrayIndex");
+        const hiddenContext = document.getElementById("hiddenContext");
+
+        hiddenNewsId.value = "";
+        hiddenArrayIndex.value = "-1";
+        hiddensectionId.value = contentID;
+        hiddenContext.value = context;
+
+        flexSwitchCheckDefaultLabel.style.display = "block";
+        flexSwitchCheckDefaultLabel.textContent = "Forced Season";
+
         var forceSeason = JsonParsed.ForcedSeason || false;
 
         toggleSwitch.checked = forceSeason;
@@ -228,14 +294,30 @@ async function populateModalForEditNewsTabDropDown(
   context,
   index,
   newsItem,
-  newsName
+  newsName,
+  ForcedData
 ) {
   const editTitle = document.getElementById("editTitle");
   const editBody = document.getElementById("editBody");
+  console.log("E " + ForcedData);
+  if (ForcedData != null) {
+    const hiddenNewsId = document.getElementById("hiddenNewsId");
+    const hiddensectionId = document.getElementById("hiddenSectionId");
+    const hiddenArrayIndex = document.getElementById("hiddenArrayIndex");
+    const hiddenContext = document.getElementById("hiddenContext");
+
+    if (ForcedData.Section != null) {
+      hiddenNewsId.value = ForcedData.Section;
+    }
+
+    hiddenArrayIndex.value = index;
+    hiddensectionId.value = ForcedData.ContentID;
+    hiddenContext.value = ForcedData.Context;
+  }
 
   const DropDownButton = document.getElementById("dropdownMenuButton");
 
-  console.log(JSON.stringify(newsItem.title));
+  // console.log(JSON.stringify(newsItem.title));
   if (editTitle && editBody) {
     if (context == "news~p") {
       editTitle.value = newsItem.display_name.en;

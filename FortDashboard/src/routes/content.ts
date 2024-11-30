@@ -12,7 +12,10 @@ import {
 } from "hono/cookie";
 
 export default function (app: Hono) {
-  app.get("/dashboard/panel", async (c) => {
+  app.get("/dashboard/content", async (c) => {
+      return c.redirect("/dashboard/content/news")
+  });
+  app.get("/dashboard/content/:contentID", async (c) => {
     const token = getCookie(c, "AuthToken");
     var DisplayName = "NotSure";
     if (token) {
@@ -42,14 +45,32 @@ export default function (app: Hono) {
               path.join(__dirname, `../views/partials/nav.ejs`),
               {
                 displayName: JsonParsed.displayName,
-                activeTab: "adminPanel",
+                activeTab: "content",
               }
             ),
-            AddMod: await ejs.renderFile(path.join(__dirname, `../views/partials/forms/AddMod.ejs`)),
-            EditMod: await ejs.renderFile(path.join(__dirname, `../views/partials/forms/EditMod.ejs`))
-         
+            NavItem: await ejs.renderFile(
+              path.join(__dirname, `../views/partials/content/NavItem.ejs`),
+              {
+                activeTab: c.req.param("contentID"),
+              }
+            ),
+            NewsTab: await ejs.renderFile(path.join(__dirname, `../views/partials/content/NewsTab.ejs`)),
+            NewsForm: await ejs.renderFile(path.join(__dirname, `../views/partials/forms/NewsForm.ejs`))
           };
-          return c.html(await renderEJS("dashboard/AdminPanel.ejs", data));
+
+          switch (c.req.param("contentID")) {
+            case "news":
+              data.NewsTab = await ejs.renderFile(path.join(__dirname, `../views/partials/content/NewsTab.ejs`));
+              break;
+            case "server":
+              data.NewsTab = await ejs.renderFile(path.join(__dirname, `../views/partials/content/ServerTab.ejs`));
+              break;
+            default:
+              data.NewsTab = await ejs.renderFile(path.join(__dirname, `../views/partials/content/NewsTab.ejs`));
+              break;
+          }
+
+          return c.html(await renderEJS("dashboard/Content.ejs", data));
         } else {
           return c.redirect("/login"); // Prob failed to login
         }

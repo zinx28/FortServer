@@ -1,0 +1,48 @@
+<div class="tab-pane fade" id="inimanagement" role="tabpanel" aria-labelledby="inimanagement-tab">
+
+    <h2>INI Management</h2>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        @foreach (var newsItem in JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData)
+        {
+            <li class="nav-item" role="presentation">
+                <button class="nav-link @(newsItem.Name == JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData.First().Name ? "active" : "")" id="@($"{newsItem.Name}-tab")" data-bs-toggle="tab" data-bs-target="#@newsItem.Name" type="button" role="tab" aria-controls="@newsItem.Name" aria-selected="true">@newsItem.Name</button>
+            </li>
+        }
+    </ul>
+
+    <div class="tab-content">
+        @foreach (var newsItem in JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData)
+        {
+            <div class="tab-pane fade @(newsItem.Name == JsonConvert.DeserializeObject<IniConfig>(IniManagerConfig).FileData.First().Name ? "show active" : "")" id="@newsItem.Name" role="tabpanel" aria-labelledby="@($"{newsItem.Name}-tab")">
+                <h2>@newsItem.Name</h2>
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Body</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach(var test in newsItem.Data)
+                    {
+                        <tr>
+                            <td>@test.Title</td>
+                            <td>N/A</td>
+                            <td>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="populateModalDataIniForEdit(JsonConvert.SerializeObject(test.Data), '@newsItem.Name', '@test.Title')">Edit</button>
+                            </td>
+                        </tr>
+                    }
+                    
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+
+   
+
+</div>

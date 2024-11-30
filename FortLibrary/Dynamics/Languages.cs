@@ -10,7 +10,7 @@ namespace FortLibrary.Dynamics
 {
     public class Languages
     {
-        public string en { get; set; } = "FortBackend Kittens :3"; // sorry :3 i couldn't remove the org stuff
+        public string en { get; set; } = string.Empty; // sorry :3 i couldn't remove the org stuff
         public string es { get; set; } = string.Empty;
         [JsonPropertyName("es-419")]
         [JsonProperty("es-419")]

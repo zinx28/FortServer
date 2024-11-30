@@ -99,7 +99,14 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
                         ContentConfig.playlistinformation.ForEach(x =>
                         {
-                            contentJson.playlistinformation.playlist_info.playlists.Add(x);
+                            contentJson.playlistinformation.playlist_info.playlists.Add(new PlayListObject
+                            {
+                                image = x.image,
+                                playlist_name = x.playlist_name,
+                                hidden = x.hidden,
+                                description = x.GetLanguage(x.description, propertyName),
+                                display_name = x.GetLanguage(x.display_name, propertyName),
+                            });
                         });
 
                         Logger.Log($"Adding {propertyName}", "News");
@@ -194,7 +201,14 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
                     ContentConfig.playlistinformation.ForEach(x =>
                     {
-                        contentJson.playlistinformation.playlist_info.playlists.Add(x);
+                        contentJson.playlistinformation.playlist_info.playlists.Add(new PlayListObject
+                        {
+                            image = x.image,
+                            playlist_name = x.playlist_name,
+                            hidden = x.hidden,
+                            description = x.GetLanguage(x.description, propertyName),
+                            display_name = x.GetLanguage(x.display_name, propertyName),
+                        });
                     });
 
                     ContentJsonResponse.Add(propertyName, contentJson);

@@ -1,0 +1,118 @@
+<div
+  class="modal fade text-white"
+  id="editModal"
+  tabindex="-1"
+  aria-labelledby="editModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content" id="editTabContent">
+          <div class="dropdown" id="newsList">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Not Selected
+            </button>
+            <ul
+              class="dropdown-menu"
+              id="dropdownmenu"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <li id="dropdown-divider"><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="#not implemented"
+                  >Add News Item</a
+                >
+              </li>
+            </ul>
+
+            <hr />
+          </div>
+        </div>
+
+        <form id="editForm">
+          <div class="mb-3" id="most-average-thingy">
+            <div class="mb-3">
+              <label for="editTitle" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="editTitle"
+                name="title"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="editBody" class="form-label">Body</label>
+              <textarea
+                class="form-control"
+                id="editBody"
+                rows="3"
+                name="body"
+              ></textarea>
+            </div>
+
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">NOIDEA</label>
+            </div>
+
+            <label>
+              <input type="radio" name="booleanOption" value="true" />
+              True
+            </label>
+            <label>
+              <input type="radio" name="booleanOption" value="false" />
+              False
+            </label>
+
+            <input
+              type="number"
+              min="0"
+              pattern="^[0-9]"
+              class="form-control"
+              max="100"
+              id="IntNumberOnly"
+              name="title"
+            />
+          </div>
+
+          <p>* changing images from dashboard is unsupported *</p>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          onclick="populateModalSave()"
+        >
+          Save changes
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          onclick="populateModalClose()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

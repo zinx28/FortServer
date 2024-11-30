@@ -29,76 +29,10 @@
       "de": "FortBackend ist ein universeller privater Server für Fortnite"
     }
   },
-    "battleroyalenews": {
-        "motds": [
-          {
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "title": {
-              "en": "FortBackend",
-              "es": "FortBackend",
-              "es-419": "FortBackend",
-              "fr": "FortBackend",
-              "it": "FortBackend",
-              "ja": "FortBackend",
-              "ko": "FortBackend",
-              "pl": "FortBackend",
-              "pt-BR": "FortBackend",
-              "ru": "FortBackend",
-              "tr": "FortBackend",
-              "de": "FortBackend"
-            },
-            "body": {
-              "en": "FortBackend is a Universal Private Server for Fortnite",
-              "es": "FortBackend es un servidor privado universal para Fortnite",
-              "es-419": "FortBackend es un servidor privado universal para Fortnite",
-              "fr": "FortBackend est un serveur privé universel pour Fortnite",
-              "it": "FortBackend è un server privato universale per Fortnite",
-              "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
-              "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
-              "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
-              "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
-              "ru": "FortBackend - универсальный частный сервер для Fortnite",
-              "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
-              "de": "FortBackend ist ein universeller privater Server für Fortnite"
-            }
-            }
-        ],
-        "messages": [
-          {
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "title": {
-              "en": "FortBackend",
-              "es": "FortBackend",
-              "es-419": "FortBackend",
-              "fr": "FortBackend",
-              "it": "FortBackend",
-              "ja": "FortBackend",
-              "ko": "FortBackend",
-              "pl": "FortBackend",
-              "pt-BR": "FortBackend",
-              "ru": "FortBackend",
-              "tr": "FortBackend",
-              "de": "FortBackend"
-            },
-            "body": {
-              "en": "FortBackend is a Universal Private Server for Fortnite",
-              "es": "FortBackend es un servidor privado universal para Fortnite",
-              "es-419": "FortBackend es un servidor privado universal para Fortnite",
-              "fr": "FortBackend est un serveur privé universel pour Fortnite",
-              "it": "FortBackend è un server privato universale per Fortnite",
-              "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
-              "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
-              "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
-              "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
-              "ru": "FortBackend - универсальный частный сервер для Fortnite",
-              "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
-              "de": "FortBackend ist ein universeller privater Server für Fortnite"
-            }
-          }
-        ]
-    },
-    "emergencynotice": [
+  "battleroyalenews": {
+    "motds": [
       {
+        "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
         "title": {
           "en": "FortBackend",
           "es": "FortBackend",
@@ -129,85 +63,164 @@
         }
       }
     ],
-    "shopSections": [
-        {
-            "landingPriority": 1,
-            "sectionId": "Featured",
-            "sectionDisplayName": "Featured"
+    "messages": [
+      {
+        "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+        "title": {
+          "en": "FortBackend",
+          "es": "FortBackend",
+          "es-419": "FortBackend",
+          "fr": "FortBackend",
+          "it": "FortBackend",
+          "ja": "FortBackend",
+          "ko": "FortBackend",
+          "pl": "FortBackend",
+          "pt-BR": "FortBackend",
+          "ru": "FortBackend",
+          "tr": "FortBackend",
+          "de": "FortBackend"
         },
-        {
-            "landingPriority": 2,
-            "sectionId": "Daily",
-            "sectionDisplayName": "Daily"
+        "body": {
+          "en": "FortBackend is a Universal Private Server for Fortnite",
+          "es": "FortBackend es un servidor privado universal para Fortnite",
+          "es-419": "FortBackend es un servidor privado universal para Fortnite",
+          "fr": "FortBackend est un serveur privé universel pour Fortnite",
+          "it": "FortBackend è un server privato universale per Fortnite",
+          "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
+          "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
+          "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
+          "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
+          "ru": "FortBackend - универсальный частный сервер для Fortnite",
+          "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
+          "de": "FortBackend ist ein universeller privater Server für Fortnite"
         }
-    ],
-    "playlistinformation": [
-        {
-            "hidden": false,
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_DefaultSolo"
-        },
-        {
-            "hidden": false,
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_DefaultDuo"
-        },
-        {
-            "hidden": false,
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_DefaultSquad"
-        },
-        {
-          "hidden": false,
-          "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-          "playlist_name": "Playlist_PlaygroundV2",
-          "description": "Creative is so cool ngl"
-        },
-        {
-            "hidden": false,
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_ShowdownAlt_Solo"
-        },
-        {
-            "hidden": false,
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_ShowdownAlt_Duos"
-        },
-        {
-            "hidden": false,
-            "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "playlist_name": "Playlist_ShowdownAlt_Trios"
-        }
-    ],
-    "tournamentinformation": [
-        {
-            "title_line_2": "ARENA",
-            "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "tournament_display_id": "arena_solo",
-            "_type": "Tournament Display Info",
-            "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
-        },
-        {
-            "title_line_2": "ARENA",
-            "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "tournament_display_id": "arena_duos",
-            "_type": "Tournament Display Info",
-            "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
-        },
-        {
-            "title_line_2": "ARENA",
-            "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "tournament_display_id": "arena_trios",
-            "_type": "Tournament Display Info",
-            "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
-        },
-        {
-            "title_line_1": "ARENA",
-            "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "poster_back_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-            "tournament_display_id": "arena_squads",
-            "_type": "Tournament Display Info",
-            "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
-        }
+      }
     ]
+  },
+  "emergencynotice": [
+    {
+      "title": {
+        "en": "FortBackend",
+        "es": "FortBackend",
+        "es-419": "FortBackend",
+        "fr": "FortBackend",
+        "it": "FortBackend",
+        "ja": "FortBackend",
+        "ko": "FortBackend",
+        "pl": "FortBackend",
+        "pt-BR": "FortBackend",
+        "ru": "FortBackend",
+        "tr": "FortBackend",
+        "de": "FortBackend"
+      },
+      "body": {
+        "en": "FortBackend is a Universal Private Server for Fortnite",
+        "es": "FortBackend es un servidor privado universal para Fortnite",
+        "es-419": "FortBackend es un servidor privado universal para Fortnite",
+        "fr": "FortBackend est un serveur privé universel pour Fortnite",
+        "it": "FortBackend è un server privato universale per Fortnite",
+        "ja": "FortBackendはFortniteのユニバーサルプライベートサーバーです",
+        "ko": "FortBackend는 포트나이트를 위한 범용 개인 서버입니다",
+        "pl": "FortBackend to uniwersalny prywatny serwer dla Fortnite",
+        "pt-BR": "FortBackend é um servidor privado universal para o Fortnite",
+        "ru": "FortBackend - универсальный частный сервер для Fortnite",
+        "tr": "FortBackend, Fortnite için evrensel bir özel sunucudur",
+        "de": "FortBackend ist ein universeller privater Server für Fortnite"
+      }
+    }
+  ],
+  "shopSections": [
+    {
+      "landingPriority": 1,
+      "sectionId": "Featured",
+      "sectionDisplayName": "Featured"
+    },
+    {
+      "landingPriority": 2,
+      "sectionId": "Daily",
+      "sectionDisplayName": "Daily"
+    }
+  ],
+  "playlistinformation": [
+    {
+      "hidden": false,
+      "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "playlist_name": "Playlist_DefaultSolo"
+    },
+    {
+      "hidden": false,
+      "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "playlist_name": "Playlist_DefaultDuo"
+    },
+    {
+      "hidden": false,
+      "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "playlist_name": "Playlist_DefaultSquad"
+    },
+    {
+      "hidden": false,
+      "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "playlist_name": "Playlist_PlaygroundV2",
+      "description": {
+        "en": "Creative is so cool ngl",
+        "es": "Creative is so cool ngl",
+        "es-419": "Creative is so cool ngl",
+        "fr": "Creative is so cool ngl",
+        "it": "Creative is so cool ngl",
+        "ja": "Creative is so cool ngl",
+        "ko": "Creative is so cool ngl",
+        "pl": "Creative is so cool ngl",
+        "pt-BR": "Creative is so cool ngl",
+        "ru": "Creative is so cool ngl",
+        "tr": "Creative is so cool ngl",
+        "de": "Creative is so cool ngl"
+      }
+    },
+    {
+      "hidden": false,
+      "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "playlist_name": "Playlist_ShowdownAlt_Solo"
+    },
+    {
+      "hidden": false,
+      "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "playlist_name": "Playlist_ShowdownAlt_Duos"
+    },
+    {
+      "hidden": false,
+      "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "playlist_name": "Playlist_ShowdownAlt_Trios"
+    }
+  ],
+  "tournamentinformation": [
+    {
+      "title_line_2": "ARENA",
+      "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "tournament_display_id": "arena_solo",
+      "_type": "Tournament Display Info",
+      "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
+    },
+    {
+      "title_line_2": "ARENA",
+      "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "tournament_display_id": "arena_duos",
+      "_type": "Tournament Display Info",
+      "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
+    },
+    {
+      "title_line_2": "ARENA",
+      "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "tournament_display_id": "arena_trios",
+      "_type": "Tournament Display Info",
+      "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
+    },
+    {
+      "title_line_1": "ARENA",
+      "loading_screen_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "poster_back_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
+      "tournament_display_id": "arena_squads",
+      "_type": "Tournament Display Info",
+      "playlist_tile_image": "http://127.0.0.1:1111/image/Trans_Boykisser.png"
+    }
+  ]
 }

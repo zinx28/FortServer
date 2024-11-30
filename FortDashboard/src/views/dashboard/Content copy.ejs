@@ -1,0 +1,595 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link href="/public/css/BootStrap.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="/public/css/content.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="d-flex" style="height: 100%;">
+        <%- navbar %>
+        
+
+        <div class="flex-grow-1 p-3 text-white" style="margin-left: 280px;">
+            <div class="tab-pane fade show active" id="content-tab" role="tabpanel" aria-labelledby="content-tab">
+                <h1>Content Management</h1>
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="news-tab" data-bs-toggle="tab" data-bs-target="#news" type="button" role="tab" aria-controls="news" aria-selected="true">News Updates</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="servers-tab" data-bs-toggle="tab" data-bs-target="#servers" type="button" role="tab" aria-controls="servers" aria-selected="false">Server Management</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="inimanagement-tab" data-bs-toggle="tab" data-bs-target="#inimanagement" type="button" role="tab" aria-controls="inimanagement" aria-selected="false">INI Management</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="shop-tab" data-bs-toggle="tab" data-bs-target="#shop" type="button" role="tab" aria-controls="shop" aria-selected="false">Shop Configuration</button>
+                    </li>
+                </ul>
+               
+                <div class="tab-content mt-4">
+                        <%- NewsTab %>
+                        <%- ServerTab %>
+                        <%- IniTab %>
+
+                        <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+                            <h2>Shop Configuration</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="modal fade  text-white" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="tab-content" id="editTabContent">
+
+
+                                <div class="dropdown" id="newsList" style="display: none;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Not Selected
+                                    </button>
+                                    <ul class="dropdown-menu" id="dropdownmenu" aria-labelledby="dropdownMenuButton">
+                                        @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.motds)
+                                        {
+                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', counter2)">News @(counter2 + 1) (Motds)</a></li>
+                                            counter2++;
+                                        }
+
+                                        @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).battleroyalenews.messages)
+                                        {
+                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('news', counter2)">News @(counter2 + 1)</a></li>
+                                            counter2++;
+                                        }
+
+
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
+                                    </ul>
+
+                                    <hr>
+                                </div>
+
+
+                                <div class="dropdown" id="newsList-playlist" style="display: none;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-playlist" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Not Selected
+                                    </button>
+                                    <ul class="dropdown-menu" id="dropdownmenu-playlist" aria-labelledby="dropdownMenuButton-playlist">
+                                        @if (counter2 != 0)
+                                        {
+                                            counter2 = 0;
+                                        }
+
+                                        @foreach (var newsItem in JsonConvert.DeserializeObject<ContentConfig>(NewsData).playlistinformation)
+                                        {
+                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('playlistinformation', counter2)">@newsItem.playlist_name</a></li>
+                                            counter2++;
+                                        }
+
+
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
+                                    </ul>
+
+                                    <hr>
+                                </div>
+
+                                <div class="dropdown" id="IniTest-playlist" style="display: none;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-ini" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Not Selected
+                                    </button>
+                                    <ul class="dropdown-menu" id="dropdownmenu1-playlist" aria-labelledby="dropdownMenuButton-ini">
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="#not implemented">Add News Item</a></li>
+                                    </ul>
+
+                                    <hr>
+                                </div>
+
+                            </div>
+
+
+
+                            <form id="editForm">
+                                <input type="hidden" id="editType" name="type">
+                                <input type="hidden" id="editIndex" name="index">
+                                <div class="mb-3" id="IniUIManager" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="editInitText" class="form-label">INI VALUE</label>
+                                        <input type="text" class="form-control" id="editInitText" name="title">
+                                    </div>
+
+                                    <p>* DONT CHANGE THE VALUES IF YOU DON'T UNDERSTAND HOW THEY WORK (but should be basic to understand) *</p>
+                                </div>
+
+                                <div class="mb-3" id="most-average-thingy" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="editTitle" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="editTitle" name="title">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editBody" class="form-label">Body</label>
+                                        <textarea class="form-control" id="editBody" rows="3" name="body"></textarea>
+                                    </div>
+                                </div>
+                                <div class="mb-3" id="forcedseason-data" style="display: none;">
+                                   
+                                    <label for="editBody" class="form-label">Forced Season</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton-forced" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Not Selected (weird)
+                                        </button>
+                                        <ul class="dropdown-menu" id="dropdownmenu-playlist" aria-labelledby="dropdownMenuButton-forced">
+                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('forcedseason', 10)">True</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="populateModalForEdit('forcedseason', 20)">False</a></li>
+                                        </ul>
+
+                                      
+                                    </div>
+                                    <hr>
+                                    <label for="editBody" class="form-label">Body</label>
+                                    <input type="number" min="0" pattern="^[0-9]" class="form-control" max="100" id="IntNumberOnly" name="title">
+                                 </div>
+
+                                <p>* changing images from dashboard is unsupported *</p>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="populateModalSave()">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="populateModalClose()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+
+        <script src="/public/js/bootstrap.bundle.min.js"></script>
+        <script>
+            var indexIg = INdexIg;
+            var newsData = Html.Raw(TempData);
+            var BackendConfig = Html.Raw(DeserializeGameConfig);
+            var lastTab = "";
+            var newsFiles = [[],[]];
+            var IsPlaylist = false;
+            var IsForcedSeason = false;
+
+            //var ForcedSeasonData = @ForcedSeason;
+            //var ForcedSeasonNumber = @SeasonForced;
+
+            var TempINICache = "";
+            var IndexBefore = -1;
+            var TempIniName = "";
+            var TempIniTitle = "";
+            function populateModalDataIniForEdit(data, Name, Title) {
+                TempIniName = Name;
+                TempIniTitle = Title;
+                TempINICache = data;
+                IndexBefore = -1;
+                lastTab = "IniChanges";
+    
+                document.getElementById('dropdownMenuButton').textContent = "Not Selected"
+                document.getElementById('dropdownMenuButton-ini').textContent = "Not Selected"
+                document.getElementById('dropdownMenuButton-playlist').textContent = "Not Selected"
+                document.getElementById('dropdownMenuButton-forced').textContent = "Not Selected"
+                document.getElementById('editTitle').value = "";
+                document.getElementById('editTitle').disabled = true;
+                document.getElementById('editBody').value = "";
+                document.getElementById('editBody').disabled = true;
+                document.getElementById('IntNumberOnly').value = "";
+
+                var MainBody = document.getElementById('most-average-thingy');
+                MainBody.style.display = "none";
+
+                var IniUIManager = document.getElementById('IniUIManager');
+                IniUIManager.style.display = "";
+                document.getElementById('editInitText').value = "";
+                document.getElementById('editInitText').disabled = true;
+            //editInitText
+                //IniUIManager
+
+                var forcedseason_data = document.getElementById('forcedseason-data');
+               // var newsList = document.getElementById('newsList');
+                var newsList_playlist = document.getElementById('newsList-playlist');
+
+                forcedseason_data.style.display = "none";
+                newsList_playlist.style.display = 'none';
+
+                var dropdownMenu1 = document.getElementById('IniTest-playlist');
+                dropdownMenu1.style.display = "";
+
+                var dropdownMenu = document.getElementById('dropdownmenu1-playlist');
+                dropdownMenu.innerHTML = '';
+
+                data.forEach(function (playlist, index) {
+                    var listItem = document.createElement('li');
+                    var link = document.createElement('a');
+                    link.classList.add('dropdown-item');
+                    link.href = '#';
+                    link.textContent = playlist.Name;
+                  
+                    link.onclick = function () {
+                     populateModalDataIniForEditSelect(index);
+                    };
+                    listItem.appendChild(link);
+                    dropdownMenu.appendChild(listItem);
+                });
+
+                var divider = document.createElement('li');
+                divider.innerHTML = '<hr class="dropdown-divider">';
+                var addNewsItemLink = document.createElement('li');
+                addNewsItemLink.innerHTML = '<a class="dropdown-item" href="#not implemented">Add News Item</a>';
+                dropdownMenu.appendChild(divider);
+                dropdownMenu.appendChild(addNewsItemLink);
+        
+ 
+
+                console.log(data);
+            }
+
+           
+            function populateModalDataIniForEditSelect(index) {
+                if (TempINICache != "") {
+                    // uipdate stuff here check or <a href="#"></a>
+                    if (IndexBefore != -1) {
+                        TempINICache[IndexBefore].Value = document.getElementById('editInitText').value
+                    }
+
+                    //^^
+
+                    IndexBefore = index;
+                    document.getElementById('dropdownMenuButton-ini').textContent = TempINICache[index].Name
+
+                    document.getElementById('editInitText').value = TempINICache[index].Value;
+                    document.getElementById('editInitText').disabled = false;
+                    console.log(TempINICache[index]);
+                }
+            }
+
+            function populateModalForEdit(type, index) {
+                TempIniName = "";
+                TempIniTitle = "";
+                IsPlaylist = false;
+                IsForcedSeason = false;
+                var newsList = document.getElementById('newsList');
+                var newsList_playlist = document.getElementById('newsList-playlist');
+                var forcedseason_data = document.getElementById('forcedseason-data');
+                var most_average_thingy = document.getElementById('most-average-thingy');
+
+                most_average_thingy.style.display = "";
+          
+            //forcedseason-data
+                //var ImageSelect = document.getElementById('image-select');
+                //var ImageInputSelect = document.getElementById('imageInput');
+                var selectedItem;
+                console.log(type); 
+                console.log(index);
+                lastTab = type;
+
+                forcedseason_data.style.display = "none";
+                newsList_playlist.style.display = 'none';
+
+                if (type === 'news') {
+                    
+                    newsList.style.display = '';
+                   
+                   // ImageSelect.style.display = '';
+                    console.log("should show 1")
+                    if (index >= 0) {
+                        //if (indexIg != index) {
+                            // Add Data Before to be "CACHED";
+                            if (indexIg != -1) { // so it won't break the -1 value
+                                if (newsData.battleroyalenews.motds.length > indexIg) {
+                                    newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
+                                    newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                                } else {
+                                    newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].title = document.getElementById('editTitle').value;
+                                    newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].body = document.getElementById('editBody').value;
+                                }
+                               
+                                //if (ImageInputSelect && ImageInputSelect.files && ImageInputSelect.files.length > 0) {
+                                    //if (ImageInputSelect.files == null) {
+                                      //  if (newsFiles[indexIg] != null) {
+                                      //      newsFiles[indexIg] = [];
+                                      //  } else {
+                                       //     newsFiles.push([]);
+                                      ///  }
+                                   // } else {
+                                       // if (newsFiles[indexIg] != null) {
+                                        //    newsFiles[indexIg] = ImageInputSelect.files;
+                                        //} else {
+                                        //    newsFiles.push(ImageInputSelect.files);
+                                        //}
+                                   // }
+                                    //newsFiles.push(ImageInputSelect.files)
+                                    //console.log(ImageInputSelect.files);
+
+
+                                //}
+                            }
+                        //}
+                        indexIg = index;
+                        console.log(newsData.battleroyalenews.motds.length < indexIg);
+                        if ((newsData.battleroyalenews.motds.length - 1) >= indexIg) {
+                            selectedItem = newsData.battleroyalenews.motds[indexIg];
+                            document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1) + " (Motds)"
+                        } 
+                        // ik this looks terrible it works fine and we have to + one as the index isnt correct with legth
+                        else if (indexIg - (newsData.battleroyalenews.motds.length) >= 0) {
+                            selectedItem = newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)]
+                            document.getElementById('dropdownMenuButton').textContent = "News " + (index + 1)
+                        }
+                       
+                        console.log(selectedItem)
+                    }
+                } else if (type === 'emergencynotice'){
+                    newsList.style.display = 'none';
+                    //ImageSelect.style.display = 'none';
+                   (Tab = 2);
+                   // if (index >= 0){
+                        indexIg = index;
+                        selectedItem = newsData.emergencynotice[0];
+                        console.log(selectedItem)
+                   // }
+                }
+                else if (type === 'loginmessage') {
+                    newsList.style.display = 'none';
+                   (Tab = 3); // not needed + won't be proper during runtime
+                    indexIg = index;
+                    selectedItem = newsData.loginmessage;
+                    console.log(selectedItem)
+                }
+                else if (type === "playlistinformation") {
+                    //newsList-playlist
+                    IsPlaylist = true;
+                    newsList.style.display = 'none';
+                    newsList_playlist.style.display = '';
+                  (Tab = 4); // not needed + won't be proper during runtime
+                    if (indexIg != -1) {
+                        if (newsData.playlistinformation.length > indexIg) {
+                            newsData.playlistinformation[indexIg].display_name = document.getElementById('editTitle').value;
+                            newsData.playlistinformation[indexIg].description = document.getElementById('editBody').value;
+                        }
+                        
+                    }
+
+                    indexIg = index;
+
+                    if ((newsData.playlistinformation.length - 1) >= indexIg) {
+                        selectedItem = newsData.playlistinformation[indexIg];
+                        document.getElementById('dropdownMenuButton-playlist').textContent = "Playlist " + (index + 1)
+                    }
+                    selectedItem = newsData.playlistinformation[indexIg];
+                    console.log(selectedItem)
+                }
+                else if (type === "forcedseason") {
+                    IsForcedSeason = true;
+                    forcedseason_data.style.display = '';
+                    most_average_thingy.style.display = "none";
+                    newsList.style.display = 'none';
+                    newsList_playlist.style.display = 'none';
+                    indexIg = index;
+                    
+                    if (indexIg == -1) {
+                    document.getElementById('dropdownMenuButton-forced').textContent = BackendConfig.ForceSeason ? "True" : "False"
+                    }
+                    else {
+                        if (indexIg == 10) {
+                            document.getElementById('dropdownMenuButton-forced').textContent = "True"
+                        } else {
+                            document.getElementById('dropdownMenuButton-forced').textContent = "False"
+                        }
+                    }
+
+                    document.getElementById('IntNumberOnly').value = BackendConfig.Season;
+                    
+                    selectedItem = "s";
+
+                   (Tab = 5); // not needed + won't be proper during runtime
+                }
+                else {
+                    (Tab = -1); // won't show nothing
+                }
+         
+
+                if (selectedItem) {
+                   // document.getElementById('dropdownMenuButton').textContent = selectedItem.title
+                    document.getElementById('editType').value = type;
+                    document.getElementById('editIndex').value = index;
+                    if(!IsForcedSeason) {
+                        if (IsPlaylist){
+                            document.getElementById('editTitle').value = selectedItem.display_name;
+                            document.getElementById('editTitle').disabled = false;
+                            document.getElementById('editBody').value = selectedItem.description;
+                            document.getElementById('editBody').disabled = false;
+                        }else {
+                            document.getElementById('editTitle').value = selectedItem.title;
+                            document.getElementById('editTitle').disabled = false;
+                            document.getElementById('editBody').value = selectedItem.body;
+                            document.getElementById('editBody').disabled = false;
+                        }
+                    }
+                    
+                  
+                   // console.log(newsFiles[index]);
+                    //if (newsFiles[index] == null || newsFiles[index].length === 0) {
+                    //    document.getElementById('imageInput').value = '';
+                   // }else {
+                   //    
+                    //    document.getElementById('imageInput').files = newsFiles[index];
+                   // }
+
+                    //document.getElementById('imageInput').disabled = false;
+                  
+                    // if (type == "news") {
+                    //     document.getElementById('imageInput').value = selectedItem.image;
+                    // }
+                 
+                    $('#editModal').modal('show');
+                } else {
+                    console.log("-1")
+                    // Clear it duh?
+                    document.getElementById('dropdownMenuButton').textContent = "Not Selected"
+                    document.getElementById('dropdownMenuButton-playlist').textContent = "Not Selected"
+                    document.getElementById('dropdownMenuButton-forced').textContent = "Not Selected"
+                    document.getElementById('editType').value = type;
+                    document.getElementById('editIndex').value = index;
+                    document.getElementById('editTitle').value = "";
+                    document.getElementById('editTitle').disabled = true;
+                    document.getElementById('editBody').value = "";
+                    document.getElementById('editBody').disabled = true;
+                    document.getElementById('IntNumberOnly').value = "";
+
+                    var IniUIManager = document.getElementById('IniUIManager');
+                    IniUIManager.style.display = "none";
+                    document.getElementById('editInitText').value = "";
+                    document.getElementById('editInitText').disabled = true;
+                    //dropdownmenu
+                    //document.getElementById('editBody').value = "";
+                   // document.getElementById('editBody').disabled = true;
+                   // ImageInputSelect.value = '';
+                    //ImageInputSelect.disabled = true;
+                   // UpdateDropdown(type);
+
+
+                    $('#editModal').modal('show');
+                }
+            }
+
+            function populateModalClose() {
+                (INdexIg = -1);
+                indexIg = INdexIg;
+                TempINICache = ""; // eh
+               // newsFiles = [];
+                newsData = Html.Raw(TempData);
+            }
+
+            function getAuthToken() {
+                var authToken = null;
+                document.cookie.split(';').forEach(function (cookie) {
+                    var parts = cookie.trim().split('=');
+                    if (parts[0] === 'AuthToken') {
+                        authToken = parts[1] ? decodeURIComponent(parts[1]) : '';
+                        //l
+                    }
+                });
+                return authToken;
+            }
+
+            function populateModalSave() {
+
+
+                // dw chat this is updating it
+                var tf = "gg";
+                if(lastTab == "news"){
+                    // fixes stuff ofc
+                    if (indexIg != -1) {
+                        if ((newsData.battleroyalenews.motds.length - 1) >= indexIg) {
+                            newsData.battleroyalenews.motds[indexIg].title = document.getElementById('editTitle').value;
+                            newsData.battleroyalenews.motds[indexIg].body = document.getElementById('editBody').value;
+                        }
+                        else if (indexIg - (newsData.battleroyalenews.motds.length) >= 0) {
+                            newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].title = document.getElementById('editTitle').value;
+                            newsData.battleroyalenews.messages[indexIg - (newsData.battleroyalenews.messages.length + 1)].body = document.getElementById('editBody').value;
+                        }
+
+                      
+                    }
+
+                } 
+                else if (lastTab == "playlistinformation") {
+                    if (indexIg != -1) {
+                        if ((newsData.playlistinformation.length - 1) >= indexIg) {
+                            newsData.playlistinformation[indexIg].title = document.getElementById('editTitle').value;
+                            newsData.playlistinformation[indexIg].body = document.getElementById('editBody').value;
+                        }
+                    }
+                }
+                else { //
+                    if (lastTab == "emergencynotice") {
+                        newsData.emergencynotice[0].title = document.getElementById('editTitle').value;
+                        newsData.emergencynotice[0].body = document.getElementById('editBody').value;
+                    } else if (lastTab == "loginmessage"){
+                        newsData.loginmessage.title = document.getElementById('editTitle').value;
+                        newsData.loginmessage.body = document.getElementById('editBody').value;
+                    }else if(lastTab == "forcedseason"){
+                        BackendConfig.ForceSeason = document.getElementById('dropdownMenuButton-forced').textContent == "True";
+                        var TempNum = parseInt(document.getElementById('IntNumberOnly').value);
+                        if (!isNaN(TempNum)) {
+                            console.log(TempNum);
+                            BackendConfig.Season = TempNum
+                        }
+                    } else if (lastTab == "IniChanges"){
+                        TempINICache[IndexBefore].Value = document.getElementById('editInitText').value
+                    }
+                }
+
+                indexIg = -1;
+
+
+                $.ajax({
+                    url: '/admin/dashboard/content/update',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    headers: {
+                        'Authorization': getAuthToken()
+                    },
+                    data: JSON.stringify({
+                        data: newsData,
+                        BackendConfig: BackendConfig,
+                        IniChanges: { Title: TempIniName, Body: { Name: TempIniTitle, CachedData: TempINICache } }
+                    }),
+                    success: function (response) {
+                        console.log("SAVING");
+                        if (response === true) {
+                            location.reload();
+                        } else {
+                            console.log("FALSE");
+                        }
+                    },
+                    error: function () {
+                        console.log("Error occurred while updating TempDataV2.");
+                    }
+                });
+
+            }
+        </script>
+
+
+</body>
+</html>

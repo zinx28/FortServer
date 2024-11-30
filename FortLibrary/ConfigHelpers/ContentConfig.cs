@@ -12,7 +12,7 @@ namespace FortLibrary.ConfigHelpers
         public List<Emergencynoticecontent> emergencynotice { get; set; } = new List<Emergencynoticecontent>();
         public List<shopSectionsItems> shopSections { get; set; } = new List<shopSectionsItems>();
 
-        public List<PlayListObject> playlistinformation { get; set; } = new List<PlayListObject>();
+        public List<PlayListObjectTemp> playlistinformation { get; set; } = new List<PlayListObjectTemp>();
         public List<TournamentInformation> tournamentinformation { get; set; } = new List<TournamentInformation>();
     }
     [JsonObject(MemberSerialization.OptIn)]
@@ -79,6 +79,51 @@ namespace FortLibrary.ConfigHelpers
         public List<TempMotds> motds { get; set; } = new List<TempMotds>();
         public List<TempMotds> messages { get; set; } = new List<TempMotds>();
     }
+
+    public class PlayListObjectTemp
+    {
+        public string image { get; set; } = string.Empty;
+        public string playlist_name { get; set; } = string.Empty;
+        public bool hidden { get; set; } = false;
+        public string _type { get; set; } = "FortPlaylistInfo";
+        public Languages description { get; set; } = new Languages();
+        public Languages display_name { get; set; } = new Languages();
+
+        public string GetLanguage(Languages value, string acceptLanguage)
+        {
+            switch (acceptLanguage)
+            {
+                case "en":
+                    return value.en;
+                case "es":
+                    return value.es;
+                case "es-419":
+                    return value.es_419;
+                case "fr":
+                    return value.fr;
+                case "it":
+                    return value.it;
+                case "ja":
+                    return value.ja;
+                case "ko":
+                    return value.ko;
+                case "pl":
+                    return value.pl;
+                case "pt-BR":
+                    return value.pt_BR;
+                case "ru":
+                    return value.ru;
+                case "tr":
+                    return value.tr;
+                case "de":
+                    return value.de;
+
+                default:
+                    return value.en;
+            }
+        }
+    }
+
 
     public class TempMotds
     {

@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const contentID = target.getAttribute("data-id");
 
       if (context) {
-        populateModalForEditNewsTab(context, contentID, -1);
+        populateModalForEditNewsTab(context, contentID);
       } else {
         console.warn("Button clicked without a valid data-context attribute.");
       }
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // This file won't support ini stuff even though its close this api also gives a less big response if you tried
-  async function populateModalForEditNewsTab(context, contentID, id) {
+  async function populateModalForEditNewsTab(context, contentID) {
     console.log(`Editing context: ${context} with ID: ${contentID}`);
 
     const response = await fetch(

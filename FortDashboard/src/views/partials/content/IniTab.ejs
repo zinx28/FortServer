@@ -39,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          <% item.Data.forEach(function(singleItem) { %>
+          <% item.Data.forEach(function(singleItem, index2) { %>
           <tr>
             <td><%= singleItem.Title %></td>
             <td>N/A</td>
@@ -48,7 +48,9 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#editModal"
-                onclick="populateModalDataIniForEdit('<%= JSON.stringify(singleItem) %>', '<%= item.FileName %>', '<%= singleItem.Title %>')"
+                data-context="<%= item.FileName %>"
+                data-contextId="<%= index %>"
+                data-item="<%= index2 %>"
               >
                 Edit
               </button>
@@ -61,3 +63,5 @@
     <% }); %>
   </div>
 </div>
+
+<script src="/public/js/Content/IniNewTab.js"></script>

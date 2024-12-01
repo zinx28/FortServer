@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SharpCompress.Common;
 using System;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 
 namespace FortBackend.src.App.Routes.ADMIN
@@ -91,6 +92,49 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 SeasonForced = Saved.DeserializeGameConfig.Season
                             },
                             
+                            _ => null
+                        };
+
+                        if (result != null)
+                            return Json(result);
+
+                        return Json(new
+                        {
+                            message = "Invalid contentName or contentId provided.",
+                            error = true,
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "DashboardContentID");
+            }
+
+            return Json(new
+            {
+                message = "Couldn't find content",
+                error = true,
+            });
+        }
+
+        // longer less support so just ini atm
+        [HttpPost("data/{contentName}/{contentId}/{index}")]
+        public async Task<IActionResult> DashboardContentIdIni(string contentName, string contentId, string index)
+        {
+            try
+            {
+                if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                {
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                    if (adminData != null)
+                    {
+                        int ContentId = int.TryParse(index, out int TempcontentId) ? TempcontentId : 0;
+                        int Index = int.TryParse(index, out int TempIndex) ? TempIndex : 0;
+
+                        object? result = contentName.ToLower() switch
+                        {
+                            "ini" when contentId == "1" => IniManager.IniConfigData.FileData[ContentId].Data[Index],
                             _ => null
                         };
 

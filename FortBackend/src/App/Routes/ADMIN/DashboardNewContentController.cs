@@ -129,12 +129,12 @@ namespace FortBackend.src.App.Routes.ADMIN
                     AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
-                        int ContentId = int.TryParse(index, out int TempcontentId) ? TempcontentId : 0;
+                        int ContentId = int.TryParse(contentId, out int TempcontentId) ? TempcontentId : 0;
                         int Index = int.TryParse(index, out int TempIndex) ? TempIndex : 0;
 
                         object? result = contentName.ToLower() switch
                         {
-                            "ini" when contentId == "1" => IniManager.IniConfigData.FileData[ContentId].Data[Index],
+                            "ini" => IniManager.IniConfigData.FileData[ContentId].Data[Index],
                             _ => null
                         };
 

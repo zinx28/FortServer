@@ -7,6 +7,7 @@ using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Fortnite;
+using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -183,7 +184,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 string? Body = FormRequest["body"];
                                 int numberBox = int.TryParse(FormRequest["NumberBox"], out int tempNumber) ? tempNumber : 0;
                                 string ? SectionPart = FormRequest["newsId"];
-                                string? SectionId = FormRequest["sectionId"];
+                                int SectionId = int.TryParse(FormRequest["sectionId"], out int TempcontentId) ? TempcontentId : 0;
                                 string? RadioBox = FormRequest["RadioBox"];
                                 bool RadioValue = true;
                                 if (RadioBox == null) {
@@ -195,7 +196,7 @@ namespace FortBackend.src.App.Routes.ADMIN
 
                                 if(Context == "news")
                                 {
-                                    if(SectionId == "1")
+                                    if(SectionId == 1)
                                     {
                                         if(SectionPart == "Messages")
                                         {
@@ -228,7 +229,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                             });
                                         }
                                     } 
-                                    else if (SectionId == "2")
+                                    else if (SectionId == 2)
                                     {
                                         if (SectionPart == "Emergency")
                                         {
@@ -246,7 +247,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                             });
                                         }
                                     }
-                                    else if(SectionId == "3")
+                                    else if(SectionId == 3)
                                     {
                                         var test = NewsManager.ContentConfig.loginmessage;
 
@@ -261,7 +262,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                             error = false,
                                         });
                                     }
-                                    else if(SectionId == "4")
+                                    else if(SectionId == 4)
                                     {
                                         var test = NewsManager.ContentConfig.playlistinformation[ArrayIndex];
 
@@ -279,7 +280,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 }
                                 else if(Context == "server") 
                                 {
-                                    if (SectionId == "1")
+                                    if (SectionId == 1)
                                     {
                                         Console.WriteLine(numberBox);
 
@@ -294,6 +295,29 @@ namespace FortBackend.src.App.Routes.ADMIN
                                             error = false,
                                         });
                                     }
+                                }else if(Context == "ini")
+                                {
+
+                                    int NewsID = int.TryParse(FormRequest["newsId"], out int tempNewsID) ? tempNewsID : 0;
+
+                                    IniConfigFiles iniConfigFiles = IniManager.IniConfigData.FileData[SectionId];
+                                    if(iniConfigFiles != null)
+                                    {
+                                        iniConfigFiles.UploadedTime = DateTime.Now;
+
+                                        IniConfigValues iniConfigValues = iniConfigFiles.Data[NewsID].Data[ArrayIndex];
+
+                                        if (iniConfigValues != null)
+                                        {
+
+                                            iniConfigValues.Name = Title;
+                                            iniConfigValues.Value = Body;
+                                        }
+
+                                        System.IO.File.WriteAllText(PathConstants.CloudStorage.IniConfig, JsonConvert.SerializeObject(IniManager.IniConfigData, Formatting.Indented));
+                                    }
+                                 
+                                    
                                 }
                             }
                         }

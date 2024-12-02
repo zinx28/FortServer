@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const hiddensectionId = document.getElementById("hiddenSectionId");
   const hiddenArrayIndex = document.getElementById("hiddenArrayIndex");
   const toggleSwitch = document.getElementById("flexSwitchCheckDefault");
+  const hiddenContext = document.getElementById("hiddenContext");
 
   const dropdownMenu = document.getElementById("dropdownmenu");
   if (!dropdownMenu) {
@@ -58,6 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
       dynamicItems.forEach((item) => item.remove());
 
       if (JsonParsed) {
+        
+        hiddenNewsId.value = DataItem;
+        hiddenArrayIndex.value = "-1";
+        hiddensectionId.value = contentID;
+        hiddenContext.value = context;
+
          resetModalFields();
 
           if(context == "ini"){
@@ -83,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   newsItem,
                   a.textContent,
                   {
-                    Section: "Messages",
+                    Section: DataItem,
                     Context: context,
                     ContentID: contentID,
                   }

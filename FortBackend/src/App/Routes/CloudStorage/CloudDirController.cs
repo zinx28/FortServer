@@ -43,14 +43,15 @@ namespace FortBackend.src.App.Routes.CloudStorage
                     return BadRequest("Invalid image parameter");
                 }
        
-                string CloudDirFull = PathConstants.CloudDir.chunk(chunk);
+                string CloudDirFull = PathConstants.CloudDir.chunk("FortBackend.chunk");
                 if (System.IO.File.Exists(CloudDirFull))
                 {
                     byte[] FullIni = System.IO.File.ReadAllBytes(CloudDirFull);
                     //string FullIni = System.IO.File.ReadAllText(CloudDirFull);
 
                     return new FileContentResult(FullIni, "application/octet-stream");
-                }else
+                }
+                else
                 {
                     Logger.Error("Not found " + CloudDirFull);
                 }

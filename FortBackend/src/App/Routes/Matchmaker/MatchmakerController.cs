@@ -57,7 +57,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
                     }
                 }
 
-                var jsonObject = new Dictionary<string, object>();
+                MMTicket jsonObject = new MMTicket();
                 if (!string.IsNullOrEmpty(JsonContent)) {
                     List<Server> servers = JsonConvert.DeserializeObject<List<Server>>(JsonContent)!;
                     if (servers != null && servers.Count > 0)
@@ -66,49 +66,26 @@ namespace FortBackend.src.App.Routes.Matchmaker
 
                         if (filteredServers.Any())
                         {
-                            jsonObject = new Dictionary<string, object>
+                            jsonObject = new MMTicket
                             {
-                                { "id", sessionId },
-                                { "ownerId", Guid.NewGuid().ToString("N").ToUpper() },
-                                { "ownerName", filteredServers[0].Name },
-                                { "serverName", filteredServers[0].Name },
-                                { "serverAddress", filteredServers[0].Ip },
-                                { "serverPort", filteredServers[0].Port },
-                                { "maxPublicPlayers", filteredServers[0].MaxPlayers },
-                                { "openPublicPlayers", 100 },
-                                { "maxPrivatePlayers", 0 },
-                                { "openPrivatePlayers", 0 },
-                                { "attributes",  new Dictionary<string, object>
-                                    {
-                                        { "REGION_s", filteredServers[0].Region.ToUpper() },
-                                        { "GAMEMODE_s", "FORTATHENA" },
-                                        { "ALLOWBROADCASTING_b", true },
-                                        { "SUBREGION_s", "GB" },
-                                        { "DCID_s", "FORTNITE-LIVEEUGCEC1C2E30UBRCORE0A-49459394" },
-                                        { "tenant_s", "Fortnite" },
-                                        { "MATCHMAKINGPOOL_s", "Any" },
-                                        { "STORMSHIELDDEFENSETYPE_i" , 0 },
-                                        { "HOTFIXVERSION_i", 0 },
-                                        { "PLAYLISTNAME_s", filteredServers[0].Playlist },
-                                        { "SESSIONKEY_s", Guid.NewGuid().ToString("N").ToUpper() },
-                                        { "TENANT_s", "Fortnite" },
-                                        { "BEACONPORT_i", 15009 }
-                                    }
+                                SessionId = sessionId,
+                                OwnerId = Guid.NewGuid().ToString("N").ToUpper(),
+                                OwnerName = filteredServers[0].Name,
+                                ServerName = filteredServers[0].Name,
+                                ServerAddress = filteredServers[0].Ip,
+                                ServerPort = filteredServers[0].Port,
+                                MaxPublicPlayers = filteredServers[0].MaxPlayers,
+                                Attributes = new MMTicketAttributes
+                                {
+                                    Region = filteredServers[0].Region,
+                                    PlaylistName = filteredServers[0].Playlist,
+                                    SessionKey = Guid.NewGuid().ToString("N").ToUpper()
                                 },
-                                { "publicPlayers", Array.Empty<string>() },
-                                { "privatePlayers", Array.Empty<string>() },
-                                { "totalPlayers", filteredServers[0].Current },
-                                { "allowJoinInProgress", filteredServers[0].JoinAble },
-                                { "shouldAdvertise", false },
-                                { "isDedicated", false },
-                                { "usesStats", false },
-                                { "allowInvites", filteredServers[0].JoinAble },
-                                { "usesPresence", false },
-                                { "allowJoinViaPresence", true },
-                                { "allowJoinViaPresenceFriendsOnly", false },
-                                { "buildUniqueId", Request.Cookies["buildUniqueId"] ?? "0" },
-                                { "lastUpdate", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                { "started", false }
+                                TotalPlayers = filteredServers[0].Current,
+                                AllowJoinInProgress = filteredServers[0].JoinAble,
+                                AllowInvites = filteredServers[0].JoinAble,
+                                BuildUniqueId = Request.Cookies["buildUniqueId"] ?? "0",
+                                LastUpdated = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                             };
                         }
                     }
@@ -117,64 +94,34 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 {
                     if (config.CustomMatchmaker)
                     {
-                        jsonObject = new Dictionary<string, object>
+                        jsonObject = new MMTicket
                         {
-                            { "id", sessionId },
-                            { "ownerId", Guid.NewGuid().ToString("N").ToUpper() },
-                            { "ownerName", "FortBackend" },
-                            { "serverName", "FortBackend" },
-                            { "serverAddress", config.GameServerIP },
-                            { "serverPort", config.GameServerPort },
-                            { "maxPublicPlayers", 100 },
-                            { "openPublicPlayers", 100 },
-                            { "maxPrivatePlayers", 0 },
-                            { "openPrivatePlayers", 0 },
-                            { "attributes",  new Dictionary<string, object>
-                                {
-                                    { "REGION_s", "EU" },
-                                    { "GAMEMODE_s", "FORTATHENA" },
-                                    { "ALLOWBROADCASTING_b", true },
-                                    { "SUBREGION_s", "GB" },
-                                    { "DCID_s", "FORTNITE-LIVEEUGCEC1C2E30UBRCORE0A-49459394" },
-                                    { "tenant_s", "Fortnite" },
-                                    { "MATCHMAKINGPOOL_s", "Any" },
-                                    { "STORMSHIELDDEFENSETYPE_i" , 0 },
-                                    { "HOTFIXVERSION_i", 0 },
-                                    { "PLAYLISTNAME_s", "Playlist_DefaultSolo" },
-                                    { "SESSIONKEY_s", Guid.NewGuid().ToString("N").ToUpper() },
-                                    { "TENANT_s", "Fortnite" },
-                                    { "BEACONPORT_i", 15009 }
-                                }
+                            SessionId = sessionId,
+                            OwnerId = Guid.NewGuid().ToString("N").ToUpper(),
+                            ServerAddress = config.GameServerIP,
+                            ServerPort = config.GameServerPort,
+                            MaxPublicPlayers = 100,
+                            Attributes = new MMTicketAttributes
+                            {
+                                SessionKey = Guid.NewGuid().ToString("N").ToUpper()
                             },
-                            { "publicPlayers", Array.Empty<string>() },
-                            { "privatePlayers", Array.Empty<string>() },
-                            { "totalPlayers", 69 },
-                            { "allowJoinInProgress", false },
-                            { "shouldAdvertise", false },
-                            { "isDedicated", false },
-                            { "usesStats", false },
-                            { "allowInvites", false  },
-                            { "usesPresence", false },
-                            { "allowJoinViaPresence", true },
-                            { "allowJoinViaPresenceFriendsOnly", false },
-                            { "buildUniqueId", Request.Cookies["buildUniqueId"] ?? "0" },
-                            { "lastUpdate", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                            { "started", false }
+                            BuildUniqueId = Request.Cookies["buildUniqueId"] ?? "0",
+                            LastUpdated = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                         };
-
-                        Console.WriteLine("THIS");
                     }
                 }
 
-             
-               
 
+
+                Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(jsonObject));
 
 
                 string json = System.Text.Json.JsonSerializer.Serialize(jsonObject, new JsonSerializerOptions
                 {
                     WriteIndented = true
                 });
+
+
 
                 return Content(json);
             }
@@ -186,7 +133,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
         }
 
         [HttpPost("matchmaking/session")]
-        public async Task<IActionResult> Realsession()
+        public async Task<IActionResult> CreateSession()
         {
             Response.ContentType = "application/json";
             try
@@ -399,6 +346,12 @@ namespace FortBackend.src.App.Routes.Matchmaker
             //}
 
          //   return StatusCode(403);
+        }
+
+        [HttpPost("matchmaking/session/{sessionId}/players")]
+        public IActionResult SessionPlayers(string sessionId)
+        {
+            return StatusCode(204);
         }
     }
 }

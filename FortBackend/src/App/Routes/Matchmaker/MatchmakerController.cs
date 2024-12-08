@@ -110,18 +110,10 @@ namespace FortBackend.src.App.Routes.Matchmaker
                         };
                     }
                 }
-
-
-
-                Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(jsonObject));
-
-
                 string json = System.Text.Json.JsonSerializer.Serialize(jsonObject, new JsonSerializerOptions
                 {
                     WriteIndented = true
                 });
-
-
 
                 return Content(json);
             }
@@ -235,13 +227,10 @@ namespace FortBackend.src.App.Routes.Matchmaker
                         {
                             if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
                             {
-                                //if (AccountData.ToString().Contains(accessToken))
-                               // {
-                                    if (profileCacheEntry.UserData.banned)
-                                    {
-                                        return Ok(new { });
-                                    }
-                                //}
+                                if (profileCacheEntry.UserData.banned)
+                                {
+                                    return Ok(new { });
+                                }
                             }
                             
 
@@ -284,14 +273,6 @@ namespace FortBackend.src.App.Routes.Matchmaker
                             string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
                             string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
                             string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
-
-                            Console.WriteLine(new
-                            {
-                                serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
-                                ticketType = "mms-player",
-                                payload = "account",
-                                signature = encryptedData
-                            }); // remove please
 
                             return Ok(new
                             {

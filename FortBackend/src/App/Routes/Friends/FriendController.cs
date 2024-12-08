@@ -413,23 +413,8 @@ namespace FortBackend.src.App.Routes.Friends
 
                                         await Client.SendClientMessage(targetClient2, message);
 
-
-                                        message = new XElement(clientNs + "message",
-                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                            new XAttribute("to", accountId),
-                                            new XElement("type", "available")
-                                        );
-
-
-                                        await Client.SendClientMessage(targetClient, message);
-
-                                        message = new XElement(clientNs + "message",
-                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                            new XAttribute("to", accountId),
-                                            new XElement("type", "available")
-                                        );
-                                        await Client.SendClientMessage(targetClient2, message);
-
+                                        await XmppFriend.GrabSomeonesPresence(friendsprofileCacheEntry.AccountId, accountId1, false);
+                                        await XmppFriend.GrabSomeonesPresence(accountId1, friendsprofileCacheEntry.AccountId, false);
 
                                         return StatusCode(204);
                                     }

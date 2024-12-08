@@ -76,7 +76,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "GrabData");
+                Logger.Error(ex.Message, "GrabDataDiscord");
             }
 
             return new ProfileCacheEntry();
@@ -145,7 +145,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "GrabData");
+                Logger.Error(ex.Message, "GrabDataEmail");
             }
 
             return new ProfileCacheEntry();
@@ -232,7 +232,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "GrabData");
+                Logger.Error(ex.Message, "GrabDataProfile");
             }
            
             return new ProfileCacheEntry();

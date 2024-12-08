@@ -107,13 +107,15 @@ namespace FortBackend.src.App.SERVER.Send
                 openElement.Add(new XElement("status", FromAccountIdData.lastPresenceUpdate.presence));
 
                 xmlMessage = openElement.ToString();
+
+                Logger.Warn(xmlMessage, "XMPPPRESNCE");
                 buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
                 await ToAccountIdData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Friends:GrabSomeonesPresence");
+                Logger.Error(ex.Message, "Friends:GrabSomeonesPresence");
             }
         }
 

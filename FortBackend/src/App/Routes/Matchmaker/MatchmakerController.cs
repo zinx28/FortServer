@@ -12,6 +12,8 @@ using FortLibrary.Encoders;
 using FortLibrary.EpicResponses.Matchmaker;
 using FortLibrary.ConfigHelpers;
 using FortLibrary;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortLibrary.Encoders.JWTCLASS;
 
 namespace FortBackend.src.App.Routes.Matchmaker
 {
@@ -125,55 +127,39 @@ namespace FortBackend.src.App.Routes.Matchmaker
         }
 
         [HttpPost("matchmaking/session")]
+        [AuthorizeToken]
         public async Task<IActionResult> CreateSession()
         {
             Response.ContentType = "application/json";
             try
             {
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                string[] tokenParts = decodedToken.ToString().Split('.');
-
-                if (tokenParts.Length == 2)
+                var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                if (profileCacheEntry != null)
                 {
-                    var payloadJson = tokenParts[1];
-                    if (string.IsNullOrEmpty(payloadJson))
+                    var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+
+
+                    var displayName = tokenPayload?.Dn;
+                    var AccountId = tokenPayload?.Sub;
+                    var clientId = tokenPayload?.Clid;
+
+                    Console.WriteLine(clientId);
+
+
+                    if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
                     {
-                        dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
-                        Console.WriteLine(payload);
-                        if (payload == null)
+                        if (profileCacheEntry.AccountData.ToString()!.Contains(HttpContext.Items["Token"] as string)!)
                         {
-                            return BadRequest(new { });
-                        }
-
-                        var displayName = payload.dn;
-                        var AccountId = payload.sub;
-                        var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
-
-                        var AccountData = await Handlers.FindOne<Account>("accountId", AccountId);
-                        var UserData = await Handlers.FindOne<User>("accountId", AccountId);
-
-                        if (AccountData != "Error" && UserData != "Error")
-                        {
-                            Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
-
-                            if (AccountDataParsed != null && UserDataParsed != null)
+                            if (profileCacheEntry.UserData.banned)
                             {
-                                if (AccountDataParsed != null && AccountData.ToString().Contains(accessToken))
-                                {
-                                    if (UserDataParsed.banned)
-                                    {
-                                        return Ok(new { });
-                                    }
-                                }
+                                return Ok(new { });
                             }
                         }
                     }
+                    
+
                 }
+                
                 return Ok(new { });
             }
             catch (Exception ex)
@@ -184,6 +170,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
         }
 
         [HttpGet("game/v2/matchmakingservice/ticket/player/{accountId}")]
+        [AuthorizeToken]
         public async Task<IActionResult> MatchmakeTicket(string accountId, [FromQuery] string bucketId)
         {
             Response.ContentType = "application/json";
@@ -192,96 +179,77 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 FortConfig config = Saved.DeserializeConfig;
                 CachedDataClass BackendCachedData = Saved.BackendCachedData;
 
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                string[] tokenParts = decodedToken.ToString().Split('.');
-
-                if (tokenParts.Length == 2)
+                var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                Console.WriteLine($"MATCHMAKE TICKET: {profileCacheEntry}");
+                if (profileCacheEntry != null)
                 {
-                    var payloadJson = tokenParts[1];
-                    if (!string.IsNullOrEmpty(payloadJson))
+                    var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+
+                    var displayName = tokenPayload?.Dn;
+                    var AccountId = tokenPayload?.Sub;
+                    var clientId = tokenPayload?.Clid;
+
+                    if (string.IsNullOrEmpty(AccountId))
                     {
-                        dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
+                        Logger.Error("ACCOUNT ID IS NULL AND WILL NOT GO THROUGH WITH THE REUQEST", "MATCHMKAER");
+                        return BadRequest(new { });
+                    }
 
-                        if (payload == null)
+                    if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
+                    {
+                        if (profileCacheEntry.UserData.banned)
                         {
-                            return BadRequest(new { });
-                        }
-
-                        var displayName = payload.dn;
-                        var AccountId = payload.sub;
-                        var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
-
-                        if (string.IsNullOrEmpty(AccountId.ToString()))
-                        {
-                            Logger.Error("ACCOUNT ID IS NULL AND WILL NOT GO THROUGH WITH THE REUQEST", "MATCHMKAER");
-                            return BadRequest(new { });
+                            return Ok(new { });
                         }
 
 
-                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(AccountId.ToString());
-                        if (profileCacheEntry != null && profileCacheEntry.UserData != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                        CookieOptions cookieOptions = new CookieOptions
                         {
-                            if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
-                            {
-                                if (profileCacheEntry.UserData.banned)
-                                {
-                                    return Ok(new { });
-                                }
-                            }
-                            
+                        };
 
-                            CookieOptions cookieOptions = new CookieOptions
-                            {
-                            };
-
-                            if (string.IsNullOrEmpty(bucketId) || !bucketId.GetType().Equals(typeof(string)))
-                            {
-                                return BadRequest();
-                            }
-
-                            string[] bucketIdParts = bucketId.Split(':');
-                            if (bucketIdParts.Length != 4)
-                            {
-                                return BadRequest();
-                            }
-
-                            string region = bucketIdParts[2];
-                            string playlist = bucketIdParts[3];
-                            string BuildId = bucketIdParts[0];
-                            var customcode = "";
-
-                            try { customcode = HttpContext.Request.Query["player.option.customKey"]; } catch { }
-
-                            Response.Cookies.Append("buildUniqueId", BuildId, cookieOptions);
-
-                            var jsonObject = new MatchmakerTicket
-                            {
-                                accountId = accountId,
-                                BuildId = BuildId,
-                                Playlist = playlist,
-                                Region = region,
-                                CustomKey = customcode ?? "NONE",
-                                AccessToken = profileCacheEntry.UserData.accesstoken,
-                                Priority = false,
-                                timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                            };
-
-                            string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
-                            string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
-                            string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
-
-                            return Ok(new
-                            {
-                                serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
-                                ticketType = "mms-player",
-                                payload = "account",
-                                signature = encryptedData
-                            });
+                        if (string.IsNullOrEmpty(bucketId) || !bucketId.GetType().Equals(typeof(string)))
+                        {
+                            return BadRequest();
                         }
+
+                        string[] bucketIdParts = bucketId.Split(':');
+                        if (bucketIdParts.Length != 4)
+                        {
+                            return BadRequest();
+                        }
+
+                        string region = bucketIdParts[2];
+                        string playlist = bucketIdParts[3];
+                        string BuildId = bucketIdParts[0];
+                        var customcode = "";
+
+                        try { customcode = HttpContext.Request.Query["player.option.customKey"]; } catch { }
+
+                        Response.Cookies.Append("buildUniqueId", BuildId, cookieOptions);
+
+                        var jsonObject = new MatchmakerTicket
+                        {
+                            accountId = accountId,
+                            BuildId = BuildId,
+                            Playlist = playlist,
+                            Region = region,
+                            CustomKey = customcode ?? "NONE",
+                            AccessToken = profileCacheEntry.UserData.accesstoken,
+                            Priority = false,
+                            timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                        };
+
+                        string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
+                        string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
+                        string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
+
+                        return Ok(new
+                        {
+                            serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
+                            ticketType = "mms-player",
+                            payload = "account",
+                            signature = encryptedData
+                        });
                     }
                 }
 

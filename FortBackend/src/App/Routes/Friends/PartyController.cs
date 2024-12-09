@@ -22,6 +22,8 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using Newtonsoft.Json.Linq;
 using System.Text.Json;
 using System.Reactive;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortLibrary.Encoders.JWTCLASS;
 
 namespace FortBackend.src.App.Routes.Friends
 {
@@ -145,25 +147,19 @@ namespace FortBackend.src.App.Routes.Friends
         }
 
         [HttpPatch("api/v1/Fortnite/parties/{partyId}")]
+        [AuthorizeToken]
         public async Task<IActionResult> FortnitePartyPatch(string partyId)
         {
             try
             {
                 Response.ContentType = "application/json";
-
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-              //  Console.WriteLine(token);
-                var accessToken = token.Replace("eg1~", "");
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                var AccountId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString();
-
-
+                var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+                var AccountId = tokenPayload?.Sub;
 
                 if (AccountId != null)
                 {
-                    var UserData = await Handlers.FindOne<User>("accountId", AccountId);
-                    if (UserData != "Error")
+                    var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
                         using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                         {
@@ -463,25 +459,25 @@ namespace FortBackend.src.App.Routes.Friends
 
             //party/api/v1/Fortnite/user/c2092fc3-8f1b-4d70-a036-3b2461e62a1a/pings/88e30971-b97d-451d-ba55-e6322bcfe31f
         [HttpPost("api/v1/Fortnite/user/{accountId}/pings/{pingerId}")]
+        [AuthorizeToken]
         public async Task<IActionResult> FortnitePartyPings(string accountId, string pingerId)
         {
             try
             {
                 Response.ContentType = "application/json";
                 VersionClass season = await SeasonUserAgent(Request);
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                var AccountId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString();
+
+                var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+
+                var AccountId = tokenPayload?.Sub;
 
                 if (AccountId != null)
                 {
-                    var UserData = await Handlers.FindOne<User>("accountId", AccountId);
+                    var SelfprofileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
 
-                    if (UserData != "Error")
+                    if (SelfprofileCacheEntry != null && !string.IsNullOrEmpty(SelfprofileCacheEntry.AccountId))
                     {
-          
+
                         //List<Parties> CurrentPartysPing = GlobalData.pings.FindAll(e => e.sent_to == accountId);
 
                         //  List<Pings> filteredParties = GlobalData.pings.Where(x => x.sent_to == accountId).FirstOrDefault(x => x.sent_by == pingerId);
@@ -567,23 +563,22 @@ namespace FortBackend.src.App.Routes.Friends
 
     // Missing all this time :fire:
         [HttpPost("api/v1/Fortnite/parties/{partyId}/invites/{accountId}")]
+        [AuthorizeToken]
         public async Task<IActionResult> PartyInvite(string partyId, string accountId)
         {
             try
             {
                 Response.ContentType = "application/json";
                 VersionClass season = await SeasonUserAgent(Request);
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                var AccountId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString();
+                var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+
+                var AccountId = tokenPayload?.Sub;
 
                 if (AccountId != null)
                 {
-                    ProfileCacheEntry UserData = await GrabData.Profile(AccountId);
+                    var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
 
-                    if (UserData != null && !string.IsNullOrEmpty(UserData.AccountId))
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
                         Parties CurrentParty = GlobalData.parties.FirstOrDefault(e => e.id == partyId)!;
 
@@ -610,7 +605,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     var Invites = new
                                     {
                                         party_id = CurrentParty.id,
-                                        sent_by = UserData.AccountId,
+                                        sent_by = profileCacheEntry.AccountId,
                                         meta = invite,
                                         sent_to = accountId,
                                         sent_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
@@ -622,9 +617,9 @@ namespace FortBackend.src.App.Routes.Friends
                                     CurrentParty.invites.Add(Invites);
                                     CurrentParty.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
-                                    Console.WriteLine(UserData.AccountId);
+                                    Console.WriteLine(profileCacheEntry.AccountId);
 
-                                    var UserInviting = CurrentParty.members.FirstOrDefault((member) => member.account_id == UserData.AccountId);
+                                    var UserInviting = CurrentParty.members.FirstOrDefault((member) => member.account_id == profileCacheEntry.AccountId);
 
                                     Console.WriteLine(JsonConvert.SerializeObject(UserInviting));
                                     if (UserInviting != null)
@@ -646,13 +641,13 @@ namespace FortBackend.src.App.Routes.Friends
                                                     ns = "Fortnite",
                                                     party_id = Invites.party_id,
                                                     inviter_dn = UserInviting.meta["urn:epic:member:dn_s"],
-                                                    inviter_id = UserData.AccountId,
+                                                    inviter_id = profileCacheEntry.AccountId,
                                                     invitee_id = accountId,
                                                     members_count = CurrentParty.members.Count,
                                                     sent_at = Invites.sent_at,
                                                     updated_at = Invites.updated_at,
-                                                    friends_ids = CurrentParty.members.FindAll((e) => 
-                                                        UserData.UserFriends.Accepted.Find((friend) => friend.accountId == e.account_id) != null
+                                                    friends_ids = CurrentParty.members.FindAll((e) =>
+                                                        profileCacheEntry.UserFriends.Accepted.Find((friend) => friend.accountId == e.account_id) != null
                                                     ).Select(member => member.account_id).ToList() ?? new List<string>(),
                                                     sent = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                                     type = "com.epicgames.social.party.notification.v0.INITIAL_INVITE"
@@ -896,6 +891,7 @@ namespace FortBackend.src.App.Routes.Friends
         // [POST]: /party/api/v1/Fortnite/parties/67e7a9822fe54880b20df3bcee7c7008/members/88e30971-b97d-451d-ba55-e6322bcfe31f/join
 
         [HttpPost("api/v1/Fortnite/parties/{partyId}/members/{accountId}/join")]
+        [AuthorizeToken]
         public async Task<IActionResult> FortniteJoinParty(string partyId, string accountId)
         {
             try
@@ -905,17 +901,14 @@ namespace FortBackend.src.App.Routes.Friends
                 var Party = GlobalData.parties.Find(x => x.id == partyId);
                 if (Party != null)
                 {
-                    var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                    var accessToken = token.Replace("eg1~", "");
-                    var handler = new JwtSecurityTokenHandler();
-                    var decodedToken = handler.ReadJwtToken(accessToken);
-                    var AccountId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value.ToString();
+                    var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+                    var AccountId = tokenPayload?.Sub;
 
                     if (AccountId != null)
                     {
-                        var UserData = await Handlers.FindOne<User>("accountId", AccountId);
+                        var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
 
-                        if (UserData != "Error")
+                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                         {
                             using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                             {

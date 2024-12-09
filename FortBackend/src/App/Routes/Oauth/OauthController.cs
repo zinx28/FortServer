@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
 using FortLibrary.MongoDB.Module;
+using FortLibrary.Encoders.JWTCLASS;
 
 
 namespace FortBackend.src.App.Routes.Oauth
@@ -116,69 +117,39 @@ namespace FortBackend.src.App.Routes.Oauth
         }
 
         [HttpGet("oauth/verify")]
+        [AuthorizeToken]
         public async Task<IActionResult> VerifyToken()
         {
             Response.ContentType = "application/json";
             try
             {
-                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
-                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
-
-                bool FoundAccount = false;
-                if (GlobalData.AccessToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.RefreshToken.Any(e => e.token == token))
-                    FoundAccount = true;
-
-                if (FoundAccount)
+                var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                if (profileCacheEntry != null)
                 {
-                    var accessToken = token.Replace("eg1~", "");
-
-                    var handler = new JwtSecurityTokenHandler();
-                    var decodedToken = handler.ReadJwtToken(accessToken);
-
-                    //Console.WriteLine(decodedToken);
-                    string[] tokenParts = decodedToken.ToString().Split('.');
-
-                    if (tokenParts.Length == 2)
+                    if (profileCacheEntry.UserData.banned != true)
                     {
-                        var payloadJson = tokenParts[1];
-                        dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
-                        if (payload == null)
-                        {
-                            return BadRequest(new { });
-                        }
- 
-                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(payload.sub.ToString());
+                        var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
 
-                        if (profileCacheEntry != null)
+                        return Ok(new
                         {
-                            if (profileCacheEntry.UserData.banned != true)
-                            {
-                                return Ok(new
-                                {
-                                    token = $"{token}",
-                                    session_id = payload.jti.ToString(),
-                                    token_type = "bearer",
-                                    client_id = payload.clid.ToString(),
-                                    internal_client = true,
-                                    client_service = "fortnite",
-                                    account_id = profileCacheEntry.UserData.AccountId,
-                                    expires_in = 28800,
-                                    expires_at = DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    auth_method = payload.am.ToString(),
-                                    display_name = profileCacheEntry.UserData.Username,
-                                    app = "fortnite",
-                                    in_app_id = payload.sub.ToString(),
-                                    device_id = payload.dvid.ToString()
-                                });
-                            }                           
-                        }
+                            token = HttpContext.Items["Token"] as string,
+                            session_id = tokenPayload?.Jti,
+                            token_type = "bearer",
+                            client_id = tokenPayload?.Clid,
+                            internal_client = true,
+                            client_service = "fortnite",
+                            account_id = profileCacheEntry.UserData.AccountId,
+                            expires_in = 28800,
+                            expires_at = DateTime.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                            auth_method = tokenPayload?.Am,
+                            display_name = profileCacheEntry.UserData.Username,
+                            app = "fortnite",
+                            in_app_id = tokenPayload?.Sub,
+                            device_id = tokenPayload?.Dvid
+                        });
                     }
-                }else
-                {
-                    Logger.Error("FAKE AUTH");
                 }
+                
 
                 throw new BaseError
                 {
@@ -331,31 +302,6 @@ namespace FortBackend.src.App.Routes.Oauth
                 string clientId = "";
                 try
                 {
-                    //if (Saved.DeserializeConfig.LunaPROD)
-                    //{
-                    //    //foreach (var header in Request.Headers)
-                    //    //{
-                    //    //    Console.WriteLine($"{header.Key}: {header.Value}");
-                    //    //}
-                    //    string LunaDevTesting = Request.Headers["lunaprod"]!;
-                    //    // Console.WriteLine(LunaDevTesting);
-                    //    if (LunaDevTesting != "verytrue")
-                    //    {
-                    //        Logger.Error("FAKE CURL?");
-                    //        return BadRequest(new BaseError
-                    //        {
-                    //            errorCode = "errors.com.epicgames.account.invalid_client",
-                    //            errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
-                    //            messageVars = new List<string>(),
-                    //            numericErrorCode = 1011,
-                    //            originatingService = "any",
-                    //            intent = "prod",
-                    //            error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
-                    //            error = "invalid_client"
-                    //        });
-                    //    }
-                    //}
-
                     string AuthorizationToken = Request.Headers["Authorization"]!;
 
                     if (string.IsNullOrEmpty(AuthorizationToken))
@@ -647,147 +593,80 @@ namespace FortBackend.src.App.Routes.Oauth
                     });
                 }
 
+                if (string.IsNullOrEmpty(DisplayName))
+                {
+                    return Ok(new { });
+                }
 
-                // Different Type of o-auth is needed for luna
-                //if (Saved.DeserializeConfig.LunaPROD)
-                //{
-                //    if (GlobalData.AccessToken.Any(e => e.accountId == AccountId))
-                //    {
-                //        if (GlobalData.RefreshToken.Any(e => e.accountId == AccountId))
-                //        {
-                //            var AccessData = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == AccountId);
-                //            if (AccessData == null) { return BadRequest(new BaseError { }); } // never would call
+                var DeviceID = Hex.GenerateRandomHexString(16);
 
-                //            var RefreshData = GlobalData.RefreshToken.FirstOrDefault(e => e.accountId == AccountId);
-                //            if (RefreshData == null) { return BadRequest(new BaseError { }); }
+                // WE WILL GENERATE A exchange_code TOKEN
+                string RefreshToken = JWT.GenerateJwtToken(new[]
+                {
+                    new Claim("sub", AccountId),
+                    new Claim("t", "r"),
+                    new Claim("dvid", DeviceID),
+                    new Claim("clid", clientId),
+                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
+                    new Claim("am", grant_type),
+                    new Claim("jti", Hex.GenerateRandomHexString(32)),
+                }, 24);
 
-                //            var AccessToken = AccessData.token.Replace("eg1~", "");
-
-                //            var handler = new JwtSecurityTokenHandler();
-                //            var decodedToken = handler.ReadJwtToken(AccessToken);
-
-                //            var claimsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(decodedToken.Claims.ToDictionary(c => c.Type, c => c.Value)));
-
-                //            if (claimsDictionary != null && claimsDictionary.Count() > 1)
-                //            {
-
-                //                if (!string.IsNullOrEmpty(claimsDictionary["dvid"].ToString()))
-                //                {
-
-
-                //                    return Ok(new OauthToken
-                //                    {
-                //                        access_token = $"{AccessData.token}",
-                //                        expires_in = 28800,
-                //                        expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                //                        token_type = "bearer",
-                //                        account_id = AccountId,
-                //                        client_id = clientId,
-                //                        internal_client = true,
-                //                        client_service = "fortnite",
-                //                        refresh_token = $"{RefreshData.token}",
-                //                        refresh_expires = 115200,
-                //                        refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                //                        displayName = DisplayName,
-                //                        app = "fortnite",
-                //                        in_app_id = AccountId,
-                //                        device_id = claimsDictionary["dvid"]
-                //                    });
-                //                }
-
-                //            }
-                //            else
-                //            {
-                //                Console.WriteLine("FAKE TOKEN?"); // never should happen
-                //            }
-                //        }
-                //        else
-                //        {
-                //            Console.WriteLine("TOKEN REFRESH NOT FOUND");
-                //        }
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("TOKEN ACCESS NOT FOUND");
-                //    }
-                //}
-                //else 
-                //{
-                    if (string.IsNullOrEmpty(DisplayName))
-                    {
-                        return Ok(new { });
-                    }
-
-                    var DeviceID = Hex.GenerateRandomHexString(16);
-
-                    // WE WILL GENERATE A exchange_code TOKEN
-                    string RefreshToken = JWT.GenerateJwtToken(new[]
-                    {
-                        new Claim("sub", AccountId),
-                        new Claim("t", "r"),
+                string AccessToken = JWT.GenerateJwtToken(new[]
+                {
+                        new Claim("app", "fortnite"),
+                        new Claim("sub",  AccountId),
                         new Claim("dvid", DeviceID),
+                        new Claim("mver", "false"),
                         new Claim("clid", clientId),
-                        new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
+                        new Claim("dn",  DisplayName!),
                         new Claim("am", grant_type),
+                        new Claim("sec", "1"),
+                        new Claim("p", Hex.GenerateRandomHexString(256)),
+                        new Claim("iai",  AccountId),
+                        new Claim("clsvc", "fortnite"),
+                        new Claim("t", "s"),
+                        new Claim("ic", "true"),
+                        new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 480 * 480).ToString()),
+                        new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
                         new Claim("jti", Hex.GenerateRandomHexString(32)),
-                    }, 24);
+                }, 8);
 
-                    string AccessToken = JWT.GenerateJwtToken(new[]
-                    {
-                            new Claim("app", "fortnite"),
-                            new Claim("sub",  AccountId),
-                            new Claim("dvid", DeviceID),
-                            new Claim("mver", "false"),
-                            new Claim("clid", clientId),
-                            new Claim("dn",  DisplayName!),
-                            new Claim("am", grant_type),
-                            new Claim("sec", "1"),
-                            new Claim("p", Hex.GenerateRandomHexString(256)),
-                            new Claim("iai",  AccountId),
-                            new Claim("clsvc", "fortnite"),
-                            new Claim("t", "s"),
-                            new Claim("ic", "true"),
-                            new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 480 * 480).ToString()),
-                            new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
-                            new Claim("jti", Hex.GenerateRandomHexString(32)),
-                    }, 8);
-
-                    TokenData AccessTokenClient = new TokenData
-                    {
-                        token = $"eg1~{AccessToken}",
-                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
-                        accountId = AccountId,
-                    };
+                TokenData AccessTokenClient = new TokenData
+                {
+                    token = $"eg1~{AccessToken}",
+                    creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                    accountId = AccountId,
+                };
                 
-                    TokenData RefreshTokenClient = new TokenData
-                    {
-                        token = $"eg1~{RefreshToken}",
-                        creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
-                        accountId = AccountId,
-                    };
+                TokenData RefreshTokenClient = new TokenData
+                {
+                    token = $"eg1~{RefreshToken}",
+                    creation_date = DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffK"),
+                    accountId = AccountId,
+                };
 
-                    GlobalData.AccessToken.Add(AccessTokenClient);
-                    GlobalData.RefreshToken.Add(RefreshTokenClient);
+                GlobalData.AccessToken.Add(AccessTokenClient);
+                GlobalData.RefreshToken.Add(RefreshTokenClient);
 
-                    return Ok(new OauthToken
-                    {
-                        access_token = $"eg1~{AccessToken}",
-                        expires_in = 28800,
-                        expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                        token_type = "bearer",
-                        account_id = AccountId,
-                        client_id = clientId,
-                        internal_client = true,
-                        client_service = "fortnite",
-                        refresh_token = $"eg1~{RefreshToken}",
-                        refresh_expires = 115200,
-                        refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                        displayName = DisplayName,
-                        app = "fortnite",
-                        in_app_id = AccountId,
-                        device_id = DeviceID
-                    });
-                //}
+                return Ok(new OauthToken
+                {
+                    access_token = $"eg1~{AccessToken}",
+                    expires_in = 28800,
+                    expires_at = DateTimeOffset.UtcNow.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    token_type = "bearer",
+                    account_id = AccountId,
+                    client_id = clientId,
+                    internal_client = true,
+                    client_service = "fortnite",
+                    refresh_token = $"eg1~{RefreshToken}",
+                    refresh_expires = 115200,
+                    refresh_expires_at = DateTimeOffset.UtcNow.AddHours(32).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    displayName = DisplayName,
+                    app = "fortnite",
+                    in_app_id = AccountId,
+                    device_id = DeviceID
+                });
             }
             catch (Exception ex)
             {

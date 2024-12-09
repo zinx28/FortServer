@@ -18,10 +18,10 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         [HttpGet("public/account/{accountId}")]
         public async Task<IActionResult> AccountAcc(string accountId)
         {
-            var UserData1 = await Handlers.FindOne<User>("accountId", accountId);
-            if (UserData1 != "Error")
+            var UserData = await Handlers.FindOne<User>("accountId", accountId);
+            if (UserData != "Error")
             {
-                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)![0];
+                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
 
                 if(UserDataParsed != null)
                 {

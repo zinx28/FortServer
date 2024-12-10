@@ -50,12 +50,14 @@ namespace FortBackend.src.App.Routes.Leaderboards
         }
 
         //fortnite/api/leaderboards/type/group/stat/br_placetop3_pc_m0_p9/window/weekly
-        [HttpPost("leaderboards/type/group/stat/{statName}/window/{tab}")]
-        public async Task<ActionResult> GrabLeaderboardStats(string statName, string tab)
+        [HttpPost("leaderboards/type/{type}/stat/{statName}/window/{tab}")]
+        public async Task<ActionResult> GrabLeaderboardStats(string statName, string type, string tab)
         {
             Response.ContentType = "application/json";
             try
             {
+                //group
+                //global
                 List<object> entrieslist = new List<object>();
                 using (StreamReader reader = new StreamReader(Request.Body, Encoding.Latin1))
                 {

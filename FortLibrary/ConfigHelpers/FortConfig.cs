@@ -65,6 +65,7 @@ namespace FortLibrary.ConfigHelpers
         // - //
 
         public bool HTTPS { get; set; } = false;
+        public string CertKey { get; set; } = ""; // finally added it!!!!
 
         // - //
 

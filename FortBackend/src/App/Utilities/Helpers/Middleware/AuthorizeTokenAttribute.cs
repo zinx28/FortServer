@@ -13,7 +13,12 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
 {
     public class AuthorizeTokenAttribute : Attribute, IAuthorizationFilter
     {
-        public async void OnAuthorization(AuthorizationFilterContext context)
+        public void OnAuthorization(AuthorizationFilterContext context)
+        {
+        
+            Task.Run(() => HandleAuthorizationAsync(context)).GetAwaiter().GetResult();
+        }
+        private async Task HandleAuthorizationAsync(AuthorizationFilterContext context)
         {
             try
             {
@@ -86,6 +91,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
             catch (Exception ex)
             {
                 Logger.Error($"[AuthorizeTokenAttribute:Verify] -> {ex.Message}");
+                context.Result = new StatusCodeResult(500);
             }
         }
     }

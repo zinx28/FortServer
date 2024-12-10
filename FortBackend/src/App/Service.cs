@@ -52,17 +52,18 @@ namespace FortBackend.src.App
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.BackendPort, listenOptions =>
-                    {
-                        var certPath = Path.Combine(PathConstants.BaseDir, "Resources", "Certificates", "FortBackend.pfx");
+                    {   
+                        var certPath = Path.Combine(PathConstants.BaseDir, "Certificates", "FortBackend.pfx");
                         if (!File.Exists(certPath))
                         {
                             Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", "CERTIFICATES");
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
-                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                        var certificate = new X509Certificate2(certPath);
+                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+                        var certificate = new X509Certificate2(certPath, Saved.DeserializeConfig.CertKey);
                         listenOptions.UseHttps(certificate);
                     });
+
                 });
             }
             else

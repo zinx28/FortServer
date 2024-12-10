@@ -8,6 +8,7 @@ using System.Diagnostics.Metrics;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.MongoDB.Module;
 using FortLibrary;
+using System.Collections.Generic;
 
 namespace FortBackend.src.App.Routes.APIS.Accounts
 {
@@ -126,36 +127,65 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         // this works
         [HttpGet("public/account/displayName/{displayName}")]
         public async Task<IActionResult> DisplayNameSearch(string displayName)
-        {
-            var UserData1 = await Handlers.FindOne<User>("Username", displayName);
-            if (UserData1 != "Error")
+        {       
+            try
             {
-                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0]!;
-
-                if (UserDataParsed != null)
+                var UserData = await Handlers.FindOne<User>("Username", displayName);
+                if (UserData != "Error")
                 {
+                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0]!;
 
-                    return Ok(new
+                    if (UserDataParsed != null)
                     {
-                        id = UserDataParsed.AccountId,
-                        displayName = UserDataParsed.Username,
-                        name = UserDataParsed.Username,
-                        lastName = UserDataParsed.Username,
-                        email = UserDataParsed.Email,
-                        failedLoginAttempts = 0,
-                        lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                        numberOfDisplayNameChanges = 0,
-                        ageGroup = "UNKNOWN",
-                        headless = false,
-                        country = "US",
-                        canUpdateDisplayName = false,
-                        tfaEnabled = false,
-                        emailVerified = true,
-                        minorVerified = false,
-                        minorExpected = false,
-                        minorStatus = "UNKOWN"
-                    });
+
+                        return Ok(new
+                        {
+                            id = UserDataParsed.AccountId,
+                            displayName = UserDataParsed.Username,
+                            name = UserDataParsed.Username,
+                            lastName = UserDataParsed.Username,
+                            email = UserDataParsed.Email,
+                            failedLoginAttempts = 0,
+                            lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                            numberOfDisplayNameChanges = 0,
+                            ageGroup = "UNKNOWN",
+                            headless = false,
+                            country = "US",
+                            canUpdateDisplayName = false,
+                            tfaEnabled = false,
+                            emailVerified = true,
+                            minorVerified = false,
+                            minorExpected = false,
+                            minorStatus = "UNKOWN"
+                        });
+                    }
                 }
+
+                throw new BaseError
+                {
+                    errorCode = "errors.com.epicgames.account.account_not_found",
+                    errorMessage = $"Sorry, we couldn't find an account for {displayName}",
+                    messageVars = new List<string> { $"/account/api/public/account/displayName/{displayName}" },
+                    numericErrorCode = 18007,
+                    originatingService = "any",
+                    intent = "prod",
+                    error_description = $"Sorry, we couldn't find an account for {displayName}",
+                };
+            }
+            catch (BaseError ex)
+            {
+                var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+                StatusCode(500);
+                return new ContentResult()
+                {
+                    Content = jsonResult,
+                    ContentType = "application/json",
+                    StatusCode = 500
+                };
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
             }
 
             return Ok(new { });

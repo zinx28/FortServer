@@ -32,14 +32,14 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.XmppPort, listenOptions =>
                     {
-                        var certPath = Path.Combine(PathConstants.BaseDir, "Resources", "Certificates", "FortBackend.pfx");
+                        var certPath = Path.Combine(PathConstants.BaseDir, "Certificates", "FortBackend.pfx");
                         if (!File.Exists(certPath))
                         {
                             Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
-                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                        var certificate = new X509Certificate2(certPath);
+                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+                        var certificate = new X509Certificate2(certPath, Saved.DeserializeConfig.CertKey);
                         listenOptions.UseHttps(certificate);
                     });
                 });
@@ -113,7 +113,8 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                     var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
                     context.Response.ContentType = "application/json";
                     await context.Response.WriteAsync(jsonResponse);
-                }else if(context.Request.Path == "/")
+                }
+                else if(context.Request.Path == "/")
                 {
                     var responseObj = new
                     {

@@ -28,18 +28,18 @@ namespace FortBackend.src.App.Routes.Storefront
                 var AcceptLanguage = Request.Headers["Accept-Language"].ToString();
                 VersionClass season = await SeasonUserAgent(Request);
 
-                if(Saved.BackendCachedData.CurrentShop.ShopItems.Daily.Count == 0 &&
-                    Saved.BackendCachedData.CurrentShop.ShopItems.Weekly.Count == 0)
-                {
-                    return Ok(new
-                    {
-                        errorCode = "errors.com.epicgames.common.not_found",
-                        errorMessage = "Sorry the resource you were trying to find could not be found",
-                        numericErrorCode = 0,
-                        originatingService = "Fortnite",
-                        intent = "prod"
-                    });
-                }
+                //if(Saved.BackendCachedData.CurrentShop.ShopItems.Daily.Count == 0 &&
+                //    Saved.BackendCachedData.CurrentShop.ShopItems.Weekly.Count == 0)
+                //{
+                //    return Ok(new
+                //    {
+                //        errorCode = "errors.com.epicgames.common.not_found",
+                //        errorMessage = "Sorry the resource you were trying to find could not be found",
+                //        numericErrorCode = 0,
+                //        originatingService = "Fortnite",
+                //        intent = "prod"
+                //    });
+                //}
 
                 if (string.IsNullOrEmpty(AcceptLanguage))
                 {
@@ -136,6 +136,11 @@ namespace FortBackend.src.App.Routes.Storefront
                     }
 
                     return Ok(ShopObject);
+                }
+
+                if(season.Season == 2)
+                {
+               //     return Ok(ShopObject);
                 }
 
                 // NEED A RECODE RN

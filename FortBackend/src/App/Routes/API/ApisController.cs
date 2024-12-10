@@ -98,6 +98,7 @@ namespace FortBackend.src.App.Routes.API
             });
         }
 
+      
         ///api/v1/events/Fortnite/download/644812f9-5e5e-4fd4-a670-b306e5956fd9
         [HttpGet("v1/events/Fortnite/download/{accountId}")]
         public async Task<IActionResult> DownloadEndpoint(string accountId)

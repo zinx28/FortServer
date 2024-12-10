@@ -60,6 +60,12 @@ namespace FortBackend.src.App.Routes.API
                     ContentJsonResponse = NewsManager.ContentJsonResponse.FirstOrDefault(e => e.Key == "en").Value;
                 }
 
+                string LobbyBackground = $"season{season}";
+                if (season == "2")
+                {
+                    LobbyBackground = "LobbyWinterDecor";
+                }
+
                 ContentJsonResponse.dynamicbackgrounds = new DynamicBackground()
                 {
                     backgrounds = new DynamicBackgrounds()
@@ -68,7 +74,7 @@ namespace FortBackend.src.App.Routes.API
                             {
                                 new DynamicBackgroundList
                                 {
-                                    stage = $"season{season}",
+                                    stage = LobbyBackground,
                                     _type = "DynamicBackground",
                                     key = "lobby"
                                 }

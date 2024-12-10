@@ -32,6 +32,12 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 VersionClass season = await SeasonUserAgent(Request);
 
+                string LobbyBackground = $"season{season.Season}";
+                if (season.Season == 2)
+                {
+                    LobbyBackground = "LobbyWinterDecor";
+                }
+
                 TimelineResponse Response = new TimelineResponse
                 {
                     channels = new TimelineResponseChannels
@@ -128,7 +134,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                         },
                                         new ActiveEventData
                                         {
-                                            eventType = $"EventFlag.LobbySeason{season.Season}",
+                                            eventType = $"EventFlag.{LobbyBackground}",
                                             activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
                                             activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                                         }

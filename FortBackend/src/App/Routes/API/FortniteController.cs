@@ -65,6 +65,14 @@ namespace FortBackend.src.App.Routes.API
             });
         }
 
+        [HttpGet("game/v2/twitch/{accountId}")]
+        public IActionResult TwitchAcc(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return StatusCode(203);
+        }
+
+
         [HttpGet("game/v2/enabled_features")]
         public IActionResult enabled_features()
         {

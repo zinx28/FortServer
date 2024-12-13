@@ -32,7 +32,7 @@ namespace FortBackend.src.App.Routes.Storefront
 
                 VersionClass season = await SeasonUserAgent(Request);
 
-                string LobbyBackground = $"season{season.Season}";
+                string LobbyBackground = $"LobbySeason{season.Season}";
                 if (season.Season == 2)
                 {
                     LobbyBackground = "LobbyWinterDecor";

@@ -24,6 +24,7 @@ namespace FortBackend.src.App.XMPP_V2
                 TcpServer tcpServer = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
                 Task tcpServerTask = tcpServer.Start();
             }).Start();
+
         }
     }
 }

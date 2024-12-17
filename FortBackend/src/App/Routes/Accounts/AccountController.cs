@@ -22,10 +22,11 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
             var UserData = await Handlers.FindOne<User>("accountId", accountId);
             if (UserData != "Error")
             {
-                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
-
-                if(UserDataParsed != null)
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
+                    User UserDataParsed = profileCacheEntry.UserData;
+                    Account AccountDataParsed = profileCacheEntry.AccountData;
 
                     return Ok(new
                     {
@@ -41,7 +42,7 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                         headless = false,
                         country = "US",
                         canUpdateDisplayName = false,
-                        tfaEnabled = false,
+                        tfaEnabled = AccountDataParsed.commoncore.mfa_enabled,
                         emailVerified = true,
                         minorVerified = false,
                         minorExpected = false,
@@ -130,35 +131,32 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         {       
             try
             {
-                var UserData = await Handlers.FindOne<User>("Username", displayName);
-                if (UserData != "Error")
+                ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(displayName, "Username");
+                //var UserData = await Handlers.FindOne<User>("Username", displayName);
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
-                    User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)?[0]!;
-
-                    if (UserDataParsed != null)
+                    User UserDataParsed = profileCacheEntry.UserData;
+                    Account AccountDataParsed = profileCacheEntry.AccountData;
+                    return Ok(new
                     {
-
-                        return Ok(new
-                        {
-                            id = UserDataParsed.AccountId,
-                            displayName = UserDataParsed.Username,
-                            name = UserDataParsed.Username,
-                            lastName = UserDataParsed.Username,
-                            email = UserDataParsed.Email,
-                            failedLoginAttempts = 0,
-                            lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                            numberOfDisplayNameChanges = 0,
-                            ageGroup = "UNKNOWN",
-                            headless = false,
-                            country = "US",
-                            canUpdateDisplayName = false,
-                            tfaEnabled = false,
-                            emailVerified = true,
-                            minorVerified = false,
-                            minorExpected = false,
-                            minorStatus = "UNKOWN"
-                        });
-                    }
+                        id = UserDataParsed.AccountId,
+                        displayName = UserDataParsed.Username,
+                        name = UserDataParsed.Username,
+                        lastName = UserDataParsed.Username,
+                        email = UserDataParsed.Email,
+                        failedLoginAttempts = 0,
+                        lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        numberOfDisplayNameChanges = 0,
+                        ageGroup = "UNKNOWN",
+                        headless = false,
+                        country = "US",
+                        canUpdateDisplayName = false,
+                        tfaEnabled = AccountDataParsed.commoncore.mfa_enabled,
+                        emailVerified = true,
+                        minorVerified = false,
+                        minorExpected = false,
+                        minorStatus = "UNKOWN"
+                    });
                 }
 
                 throw new BaseError

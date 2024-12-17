@@ -36,7 +36,7 @@
 - Friends [!]
 - Matchmaker (WIP) [-]
 
-## Admin Panel (STILL WORK IN PROGRESS MAY HAVE ISSUES, OR LACK OF FEATURES)
+## Admin Panel (WIP)
 I've created an admin page to make it easier to manage JSON configs.
 
 ### About

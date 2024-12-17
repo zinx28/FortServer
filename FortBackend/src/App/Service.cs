@@ -194,6 +194,8 @@ namespace FortBackend.src.App
             Console.WriteLine("SHUTDOINW");
 
             cancellationTokenSource.Cancel();
+
+            Environment.Exit(0);
         }
 
         async static Task GenerateItemShop(int i)

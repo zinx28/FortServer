@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace FortBackend.src.App.SERVER.Root
 {
-    public class Presence
+    public class PresenceHandler
     {
         public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved UserDataSaved)
         {
@@ -30,9 +30,9 @@ namespace FortBackend.src.App.SERVER.Root
                 var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == UserDataSaved.AccountId);
                 if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
 
-               // Console.WriteLine("TEST2 " + xmlDoc.Root?.Attribute("type")?.Value);
-               // Console.WriteLine("TEST3 " + xmlDoc.Root?.Attribute("type")?.Name);
-                switch (xmlDoc.Root?.Attribute("type")?.Value)
+                var TypeAtrribute = xmlDoc.Root?.Attribute("type");
+                var Type = TypeAtrribute is null ? "" : TypeAtrribute.Value;
+                switch (Type)
                 {
                     case "unavailable":
                         Console.WriteLine("UNNNNNNNNNNNNNN");

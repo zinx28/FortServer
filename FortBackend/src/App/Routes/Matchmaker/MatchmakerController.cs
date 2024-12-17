@@ -14,6 +14,7 @@ using FortLibrary.ConfigHelpers;
 using FortLibrary;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortLibrary.Encoders.JWTCLASS;
+using FortBackend.src.XMPP.Data;
 
 namespace FortBackend.src.App.Routes.Matchmaker
 {
@@ -227,6 +228,8 @@ namespace FortBackend.src.App.Routes.Matchmaker
 
                         Response.Cookies.Append("buildUniqueId", BuildId, cookieOptions);
 
+                        //var test = GlobalData.Rooms.FirstOrDefault(e => e.Value.members.Find(e => e.accountId == accountId)).Value;
+
                         var jsonObject = new MatchmakerTicket
                         {
                             accountId = accountId,
@@ -242,6 +245,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
                         string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
                         string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
                         string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
+
 
                         return Ok(new
                         {

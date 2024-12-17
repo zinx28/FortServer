@@ -31,7 +31,7 @@ Bun.serve({
     port: process.env.PORT || 2222
 });
 
-console.log(`FortDashboard is hosted at http://localhost:${process.env.PORT}`);
+console.log(`FortDashboard is hosted at http://127.0.0.1:${process.env.PORT}`);
 
 export default app;
  

@@ -13,7 +13,7 @@ using FortBackend.src.App.Utilities.Helpers;
 
 namespace FortBackend.src.App.SERVER.Root
 {
-    public class Auth
+    public class AuthHandler
     {
        // public static HttpClient httpClient = new HttpClient();
         public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, /*string AccountId,*/ DataSaved dataSaved, string Ip)
@@ -95,7 +95,7 @@ namespace FortBackend.src.App.SERVER.Root
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Auth:INIT");
+                Logger.Error(ex.Message, "Auth:INIT");
             }
 
             return;

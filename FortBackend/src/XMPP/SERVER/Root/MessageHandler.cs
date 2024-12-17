@@ -7,10 +7,11 @@ using FortBackend.src.XMPP.Data;
 using FortLibrary.XMPP;
 using FortBackend.src.App.SERVER.Send;
 using static MongoDB.Bson.Serialization.Serializers.SerializerHelper;
+using FortLibrary;
 
 namespace FortBackend.src.App.SERVER.Root
 {
-    public class Message
+    public class MessageHandler
     {
         public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved UserDataSaved)
         {
@@ -25,17 +26,22 @@ namespace FortBackend.src.App.SERVER.Root
                 }
                 XNamespace clientNs = "jabber:client";
                 XElement featuresElement;
+
                 var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == UserDataSaved.AccountId);
                 if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
 
-                XElement findBody = xmlDoc.Root?.Descendants().FirstOrDefault(i => i.Name == "body")!;
+                string body = xmlDoc.Root!
+                    .Descendants()
+                    .FirstOrDefault(i => i.Name == "body")!.Value;
 
-                if (findBody == null || string.IsNullOrEmpty(findBody.Value))
+                if (string.IsNullOrEmpty(body))
                     return;
 
-                string body = findBody.Value;
-               // Console.WriteLine("TYPE " + xmlDoc.Root?.Attribute("type")?.Value);
-                switch (xmlDoc.Root?.Attribute("type")?.Value)
+             //   string body = findBody.Value;
+                // Console.WriteLine("TYPE " + xmlDoc.Root?.Attribute("type")?.Value);
+                var TypeAtrribute = xmlDoc.Root?.Attribute("type");
+                var Type = TypeAtrribute is null ? "" : TypeAtrribute.Value;
+                switch (Type)
                 {
                     case "chat":
                         Console.WriteLine("CGAT");
@@ -46,10 +52,6 @@ namespace FortBackend.src.App.SERVER.Root
 
                         if (Friend == null || Friend.accountId == Saved_Clients.accountId) break;
 
-
-                     
-
-
                         featuresElement = new XElement(clientNs + "message",
                             new XAttribute("to", Friend.jid),
                             new XAttribute("from", Saved_Clients.jid),
@@ -57,13 +59,11 @@ namespace FortBackend.src.App.SERVER.Root
                             new XElement("body", body)
                         );
 
-
                         xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
                         await Friend.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                         break;
                     case "groupchat":
-                        Console.WriteLine("GC");
                         if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value))
                         {
                             break;
@@ -101,34 +101,19 @@ namespace FortBackend.src.App.SERVER.Root
                             xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
                             buffer = Encoding.UTF8.GetBytes(xmlMessage);
                             await ClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-
                         }
 
                         break;
                 }
 
-                JToken test = "";
-                try
-                {
-                    Console.WriteLine($"PENMIS {body}");
-                    test = JToken.Parse(body);
-                }
-                catch
-                {
-                    return; // wow
-                }
+                if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty((string)xmlDoc.Root?.Attribute("to")!) || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("id")!))
+                    return;
 
-                if (test is JObject)
-                {
-                    if (test["type"] == null || string.IsNullOrEmpty((string)xmlDoc.Root?.Attribute("to")!) || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("id")!))
-                        return;
-
-                    await XmppFriend.SendMessageToClient(Saved_Clients.jid, xmlDoc, body);
-                }
+                await XmppFriend.SendMessageToClient(Saved_Clients.jid, xmlDoc, body);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Message:Init");
+                Logger.Error(ex.Message, "Message:Init");
             }
 
         }

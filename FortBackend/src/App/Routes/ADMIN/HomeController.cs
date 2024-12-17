@@ -215,8 +215,6 @@ namespace FortBackend.src.App.Routes.ADMIN
                         {
                             if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
                             {
-                                Console.WriteLine(authToken);
-                                Console.WriteLine(adminData.AccessToken);
                                 if (adminData.AccessToken == authToken)
                                 {
                                     return Ok(new { message = "Login successful", Token, setup = false });

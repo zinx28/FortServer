@@ -6,16 +6,22 @@ using FortBackend.src.App.Utilities.Saved;
 using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
+using FortLibrary.Dynamics.Dashboard;
+using FortLibrary.Encoders;
 using FortLibrary.EpicResponses.Fortnite;
 using FortLibrary.Shop;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SharpCompress.Common;
 using System;
+using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
+using static FortBackend.src.App.Utilities.ADMIN.DashboardConfigData;
+using static MongoDB.Driver.WriteConcern;
 
 namespace FortBackend.src.App.Routes.ADMIN
 {
@@ -23,6 +29,25 @@ namespace FortBackend.src.App.Routes.ADMIN
     [Route("/admin/new/dashboard/content")]
     public class DashboardNewContentController : Controller
     {
+
+        /* "config" when contentId == "1" => new List<object>
+                            {
+                                new
+                                {
+                                    Key = "MongoDB",
+                                    Description = "TBD",
+                                    Data = new List<object>()
+                                    {
+                                        new
+                                        {
+                                            Title = "URI",
+                                            Value = "mongodb!!!"
+                                        }
+                                    }
+                                }
+                            },*/
+
+
         // Shorter data THIS IS SERVER SIDED AND NOT CLIENT SIDED
         [HttpPost("dataV2/{contentName}/{contentId}")]
         public async Task<IActionResult> DashboardContentIDIni(string contentName, string contentId)
@@ -45,6 +70,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                     e.Title,
                                 })
                             }),
+                           
                             _ => null
                         };
 
@@ -92,7 +118,8 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 ForcedSeason = Saved.DeserializeGameConfig.ForceSeason,
                                 SeasonForced = Saved.DeserializeGameConfig.Season
                             },
-                            
+                          
+
                             _ => null
                         };
 
@@ -136,6 +163,20 @@ namespace FortBackend.src.App.Routes.ADMIN
                         object? result = contentName.ToLower() switch
                         {
                             "ini" => IniManager.IniConfigData.FileData[ContentId].Data[Index],
+                            //"config" when contentId == "1" => new
+                            //{
+                            //    ProjectName = Saved.DeserializeConfig.ProjectName,
+                            //    JWT_KEY = Saved.DeserializeConfig.JWTKEY,
+                            //    BackendPort = Saved.DeserializeConfig.BackendPort,
+                            //    MatchmakerPort = Saved.DeserializeConfig.MatchmakerPort,
+                            //    XmppPort = Saved.DeserializeConfig.XmppPort,
+                            //    CustomMatchmaker = Saved.DeserializeConfig.CustomMatchmaker, // GSIP GSPORT needs this on
+                            //    GameServerIP = Saved.DeserializeConfig.GameServerIP,
+                            //    GameServerPort = Saved.DeserializeConfig.GameServerPort,
+                            //    EnableLogs = Saved.DeserializeConfig.EnableLogs,
+                            //    Cloudflare = Saved.DeserializeConfig.Cloudflare, // i might make edit take you to a different page
+
+                            //},
                             _ => null
                         };
 
@@ -192,7 +233,6 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 }
 
                                 int ArrayIndex = int.TryParse(FormRequest["arrayIndex"], out int tempIndex) ? tempIndex : 0;
-
 
                                 if(Context == "news")
                                 {
@@ -319,6 +359,62 @@ namespace FortBackend.src.App.Routes.ADMIN
                                  
                                     
                                 }
+                                // Yippie!!
+                                else if( Context == "config")
+                                {
+                                    // CANNOT ALLOW ANY MODS OR RANDOMS EVEN TRY TO EDIT CONFIG
+                                    if (adminData.RoleId > AdminDashboardRoles.Moderator)
+                                    {
+                                        ConfigTop Configtop = DashboardConfigData.GetDashboardConfigData()[SectionId];
+                                        if (Configtop != null)
+                                        {
+                                            ConfigData Configdata = Configtop.Data[ArrayIndex];
+
+                                            if (Configdata != null)
+                                            {
+                                                FortConfig fortConfig = Saved.DeserializeConfig;
+                                                PropertyInfo property = typeof(FortConfig).GetProperty(SectionPart);
+                                                if (property != null)
+                                                {
+                                                    var currentValue = property.GetValue(fortConfig);
+                                                    if(currentValue != null) 
+                                                    {
+                                                        if (Configdata.Type == "string" || Configdata.Type == "ulong")
+                                                        {
+                                                            if (!currentValue.Equals(Body))
+                                                            {
+                                                                property.SetValue(fortConfig, Body);
+                                                            }
+                                                        }
+                                                        else if(Configdata.Type == "bool")
+                                                        {
+                                                            if (!currentValue.Equals(RadioValue))
+                                                            {
+                                                                property.SetValue(fortConfig, RadioValue);
+                                                            }
+                                                        }
+                                                        else if(Configdata.Type == "int")
+                                                        {
+                                                            if (!currentValue.Equals(numberBox))
+                                                            {
+                                                                property.SetValue(fortConfig, numberBox);
+                                                                Console.WriteLine(numberBox);
+                                                            }
+                                                        }
+
+                                                        // just gonna do it every time
+                                                        var FortConfigPath = PathConstants.CachedPaths.FortConfig;
+                                                        if (System.IO.File.Exists(FortConfigPath))
+                                                        {
+                                                            var configJson = JsonConvert.SerializeObject(fortConfig, Formatting.Indented);
+                                                            System.IO.File.WriteAllText(FortConfigPath, configJson);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
 
@@ -434,8 +530,8 @@ namespace FortBackend.src.App.Routes.ADMIN
                             }
                         }*/
 
-                    }
-                }
+    }
+}
             }
             catch (Exception ex)
             {

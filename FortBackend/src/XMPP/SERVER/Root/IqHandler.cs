@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 namespace FortBackend.src.App.SERVER.Root
 {
-    public class Iq
+    public class IqHandler
     {
         public async static void Init(WebSocket webSocket, XDocument xmlDoc, string clientId, DataSaved dataSaved)
         {
@@ -28,10 +28,12 @@ namespace FortBackend.src.App.SERVER.Root
                     return;
                 }
                 //Console.WriteLine(xmlDoc.Root?.Attribute("id")?.Value);
-               // var Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == dataSaved.AccountId);
+                // var Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == dataSaved.AccountId);
                 //if (Clients == null) { await Client.CloseClient(webSocket); return; }
-                Console.WriteLine(xmlDoc.Root?.Attribute("id")?.Value);
-                switch (xmlDoc.Root?.Attribute("id")?.Value)
+                var IDAtrribute = xmlDoc.Root?.Attribute("id");
+                var ID = IDAtrribute is null ? "" : IDAtrribute.Value;
+                
+                switch (ID)
                 {
                     case "_xmpp_bind1":
 
@@ -62,7 +64,6 @@ namespace FortBackend.src.App.SERVER.Root
                                     new XElement(bindNs + "jid", dataSaved.JID)
                                 )
                             );
-                            Console.WriteLine("SNEDINGIN");
                             xmlMessage = featuresElement.ToString(SaveOptions.DisableFormatting);
                             buffer = Encoding.UTF8.GetBytes(xmlMessage);
                             await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
@@ -149,7 +150,7 @@ namespace FortBackend.src.App.SERVER.Root
                         XElement featuresElement2 = new XElement(YA1 + "iq",
                             new XAttribute("to", dataSaved.JID),
                             new XAttribute("from", "prod.ol.epicgames.com"),
-                            new XAttribute("id", (string)xmlDoc.Root?.Attribute("id")!),
+                            new XAttribute("id", ID),
                             //new XAttribute(XNamespace.Xmlns + "xmlns", YA1),
                             new XAttribute("type", "result")
                         );

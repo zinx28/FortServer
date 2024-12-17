@@ -1,11 +1,12 @@
-﻿using FortLibrary.XMPP;
+﻿using FortLibrary;
+using FortLibrary.XMPP;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
 
 namespace FortBackend.src.App.SERVER.Root
 {
-    public class Open
+    public class OpenHandler
     {
         public async static void Init(WebSocket webSocket, DataSaved UserDataSaved, string clientId)
         {
@@ -73,7 +74,7 @@ namespace FortBackend.src.App.SERVER.Root
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Open:INIT");
+                Logger.Error(ex.Message, "Open:INIT");
             }
 
         }

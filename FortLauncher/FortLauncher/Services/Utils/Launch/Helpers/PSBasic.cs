@@ -27,7 +27,7 @@ namespace FortLauncher.Services.Utils.Launch.Helpers
                 {
                     StartInfo = new ProcessStartInfo()
                     {
-                        Arguments = args + $"-AUTH_LOGIN={Email} -AUTH_PASSWORD={Password} -AUTH_TYPE=exchangecode ",
+                        Arguments = args + $" -AUTH_LOGIN={Email} -AUTH_PASSWORD={Password} -AUTH_TYPE=exchangecode ",
                         FileName = Path.Combine(PATH, "FortniteGame\\Binaries\\Win64", "FortniteClient-Win64-Shipping.exe")
                     },
                     EnableRaisingEvents = true

@@ -33,7 +33,7 @@
 - 24/7 Shop (WIP) [!]
 - XMPP [!]
 - PartyV2 [-]
-- Friends [!]
+- Friends [+]
 - Matchmaker (WIP) [-]
 
 ## Admin Panel (WIP)

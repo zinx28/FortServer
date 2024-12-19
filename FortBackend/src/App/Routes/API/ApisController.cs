@@ -411,7 +411,7 @@ namespace FortBackend.src.App.Routes.API
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Error(ex.Message);
             }
             return Ok(Array.Empty<string>());
         }

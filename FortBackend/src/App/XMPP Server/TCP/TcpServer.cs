@@ -53,7 +53,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    Logger.Error(ex.Message);
                 }
             }
         }
@@ -475,7 +475,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error handling client: {ex.Message}");
+                Logger.Error(ex.Message);
             }
             finally
             {

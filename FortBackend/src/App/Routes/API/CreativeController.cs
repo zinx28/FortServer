@@ -38,7 +38,7 @@ namespace FortBackend.src.App.Routes.API
                         uniqueGameVersion = "1",
                         //calibrationPhase = null
                     },
-                    title = "CLOUDS 1v1 BUILD FIGHTS",
+                    title = "Femboy 1v1 :3",
                     locale = "en",
                     matchmaking = new
                     {

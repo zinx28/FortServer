@@ -169,7 +169,7 @@ namespace FortBackend.src.App.Routes.API
             }
             catch (Exception ex)
             {
-                Logger.Log(ex.Message, "AccInventory");
+                Logger.Error(ex.Message, "AccInventory");
             }
 
             return Ok(new

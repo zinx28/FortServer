@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.SERVER.Send;
 using FortBackend.src.XMPP.Data;
+using FortLibrary;
 using FortLibrary.XMPP;
 using Newtonsoft.Json;
 using System;
@@ -122,7 +123,7 @@ namespace FortBackend.src.XMPP.SERVER
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message); // Average Erro! 
+                    Logger.Error(ex.Message); // Average Erro! 
                 }
 
                 // what?

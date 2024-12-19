@@ -164,7 +164,7 @@ namespace FortBackend.src.App.SERVER.Root
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "IQ:Init");
+                Logger.Error(ex.Message, "IQ:Init");
             }
 
         }

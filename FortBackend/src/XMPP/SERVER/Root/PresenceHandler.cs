@@ -215,7 +215,7 @@ namespace FortBackend.src.App.SERVER.Root
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Presence:Init");
+                Logger.Error(ex.Message, "Presence:Init");
             }
 
         }

@@ -1,5 +1,6 @@
 ﻿using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary;
 using FortLibrary.EpicResponses.Storefront;
 using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,6 @@ namespace FortBackend.src.App.Routes.Storefront
             Response.ContentType = "application/json";
             try
             {
-                
                 string Json = System.IO.File.ReadAllText(PathConstants.ShopJson.Shop);
                 if (Json == null)
                 {
@@ -42,7 +42,7 @@ namespace FortBackend.src.App.Routes.Storefront
                 {
                     channels = new TimelineResponseChannels
                     {
-                        ClientMatchmaking = new ClientMatchmakingTL() { cacheExpire = shopData?.expiration },
+                        ClientMatchmaking = new ClientMatchmakingTL() { cacheExpire = shopData?.expiration! },
                         StandaloneStore = new ClientMatchmakingTL()
                         {
                             states = new object[]
@@ -60,7 +60,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                     }
                                 }
                             },
-                            cacheExpire = shopData?.expiration
+                            cacheExpire = shopData?.expiration!
                         },
                         tk = new ClientMatchmakingTL()
                         {
@@ -68,15 +68,15 @@ namespace FortBackend.src.App.Routes.Storefront
                             {
                                 new
                                 {
-                                        validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                        activeEvents = new string[0],
-                                        state = new
-                                        {
-                                            k = new string[0]
-                                        }
+                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new string[0],
+                                    state = new
+                                    {
+                                        k = new string[0]
+                                    }
                                 }
                             },
-                            cacheExpire = shopData?.expiration
+                            cacheExpire = shopData?.expiration!
                         },
                         CommunityVotes = new ClientMatchmakingTL()
                         {
@@ -95,7 +95,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                     }
                                 }
                             },
-                            cacheExpire = shopData?.expiration
+                            cacheExpire = shopData?.expiration!
 
                         },
                         FeaturedIslands = new ClientMatchmakingTL()
@@ -115,7 +115,7 @@ namespace FortBackend.src.App.Routes.Storefront
                                          }
                                     }
                                 },
-                            cacheExpire = shopData?.expiration
+                            cacheExpire = shopData?.expiration!
                         },
                         ClientEvents = new ClientEventsTL()
                         {
@@ -149,14 +149,14 @@ namespace FortBackend.src.App.Routes.Storefront
                                         seasonBegin = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         seasonEnd = Saved.DeserializeGameConfig.SeasonEndDate,
                                         seasonDisplayedEnd = Saved.DeserializeGameConfig.SeasonEndDate,
-                                        weeklyStoreEnd =  shopData?.expiration,
-                                        stwEventStoreEnd = shopData?.expiration,
-                                        stwWeeklyStoreEnd = shopData?.expiration,
-                                        dailyStoreEnd =  shopData?.expiration
+                                        weeklyStoreEnd =  shopData?.expiration!,
+                                        stwEventStoreEnd = shopData?.expiration!,
+                                        stwWeeklyStoreEnd = shopData?.expiration!,
+                                        dailyStoreEnd =  shopData?.expiration!
                                     }
                                 }
                             },
-                            cacheExpire = shopData?.expiration
+                            cacheExpire = shopData?.expiration!
                         }
                     },
                     eventsTimeOffsetHrs = 0,
@@ -174,9 +174,10 @@ namespace FortBackend.src.App.Routes.Storefront
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return Challenge();
+                Logger.Error(ex.Message);
             }
+
+            return Challenge();
         }
     }
 }

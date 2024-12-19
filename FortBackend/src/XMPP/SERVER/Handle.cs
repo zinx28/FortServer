@@ -105,12 +105,12 @@ namespace FortBackend.src.App.SERVER
 
             catch (WebSocketException ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Error(ex.Message);
             }
             catch (OperationCanceledException) { }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.Message);
             }
             finally
             {

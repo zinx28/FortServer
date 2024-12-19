@@ -293,7 +293,6 @@ namespace FortBackend.src.App.Routes.Friends
                                 {
                                     bool? FoundFriend = profileCacheEntry.UserFriends.Incoming.Any(account => account?.accountId?.ToString() == friendsprofileCacheEntry.UserFriends.AccountId?.ToString());
 
-                                    Console.WriteLine(FoundFriend);
                                     if (FoundFriend.HasValue && FoundFriend.Value)
                                     {
                                         //Jarray2 == FriendsAccountDataParsed
@@ -863,7 +862,7 @@ namespace FortBackend.src.App.Routes.Friends
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Logger.Error(ex.Message);
             }
 
             return StatusCode(403);

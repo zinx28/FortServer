@@ -122,7 +122,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
             }
             catch (Exception ex)
             {
-                Console.Write("TEST " + ex.Message);
+                Logger.Error(ex.Message);
             }
             return Ok(new { });
         }
@@ -165,9 +165,10 @@ namespace FortBackend.src.App.Routes.Matchmaker
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Newest Api No way " + ex.Message);
-                return Ok(new { });
+                Logger.Error(ex.Message, "CreateSession");
             }
+
+            return Ok(new { });
         }
 
         [HttpGet("game/v2/matchmakingservice/ticket/player/{accountId}")]
@@ -181,7 +182,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 CachedDataClass BackendCachedData = Saved.BackendCachedData;
 
                 var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
-                Console.WriteLine($"MATCHMAKE TICKET: {profileCacheEntry}");
+               
                 if (profileCacheEntry != null)
                 {
                     var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
@@ -262,8 +263,9 @@ namespace FortBackend.src.App.Routes.Matchmaker
             catch (Exception ex)
             {
                 Logger.Error($"ERROR IN MATCHMAKER!!! -> {ex.Message}", "MATCHMAKER");
-                return Ok(new { });
             }
+
+            return Ok(new { });
         }
 
         [HttpGet("game/v2/matchmaking/account/{accountId}/session/{sessionId}")]
@@ -281,7 +283,6 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 sessionId,
                 key = "none"
             });
-
         }
 
         [HttpPost("matchmaking/session/{sessionId}/join")]

@@ -70,7 +70,7 @@ namespace FortBackend.src.App.SERVER.Send
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Friends:UpdatePresenceForFriends");
+                Logger.Error(ex.Message, "Friends:UpdatePresenceForFriends");
             }
         }
 
@@ -200,7 +200,7 @@ namespace FortBackend.src.App.SERVER.Send
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Friends:GrabSomeonesPresence");
+                Logger.Error(ex.Message, "Friends:GrabSomeonesPresence");
             }
         }
 
@@ -231,7 +231,7 @@ namespace FortBackend.src.App.SERVER.Send
             }
             catch (Exception ex)
             {
-               Console.WriteLine(ex.Message, "Friends:GrabSomeonesPresence");
+                Logger.Error(ex.Message, "Friends:GrabSomeonesPresence");
             }
         }
     }

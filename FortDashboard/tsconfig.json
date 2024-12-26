@@ -1,0 +1,14 @@
+{
+  "target": "bun",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx"
+  },
+  "outdir": "dist"
+}

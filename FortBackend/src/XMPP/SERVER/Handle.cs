@@ -22,7 +22,7 @@ namespace FortBackend.src.App.SERVER
             string receivedMessage = ""; // so skunky but works fine
             //string AccountId = ""; // for both clients to know the main
            // bool DidUserLoginNotSure = false; // for game only
-            DataSaved UserDataSaved = new DataSaved();
+            DataSaved UserDataSaved = new();
             try
             {
                 //DataSaved_XMPP.connectedClients.TryAdd(clientId, webSocket); // Adds The data inside the handlewebsocekt!
@@ -68,19 +68,19 @@ namespace FortBackend.src.App.SERVER
                                     // break;
                                     // THIS PUSH WILL BREAK THE LUNA XMPP AND FIX THE NORMAL XMPP.. ILL THINK OF SOMETHING ELSE
                                     case "open":
-                                        Open.Init(webSocket, UserDataSaved, clientId);
+                                        OpenHandler.Init(webSocket, UserDataSaved, clientId);
                                         break;
                                     case "auth":
-                                        Auth.Init(webSocket, xmlDoc, clientId, UserDataSaved, IP);
+                                        AuthHandler.Init(webSocket, xmlDoc, clientId, UserDataSaved, IP);
                                         break;
                                     case "iq":
-                                        Iq.Init(webSocket, xmlDoc, clientId, UserDataSaved);
+                                        IqHandler.Init(webSocket, xmlDoc, clientId, UserDataSaved);
                                         break;
                                     case "message":
-                                        Message.Init(webSocket, xmlDoc, clientId, UserDataSaved);
+                                        MessageHandler.Init(webSocket, xmlDoc, clientId, UserDataSaved);
                                         break;
                                     case "presence":
-                                        Presence.Init(webSocket, xmlDoc, clientId, UserDataSaved);
+                                        PresenceHandler.Init(webSocket, xmlDoc, clientId, UserDataSaved);
                                         break;
                                     default: break;
                                 }
@@ -105,12 +105,12 @@ namespace FortBackend.src.App.SERVER
 
             catch (WebSocketException ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Error(ex.Message);
             }
             catch (OperationCanceledException) { }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.Message);
             }
             finally
             {

@@ -13,6 +13,7 @@ using FortLibrary.XMPP;
 using FortBackend.src.App.SERVER.Send;
 using FortBackend.src.XMPP.Data;
 using FortBackend.src.App.SERVER.Root;
+using FortLibrary.Encoders.JWTCLASS;
 
 namespace FortBackend.src.App.Routes.Friends
 {
@@ -255,33 +256,25 @@ namespace FortBackend.src.App.Routes.Friends
         }
 
         [HttpPost("public/friends/{accountId}/{friendId}")]
+        [AuthorizeToken]
         public async Task<ActionResult> FriendsChapter1List(string accountId, string friendID)
         {
             Response.ContentType = "application/json";
             try
             {
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-                bool FoundAccount = false;
-                if (GlobalData.AccessToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.ClientToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.RefreshToken.Any(e => e.token == token))
-                    FoundAccount = true;
 
-                if (FoundAccount && !string.IsNullOrEmpty(accountId) && !string.IsNullOrEmpty(friendID))
+
+                if (!string.IsNullOrEmpty(accountId) && !string.IsNullOrEmpty(friendID))
                 {
-                    var handler = new JwtSecurityTokenHandler();
-                    var decodedToken = handler.ReadJwtToken(accessToken);
+                    var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
 
-                    var displayName = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dn")?.Value;
-                    var accountId1 = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value;
-                    var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
+                    var displayName = tokenPayload?.Dn;
+                    var accountId1 = tokenPayload?.Sub;
+                    var clientId = tokenPayload?.Clid;
 
                     if (!string.IsNullOrEmpty(accountId1))
                     {
-                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId1); // use the auth account not from url
+                        var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
                         if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                         {
 
@@ -300,7 +293,6 @@ namespace FortBackend.src.App.Routes.Friends
                                 {
                                     bool? FoundFriend = profileCacheEntry.UserFriends.Incoming.Any(account => account?.accountId?.ToString() == friendsprofileCacheEntry.UserFriends.AccountId?.ToString());
 
-                                    Console.WriteLine(FoundFriend);
                                     if (FoundFriend.HasValue && FoundFriend.Value)
                                     {
                                         //Jarray2 == FriendsAccountDataParsed
@@ -413,23 +405,8 @@ namespace FortBackend.src.App.Routes.Friends
 
                                         await Client.SendClientMessage(targetClient2, message);
 
-
-                                        message = new XElement(clientNs + "message",
-                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                            new XAttribute("to", accountId),
-                                            new XElement("type", "available")
-                                        );
-
-
-                                        await Client.SendClientMessage(targetClient, message);
-
-                                        message = new XElement(clientNs + "message",
-                                            new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                            new XAttribute("to", accountId),
-                                            new XElement("type", "available")
-                                        );
-                                        await Client.SendClientMessage(targetClient2, message);
-
+                                        await XmppFriend.GrabSomeonesPresence(friendsprofileCacheEntry.AccountId, accountId1, false);
+                                        await XmppFriend.GrabSomeonesPresence(accountId1, friendsprofileCacheEntry.AccountId, false);
 
                                         return StatusCode(204);
                                     }
@@ -545,33 +522,23 @@ namespace FortBackend.src.App.Routes.Friends
 
 
         [HttpPost("v1/{accountId}/friends/{friendId}")]
+        [AuthorizeToken]
         public async Task<ActionResult> FriendsAccountId(string accountId, string friendID)
         {
             Response.ContentType = "application/json";
             try
             {
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-                bool FoundAccount = false;
-                if (GlobalData.AccessToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.ClientToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.RefreshToken.Any(e => e.token == token))
-                    FoundAccount = true;
-
-                if (FoundAccount && !string.IsNullOrEmpty(accountId) && !string.IsNullOrEmpty(friendID))
+                if (!string.IsNullOrEmpty(accountId) && !string.IsNullOrEmpty(friendID))
                 {
-                    var handler = new JwtSecurityTokenHandler();
-                    var decodedToken = handler.ReadJwtToken(accessToken);
+                    var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
 
-                    var displayName = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dn")?.Value;
-                    var accountId1 = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value;
-                    var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
+                    var displayName = tokenPayload?.Dn;
+                    var accountId1 = tokenPayload?.Sub;
+                    var clientId = tokenPayload?.Clid;
 
                     if (!string.IsNullOrEmpty(accountId1))
                     {
-                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId1); // use the auth account not from url
+                        var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry; // use the auth account not from url
                         if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                         {
                             if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
@@ -587,6 +554,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     return StatusCode(403);
                                 }
                             }
+
                             ProfileCacheEntry friendsprofileCacheEntry = await GrabData.Profile(friendID); // friends
                             if (friendsprofileCacheEntry != null && !string.IsNullOrEmpty(friendsprofileCacheEntry.AccountId))
                             {
@@ -594,7 +562,6 @@ namespace FortBackend.src.App.Routes.Friends
                                 {
                                     bool? FoundFriend = profileCacheEntry.UserFriends.Incoming.Any(account => account?.accountId?.ToString() == friendsprofileCacheEntry.UserFriends.AccountId?.ToString());
 
-                                    Console.WriteLine(FoundFriend);
                                     if (FoundFriend.HasValue && FoundFriend.Value)
                                     {
                                         //Jarray2 == FriendsAccountDataParsed
@@ -781,9 +748,6 @@ namespace FortBackend.src.App.Routes.Friends
                                                     }")
                                                ));
 
-                                            }else
-                                            {
-                                                Logger.Error("WHY");
                                             }
 
                                             Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendID)!;
@@ -805,9 +769,6 @@ namespace FortBackend.src.App.Routes.Friends
                                                         ""timestamp"": """ + DateTime.UtcNow.ToString("o") + @"""
                                                     }")
                                                 ));
-                                            }else
-                                            {
-                                                Logger.Error("YOUR FRIEND IS LSEEPING");
                                             }
 
                                             return StatusCode(204);
@@ -837,86 +798,71 @@ namespace FortBackend.src.App.Routes.Friends
         }
 
         [HttpDelete("v1/{accountId}/friends/{friendId}")]
+        [AuthorizeToken]
         public async Task<ActionResult> RemoveFriendsV1(string accountId, string friendID)
         {
             Response.ContentType = "application/json";
             try
             {
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
+                var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
 
-                bool FoundAccount = false;
-                if (GlobalData.AccessToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.ClientToken.Any(e => e.token == token))
-                    FoundAccount = true;
-                else if (GlobalData.RefreshToken.Any(e => e.token == token))
-                    FoundAccount = true;
+                var displayName = tokenPayload?.Dn;
+                var accountId1 = tokenPayload?.Sub;
+                var clientId = tokenPayload?.Clid;
 
-                if (FoundAccount)
+                if (accountId1 != null)
                 {
-                    var handler = new JwtSecurityTokenHandler();
-                    var decodedToken = handler.ReadJwtToken(accessToken);
-
-                    Console.WriteLine(decodedToken);
-
-                    var displayName = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "dn")?.Value;
-                    var accountId1 = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value;
-                    var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
-
-                    if (accountId1 != null)
+                    var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
-                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId1);
-                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                        if (profileCacheEntry.UserData.banned)
                         {
-                            if (profileCacheEntry.UserData.banned == true) // imagine banned person redirected few apis then the rest worked
+                            return StatusCode(403);
+                        }
+
+                        ProfileCacheEntry friendsprofileCacheEntry = await GrabData.Profile(friendID);
+                        if (friendsprofileCacheEntry != null && !string.IsNullOrEmpty(friendsprofileCacheEntry.AccountId))
+                        {
+                            // basically we use the data account id for people who could call the auth the change the account from the request
+                            if (friendsprofileCacheEntry.UserFriends.Accepted.Find(d => d.accountId == accountId1) != null)
                             {
-                                return StatusCode(403);
+                                await Handlers.PullFromArray<UserFriends>("accountId", friendsprofileCacheEntry.AccountId, "accepted", "accountId", profileCacheEntry.AccountId);
+                                await Handlers.PullFromArray<UserFriends>("accountId", profileCacheEntry.AccountId, "accepted", "accountId", friendsprofileCacheEntry.AccountId);
                             }
 
-                            ProfileCacheEntry friendsprofileCacheEntry = await GrabData.Profile(friendID);
-                            if (friendsprofileCacheEntry != null && !string.IsNullOrEmpty(friendsprofileCacheEntry.AccountId))
+                            if (profileCacheEntry.UserFriends.Incoming != null)
                             {
-                                // basically we use the data account id for people who could call the auth the change the account from the request
-                                if (friendsprofileCacheEntry.UserFriends.Accepted.Find(d => d.accountId == accountId1) != null)
+                                await XmppFriend.SendMessageToId(new
                                 {
-                                    await Handlers.PullFromArray<UserFriends>("accountId", friendsprofileCacheEntry.AccountId, "accepted", "accountId", profileCacheEntry.AccountId);
-                                    await Handlers.PullFromArray<UserFriends>("accountId", profileCacheEntry.AccountId, "accepted", "accountId", friendsprofileCacheEntry.AccountId);
-                                }
+                                    Payload = new
+                                    {
+                                        AccountId = profileCacheEntry.AccountId,
+                                        Reason = "DELETED"
+                                    },
+                                    Type = "com.epicgames.friends.core.apiobjects.FriendRemoval",
+                                    Timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                }, friendsprofileCacheEntry.AccountId);
 
-                                if (profileCacheEntry.UserFriends.Incoming != null)
+                                await XmppFriend.SendMessageToId(new
                                 {
-                                    await XmppFriend.SendMessageToId(new
+                                    Payload = new
                                     {
-                                        Payload = new
-                                        {
-                                            AccountId = profileCacheEntry.AccountId,
-                                            Reason = "DELETED"
-                                        },
-                                        Type = "com.epicgames.friends.core.apiobjects.FriendRemoval",
-                                        Timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                                    }, friendsprofileCacheEntry.AccountId);
-
-                                    await XmppFriend.SendMessageToId(new
-                                    {
-                                        Payload = new
-                                        {
-                                            AccountId = friendsprofileCacheEntry.AccountId,
-                                            Reason = "DELETED"
-                                        },
-                                        Type = "com.epicgames.friends.core.apiobjects.FriendRemoval",
-                                        Timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                                    }, profileCacheEntry.AccountId);
-                                }
-                                return StatusCode(204);
+                                        AccountId = friendsprofileCacheEntry.AccountId,
+                                        Reason = "DELETED"
+                                    },
+                                    Type = "com.epicgames.friends.core.apiobjects.FriendRemoval",
+                                    Timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                }, profileCacheEntry.AccountId);
                             }
+                            return StatusCode(204);
                         }
                     }
                 }
+                
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Logger.Error(ex.Message);
             }
 
             return StatusCode(403);

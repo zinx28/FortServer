@@ -1,0 +1,46 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link <%= activeTab === 'news' ? 'active' : '' %>"
+      id="news-tab"
+      aria-selected="<%= activeTab === 'news' ? 'true' : '' %>"
+      href="/dashboard/content/news"
+    >
+      News Updates
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link <%= activeTab === 'server' ? 'active' : '' %>"
+      id="servers-tab"
+      aria-selected="<%= activeTab === 'server' ? 'true' : '' %>"
+      href="/dashboard/content/server"
+    >
+      Server Management
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link <%= activeTab === 'ini' ? 'active' : '' %>"
+      id="inimanagement-tab"
+      aria-selected="<%= activeTab === 'ini' ? 'true' : '' %>"
+      href="/dashboard/content/ini"
+    >
+      INI Management
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link"
+      id="shop-tab"
+      data-bs-toggle="tab"
+      data-bs-target="#shop"
+      type="button"
+      role="tab"
+      aria-controls="shop"
+      aria-selected="false"
+    >
+      Shop Configuration
+    </button>
+  </li>
+</ul>

@@ -1,4 +1,5 @@
-﻿using FortLibrary.Encoders;
+﻿using FortLibrary;
+using FortLibrary.Encoders;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver.Core.Misc;
 using Newtonsoft.Json;
@@ -53,8 +54,9 @@ namespace FortBackend.src.App.Routes.Oauth
             }
             catch (Exception ex)
             {
-
+                Logger.Error(ex.Message);
             }
+
             return Ok(new { });
         }
     }

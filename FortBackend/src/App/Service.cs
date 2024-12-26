@@ -38,10 +38,10 @@ namespace FortBackend.src.App
             Logger.Log("MARVELCO IS LOADING (marcellowmellow)");
             Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
 
+            await CachedData.Init();
+
             var builder = WebApplication.CreateBuilder(args);
             var startup = new Startup(builder.Configuration);
-
-            await CachedData.Init();
 
             startup.ConfigureServices(builder.Services);
 
@@ -52,17 +52,18 @@ namespace FortBackend.src.App
                 builder.WebHost.ConfigureKestrel(serverOptions =>
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.BackendPort, listenOptions =>
-                    {
-                        var certPath = Path.Combine(PathConstants.BaseDir, "Resources", "Certificates", "FortBackend.pfx");
+                    {   
+                        var certPath = Path.Combine(PathConstants.BaseDir, "Certificates", "FortBackend.pfx");
                         if (!File.Exists(certPath))
                         {
                             Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", "CERTIFICATES");
                             throw new Exception("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp");
                         }
-                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                        var certificate = new X509Certificate2(certPath);
+                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+                        var certificate = new X509Certificate2(certPath, Saved.DeserializeConfig.CertKey);
                         listenOptions.UseHttps(certificate);
                     });
+
                 });
             }
             else
@@ -193,6 +194,8 @@ namespace FortBackend.src.App
             Console.WriteLine("SHUTDOINW");
 
             cancellationTokenSource.Cancel();
+
+            Environment.Exit(0);
         }
 
         async static Task GenerateItemShop(int i)

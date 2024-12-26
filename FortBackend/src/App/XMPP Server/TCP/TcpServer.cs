@@ -13,6 +13,7 @@ using System.Reflection;
 using ZstdSharp;
 using FortBackend.src.App.Utilities.Constants;
 using FortLibrary;
+using FortBackend.src.App.Utilities.Saved;
 
 namespace FortBackend.src.App.XMPP_Server.TCP
 {
@@ -31,13 +32,13 @@ namespace FortBackend.src.App.XMPP_Server.TCP
         public async Task Start()
         {
             tcpListener.Start();
-            var FindPfxPath = Path.Combine(PathConstants.BaseDir, "src", "Resources", "Certificates", "FortBackend.pfx");
+            var FindPfxPath = Path.Combine(PathConstants.BaseDir, "Certificates", "FortBackend.pfx");
             if(!File.Exists(FindPfxPath))
             {
-                Logger.Log($"Couldn't find FortBackend.pfx" , "TCP");
+                Logger.Error($"Couldn't find FortBackend.pfx" , "TCP");
                 tcpListener.Stop();
             }
-            certificate = new X509Certificate2(FindPfxPath, "");
+            certificate = new X509Certificate2(FindPfxPath, Saved.DeserializeConfig.CertKey);
             Logger.Log($"TCP server started on port {((IPEndPoint)tcpListener.LocalEndpoint).Port}", "TCP");
 
             while (true)
@@ -52,7 +53,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    Logger.Error(ex.Message);
                 }
             }
         }
@@ -474,7 +475,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error handling client: {ex.Message}");
+                Logger.Error(ex.Message);
             }
             finally
             {

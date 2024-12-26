@@ -36,10 +36,36 @@ namespace FortBackend.src.App.Routes.API
             });
         }
 
+        // Ones ik ig
+        // founderfriendinvite
+        // founderfriendinvite_xbox
+        // mobileinvite ~ this is ios based
         [HttpGet("game/v2/friendcodes/{accountId}/epic")]
         public IActionResult FriendsCode(string accountId)
         {
-            return Ok(new List<object>());
+            return Ok(new List<object>()
+            {
+                new
+                { 
+                    codeId = "RANDOM",
+                    codeType= "CodeToken:mobileinvite",
+                    dateCreated = "2018-03-27T16:54:41.385Z"
+                },
+
+                new
+                {
+                    codeId = "TEST",
+                    codeType= "CodeToken:founderfriendinvite_xbox",
+                    dateCreated = "2018-03-27T16:54:41.385Z"
+                },
+
+                new
+                {
+                    codeId = "PENIS",
+                    codeType= "CodeToken:founderfriendinvite",
+                    dateCreated = "2018-03-27T16:54:41.385Z"
+                }
+            });
         }
 
         [HttpGet("versioncheck")]
@@ -64,6 +90,14 @@ namespace FortBackend.src.App.Routes.API
                 type = "NO_UPDATE"
             });
         }
+
+        [HttpGet("game/v2/twitch/{accountId}")]
+        public IActionResult TwitchAcc(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return StatusCode(203);
+        }
+
 
         [HttpGet("game/v2/enabled_features")]
         public IActionResult enabled_features()
@@ -135,7 +169,7 @@ namespace FortBackend.src.App.Routes.API
             }
             catch (Exception ex)
             {
-                Logger.Log(ex.Message, "AccInventory");
+                Logger.Error(ex.Message, "AccInventory");
             }
 
             return Ok(new

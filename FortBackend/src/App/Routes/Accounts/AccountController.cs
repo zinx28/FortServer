@@ -8,6 +8,7 @@ using System.Diagnostics.Metrics;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.MongoDB.Module;
 using FortLibrary;
+using System.Collections.Generic;
 
 namespace FortBackend.src.App.Routes.APIS.Accounts
 {
@@ -18,13 +19,13 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         [HttpGet("public/account/{accountId}")]
         public async Task<IActionResult> AccountAcc(string accountId)
         {
-            var UserData1 = await Handlers.FindOne<User>("accountId", accountId);
-            if (UserData1 != "Error")
+            try
             {
-                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)![0];
-
-                if(UserDataParsed != null)
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId); 
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
+                    User UserDataParsed = profileCacheEntry.UserData;
+                    Account AccountDataParsed = profileCacheEntry.AccountData;
 
                     return Ok(new
                     {
@@ -40,14 +41,15 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                         headless = false,
                         country = "US",
                         canUpdateDisplayName = false,
-                        tfaEnabled = false,
+                        tfaEnabled = AccountDataParsed.commoncore.mfa_enabled,
                         emailVerified = true,
                         minorVerified = false,
                         minorExpected = false,
                         minorStatus = "UNKOWN"
                     });
-                }
+                } 
             }
+            catch (Exception ex) { Logger.Error(ex.Message); }
 
             return Ok(new { });
         }
@@ -61,10 +63,10 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
             {
                 if (query != null && !query.Contains(","))
                 {
-                    var UserData1 = await Handlers.FindOne<User>("Username", query);
-                    if (UserData1 != "Error")
+                    ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(query, "Username");;
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
-                        User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0]!;
+                        User UserDataParsed = profileCacheEntry.UserData;
 
                         if (UserDataParsed != null)
                         {
@@ -126,14 +128,27 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
         // this works
         [HttpGet("public/account/displayName/{displayName}")]
         public async Task<IActionResult> DisplayNameSearch(string displayName)
-        {
-            var UserData1 = await Handlers.FindOne<User>("Username", displayName);
-            if (UserData1 != "Error")
+        {       
+            try
             {
-                User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData1)?[0]!;
-
-                if (UserDataParsed != null)
+                ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(displayName, "Username");
+                //var UserData = await Handlers.FindOne<User>("Username", displayName);
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
+                    User UserDataParsed = profileCacheEntry.UserData;
+                    Account AccountDataParsed = profileCacheEntry.AccountData;
+
+                    if(UserDataParsed == null || AccountDataParsed == null)
+                        throw new BaseError
+                        {
+                            errorCode = "errors.com.epicgames.account.account_not_found",
+                            errorMessage = $"Sorry, we couldn't find an account for {displayName}",
+                            messageVars = new List<string> { $"/account/api/public/account/displayName/{displayName}" },
+                            numericErrorCode = 18007,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = $"Sorry, we couldn't find an account for {displayName}",
+                        };
 
                     return Ok(new
                     {
@@ -149,13 +164,39 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                         headless = false,
                         country = "US",
                         canUpdateDisplayName = false,
-                        tfaEnabled = false,
+                        tfaEnabled = AccountDataParsed.commoncore.mfa_enabled,
                         emailVerified = true,
                         minorVerified = false,
                         minorExpected = false,
                         minorStatus = "UNKOWN"
                     });
                 }
+
+                throw new BaseError
+                {
+                    errorCode = "errors.com.epicgames.account.account_not_found",
+                    errorMessage = $"Sorry, we couldn't find an account for {displayName}",
+                    messageVars = new List<string> { $"/account/api/public/account/displayName/{displayName}" },
+                    numericErrorCode = 18007,
+                    originatingService = "any",
+                    intent = "prod",
+                    error_description = $"Sorry, we couldn't find an account for {displayName}",
+                };
+            }
+            catch (BaseError ex)
+            {
+                var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+                StatusCode(500);
+                return new ContentResult()
+                {
+                    Content = jsonResult,
+                    ContentType = "application/json",
+                    StatusCode = 500
+                };
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
             }
 
             return Ok(new { });
@@ -197,7 +238,6 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                 {
                     string[] accountIds = RequestQuery.Split(',');
 
-
                     foreach (var AccountId in accountIds)
                     {
                         var UserData = await Handlers.FindOne<User>("accountId", AccountId);
@@ -222,7 +262,6 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                 }
                 else
                 {
-                    Console.WriteLine(RequestQuery);
                     var UserData = await Handlers.FindOne<User>("accountId", RequestQuery);
 
                     if (UserData != "Error")
@@ -244,9 +283,10 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Errlr " + ex.Message);
-                return Ok(Array.Empty<string>());
+                Logger.Error($"public/account {ex.Message}");
             }
+
+            return Ok(Array.Empty<string>());
         }      
     }
 }

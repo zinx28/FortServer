@@ -39,11 +39,9 @@ namespace FortBackend.src.App.SERVER.Send
                 if (profileCacheEntry.AccountData != null)
                 {
                     UserFriends FriendsDataParsed = profileCacheEntry.UserFriends;
-                    Console.WriteLine("TEST");
+
                     foreach (var friend in FriendsDataParsed.Accepted)
                     {
-                        Console.WriteLine(friend.accountId);
-                        Console.WriteLine(status);
                         var FriendsClientData = GlobalData.Clients.FirstOrDefault(client => client.accountId == friend.accountId);
 
                         if (FriendsClientData == null) continue; // friend is offline
@@ -63,7 +61,7 @@ namespace FortBackend.src.App.SERVER.Send
                         openElement.Add(new XElement(clientNs1 + "status", status));
 
                         xmlMessage = openElement.ToString();
-                        Console.WriteLine("veryporper " + xmlMessage);
+                        //Console.WriteLine("veryporper " + xmlMessage);
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
                         await FriendsClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
@@ -72,7 +70,7 @@ namespace FortBackend.src.App.SERVER.Send
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Friends:UpdatePresenceForFriends");
+                Logger.Error(ex.Message, "Friends:UpdatePresenceForFriends");
             }
         }
 
@@ -107,13 +105,15 @@ namespace FortBackend.src.App.SERVER.Send
                 openElement.Add(new XElement("status", FromAccountIdData.lastPresenceUpdate.presence));
 
                 xmlMessage = openElement.ToString();
+
+                //Logger.Warn(xmlMessage, "XMPPPRESNCE");
                 buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
                 await ToAccountIdData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Friends:GrabSomeonesPresence");
+                Logger.Error(ex.Message, "Friends:GrabSomeonesPresence");
             }
         }
 
@@ -200,7 +200,7 @@ namespace FortBackend.src.App.SERVER.Send
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message, "Friends:GrabSomeonesPresence");
+                Logger.Error(ex.Message, "Friends:GrabSomeonesPresence");
             }
         }
 
@@ -231,7 +231,7 @@ namespace FortBackend.src.App.SERVER.Send
             }
             catch (Exception ex)
             {
-               Console.WriteLine(ex.Message, "Friends:GrabSomeonesPresence");
+                Logger.Error(ex.Message, "Friends:GrabSomeonesPresence");
             }
         }
     }

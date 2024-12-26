@@ -1,0 +1,21 @@
+npm verbose cli C:\Program Files\nodejs\node.exe C:\Users\Zephironyx\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+npm info using npm@10.9.1
+npm info using node@v22.3.0
+npm verbose title npm install
+npm verbose argv "install" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:C:\Users\Zephironyx\AppData\Local\npm-cache\_logs\2024-11-27T01_53_11_343Z-
+npm verbose logfile C:\Users\Zephironyx\AppData\Local\npm-cache\_logs\2024-11-27T01_53_11_343Z-debug-0.log
+npm http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 244ms
+
+up to date, audited 28 packages in 682ms
+
+3 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm verbose cwd C:\Users\Zephironyx\Documents\GitHub\FortBackend\FortDashboard
+npm verbose os Windows_NT 10.0.22631
+npm verbose node v22.3.0
+npm verbose npm  v10.9.1
+npm verbose exit 0
+npm info ok

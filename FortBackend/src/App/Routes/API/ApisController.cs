@@ -53,11 +53,32 @@ namespace FortBackend.src.App.Routes.API
             return Ok();
         }
 
+        [HttpPost("/profile/play_region")]
+
+
+        public IActionResult PlayRegion()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new { });
+        }
+
+        [HttpPost("/api/v1/fortnite-br/interactions")]
+
+
+        public IActionResult ForniteBRInteractions()
+        {
+           // Response.ContentType = "application/json";
+            return StatusCode(200);
+        }
+
+        ///api/v1/fortnite-br/interactions
+
         [HttpPost("/region/check")]
 
 
         public IActionResult RegionCheck()
         {
+            Response.ContentType = "application/json";
             return Ok(new
             {
                 content_id = "AF9yLAAsklQALFTy",
@@ -70,12 +91,14 @@ namespace FortBackend.src.App.Routes.API
         [HttpGet("v1/Fortnite/get")]
         public IActionResult FortniteGet()
         {
+            Response.ContentType = "application/json";
             return Ok(new
             {
                 interactions = new List<object>()
             });
         }
 
+      
         ///api/v1/events/Fortnite/download/644812f9-5e5e-4fd4-a670-b306e5956fd9
         [HttpGet("v1/events/Fortnite/download/{accountId}")]
         public async Task<IActionResult> DownloadEndpoint(string accountId)
@@ -388,7 +411,7 @@ namespace FortBackend.src.App.Routes.API
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.Error(ex.Message);
             }
             return Ok(Array.Empty<string>());
         }

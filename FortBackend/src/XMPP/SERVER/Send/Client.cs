@@ -17,7 +17,6 @@ namespace FortBackend.src.App.SERVER.Send
             webSocket.Dispose();
         }
 
-
         public static async Task SendClientMessage(Clients client, XElement xElement)
         {
             try

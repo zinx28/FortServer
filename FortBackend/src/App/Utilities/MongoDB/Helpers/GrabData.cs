@@ -12,7 +12,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
         // gonna use cached data for this as it's the best way !
 
-        public static async Task<ProfileCacheEntry> ProfileDiscord(string DiscordId)
+        public static async Task<ProfileCacheEntry> ProfileDiscord(string DiscordId, string SearchKey = "DiscordId")
         {
 
             try
@@ -24,39 +24,13 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 }
                 if (GrabData.Value == null)
                 {
-                    var UserData = await Handlers.FindOne<User>("DiscordId", DiscordId);
+                    var UserData = await Handlers.FindOne<User>(SearchKey, DiscordId);
                     if (UserData != "Error")
                     {
                         User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
                         if (UserDataParsed != null)
                         {
-                            var AccountData = await Handlers.FindOne<Account>("accountId", UserDataParsed.AccountId);
-                            var AccStatsData = await Handlers.FindOne<StatsInfo>("accountId", UserDataParsed.AccountId);
-                            var FriendsData = await Handlers.FindOne<UserFriends>("accountId", UserDataParsed.AccountId);
-
-                            if (AccountData != "Error" && FriendsData != "Error")
-                            {
-                                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                                StatsInfo AccStatsDataParsed = JsonConvert.DeserializeObject<StatsInfo[]>(AccStatsData)![0];
-                                UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)![0];
-
-                                if (AccountDataParsed != null && UserDataParsed != null && FriendsDataParsed != null)
-                                {
-                                    ProfileCacheEntry ProfileCacheEntry = new ProfileCacheEntry
-                                    {
-                                        AccountId = UserDataParsed.AccountId,
-                                        AccountData = AccountDataParsed,
-                                        StatsData = AccStatsDataParsed,
-                                        UserData = UserDataParsed,
-                                        UserFriends = FriendsDataParsed,
-                                        LastUpdated = DateTime.Now,
-                                    };
-
-                                    CacheMiddleware.GlobalCacheProfiles.Add(UserDataParsed.AccountId, ProfileCacheEntry);
-
-                                    return ProfileCacheEntry;
-                                }
-                            }
+                            return await FindCache(UserDataParsed);
                         }
                     }
                     else
@@ -76,7 +50,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "GrabData");
+                Logger.Error(ex.Message, "GrabDataDiscord");
             }
 
             return new ProfileCacheEntry();
@@ -99,33 +73,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                         User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
                         if (UserDataParsed != null)
                         {
-                            var AccountData = await Handlers.FindOne<Account>("accountId", UserDataParsed.AccountId);
-                            var AccStatsData = await Handlers.FindOne<StatsInfo>("accountId", UserDataParsed.AccountId);
-                            var FriendsData = await Handlers.FindOne<UserFriends>("accountId", UserDataParsed.AccountId);
-
-                            if (AccountData != "Error" && FriendsData != "Error")
-                            {
-                                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                                StatsInfo AccStatsDataParsed = JsonConvert.DeserializeObject<StatsInfo[]>(AccStatsData)![0];
-                                UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)![0];
-
-                                if (AccountDataParsed != null && UserDataParsed != null && FriendsDataParsed != null)
-                                {
-                                    ProfileCacheEntry ProfileCacheEntry = new ProfileCacheEntry
-                                    {
-                                        AccountId = UserDataParsed.AccountId,
-                                        AccountData = AccountDataParsed,
-                                        StatsData = AccStatsDataParsed,
-                                        UserData = UserDataParsed,
-                                        UserFriends = FriendsDataParsed,
-                                        LastUpdated = DateTime.Now,
-                                    };
-
-                                    CacheMiddleware.GlobalCacheProfiles.Add(UserDataParsed.AccountId, ProfileCacheEntry);
-
-                                    return ProfileCacheEntry;
-                                }
-                            }
+                            return await FindCache(UserDataParsed);
                         }
                     }
                     else
@@ -145,7 +93,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "GrabData");
+                Logger.Error(ex.Message, "GrabDataEmail");
             }
 
             return new ProfileCacheEntry();
@@ -183,37 +131,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                                     return GrabData.Value;
                                 }
                             }
-                 
-                   
-                        
-                      
-                            var AccountData = await Handlers.FindOne<Account>("accountId", UserDataParsed.AccountId);
-                            var AccStatsData = await Handlers.FindOne<StatsInfo>("accountId", UserDataParsed.AccountId);
-                            var FriendsData = await Handlers.FindOne<UserFriends>("accountId", UserDataParsed.AccountId);
+                                
 
-                            if (AccountData != "Error" && FriendsData != "Error")
-                            {
-                                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                                StatsInfo AccStatsDataParsed = JsonConvert.DeserializeObject<StatsInfo[]>(AccStatsData)![0];
-                                UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)![0];
 
-                                if (AccountDataParsed != null && UserDataParsed != null && FriendsDataParsed != null)
-                                {
-                                    ProfileCacheEntry ProfileCacheEntry = new ProfileCacheEntry
-                                    {
-                                        AccountId = UserDataParsed.AccountId,
-                                        AccountData = AccountDataParsed,
-                                        StatsData = AccStatsDataParsed,
-                                        UserData = UserDataParsed,
-                                        UserFriends = FriendsDataParsed,
-                                        LastUpdated = DateTime.Now,
-                                    };
-                                    
-                                    CacheMiddleware.GlobalCacheProfiles.Add(UserDataParsed.AccountId, ProfileCacheEntry);
-
-                                    return ProfileCacheEntry;
-                                }
-                            }
+                            return await FindCache(UserDataParsed);
                         }
                     }else
                     {
@@ -232,12 +153,46 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "GrabData");
+                Logger.Error(ex.Message, "GrabDataProfile");
             }
            
             return new ProfileCacheEntry();
         }
 
-       
+
+        public static async Task<ProfileCacheEntry> FindCache(User UserDataParsed)
+        {
+
+
+            var AccountData = await Handlers.FindOne<Account>("accountId", UserDataParsed.AccountId);
+            var AccStatsData = await Handlers.FindOne<StatsInfo>("accountId", UserDataParsed.AccountId);
+            var FriendsData = await Handlers.FindOne<UserFriends>("accountId", UserDataParsed.AccountId);
+
+            if (AccountData != "Error" && FriendsData != "Error")
+            {
+                Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
+                StatsInfo AccStatsDataParsed = JsonConvert.DeserializeObject<StatsInfo[]>(AccStatsData)![0];
+                UserFriends FriendsDataParsed = JsonConvert.DeserializeObject<UserFriends[]>(FriendsData)![0];
+
+                if (AccountDataParsed != null && UserDataParsed != null && FriendsDataParsed != null)
+                {
+                    ProfileCacheEntry ProfileCacheEntry = new ProfileCacheEntry
+                    {
+                        AccountId = UserDataParsed.AccountId,
+                        AccountData = AccountDataParsed,
+                        StatsData = AccStatsDataParsed,
+                        UserData = UserDataParsed,
+                        UserFriends = FriendsDataParsed,
+                        LastUpdated = DateTime.Now,
+                    };
+
+                    CacheMiddleware.GlobalCacheProfiles.Add(UserDataParsed.AccountId, ProfileCacheEntry);
+
+                    return ProfileCacheEntry;
+                }
+            }
+
+            return new ProfileCacheEntry();
+        }
     }
 }

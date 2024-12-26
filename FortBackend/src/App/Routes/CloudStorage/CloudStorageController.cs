@@ -14,6 +14,8 @@ using FortLibrary.Encoders;
 using FortBackend.src.XMPP.Data;
 using FortBackend.src.App.Utilities.Saved;
 using FortBackend.src.App.Utilities.Constants;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortLibrary.Encoders.JWTCLASS;
 
 namespace FortBackend.src.App.Routes.CloudStorage
 {
@@ -89,6 +91,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
         }
 
         [HttpPut("user/{accountId}/{file}")]
+        [AuthorizeToken]
         public async Task<IActionResult> PutUserApi(string accountId, string file)
         {
             Response.ContentType = "application/octet-stream";
@@ -98,22 +101,9 @@ namespace FortBackend.src.App.Routes.CloudStorage
                 return StatusCode(403);
             }
 
-            var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
-            var token = tokenArray.Length > 1 ? tokenArray[1] : "";
-
-            var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
-            if(FoundAccount == null)
+            var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+            if (profileCacheEntry != null)
             {
-                FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
-                if(FoundAccount == null )
-                {
-                    FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
-                }
-            }
-
-            if (FoundAccount != null)
-            {
-                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
                 if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
                     using (StreamReader reader = new StreamReader(Request.Body, Encoding.Latin1))
@@ -131,54 +121,39 @@ namespace FortBackend.src.App.Routes.CloudStorage
         }
 
         [HttpGet("user/{accountId}")]
+        [AuthorizeToken]
         public async Task<IActionResult> IdUserApi(string accountId)
         {
             Response.ContentType = "application/json";
             try
             {
-                var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
-                var token = tokenArray.Length > 1 ? tokenArray[1] : "";
-
-                var FoundAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
-                if (FoundAccount == null)
+                var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
-                    FoundAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
-                    if (FoundAccount == null)
-                    {
-                        FoundAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
-                    }
-                }
+                    string filePath = IniManager.GrabIniFile($"ClientSettings-{profileCacheEntry.AccountId}.sav");
 
-                if (FoundAccount != null)
-                {
-                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FoundAccount.accountId);
-                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                    if (System.IO.File.Exists(filePath))
                     {
-                        string filePath = IniManager.GrabIniFile($"ClientSettings-{profileCacheEntry.AccountId}.sav");
+                        string fileContents = System.IO.File.ReadAllText(filePath);
+                        var fileInfo = new FileInfo(filePath);
 
-                        if (System.IO.File.Exists(filePath))
+                        return Ok(new[]
                         {
-                            string fileContents = System.IO.File.ReadAllText(filePath);
-                            var fileInfo = new FileInfo(filePath);
-
-                            return Ok(new[]
+                            new CloudstorageFile
                             {
-                                new CloudstorageFile
-                                {
-                                    uniqueFilename = $"ClientSettings.Sav",
-                                    filename = $"ClientSettings.Sav",
-                                    hash = Hex.MakeHexWithString(fileInfo.Name),
-                                    hash256 = Hex.MakeHexWithString(fileInfo.Name),
-                                    length = fileContents.Length,
-                                    contentType = "application/octet-stream",
-                                    uploaded = fileInfo.LastWriteTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    storageType = "S3",
-                                    storageIds = new { },
-                                    accountId = profileCacheEntry.AccountId,
-                                    doNotCache = false
-                                }
-                            });
-                        }
+                                uniqueFilename = $"ClientSettings.Sav",
+                                filename = $"ClientSettings.Sav",
+                                hash = Hex.MakeHexWithString(fileInfo.Name),
+                                hash256 = Hex.MakeHexWithString(fileInfo.Name),
+                                length = fileContents.Length,
+                                contentType = "application/octet-stream",
+                                uploaded = fileInfo.LastWriteTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                storageType = "S3",
+                                storageIds = new { },
+                                accountId = profileCacheEntry.AccountId,
+                                doNotCache = false
+                            }
+                        });
                     }
                 }
             }

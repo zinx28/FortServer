@@ -14,6 +14,7 @@ using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary;
 using FortBackend.src.XMPP.Data;
+using FortLibrary.Encoders.JWTCLASS;
 
 namespace FortBackend.src.App.Routes.Profile
 {
@@ -26,6 +27,7 @@ namespace FortBackend.src.App.Routes.Profile
         // [HttpPost("{accountId}/{wildcard}/ClientQuestLogin")] // temp 
         // [HttpPost("{accountId}/{wildcard}/QueryProfile")]
         [HttpPost("{accountId}/{wildcard}/{mcp}")]
+        [AuthorizeToken]
         public async Task<ActionResult<Mcp>> McpApi(string accountId, string wildcard, string mcp)
         {
             Response.ContentType = "application/json";
@@ -101,94 +103,63 @@ namespace FortBackend.src.App.Routes.Profile
                     }
                     else
                     {
-                        var tokenArray = Request.Headers["Authorization"].ToString().Split("bearer ");
-                        var token = tokenArray.Length > 1 ? tokenArray[1] : "";
+                        var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
 
-                        //bool FoundAccount = GlobalData.AccessToken.Any(e => e.token == token) ||
-                        //    GlobalData.ClientToken.Any(e => e.token == token) ||
-                        //    GlobalData.RefreshToken.Any(e => e.token == token);
-
-                        //if (FoundAccount)
-                        //{
-                            var FindAccount = GlobalData.AccessToken.FirstOrDefault(e => e.token == token);
-                            if(FindAccount == null)
+                        if (string.IsNullOrEmpty(tokenPayload?.Sec))
+                        {
+                            throw new BaseError
                             {
-                                FindAccount = GlobalData.RefreshToken.FirstOrDefault(e => e.token == token);
-                                if(FindAccount == null)
-                                {
-                                    FindAccount = GlobalData.ClientToken.FirstOrDefault(e => e.token == token);
+                                errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                                errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                                numericErrorCode = 1032,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                            };
+                        }
 
-                                    if (FindAccount == null)
-                                    {
-                                        throw new BaseError
-                                        {
-                                            errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
-                                            errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                                            messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
-                                            numericErrorCode = 1032,
-                                            originatingService = "any",
-                                            intent = "prod",
-                                            error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                                        };
-                                    }
-                                }
-                            }
+                        var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
 
-                            if (string.IsNullOrEmpty(FindAccount.accountId))
+                        if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.AccountId == accountId)
+                        {
+
+
+                            switch (mcp)
                             {
-                                throw new BaseError
-                                {
-                                    errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
-                                    errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                                    messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
-                                    numericErrorCode = 1032,
-                                    originatingService = "any",
-                                    intent = "prod",
-                                    error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                                };
-                            }
-                           
-                            ProfileCacheEntry profileCacheEntry = await GrabData.Profile(FindAccount.accountId);
-
-                            if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.AccountId == accountId)
-                            {
-
-
-                                switch (mcp)
-                                {
-                                    case "QueryProfile":
-                                        response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
-                                        break;
-                                    case "ClientQuestLogin":
-                                        response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
-                                        break;
-                                    case "SetCosmeticLockerSlot":
-                                        response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody)!);
-                                        break;
-                                    case "MarkNewQuestNotificationSent":
-                                        response = await MarkNewQuestNotificationSent.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
-                                        break;
-                                    case "MarkItemSeen":
-                                        response = await MarkItemSeen.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
-                                        break;
-                                    case "EquipBattleRoyaleCustomization":
-                                        response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);
-                                        break;
-                                    case "SetPartyAssistQuest":
-                                        response = await SetPartyAssistQuest.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetPartyAssistQuestResponse>(requestbody)!);
-                                        break;
-                                    case "SetBattleRoyaleBanner":
-                                        response = await SetBattleRoyaleBanner.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetBattleRoyaleBannerReq>(requestbody)!);
-                                        break;
-                                    case "PurchaseCatalogEntry":
-                                        response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody)!);
-                                        break;
-                                    case "RemoveGiftBox":
-                                        response = await RemoveGiftBox.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<RemoveGiftBoxReq>(requestbody)!);
-                                        break;
-                                    case "FortRerollDailyQuest":
-                                        response = await FortRerollDailyQuest.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<FortRerollDailyQuestReq>(requestbody)!);
+                                case "QueryProfile":
+                                    response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
+                                case "ClientQuestLogin":
+                                    response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
+                                    break;
+                                case "SetCosmeticLockerSlot":
+                                    response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody)!);
+                                    break;
+                                case "MarkNewQuestNotificationSent":
+                                    response = await MarkNewQuestNotificationSent.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
+                                    break;
+                                case "MarkItemSeen":
+                                    response = await MarkItemSeen.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
+                                    break;
+                                case "EquipBattleRoyaleCustomization":
+                                    response = await EquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<EquipBattleRoyaleCustomizationRequest>(requestbody)!);
+                                    break;
+                                case "SetPartyAssistQuest":
+                                    response = await SetPartyAssistQuest.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetPartyAssistQuestResponse>(requestbody)!);
+                                    break;
+                                case "SetBattleRoyaleBanner":
+                                    response = await SetBattleRoyaleBanner.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetBattleRoyaleBannerReq>(requestbody)!);
+                                    break;
+                                case "PurchaseCatalogEntry":
+                                    response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody)!);
+                                    break;
+                                case "RemoveGiftBox":
+                                    response = await RemoveGiftBox.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<RemoveGiftBoxReq>(requestbody)!);
+                                    break;
+                                case "FortRerollDailyQuest":
+                                    response = await FortRerollDailyQuest.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<FortRerollDailyQuestReq>(requestbody)!);
+                                break;
                                 case "UpdateQuestClientObjectives":
                                     response = await UpdateQuestClientObjectives.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<UpdateQuestClientObjectivesReq>(requestbody)!);
                                     break;
@@ -196,9 +167,9 @@ namespace FortBackend.src.App.Routes.Profile
                                         response = await BulkEquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<BulkEquipBattleRoyaleCustomizationResponse>(requestbody)!);
                                         break; 
                                     // not proper
-                                               //case "CopyCosmeticLoadout":
-                                               //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
-                                               //    break;
+                                                //case "CopyCosmeticLoadout":
+                                                //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
+                                                //    break;
                                     default:
 
                                         response = new Mcp
@@ -211,36 +182,23 @@ namespace FortBackend.src.App.Routes.Profile
                                             responseVersion = 1
                                         };
                                         break;
-                                }
-                            }else
-                            {
-                                throw new BaseError
-                                {
-                                    errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
-                                    errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                                    messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
-                                    numericErrorCode = 1032,
-                                    originatingService = "any",
-                                    intent = "prod",
-                                    error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                                };
                             }
+                        }
+                        else
+                        {
+                            throw new BaseError
+                            {
+                                errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                                errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                                messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
+                                numericErrorCode = 1032,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
+                            };
+                        }
 
-                            return response;
-                        //}
-                        //else
-                        //{
-                        //    throw new BaseError
-                        //    {
-                        //        errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
-                        //        errorMessage = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                        //        messageVars = new List<string> { $"/api/game/v2/profile/{accountId}/{wildcard}/{mcp}" },
-                        //        numericErrorCode = 1032,
-                        //        originatingService = "any",
-                        //        intent = "prod",
-                        //        error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
-                        //    };
-                        //}
+                        return response;
                     }
                 }
             }

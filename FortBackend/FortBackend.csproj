@@ -13,24 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\CSS\BootStrap.css" />
-    <None Remove="Resources\CSS\content.css" />
     <None Remove="Resources\Image\test.png" />
     <None Remove="Resources\Image\Trans_Boykisser.png" />
     <None Remove="Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk" />
     <None Remove="Resources\Ini\CloudDir\Chunks\D0325B15E575E1C3_78BFA09B41126FAE4621918D1446FBF7.chunk" />
     <None Remove="Resources\Ini\CloudDir\FortBackend.chunk" />
     <None Remove="Resources\Ini\CloudDir\Full.ini" />
-    <None Remove="Resources\JS\bootstrap.bundle.min.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\CSS\BootStrap.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CSS\content.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\Image\Trans_Boykisser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -44,9 +35,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Ini\CloudDir\Full.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\JS\bootstrap.bundle.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

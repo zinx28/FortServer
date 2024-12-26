@@ -1,0 +1,17 @@
+{
+  "name": "dashboard",
+  "scripts": {
+    "dev": "bun run --port 2222 --hot src/index.ts",
+    "build": "bun build src/index.ts --outdir build --minify"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "hono": "^4.6.9"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/ejs": "^3.1.5"
+  }
+}

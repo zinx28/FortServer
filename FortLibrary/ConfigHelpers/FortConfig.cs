@@ -31,6 +31,7 @@ namespace FortLibrary.ConfigHelpers
         public int AdminPort { get; set; } = 2134;
         public string MatchmakerIP { get; set; } = "127.0.0.1"; // Change if your hosting the matchmaker on a different ip
 
+        public string DashboardUrl { get; set; } = "http://127.0.0.1:2222"; // MAKE SURE THIS IS THE DASHBOARD FULL LINK (IF HOSTED ON DOMAIN THAT REDIRECTS THE PORT THEN DW ABOUT THE PORT YKYK)
         // -- XMPP -- //
         public int TCPXmppPort { get; set; } = 8443; // Tcp doesn't work.. i can't get it to connect on the vps with the cert
         public int XmppPort { get; set; } = 443; // 443 default ig
@@ -64,6 +65,7 @@ namespace FortLibrary.ConfigHelpers
         // - //
 
         public bool HTTPS { get; set; } = false;
+        public string CertKey { get; set; } = ""; // finally added it!!!!
 
         // - //
 

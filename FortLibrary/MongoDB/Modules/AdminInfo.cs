@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FortLibrary.Dynamics;
+using FortLibrary.Dynamics.Dashboard;
 
 namespace FortLibrary.MongoDB.Modules
 {

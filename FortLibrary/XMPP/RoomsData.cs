@@ -8,5 +8,6 @@
     public class MembersData
     {
         public string accountId { get; set; } = string.Empty;
+        public bool PartyLeader { get; set; } = false;
     }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title %></title>
+    <link
+      href="/public/css/BootStrap.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link href="/public/css/content.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="d-flex" style="height: 100%">
+      <%- navbar %>
+
+      <div class="flex-grow-1 p-3 text-white" style="margin-left: 280px">
+          <h1>Admin Panel</h1>
+
+          <%- NavItem %>
+
+          <div class="mt-4">
+            <%- NewsTab %>
+          </div>
+        
+          <%- NewsForm %>
+      </div>
+    </div>
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/addAccount.js"></script>
+
+    <% if(moderator) { %>
+      <script src="/public/js/editAccount.js"></script>
+    <% } %>
+    <script>
+      function populateModalClose() {
+        document.getElementById("editDiscordId").value = "";
+      }
+
+      function getAuthToken() {
+        var authToken = null;
+        document.cookie.split(";").forEach(function (cookie) {
+          var parts = cookie.trim().split("=");
+          if (parts[0] === "AuthToken") {
+            authToken = parts[1] ? decodeURIComponent(parts[1]) : "";
+            //l
+          }
+        });
+        return authToken;
+      }
+    </script>
+  </body>
+</html>

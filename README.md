@@ -33,10 +33,10 @@
 - 24/7 Shop (WIP) [!]
 - XMPP [!]
 - PartyV2 [-]
-- Friends [!]
+- Friends [+]
 - Matchmaker (WIP) [-]
 
-## Admin Panel (STILL WORK IN PROGRESS MAY HAVE ISSUES, OR LACK OF FEATURES)
+## Admin Panel (WIP)
 I've created an admin page to make it easier to manage JSON configs.
 
 ### About
@@ -48,6 +48,6 @@ I've created an admin page to make it easier to manage JSON configs.
 
 ### Setup and Login
 - Start the FortBackend application.
-- Access the login page [here](http://127.0.0.1:1111/admin/login) (right-click to copy the link).
+- Access the login page [here](http://127.0.0.1:2222/login) (right-click to copy the link).
 - Use the default email (Admin@gmail.com) and password (AdminPassword123).
 - Upon first login, you will be prompted to change your email and password. 

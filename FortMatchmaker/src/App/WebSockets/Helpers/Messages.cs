@@ -1,4 +1,5 @@
-﻿using System.Net.WebSockets;
+﻿using FortLibrary;
+using System.Net.WebSockets;
 using System.Text;
 
 namespace FortMatchmaker.src.App.WebSockets.Helpers
@@ -17,7 +18,7 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.Error(ex.Message);
                 webSocket.Dispose();
             }
         }

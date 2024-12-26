@@ -1,0 +1,6 @@
+# deps
+node_modules/
+bun.lockb
+*/dist/
+*/build/
+.evn

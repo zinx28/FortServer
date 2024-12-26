@@ -35,6 +35,17 @@ namespace FortBackend.src.App.Utilities
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("DynamicCORS", policy =>
+                {
+                    policy.WithOrigins("http://localhost:2222", Saved.Saved.DeserializeConfig.DashboardUrl)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+                });
+            });
+
             MongoDBStart.Initialize(services, Configuration); // better if this was a new MongoDBStart();
 
             services.AddSingleton<CacheMiddleware>();
@@ -58,9 +69,29 @@ namespace FortBackend.src.App.Utilities
                 app.UseMiddleware<LoggingMiddleware>();
             }
 
+            app.UseCors("DynamicCORS");
             app.UseRouting();
 
             Logger.Log("Loading all endpoints");
+
+            app.Use(async (context, next) =>
+            {
+                await next();
+
+                var response = context.Response;
+                if (response.StatusCode == (int)HttpStatusCode.MethodNotAllowed)
+                {
+                    response.ContentType = "application/json";
+                    await response.WriteAsJsonAsync(new
+                    {
+                        errorCode = "errors.com.epicgames.common.method_not_allowed",
+                        errorMessage = "Sorry the resource you were trying to access cannot be accessed with the HTTP method you used.",
+                        numericErrorCode = 1009,
+                        originatingService = "Fortnite",
+                        intent = "prod"
+                    });
+                }
+            });
 
             app.UseEndpoints(endpoints =>
             {
@@ -71,10 +102,7 @@ namespace FortBackend.src.App.Utilities
                     if (actionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
                     {
                         var controllerNamespace = controllerActionDescriptor.ControllerTypeInfo.Namespace;
-                        
-                        //if (controllerNamespace != null && controllerNamespace.Contains("App.Routes"))
-                        //{
-                            //Console.WriteLine(controllerNamespace);
+                       
                         var route = actionDescriptor.AttributeRouteInfo?.Template ?? actionDescriptor.RouteValues["action"];
                         var controller = actionDescriptor.RouteValues["controller"];
 
@@ -84,44 +112,38 @@ namespace FortBackend.src.App.Utilities
                         .SelectMany(attr => attr.HttpMethods)
                         .Distinct();
 
-                            Logger.Log($"/{route}", string.Join(",", HttpMethod));
+                        Logger.Log($"/{route}", string.Join(",", HttpMethod));
 
                         
-                            endpoints.MapControllerRoute(
-                                name: $"{controller}",
-                                pattern: $"/{route}",
-                                defaults: new { controller = controller }
-                            );
+                        endpoints.MapControllerRoute(
+                            name: $"{controller}",
+                            pattern: $"/{route}",
+                            defaults: new { controller = controller }
+                        );
 
 
-                            MappedNum += 1;
-
-                            //Logger.Log($"/{route}", "Mapped");
-                            //}
+                        MappedNum += 1;
                     }
                 }
 
                 Logger.Log($"Mapped {MappedNum}/{actionDescriptors.Count()}", "Mapped");
-
-
-                //endpoints.MapControllers();
             });
 
+         
 
             app.UseStatusCodePages(async (StatusCodeContext context) =>
             {
                 var response = context.HttpContext.Response;
                 Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}?{context.HttpContext.Request.Query}");
+               
                 if (context.HttpContext.Request.Path == "/")
                 {
-                    var responseObj = new
-                    {
-                        status = "OK"
-                    };
-                    var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
                     context.HttpContext.Request.ContentType = "application/json";
                     response.StatusCode = (int)HttpStatusCode.OK;
-                    await response.WriteAsync(jsonResponse);
+                    await response.WriteAsJsonAsync(new
+                    {
+                        status = "OK"
+                    });
                 }
                 if (response.StatusCode == (int)HttpStatusCode.NotFound)
                 {
@@ -129,14 +151,14 @@ namespace FortBackend.src.App.Utilities
                     {
                         errorCode = "errors.com.epicgames.common.not_found",
                         errorMessage = "Sorry the resource you were trying to find could not be found",
-                        numericErrorCode = 0,
+                        numericErrorCode = 1004,
                         originatingService = "Fortnite",
                         intent = "prod"
                     });
                 }
             });
 
-            await GrabAdminData.GrabAllAdmin(); // cache service needs to be alive for this to wrok!
+            await GrabAdminData.GrabAllAdmin(); // cache service needs to be alive for this to work!
 
             Logger.Log("Done Loading");
         }

@@ -1,0 +1,32 @@
+<h1>PLEASE RESTART THE BACKEND AFTER ANY CHANGE</h1>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Items.forEach(function(singleItem, index) { %>
+    <tr>
+      <td><%= singleItem.Key %></td>
+      <td><%= singleItem.Description %></td>
+      <td>
+        <button
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#editModal"
+          data-context="config"
+          data-item="<%= index %>"
+        >
+          Edit
+      </button>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+
+<script src="/public/js/Content/ConfigNewTab.js"></script>

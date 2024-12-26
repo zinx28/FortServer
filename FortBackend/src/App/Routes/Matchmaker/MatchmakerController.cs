@@ -12,6 +12,9 @@ using FortLibrary.Encoders;
 using FortLibrary.EpicResponses.Matchmaker;
 using FortLibrary.ConfigHelpers;
 using FortLibrary;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortLibrary.Encoders.JWTCLASS;
+using FortBackend.src.XMPP.Data;
 
 namespace FortBackend.src.App.Routes.Matchmaker
 {
@@ -57,7 +60,7 @@ namespace FortBackend.src.App.Routes.Matchmaker
                     }
                 }
 
-                var jsonObject = new Dictionary<string, object>();
+                MMTicket jsonObject = new MMTicket();
                 if (!string.IsNullOrEmpty(JsonContent)) {
                     List<Server> servers = JsonConvert.DeserializeObject<List<Server>>(JsonContent)!;
                     if (servers != null && servers.Count > 0)
@@ -66,49 +69,26 @@ namespace FortBackend.src.App.Routes.Matchmaker
 
                         if (filteredServers.Any())
                         {
-                            jsonObject = new Dictionary<string, object>
+                            jsonObject = new MMTicket
                             {
-                                { "id", sessionId },
-                                { "ownerId", Guid.NewGuid().ToString("N").ToUpper() },
-                                { "ownerName", filteredServers[0].Name },
-                                { "serverName", filteredServers[0].Name },
-                                { "serverAddress", filteredServers[0].Ip },
-                                { "serverPort", filteredServers[0].Port },
-                                { "maxPublicPlayers", filteredServers[0].MaxPlayers },
-                                { "openPublicPlayers", 100 },
-                                { "maxPrivatePlayers", 0 },
-                                { "openPrivatePlayers", 0 },
-                                { "attributes",  new Dictionary<string, object>
-                                    {
-                                        { "REGION_s", filteredServers[0].Region.ToUpper() },
-                                        { "GAMEMODE_s", "FORTATHENA" },
-                                        { "ALLOWBROADCASTING_b", true },
-                                        { "SUBREGION_s", "GB" },
-                                        { "DCID_s", "FORTNITE-LIVEEUGCEC1C2E30UBRCORE0A-49459394" },
-                                        { "tenant_s", "Fortnite" },
-                                        { "MATCHMAKINGPOOL_s", "Any" },
-                                        { "STORMSHIELDDEFENSETYPE_i" , 0 },
-                                        { "HOTFIXVERSION_i", 0 },
-                                        { "PLAYLISTNAME_s", filteredServers[0].Playlist },
-                                        { "SESSIONKEY_s", Guid.NewGuid().ToString("N").ToUpper() },
-                                        { "TENANT_s", "Fortnite" },
-                                        { "BEACONPORT_i", 15009 }
-                                    }
+                                SessionId = sessionId,
+                                OwnerId = Guid.NewGuid().ToString("N").ToUpper(),
+                                OwnerName = filteredServers[0].Name,
+                                ServerName = filteredServers[0].Name,
+                                ServerAddress = filteredServers[0].Ip,
+                                ServerPort = filteredServers[0].Port,
+                                MaxPublicPlayers = filteredServers[0].MaxPlayers,
+                                Attributes = new MMTicketAttributes
+                                {
+                                    Region = filteredServers[0].Region,
+                                    PlaylistName = filteredServers[0].Playlist,
+                                    SessionKey = Guid.NewGuid().ToString("N").ToUpper()
                                 },
-                                { "publicPlayers", Array.Empty<string>() },
-                                { "privatePlayers", Array.Empty<string>() },
-                                { "totalPlayers", filteredServers[0].Current },
-                                { "allowJoinInProgress", filteredServers[0].JoinAble },
-                                { "shouldAdvertise", false },
-                                { "isDedicated", false },
-                                { "usesStats", false },
-                                { "allowInvites", filteredServers[0].JoinAble },
-                                { "usesPresence", false },
-                                { "allowJoinViaPresence", true },
-                                { "allowJoinViaPresenceFriendsOnly", false },
-                                { "buildUniqueId", Request.Cookies["buildUniqueId"] ?? "0" },
-                                { "lastUpdate", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                { "started", false }
+                                TotalPlayers = filteredServers[0].Current,
+                                AllowJoinInProgress = filteredServers[0].JoinAble,
+                                AllowInvites = filteredServers[0].JoinAble,
+                                BuildUniqueId = Request.Cookies["buildUniqueId"] ?? "0",
+                                LastUpdated = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                             };
                         }
                     }
@@ -117,60 +97,22 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 {
                     if (config.CustomMatchmaker)
                     {
-                        jsonObject = new Dictionary<string, object>
+                        jsonObject = new MMTicket
                         {
-                            { "id", sessionId },
-                            { "ownerId", Guid.NewGuid().ToString("N").ToUpper() },
-                            { "ownerName", "FortBackend" },
-                            { "serverName", "FortBackend" },
-                            { "serverAddress", config.GameServerIP },
-                            { "serverPort", config.GameServerPort },
-                            { "maxPublicPlayers", 100 },
-                            { "openPublicPlayers", 100 },
-                            { "maxPrivatePlayers", 0 },
-                            { "openPrivatePlayers", 0 },
-                            { "attributes",  new Dictionary<string, object>
-                                {
-                                    { "REGION_s", "EU" },
-                                    { "GAMEMODE_s", "FORTATHENA" },
-                                    { "ALLOWBROADCASTING_b", true },
-                                    { "SUBREGION_s", "GB" },
-                                    { "DCID_s", "FORTNITE-LIVEEUGCEC1C2E30UBRCORE0A-49459394" },
-                                    { "tenant_s", "Fortnite" },
-                                    { "MATCHMAKINGPOOL_s", "Any" },
-                                    { "STORMSHIELDDEFENSETYPE_i" , 0 },
-                                    { "HOTFIXVERSION_i", 0 },
-                                    { "PLAYLISTNAME_s", "Playlist_DefaultSolo" },
-                                    { "SESSIONKEY_s", Guid.NewGuid().ToString("N").ToUpper() },
-                                    { "TENANT_s", "Fortnite" },
-                                    { "BEACONPORT_i", 15009 }
-                                }
+                            SessionId = sessionId,
+                            OwnerId = Guid.NewGuid().ToString("N").ToUpper(),
+                            ServerAddress = config.GameServerIP,
+                            ServerPort = config.GameServerPort,
+                            MaxPublicPlayers = 100,
+                            Attributes = new MMTicketAttributes
+                            {
+                                SessionKey = Guid.NewGuid().ToString("N").ToUpper()
                             },
-                            { "publicPlayers", Array.Empty<string>() },
-                            { "privatePlayers", Array.Empty<string>() },
-                            { "totalPlayers", 69 },
-                            { "allowJoinInProgress", false },
-                            { "shouldAdvertise", false },
-                            { "isDedicated", false },
-                            { "usesStats", false },
-                            { "allowInvites", false  },
-                            { "usesPresence", false },
-                            { "allowJoinViaPresence", true },
-                            { "allowJoinViaPresenceFriendsOnly", false },
-                            { "buildUniqueId", Request.Cookies["buildUniqueId"] ?? "0" },
-                            { "lastUpdate", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                            { "started", false }
+                            BuildUniqueId = Request.Cookies["buildUniqueId"] ?? "0",
+                            LastUpdated = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                         };
-
-                        Console.WriteLine("THIS");
                     }
                 }
-
-             
-               
-
-
-
                 string json = System.Text.Json.JsonSerializer.Serialize(jsonObject, new JsonSerializerOptions
                 {
                     WriteIndented = true
@@ -180,71 +122,57 @@ namespace FortBackend.src.App.Routes.Matchmaker
             }
             catch (Exception ex)
             {
-                Console.Write("TEST " + ex.Message);
+                Logger.Error(ex.Message);
             }
             return Ok(new { });
         }
 
         [HttpPost("matchmaking/session")]
-        public async Task<IActionResult> Realsession()
+        [AuthorizeToken]
+        public async Task<IActionResult> CreateSession()
         {
             Response.ContentType = "application/json";
             try
             {
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                string[] tokenParts = decodedToken.ToString().Split('.');
-
-                if (tokenParts.Length == 2)
+                var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                if (profileCacheEntry != null)
                 {
-                    var payloadJson = tokenParts[1];
-                    if (string.IsNullOrEmpty(payloadJson))
+                    var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+
+
+                    var displayName = tokenPayload?.Dn;
+                    var AccountId = tokenPayload?.Sub;
+                    var clientId = tokenPayload?.Clid;
+
+                    Console.WriteLine(clientId);
+
+
+                    if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
                     {
-                        dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
-                        Console.WriteLine(payload);
-                        if (payload == null)
+                        if (profileCacheEntry.AccountData.ToString()!.Contains(HttpContext.Items["Token"] as string)!)
                         {
-                            return BadRequest(new { });
-                        }
-
-                        var displayName = payload.dn;
-                        var AccountId = payload.sub;
-                        var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
-
-                        var AccountData = await Handlers.FindOne<Account>("accountId", AccountId);
-                        var UserData = await Handlers.FindOne<User>("accountId", AccountId);
-
-                        if (AccountData != "Error" && UserData != "Error")
-                        {
-                            Account AccountDataParsed = JsonConvert.DeserializeObject<Account[]>(AccountData)![0];
-                            User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];
-
-                            if (AccountDataParsed != null && UserDataParsed != null)
+                            if (profileCacheEntry.UserData.banned)
                             {
-                                if (AccountDataParsed != null && AccountData.ToString().Contains(accessToken))
-                                {
-                                    if (UserDataParsed.banned)
-                                    {
-                                        return Ok(new { });
-                                    }
-                                }
+                                return Ok(new { });
                             }
                         }
                     }
+                    
+
                 }
+                
                 return Ok(new { });
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Newest Api No way " + ex.Message);
-                return Ok(new { });
+                Logger.Error(ex.Message, "CreateSession");
             }
+
+            return Ok(new { });
         }
 
         [HttpGet("game/v2/matchmakingservice/ticket/player/{accountId}")]
+        [AuthorizeToken]
         public async Task<IActionResult> MatchmakeTicket(string accountId, [FromQuery] string bucketId)
         {
             Response.ContentType = "application/json";
@@ -253,107 +181,80 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 FortConfig config = Saved.DeserializeConfig;
                 CachedDataClass BackendCachedData = Saved.BackendCachedData;
 
-                var token = Request.Headers["Authorization"].ToString().Split("bearer ")[1];
-                var accessToken = token.Replace("eg1~", "");
-
-                var handler = new JwtSecurityTokenHandler();
-                var decodedToken = handler.ReadJwtToken(accessToken);
-                string[] tokenParts = decodedToken.ToString().Split('.');
-
-                if (tokenParts.Length == 2)
+                var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+               
+                if (profileCacheEntry != null)
                 {
-                    var payloadJson = tokenParts[1];
-                    if (!string.IsNullOrEmpty(payloadJson))
+                    var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
+
+                    var displayName = tokenPayload?.Dn;
+                    var AccountId = tokenPayload?.Sub;
+                    var clientId = tokenPayload?.Clid;
+
+                    if (string.IsNullOrEmpty(AccountId))
                     {
-                        dynamic payload = JsonConvert.DeserializeObject(payloadJson)!;
+                        Logger.Error("ACCOUNT ID IS NULL AND WILL NOT GO THROUGH WITH THE REUQEST", "MATCHMKAER");
+                        return BadRequest(new { });
+                    }
 
-                        if (payload == null)
+                    if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
+                    {
+                        if (profileCacheEntry.UserData.banned)
                         {
-                            return BadRequest(new { });
-                        }
-
-                        var displayName = payload.dn;
-                        var AccountId = payload.sub;
-                        var clientId = decodedToken.Claims.FirstOrDefault(claim => claim.Type == "clid")?.Value;
-
-                        if (string.IsNullOrEmpty(AccountId.ToString()))
-                        {
-                            Logger.Error("ACCOUNT ID IS NULL AND WILL NOT GO THROUGH WITH THE REUQEST", "MATCHMKAER");
-                            return BadRequest(new { });
+                            return Ok(new { });
                         }
 
 
-                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(AccountId.ToString());
-                        if (profileCacheEntry != null && profileCacheEntry.UserData != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                        CookieOptions cookieOptions = new CookieOptions
                         {
-                            if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
-                            {
-                                //if (AccountData.ToString().Contains(accessToken))
-                               // {
-                                    if (profileCacheEntry.UserData.banned)
-                                    {
-                                        return Ok(new { });
-                                    }
-                                //}
-                            }
-                            
+                        };
 
-                            CookieOptions cookieOptions = new CookieOptions
-                            {
-                            };
-
-                            if (string.IsNullOrEmpty(bucketId) || !bucketId.GetType().Equals(typeof(string)))
-                            {
-                                return BadRequest();
-                            }
-
-                            string[] bucketIdParts = bucketId.Split(':');
-                            if (bucketIdParts.Length != 4)
-                            {
-                                return BadRequest();
-                            }
-
-                            string region = bucketIdParts[2];
-                            string playlist = bucketIdParts[3];
-                            string BuildId = bucketIdParts[0];
-                            var customcode = "";
-
-                            try { customcode = HttpContext.Request.Query["player.option.customKey"]; } catch { }
-
-                            Response.Cookies.Append("buildUniqueId", BuildId, cookieOptions);
-
-                            var jsonObject = new MatchmakerTicket
-                            {
-                                accountId = accountId,
-                                BuildId = BuildId,
-                                Playlist = playlist,
-                                Region = region,
-                                CustomKey = customcode ?? "NONE",
-                                AccessToken = profileCacheEntry.UserData.accesstoken,
-                                Priority = false,
-                                timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                            };
-
-                            string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
-                            string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
-                            string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
-
-                            Console.WriteLine(new
-                            {
-                                serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
-                                ticketType = "mms-player",
-                                payload = "account",
-                                signature = encryptedData
-                            }); // remove please
-
-                            return Ok(new
-                            {
-                                serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
-                                ticketType = "mms-player",
-                                payload = "account",
-                                signature = encryptedData
-                            });
+                        if (string.IsNullOrEmpty(bucketId) || !bucketId.GetType().Equals(typeof(string)))
+                        {
+                            return BadRequest();
                         }
+
+                        string[] bucketIdParts = bucketId.Split(':');
+                        if (bucketIdParts.Length != 4)
+                        {
+                            return BadRequest();
+                        }
+
+                        string region = bucketIdParts[2];
+                        string playlist = bucketIdParts[3];
+                        string BuildId = bucketIdParts[0];
+                        var customcode = "";
+
+                        try { customcode = HttpContext.Request.Query["player.option.customKey"]; } catch { }
+
+                        Response.Cookies.Append("buildUniqueId", BuildId, cookieOptions);
+
+                        //var test = GlobalData.Rooms.FirstOrDefault(e => e.Value.members.Find(e => e.accountId == accountId)).Value;
+
+                        var jsonObject = new MatchmakerTicket
+                        {
+                            accountId = accountId,
+                            BuildId = BuildId,
+                            Playlist = playlist,
+                            Region = region,
+                            CustomKey = customcode ?? "NONE",
+                            AccessToken = profileCacheEntry.UserData.accesstoken,
+                            Priority = false,
+                            timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                        };
+
+                        string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
+                        string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
+                        string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
+
+
+                        return Ok(new
+                        {
+                            serviceUrl = $"{WssConnection}{config.MatchmakerIP}:{config.MatchmakerPort}",
+                            ticketType = "mms-player",
+                            payload = "account",
+                            signature = encryptedData
+                        });
                     }
                 }
 
@@ -362,8 +263,9 @@ namespace FortBackend.src.App.Routes.Matchmaker
             catch (Exception ex)
             {
                 Logger.Error($"ERROR IN MATCHMAKER!!! -> {ex.Message}", "MATCHMAKER");
-                return Ok(new { });
             }
+
+            return Ok(new { });
         }
 
         [HttpGet("game/v2/matchmaking/account/{accountId}/session/{sessionId}")]
@@ -381,7 +283,6 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 sessionId,
                 key = "none"
             });
-
         }
 
         [HttpPost("matchmaking/session/{sessionId}/join")]
@@ -399,6 +300,12 @@ namespace FortBackend.src.App.Routes.Matchmaker
             //}
 
          //   return StatusCode(403);
+        }
+
+        [HttpPost("matchmaking/session/{sessionId}/players")]
+        public IActionResult SessionPlayers(string sessionId)
+        {
+            return StatusCode(204);
         }
     }
 }

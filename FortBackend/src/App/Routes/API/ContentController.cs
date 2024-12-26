@@ -10,6 +10,7 @@ using ZstdSharp.Unsafe;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Helpers.Cached;
+using FortLibrary;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -60,19 +61,25 @@ namespace FortBackend.src.App.Routes.API
                     ContentJsonResponse = NewsManager.ContentJsonResponse.FirstOrDefault(e => e.Key == "en").Value;
                 }
 
+                string LobbyBackground = $"season{season}";
+                if (season == "2")
+                {
+                    LobbyBackground = "LobbyWinterDecor";
+                }
+
                 ContentJsonResponse.dynamicbackgrounds = new DynamicBackground()
                 {
                     backgrounds = new DynamicBackgrounds()
                     {
                         backgrounds = new List<DynamicBackgroundList>
+                        {
+                            new DynamicBackgroundList
                             {
-                                new DynamicBackgroundList
-                                {
-                                    stage = $"season{season}",
-                                    _type = "DynamicBackground",
-                                    key = "lobby"
-                                }
+                                stage = LobbyBackground,
+                                _type = "DynamicBackground",
+                                key = "lobby"
                             }
+                        }
 
                     }
                 };
@@ -98,10 +105,9 @@ namespace FortBackend.src.App.Routes.API
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return Ok(new { });
+                Logger.Error(ex.Message);
             }
-
+            return Ok(new { });
         }
     }
 }

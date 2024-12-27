@@ -8,12 +8,22 @@ namespace FortLibrary
 {
     public static class Logger
     {
-        private static StreamWriter writer;
+        private static StreamWriter? writer;
 
         static Logger()
         {
-            InitializeLogger();
+            try
+            {
+                InitializeLogger();
+                if (writer == null)
+                    throw new InvalidOperationException("Logger StreamWriter is not initialized.");
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Logger failed to initialize: {ex.Message}");
+            }
         }
+
 
         private static void InitializeLogger()
         {

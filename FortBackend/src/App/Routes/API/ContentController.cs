@@ -109,5 +109,45 @@ namespace FortBackend.src.App.Routes.API
             }
             return Ok(new { });
         }
+
+
+        // not added the stupid cachcing to this
+        [HttpPost("/api/v1/fortnite-br/surfaces/motd/target")]
+        public async Task<ActionResult<ContentJson>> MOTDTARGET()
+        {
+
+            try
+            {
+                var userAgent = Request.Headers["User-Agent"].ToString();
+                var AcceptLanguage = Request.Headers["Accept-Language"].ToString();
+
+                if (string.IsNullOrEmpty(AcceptLanguage))
+                {
+                    AcceptLanguage = "en"; // weird
+                }
+
+                var ContentJsonResponse = new motdTarget();
+                if (NewsManager.MotdJsonResponse.TryGetValue(AcceptLanguage, out motdTarget Test))
+                {
+                    ContentJsonResponse = Test;
+                }
+                else
+                {
+                    ContentJsonResponse = NewsManager.MotdJsonResponse.FirstOrDefault(e => e.Key == "en").Value;
+                }
+
+                var jsonResponse = JsonConvert.SerializeObject(ContentJsonResponse, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+                return Content(jsonResponse, "application/json");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "MOTDTARGET");
+            }
+            return Ok(new { });
+        }
     }
 }

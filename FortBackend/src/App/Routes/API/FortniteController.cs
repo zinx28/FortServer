@@ -13,6 +13,11 @@ namespace FortBackend.src.App.Routes.API
     [Route("fortnite/api")]
     public class FortniteApiController : ControllerBase
     {
+        [HttpPost("game/v2/profileToken/verify/{accountId}")]
+        public IActionResult VerifyProfileToken(string accountId)
+        {
+            return StatusCode(204);
+        }
         //fortnite/api/game/v2/grant_access
         [HttpPost("game/v2/grant_access/{accountId}")]
         public IActionResult GrantAccess(string accountId)
@@ -46,7 +51,7 @@ namespace FortBackend.src.App.Routes.API
             return Ok(new List<object>()
             {
                 new
-                { 
+                {
                     codeId = "RANDOM",
                     codeType= "CodeToken:mobileinvite",
                     dateCreated = "2018-03-27T16:54:41.385Z"
@@ -184,7 +189,7 @@ namespace FortBackend.src.App.Routes.API
         [HttpPost("feedback/{random}")]
         public IActionResult PostBug()
         {
-            return Ok(new {});
+            return Ok(new { });
         }
     }
 }

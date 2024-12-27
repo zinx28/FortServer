@@ -35,15 +35,24 @@ Once you have installed all the necessary components:
 
 This will build the project for you. And you're all set!
 
+## Step 5: Install Dashboard (OPTIONAL)
+
+1. you need download [Bun](https://bun.sh/)
+2. then run `run.bat` from "FortDashboard"
+3. i recommend using `127.0.0.1:port` instead of `localhost:port`
+
 ## More Info
+
 ### Launch in Https (if https causes issues then create a issue)
+
 - First go to the built location
-- Then go to FortBackend/Resources/Config.json 
+- Then go to FortBackend/Resources/Config.json
 - Change HTTPS from false to true
 - After, go to [FortBackend/resources/certificates](https://github.com/zinx28/FortBackend/tree/main/FortBackend/Resources/Certificates)
 - Remove .temp from the file then replace it with your .pfx (If you have cert and the key just look up how to make it a pfx)
 
 ### Custom Matchmaker Setup
+
 - In the `config.json` file, set `MatchmakerIP` to your Matchmaker IP, with `"127.0.0.1"` as the default value.
 - Set `MatchmakerPort` to your matchmaker port.
 - Set `CustomMatchmaker` to `true` to enable the custom matchmaker.
@@ -54,9 +63,11 @@ This will build the project for you. And you're all set!
 
 1. Open the [Discord Developer Portal](https://discord.com/developers/applications) and navigate to the **OAuth2** tab.
 2. In the **Redirects** section, add a new redirect URL:
+
    - Use `http://127.0.0.1:1111/launcher/api/v1/callback` as the redirect (port `1111` is the default for the backend).
 
 3. Scroll down to the **OAuth2 URL Generator**:
+
    - Check these scopes: `Identity`, `email`, and `guilds`.
    - Select the redirect URL you just added.
 

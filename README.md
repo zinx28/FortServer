@@ -7,6 +7,7 @@
 ## FortBackend is a Universal Fortnite Private Server written in C#.
 
 ## About
+- Discord server [here](https://discord.gg/8kCu6PDvPd)
 - Supports HTTP and HTTPS!
 - Support Seasons 3 to 15 (~ season shop for season 1)
 - 1:1 Quests (currently some seasons support less / or just not at all)
@@ -50,3 +51,4 @@ I've created an admin page to make it easier to manage JSON configs.
 - Access the login page [here](http://127.0.0.1:2222/login) (right-click to copy the link).
 - Use the default email (Admin@gmail.com) and password (AdminPassword123).
 - Upon first login, you will be prompted to change your email and password. 
+

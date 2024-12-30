@@ -25,7 +25,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
     {
         // this api doesnt need auth well it sends a auth but not the one we need :)
         [HttpGet("system")]
-        public async Task<IActionResult> SystemApi()
+        public IActionResult CloudStorageSystem()
         {
             Response.ContentType = "application/json";
             List<object> files = new List<object>();
@@ -35,20 +35,20 @@ namespace FortBackend.src.App.Routes.CloudStorage
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "Cloudstorage | SystemApi");
+                Logger.Error(ex.Message, "CloudStorageSystem");
             }
 
             return new JsonResult(files);
         }
 
         [HttpGet("system/config")]
-        public IActionResult SytemConfigApi()
+        public IActionResult CloudStorageConfig()
         {
             return Ok(new { });
         }
 
         [HttpGet("system/{filename}")]
-        public async Task<IActionResult> SystemFileApi(string filename)
+        public IActionResult CloudStorageSystemFile(string filename)
         {
             Response.ContentType = "application/octet-stream";
             try
@@ -65,11 +65,11 @@ namespace FortBackend.src.App.Routes.CloudStorage
                     return NotFound();
                 }
 
-                return Content(IniManagerFile, "application/octet-stream"); // why was this text plain ;(
+                return Content(IniManagerFile, "application/octet-stream"); 
             }
             catch (Exception ex)
             {
-                Logger.Error("CloudStorage FileName -> " + ex.Message);
+                Logger.Error(ex.Message, "CloudStorageSystemFile");
             }
             return StatusCode(500);
         }
@@ -92,37 +92,41 @@ namespace FortBackend.src.App.Routes.CloudStorage
 
         [HttpPut("user/{accountId}/{file}")]
         [AuthorizeToken]
-        public async Task<IActionResult> PutUserApi(string accountId, string file)
+        public async Task<IActionResult> PutClouudStorageUser(string accountId, string file)
         {
             Response.ContentType = "application/octet-stream";
-            if (Request.ContentLength.HasValue && Request.ContentLength.Value >= 400000)
-            {
-                Console.WriteLine("TOO BIG!");
-                return StatusCode(403);
-            }
 
-            var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
-            if (profileCacheEntry != null)
-            {
-                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+            try {
+                if (Request.ContentLength.HasValue && Request.ContentLength.Value >= 400000)
+                    return StatusCode(403);
+
+                var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+                if (profileCacheEntry != null)
                 {
-                    using (StreamReader reader = new StreamReader(Request.Body, Encoding.Latin1))
+                    if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
-                        string requestBody = await reader.ReadToEndAsync();
+                        using (StreamReader reader = new StreamReader(Request.Body, Encoding.Latin1))
+                        {
+                            string requestBody = await reader.ReadToEndAsync();
 
-                        System.IO.File.WriteAllText(PathConstants.CloudSettings($"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
-                        StatusCode(204);
+                            System.IO.File.WriteAllText(PathConstants.CloudSettings($"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
+                            StatusCode(204);
 
-                        reader.Close();
+                            reader.Close();
+                        }
                     }
                 }
+
+            } 
+            catch (Exception ex)  { 
+                Logger.Error(ex.Message, "PutClouudStorageUser"); 
             }
             return NoContent();
         }
 
         [HttpGet("user/{accountId}")]
         [AuthorizeToken]
-        public async Task<IActionResult> IdUserApi(string accountId)
+        public async Task<IActionResult> GetCloudStorageUserData(string accountId)
         {
             Response.ContentType = "application/json";
             try
@@ -134,7 +138,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
 
                     if (System.IO.File.Exists(filePath))
                     {
-                        string fileContents = System.IO.File.ReadAllText(filePath);
+                        string fileContents = await System.IO.File.ReadAllTextAsync(filePath);
                         var fileInfo = new FileInfo(filePath);
 
                         return Ok(new[]
@@ -159,8 +163,9 @@ namespace FortBackend.src.App.Routes.CloudStorage
             }
             catch (Exception ex)
             {
-                Logger.Error("IdUserApi " + ex.Message);
+                Logger.Error(ex.Message, "GetCloudStorageUserData");
             }
+
             return Ok(new object[] { });
         }
     }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shapes;
 
 namespace FortLauncher.Services.Utils.Launch
 {
@@ -71,10 +72,51 @@ namespace FortLauncher.Services.Utils.Launch
                        // Loggers.Log(FortniteDetect.Init(config.VersionID));
                         if (float.Parse(FortniteDetect.Init(config.VersionID).Split('.')[0]) > 15)
                         {
-                            MessageBox.Show("Attemping to launch.. mostly unsupported");
+                            
+                            if (File.Exists(System.IO.Path.Combine(config.buildPath, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping_EAC_EOS.exe"))) 
+                            {
+                                MessageBox.Show("WONT WORK");
+                                PSBasics.Start(config.buildPath, "-obfuscationid=TgUPsnbBaa5S1RTN7Ueu0BOtakEY_w -EpicPortal -epicapp=Fortnite -epiclocale=en -epicsandboxid=fn -epicenv=Prod -epicportal -noeac -noeaceos -fromfl=be -fltoken=h1cdhchd10150221h130eB56 -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiOWM1MDY1MTEwYzdhNGQ3MDk1ODYyZGE1ZWU4MTU5NjIiLCJnZW5lcmF0ZWQiOjE3MTQ2MDQzOTgsImNhbGRlcmFHdWlkIjoiZWQ3NGZhNWMtZmNmYy00YWM1LWJlMTktZmY1ODQ1MDI0MzU0IiwiYWNQcm92aWRlciI6IkJhdHRsRXllIiwibm90ZXMiOiIiLCJwcmUiOmZhbHNlLCJmYWxsYmFjayI6ZmFsc2V9.YCfBeSzOKM6vMZpe7SXiOxlTdnbFd2Ve2WQv8SAUDHnaDDpSvmZhQKIsjHFNAIYL5t65Pl7zb2yVDVspE6pQ-g  ", "unused", UserData.Token);
+                                FakeAC.Start(config.buildPath, "FortniteClient-Win64-Shipping_EAC_EOS.exe", $"");
+                            } 
+                            else
+                            {
+                                //MessageBox.Show(FortniteDetect.Init(config.VersionID));
+                                string[] FortniteVersionConv = FortniteDetect.Init(config.VersionID).Split('.');
+                                float TempVal = float.Parse(FortniteVersionConv[0]);
+                             
+                                if (TempVal > 15 && TempVal <= 18)
+                                {
+                                    string fltoken = "3db3ba5dcbd2e16703f3978d";
+                                    var fltokensDictionary = new Dictionary<string, string>
+                                    {
+                                        // pretty sure it's normally with eac
+                                        { "16.00", "5dh74c635862g575778132fb " }, // i checked this
+                                        { "16.10", "b234a7cc879f663d845c54f9" }, // these are prob wrong
+                                        { "16.20", "c98d8b7a7239f78e234a9abc" },
+                                        { "16.30", "f45a67dd982a77b9538d1e4f" },
+                                        { "16.40", "a12b789c45f67e8912d3c4ff" }
+                                    };
 
-                            PSBasics.Start(config.buildPath, "-obfuscationid=TgUPsnbBaa5S1RTN7Ueu0BOtakEY_w -EpicPortal -epicapp=Fortnite -epiclocale=en -epicsandboxid=fn -epicenv=Prod -epicportal -noeac -noeaceos -fromfl=be -fltoken=h1cdhchd10150221h130eB56 -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiOWM1MDY1MTEwYzdhNGQ3MDk1ODYyZGE1ZWU4MTU5NjIiLCJnZW5lcmF0ZWQiOjE3MTQ2MDQzOTgsImNhbGRlcmFHdWlkIjoiZWQ3NGZhNWMtZmNmYy00YWM1LWJlMTktZmY1ODQ1MDI0MzU0IiwiYWNQcm92aWRlciI6IkJhdHRsRXllIiwibm90ZXMiOiIiLCJwcmUiOmZhbHNlLCJmYWxsYmFjayI6ZmFsc2V9.YCfBeSzOKM6vMZpe7SXiOxlTdnbFd2Ve2WQv8SAUDHnaDDpSvmZhQKIsjHFNAIYL5t65Pl7zb2yVDVspE6pQ-g  ", "unused", UserData.Token);
-                            FakeAC.Start(config.buildPath, "FortniteClient-Win64-Shipping_EAC_EOS.exe", $"");
+                                    if(fltokensDictionary.TryGetValue($"{FortniteVersionConv[0]}.{FortniteVersionConv[1]}", out string ?sigma)) {
+                                        if(!string.IsNullOrEmpty(sigma))
+                                        {
+                                            fltoken = sigma;
+                                        }
+                                    }
+
+                                    PSBasics.Start(config.buildPath, $"-obfuscationid=PM3G4r-oF6DIG-fbJUON8rECU73FWA -epicapp=Fortnite -epicenv=Prod -EpicPortal -epiclocale=en -epicsandboxid=fn -noeac -fromfl=be  -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiOWM1MDY1MTEwYzdhNGQ3MDk1ODYyZGE1ZWU4MTU5NjIiLCJnZW5lcmF0ZWQiOjE3MTQ2MDQzOTgsImNhbGRlcmFHdWlkIjoiZWQ3NGZhNWMtZmNmYy00YWM1LWJlMTktZmY1ODQ1MDI0MzU0IiwiYWNQcm92aWRlciI6IkJhdHRsRXllIiwibm90ZXMiOiIiLCJwcmUiOmZhbHNlLCJmYWxsYmFjayI6ZmFsc2V9.YCfBeSzOKM6vMZpe7SXiOxlTdnbFd2Ve2WQv8SAUDHnaDDpSvmZhQKIsjHFNAIYL5t65Pl7zb2yVDVspE6pQ-g -fltoken={fltoken} -skippatchcheck ", "unused", UserData.Token);
+                                    FakeAC.Start(config.buildPath, "FortniteClient-Win64-Shipping_BE.exe", $"");
+                                }
+                                else
+                                {
+                                    //ha1241h5000711f71a46e4c1 = 18.30
+                                    MessageBox.Show("UNSUPPORTED");
+                                   // PSBasics.Start(config.buildPath, "-obfuscationid=PM3G4r-oF6DIG-fbJUON8rECU73FWA -epicapp=Fortnite -epicenv=Prod -EpicPortal -epiclocale=en -epicsandboxid=fn -nobe -fromfl=eac -caldera=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoicGVuaXMiLCJnZW5lcmF0ZWQiOjE3MzMxODU4MDIsImNhbGRlcmFHVUlEIjoiZjEwMTkwYzgtOTQ5Yi00YjBiLTg0MzUtOWZiYmNmOTkwNzFiIiwiYWNQcm92aWRlciI6IkVhc3lBbnRpQ2hlYXQiLCJub3RlcyI6IiIsInByZSI6ZmFsc2UsImZhbGxiYWNrIjpmYWxzZX0.yu8ITJKeqw9SgX8pwS73AkXrBjKRDmzEB6Wacenahzg -fltoken=77b9908d91e7aa96c6bd6814 -skippatchcheck ", "unused", UserData.Token);
+                                    //FakeAC.Start(config.buildPath, "FortniteClient-Win64-Shipping_BE.exe", $"");
+                                }
+                                  
+                            }
                             FakeAC.Start(config.buildPath, "FortniteLauncher.exe", $"", true);
                         }
                         else

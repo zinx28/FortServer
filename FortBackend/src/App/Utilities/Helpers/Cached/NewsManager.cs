@@ -10,11 +10,12 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 {
     public class NewsManager
     {
-        public static Dictionary<string, ContentJson> ContentJsonResponse = new Dictionary<string, ContentJson>();
-      //  public static ContentJson ContentJsonResponse = new ContentJson();
-        public static ContentConfig ContentConfig = new ContentConfig();
+        public static Dictionary<string, ContentJson> ContentJsonResponse = new();
+        public static Dictionary<string, motdTarget> MotdJsonResponse = new();
+        //  public static ContentJson ContentJsonResponse = new ContentJson();
+        public static ContentConfig ContentConfig = new();
 
-
+        public static motdTarget MotdTarget = new();
         //public static void Init()
         //{
 
@@ -35,31 +36,60 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
                     if (ContentConfig != null)
                     {
-                        ContentJson contentJson = new ContentJson();
+                        ContentJson contentJson = new();
+                        motdTarget MotdcontentJson = new();
+
+                        // 
 
                         ContentConfig.battleroyalenews.motds.ForEach(x =>
                         {
-                            contentJson.battleroyalenews.news.motds.Add(new NewContentMotds()
+                            contentJson.battleroyalenews.news.motds.Add(new()
                             {
                                 image = x.image,
+                                tileImage = x.image,
+                                tabTitleOverride = x.GetLanguage(x.title, propertyName),
                                 title = x.GetLanguage(x.title, propertyName),
                                 body = x.GetLanguage(x.body, propertyName),
                             });
 
-                            contentJson.battleroyalnewsv2.news.motds.Add(new NewContentV2Motds()
+                            contentJson.battleroyalnewsv2.news.motds.Add(new()
                             {
                                 image = x.image,
+                                tileImage = x.image,
                                 title = x.GetLanguage(x.title, propertyName),
                                 body = x.GetLanguage(x.body, propertyName),
+                                tabTitleOverride = x.GetLanguage(x.title, propertyName)
+                            });
+
+                            MotdcontentJson.contentItems.Add(new()
+                            {
+                                contentFields = new()
+                                {
+                                    body = x.GetLanguage(x.body, propertyName),
+                                    title = x.GetLanguage(x.title, propertyName),
+                                    tabTitleOverride = x.GetLanguage(x.title, propertyName),
+                                    image = new()
+                                    {
+                                        url = x.image
+                                    },
+                                    tileImage = new()
+                                    {
+                                        url = x.image
+                                    }
+                                }
                             });
                         });
+
+                     //   MotdTarget.contentItems
+
+
 
                         contentJson.loginMessage.loginmessage.message.title = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.title, propertyName);
                         contentJson.loginMessage.loginmessage.message.body = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.body, propertyName);
 
                         ContentConfig.battleroyalenews.messages.ForEach(x =>
                         {
-                            contentJson.battleroyalenews.news.messages.Add(new NewContentMessages()
+                            contentJson.battleroyalenews.news.messages.Add(new()
                             {
                                 image = x.image,
                                 title = x.GetLanguage(x.title, propertyName),
@@ -69,13 +99,13 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
                         ContentConfig.emergencynotice.ForEach(x =>
                         {
-                            contentJson.emergencynotice.news.messages.Add(new EmergencyNoticeNewsMessages()
+                            contentJson.emergencynotice.news.messages.Add(new()
                             {
                                 title = x.GetLanguage(x.title, propertyName),
                                 body = x.GetLanguage(x.body, propertyName),
                             });
 
-                            contentJson.emergencynoticev2.emergencynotices.emergencynotices.Add(new EmergencyNoticeNewsV2Messages()
+                            contentJson.emergencynoticev2.emergencynotices.emergencynotices.Add(new()
                             {
                                 title = x.GetLanguage(x.title, propertyName),
                                 body = x.GetLanguage(x.body, propertyName),
@@ -84,7 +114,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
                         ContentConfig.shopSections.ForEach(x =>
                         {
-                            contentJson.shopSections.sectionList.sections.Add(new ShopSectionsSectionsSEctions
+                            contentJson.shopSections.sectionList.sections.Add(new()
                             {
                                 sectionId = x.sectionId,
                                 sectionDisplayName = x.sectionDisplayName,
@@ -99,7 +129,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
                         ContentConfig.playlistinformation.ForEach(x =>
                         {
-                            contentJson.playlistinformation.playlist_info.playlists.Add(new PlayListObject
+                            contentJson.playlistinformation.playlist_info.playlists.Add(new()
                             {
                                 image = x.image,
                                 playlist_name = x.playlist_name,
@@ -111,6 +141,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
                         Logger.Log($"Adding {propertyName}", "News");
                         ContentJsonResponse.Add(propertyName, contentJson);
+                        MotdJsonResponse.Add(propertyName, MotdcontentJson);
                     }
                 }
                 Logger.Log("RE-LOADED NEWS CONFIG");
@@ -125,7 +156,8 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
         public static void Update()
         {
-            ContentJsonResponse = new Dictionary<string, ContentJson>(); // clear ofc
+            ContentJsonResponse = new(); // clear ofc
+            MotdJsonResponse = new();
 
             if (ContentConfig != null)
             {
@@ -138,6 +170,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                     string propertyName = property.Name;
 
                     ContentJson contentJson = new ContentJson();
+                    motdTarget MotdcontentJson = new();
 
                     ContentConfig.battleroyalenews.motds.ForEach(x =>
                     {
@@ -153,6 +186,24 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                             image = x.image,
                             title = x.GetLanguage(x.title, propertyName),
                             body = x.GetLanguage(x.body, propertyName),
+                        });
+
+                        MotdcontentJson.contentItems.Add(new()
+                        {
+                            contentFields = new()
+                            {
+                                body = x.GetLanguage(x.body, propertyName),
+                                title = x.GetLanguage(x.title, propertyName),
+                                tabTitleOverride = x.GetLanguage(x.title, propertyName),
+                                image = new()
+                                {
+                                    url = x.image
+                                },
+                                tileImage = new()
+                                {
+                                    url = x.image
+                                }
+                            }
                         });
                     });
 
@@ -212,6 +263,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                     });
 
                     ContentJsonResponse.Add(propertyName, contentJson);
+                    MotdJsonResponse.Add(propertyName, MotdcontentJson);
                 }
             }
             Logger.Log("RE-LOADED NEWS CONFIG");

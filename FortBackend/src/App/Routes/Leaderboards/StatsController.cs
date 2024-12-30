@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Text;
 using FortLibrary;
 using FortLibrary.EpicResponses.Fortnite;
+using System.Text.Json;
 
 namespace FortBackend.src.App.Routes.Leaderboards
 {
@@ -64,7 +65,7 @@ namespace FortBackend.src.App.Routes.Leaderboards
                     string requestBody = await reader.ReadToEndAsync();
                     var array = JsonConvert.DeserializeObject<List<string>>(requestBody);
 
-                    if(array != null)
+                    if (array != null)
                     {
                         LeaderBoardStats leaderBoardStats = UpdateLeaderBoard.LeaderboardCached.Data.FirstOrDefault(e => e.statName.Contains(statName))!;
                         if (leaderBoardStats != null)
@@ -125,6 +126,7 @@ namespace FortBackend.src.App.Routes.Leaderboards
             return Ok(new string[0]);
         }
 
+        [HttpGet("/statsproxy/api/statsv2/leaderboards/{windowId}")]
         [HttpGet("statsv2/leaderboards/{windowId}")]
         public async Task<ActionResult> LeaderBoardStatsNew(string windowId)
         {
@@ -132,7 +134,7 @@ namespace FortBackend.src.App.Routes.Leaderboards
             try
             {
                 List<object> entrieslist = new List<object>();
-               
+
                 LeaderBoardStats leaderBoardStats = UpdateLeaderBoard.LeaderboardCached.Data.FirstOrDefault(e => e.statName.Contains(windowId))!;
                 if (leaderBoardStats != null)
                 {
@@ -247,6 +249,49 @@ namespace FortBackend.src.App.Routes.Leaderboards
                         stats = profileCacheEntry.StatsData.stats
                     });
                 }
+            }
+            catch (JsonReaderException)
+            {
+                return Ok(new { });
+            }
+            catch (Exception ex) { Logger.Error(ex.Message); }
+
+            return Ok(new { });
+        }
+
+        [HttpPost("/statsproxy/api/statsv2/query")]
+        public async Task<ActionResult> ProxtyStatsV2([FromBody] JsonElement requestBody)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                long ticksInOneDay = TimeSpan.TicksPerDay;
+                long ticksInOneYear = 365 * ticksInOneDay;
+                if (requestBody.TryGetProperty("owners", out JsonElement ownersElement) && ownersElement.ValueKind == JsonValueKind.Array)
+                {
+                    var owners = System.Text.Json.JsonSerializer.Deserialize<List<string>>(ownersElement.GetRawText());
+                    List<object> test = new();
+                    var stats = new
+                    {
+                        br_collection_fish_gas_purple_length_s16 = 49,
+                        s23_social_bp_level = 69
+                    };
+                    foreach (var owner in owners)
+                    {
+                        //   ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                        test.Add(new
+                        {
+                            startTime = 0,
+                            endTime = ticksInOneYear,
+                            owner,
+                            stats
+                        });
+                    }
+
+                    return Ok(test);
+
+                }
+               
             }
             catch (JsonReaderException)
             {

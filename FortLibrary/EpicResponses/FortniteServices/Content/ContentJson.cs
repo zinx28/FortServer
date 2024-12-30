@@ -1,15 +1,18 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FortLibrary.EpicResponses.FortniteServices.Content
 {
     public class ContentJson
     {
         [JsonPropertyName("jcr:isCheckedOut")]
+        [JsonProperty("jcr:isCheckedOut")]
         public bool isCheckedOut { get; set; } = false;
 
         public string _title { get; set; } = "Fortnite Game";
 
         [JsonPropertyName("jcr:baseVersion")]
+        [JsonProperty("jcr:baseVersion")]
         public string baseVersion { get; set; } = "a7ca237317f1e7883b3279";
 
         public string _activeDate { get; set; } = "2017-08-30T03:20:48.050Z";

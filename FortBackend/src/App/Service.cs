@@ -174,20 +174,6 @@ namespace FortBackend.src.App
 
 
             var shutdownTask = app.WaitForShutdownAsync();
-
-        
-            AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
-            {
-                //FortBackend.src.App.XMPP_Server.XMPP.XmppServer.STOP();
-                //XmppServer.Join(); ~ i can't trust 
-
-                CacheMiddleware.ShutDown().Wait();
-
-                Logger.Close();
-
-                Console.WriteLine("Press any key to close this window . . .");
-                Console.ReadKey();
-            };
             //app.Run();
             await shutdownTask;
 

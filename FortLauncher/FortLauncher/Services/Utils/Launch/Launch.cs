@@ -90,7 +90,7 @@ namespace FortLauncher.Services.Utils.Launch
                                     string fltoken = "3db3ba5dcbd2e16703f3978d";
                                     var fltokensDictionary = new Dictionary<string, string>
                                     {
-          
+                                        // pretty sure it's normally with eac
                                         { "16.00", "5dh74c635862g575778132fb " }, // i checked this
                                         { "16.10", "b234a7cc879f663d845c54f9" }, // these are prob wrong
                                         { "16.20", "c98d8b7a7239f78e234a9abc" },

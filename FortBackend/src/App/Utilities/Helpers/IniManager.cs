@@ -37,7 +37,7 @@ namespace FortBackend.src.App.Utilities.Helpers
             RegionManagerConfig RegionManagerconfig = JsonConvert.DeserializeObject<RegionManagerConfig>(QosRegionManagerData)!;
             List<PlaylistDataClass> PlaylistDataconfig = JsonConvert.DeserializeObject<List<PlaylistDataClass>>(PlaylistData)!;
 
-            if (IniManager.IniConfigData != null && PlaylistDataconfig != null)
+            if (IniManager.IniConfigData != null)
             {
                 iniBuilder.AppendLine($";{IniManager.IniConfigData.Info} // Generated {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffffffZ")} - {FileName}");
 
@@ -58,7 +58,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                         // updates live
                         RegionManagerconfig.RegionDefinitions.ForEach(e =>
                         {
-                            iniBuilder.AppendLine($"+RegionDefinitions=(DisplayName=NSLOCTEXT(\"MMRegion\", \"{e.Region}\", \"{e.Region}\"), RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled}, bVisible={e.bVisible}, bAutoAssignable={e.bAutoAssignable})");
+                            iniBuilder.AppendLine($"+RegionDefinitions=(DisplayName={e.Region}, RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled}, bVisible={e.bVisible}, bAutoAssignable={e.bAutoAssignable})");
                         });
 
                         iniBuilder.AppendLine($"!DatacenterDefinitions=ClearArray");
@@ -87,11 +87,14 @@ namespace FortBackend.src.App.Utilities.Helpers
                         iniBuilder.AppendLine($"[/Script/FortniteGame.FortGameInstance]");
                         iniBuilder.AppendLine($"!FrontEndPlaylistData=ClearArray");
 
-                        PlaylistDataconfig.ForEach(file =>
+                        if(PlaylistDataconfig != null)
                         {
-                            var PlaylistAccess = file.PlaylistAccess;
-                            iniBuilder.AppendLine($"+FrontEndPlaylistData=(PlaylistName={file.PlaylistName}, PlaylistAccess=(bEnabled={PlaylistAccess.bEnabled}, bIsDefaultPlaylist={PlaylistAccess.bIsDefaultPlaylist}, bVisibleWhenDisabled={PlaylistAccess.bVisibleWhenDisabled}, bDisplayAsNew={PlaylistAccess.bDisplayAsNew}, CategoryIndex={PlaylistAccess.CategoryIndex}, bDisplayAsLimitedTime={PlaylistAccess.bDisplayAsLimitedTime}, DisplayPriority={PlaylistAccess.DisplayPriority}))");
-                        });
+                            PlaylistDataconfig.ForEach(file =>
+                            {
+                                var PlaylistAccess = file.PlaylistAccess;
+                                iniBuilder.AppendLine($"+FrontEndPlaylistData=(PlaylistName={file.PlaylistName}, PlaylistAccess=(bEnabled={PlaylistAccess.bEnabled}, bIsDefaultPlaylist={PlaylistAccess.bIsDefaultPlaylist}, bVisibleWhenDisabled={PlaylistAccess.bVisibleWhenDisabled}, bDisplayAsNew={PlaylistAccess.bDisplayAsNew}, CategoryIndex={PlaylistAccess.CategoryIndex}, bDisplayAsLimitedTime={PlaylistAccess.bDisplayAsLimitedTime}, DisplayPriority={PlaylistAccess.DisplayPriority}))");
+                            });
+                        }
                     }
 
                    

@@ -59,11 +59,11 @@ namespace FortBackend.src.App.Routes.API
         }
 
 
-        [HttpPost("/datarouter/api/v1/public/data/{a}")]
+        [HttpPost("/datarouter/api/v1/public/data/{a?}")]
 
         // could give event data from the game? this could be miss used though
-        [HttpPost("/datarouter/api/v1/public/data")]
-        public IActionResult DataRouter(string a)
+        //[HttpPost("/datarouter/api/v1/public/data")]
+        public IActionResult DataRouter([FromRoute] string? a)
         {
             //var queryParameters = HttpContext.Request.Query;
             //Console.WriteLine("Query Parameters:");
@@ -90,7 +90,7 @@ namespace FortBackend.src.App.Routes.API
             //        Console.WriteLine($"Error reading request body: {ex.Message}");
             //    }
             //}
-            return Ok();
+            return StatusCode(204) ;
         }
 
         [HttpPost("/profile/play_region")]
@@ -341,6 +341,7 @@ namespace FortBackend.src.App.Routes.API
         [HttpGet("v1/search/{accountId}")]
         public async Task<IActionResult> SearchPlayer(string accountId, [FromQuery] string prefix)
         {
+            Response.ContentType = "application/json";
             var Search = new List<object>();
             try
             {

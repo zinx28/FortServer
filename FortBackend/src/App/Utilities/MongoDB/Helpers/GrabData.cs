@@ -136,9 +136,10 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
                             return await FindCache(UserDataParsed);
                         }
-                    }else
+                    }
+                    else
                     {
-                        Console.WriteLine("Bypass? Invaild Account");
+                        Logger.Error("Bypass? Invaild Account", string.IsNullOrEmpty(AccountId) ? "ERROR" : AccountId);
                     }
                 }
                 else

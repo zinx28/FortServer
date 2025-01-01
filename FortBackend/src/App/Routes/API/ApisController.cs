@@ -19,6 +19,46 @@ namespace FortBackend.src.App.Routes.API
     [Route("api")]
     public class ApisController : ControllerBase
     {
+        ///profile/languages
+        [HttpPut("/profile/languages")]
+        public IActionResult languages(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return Ok(new { });
+        }
+
+        // NEED T OWROK ON THIS
+        [HttpPut("/profile/privacy_settings")]
+        public IActionResult privacy_settings()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new {
+                privacySettings = new
+                {
+                    playRegion = "PRIVATE",
+                    badges = "FRIENDS_ONLY",
+                    languages = "languages"
+                }
+            });
+        }
+
+        //api/v2/interactions/latest/Fortnite/
+
+        [HttpGet("v2/interactions/latest/Fortnite/{accountId}")]
+        public IActionResult interactionsLatest(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return StatusCode(204);
+        }
+
+        [HttpGet("v2/interactions/aggregated/Fortnite/{accountId}")]
+        public IActionResult interactionsAggregated(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return StatusCode(204);
+        }
+
+
         [HttpPost("/datarouter/api/v1/public/data/{a}")]
 
         // could give event data from the game? this could be miss used though

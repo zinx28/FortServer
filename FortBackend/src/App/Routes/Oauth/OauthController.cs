@@ -286,7 +286,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         exchange_token = ExchangeCode!;
                 }
 
-                if (FormRequest.TryGetValue("refresh_code", out var Refresh_code))
+                if (FormRequest.TryGetValue("refresh_token", out var Refresh_code))
                 {
                     if (!string.IsNullOrEmpty(Refresh_code))
                         refresh_token = Refresh_code!;
@@ -538,9 +538,11 @@ namespace FortBackend.src.App.Routes.Oauth
 
                         // REFRESH TOKEN SHOULD HAVE, AccountId, DeviceId and Secret
 
-                        //var refreshTokenIndex = GlobalData.RefreshToken.FindIndex(x => x.token == refresh_token);
-                        //if (refreshTokenIndex != -1)
-                        //{
+                        var refreshTokenIndex = GlobalData.RefreshToken.FindIndex(x => x.token == refresh_token);
+                        if (refreshTokenIndex != -1)
+                        {
+                            Logger.Log("FOIUND A REFRESH TOKEN!!");
+                        }
                         //    var handler = new JwtSecurityTokenHandler();
                         //    var decodedRefreshToken = handler.ReadJwtToken(GlobalData.RefreshToken[refreshTokenIndex].token.Replace("eg1~", ""));
 

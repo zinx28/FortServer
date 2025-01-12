@@ -12,16 +12,46 @@ using System.Text.RegularExpressions;
 using FortBackend.src.App.Utilities.Constants;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary;
+using System.Text.Json.Serialization;
 
 namespace FortBackend.src.App.Routes.API
 {
+    public class AvatarGulp
+    {
+        public string accountId { get; set; } = string.Empty;
+
+        [JsonProperty("namespace")]
+        [JsonPropertyName("namespace")]
+        public string wownamespace { get; set; } = string.Empty;
+
+        public string avatarId { get; set; } = string.Empty;
+    }
+
     [ApiController]
     [Route("api")]
     public class ApisController : ControllerBase
     {
+        ///v1/avatar/fortnite/ids
+        ///
+
+        [HttpGet("/v1/avatar/fortnite/ids")]
+        public IActionResult AvatarIds()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new object[]
+            {
+                new AvatarGulp
+                {
+                    accountId = "therizzler",
+                    wownamespace = "fortnite",
+                    avatarId = "ATHENACHARACTER:CID_001_Athena_Commando_F_Default"
+                }
+            });
+        }
+
         ///profile/languages
         [HttpPut("/profile/languages")]
-        public IActionResult languages(string accountId)
+        public IActionResult languages()
         {
             Response.ContentType = "application/json";
             return Ok(new { });
@@ -93,7 +123,7 @@ namespace FortBackend.src.App.Routes.API
             return StatusCode(204) ;
         }
 
-        [HttpPost("/profile/play_region")]
+        [HttpPut("/profile/play_region")]
 
 
         public IActionResult PlayRegion()
@@ -125,6 +155,78 @@ namespace FortBackend.src.App.Routes.API
                 allowed = true,
                 resolved = true,
                 limit = "Res=656"
+            });
+        }
+
+        [HttpGet("/region")]
+        public IActionResult RegionAh()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new
+            {
+                continent = new
+                {
+                    code = "EU",
+                    geoname_id = 6255148,
+                    names = new
+                    {
+                        de = "Europa",
+                        en = "Europe",
+                        es = "Europa",
+                        fr = "Europe",
+                        ja = "ヨーロッパ",
+                        pt_BR = "Europa",
+                        ru = "Европа",
+                        zh_CN = "欧洲"
+                    }
+                },
+                country = new
+                {
+                    geoname_id = 2635167,
+                    is_in_european_union = false,
+                    iso_code = "GB",
+                    names = new
+                    {
+                        de = "UK",
+                        en = "United Kingdom",
+                        es = "RU",
+                        fr = "Royaume Uni",
+                        ja = "英国",
+                        pt_BR = "Reino Unido",
+                        ru = "Британия",
+                        zh_CN = "英国"
+                    }
+                },
+                subdivisions = new object[]
+                {
+                    new
+                    {
+                        geoname_id = 6269131,
+                        iso_code = "ENG",
+                        names = new
+                        {
+                            de = "England",
+                            en = "England",
+                            es = "Inglaterra",
+                            fr = "Angleterre",
+                            ja = "イングランド",
+                            pt_BR = "Inglaterra",
+                            ru = "Англия",
+                            zh_CN = "英格兰"
+                        }
+                    },
+                    new
+                    {
+                        geoname_id = 3333121,
+                        iso_code = "BNE",
+                        names = new
+                        {
+                            de = "London Borough of Barnet",
+                            en = "Barnet",
+                            fr = "Barnet"
+                        }
+                    }
+                }
             });
         }
 
@@ -520,7 +622,7 @@ namespace FortBackend.src.App.Routes.API
             Response.ContentType = "application/json";
             return Ok(new
             {
-                FortPlaylistAthena = new
+                FortCreativeDiscoverySurface = new
                 {
                     meta = new
                     {

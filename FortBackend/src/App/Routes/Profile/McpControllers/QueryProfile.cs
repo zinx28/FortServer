@@ -15,14 +15,25 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 Mcp response = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                 return response;
             }
-
-            if (ProfileId == "common_core" || ProfileId == "common_public")
+            else if (ProfileId == "common_core" || ProfileId == "common_public")
             {
                 Mcp response = await CommonCoreResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                 return response;
             }
+            else
+            {
+                return new Mcp()
+                {
+                    profileRevision = ProfileId == "common_core" || ProfileId == "common_public" ? profileCacheEntry.AccountData.commoncore.RVN : profileCacheEntry.AccountData.athena.RVN,
+                    profileId = ProfileId,
+                    profileChangesBaseRevision = ProfileId == "common_core" || ProfileId == "common_public" ? profileCacheEntry.AccountData.commoncore.RVN : profileCacheEntry.AccountData.athena.RVN,
+                    profileCommandRevision = ProfileId == "common_core" || ProfileId == "common_public" ? profileCacheEntry.AccountData.commoncore.CommandRevision : profileCacheEntry.AccountData.athena.CommandRevision,
+                    serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    responseVersion = 1
+                };
+            }
 
-            return new Mcp();
+
         }
     }
 }

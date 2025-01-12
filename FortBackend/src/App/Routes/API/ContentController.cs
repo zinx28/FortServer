@@ -115,7 +115,7 @@ namespace FortBackend.src.App.Routes.API
         [HttpPost("/api/v1/fortnite-br/surfaces/motd/target")]
         public async Task<ActionResult<ContentJson>> MOTDTARGET()
         {
-
+            Response.ContentType = "application/json";
             try
             {
                 var userAgent = Request.Headers["User-Agent"].ToString();

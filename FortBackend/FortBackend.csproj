@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Resources\Json\discovery.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Resources\Image\Trans_Boykisser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

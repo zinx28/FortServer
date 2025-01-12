@@ -3,6 +3,7 @@ using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.FortniteServices.Content;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Reflection;
 
@@ -12,6 +13,8 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
     {
         public static Dictionary<string, ContentJson> ContentJsonResponse = new();
         public static Dictionary<string, motdTarget> MotdJsonResponse = new();
+        public static Discovery CreativeDiscoveryResponse = new();
+        public static DATAClass CreativeDiscoveryAssetsResponse = new();
         //  public static ContentJson ContentJsonResponse = new ContentJson();
         public static ContentConfig ContentConfig = new();
 
@@ -151,7 +154,22 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 Logger.Error("CONTENT FILE IS NULL OR EMPTY");
 
             }
-           
+
+            // won't support dashboard currently the json format is the same so just copy other projects
+            var DisjsonData = System.IO.File.ReadAllText(PathConstants.Discovery);
+
+            if (!string.IsNullOrEmpty(DisjsonData))
+            {
+                CreativeDiscoveryResponse = JsonConvert.DeserializeObject<Discovery>(DisjsonData)!;
+            }
+
+            // won't support dashboard currently the json format is the same so just copy other projects
+            var DisAssetsjsonData = System.IO.File.ReadAllText(PathConstants.DiscoveryAssets);
+
+            if (!string.IsNullOrEmpty(DisAssetsjsonData))
+            {
+                CreativeDiscoveryAssetsResponse = JsonConvert.DeserializeObject<DATAClass>(DisAssetsjsonData)!;
+            }
         }
 
         public static void Update()

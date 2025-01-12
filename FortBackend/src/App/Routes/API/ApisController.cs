@@ -13,6 +13,7 @@ using FortBackend.src.App.Utilities.Constants;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary;
 using System.Text.Json.Serialization;
+using FortBackend.src.App.Utilities.Helpers.Cached;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -617,9 +618,38 @@ namespace FortBackend.src.App.Routes.API
         // /api/v1/assets/Fortnite/++Fortnite+Release-15.50/15526472?
 
         [HttpPost("v1/assets/Fortnite/{version}/{number}")]
-        public IActionResult AssetsV1(string version, string number)
+        public async Task<IActionResult> AssetsV1(string version, string number)
         {
             Response.ContentType = "application/json";
+            try
+            {
+                //using (var reader = new StreamReader(HttpContext.Request.Body))
+                //{
+                //    try
+                //    {
+                //        var requestBody = await reader.ReadToEndAsync();
+                //        Console.WriteLine($"Request Body: {requestBody}");
+
+                //        //CreativeDiscoveryAssetsResponse
+
+
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Console.WriteLine($"Error reading request body: {ex.Message}");
+                //    }
+                //}
+                var jsonResponse = JsonConvert.SerializeObject(NewsManager.CreativeDiscoveryAssetsResponse.DATA, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+                return Content(jsonResponse, "application/json");
+            }
+            catch (Exception ex)
+            {
+
+            }
             return Ok(new
             {
                 FortCreativeDiscoverySurface = new

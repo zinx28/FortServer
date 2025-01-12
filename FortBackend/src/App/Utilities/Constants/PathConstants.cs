@@ -70,6 +70,8 @@ namespace FortBackend.src.App.Utilities.Constants
         public static readonly string SdkDefault = Path.Combine(JsonDir, "SdkDefault.json");
         public static readonly string EpicSettings = Path.Combine(JsonDir, "epicsettings.json");
         public static readonly string Content = Path.Combine(JsonDir, "content.json");
+        public static readonly string Discovery = Path.Combine(JsonDir, "discovery.json");
+        public static readonly string DiscoveryAssets = Path.Combine(JsonDir, "discoveryassets.json");
         public static readonly string Timeline = Path.Combine(JsonDir, "Timeline.json");
 
 

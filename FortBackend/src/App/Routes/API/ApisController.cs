@@ -12,18 +12,89 @@ using System.Text.RegularExpressions;
 using FortBackend.src.App.Utilities.Constants;
 using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary;
+using System.Text.Json.Serialization;
+using FortBackend.src.App.Utilities.Helpers.Cached;
 
 namespace FortBackend.src.App.Routes.API
 {
+    public class AvatarGulp
+    {
+        public string accountId { get; set; } = string.Empty;
+
+        [JsonProperty("namespace")]
+        [JsonPropertyName("namespace")]
+        public string wownamespace { get; set; } = string.Empty;
+
+        public string avatarId { get; set; } = string.Empty;
+    }
+
     [ApiController]
     [Route("api")]
     public class ApisController : ControllerBase
     {
-        [HttpPost("/datarouter/api/v1/public/data/{a}")]
+        ///v1/avatar/fortnite/ids
+        ///
+
+        [HttpGet("/v1/avatar/fortnite/ids")]
+        public IActionResult AvatarIds()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new object[]
+            {
+                new AvatarGulp
+                {
+                    accountId = "therizzler",
+                    wownamespace = "fortnite",
+                    avatarId = "ATHENACHARACTER:CID_001_Athena_Commando_F_Default"
+                }
+            });
+        }
+
+        ///profile/languages
+        [HttpPut("/profile/languages")]
+        public IActionResult languages()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new { });
+        }
+
+        // NEED T OWROK ON THIS
+        [HttpPut("/profile/privacy_settings")]
+        public IActionResult privacy_settings()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new {
+                privacySettings = new
+                {
+                    playRegion = "PRIVATE",
+                    badges = "FRIENDS_ONLY",
+                    languages = "languages"
+                }
+            });
+        }
+
+        //api/v2/interactions/latest/Fortnite/
+
+        [HttpGet("v2/interactions/latest/Fortnite/{accountId}")]
+        public IActionResult interactionsLatest(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return StatusCode(204);
+        }
+
+        [HttpGet("v2/interactions/aggregated/Fortnite/{accountId}")]
+        public IActionResult interactionsAggregated(string accountId)
+        {
+            Response.ContentType = "application/json";
+            return StatusCode(204);
+        }
+
+
+        [HttpPost("/datarouter/api/v1/public/data/{a?}")]
 
         // could give event data from the game? this could be miss used though
-        [HttpPost("/datarouter/api/v1/public/data")]
-        public IActionResult DataRouter(string a)
+        //[HttpPost("/datarouter/api/v1/public/data")]
+        public IActionResult DataRouter([FromRoute] string? a)
         {
             //var queryParameters = HttpContext.Request.Query;
             //Console.WriteLine("Query Parameters:");
@@ -50,10 +121,10 @@ namespace FortBackend.src.App.Routes.API
             //        Console.WriteLine($"Error reading request body: {ex.Message}");
             //    }
             //}
-            return Ok();
+            return StatusCode(204) ;
         }
 
-        [HttpPost("/profile/play_region")]
+        [HttpPut("/profile/play_region")]
 
 
         public IActionResult PlayRegion()
@@ -85,6 +156,78 @@ namespace FortBackend.src.App.Routes.API
                 allowed = true,
                 resolved = true,
                 limit = "Res=656"
+            });
+        }
+
+        [HttpGet("/region")]
+        public IActionResult RegionAh()
+        {
+            Response.ContentType = "application/json";
+            return Ok(new
+            {
+                continent = new
+                {
+                    code = "EU",
+                    geoname_id = 6255148,
+                    names = new
+                    {
+                        de = "Europa",
+                        en = "Europe",
+                        es = "Europa",
+                        fr = "Europe",
+                        ja = "ヨーロッパ",
+                        pt_BR = "Europa",
+                        ru = "Европа",
+                        zh_CN = "欧洲"
+                    }
+                },
+                country = new
+                {
+                    geoname_id = 2635167,
+                    is_in_european_union = false,
+                    iso_code = "GB",
+                    names = new
+                    {
+                        de = "UK",
+                        en = "United Kingdom",
+                        es = "RU",
+                        fr = "Royaume Uni",
+                        ja = "英国",
+                        pt_BR = "Reino Unido",
+                        ru = "Британия",
+                        zh_CN = "英国"
+                    }
+                },
+                subdivisions = new object[]
+                {
+                    new
+                    {
+                        geoname_id = 6269131,
+                        iso_code = "ENG",
+                        names = new
+                        {
+                            de = "England",
+                            en = "England",
+                            es = "Inglaterra",
+                            fr = "Angleterre",
+                            ja = "イングランド",
+                            pt_BR = "Inglaterra",
+                            ru = "Англия",
+                            zh_CN = "英格兰"
+                        }
+                    },
+                    new
+                    {
+                        geoname_id = 3333121,
+                        iso_code = "BNE",
+                        names = new
+                        {
+                            de = "London Borough of Barnet",
+                            en = "Barnet",
+                            fr = "Barnet"
+                        }
+                    }
+                }
             });
         }
 
@@ -301,6 +444,7 @@ namespace FortBackend.src.App.Routes.API
         [HttpGet("v1/search/{accountId}")]
         public async Task<IActionResult> SearchPlayer(string accountId, [FromQuery] string prefix)
         {
+            Response.ContentType = "application/json";
             var Search = new List<object>();
             try
             {
@@ -474,12 +618,41 @@ namespace FortBackend.src.App.Routes.API
         // /api/v1/assets/Fortnite/++Fortnite+Release-15.50/15526472?
 
         [HttpPost("v1/assets/Fortnite/{version}/{number}")]
-        public IActionResult AssetsV1(string version, string number)
+        public async Task<IActionResult> AssetsV1(string version, string number)
         {
             Response.ContentType = "application/json";
+            try
+            {
+                //using (var reader = new StreamReader(HttpContext.Request.Body))
+                //{
+                //    try
+                //    {
+                //        var requestBody = await reader.ReadToEndAsync();
+                //        Console.WriteLine($"Request Body: {requestBody}");
+
+                //        //CreativeDiscoveryAssetsResponse
+
+
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Console.WriteLine($"Error reading request body: {ex.Message}");
+                //    }
+                //}
+                var jsonResponse = JsonConvert.SerializeObject(NewsManager.CreativeDiscoveryAssetsResponse.DATA, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+                return Content(jsonResponse, "application/json");
+            }
+            catch (Exception ex)
+            {
+
+            }
             return Ok(new
             {
-                FortPlaylistAthena = new
+                FortCreativeDiscoverySurface = new
                 {
                     meta = new
                     {

@@ -128,8 +128,8 @@ namespace FortBackend.src.App.Routes.Profile
                             switch (mcp)
                             {
                                 case "QueryProfile":
-                                    response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
-                                    break;
+                                   response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
+                                break;
                                 case "ClientQuestLogin":
                                     response = await ClientQuestLogin.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
@@ -159,18 +159,18 @@ namespace FortBackend.src.App.Routes.Profile
                                     break;
                                 case "FortRerollDailyQuest":
                                     response = await FortRerollDailyQuest.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<FortRerollDailyQuestReq>(requestbody)!);
-                                break;
+                                    break;
                                 case "UpdateQuestClientObjectives":
                                     response = await UpdateQuestClientObjectives.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<UpdateQuestClientObjectivesReq>(requestbody)!);
                                     break;
-                                    case "BulkEquipBattleRoyaleCustomization":
-                                        response = await BulkEquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<BulkEquipBattleRoyaleCustomizationResponse>(requestbody)!);
-                                        break; 
-                                    // not proper
-                                                //case "CopyCosmeticLoadout":
-                                                //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
-                                                //    break;
-                                    default:
+                                case "BulkEquipBattleRoyaleCustomization":
+                                    response = await BulkEquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<BulkEquipBattleRoyaleCustomizationResponse>(requestbody)!);
+                                    break;
+                                // not proper
+                                //case "CopyCosmeticLoadout":
+                                //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
+                                //    break;
+                                default:
 
                                         response = new Mcp
                                         {

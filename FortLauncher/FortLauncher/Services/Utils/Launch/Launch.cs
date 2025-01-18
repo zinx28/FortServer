@@ -85,7 +85,7 @@ namespace FortLauncher.Services.Utils.Launch
                                 string[] FortniteVersionConv = FortniteDetect.Init(config.VersionID).Split('.');
                                 float TempVal = float.Parse(FortniteVersionConv[0]);
                              
-                                if (TempVal > 15 && TempVal <= 18)
+                                if (TempVal > 15 && TempVal <= 26) // uh gulp
                                 {
                                     string fltoken = "3db3ba5dcbd2e16703f3978d";
                                     var fltokensDictionary = new Dictionary<string, string>
@@ -112,8 +112,9 @@ namespace FortLauncher.Services.Utils.Launch
                                 {
                                     //ha1241h5000711f71a46e4c1 = 18.30
                                     MessageBox.Show("UNSUPPORTED");
-                                   // PSBasics.Start(config.buildPath, "-obfuscationid=PM3G4r-oF6DIG-fbJUON8rECU73FWA -epicapp=Fortnite -epicenv=Prod -EpicPortal -epiclocale=en -epicsandboxid=fn -nobe -fromfl=eac -caldera=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoicGVuaXMiLCJnZW5lcmF0ZWQiOjE3MzMxODU4MDIsImNhbGRlcmFHVUlEIjoiZjEwMTkwYzgtOTQ5Yi00YjBiLTg0MzUtOWZiYmNmOTkwNzFiIiwiYWNQcm92aWRlciI6IkVhc3lBbnRpQ2hlYXQiLCJub3RlcyI6IiIsInByZSI6ZmFsc2UsImZhbGxiYWNrIjpmYWxzZX0.yu8ITJKeqw9SgX8pwS73AkXrBjKRDmzEB6Wacenahzg -fltoken=77b9908d91e7aa96c6bd6814 -skippatchcheck ", "unused", UserData.Token);
+                                    // PSBasics.Start(config.buildPath, "-obfuscationid=PM3G4r-oF6DIG-fbJUON8rECU73FWA -epicapp=Fortnite -epicenv=Prod -EpicPortal -epiclocale=en -epicsandboxid=fn -nobe -fromfl=eac -caldera=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoicGVuaXMiLCJnZW5lcmF0ZWQiOjE3MzMxODU4MDIsImNhbGRlcmFHVUlEIjoiZjEwMTkwYzgtOTQ5Yi00YjBiLTg0MzUtOWZiYmNmOTkwNzFiIiwiYWNQcm92aWRlciI6IkVhc3lBbnRpQ2hlYXQiLCJub3RlcyI6IiIsInByZSI6ZmFsc2UsImZhbGxiYWNrIjpmYWxzZX0.yu8ITJKeqw9SgX8pwS73AkXrBjKRDmzEB6Wacenahzg -fltoken=77b9908d91e7aa96c6bd6814 -skippatchcheck ", "unused", UserData.Token);
                                     //FakeAC.Start(config.buildPath, "FortniteClient-Win64-Shipping_BE.exe", $"");
+                                    return;
                                 }
                                   
                             }
@@ -141,8 +142,11 @@ namespace FortLauncher.Services.Utils.Launch
                 cancellationToken.ThrowIfCancellationRequested();
                 await Task.Run(async () =>
                 {
-                    Inject.InjectDll(PSBasics._FortniteProcess.Id, DllPath); // redirect!
-                    PSBasics._FortniteProcess?.WaitForExit();
+                    if(PSBasics._FortniteProcess != null && PSBasics._FortniteProcess.Id != 0)
+                    {
+                        Inject.InjectDll(PSBasics._FortniteProcess.Id, DllPath); // redirect!
+                        PSBasics._FortniteProcess?.WaitForExit();
+                    }
                 });
                 //RPC.Update("Logged in as " + UserData.UserName);
                 // PSBasics.test.IsEnabled = true;

@@ -15,13 +15,13 @@ using FortLibrary;
 namespace FortBackend.src.App.Routes.API
 {
     [ApiController]
-    [Route("content/api/pages/fortnite-game")]
+    [Route("/fortnite/api")]
 
     // I NEED TO REDO THIS AND MAKE IT SUPPORT OTHERS
     public class ContentController : ControllerBase
     {
 
-        [HttpGet]
+        [HttpGet("/content/api/pages/fortnite-game")]
         public async Task<ActionResult<ContentJson>> ContentApi([FromServices] IMemoryCache memoryCache)
         {
             Response.ContentType = "application/json";
@@ -85,8 +85,6 @@ namespace FortBackend.src.App.Routes.API
                 };
                 //NewsManager
 
-
-
                 memoryCache.Set(cacheKey, ContentJsonResponse, new MemoryCacheEntryOptions
                 {
                     AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
@@ -115,7 +113,7 @@ namespace FortBackend.src.App.Routes.API
         [HttpPost("/api/v1/fortnite-br/surfaces/motd/target")]
         public async Task<ActionResult<ContentJson>> MOTDTARGET()
         {
-
+            Response.ContentType = "application/json";
             try
             {
                 var userAgent = Request.Headers["User-Agent"].ToString();
@@ -137,6 +135,25 @@ namespace FortBackend.src.App.Routes.API
                 }
 
                 var jsonResponse = JsonConvert.SerializeObject(ContentJsonResponse, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+                return Content(jsonResponse, "application/json");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "MOTDTARGET");
+            }
+            return Ok(new { });
+        }
+
+        [HttpPost("game/v2/creative/discovery/surface/{accountId}")]
+        public async Task<ActionResult> DiscoverySurface(string accountId)
+        {
+            try
+            {
+                var jsonResponse = JsonConvert.SerializeObject(NewsManager.CreativeDiscoveryResponse, new JsonSerializerSettings
                 {
                     NullValueHandling = NullValueHandling.Ignore
                 });

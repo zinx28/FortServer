@@ -1,0 +1,124 @@
+{
+  "DATA": {
+    "FortCreativeDiscoverySurface": {
+      "meta": {
+        "promotion": 1
+      },
+      "assets": {
+        "CreativeDiscoverySurface_Frontend": {
+          "meta": {
+            "revision": 1,
+            "headRevision": 1,
+            "revisedAt": "2023-04-26T15:02:18.478Z",
+            "promotion": 1,
+            "promotedAt": "2023-05-02T08:20:28.948Z"
+          },
+          "assetData": {
+            "AnalyticsId": "",
+            "TestCohorts": [
+              {
+                "AnalyticsId": "",
+                "CohortSelector": "PlayerDeterministic",
+                "PlatformBlacklist": [],
+                "ContentPanels": [
+                  {
+                    "NumPages": 1,
+                    "AnalyticsId": "",
+                    "PanelType": "AnalyticsList",
+                    "AnalyticsListName": "ByEpicAllGames",
+                    "CuratedListOfLinkCodes": [],
+                    "ModelName": "",
+                    "PageSize": 7,
+                    "PlatformBlacklist": [],
+                    "PanelName": "ByEpicAllGames",
+                    "MetricInterval": "",
+                    "SkippedEntriesCount": 0,
+                    "SkippedEntriesPercent": 0,
+                    "SplicedEntries": [],
+                    "PlatformWhitelist": [],
+                    "EntrySkippingMethod": "None",
+                    "PanelDisplayName": {
+                      "Category": "Game",
+                      "NativeCulture": "",
+                      "Namespace": "CreativeDiscoverySurface_Frontend",
+                      "LocalizedStrings": [
+                        {
+                          "key": "ar",
+                          "value": "بقلم إبيك"
+                        },
+                        {
+                          "key": "de",
+                          "value": "Von Epic"
+                        },
+                        {
+                          "key": "en",
+                          "value": "By Epic"
+                        },
+                        {
+                          "key": "es",
+                          "value": "Por Epic"
+                        },
+                        {
+                          "key": "fr",
+                          "value": "Par Epic"
+                        },
+                        {
+                          "key": "it",
+                          "value": "Di Epic"
+                        },
+                        {
+                          "key": "ja",
+                          "value": "エピック"
+                        },
+                        {
+                          "key": "ko",
+                          "value": "에픽에 의해"
+                        },
+                        {
+                          "key": "pl",
+                          "value": "Przez Epic"
+                        },
+                        {
+                          "key": "ru",
+                          "value": "Эпик"
+                        },
+                        {
+                          "key": "tr",
+                          "value": "Epic tarafından"
+                        },
+                        {
+                          "key": "pt-BR",
+                          "value": "Por épico"
+                        },
+                        {
+                          "key": "es-419",
+                          "value": "Por Epic"
+                        }
+                      ],
+                      "bIsMinimalPatch": false,
+                      "NativeString": "Play Your Way",
+                      "Key": "ByEpicAllGames"
+                    },
+                    "PlayHistoryType": "RecentlyPlayed",
+                    "bLowestToHighest": false,
+                    "PanelLinkCodeBlacklist": [],
+                    "PanelLinkCodeWhitelist": [],
+                    "FeatureTags": [],
+                    "MetricName": ""
+                  }
+                ],
+                "PlatformWhitelist": [],
+                "SelectionChance": 0.1,
+                "TestName": "c114_Baseline"
+              }
+            ],
+            "GlobalLinkCodeBlacklist": [],
+            "SurfaceName": "CreativeDiscoverySurface_Frontend",
+            "primaryAssetId": "FortCreativeDiscoverySurface:CreativeDiscoverySurface_Frontend",
+            "GlobalLinkCodeWhitelist": []
+          }
+        }
+      }
+    }
+  }
+}

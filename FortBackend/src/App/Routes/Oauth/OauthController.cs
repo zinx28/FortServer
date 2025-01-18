@@ -109,6 +109,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 }
                 return Ok(new { });
             }
+
             catch (Exception ex)
             {
                 Logger.Error(ex.Message, "CUSTOM~OAUTH");
@@ -285,7 +286,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         exchange_token = ExchangeCode!;
                 }
 
-                if (FormRequest.TryGetValue("refresh_code", out var Refresh_code))
+                if (FormRequest.TryGetValue("refresh_token", out var Refresh_code))
                 {
                     if (!string.IsNullOrEmpty(Refresh_code))
                         refresh_token = Refresh_code!;
@@ -330,7 +331,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 {
                     Logger.Error("OAUTH -> " + ex.Message);
                     Response.StatusCode = 400;
-                    return Ok(new BaseError
+                    throw new BaseError
                     {
                         errorCode = "errors.com.epicgames.account.invalid_client",
                         errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
@@ -340,7 +341,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         intent = "prod",
                         error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
                         error = "invalid_client"
-                    });
+                    };
                 }
 
                 switch (grant_type)
@@ -348,7 +349,7 @@ namespace FortBackend.src.App.Routes.Oauth
                     case "exchange_code":
                         if (string.IsNullOrEmpty(exchange_token))
                         {
-                            return BadRequest(new BaseError
+                            throw new BaseError
                             {
                                 errorCode = "errors.com.epicgames.common.oauth.invalid_request",
                                 errorMessage = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid",
@@ -357,7 +358,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                 originatingService = "any",
                                 intent = "prod",
                                 error_description = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid"
-                            });
+                            };
                         }
 
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, exchange_token);
@@ -367,6 +368,19 @@ namespace FortBackend.src.App.Routes.Oauth
                             AccountId = profileCacheEntry.UserData.AccountId;
                             IsMyFavUserBanned = profileCacheEntry.UserData.banned;
                         }
+                        else
+                        {
+                            throw new BaseError
+                            {
+                                errorCode = "errors.com.epicgames.common.oauth.invalid_request",
+                                errorMessage = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid",
+                                messageVars = new List<string>(),
+                                numericErrorCode = 18057,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "Sorry the exchange code you supplied was not found. It is possible that it was no longer valid"
+                            };
+                        }
 
                         break;
 
@@ -374,7 +388,7 @@ namespace FortBackend.src.App.Routes.Oauth
                       
                         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                         {
-                            return BadRequest(new BaseError
+                            throw new BaseError
                             {
                                 errorCode = "errors.com.epicgames.common.oauth.invalid_request",
                                 errorMessage = "Password is required",
@@ -383,7 +397,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                 originatingService = "any",
                                 intent = "prod",
                                 error_description = "Password is required"
-                            });
+                            };
                         }
 
                         if(username.ToString().Contains("@"))
@@ -403,10 +417,23 @@ namespace FortBackend.src.App.Routes.Oauth
                                 }
                               
                             }
+                            else
+                            {
+                                throw new BaseError
+                                {
+                                    errorCode = "errors.com.epicgames.common.oauth.invalid_request",
+                                    errorMessage = "Your e-mail and/or password are incorrect. Please check them and try again.",
+                                    messageVars = new List<string>(),
+                                    numericErrorCode = 18057,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = "Your e-mail and/or password are incorrect. Please check them and try again."
+                                };
+                            }
                         }
                         else
                         {
-                            return BadRequest(new BaseError
+                            throw new BaseError
                             {
                                 errorCode = "errors.com.epicgames.common.oauth.invalid_request",
                                 errorMessage = "Your e-mail and/or password are incorrect. Please check them and try again.",
@@ -415,7 +442,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                 originatingService = "any",
                                 intent = "prod",
                                 error_description = "Your e-mail and/or password are incorrect. Please check them and try again."
-                            });
+                            };
                         }
 
                       
@@ -427,7 +454,7 @@ namespace FortBackend.src.App.Routes.Oauth
                       
                         if (string.IsNullOrEmpty(clientId))
                         {
-                            return BadRequest(new BaseError
+                            throw new BaseError
                             {
                                 errorCode = "errors.com.epicgames.account.invalid_client",
                                 errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
@@ -437,7 +464,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                 intent = "prod",
                                 error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
                                 error = "invalid_client"
-                            });
+                            };
                         }
 
                         string ClientToken = JWT.GenerateJwtToken(new[]
@@ -475,13 +502,26 @@ namespace FortBackend.src.App.Routes.Oauth
                                 client_service = "fortnite"
                             });
                         }
+                       
+                        throw new BaseError
+                        {
+                            errorCode = "errors.com.epicgames.account.invalid_client",
+                            errorMessage = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                            messageVars = new List<string>(),
+                            numericErrorCode = 1011,
+                            originatingService = "any",
+                            intent = "prod",
+                            error_description = "It appears that your Authorization header may be invalid or not present, please verify that you are sending the correct headers.",
+                            error = "invalid_client"
+                        };
+                        
                         break;
 
                     case "refresh_token":
                         Logger.Error("THIS IS UNFINISHED SO YOU MAY HAVE LOGIN ISSUES");
                         if (string.IsNullOrEmpty(refresh_token))
                         {
-                            return BadRequest(new BaseError
+                            throw new BaseError
                             {
                                 errorCode = "errors.com.epicgames.common.oauth.invalid_request",
                                 errorMessage = "Refresh token is required.",
@@ -490,7 +530,7 @@ namespace FortBackend.src.App.Routes.Oauth
                                 originatingService = "any",
                                 intent = "prod",
                                 error_description = "Refresh token is required."
-                            });
+                            };
                         }
 
 
@@ -498,9 +538,11 @@ namespace FortBackend.src.App.Routes.Oauth
 
                         // REFRESH TOKEN SHOULD HAVE, AccountId, DeviceId and Secret
 
-                        //var refreshTokenIndex = GlobalData.RefreshToken.FindIndex(x => x.token == refresh_token);
-                        //if (refreshTokenIndex != -1)
-                        //{
+                        var refreshTokenIndex = GlobalData.RefreshToken.FindIndex(x => x.token == refresh_token);
+                        if (refreshTokenIndex != -1)
+                        {
+                            Logger.Log("FOIUND A REFRESH TOKEN!!");
+                        }
                         //    var handler = new JwtSecurityTokenHandler();
                         //    var decodedRefreshToken = handler.ReadJwtToken(GlobalData.RefreshToken[refreshTokenIndex].token.Replace("eg1~", ""));
 
@@ -559,7 +601,7 @@ namespace FortBackend.src.App.Routes.Oauth
 
                 if (IsMyFavUserBanned)
                 {
-                    var jsonResult = JsonConvert.SerializeObject(new BaseError
+                    throw new BaseError
                     {
                         errorCode = "errors.com.epicgames.account.account_not_active",
                         errorMessage = $"You have been permanently banned from {Saved.DeserializeConfig.DiscordBotMessage}.", // why not use this
@@ -568,14 +610,6 @@ namespace FortBackend.src.App.Routes.Oauth
                         originatingService = "any",
                         intent = "prod",
                         error_description = $"You have been permanently banned from {Saved.DeserializeConfig.DiscordBotMessage}."
-                    });
-
-                    StatusCode(400);
-                    return new ContentResult()
-                    {
-                        Content = jsonResult,
-                        ContentType = "application/json",
-                        StatusCode = 400
                     };
                 }
 
@@ -667,6 +701,17 @@ namespace FortBackend.src.App.Routes.Oauth
                     in_app_id = AccountId,
                     device_id = DeviceID
                 });
+            }
+            catch (BaseError ex)
+            {
+                var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+                StatusCode(500);
+                return new ContentResult()
+                {
+                    Content = jsonResult,
+                    ContentType = "application/json",
+                    StatusCode = 500
+                };
             }
             catch (Exception ex)
             {

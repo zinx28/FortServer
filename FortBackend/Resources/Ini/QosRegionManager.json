@@ -1,27 +1,34 @@
 {
-    "RegionDefinitions": [
-        {
-            "Region": "Europe",
-            "RegionId": "EU",
-            "bEnabled": true,
-            "bVisible": true,
-            "bAutoAssignable": true
-        },
-        {
-            "Region": "NA-East",
-            "RegionId": "NAE",
-            "bEnabled": true,
-            "bVisible": true,
-            "bAutoAssignable": true
-        },
-        {
-            "Region": "Undefined",
-            "RegionId": "UND",
-            "bEnabled": true,
-            "bVisible": false,
-            "bAutoAssignable": true
-        }
-    ],
+  "RegionDefinitions": [
+    {
+      "Region": "Auto",
+      "RegionId": "AutoRegion",
+      "bEnabled": true,
+      "bVisible": true,
+      "bAutoAssignable": true
+    },
+    {
+      "Region": "Europe",
+      "RegionId": "EU",
+      "bEnabled": true,
+      "bVisible": true,
+      "bAutoAssignable": false
+    },
+    {
+      "Region": "NA-East",
+      "RegionId": "NAE",
+      "bEnabled": true,
+      "bVisible": true,
+      "bAutoAssignable": false
+    },
+    {
+      "Region": "Undefined",
+      "RegionId": "UND",
+      "bEnabled": true,
+      "bVisible": false,
+      "bAutoAssignable": false
+    }
+  ],
     "DatacenterDefinitions": [
         {
             "Id": "VA",

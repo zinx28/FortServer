@@ -134,7 +134,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
                 var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
                 if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
-                    string filePath = IniManager.GrabIniFile($"ClientSettings-{profileCacheEntry.AccountId}.sav");
+                    string filePath = PathConstants.CloudSettings($"ClientSettings-{profileCacheEntry.AccountId}.sav");
 
                     if (System.IO.File.Exists(filePath))
                     {

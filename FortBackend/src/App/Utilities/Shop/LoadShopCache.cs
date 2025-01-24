@@ -50,7 +50,7 @@ namespace FortBackend.src.App.Utilities.Shop
             var filteredSkins = items.Where(item => item.season <= currentSeason).ToList();
          
             if(filteredSkins.Count > 0)
-                Generator.itemTypes1.Add(ItemLoader);
+                Generator.itemTypes.Add(ItemLoader);
 
             Logger.Log($"Loaded {ItemLoader} ~ {filteredSkins.Count}/{items.Count}", "ITEMSHOP");
             return filteredSkins;

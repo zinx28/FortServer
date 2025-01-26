@@ -4,6 +4,7 @@ using FortLibrary.MongoDB.Module;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.ConfigHelpers;
 using FortLibrary;
+using Discord;
 
 namespace FortBackend.src.App.Utilities.Discord.Helpers
 {
@@ -33,11 +34,13 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                     {
                         Logger.Error("Role was not found in this server!");
                     }
-                }else
+                }
+                else
                 {
                     Logger.Error("Bot is not in the server!");
                 }
-            }else
+            }
+            else
             {
                 Logger.Error("Please set put a role id in the config!");
             }
@@ -55,24 +58,38 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                     return;
                 }
 
-                if (command.CommandName == "test")
+                switch (command.CommandName)
                 {
-                    await Test.Respond(command);
-                }
-                else if (command.CommandName == "who")
-                {
-                    if (CheckIfRole(config, command, guild))
-                    {
-                        await Who.Respond(command);
-                    }
-                }
-                else if (command.CommandName == "register")
-                {
-                    await Create.Respond(command);
-                }
-                else if (command.CommandName == "change_password")
-                {
-                    await PasswordUpdate.Respond(command);
+                    case "test":
+                        await Test.Respond(command);
+                        break;
+                    case "who":
+                        if (CheckIfRole(config, command, guild))
+                        {
+                            await Who.Respond(command);
+                        }
+                        break;
+                    case "register":
+                        await Create.Respond(command);
+                        break;
+                    case "change_password":
+                        await PasswordUpdate.Respond(command);
+                    break;
+                    //case "events":
+                    //    if (CheckIfRole(config, command, guild))
+                    //    {
+                    //        await TourEvents.Respond(command);
+                    //    }
+                    //    break;
+                    default:
+                        var embed = new EmbedBuilder()
+                        .WithTitle("Failed to find command")
+                        .WithDescription("?")
+                        .WithColor(Color.Blue)
+                        .WithCurrentTimestamp();
+
+                        await command.RespondAsync(embed: embed.Build(), ephemeral: true);
+                        break;
                 }
             }
             catch (Exception ex)

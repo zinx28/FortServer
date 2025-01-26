@@ -1,13 +1,14 @@
 <% if(moderator) { %>
 <button
-  class="btn btn-primary"
+  class="btn ButtonColorType"
   data-bs-toggle="modal"
   data-bs-target="#addModal"
+  style="display: flex; margin-left: 30px; margin-right: auto"
 >
-  Add
+  Add User
 </button>
 <% } %>
-<table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover rounded-table">
   <thead>
     <tr>
       <th>Title</th>
@@ -21,7 +22,7 @@
       <td>The Admin Account Is Forced (you cannot edit or delete this)</td>
       <td>
         <button
-          class="btn btn-primary"
+          class="btn ButtonColorType"
           data-bs-toggle="modal"
           data-bs-target="#editModal"
           disabled
@@ -43,7 +44,7 @@
         <% if(moderator) { %>
 
         <button
-          class="btn btn-primary"
+          class="btn ButtonColorType"
           data-bs-toggle="modal"
           data-bs-target="#editUserModal"
           data-admin-info="<%= adminInfo.AccountId %>"
@@ -53,7 +54,7 @@
         </button>
         <% } else { %>
         <button
-          class="btn btn-primary"
+          class="btn ButtonColorType"
           data-bs-toggle="modal"
           data-bs-target="#editUserModal"
           disabled

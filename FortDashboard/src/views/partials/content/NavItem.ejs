@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
   <li class="nav-item" role="presentation">
     <a
-      class="nav-link <%= activeTab === 'news' ? 'active' : '' %>"
+      class="nav-link <%= activeTab === 'news' ? 'ButtonColorType' : '' %>"
       id="news-tab"
       aria-selected="<%= activeTab === 'news' ? 'true' : '' %>"
       href="/dashboard/content/news"
@@ -11,7 +11,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <a
-      class="nav-link <%= activeTab === 'server' ? 'active' : '' %>"
+      class="nav-link <%= activeTab === 'server' ? 'ButtonColorType' : '' %>"
       id="servers-tab"
       aria-selected="<%= activeTab === 'server' ? 'true' : '' %>"
       href="/dashboard/content/server"
@@ -21,7 +21,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <a
-      class="nav-link <%= activeTab === 'ini' ? 'active' : '' %>"
+      class="nav-link <%= activeTab === 'ini' ? 'ButtonColorType' : '' %>"
       id="inimanagement-tab"
       aria-selected="<%= activeTab === 'ini' ? 'true' : '' %>"
       href="/dashboard/content/ini"
@@ -30,17 +30,24 @@
     </a>
   </li>
   <li class="nav-item" role="presentation">
-    <button
-      class="nav-link"
+    <a
+      class="nav-link <%= activeTab === 'tournaments' ? 'ButtonColorType' : '' %>"
+      id="tournamentsmanagement-tab"
+      aria-selected="<%= activeTab === 'tournaments' ? 'true' : '' %>"
+      href="/dashboard/content/tournaments"
+    >
+      Tournaments 
+    </a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link <%= activeTab === 'shop' ? 'ButtonColorType' : '' %>"
       id="shop-tab"
-      data-bs-toggle="tab"
-      data-bs-target="#shop"
-      type="button"
       role="tab"
-      aria-controls="shop"
-      aria-selected="false"
+      aria-selected="<%= activeTab === 'shop' ? 'true' : '' %>"
+      href="/dashboard/content/shop"
     >
       Shop Configuration
-    </button>
+  </a>
   </li>
 </ul>

@@ -58,7 +58,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                         // updates live
                         RegionManagerconfig.RegionDefinitions.ForEach(e =>
                         {
-                            iniBuilder.AppendLine($"+RegionDefinitions=(DisplayName={e.Region}, RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled}, bVisible={e.bVisible}, bAutoAssignable={e.bAutoAssignable})");
+                            iniBuilder.AppendLine($"+RegionDefinitions=(DisplayName=\"{e.Region}\", RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled}, bVisible={e.bVisible}, bAutoAssignable={e.bAutoAssignable})");
                         });
 
                         iniBuilder.AppendLine($"!DatacenterDefinitions=ClearArray");

@@ -5,11 +5,10 @@
     <% IniData.forEach(function(item, index) { %>
     <li class="nav-item" role="presentation">
       <button
-        class="nav-link <%= index === 0 ? 'active' : '' %>"
+        class="nav-link <%= index === 0 ? 'ButtonColorType' : '' %>"
         id="<%= item.FileName %>-tab"
         data-bs-toggle="tab"
         data-bs-target="#<%= item.FileName %>"
-        type="button"
         role="tab"
         aria-controls="<%= item.FileName %>"
         aria-selected="<%= index === 0 ? 'true' : 'false' %>"
@@ -30,7 +29,7 @@
     >
       <h2><%= item.FileName %></h2>
 
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered table-hover rounded-table">
         <thead>
           <tr>
             <th>Title</th>
@@ -45,7 +44,7 @@
             <td>N/A</td>
             <td>
               <button
-                class="btn btn-primary"
+                class="btn ButtonColorType"
                 data-bs-toggle="modal"
                 data-bs-target="#editModal"
                 data-context="ini"

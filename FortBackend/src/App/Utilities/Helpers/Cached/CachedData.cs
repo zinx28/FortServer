@@ -253,6 +253,12 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
 
             try
             {
+                CupCache.Init();
+            }
+            catch (Exception ex) { Logger.Error("CupCache Data -> " + ex.Message); }
+
+            try
+            {
                 string filePath = await File.ReadAllTextAsync(IniConfigPath);
 
                 IniManager.IniConfigData = JsonConvert.DeserializeObject<IniConfig>(filePath)!;

@@ -1,6 +1,6 @@
 <div
-  class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark position-fixed"
-  style="width: 280px; height: 100%"
+  class="d-flex flex-column flex-shrink-0 p-3 position-fixed"
+  style="width: 280px; height: 100%; background-color: #1a1c1e;"
 >
   <a
     href="/"
@@ -11,12 +11,12 @@
     </svg>
     <span class="fs-4">FortBackend</span>
   </a>
-  <hr />
+  <hr style="border-color: white; border-radius: 10px; border: 1;" />
   <ul class="nav nav-pills flex-column mb-auto" style="overflow-y: auto">
     <li class="nav-item">
       <a
         href="/dashboard/home"
-        class="nav-link text-white <%= activeTab === 'dashboard' ? 'active' : '' %>"
+        class="nav-link text-white <%= activeTab === 'dashboard' ? 'ButtonColorType' : '' %>"
         aria-current="page"
       >
         <svg
@@ -35,7 +35,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="/dashboard/content" class="nav-link text-white <%= activeTab === 'content' ? 'active' : '' %>">
+      <a href="/dashboard/content" class="nav-link text-white <%= activeTab === 'content' ? 'ButtonColorType' : '' %>">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -55,7 +55,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="/dashboard/panel" class="nav-link text-white <%= activeTab === 'adminPanel' ? 'active' : '' %>">
+      <a href="/dashboard/panel" class="nav-link text-white <%= activeTab === 'adminPanel' ? 'ButtonColorType' : '' %>">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -77,7 +77,7 @@
   </ul>
 
   <div class="dropdown mt-auto">
-    <hr />
+    <hr style="border-color: white; border-radius: 10px; border: 1;" />
     <a
       href="#"
       class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"

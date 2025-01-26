@@ -29,7 +29,7 @@ namespace FortLibrary.ConfigHelpers
         [JsonProperty]
         public string poster_back_image { get; set; } = string.Empty;
         [JsonProperty]
-        public string _type { get; set; } = string.Empty;
+        public string _type { get; set; } = "Tournament Display Info";
         [JsonProperty]
         public string pin_earned_text { get; set; } = string.Empty;
         [JsonProperty]

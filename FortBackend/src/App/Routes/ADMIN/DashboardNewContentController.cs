@@ -70,7 +70,8 @@ namespace FortBackend.src.App.Routes.ADMIN
                                     e.Title,
                                 })
                             }),
-                           
+                            "cup" when contentId == "tournaments" => CupCache.cacheCupsDatas,
+
                             _ => null
                         };
 
@@ -102,7 +103,7 @@ namespace FortBackend.src.App.Routes.ADMIN
         {
             try
             {
-                if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                 {
                     AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
@@ -118,7 +119,6 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 ForcedSeason = Saved.DeserializeGameConfig.ForceSeason,
                                 SeasonForced = Saved.DeserializeGameConfig.Season
                             },
-                          
 
                             _ => null
                         };

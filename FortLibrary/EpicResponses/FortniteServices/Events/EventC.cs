@@ -13,16 +13,8 @@
         public string eventId { get; set; } = string.Empty;
         public List<EventWindowC> eventWindows { get; set; } = new List<EventWindowC>();
         public string gameId { get; set; } = string.Empty;
-        public string link { get; set; } = string.Empty;
-        public MetaDataC metadata { get; set; } = new MetaDataC()
-        {
-            TrackedStats = new string[] {
-                "PLACEMENT_STAT_INDEX",
-                "TEAM_ELIMS_STAT_INDEX",
-                "MATCH_PLAYED_STAT"
-            },
-            minimumAccountLevel = 0,
-        };
+        public object link { get; set; } = new object();
+        public object? metadata { get; set; } = null;
         public object platformMappings { get; set; } = new { };
         public string[] platforms { get; set; } = new string[] {
             "PS4",
@@ -57,11 +49,12 @@
         public string[] blackoutPeriods { get; set; } = new string[0];
         public bool canLiveSpectate { get; set; } = false;
         public string countdownBeginTime { get; set; } = string.Empty;
+        public string? leaderboardId { get; set; } = null;
         public string endTime { get; set; } = string.Empty;
         public string eventTemplateId { get; set; } = string.Empty;
         public string eventWindowId { get; set; } = string.Empty;
         public bool isTBD { get; set; } = false;
-        public EventWindowMetaDataC metadata { get; set; } = new EventWindowMetaDataC();
+        public object? metadata { get; set; } = null;
         public int payoutDelay { get; set; } = 30;
         public string[] requireAllTokens { get; set; } = new string[0];
         public string[] requireAllTokensCaller { get; set; } = new string[0];
@@ -69,7 +62,7 @@
         public string[] requireAnyTokensCaller { get; set; } = new string[0];
         public string[] requireNoneTokensCaller { get; set; } = new string[0];
         public int round { get; set; } = 0;
-        public List<object> scoreLocations { get; set; } = new List<object>();
+        public List<dynamic> scoreLocations { get; set; } = new List<dynamic>();
         public string teammateEligibility { get; set; } = "any";
         public string visibility { get; set; } = "public";
     }

@@ -5,7 +5,8 @@
 body {
     width: auto;
     height: 100%;
-    background: #2d3237;
+    background: #212325;
+    color: white;
   }
 
 .nav-tabs .nav-link {
@@ -17,10 +18,42 @@ body {
     border-color: #007bff;
 }
 
-.table {
-    background-color: transparent !important;
+.modal-content {
+    background-color: #212325;
 }
 
-.modal-content {
-    background-color: #343a40;
+.rounded-table {
+    border-radius: 10px; 
+    border: 2px solid #ddd; 
+    overflow: hidden; 
+}
+
+.ButtonColorType {
+    background-color: #313335;
+    color: white;
+    border: 0px;
+}
+
+.ButtonColorType:hover {
+    background-color: #48494b;
+    color: white;
+}
+
+.nav-item:hover {
+    background-color: #48494b;
+    border-radius: 5px;
+}
+
+.AvgInputBox {
+    border-radius: 5px;
+    border: 0;
+    background-color: #313335;
+    color: white;
+    padding: 5px;
+}
+
+.AvgInputBox:focus {
+    outline: none;
+    background-color: #48494b;
+    border: 0;
 }

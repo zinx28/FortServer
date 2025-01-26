@@ -1,0 +1,196 @@
+<div>
+  <h2>Cup Tab</h2>
+
+  <div class="DivClassYKYK">
+    <select style="padding: 5px; width: 180px; border-radius: 5px" 
+    <% if(typeof CupData === 'undefined' || CupData == null) { %> 
+        disabled
+    <% }%>>
+      <% if(typeof CupData === 'undefined' || CupData == null) { %>
+      <option value="soon">NONE</option>
+      <% } else { %> 
+        <% CupData.forEach(function(singleItem, index2) { %>
+        <option value="soon"><%= singleItem.ID %></option>
+        <% }) %>
+      <% } %>
+    </select>
+    <button
+      class="ButtonColorType"
+      style="padding: 5px; width: 70px; border-radius: 5px"
+      onclick="showTempForm()"
+    >
+      New
+    </button>
+    <button
+      class="ButtonColorType"
+      style="padding: 5px; width: 70px; border-radius: 5px"
+    >
+      Delete
+    </button>
+  </div>
+  <div>
+    <button
+      class="ButtonColorType"
+      style="padding: 5px; width: 160px; border-radius: 5px"
+    >
+      Edit (isnt added yet)
+    </button>
+    <button
+      class="ButtonColorType"
+      style="padding: 5px; width: 70px; border-radius: 5px"
+    >
+      SOON
+    </button>
+  </div>
+  <div style="display: flex; justify-content: space-between; padding: 10px">
+    <div>
+      <p>Note after a event data changed won’t removed players who played</p>
+
+      <!--we only do this bc i dont want users creating the dashboard without actually putting the data first!-->
+      <% if(typeof CupData === 'undefined' || CupData == null) { %>
+      Create/Select a cup!!!! <% } else { %> Currently you cant edit the data but this is being worked on! <% }%>
+      <form id="CupID" action="/cup/create" style="display: none">
+        <h5>Title</h5>
+        <input class="AvgInputBox" name="title" required />
+        <h5>Description</h5>
+        <input type="text" class="AvgInputBox" name="description" required />
+        <h5>When To Begin Event</h5>
+        <input
+          type="datetime-local"
+          id="dateTime"
+          class="AvgInputBox"
+          name="StartTime"
+          required
+        />
+        <h5>When To End Event</h5>
+        <input
+          type="datetime-local"
+          id="whydoesntthiswork"
+          class="AvgInputBox"
+          name="EndTime"
+          required
+        />
+        <h5>
+          Note rn these items won't be granted after event, you will have to do
+          it manually
+        </h5>
+        <h5>Item To Give</h5>
+        <input
+          class="AvgInputBox"
+          placeholder="Enter the item to give (ID:ITEM)"
+          value="Currency:MtxPurchased"
+          name="GivenItem"
+          required
+        />
+        <h5>The Amount</h5>
+        <input
+          class="AvgInputBox"
+          type="number"
+          min="1"
+          placeholder="Enter the amount (1 for cosmetics)"
+          value="1000"
+          name="ItemQuantity"
+          required
+        />
+        <h5>Givent Placemnt</h5>
+        <input
+          type="number"
+          class="AvgInputBox"
+          min="1"
+          placeholder="top amount who receive item (eg 50)"
+          value="50"
+          name="CupPlacement"
+          required
+        />
+        <br /><br />
+        <button
+          type="submit"
+          class="ButtonColorType"
+          id="SubmitID"
+          style="padding: 5px; width: 70px; border-radius: 5px"
+        >
+          Save
+        </button>
+      </form>
+    </div>
+
+    <% if(typeof CupData !== 'undefined' && CupData != null) { %>
+    <div
+      id="DisplayItem"
+      style="
+        background-color: gray;
+        width: 300px;
+        height: 400px;
+        border-radius: 10px;
+        display: flex;
+        text-align: center;
+        align-items: end;
+        justify-content: center;
+        align-self: center;
+      "
+    >
+      <h1 style="text-align: center">TEMP</h1>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+  const CupID = document.getElementById("CupID");
+  const DisplayItem = document.getElementById("DisplayItem");
+  const dateTimeInput = document.getElementById("dateTime");
+  const frfrfr = document.getElementById("whydoesntthiswork");
+  const SubmitID = document.getElementById("SubmitID"); // just to change the fliping name
+  const now = new Date();
+
+  now.setHours(now.getHours() + 1);
+  dateTimeInput.value = now.toISOString().slice(0, 16);
+  now.setHours(now.getHours() + 3); // cup lasts like 3 hours trol
+  frfrfr.value = now.toISOString().slice(0, 16);
+
+  // why did fa-
+  function showTempForm() {
+    CupID.style.display = "block";
+    SubmitID.innerText = "Create";
+    if(DisplayItem) {
+        DisplayItem.style.display = "none"
+    }
+  }
+  //CupID
+  SubmitID.addEventListener("click", async (e) => {
+    if (CupID.checkValidity()) {
+      e.preventDefault();
+
+      const formData = new FormData(CupID);
+      // if it wroks it works
+      const formDataObj = {};
+      formData.forEach((value, key) => {
+        formDataObj[key] = value;
+      });
+      console.log("ggs");
+
+      const response = await fetch(
+        `http://127.0.0.1:1111/admin/new/dashboard/content/cups/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(formDataObj),
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("why fnaf:", data);
+        window.location.reload(); // ahhh
+      } else {
+        console.log("erorrooro!!"); // error message or smyth/!?!?!!!!!!
+      }
+    } else {
+      //e.prevent will be used instead of thjis for now
+      // need to add a error message or smth?!?!!
+    }
+  });
+</script>

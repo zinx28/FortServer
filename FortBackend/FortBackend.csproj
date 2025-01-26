@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Image\BackPoster.jpg" />
+    <None Remove="Resources\Image\LoadingScreen.png" />
     <None Remove="Resources\Image\test.png" />
     <None Remove="Resources\Image\Trans_Boykisser.png" />
     <None Remove="Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk" />
@@ -26,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Image\BackPoster.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\LoadingScreen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Image\Trans_Boykisser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("URLSearchParams:", data.toString());
 
       const response = await fetch(
-        `http://127.0.0.1:1111/admin/new/dashboard/content/update`,
+        `${window.appConfig.apiUrl}/admin/new/dashboard/content/update`,
         {
           method: "POST",
           headers: {

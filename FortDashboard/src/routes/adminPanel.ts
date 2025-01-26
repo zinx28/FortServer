@@ -22,7 +22,7 @@ export default function (app: Hono) {
       // Calls the api to see if we should redirect to setup or dashboard
 
       const apiResponse = await fetch(
-        "http://localhost:1111/admin/new/dashboard/panel",
+        `${process.env.URL}/admin/new/dashboard/panel`,
         {
           method: "POST",
           headers: {
@@ -78,7 +78,7 @@ export default function (app: Hono) {
             case "sm":
               if (JsonParsed.roleId == 3) {
                 const apiResponsePanel = await fetch(
-                  "http://localhost:1111/admin/new/dashboard/content/ConfigData",
+                  `${process.env.URL}/admin/new/dashboard/content/ConfigData`,
                   {
                     method: "POST",
                     headers: {

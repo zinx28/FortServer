@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = new URLSearchParams(formData);
 
       const response = await fetch(
-        "http://127.0.0.1:1111/admin/new/login/setup",
+        `${window.appConfig.apiUrl}/admin/new/login/setup`,
         {
           method: "POST",
           headers: {

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = new URLSearchParams(formData);
 
       const response = await fetch(
-        `http://127.0.0.1:1111/admin/new/dashboard/panel/user/edit`,
+        `${window.appConfig.apiUrl}/admin/new/dashboard/panel/user/edit`,
         {
           method: "POST",
           headers: {
@@ -47,7 +47,7 @@ async function populateModalEditUserShow(UserData) {
     var editUsersBox = document.getElementById("editUsersEmail");
 
     const response = await fetch(
-      `http://127.0.0.1:1111/admin/new/dashboard/panel/user/edit/${adminInfo}`,
+      `${window.appConfig.apiUrl}/admin/new/dashboard/panel/user/edit/${adminInfo}`,
       {
         method: "POST",
         headers: {

@@ -43,7 +43,7 @@ namespace FortBackend.src.App.Routes.ADMIN
     public class AdminCashCup : Controller
     {
         [HttpPost("cups/create")]
-        public async Task<IActionResult> DashboardCheck()
+        public async Task<IActionResult> CreateCup()
         {
             Response.ContentType = "application/json";
 
@@ -256,7 +256,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 return Json(new
                                 {
                                     message = "200",
-                                    error = true,
+                                    error = false,
                                 });
                             }else
                             {
@@ -266,6 +266,67 @@ namespace FortBackend.src.App.Routes.ADMIN
                                     error = true,
                                 });
                             }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Json(new
+            {
+                message = "Couldn't find content",
+                error = true,
+            });
+        }
+
+
+        // returns data
+        [HttpGet("cups/{id}")]
+        public async Task<IActionResult> CupDataaa(string id)
+        {
+            Response.ContentType = "application/json";
+
+            try
+            {
+                var authToken = Request.Headers["Authorization"].ToString().ToLower().Split("bearer ")[1]; ;
+
+                if (authToken != null)
+                {
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken);
+                    if (adminData != null)
+                    {
+                        if (adminData.RoleId > AdminDashboardRoles.Moderator)
+                        {
+                            var DeserizlisedCupContent = CupCache.cacheCupsDatas.FirstOrDefault(e => e.ID == id);
+                            
+                            if(DeserizlisedCupContent != null)
+                            {
+                                Logger.Log(DeserizlisedCupContent.ID);
+                                var TournamentInfo = NewsManager.ContentConfig.tournamentinformation.FirstOrDefault(e => e.tournament_display_id == $"display_{id}");
+                                if (TournamentInfo != null)
+                                {
+                                    return Json(new
+                                    {
+                                        body = new
+                                        {
+                                            title = TournamentInfo.title_line_1,
+                                            description = TournamentInfo.details_description,
+                                        },
+                                        error = false,
+                                    });
+                                }
+                            }
+                        }
+                        else
+                        {
+                            return Json(new
+                            {
+                                message = "Raw Body Is Empty",
+                                error = true,
+                            });
                         }
                     }
                 }

@@ -15,7 +15,7 @@ export default function (app: Hono) {
         const token = getCookie(c, "AuthToken");
 
         if (token) {
-            const apiResponse = await fetch("http://localhost:1111/admin/new/login/check", {
+            const apiResponse = await fetch(`${process.env.URL}/admin/new/login/check`, {
               method: "POST",
               headers: {
                 Authorization: `Bearer ${token}`,

@@ -9,14 +9,8 @@
       rel="stylesheet"
       crossorigin="anonymous"
     />
-    <link
-    href="/public/css/mainpage.css"
-    rel="stylesheet"
-   />
-   <link
-    href="/public/css/content.css"
-    rel="stylesheet"
-   />
+    <link href="/public/css/mainpage.css" rel="stylesheet" />
+    <link href="/public/css/content.css" rel="stylesheet" />
     <style>
       .form-signin {
         max-width: 330px;
@@ -41,6 +35,12 @@
     </style>
   </head>
   <body class="d-flex align-items-center">
+    <!--when i use vue this wont be needed-->
+    <script>
+      window.appConfig = {
+        apiUrl: "<%= process.env.URL %>",
+      };
+    </script>
     <main class="form-signin w-100 m-auto">
       <form id="loginForm">
         <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
@@ -82,8 +82,12 @@
         <button class="btn ButtonColorType w-100 py-2" type="submit">
           Sign in
         </button>
-        <div class="alert alert-danger mt-3 error-text" role="alert" id="error-text">
-            errorMessage
+        <div
+          class="alert alert-danger mt-3 error-text"
+          role="alert"
+          id="error-text"
+        >
+          errorMessage
         </div>
         <p class="mt-5 mb-3 text-white">
           Using getbootstrap.. i don't do html/css

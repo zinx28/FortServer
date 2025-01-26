@@ -1,5 +1,5 @@
 async function logout() {
-  const response = await fetch("http://127.0.0.1:1111/admin/new/logout", {
+  const response = await fetch(`${window.appConfig.apiUrl}/admin/new/logout`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

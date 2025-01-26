@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(`Editing context: ${context} with ID: ${DataItem}!`);
 
     const response = await fetch(
-      `http://127.0.0.1:1111/admin/new/dashboard/content/ConfigData/${DataItem}`,
+      `${window.appConfig.apiUrl}/admin/new/dashboard/content/ConfigData/${DataItem}`,
       {
         method: "POST",
         headers: {

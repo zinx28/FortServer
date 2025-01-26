@@ -48,12 +48,13 @@
 
       <!--we only do this bc i dont want users creating the dashboard without actually putting the data first!-->
       <% if(typeof CupData === 'undefined' || CupData == null) { %>
-      Create/Select a cup!!!! <% } else { %> Currently you cant edit the data but this is being worked on! <% }%>
-      <form id="CupID" action="/cup/create" style="display: none">
+      Create/Select a cup!!!! <% } else { %> Currently you cant edit the data but this is being worked on! + data isnt fully shown <% }%>
+      <form id="CupID" style="display: none;">
+        <h3 id="CreateTitle"></h3>
         <h5>Title</h5>
-        <input class="AvgInputBox" name="title" required />
+        <input id="text" class="AvgInputBox" name="title" value="<%= FoundCupJS ? FoundCupJS.title : '' %>" required />
         <h5>Description</h5>
-        <input type="text" class="AvgInputBox" name="description" required />
+        <input id="text" type="text" class="AvgInputBox" name="description" value="<%= FoundCupJS ? FoundCupJS.description : '' %>" required />
         <h5>When To Begin Event</h5>
         <input
           type="datetime-local"
@@ -76,6 +77,7 @@
         </h5>
         <h5>Item To Give</h5>
         <input
+          id="ItemToGiveInput"
           class="AvgInputBox"
           placeholder="Enter the item to give (ID:ITEM)"
           value="Currency:MtxPurchased"
@@ -84,6 +86,7 @@
         />
         <h5>The Amount</h5>
         <input
+          id="AmountToGiveInput"
           class="AvgInputBox"
           type="number"
           min="1"
@@ -92,8 +95,9 @@
           name="ItemQuantity"
           required
         />
-        <h5>Givent Placemnt</h5>
+        <h5>Givent Placement</h5>
         <input
+          id="GivenPlacementInput"
           type="number"
           class="AvgInputBox"
           min="1"
@@ -129,35 +133,23 @@
         align-self: center;
       "
     >
-      <h1 style="text-align: center">TEMP</h1>
+      <h1 style="text-align: center"><%= FoundCupJS.title %></h1>
     </div>
     <% } %>
   </div>
 </div>
-
+<div id="CupDataContainer" data-has-cup="<%= typeof CupData !== 'undefined' && CupData != null %>"></div>
 <script>
-  const CupID = document.getElementById("CupID");
+  const CreateTitle = document.getElementById("CreateTitle");
   const DisplayItem = document.getElementById("DisplayItem");
   const dateTimeInput = document.getElementById("dateTime");
   const frfrfr = document.getElementById("whydoesntthiswork");
   const SubmitID = document.getElementById("SubmitID"); // just to change the fliping name
-  const now = new Date();
 
-  now.setHours(now.getHours() + 1);
-  dateTimeInput.value = now.toISOString().slice(0, 16);
-  now.setHours(now.getHours() + 3); // cup lasts like 3 hours trol
-  frfrfr.value = now.toISOString().slice(0, 16);
+  const CupID = document.getElementById("CupID");
 
-  // why did fa-
-  function showTempForm() {
-    CupID.style.display = "block";
-    SubmitID.innerText = "Create";
-    if(DisplayItem) {
-        DisplayItem.style.display = "none"
-    }
-  }
-  //CupID
-  SubmitID.addEventListener("click", async (e) => {
+  function IGyatToTellYou() {
+    SubmitID.addEventListener("click", async (e) => {
     if (CupID.checkValidity()) {
       e.preventDefault();
 
@@ -170,7 +162,7 @@
       console.log("ggs");
 
       const response = await fetch(
-        `http://127.0.0.1:1111/admin/new/dashboard/content/cups/create`,
+        `<%= process.env.URL %>/admin/new/dashboard/content/cups/create`,
         {
           method: "POST",
           headers: {
@@ -193,4 +185,48 @@
       // need to add a error message or smth?!?!!
     }
   });
+  }
+
+  const cupDataContainer = document.getElementById("CupDataContainer");
+  const hasCupData = cupDataContainer.getAttribute("data-has-cup") === "true";
+  if (hasCupData) {
+    CupID.style.display = "block";
+  }else {
+     //CupID
+     IGyatToTellYou();
+  }
+  // why did fa-
+  function showTempForm() {
+    CupID.style.display = "block";
+    SubmitID.innerText = "Create";
+    if(DisplayItem) {
+        DisplayItem.style.display = "none"
+    }
+
+    IGyatToTellYou();
+    const inputBoxes = CupID.querySelectorAll("input");
+    inputBoxes.forEach(input => {
+      input.value = ""; 
+    });
+
+    const now = new Date();
+
+    now.setHours(now.getHours() + 1);
+    dateTimeInput.value = now.toISOString().slice(0, 16);
+    now.setHours(now.getHours() + 3); // cup lasts like 3 hours trol
+    frfrfr.value = now.toISOString().slice(0, 16);
+
+    const ItemToGiveInput = document.getElementById("ItemToGiveInput");
+    ItemToGiveInput.value = "Currency:MtxPurchased"
+
+    const AmountToGiveInput = document.getElementById("AmountToGiveInput");
+    AmountToGiveInput.value = "1000"
+
+    const GivenPlacementInput = document.getElementById("GivenPlacementInput");
+    GivenPlacementInput.value = "50"
+
+    CreateTitle.innerText = "You are currently creating a cup"
+    //ItemToGiveInput
+  }
+ 
 </script>

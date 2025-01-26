@@ -1,6 +1,12 @@
+<!--when i use vue this wont be needed-->
+<script>
+  window.appConfig = {
+    apiUrl: "<%= process.env.URL %>",
+  };
+</script>
 <div
   class="d-flex flex-column flex-shrink-0 p-3 position-fixed"
-  style="width: 280px; height: 100%; background-color: #1a1c1e;"
+  style="width: 280px; height: 100%; background-color: #1a1c1e"
 >
   <a
     href="/"
@@ -11,7 +17,7 @@
     </svg>
     <span class="fs-4">FortBackend</span>
   </a>
-  <hr style="border-color: white; border-radius: 10px; border: 1;" />
+  <hr style="border-color: white; border-radius: 10px; border: 1" />
   <ul class="nav nav-pills flex-column mb-auto" style="overflow-y: auto">
     <li class="nav-item">
       <a
@@ -35,7 +41,10 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="/dashboard/content" class="nav-link text-white <%= activeTab === 'content' ? 'ButtonColorType' : '' %>">
+      <a
+        href="/dashboard/content"
+        class="nav-link text-white <%= activeTab === 'content' ? 'ButtonColorType' : '' %>"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -55,7 +64,10 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="/dashboard/panel" class="nav-link text-white <%= activeTab === 'adminPanel' ? 'ButtonColorType' : '' %>">
+      <a
+        href="/dashboard/panel"
+        class="nav-link text-white <%= activeTab === 'adminPanel' ? 'ButtonColorType' : '' %>"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -77,7 +89,7 @@
   </ul>
 
   <div class="dropdown mt-auto">
-    <hr style="border-color: white; border-radius: 10px; border: 1;" />
+    <hr style="border-color: white; border-radius: 10px; border: 1" />
     <a
       href="#"
       class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -89,7 +101,11 @@
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
       <li><a class="dropdown-item" href="#">Idrk</a></li>
       <li><hr class="dropdown-divider" /></li>
-      <li><a class="dropdown-item"  style="cursor: pointer;" onclick="logout()">Sign out</a></li>
+      <li>
+        <a class="dropdown-item" style="cursor: pointer" onclick="logout()"
+          >Sign out</a
+        >
+      </li>
     </ul>
   </div>
 </div>

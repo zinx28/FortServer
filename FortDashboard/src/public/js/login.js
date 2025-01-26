@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       console.log("URLSearchParams:", data.toString());
 
-      const response = await fetch("http://127.0.0.1:1111/admin/new/login", {
+      const response = await fetch(`${window.appConfig.apiUrl}/admin/new/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

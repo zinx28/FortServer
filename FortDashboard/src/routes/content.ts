@@ -22,7 +22,7 @@ export default function (app: Hono) {
       // Calls the api to see if we should redirect to setup or dashboard
 
       const apiResponse = await fetch(
-        "http://localhost:1111/admin/new/dashboard/panel",
+        `${process.env.URL}/admin/new/dashboard/panel`,
         {
           method: "POST",
           headers: {
@@ -75,7 +75,7 @@ export default function (app: Hono) {
               break;
             case "ini":
               const response = await fetch(
-                `http://127.0.0.1:1111/admin/new/dashboard/content/dataV2/ini/1`,
+                `${process.env.URL}/admin/new/dashboard/content/dataV2/ini/1`,
                 {
                   method: "POST",
                   headers: {
@@ -103,7 +103,7 @@ export default function (app: Hono) {
               break;
             case "tournaments":
               const Tourresponse = await fetch(
-                `http://127.0.0.1:1111/admin/new/dashboard/content/dataV2/cup/tournaments`,
+                `${process.env.URL}/admin/new/dashboard/content/dataV2/cup/tournaments`,
                 {
                   method: "POST",
                   headers: {
@@ -151,10 +151,11 @@ export default function (app: Hono) {
     const token = getCookie(c, "AuthToken");
     var DisplayName = "NotSure";
     if (token) {
+      const CupID = c.req.param("cupID")
       // Calls the api to see if we should redirect to setup or dashboard
 
       const apiResponse = await fetch(
-        "http://localhost:1111/admin/new/dashboard/panel",
+        `${process.env.URL}/admin/new/dashboard/panel`,
         {
           method: "POST",
           headers: {
@@ -169,7 +170,7 @@ export default function (app: Hono) {
         if (!JsonParsed.error) {
           console.log(JSON.stringify(JsonParsed));
           const Tourresponse = await fetch(
-            `http://127.0.0.1:1111/admin/new/dashboard/content/dataV2/cup/tournaments`,
+            `${process.env.URL}/admin/new/dashboard/content/dataV2/cup/tournaments`,
             {
               method: "POST",
               headers: {
@@ -181,7 +182,17 @@ export default function (app: Hono) {
           const frfrfrfr = await Tourresponse.json();
           console.log(JSON.stringify(frfrfrfr));
           if (Array.isArray(frfrfrfr)) {
-
+            const FoundCup = await fetch(
+              `${process.env.URL}/admin/new/dashboard/content/cups/${CupID}`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const FoundCupJS = await FoundCup.json();
             const data = {
               title: "Dashboard",
               roleId: JsonParsed.roleId,
@@ -203,7 +214,8 @@ export default function (app: Hono) {
               NewsTab: await ejs.renderFile(
                 path.join(__dirname, `../views/partials/content/CupTab.ejs`),
                 {
-                  CupData: frfrfrfr
+                  CupData: frfrfrfr,
+                  FoundCupJS: FoundCupJS.body
                 }
               ),
               NewsForm: await ejs.renderFile(

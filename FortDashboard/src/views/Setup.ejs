@@ -10,10 +10,7 @@
       crossorigin="anonymous"
     />
     <link href="/public/css/content.css" rel="stylesheet" />
-    <link
-    href="/public/css/mainpage.css"
-    rel="stylesheet"
-   />
+    <link href="/public/css/mainpage.css" rel="stylesheet" />
     <style>
       .form-signin {
         max-width: 330px;
@@ -38,6 +35,12 @@
     </style>
   </head>
   <body class="d-flex align-items-center py-4">
+    <!--when i use vue this wont be needed-->
+    <script>
+      window.appConfig = {
+        apiUrl: "<%= process.env.URL %>",
+      };
+    </script>
     <main class="form-signin w-100 m-auto">
       <form id="setupForm">
         <h1 class="h3 mb-3 fw-normal text-white">Please set values</h1>
@@ -79,7 +82,11 @@
           Update Details
         </button>
 
-        <div class="alert alert-danger mt-3 error-text" role="alert" id="error-text">
+        <div
+          class="alert alert-danger mt-3 error-text"
+          role="alert"
+          id="error-text"
+        >
           errorMessage
         </div>
 

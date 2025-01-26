@@ -22,7 +22,7 @@ export default function (app: Hono) {
       // Calls the api to see if we should redirect to setup or dashboard
 
       const apiResponse = await fetch(
-        "http://localhost:1111/admin/new/dashboard",
+        `${process.env.URL}/admin/new/dashboard`,
         {
           method: "POST",
           headers: {

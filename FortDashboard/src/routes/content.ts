@@ -114,7 +114,7 @@ export default function (app: Hono) {
               );
               const frfrfrfr = await Tourresponse.json();
               console.log(JSON.stringify(frfrfrfr));
-              if (Array.isArray(frfrfrfr)) {
+              if (Array.isArray(frfrfrfr) && frfrfrfr.length > 0) {
                 var FirstItem = frfrfrfr[0].ID;
                 return c.redirect(`/dashboard/content/cup/${FirstItem}`);
               } else {

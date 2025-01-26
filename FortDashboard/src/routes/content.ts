@@ -122,7 +122,7 @@ export default function (app: Hono) {
                   path.join(__dirname, `../views/partials/content/CupTab.ejs`),
                   {
                     //IniData: JsonParsed
-                    FoundCupJS: null
+                    FoundCupJS: null,
                   }
                 );
               }
@@ -152,7 +152,7 @@ export default function (app: Hono) {
     const token = getCookie(c, "AuthToken");
     var DisplayName = "NotSure";
     if (token) {
-      const CupID = c.req.param("cupID")
+      const CupID = c.req.param("cupID");
       // Calls the api to see if we should redirect to setup or dashboard
 
       const apiResponse = await fetch(
@@ -194,36 +194,41 @@ export default function (app: Hono) {
               }
             );
             const FoundCupJS = await FoundCup.json();
-            const data = {
-              title: "Dashboard",
-              roleId: JsonParsed.roleId,
-              moderator: JsonParsed.moderator,
-              AdminLists: JsonParsed.AdminLists,
-              navbar: await ejs.renderFile(
-                path.join(__dirname, `../views/partials/nav.ejs`),
-                {
-                  displayName: JsonParsed.displayName,
-                  activeTab: "content",
-                }
-              ),
-              NavItem: await ejs.renderFile(
-                path.join(__dirname, `../views/partials/content/NavItem.ejs`),
-                {
-                  activeTab: "tournaments",
-                }
-              ),
-              NewsTab: await ejs.renderFile(
-                path.join(__dirname, `../views/partials/content/CupTab.ejs`),
-                {
-                  CupData: frfrfrfr,
-                  FoundCupJS: FoundCupJS.body
-                }
-              ),
-              NewsForm: await ejs.renderFile(
-                path.join(__dirname, `../views/partials/forms/NewsForm.ejs`)
-              ),
-            };
-            return c.html(await renderEJS("dashboard/Content.ejs", data));
+            if (FoundCupJS != null && FoundCupJS.body != null) {
+              console.log(FoundCupJS);
+              const data = {
+                title: "Dashboard",
+                roleId: JsonParsed.roleId,
+                moderator: JsonParsed.moderator,
+                AdminLists: JsonParsed.AdminLists,
+                navbar: await ejs.renderFile(
+                  path.join(__dirname, `../views/partials/nav.ejs`),
+                  {
+                    displayName: JsonParsed.displayName,
+                    activeTab: "content",
+                  }
+                ),
+                NavItem: await ejs.renderFile(
+                  path.join(__dirname, `../views/partials/content/NavItem.ejs`),
+                  {
+                    activeTab: "tournaments",
+                  }
+                ),
+                NewsTab: await ejs.renderFile(
+                  path.join(__dirname, `../views/partials/content/CupTab.ejs`),
+                  {
+                    CupData: frfrfrfr,
+                    FoundCupJS: FoundCupJS.body,
+                  }
+                ),
+                NewsForm: await ejs.renderFile(
+                  path.join(__dirname, `../views/partials/forms/NewsForm.ejs`)
+                ),
+              };
+              return c.html(await renderEJS("dashboard/Content.ejs", data));
+            } else {
+              return c.redirect(`/dashboard/content/tournaments`);
+            }
           }
         }
       }

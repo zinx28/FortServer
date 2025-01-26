@@ -122,6 +122,7 @@ export default function (app: Hono) {
                   path.join(__dirname, `../views/partials/content/CupTab.ejs`),
                   {
                     //IniData: JsonParsed
+                    FoundCupJS: null
                   }
                 );
               }

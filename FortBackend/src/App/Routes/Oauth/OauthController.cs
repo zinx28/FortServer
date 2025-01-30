@@ -538,11 +538,54 @@ namespace FortBackend.src.App.Routes.Oauth
 
                         // REFRESH TOKEN SHOULD HAVE, AccountId, DeviceId and Secret
 
-                        var refreshTokenIndex = GlobalData.RefreshToken.FindIndex(x => x.token == refresh_token);
-                        if (refreshTokenIndex != -1)
+                        var refreshTokenData = GlobalData.RefreshToken.FirstOrDefault(x => x.token == refresh_token);
+                        if (refreshTokenData != null && string.IsNullOrEmpty(refreshTokenData.token))
                         {
                             Logger.Log("FOIUND A REFRESH TOKEN!!");
+                            var accessToken = refreshTokenData.token.Replace("eg1~", "");
+                            var handler = new JwtSecurityTokenHandler();
+                            var DecodedToken = handler.ReadJwtToken(accessToken);
+                            string[] tokenParts = DecodedToken.ToString().Split(".");
+
+                            if (tokenParts.Length == 2)
+                            {
+                                var Payload = tokenParts[1];
+
+                                TokenPayload tokenPayload = Newtonsoft.Json.JsonConvert.DeserializeObject<TokenPayload>(Payload)!;
+
+                                if (tokenPayload != null && !string.IsNullOrEmpty(tokenPayload.Sub))
+                                {
+                                    // verifys the real profile so fake profiles cant do stuff
+
+                                    //TODO verify token + increase time                                     
+                                    ProfileCacheEntry profileCacheEntryR = await GrabData.Profile(tokenPayload.Sub);
+
+                                    if (profileCacheEntryR != null)
+                                    {
+                                        IsMyFavUserBanned = profileCacheEntryR.UserData.banned;
+                                        AccountId = profileCacheEntryR.UserData.AccountId;
+                                        DisplayName = profileCacheEntryR.UserData.Username;
+                                    }
+                                }
+                            }
                         }
+                        else
+                        {
+                            //todo get real error
+                            throw new BaseError
+                            {
+                                errorCode = "errors.com.epicgames.common.oauth.invalid_request",
+                                errorMessage = "Refresh token is required.",
+                                messageVars = new List<string>(),
+                                numericErrorCode = 18057,
+                                originatingService = "any",
+                                intent = "prod",
+                                error_description = "Refresh token is required."
+                            };
+                        }
+
+                        // else failed to find...
+
                         //    var handler = new JwtSecurityTokenHandler();
                         //    var decodedRefreshToken = handler.ReadJwtToken(GlobalData.RefreshToken[refreshTokenIndex].token.Replace("eg1~", ""));
 

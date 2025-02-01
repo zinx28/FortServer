@@ -34,12 +34,12 @@ namespace FortLauncher.Pages
         public HomeTB HomeTB { get; set; } = new HomeTB();
         public BlankPage BlankTB { get; set; } = new BlankPage();
         public LibraryTB LibraryTB { get; set; }
+        public SettingsTB SettingsTB { get; set; }= new SettingsTB();
 
         private CancellationTokenSource cancellationTokenSource;
         public Home()
         {
             InitializeComponent();
-            TestBox.Text = UserData.Token;
             UserNameBox.Text = UserData.UserName;
 
             LibraryTB = new LibraryTB(this);
@@ -70,6 +70,10 @@ namespace FortLauncher.Pages
                         SideBarHome.Background = Brushes.Transparent;
                         SideBarLibrary.Background = new SolidColorBrush(Color.FromRgb(25, 23, 23));
 
+                    }else
+                    {
+                        SideBarHome.Background = Brushes.Transparent;
+                        SideBarLibrary.Background = Brushes.Transparent;
                     }
                 }
 
@@ -208,6 +212,11 @@ namespace FortLauncher.Pages
                 FakeAC._FNLauncherProcess.Kill();
             if (FakeAC._FNAntiCheatProcess != null && !FakeAC._FNAntiCheatProcess.HasExited)
                 FakeAC._FNAntiCheatProcess.Kill();
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Navigate(SettingsTB);
         }
     }
 }

@@ -36,9 +36,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\Tabs\SettingsTB.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\Tabs\LibraryTB.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\Tabs\SettingsTB.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

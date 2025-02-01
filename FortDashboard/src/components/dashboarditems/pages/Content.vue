@@ -67,7 +67,7 @@ import ExternalNews from "./Tabs/News/ExternalNews.vue";
   </div>
 
   <div v-if="bExternalNews">
-    <ExternalNews @back="backYKYK" :sections="thing" :IDOfSection="sectionID" />
+    <ExternalNews @back="backYKYK" :sections="Sections" :IDOfSection="sectionID" />
   </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
     return {
       activeTab: "news",
       bExternalNews: false,
-      thing: String[0], // ill name soon
+      Sections: String[0], // ill name soon
       sectionID: 1,
     };
   },
@@ -156,9 +156,9 @@ export default {
       console.log(JsonParsed);
 
       if (Array.isArray(JsonParsed)) {
-        this.thing = JsonParsed;
+        this.Sections = JsonParsed;
         this.sectionID = pageindex;
-        console.log("E + " + this.thing);
+        console.log("E + " + this.Sections);
       }
 
       this.bExternalNews = true;

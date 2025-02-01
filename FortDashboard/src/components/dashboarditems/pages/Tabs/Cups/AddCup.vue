@@ -110,6 +110,7 @@
         </div>
       </form>
 
+      <h5>{{ ErrorMessage }}</h5>
       <button style="margin-top: 15px; margin-left: 15px" @click="BackStep()">
         {{ backButtonText }}
       </button>
@@ -165,16 +166,16 @@ export default {
         const apiUrl = import.meta.env.VITE_API_URL;
         try {
           const formDataObj = {
-            title: this.title | "My First Cup!",
-            description: this.description | "",
+            title: this.title || "My First Cup!",
+            description: this.description || "",
             StartTime: this.StartTime,
             EndTime: this.EndTime,
-            GivenItem: this.GivenItem | "Currency:MtxPurchased",
-            ItemQuantity: this.TheAmount | 1000,
-            CupPlacement: this.CupPlacement | 50
+            GivenItem: this.GivenItem || "Currency:MtxPurchased",
+            ItemQuantity: this.TheAmount || 1000,
+            CupPlacement: this.CupPlacement || 50,
           };
-   
-          console.log(JSON.stringify(formDataObj))
+
+          console.log(JSON.stringify(formDataObj));
           const response = await fetch(
             `${apiUrl}/admin/new/dashboard/content/cups/create`,
             {
@@ -189,8 +190,13 @@ export default {
 
           if (response.ok) {
             const data = await response.json();
-            console.log("why fnaf:", data);
-            window.location.reload(); // ill change in the future
+            if(data.error == true) {
+              this.ErrorMessage = data.message
+            }
+            else {
+              console.log("why fnaf:", data);
+              window.location.reload(); // ill change in the future
+            }
           }
         } catch (err) {
           console.log(err);

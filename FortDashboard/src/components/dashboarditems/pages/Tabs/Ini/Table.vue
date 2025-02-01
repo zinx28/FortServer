@@ -11,7 +11,11 @@
       <tbody>
         <tr v-for="(editthing, index) in sections" :key="index" class="row">
           <td>{{ editthing.Title || editthing }}</td>
-          <td><button @click="$emit('edit', /*editthing.Title ||*/ index)">Edit</button></td>
+          <td>
+            <button @click="$emit('edit', /*editthing.Title ||*/ index)">
+              Edit
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -21,8 +25,8 @@
 <script>
 export default {
   props: {
-    sections: Array
-  }
+    sections: Array,
+  },
 };
 </script>
 
@@ -42,7 +46,7 @@ thead {
 }
 
 .header-row th:first-child {
-  border-top-left-radius: 10px; 
+  border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
@@ -55,12 +59,9 @@ thead {
   border-bottom: 3px double #ddd;
 }
 
-td, th {
+td,
+th {
   padding: 12px;
   text-align: left;
 }
-
-
-
-
 </style>

@@ -12,8 +12,6 @@ import Content from "./dashboarditems/pages/Content.vue";
       <Content />
     </div>
   </div>
-
-  <Setup v-if="setup" />
 </template>
 
 <script lang="ts">
@@ -24,18 +22,11 @@ export default {
       password: "",
       displayName: "none ggs",
       currentTab: "content",
-      setup: false,
-     // ContentID: this.ContentIDs
     };
   },
   async mounted() {
-    //console.log("ContentID:", this.$route.params.id);
-    //this.ContentID = this.$route.params.id
-    //console.log(this.ContentID);
     const store = useAuthStore();
     const display = store.displayName;
-    this.setup = store.setup;
-    console.log("TEST " + display);
     this.displayName = display;
   },
   computed: {
@@ -48,10 +39,9 @@ export default {
     },
   },
   methods: {
-    setTab(tabfr: string) {
-      console.log("TEST312321" + tabfr);
-      if (this.currentTab != tabfr) {
-        if (tabfr == "admin") this.$router.push("/dashboard/admin");
+    setTab(selectedTab: string) {
+      if (this.currentTab != selectedTab) {
+        if (selectedTab == "admin") this.$router.push("/dashboard/admin");
         else this.$router.push("/dashboard");
       }
     },

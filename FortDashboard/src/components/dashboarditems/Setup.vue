@@ -148,25 +148,24 @@ export default {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                 Email: this.email,
-                 Password: this.password,
-                 Password_Cn: this.password_conf
+                Email: this.email,
+                Password: this.password,
+                Password_Cn: this.password_conf,
               }),
               credentials: "include",
             });
 
             const ResponseDATA = await response.json();
 
-            if(ResponseDATA) {
-               if(ResponseDATA.message) {
-                  this.ErrorMessage = ResponseDATA.message;
-               }
+            if (ResponseDATA) {
+              if (ResponseDATA.message) {
+                this.ErrorMessage = ResponseDATA.message;
+              }
 
-               if(ResponseDATA.login) {
-                  window.location.reload(); // for now
-               }
+              if (ResponseDATA.login) {
+                window.location.reload(); // for now
+              }
             }
-
           } catch (err) {
             console.log(err);
           }

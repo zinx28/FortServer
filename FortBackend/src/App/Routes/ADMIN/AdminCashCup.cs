@@ -63,6 +63,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                             {
                                 CreateBody createBody = JsonConvert.DeserializeObject<CreateBody>(rawRequestBody)!;
 
+                                Console.WriteLine(JsonConvert.SerializeObject(createBody));
                                 // stupid as check i could probably do a better way
                                 if (createBody != null && (
                                     string.IsNullOrEmpty(createBody.title) ||
@@ -291,16 +292,12 @@ namespace FortBackend.src.App.Routes.ADMIN
 
             try
             {
-                var authToken = Request.Headers["Authorization"].ToString().ToLower().Split("bearer ")[1]; ;
-
-                if (authToken != null)
+                if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                 {
-                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken);
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken.ToLower()!)!;
                     if (adminData != null)
                     {
-                        if (adminData.RoleId > AdminDashboardRoles.Moderator)
-                        {
-                            var DeserizlisedCupContent = CupCache.cacheCupsDatas.FirstOrDefault(e => e.ID == id);
+                        var DeserizlisedCupContent = CupCache.cacheCupsDatas.FirstOrDefault(e => e.ID == id);
                             
                             if(DeserizlisedCupContent != null)
                             {
@@ -328,7 +325,6 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 error = true,
                             });
                         }
-                    }
                 }
             }
             catch (Exception ex)

@@ -21,14 +21,12 @@ export default {
       email: "",
       password: "",
       displayName: "none ggs",
-      currentTab: "admin",
-      setup: false,
+      currentTab: "admin"
     };
   },
   async mounted() {
     const store = useAuthStore();
     const display = store.displayName;
-    this.setup = store.setup;
     console.log("TEST " + display);
     this.displayName = display;
   },
@@ -42,10 +40,9 @@ export default {
     },
   },
   methods: {
-    setTab(tabfr: string) {
-      console.log(tabfr);
-      if (this.currentTab != tabfr) {
-        if (tabfr == "content") this.$router.push("/dashboard/content");
+    setTab(selectedTab: string) {
+      if (this.currentTab != selectedTab) {
+        if (selectedTab == "content") this.$router.push("/dashboard/content");
         else this.$router.push("/dashboard");
       }
     },

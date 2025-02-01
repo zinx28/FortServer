@@ -1,6 +1,8 @@
 <template>
-  <div style="display: flex; width: 100%; flex-direction: column; margin-top: 25px;">
-    <button @click="$emit('back')" style="width: 130px;">Back</button>
+  <div
+    style="display: flex; width: 100%; flex-direction: column; margin-top: 25px"
+  >
+    <button @click="$emit('back')" style="width: 130px">Back</button>
     <br />
     <h2>{{ DATA.Type }}</h2>
     <form @submit.prevent="saveData" class="FormClass">

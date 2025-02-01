@@ -35,19 +35,6 @@ export default {
     console.log("TEST " + display);
     this.displayName = display;
   },
-  /*components: {
-    Content: defineAsyncComponent({
-      loader: () => import("./dashboarditems/pages/Content.vue"),
-      loadingComponent: {
-        template: "<div>Loading Page</div>",
-      },
-      errorComponent: {
-        template: "<div>rerorrs</div>",
-      },
-      delay: 200,
-      timeout: 3000,
-    }),
-  },*/
   computed: {
     getData() {
       console.log(this.displayName);
@@ -58,15 +45,12 @@ export default {
     },
   },
   methods: {
-    setTab(tabfr: string) {
-      console.log(tabfr);
-     
-      console.log(this.currentTab != tabfr);
-      if (this.currentTab != tabfr) {
-        if (tabfr == "content") this.$router.push("/dashboard/content");
+    setTab(selectedTab: string) {
+      if (this.currentTab != selectedTab) {
+        if (selectedTab == "content") this.$router.push("/dashboard/content");
         else this.$router.push("/dashboard/admin");
       }
-      this.currentTab = tabfr;
+      this.currentTab = selectedTab;
     },
   },
 };

@@ -24,16 +24,17 @@
               v-model="DiscordID"
               required
             />
-            <label for="floatingInput" class="FormLabel"
-              >Discord ID</label
-            >
+            <label for="floatingInput" class="FormLabel">Discord ID</label>
           </div>
 
           <h4>{{ ErrorMessage }}</h4>
         </div>
       </div>
 
-      <button style="margin-top: 15px; margin-left: 15px" @click="$emit('back')">
+      <button
+        style="margin-top: 15px; margin-left: 15px"
+        @click="$emit('back')"
+      >
         Close
       </button>
       <button style="margin-top: 15px; margin-left: 15px" @click="AddNewUser()">
@@ -48,12 +49,12 @@ export default {
   data() {
     return {
       DiscordID: "",
-      ErrorMessage: ""
+      ErrorMessage: "",
     };
   },
   methods: {
     async AddNewUser() {
-      console.log(this.DiscordID)
+      console.log(this.DiscordID);
       const apiUrl = import.meta.env.VITE_API_URL;
       try {
         const response = await fetch(
@@ -64,7 +65,7 @@ export default {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              DiscordID: this.DiscordID
+              DiscordID: this.DiscordID,
             }),
             credentials: "include",
           }
@@ -75,7 +76,7 @@ export default {
         if (frfr) {
           this.ErrorMessage = frfr.message;
           if (frfr.error == false) {
-             window.location.reload();
+            window.location.reload();
             //this.$emit("updatedData", this.DATASENT);
           }
         }

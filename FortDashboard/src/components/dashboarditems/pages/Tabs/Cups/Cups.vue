@@ -3,17 +3,18 @@ import AddCup from "./AddCup.vue";
 </script>
 
 <template>
-  <h3>Cups are still developement and in a unfinished state</h3>
+  <h3>Tournaments are still developement and in a unfinished state</h3>
 
   <div style="gap: 15px; display: flex; justify-content: center">
     <select
       style="padding: 5px; width: 180px; border-radius: 5px"
       :disabled="TourData.length === 0"
+      @change="SelectedItem($event)"
     >
       <option v-if="TourData.length === 0" value="">NONE</option>
       <option
         v-else
-        v-for="tour in TourData"
+        v-for="(tour, index) in TourData"
         :key="tour.id"
         :value="tour.value"
       >
@@ -31,9 +32,16 @@ import AddCup from "./AddCup.vue";
     </button>
     <button class="ButtonColorType" style="border-radius: 5px">SOON</button>
   </div>
-  <div style="display: flex; justify-content: space-between; padding: 10px">
-    <h4>Viewing has been removed for now only (use old commit to view....)</h4>
-    <div v-if="TourData.length > 0">
+  <div
+    v-if="TourData.length > 0"
+    style="display: flex; justify-content: space-between; padding: 10px"
+  >
+    <div style="display: flex; align-items: center; flex-direction: column; gap: 15px;">
+      <h4>This is still in WIP, could have issues or lack of features</h4>
+      <input v-model="Title" maxlength="30" />
+      <input v-model="Description" />
+    </div>
+    <div>
       <div
         id="DisplayItem"
         style="
@@ -48,13 +56,24 @@ import AddCup from "./AddCup.vue";
           align-self: center;
         "
       >
-        <h1 style="text-align: center">TEMP</h1>
+        <h1 style="text-align: center">{{ Title }}</h1>
       </div>
     </div>
   </div>
 
-  <AddCup v-if="bShowEditPage" />
+  <AddCup v-if="bShowEditPage" @back="BackFR" />
 </template>
+
+<style scoped>
+input {
+  accent-color: #4caf50;
+  border: 0px;
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: #181717;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+</style>
 
 <script>
 export default {
@@ -62,12 +81,44 @@ export default {
     return {
       TourData: [],
       bShowEditPage: false,
+
+      // ONLY FOR VIEWING
+      Title: "",
+      Description: "",
     };
   },
   methods: {
+    BackFR() {
+      this.bShowEditPage = false;
+    },
     ShowEditPage() {
       console.log("YHEHA");
       this.bShowEditPage = true;
+    },
+    async SelectedItem(test) {
+      const selectedId = event.target.selectedIndex;
+      console.log("TEST!" + selectedId);
+      var Item = this.TourData[selectedId];
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const Tourresponse2 = await fetch(
+        `${apiUrl}/admin/new/dashboard/content/cups/${Item.ID}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+      const TourJson2 = await Tourresponse2.json();
+
+      if (TourJson2) {
+        if (TourJson2.error == false) {
+          console.log(TourJson2);
+          this.Title = TourJson2.body.title;
+          this.Description = TourJson2.body.description;
+        }
+      }
     },
   },
   async mounted() {
@@ -87,7 +138,27 @@ export default {
       console.log(JSON.stringify(TourJson));
       if (Array.isArray(TourJson) && TourJson.length > 0) {
         this.TourData = TourJson;
-        console.log("wow!");
+        console.log(this.TourData[0]);
+
+        const Tourresponse2 = await fetch(
+          `${apiUrl}/admin/new/dashboard/content/cups/${this.TourData[0].ID}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
+        const TourJson2 = await Tourresponse2.json();
+
+        if (TourJson2) {
+          if (TourJson2.error == false) {
+            console.log(TourJson2);
+            this.Title = TourJson2.body.title;
+            this.Description = TourJson2.body.description;
+          }
+        }
       } else {
       }
     } catch (err) {

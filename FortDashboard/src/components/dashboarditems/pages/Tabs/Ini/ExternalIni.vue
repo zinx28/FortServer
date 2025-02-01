@@ -47,7 +47,7 @@ export default {
       this.modifiedSections.set(index, value);
     },
     async SaveData() {
-      if(this.modifiedSections.size == 0) return;
+      if (this.modifiedSections.size == 0) return;
 
       const modifiedData = Array.from(this.modifiedSections.entries()).map(
         ([index, value]) => {
@@ -75,7 +75,7 @@ export default {
 
         const JsonParsed = await response.json();
 
-        console.log(JsonParsed)
+        console.log(JsonParsed);
       } catch (err) {}
     },
     async editfr(frfr: string) {

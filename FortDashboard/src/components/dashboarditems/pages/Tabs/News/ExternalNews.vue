@@ -5,18 +5,18 @@ import EditItem from "./EditItem.vue";
 
 <template>
   <!--the name of file doesnt even make sense~ legit bad with names (might tell already)-->
-  <div v-if="!ShouldShowNewsInstead" style="margin-top: 25px;">
-    <button @click="$emit('back')" style="margin-bottom: 10px;">Back</button>
+  <div v-if="!ShouldShowNewsInstead" style="margin-top: 25px">
+    <button @click="$emit('back')" style="margin-bottom: 10px">Back</button>
 
     <Table @edit="editfr" :sections="sections" />
   </div>
 
   <div v-if="ShouldShowNewsInstead">
-    <EditItem 
-        @back="backgrs" 
-        :DATA="DATA"
-        :IDOfSection="IDOfSection"
-        :EditPart="EditPart"
+    <EditItem
+      @back="backgrs"
+      :DATA="DATA"
+      :IDOfSection="IDOfSection"
+      :EditPart="EditPart"
     />
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
     return {
       ShouldShowNewsInstead: false, // stupid ahh var name
       DATA: Object,
-      EditPart: 0
+      EditPart: 0,
     };
   },
   props: {
@@ -53,12 +53,12 @@ export default {
 
       const JsonParsed = await response.json();
 
-      if(JsonParsed) {
+      if (JsonParsed) {
         console.log(JsonParsed);
         this.DATA = JsonParsed;
-        this.EditPart = parseInt(frfr, 10)
-      }else {
-        this.DATA = {} as any
+        this.EditPart = parseInt(frfr, 10);
+      } else {
+        this.DATA = {} as any;
       }
 
       this.ShouldShowNewsInstead = true;

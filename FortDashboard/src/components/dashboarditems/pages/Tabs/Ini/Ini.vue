@@ -8,12 +8,12 @@ import ExternalIni from "./ExternalIni.vue";
   </div>
 
   <div v-else>
-    <ExternalIni 
-    @back="backYKYK" 
-    :sections="Sections" 
-    :IDOfSection="activeTab"
-    :PartOfSection="EditIniPart"
-     />
+    <ExternalIni
+      @back="backYKYK"
+      :sections="Sections"
+      :IDOfSection="activeTab"
+      :PartOfSection="EditIniPart"
+    />
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
       ShouldGoToPageOrsmth: false,
       files: [],
       Sections: Array,
-      EditIniPart: 0
+      EditIniPart: 0,
     };
   },
   computed: {
@@ -45,7 +45,9 @@ export default {
     await this.fetchFiles();
   },
   methods: {
-    backYKYK() { this.ShouldGoToPageOrsmth = false; },
+    backYKYK() {
+      this.ShouldGoToPageOrsmth = false;
+    },
     async fetchFiles() {
       const apiUrl = import.meta.env.VITE_API_URL;
       try {
@@ -59,7 +61,6 @@ export default {
             credentials: "include",
           }
         );
-        //console.log(await response.json());
         const frfr = await response.json();
         this.files = frfr;
       } catch (error) {

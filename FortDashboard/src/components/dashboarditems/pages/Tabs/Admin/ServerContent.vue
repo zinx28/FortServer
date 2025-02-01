@@ -119,7 +119,7 @@ export default {
       );
       var responsefr = await apiResponse.json();
       if (responsefr) {
-        console.log(JSON.stringify(responsefr.Data))
+        console.log(JSON.stringify(responsefr.Data));
         this.sections = responsefr.Data;
       }
       //console.log("E " + this.sectionsData[hihi].Data);

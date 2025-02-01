@@ -34,7 +34,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
         {
             if (cacheCupsDatas != null)
             {
-                System.IO.File.WriteAllText(PathConstants.Content, JsonConvert.SerializeObject(cacheCupsDatas));
+                System.IO.File.WriteAllText(PathConstants.CacheData("CupCache.json"), JsonConvert.SerializeObject(cacheCupsDatas));
                 Logger.Log("RE-LOADED CupCache");
             }
         }

@@ -1,11 +1,9 @@
 # FortDashboard
 
-This is a rewrite of the current dashboard to implement better things... blazor has the "Lack" of support and "SHOULDNT" be in c# 
+## Testing
+- run.bat
 
-# ENV
-
-AUTH_KEY is DashboardAuth on FortBackend (CONFIG)
-Both is required to be same... if you dont change it others "could" grab it.... i will force users to change it in the future
-
-# TODO (these could happen or never ykky)
-- Rewrite again but in electron/vue
+## Hosting on a server (basic method)
+- run-server.bat
+- hosting on a server run.bat but use 127.0.0.1:2222
+- it will say localhost:6969 use the ip in env like 127.0.0.1:2222

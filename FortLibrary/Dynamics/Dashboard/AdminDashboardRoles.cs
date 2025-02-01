@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FortLibrary.Dynamics.Dashboard
 {
+    // plan... (might never happen) ~ instead of moderator make a perm act, like, write, edit, read
     public class AdminDashboardRoles
     {
         public static int Admin { get; } = 3;

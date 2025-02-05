@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SharpCompress.Common;
 using System;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;

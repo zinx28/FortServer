@@ -25,19 +25,20 @@ namespace FortMatchmaker.src.App
                                                                               
                                                                               ");
 
+            
             Logger.Log("MARVELCO MATCHMAKER IS LOADING (marcellowmellow)");
             Logger.Log($"Built on {RuntimeInformation.OSArchitecture}-bit");
-            Logger.Error($"Matchmaker Is Unfinished and currently in a non working state");
+            Logger.Error($"Matchmaker is unfinished, you might have issues");
 
             var builder = WebApplication.CreateBuilder(args);
             var startup = new Startup(builder.Configuration);
 
-            var ReadConfig = File.ReadAllText(Path.Combine(PathConstants.BaseDir, "config.json"));
+            var ReadConfig = File.ReadAllText(Path.Combine(PathConstants.BaseDir, "MMConfig.json"));
             
             if (ReadConfig == null)
             {
                 Logger.Error("Couldn't find config (config.json)", "FortConfigMM");
-                throw new Exception($"Couldn't find config\n{Path.Combine(PathConstants.BaseDir, "config.json")}");
+                throw new Exception($"Couldn't find config\n{Path.Combine(PathConstants.BaseDir, "MMConfig.json")}");
             }
 
             Saved.DeserializeConfig = JsonConvert.DeserializeObject<FortConfigMM>(ReadConfig)!;
@@ -51,7 +52,15 @@ namespace FortMatchmaker.src.App
                 Logger.Log("Loaded Config", "FortConfigMM");
             }
 
+            var ServerHotFixes = File.ReadAllText(Path.Combine(PathConstants.BaseDir, "json", "server-hotfixes.json"));
 
+            if (ServerHotFixes == null)
+            {
+                Logger.Error("Couldn't find server hotfixes (server-hotfixes.json)", "FortConfigMM");
+                throw new Exception($"Couldn't find server hotfixes\n{Path.Combine(PathConstants.BaseDir, "json", "server-hotfixes.json")}");
+            }
+
+            Saved.serverHotFixes = JsonConvert.DeserializeObject<ServerHotFixes>(ServerHotFixes)!;
 
             startup.ConfigureServices(builder.Services);
 
@@ -63,7 +72,7 @@ namespace FortMatchmaker.src.App
                 {
                     serverOptions.Listen(IPAddress.Any, Saved.DeserializeConfig.MatchmakerPort, listenOptions =>
                     {
-                        var certPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "src", "Resources", "Certificates", "FortBackend.pfx");
+                        var certPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,  "Resources", "Certificates", "FortBackend.pfx");
                         if (!File.Exists(certPath))
                         {
                             Logger.Error("Couldn't find FortBackend.pfx -> make sure you removed .temp from FortBackend.pfx.temp", "CERTIFICATES");

@@ -1,0 +1,151 @@
+﻿using FortHoster.src.Classes;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+// this is pretty much just FortLauncher
+namespace FortHoster
+{
+    public class Launch
+    {
+        public static async Task Start(WebSocket websocekt, string ID)
+        {
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    try
+                    {
+                        //Loggers.Log(config.buildPath);
+                       // Loggers.Log(FortniteDetect.Init(config.VersionID));
+                        if ((int)Saved.ConfigC.Season > 15)
+                        {
+                            
+                            if (File.Exists(System.IO.Path.Combine(Saved.ConfigC.GamePath, "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping_EAC_EOS.exe"))) 
+                            {
+                               
+                                PSBasics.Start(Saved.ConfigC.GamePath, "-obfuscationid=TgUPsnbBaa5S1RTN7Ueu0BOtakEY_w -EpicPortal -epicapp=Fortnite -epiclocale=en -epicsandboxid=fn -epicenv=Prod -epicportal -noeac -noeaceos -fromfl=be -fltoken=h1cdhchd10150221h130eB56 -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiOWM1MDY1MTEwYzdhNGQ3MDk1ODYyZGE1ZWU4MTU5NjIiLCJnZW5lcmF0ZWQiOjE3MTQ2MDQzOTgsImNhbGRlcmFHdWlkIjoiZWQ3NGZhNWMtZmNmYy00YWM1LWJlMTktZmY1ODQ1MDI0MzU0IiwiYWNQcm92aWRlciI6IkJhdHRsRXllIiwibm90ZXMiOiIiLCJwcmUiOmZhbHNlLCJmYWxsYmFjayI6ZmFsc2V9.YCfBeSzOKM6vMZpe7SXiOxlTdnbFd2Ve2WQv8SAUDHnaDDpSvmZhQKIsjHFNAIYL5t65Pl7zb2yVDVspE6pQ-g  ", Saved.ConfigC.Email, Saved.ConfigC.Password);
+                                FakeAC.Start(Saved.ConfigC.GamePath, "FortniteClient-Win64-Shipping_EAC_EOS.exe", $"");
+                            } 
+                            else
+                            {
+                                //MessageBox.Show(FortniteDetect.Init(config.VersionID));
+                                string[] FortniteVersionConv = Saved.ConfigC.Season.ToString().Split('.');
+                                float TempVal = float.Parse(FortniteVersionConv[0]);
+                             
+                                if (TempVal > 15 && TempVal <= 26) // uh gulp
+                                {
+                                    string fltoken = "3db3ba5dcbd2e16703f3978d";
+                                    var fltokensDictionary = new Dictionary<string, string>
+                                    {
+                                        // pretty sure it's normally with eac
+                                        { "16.00", "5dh74c635862g575778132fb " }, // i checked this
+                                        { "16.10", "b234a7cc879f663d845c54f9" }, // these are prob wrong
+                                        { "16.20", "c98d8b7a7239f78e234a9abc" },
+                                        { "16.30", "f45a67dd982a77b9538d1e4f" },
+                                        { "16.40", "a12b789c45f67e8912d3c4ff" }
+                                    };
+
+                                    if(fltokensDictionary.TryGetValue($"{FortniteVersionConv[0]}.{FortniteVersionConv[1]}", out string ?sigma)) {
+                                        if(!string.IsNullOrEmpty(sigma))
+                                        {
+                                            fltoken = sigma;
+                                        }
+                                    }
+
+                                    PSBasics.Start(Saved.ConfigC.GamePath, $"-obfuscationid=PM3G4r-oF6DIG-fbJUON8rECU73FWA -epicapp=Fortnite -epicenv=Prod -EpicPortal -epiclocale=en -epicsandboxid=fn -noeac -fromfl=be  -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiOWM1MDY1MTEwYzdhNGQ3MDk1ODYyZGE1ZWU4MTU5NjIiLCJnZW5lcmF0ZWQiOjE3MTQ2MDQzOTgsImNhbGRlcmFHdWlkIjoiZWQ3NGZhNWMtZmNmYy00YWM1LWJlMTktZmY1ODQ1MDI0MzU0IiwiYWNQcm92aWRlciI6IkJhdHRsRXllIiwibm90ZXMiOiIiLCJwcmUiOmZhbHNlLCJmYWxsYmFjayI6ZmFsc2V9.YCfBeSzOKM6vMZpe7SXiOxlTdnbFd2Ve2WQv8SAUDHnaDDpSvmZhQKIsjHFNAIYL5t65Pl7zb2yVDVspE6pQ-g -fltoken={fltoken} -skippatchcheck ", Saved.ConfigC.Email, Saved.ConfigC.Password);
+                                    FakeAC.Start(Saved.ConfigC.GamePath, "FortniteClient-Win64-Shipping_BE.exe", $"");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("UNSUPPORTED");
+                                  
+                                    return;
+                                }
+                                  
+                            }
+                            FakeAC.Start(Saved.ConfigC.GamePath, "FortniteLauncher.exe", $"", true);
+                        }
+                        else
+                        {
+                            PSBasics.Start(Saved.ConfigC.GamePath, "-obfuscationid=2oaCH8bqszvAC9LdV0CSZoTD5AxLCQ -EpicPortal -epicapp=Fortnite -epicenv=Prod -epiclocale=en-us -epicportal -noeac -nobe -fromfl=be -fltoken=h1cdhchd10150221h130eB56 -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiOWM1MDY1MTEwYzdhNGQ3MDk1ODYyZGE1ZWU4MTU5NjIiLCJnZW5lcmF0ZWQiOjE3MTM3MDUwODUsImNhbGRlcmFHdWlkIjoiZWIzYzM4YjctM2U4Yy00NDZiLWE4NTYtMjM5OTUzMTc3ZDRiIiwiYWNQcm92aWRlciI6IkJhdHRsRXllIiwibm90ZXMiOiIiLCJwcmUiOmZhbHNlLCJmYWxsYmFjayI6ZmFsc2V9.QD69Oonbv7SIcXhYHewzQvh4ymnESQ1LRFQh8_Ufvj8M9bwpl_AbY9wpVRX2lz0x-xslYS40Rf4L34GZJpb20A -skippatchcheck ", Saved.ConfigC.Email, Saved.ConfigC.Password);
+                            FakeAC.Start(Saved.ConfigC.GamePath, "FortniteClient-Win64-Shipping_EAC.exe", $" ");
+                            FakeAC.Start(Saved.ConfigC.GamePath, "FortniteLauncher.exe", $"", true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                });
+
+                await Task.Run(async () =>
+                {
+                    PSBasics._FortniteProcess.WaitForInputIdle();
+                
+                    if (PSBasics._FortniteProcess != null && PSBasics._FortniteProcess.Id != 0)
+                    {
+                        Inject.InjectDll(PSBasics._FortniteProcess.Id, Saved.ConfigC.RedirectDLL); // redirect!
+
+                        PSBasics._FortniteProcess.OutputDataReceived += (sender, args) =>
+                        {
+                            if (!string.IsNullOrEmpty(args.Data))
+                            {
+                                if (args.Data.Contains("[UOnlineAccountCommon::ContinueLoggingOut]"))
+                                {
+                                    Console.WriteLine("Check your redirect");
+                                    PSBasics._FortniteProcess.Kill();
+                                }
+
+                                if(args.Data.Contains("[UOnlineAccountCommon::ContinueLoggingIn] Login: Creating party"))
+                                {
+                                    Inject.InjectDll(PSBasics._FortniteProcess.Id, Saved.ConfigC.GameServerDLL);
+
+                                    var DataForMM = new
+                                    {
+                                        ID = ID,
+                                        Message = "LAUNCHING"
+                                    };
+                                    
+                                    websocekt.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(DataForMM))), WebSocketMessageType.Text, true, CancellationToken.None);
+                                }
+
+                                if(args.Data.Contains("Match State Changed from WaitingToStart to InProgress"))
+                                {
+                                    var DataForMM = new
+                                    {
+                                        ID = ID,
+                                        Message = "JOINABLE"
+                                    };
+
+                                    websocekt.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(DataForMM))), WebSocketMessageType.Text, true, CancellationToken.None);
+                                }
+
+                                //todo aircraft log and end of game log (that couldj ust be on process close)
+                            }
+                        };
+
+                        PSBasics._FortniteProcess.BeginOutputReadLine();
+
+                        PSBasics._FortniteProcess?.WaitForExit();
+                    }
+                });
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}

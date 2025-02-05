@@ -17,5 +17,6 @@ namespace FortLibrary.EpicResponses.Matchmaker
 
         public bool Priority { get; set; } = false;
         public string timestamp { get; set; } = string.Empty;
+        public bool IsHoster { get; set; } = false;
     }
 }

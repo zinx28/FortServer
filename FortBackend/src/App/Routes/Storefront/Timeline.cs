@@ -164,6 +164,46 @@ namespace FortBackend.src.App.Routes.Storefront
                     currentTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                 };
 
+                if (season.Season == 2)
+                {
+                    // this is for the 50v50 gamemode
+                    Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
+                    {
+                        eventType = $"EventFlag.BR_Allow50v50",
+                        activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    });
+
+                    Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
+                    {
+                        eventType = $"EventFlag.SupplyDropGift",
+                        activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    });
+
+                    Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
+                    {
+                        eventType = $"EventFlag.WinterBattleBus",
+                        activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    });
+
+                    Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
+                    {
+                        eventType = $"EventFlag.BR.CandyCaneGuns",
+                        activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    });
+
+                    // removes like playlists on old ass seasons
+                    Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
+                    {
+                        eventType = $"EventFlag.BR.DisallowSquad",
+                        activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
+                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    });
+                }
+
                 // TODO ONLY SHOW THE EVENTS FOR THE ACTUAL SEASON... WILL SHOW ALL UNLESS YOU DONT HAVE IT IN THE TIMELINE FILE DUH
 
                 foreach (var item in Saved.BackendCachedData.TimelineData.ClientEvents)

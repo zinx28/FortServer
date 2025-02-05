@@ -31,12 +31,6 @@ namespace FortLibrary.ConfigHelpers
         public int AdminPort { get; set; } = 2134;
         public string MatchmakerIP { get; set; } = "127.0.0.1"; // Change if your hosting the matchmaker on a different ip
 
-        // -- XMPP -- //
-        public int TCPXmppPort { get; set; } = 8443; // Tcp doesn't work.. i can't get it to connect on the vps with the cert
-        public int XmppPort { get; set; } = 443; // 443 default ig
-
-        // -- //
-
         // MongoDBConnectionString is set to the default local host port for mongodbserver you may change this to your needs!
         // Make sure that the string has read/write perms (owner or what)
         public string MongoDBConnectionString { get; set; } = "mongodb://localhost:27017/?retryWrites=true&w=majority";
@@ -48,25 +42,8 @@ namespace FortLibrary.ConfigHelpers
 
         public bool HTTPS { get; set; } = false;
 
-        // - //
+        // ah
 
-
-        public bool bShowBotMessage { get; set; } = true; // Show bot message
-
-        // -- //
-
-        // -- ADMIN STUFF -- //
-        public string AdminEmail { get; set; } = "Admin@gmail.com";
-        public string AdminPassword { get; set; } = "AdminPassword123";
-
-        // -- //
-
-        public bool EnableLogs { get; set; } = false;
-
-        public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
-
-        // USELESS ATM
-
-        public bool EnableDetections { get; set; } = true; // this isn't used atm
+        public string FortHosterKey { get; set; } = "FortHosterSecretKey!!@!@!";
     }
 }

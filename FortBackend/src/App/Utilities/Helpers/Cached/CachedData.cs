@@ -11,7 +11,6 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.Shop;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using SharpCompress.Common;
 
 namespace FortBackend.src.App.Utilities.Helpers.Cached
 {

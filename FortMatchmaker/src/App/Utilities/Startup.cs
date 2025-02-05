@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Net;
 
@@ -112,16 +113,14 @@ namespace FortMatchmaker.src.App.Utilities
                 else if (context.Request.Path == "/v1/devers/hotfixes")
                 {
                     context.Response.ContentType = "application/json";
-                    var Servers = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Resources\\json\\HotFixer_V2.json"));
+                    var Servers = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Resources\\json\\server-hotfixes.json"));
 
                     await context.Response.WriteAsync(Servers);
                 }
                 else if (context.Request.Path == "/v1/devers/servers")
                 {
                     context.Response.ContentType = "application/json";
-                    var Servers = System.IO.File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Resources\\json\\servers.json"));
-
-                    await context.Response.WriteAsync(Servers);
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(Saved.CurrentServers));
                 }
                // else if(context.Request.Path == "")
                 else

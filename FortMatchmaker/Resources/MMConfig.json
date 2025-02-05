@@ -8,5 +8,5 @@
   "MongoDBConnectionString": "mongodb://localhost:27017/?retryWrites=true&w=majority",
   "MongoDBConnectionName": "FortBackend",
   "HTTPS": false,
-  "EnableLogs": false
+  "FortHosterKey": "FortHosterSecretKey!!@!@!"
 }

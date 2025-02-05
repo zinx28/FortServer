@@ -11,14 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Resources\Config.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\FortLibrary\FortLibrary.csproj" />
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="3.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 

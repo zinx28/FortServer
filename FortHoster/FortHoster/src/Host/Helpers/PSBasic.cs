@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FortHoster.src.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -25,9 +26,8 @@ namespace FortHoster
                 {
                     StartInfo = new ProcessStartInfo()
                     {
-                        Arguments = args + $" -AUTH_LOGIN={Email} -AUTH_PASSWORD={Password} -AUTH_TYPE=epic -nullrhi -nosplash -nosound -log", // pretty log fixes old seasons
+                        Arguments = args + $" -AUTH_LOGIN={Email} -AUTH_PASSWORD={Password} -AUTH_TYPE=epic " + (Saved.ConfigC.Headless ? "-nullrhi -nosplash -nosound" : ""),
                         FileName = Path.Combine(PATH, "FortniteGame\\Binaries\\Win64", "FortniteClient-Win64-Shipping.exe"),
-                        CreateNoWindow = true,
                         UseShellExecute = false,
                         RedirectStandardOutput = true
                     },

@@ -23,15 +23,18 @@ namespace FortHoster.src.Classes
         public string Key { get; set; } = "FortHosterSecretKey!!@!@!";
 
         public bool HTTPS { get; set; } = false;
-
+        public bool Headless { get; set; } = true;
         public string IP { get; set; } = "127.0.0.1";
         public int Port { get; set; } = 2121;
+        public bool GameLogs { get; set; } = false; // i dont recommend if you use two servers
         public string Email { get; set; } = string.Empty;   
         public string Password { get; set; } = string.Empty;
         public double Season { get; set; } = 10.40; // this be usefull in the future
         public string GamePath { get; set; } = "";
         public string RedirectDLL { get; set; } = "";
         public string GameServerDLL { get; set; } = "";
+        public string GameServerIP { get; set; } = "127.0.0.1";
+        public int GameServerPort { get; set; } = 7777;
     }
 
     public class Saved

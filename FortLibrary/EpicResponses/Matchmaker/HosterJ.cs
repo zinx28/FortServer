@@ -11,6 +11,9 @@ namespace FortLibrary.EpicResponses.Matchmaker
     {
         public string Region { get; set; } = string.Empty;
         public string Playlist { get; set; } = string.Empty;
+
+        public string IP { get; set; } = "127.0.0.1"; // just incase its removed
+        public int Port { get; set; } = 7777;
         public WebSocket? webSocket { get; set; }
     }
 }

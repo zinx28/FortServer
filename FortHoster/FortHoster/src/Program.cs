@@ -42,6 +42,8 @@ if (!File.Exists(Saved.ConfigC.GameServerDLL))
     throw new Exception($"Couldn't find game server");
 }
 
+Console.WriteLine("You have headless " + (Saved.ConfigC.Headless ? " enabled" : "disabled"));
+Console.WriteLine("MOST GAMESERVERS USE THE DEFAULT NETDRIVER PORT (7777)");
 
 // need to add the wss for https
 using var client = new ClientWebSocket();
@@ -54,8 +56,10 @@ var buffer = new byte[1024];
 var DataForMM = new
 {
     // this is for the matchmaker to know... lets say NAE is up and EU isnt you cant create a EU match
-    Playlist = Saved.ConfigC.Playlist,
-    Region = Saved.ConfigC.Region
+    Playlist = Saved.ConfigC.Playlist.ToLower(), // playlist needs to be the same!
+    Region = Saved.ConfigC.Region,
+    IP = Saved.ConfigC.GameServerIP,
+    Port = Saved.ConfigC.GameServerPort,
 };
 await client.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(DataForMM))), WebSocketMessageType.Text, true, CancellationToken.None);
 

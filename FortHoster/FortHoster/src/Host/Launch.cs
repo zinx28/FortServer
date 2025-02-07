@@ -79,6 +79,8 @@ namespace FortHoster
                             FakeAC.Start(Saved.ConfigC.GamePath, "FortniteClient-Win64-Shipping_EAC.exe", $" ");
                             FakeAC.Start(Saved.ConfigC.GamePath, "FortniteLauncher.exe", $"", true);
                         }
+
+                        
                     }
                     catch (Exception ex)
                     {
@@ -88,14 +90,18 @@ namespace FortHoster
 
                 await Task.Run(async () =>
                 {
-                    PSBasics._FortniteProcess.WaitForInputIdle();
-                
+                    // this could be a list of logs that the game could call
+                    bool DidGameStart = false;
+                    string[] StartGameLogs = { "UFortReplicationGraph is enabled for"/*, "Match State Changed from WaitingToStart to InProgress"*/ }; // uncomment it out if its a very old version and attempt to join
                     if (PSBasics._FortniteProcess != null && PSBasics._FortniteProcess.Id != 0)
                     {
-                        Inject.InjectDll(PSBasics._FortniteProcess.Id, Saved.ConfigC.RedirectDLL); // redirect!
+                        Console.WriteLine("Game Has Launched"); // should be removbed in the future
 
                         PSBasics._FortniteProcess.OutputDataReceived += (sender, args) =>
                         {
+                            if(Saved.ConfigC.GameLogs)
+                                Console.WriteLine(args.Data);
+                            
                             if (!string.IsNullOrEmpty(args.Data))
                             {
                                 if (args.Data.Contains("[UOnlineAccountCommon::ContinueLoggingOut]"))
@@ -117,8 +123,9 @@ namespace FortHoster
                                     websocekt.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(DataForMM))), WebSocketMessageType.Text, true, CancellationToken.None);
                                 }
 
-                                if(args.Data.Contains("Match State Changed from WaitingToStart to InProgress"))
+                                if(StartGameLogs.Any(log => args.Data.Contains(log)) && !DidGameStart)
                                 {
+                                    DidGameStart = true;
                                     var DataForMM = new
                                     {
                                         ID = ID,
@@ -130,10 +137,14 @@ namespace FortHoster
 
                                 //todo aircraft log and end of game log (that couldj ust be on process close)
                             }
+
+
                         };
 
-                        PSBasics._FortniteProcess.BeginOutputReadLine();
 
+                        PSBasics._FortniteProcess.BeginOutputReadLine(); // call this first!
+                        PSBasics._FortniteProcess.WaitForInputIdle();
+                        Inject.InjectDll(PSBasics._FortniteProcess.Id, Saved.ConfigC.RedirectDLL); // redirect!
                         PSBasics._FortniteProcess?.WaitForExit();
                     }
                 });

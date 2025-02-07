@@ -102,7 +102,6 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
                                         e.CurrentPlayers++;
                                         // ik this code is like bad
                                         Messages.Send(item1.Key, JsonSavedData.sessionAssignmentPayloadJson(e.MatchID));
-
                                     }
                                 };
                             }
@@ -145,7 +144,6 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
                                             else continue;
 
                                         };
-                                        Console.WriteLine(joinPayload);
 
                                         await Messages.SendAsync(item1.Key, JsonSavedData.sessionAssignmentPayloadJson(e.MatchID), 2000);
                                         await Messages.SendAsync(item1.Key, joinPayload, 3000);
@@ -177,7 +175,11 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
                                 Session = Guid.NewGuid().ToString().Replace("-", ""),
                                 Playlist = Data.Playlist,
                                 Region = Data.Region,
-                                MaxPlayers = Saved.serverHotFixes.max_players
+                                MaxPlayers = Saved.serverHotFixes.max_players,
+                                // am i stupid HAHAHHA
+                                Ip = Data.IP,
+                                Port = Data.Port,
+                                Name = "FortBackend"
                             };
 
                             Saved.CurrentServers.Add(servers);

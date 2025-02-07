@@ -34,17 +34,18 @@ namespace FortMatchmaker.src.App.Websockets
 
                     if (!string.IsNullOrEmpty(matchmakerTicket.accountId))
                     {
+                        matchmakerTicket.Playlist = matchmakerTicket.Playlist.ToLower();
                         var waitingTask = Messages.SendAsync(webSocket, JsonSavedData.waitingPayloadJson(MatchmakerData.connected.Count), JsonSavedData.WaitingDelay);
 
                         await Task.WhenAll(connectingTask, waitingTask);
 
                         // this is for season 1.11 but pretty sure they did a id v2 on season 3
                         if (matchmakerTicket.Playlist == "2") // solos
-                            matchmakerTicket.Playlist = "Playlist_DefaultSolo";
+                            matchmakerTicket.Playlist = "playlist_defaultsolo";
                         else if (matchmakerTicket.Playlist == "10") // duos
-                            matchmakerTicket.Playlist = "Playlist_DefaultDuo";
+                            matchmakerTicket.Playlist = "playlist_defaultduo";
                         else if (matchmakerTicket.Playlist == "9") // squads
-                            matchmakerTicket.Playlist = "Playlist_DefaultSquad";
+                            matchmakerTicket.Playlist = "playlist_defaultsquad";
 
                         UserData userData = new UserData
                         {

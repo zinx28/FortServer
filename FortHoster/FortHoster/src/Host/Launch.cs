@@ -110,7 +110,7 @@ namespace FortHoster
                                     PSBasics._FortniteProcess.Kill();
                                 }
 
-                                if(args.Data.Contains("[UOnlineAccountCommon::ContinueLoggingIn] Login: Creating party"))
+                                if(args.Data.Contains("Region ")) // soooo fortnite translate this
                                 {
                                     Inject.InjectDll(PSBasics._FortniteProcess.Id, Saved.ConfigC.GameServerDLL);
 

@@ -113,6 +113,11 @@ namespace FortMatchmaker.src.App.Websockets
                                     server.bJoinable = true;
                                     Console.WriteLine("SERVERS JOINABLE");
                                 }
+                                else if(iDThing.Message == "CLOSED")
+                                {
+                                    Saved.CurrentServers.Remove(server);
+                                    Console.WriteLine("SERVER CLOSED");
+                                }
                             }
                         }
                         //Sigma: {"ID":"54c7b5370cb549568991a6c32046b98e","Message":"LAUNCHING"}

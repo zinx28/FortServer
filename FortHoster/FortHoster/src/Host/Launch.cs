@@ -146,6 +146,15 @@ namespace FortHoster
                         PSBasics._FortniteProcess.WaitForInputIdle();
                         Inject.InjectDll(PSBasics._FortniteProcess.Id, Saved.ConfigC.RedirectDLL); // redirect!
                         PSBasics._FortniteProcess?.WaitForExit();
+
+                        // Game Closed!
+                        var DataForMMfr = new
+                        {
+                            ID = ID,
+                            Message = "CLOSED"
+                        };
+
+                        await websocekt.SendAsync(new ArraySegment<byte>(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(DataForMMfr))), WebSocketMessageType.Text, true, CancellationToken.None);
                     }
                 });
             }

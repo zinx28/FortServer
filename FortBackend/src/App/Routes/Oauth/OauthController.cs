@@ -539,7 +539,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         // REFRESH TOKEN SHOULD HAVE, AccountId, DeviceId and Secret
 
                         var refreshTokenData = GlobalData.RefreshToken.FirstOrDefault(x => x.token == refresh_token);
-                        if (refreshTokenData != null && string.IsNullOrEmpty(refreshTokenData.token))
+                        if (refreshTokenData != null && !string.IsNullOrEmpty(refreshTokenData.token))
                         {
                             Logger.Log("FOIUND A REFRESH TOKEN!!");
                             var accessToken = refreshTokenData.token.Replace("eg1~", "");

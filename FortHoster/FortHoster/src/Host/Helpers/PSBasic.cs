@@ -12,17 +12,17 @@ namespace FortHoster
 {
     public static class PSBasics
     {
-        public static Process _FortniteProcess;
-        public static void Start(string PATH, string args, string Email, string Password)
+        public static List<Process> _FortniteProcesses = new();
+        public static Process Start(string PATH, string args, string Email, string Password)
         {
             if (Email == null || Password == null)
             {
                 Console.WriteLine("Email or password is empty");
-                return;
+                return null!;
             }
             if (File.Exists(Path.Combine(PATH, "FortniteGame\\Binaries\\Win64", "FortniteClient-Win64-Shipping.exe")))
             {
-                _FortniteProcess = new Process()
+                var NewProcess = new Process()
                 {
                     StartInfo = new ProcessStartInfo()
                     {
@@ -36,26 +36,28 @@ namespace FortHoster
 
                 Console.WriteLine("STARTED PSBASIC");
 
-                _FortniteProcess.Exited += new EventHandler(OnFortniteExit);
-                _FortniteProcess.Start();
+                NewProcess.Exited += new EventHandler(OnFortniteExit);
+                NewProcess.Start();
+                return NewProcess;
             }
             else
             {
                 Console.WriteLine("Build is missing.. please check if the build still exists");
             }
-
+            return null!;
         }
 
         public static void OnFortniteExit(object sender, EventArgs e)
         {
-            Process fortniteProcess = _FortniteProcess;
-            if (fortniteProcess != null && fortniteProcess.HasExited)
+            if (sender is Process exitedProcess)
             {
-                _FortniteProcess = null;
+                _FortniteProcesses.Remove(exitedProcess);
+
+                Console.WriteLine("Killing helpers");
+                // Also gotta do the same
+                FakeAC._FNLauncherProcess?.Kill();
+                FakeAC._FNAntiCheatProcess?.Kill();
             }
-            Console.WriteLine("Killing helpers");
-            FakeAC._FNLauncherProcess?.Kill();
-            FakeAC._FNAntiCheatProcess?.Kill();
         }
     }
 }

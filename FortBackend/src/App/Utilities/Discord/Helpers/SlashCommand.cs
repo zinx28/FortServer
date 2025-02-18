@@ -48,6 +48,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             command.RespondAsync("Please the check backend logs");
             return false;
         }
+        // ill implement this to others in the future
+        private static Dictionary<ulong, CancellationTokenSource> _userInteractionCache = new();
         public static async Task Handler(FortConfig config, SocketSlashCommand command, SocketGuild guild)
         {
             try
@@ -66,7 +68,17 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                     case "who":
                         if (CheckIfRole(config, command, guild))
                         {
-                            await Who.Respond(command);
+                            if (_userInteractionCache.TryGetValue(command.User.Id, out var oldTask))
+                            {
+                                oldTask.Cancel();
+                                oldTask.Dispose();
+                                _userInteractionCache.Remove(command.User.Id);
+                            }
+
+                            var newTask = new CancellationTokenSource();
+                            _userInteractionCache[command.User.Id] = newTask;
+
+                            await Who.Respond(command, newTask.Token);
                         }
                         break;
                     case "register":

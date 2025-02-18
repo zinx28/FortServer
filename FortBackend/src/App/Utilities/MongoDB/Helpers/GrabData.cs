@@ -24,7 +24,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 }
                 if (GrabData.Value == null)
                 {
-                    var UserData = await Handlers.FindOne<User>(SearchKey, DiscordId);
+                    var UserData = await Handlers.FindOne<User>(SearchKey, DiscordId, true);
                     if (UserData != "Error")
                     {
                         User UserDataParsed = JsonConvert.DeserializeObject<User[]>(UserData)![0];

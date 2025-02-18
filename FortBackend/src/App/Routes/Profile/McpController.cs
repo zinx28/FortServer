@@ -118,7 +118,7 @@ namespace FortBackend.src.App.Routes.Profile
                                 error_description = $"Authentication failed for /api/game/v2/profile/{accountId}/{wildcard}/{mcp}",
                             };
                         }
-
+                        //ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
                         var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
 
                         if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.AccountId == accountId)

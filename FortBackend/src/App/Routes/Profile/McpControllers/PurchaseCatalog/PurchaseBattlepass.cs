@@ -67,6 +67,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         {
                             if (Body.purchaseQuantity <= 0) Body.purchaseQuantity = 1;
                             Price = Body.purchaseQuantity * Price;
+                           
                         }
 
                         if (Price > currencyItem.quantity)
@@ -82,6 +83,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 error_description = "Not enough vbucks",
                             };
                         }
+
+                     
 
                         if (ShopContent.devName.ToString().Contains("SingleTier"))
                         {
@@ -99,7 +102,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            
+                           
 
                             //Body
 
@@ -107,11 +110,20 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             // THIS IS SO WE DONT GO CRAZY
                             int BookLevelOG = seasonObject.BookLevel;
 
+                            Logger.Warn(BookLevelOG.ToString());
+
                             seasonObject.BookXP += (10 * Body.purchaseQuantity);
+
+                            if (Season.Season > 10 && Season.Season <= 17 && Price != 0)
+                            {
+                                seasonObject.BookLevel += Body.purchaseQuantity;
+                                seasonObject.Level = seasonObject.BookLevel;
+                                seasonObject.BookXP = seasonObject.BookLevel;
+                            }
 
                             (seasonObject, NeedItems1) = await LevelUpdater.Init(Season.Season, seasonObject, NeedItems1);
 
-                            Console.WriteLine(NeedItems1);
+                           // Console.WriteLine(NeedItems1);
 
                             List<Battlepass> FreeTier = BattlepassManager.FreeBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
 
@@ -129,7 +141,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                             {
                                                 currencyItem.quantity -= Price;
 
-
+                                                Logger.Warn("Sigma");
                                                 // THIS SHOULD JUST BE IN A DIFFERENT FILE TO MAKE THIS CLEANER
                                                 if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray1))
                                                 {
@@ -334,6 +346,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                     changeType = "statModified",
                                                     name = $"book_level",
                                                     value = seasonObject.BookLevel
+                                                });
+
+                                                // season 12?!?!
+                                                Logger.Error("LEVEL " + seasonObject.Level.ToString());
+                                                ApplyProfileChanges.Add(new
+                                                {
+                                                    changeType = "statModified",
+                                                    name = $"level",
+                                                    value = seasonObject.Level
                                                 });
 
                                                 // after to get the correct price

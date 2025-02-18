@@ -36,6 +36,9 @@
 - Friends [+]
 - Matchmaker (WIP) [-]
 
+## Forthoster
+This is unfinished.
+
 ## Admin Panel (WIP)
 I've created an admin page to make it easier to manage JSON configs.
 

@@ -6,7 +6,8 @@ namespace FortBackend.src.App.Utilities.Constants
     {
         public static readonly string BaseDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
         public static readonly string LocalAppData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Saved.Saved.DeserializeConfig.ProjectName);
-       
+
+        public static readonly string CacheDir = Path.Combine(BaseDir, "Cache");
         public static readonly string ImageDir = Path.Combine(BaseDir, "Image");
         public static readonly string IniDir = Path.Combine(BaseDir, "Ini");
         public static readonly string JsonDir = Path.Combine(BaseDir, "Json");
@@ -30,6 +31,7 @@ namespace FortBackend.src.App.Utilities.Constants
         {
             public static readonly string Events = Path.Combine(BaseDir, "Json/templates/Events.json");
             public static readonly string Arena = Path.Combine(BaseDir, "Json/templates/Arena.json");
+            public static readonly string Score = Path.Combine(BaseDir, "Json/templates/Score.json");
         }
 
         public class CloudDir
@@ -84,11 +86,21 @@ namespace FortBackend.src.App.Utilities.Constants
 
             return Path.Combine(ClientSettingsDir, ClientId);
         }
+        public static string CacheData(string filepath)
+        {
+            if (!Directory.Exists(CacheDir))
+            {
+                Directory.CreateDirectory(CacheDir);
+            }
 
-       
+            return Path.Combine(CacheDir, filepath);
+        }
+
+
         public static string ReturnImage(string Image)
         {
             var Response = Path.Combine(ImageDir, Image);
+            //Logger.Log(Response);
             if (!System.IO.File.Exists(Response))
             {
                 Logger.Error("Couldn't find image " + Image, "ReturnImage");

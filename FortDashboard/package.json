@@ -1,17 +1,29 @@
 {
-  "name": "dashboard",
+  "name": "fortdashboardfrfrfr",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "bun run --port 2222 --hot src/index.ts",
-    "build": "bun build src/index.ts --outdir build --minify"
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "hono": "^4.6.9"
+    "dotenv": "^16.4.7",
+    "pinia": "^2.3.1",
+    "serve": "^14.2.4",
+    "vue": "^3.5.13",
+    "vue-cookies": "^1.8.6",
+    "vue-router": "^4.5.0",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "@types/ejs": "^3.1.5"
+    "@types/node": "^22.10.10",
+    "@types/vue-router": "^2.0.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.5",
+    "vue-tsc": "^2.2.0"
   }
 }

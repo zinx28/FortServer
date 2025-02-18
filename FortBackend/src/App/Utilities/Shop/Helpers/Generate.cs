@@ -131,6 +131,12 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         //    }
                         //}
 
+                        Generator.savedData.DailyFields.Add(new
+                        {
+                            name = Item.name,
+                            value = Price
+                        });
+
                         Generator.savedData.Daily.Add(new ItemsSaved
                         {
                             id = Item.id,
@@ -216,7 +222,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             //}
                         }
 
-                       
+
 
                         //if (Item.singleprice == -1)
                         //{
@@ -236,6 +242,12 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                         //        Price = Item.singleprice;
                         //    }
                         //}
+
+                        Generator.savedData.WeeklyFields.Add(new
+                        {
+                            name = Item.name,
+                            value = Price
+                        });
 
                         Generator.savedData.Weekly.Add(new ItemsSaved
                         {
@@ -265,16 +277,16 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             return true;
         }
 
-        public static async Task RandomItems(int Items, List<ItemsSaved> Type, string ItemType = "Small")
+        public static async Task RandomItems(int Items, List<ItemsSaved> Type, List<object> DiscordFields, string ItemType = "Small")
         {
             Logger.Log("Generating useless stuff -> " + Items, "ItemShop");
             for (int i = 0; i < Items; i++)
             {
-                await SingleItem(Generator.savedData, Type, Generator.itemTypes1, Generator.rarityProb1, ItemType);
+                await SingleItem(Generator.savedData, Type, Generator.itemTypes, Generator.rarityProb1, DiscordFields, ItemType);
             }
         }
 
-        public static async Task SingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, List<string> itemType, double[] rarityProb, string type = "Small")
+        public static async Task SingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, List<string> itemType, double[] rarityProb, List<object> DiscordFields, string type = "Small")
         {
             Random random = new Random();
             List<ShopItems> ChosenItem = new List<ShopItems>();
@@ -314,7 +326,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 {
                     if (lastShownDate.Month == DateTime.Now.Month && lastShownDate.Year == DateTime.Now.Year)
                     {
-                        await SingleItem(savedData, ListItemSaved, itemType, rarityProb);
+                        await SingleItem(savedData, ListItemSaved, itemType, rarityProb, DiscordFields, type);
                         return;
                     }
                 }
@@ -351,6 +363,12 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 //{
                 //    Price = price;
                 //}
+
+                DiscordFields.Add(new
+                {
+                    name = RandomSkinItem.name,
+                    value = Price
+                });
 
                 ListItemSaved.Add(new ItemsSaved
                 {

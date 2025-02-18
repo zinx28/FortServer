@@ -2,7 +2,7 @@
   "name": "BRSeason2",
   "catalogEntries": [
     {
-      "offerId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
+      "offerId": "C3BA14F04F4D56FC1D490F8011B56553",
       "devName": "BR.Season2.BattlePass.01",
       "offerType": "StaticPrice",
       "prices": [
@@ -25,7 +25,7 @@
       "requirements": [
         {
           "requirementType": "DenyOnFulfillment",
-          "requiredId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
+          "requiredId": "C3BA14F04F4D56FC1D490F8011B56553",
           "minQuantity": 1
         }
       ],
@@ -84,7 +84,7 @@
       "itemGrants": []
     },
     {
-      "offerId": "BigBlackPenis",
+      "offerId": "F86AC2ED4B3EA4B2D65EF1B2629572A0",
       "devName": "BR.Season2.SingleTier.01",
       "offerType": "StaticPrice",
       "prices": [

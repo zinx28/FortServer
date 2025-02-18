@@ -1,0 +1,16 @@
+﻿<Page x:Class="FortLauncher.Pages.Tabs.SettingsTB"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FortLauncher.Pages.Tabs"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+      Title="SettingsTB" Width="861" Height="639">
+
+    <Grid>
+        <ui:PasswordBox x:Name="TestBox" Margin="40,42,27,0" PlaceholderText="Your Token" TextWrapping="NoWrap" Text="" VerticalAlignment="Top" SelectionOpacity="2" Height="38"/>
+        <ui:Button Margin="40,103,0,0" VerticalAlignment="Top" Click="Button_Click">Go To DLL Folder</ui:Button>
+        <ui:Button Margin="40,156,0,0" VerticalAlignment="Top" Click="Button_Click_1">Go To Application Folder</ui:Button>
+    </Grid>
+</Page>

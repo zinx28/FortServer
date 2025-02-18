@@ -54,8 +54,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                 }
 
                 var FindDiscordID = string.Empty;
-                if (UserId == null && ign != null)
+                if (ign != null)
                 {
+                    Logger.Log(UserName, "SIGMABOY");
                     FindDiscordID = await Handlers.FindOne<User>("Username", ign);
                 }
                 else

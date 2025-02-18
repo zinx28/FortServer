@@ -44,6 +44,12 @@
 
 ## Bot Commands
 - /test
-- /who (this command only works if the user has a role, let's say moderator.. ig)
 - /register
 - /change_password
+
+### Admin commands
+- required to have "RoleID" (the role in config.json)
+- /who (this command only works if the user has a role, let's say moderator.. ig)
+   - Ban (Perm ban, w/ ban assits)
+   - Temp Ban (season 7 and above get a ban message in lobby)
+   - Vbucks

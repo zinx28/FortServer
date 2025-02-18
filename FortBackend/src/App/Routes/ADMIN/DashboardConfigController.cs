@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SharpCompress.Common;
 using System;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
@@ -31,14 +30,12 @@ namespace FortBackend.src.App.Routes.ADMIN
         {
             try
             {
-                var authToken = Request.Headers["Authorization"].ToString().ToLower().Split("bearer ")[1]; ;
-
-                if (authToken != null)
+                if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                 {
-                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken);
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
-                        if (adminData.RoleId > AdminDashboardRoles.Moderator)
+                        if (adminData.RoleId > AdminDashboardRoles.Moderator) // private data
                         {
                             return Ok(DashboardConfigData.GetDashboardConfigData());
                         }

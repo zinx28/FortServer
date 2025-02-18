@@ -1,14 +1,19 @@
 {
-  "target": "bun",
   "compilerOptions": {
-    "module": "esnext",
     "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
     "strict": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node", "vite/client", "vue"],
+    "lib": ["dom", "esnext"],
+    "allowJs": true,
+    "resolveJsonModule": true
   },
-  "outdir": "dist"
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }

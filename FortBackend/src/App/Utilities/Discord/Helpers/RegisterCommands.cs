@@ -11,7 +11,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
     {
         public static async Task Connect(FortConfig config, SocketGuild guild)
         {
-
+            //TODO REWRITE THIS
 
             // This overwrites everything
             //await guild.BulkOverwriteApplicationCommandAsync(Array.Empty<SlashCommandProperties>());
@@ -71,6 +71,12 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                     .WithRequired(false)
                     .WithType(ApplicationCommandOptionType.String));
 
+            //var TourEventsCommand = new SlashCommandBuilder()
+            //    .WithName("events")
+            //    .WithDescription("Creates a tournament")
+            //    .WithContextTypes(InteractionContextType.Guild);
+
+            //await guild.CreateApplicationCommandAsync(TourEventsCommand.Build());
             await guild.CreateApplicationCommandAsync(TempCommand.Build());
             await guild.CreateApplicationCommandAsync(WhoCommand.Build());
             await guild.CreateApplicationCommandAsync(CreateCommand.Build());

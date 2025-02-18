@@ -43,13 +43,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             return -1;
         }
 
-        public static List<string> itemTypes1 = new List<string> {
-            //"skins",
-            //"emotes",
-            //"gliders",
-            //"pickaxes",
-            //"wrap"
-        };
+        public static List<string> itemTypes = new List<string>(); // auto added during startup
 
         public static Dictionary<string, Func<List<ShopItems>>> itemTypeMap = new Dictionary<string, Func<List<ShopItems>>>()
         {
@@ -109,13 +103,13 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
 
 
-                await Generate.RandomItems(DailyItems, savedData.Daily, "Normal");
-                await Generate.RandomItems(WeeklyItems, savedData.Weekly, "Normal");
+                await Generate.RandomItems(DailyItems, savedData.Daily, saveddata.DailyFields, "Normal");
+                await Generate.RandomItems(WeeklyItems, savedData.Weekly, saveddata.WeeklyFields, "Normal");
 
                 if (savedData.Season >= 14)
                 {
-                    await Generate.RandomItems(4, savedData.Daily);
-                    await Generate.RandomItems(4, savedData.Weekly);
+                    await Generate.RandomItems(4, savedData.Daily, saveddata.DailyFields);
+                    await Generate.RandomItems(4, savedData.Weekly, saveddata.WeeklyFields);
 
                 }
               
@@ -135,7 +129,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                 Saved.Saved.BackendCachedData.CurrentShop = shopGen;
                 string updatedJsonContent = JsonConvert.SerializeObject(shopGen, Formatting.Indented);
-                string filePath = Path.Combine(PathConstants.BaseDir, "json/shop/shop.json");
+                string filePath = PathConstants.ShopJson.Shop;
                 if(File.Exists(filePath))
                 {
                     File.WriteAllText(filePath, updatedJsonContent);

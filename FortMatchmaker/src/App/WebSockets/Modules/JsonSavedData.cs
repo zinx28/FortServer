@@ -8,6 +8,7 @@ namespace FortMatchmaker.src.App.WebSockets.Modules
     // Copied From a older matchmaker i had from github
     public class JsonSavedData
     {
+        // todo make this more proper
         public static int ConnectingDelay = 200;
         public static int WaitingDelay = 1000;
         public static int QueuedDelay = 10000;
@@ -15,14 +16,14 @@ namespace FortMatchmaker.src.App.WebSockets.Modules
         public static int JoinDelay = 2000;
         public static string ticket = Guid.NewGuid().ToString().Replace("-", "");
 
-        public static string sessionAssignmentPayloadJson()
+        public static string sessionAssignmentPayloadJson(string SessionID)
         {
 
             return System.Text.Json.JsonSerializer.Serialize(new
             {
                 payload = new
                 {
-                    matchId = RandomHash.CalculateMd5Hash("2" + DateTimeOffset.Now.ToUnixTimeMilliseconds()),
+                    matchId = string.IsNullOrEmpty(SessionID) ? RandomHash.CalculateMd5Hash("2" + DateTimeOffset.Now.ToUnixTimeMilliseconds()) : SessionID,
                     state = "SessionAssignment"
                 },
                 name = "StatusUpdate"
@@ -42,14 +43,14 @@ namespace FortMatchmaker.src.App.WebSockets.Modules
                 name = "StatusUpdate"
             });
         }
-        public static string waitingPayloadJson()
+        public static string waitingPayloadJson(int TotalPlayers)
         {
             return System.Text.Json.JsonSerializer.Serialize(new
             {
                 payload = new
                 {
-                    totalPlayers = MatchmakerData.connected.Count,
-                    connectedPlayers = MatchmakerData.connected.Count,
+                    totalPlayers = TotalPlayers,
+                    connectedPlayers = TotalPlayers,
                     state = "Waiting"
                 },
                 name = "StatusUpdate"

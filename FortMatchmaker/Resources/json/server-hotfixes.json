@@ -1,6 +1,7 @@
 {
   "max_servers": 1,
   "min_players": 20,
+  "regions": [ "EU", "NAE" ],
   "playlists": [
     {
       "playlistId": "Playlist_DefaultSolo"

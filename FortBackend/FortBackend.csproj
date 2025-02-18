@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Image\BackPoster.jpg" />
+    <None Remove="Resources\Image\LoadingScreen.png" />
     <None Remove="Resources\Image\test.png" />
     <None Remove="Resources\Image\Trans_Boykisser.png" />
     <None Remove="Resources\Ini\CloudDir\Chunks\88363E1F7900C6FB_012995DF4891C30A1CE331B0EAB403B7.chunk" />
@@ -26,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Image\BackPoster.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Image\LoadingScreen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Image\Trans_Boykisser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -54,9 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net" Version="3.16.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.17" />
-    <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
 	<PackageReference Include="SkiaSharp" Version="2.88.7" />
 	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
   </ItemGroup>

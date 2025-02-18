@@ -108,9 +108,92 @@ namespace FortBackend.src.App.Routes.API
             return Ok(new { });
         }
 
+        [HttpGet("/content/api/pages/fortnite-game/{section}")]
+        public async Task<ActionResult<ContentJson>> ContentEndpoint(string section)
+        {
+            try
+            {
+                var userAgent = Request.Headers["User-Agent"].ToString();
+                var AcceptLanguage = Request.Headers["Accept-Language"].ToString();
+                string season = "";
+                season = (await SeasonUserAgent(Request)).Season.ToString();
+                if (season == "10")
+                {
+                    season = "x";
+                }
 
-        // not added the stupid cachcing to this
-        [HttpPost("/api/v1/fortnite-br/surfaces/motd/target")]
+                if (string.IsNullOrEmpty(AcceptLanguage))
+                {
+                    AcceptLanguage = "en"; // weird
+                }
+
+
+                var ContentJsonResponse = new object();
+                if (NewsManager.ContentJsonResponse.TryGetValue(AcceptLanguage, out ContentJson Test))
+                {
+                    var property = typeof(ContentJson).GetProperty(section);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(Test);
+                        ContentJsonResponse = value ?? new { };
+                    }
+                }
+                else
+                {
+                    var frfr = NewsManager.ContentJsonResponse.FirstOrDefault(e => e.Key == "en").Value;
+                    var property = typeof(ContentJson).GetProperty(section);
+                    if (property != null)
+                    {
+                        var value = property.GetValue(frfr);
+                        ContentJsonResponse = value ?? new { };
+                    }
+                   
+                }
+
+                //string LobbyBackground = $"season{season}";
+                //if (season == "2")
+                //{
+                //    LobbyBackground = "LobbyWinterDecor";
+                //}
+
+                //ContentJsonResponse.dynamicbackgrounds = new DynamicBackground()
+                //{
+                //    backgrounds = new DynamicBackgrounds()
+                //    {
+                //        backgrounds = new List<DynamicBackgroundList>
+                //        {
+                //            new DynamicBackgroundList
+                //            {
+                //                stage = LobbyBackground,
+                //                _type = "DynamicBackground",
+                //                key = "lobby"
+                //            }
+                //        }
+
+                //    }
+                //};
+          
+                //var jsonData1 = System.IO.File.ReadAllText(Path.Combine(PathConstants.BaseDir, $"src\\Resources\\Json\\ph.json"));
+                //ContentJson contentconfig1 = JsonConvert.DeserializeObject<ContentJson>(jsonData); //dynamicbackgrounds.news
+
+                //return Ok(contentconfig1);
+                var jsonResponse = JsonConvert.SerializeObject(ContentJsonResponse, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+
+                return Content(jsonResponse, "application/json");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+            }
+            return Ok(new { });
+        }
+
+
+            // not added the stupid cachcing to this
+            [HttpPost("/api/v1/fortnite-br/surfaces/motd/target")]
         public async Task<ActionResult<ContentJson>> MOTDTARGET()
         {
             Response.ContentType = "application/json";

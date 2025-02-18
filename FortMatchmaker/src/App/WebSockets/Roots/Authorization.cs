@@ -20,22 +20,34 @@ namespace FortMatchmaker.src.App.WebSockets.Roots
                 if(Headers.TryGetValue("Authorization", out var AuthValues))
                 {
                     if (!string.IsNullOrEmpty(AuthValues)){
+
+                        if(AuthValues == Saved.DeserializeConfig.FortHosterKey)
+                        {
+                            return new MatchmakerTicket()
+                            {
+                                IsHoster = true
+                            };
+                        }
+
                         int StartIndex = AuthValues.ToString().IndexOf(' ');
 
                         if (StartIndex != -1)
                         {
                             string AuthToken = AuthValues.ToString().Substring(StartIndex);
+                           
                             string[] parts = AuthToken.Split(' ');
 
                             if(parts.Length >= 4)
                             {
                                 string ValidToken = parts[3];
+                              
                                 string SignatureJson = GenerateAES.DecryptAES256(ValidToken, Saved.DeserializeConfig.JWTKEY);
 
                                 // Trying to prevent fake tokens
                                 if (!string.IsNullOrEmpty(SignatureJson))
                                 {
-                                    MatchmakerTicket matchmakerTicket = JsonConvert.DeserializeObject<MatchmakerTicket>(SignatureJson);
+                                   
+                                    MatchmakerTicket matchmakerTicket = JsonConvert.DeserializeObject<MatchmakerTicket>(SignatureJson)!;
 
                                     if (matchmakerTicket != null)
                                     {
@@ -51,7 +63,7 @@ namespace FortMatchmaker.src.App.WebSockets.Roots
                                             if (currentUtcTime - timestamp <= threshold)
                                             {
                                                 var FindUser = await Handlers.FindOne<User>("accountId", matchmakerTicket.accountId);
-                                                if(FindUser != "Error")
+                                                if (FindUser != "Error")
                                                 {
                                                     User UserDataParsed = JsonConvert.DeserializeObject<User[]>(FindUser)![0];
 

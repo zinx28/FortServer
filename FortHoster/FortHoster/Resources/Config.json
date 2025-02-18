@@ -1,0 +1,19 @@
+{
+  "//": "FortHoster",
+  "Region": "EU",
+  "Playlist": "Playlist_DefaultSolo",
+  "Key": "FortHosterSecretKey!!@!@!",
+  "HTTPS": false,
+  "IP": "127.0.0.1",
+  "PORT": 2121,
+  "Headless": true,
+  "GameLogs": false,
+  "Email": "FortHoster@FortBackend.com",
+  "Password": "passwordggs",
+  "Season": 10.40,
+  "GamePath": "",
+  "RedirectDLL": "",
+  "GameServerDLL": "",
+  "GameServerIP": "127.0.0.1",
+  "GameSeverPort": 7777
+}

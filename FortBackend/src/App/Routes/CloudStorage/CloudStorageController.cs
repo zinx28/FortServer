@@ -75,16 +75,23 @@ namespace FortBackend.src.App.Routes.CloudStorage
         }
 
         [HttpGet("user/{id}/{file}")]
-        public IActionResult UserApi(string id, string file)
+        [AuthorizeToken]
+        public async Task<IActionResult> UserApi(string id, string file)
         {
             Response.ContentType = "application/octet-stream";
-            string filePath = PathConstants.CloudSettings($"ClientSettings-{id}.sav");
-
-            if (System.IO.File.Exists(filePath))
+            var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
+            if (profileCacheEntry != null)
             {
-                byte[] fileContent = System.IO.File.ReadAllBytes(filePath);
+                string filePath = PathConstants.CloudSettings($"ClientSettings-{profileCacheEntry.AccountId}.sav");
+                //Logger.Log(filePath, "GET");
+                if (System.IO.File.Exists(filePath))
+                {
+                    string fileContent = await System.IO.File.ReadAllTextAsync(filePath, Encoding.GetEncoding("ISO-8859-1"));
+                    byte[] fileBytes = System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(fileContent);
 
-                return File(fileContent, "application/octet-stream");
+
+                    return File(fileBytes, "application/octet-stream", file);
+                }
             }
 
             return NoContent();
@@ -97,19 +104,18 @@ namespace FortBackend.src.App.Routes.CloudStorage
             Response.ContentType = "application/octet-stream";
 
             try {
-                if (Request.ContentLength.HasValue && Request.ContentLength.Value >= 400000)
-                    return StatusCode(403);
-
                 var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
                 if (profileCacheEntry != null)
                 {
                     if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                     {
-                        using (StreamReader reader = new StreamReader(Request.Body, Encoding.Latin1))
+                        using (StreamReader reader = new StreamReader(Request.Body, Encoding.GetEncoding("ISO-8859-1"))) // hahah so this doesnt support 256+ things
                         {
                             string requestBody = await reader.ReadToEndAsync();
+                            if (requestBody.Length >= 400000)
+                                return StatusCode(403);
 
-                            System.IO.File.WriteAllText(PathConstants.CloudSettings($"ClientSettings-{accountId}.Sav"), requestBody, Encoding.Latin1);
+                            System.IO.File.WriteAllText(PathConstants.CloudSettings($"ClientSettings-{profileCacheEntry.AccountId}.Sav"), requestBody, Encoding.GetEncoding("ISO-8859-1"));
                             StatusCode(204);
 
                             reader.Close();
@@ -134,7 +140,7 @@ namespace FortBackend.src.App.Routes.CloudStorage
                 var profileCacheEntry = HttpContext.Items["ProfileData"] as ProfileCacheEntry;
                 if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {
-                    string filePath = IniManager.GrabIniFile($"ClientSettings-{profileCacheEntry.AccountId}.sav");
+                    string filePath = PathConstants.CloudSettings($"ClientSettings-{profileCacheEntry.AccountId}.sav");
 
                     if (System.IO.File.Exists(filePath))
                     {

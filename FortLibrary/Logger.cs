@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 
 namespace FortLibrary
 {
-    public static class Logger
+    public sealed class Logger
     {
-        private static StreamWriter? writer;
+        private static readonly Lazy<Logger> _instance = new(() => new Logger());
+        public static Logger Instance => _instance.Value;
 
-        static Logger()
+        private static StreamWriter? writer;
+        private static readonly object _lock = new();
+
+        private Logger()
         {
             try
             {
                 InitializeLogger();
+                
                 if (writer == null)
                     throw new InvalidOperationException("Logger StreamWriter is not initialized.");
             }
@@ -29,8 +34,14 @@ namespace FortLibrary
         {
             try
             {
-                writer = new StreamWriter(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FortBackend.log"), false) { AutoFlush = true };
-                writer.WriteLine("FortBackend Logs");
+                lock (_lock)
+                {
+                    if (writer == null)
+                    {
+                        writer = new StreamWriter(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FortBackend.log"), false) { AutoFlush = true };
+                        writer.WriteLine("=== FortBackend Logs ===");
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -74,10 +85,14 @@ namespace FortLibrary
         {
             if (writer == null) return;
 
-            // WRITER WONT WORK AFTER CLOSING!¬
-            writer.WriteLine("=================================================================");
-            writer.WriteLine($"END OF LOG: {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}");
-            writer.Close(); 
+            lock (_lock)
+            {
+                // WRITER WONT WORK AFTER CLOSING!¬
+                writer.WriteLine("=================================================================");
+                writer.WriteLine($"END OF LOG: {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}");
+                writer.Close();
+                writer = null;
+            }
         }
     }
 }

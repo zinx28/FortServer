@@ -11,7 +11,6 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.Shop;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using SharpCompress.Common;
 
 namespace FortBackend.src.App.Utilities.Helpers.Cached
 {
@@ -250,6 +249,12 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 NewsManager.Init();
             }
             catch (Exception ex) { Logger.Error("NewsManager Data -> " + ex.Message); }
+
+            try
+            {
+                CupCache.Init();
+            }
+            catch (Exception ex) { Logger.Error("CupCache Data -> " + ex.Message); }
 
             try
             {

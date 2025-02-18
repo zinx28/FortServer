@@ -38,10 +38,4 @@ namespace FortBackend.src.App.Utilities.Saved
         public ShopJson CurrentShop { get; set; } = new ShopJson();
         public List<ItemsSaved> OGShop { get; set; } = new List<ItemsSaved>();
     }
-
-    /*
-     * 
-     * Moved Config to the library.. works the same though- i just feel like it's better
-     * FortLibrary/ConfigHelpers/FortConfig.cs
-     */
 }

@@ -8,9 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net" Version="3.15.0" />
-    <PackageReference Include="MongoDB.Bson" Version="2.25.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
+    <PackageReference Include="Discord.Net" Version="3.17.1" />
+    <PackageReference Include="MongoDB.Driver" Version="3.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
   </ItemGroup>

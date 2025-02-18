@@ -84,9 +84,9 @@ namespace FortBackend.src.App.Routes.Matchmaker
                                     PlaylistName = filteredServers[0].Playlist,
                                     SessionKey = Guid.NewGuid().ToString("N").ToUpper()
                                 },
-                                TotalPlayers = filteredServers[0].Current,
-                                AllowJoinInProgress = filteredServers[0].JoinAble,
-                                AllowInvites = filteredServers[0].JoinAble,
+                                TotalPlayers = filteredServers[0].CurrentPlayers,
+                                AllowJoinInProgress = filteredServers[0].bJoinable,
+                                AllowInvites = filteredServers[0].bJoinable,
                                 BuildUniqueId = Request.Cookies["buildUniqueId"] ?? "0",
                                 LastUpdated = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                             };

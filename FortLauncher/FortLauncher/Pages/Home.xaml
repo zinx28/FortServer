@@ -21,7 +21,7 @@
                     <Grid>
                         <Image Margin="10,14,195,13" Source="pack://application:,,,/Resources/DefaultCharacter.png" Stretch="Fill" Width="70" Height="70"/>
                         <ui:TextBlock x:Name="UserNameBox" Foreground="White" Text="TEST" FontFamily="Segoe UI Semibold" Margin="85,0,60,0" Height="26" VerticalAlignment="Center" FontSize="15" />
-                        <Image Margin="220,26,10,25" Source="pack://application:,,,/Resources/SettingsIcon.png" Stretch="Fill" Height="45" Width="45"/>
+                        <Image Margin="220,26,10,25" Source="pack://application:,,,/Resources/SettingsIcon.png" Stretch="Fill" Height="45" Width="45" MouseUp="Image_MouseUp"/>
                     </Grid>
                 </Border>
                 <Button  x:Name="SideBarHome"  Background="#FF191717" Margin="0,101,0,0"   Width="275" VerticalAlignment="Top" Height="73" Click="SideBarHome_Click" HorizontalAlignment="Center">
@@ -69,8 +69,7 @@
         <Frame x:Name="MainFrame" Margin="300,71,0,0" Initialized="MainFrame_Initialized">
 
         </Frame>
-        <ui:TextBlock x:Name="TestBox" Foreground="White" TextWrapping="WrapWithOverflow" Text="TEST" Margin="31,417,979,181" />
-      
+
         <ui:ContentDialog x:Name="CustomContetnDialog"
 ButtonClicked="CustomContetnDialog_ButtonClicked"
 CloseButtonText="Close" DefaultButton="Close" PrimaryButtonText="Set"

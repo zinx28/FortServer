@@ -17,6 +17,13 @@ using System.Text.RegularExpressions;
 
 namespace FortBackend.src.App.Routes.ADMIN
 {
+    public class SetupRequest
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Password_Cn { get; set; } = string.Empty;
+    }
+
     [Route("/admin")]
     public class HomeController : Controller
     {
@@ -29,13 +36,9 @@ namespace FortBackend.src.App.Routes.ADMIN
 
             try
             {
-                var authToken = Request.Headers["Authorization"].ToString().ToLower().Split("bearer ")[1];
-
-                if (!string.IsNullOrEmpty(authToken))
+                if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
                 {
-                    Console.WriteLine(authToken);
-                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken)!;
-                    Console.WriteLine(JsonConvert.SerializeObject(adminData));
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
                         if (adminData.bIsSetup)
@@ -106,34 +109,40 @@ namespace FortBackend.src.App.Routes.ADMIN
 
             try
             {
-                var authToken = Request.Headers["Authorization"].ToString().ToLower().Split("bearer ")[1];
-
-                if (!string.IsNullOrEmpty(authToken))
+                if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
                 {
-                    Console.WriteLine(authToken);
-                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken)!;
-                    Console.WriteLine(JsonConvert.SerializeObject(adminData));
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
-                        if (adminData.bIsSetup)
+                        Console.WriteLine(JsonConvert.SerializeObject(adminData));
+                        if (adminData != null)
                         {
-                            return Json(new { message = "Not Logged In", error = true });
-                        }
-
-                        return Json(new
-                        {
-                            displayName = adminData.AdminUserName,
-                            roleId = adminData.RoleId,
-                            moderator = adminData.RoleId > AdminDashboardRoles.Moderator,
-                            AdminLists = GrabAdminData.AdminUsers.Select(admin => new
+                            if (adminData.bIsSetup)
                             {
-                                UserData = admin.profileCacheEntry.UserData,
-                                AccountId = admin.profileCacheEntry.AccountId,
-                                adminInfo = admin.adminInfo
-                            }).ToList(),
-                            SeasonForced = Saved.DeserializeGameConfig.Season,
-                            setup = false
-                        });
+                                return Json(new { message = "Not Logged In", error = true });
+                            }
+
+                            return Json(new
+                            {
+                                displayName = adminData.AdminUserName,
+                                roleId = adminData.RoleId,
+                                admin = adminData.RoleId > AdminDashboardRoles.Moderator,
+                                AdminLists = GrabAdminData.AdminUsers.Select(admin => new
+                                {
+                                    DATA = new
+                                    {
+                                        // kinda gave too much info in response last time
+                                        UserName = admin.profileCacheEntry.UserData.Username,
+                                        Email = admin.profileCacheEntry.UserData.Email, // todo make the response send like MyEmail*********.com or smth
+                                    },
+                                    AccountId = admin.profileCacheEntry.AccountId,
+                                    adminInfo = admin.adminInfo
+                                }).ToList(),
+                                SeasonForced = Saved.DeserializeGameConfig.ForceSeason,
+                                Season = Saved.DeserializeGameConfig.Season,
+                                setup = false
+                            });
+                        }
                     }
                 }
             }
@@ -348,92 +357,90 @@ namespace FortBackend.src.App.Routes.ADMIN
                 var email = "";
                 var password = "";
                 var cumpassword = "";
-                var FormRequest = HttpContext.Request.Form;
 
-
-                if (FormRequest.TryGetValue("email", out var emailL))
+                using (var reader = new StreamReader(HttpContext.Request.Body))
                 {
-                    Console.WriteLine(email);
-                    email = emailL;
-                }
-                if (FormRequest.TryGetValue("password", out var passwordL))
-                {
-                    password = passwordL;
-                }
-                if (FormRequest.TryGetValue("confirmPassword", out var CumpasswordL))
-                {
-                    cumpassword = CumpasswordL;
-                }
+                    var requestBody = await reader.ReadToEndAsync();
 
-  
+                    SetupRequest setupRequest = JsonConvert.DeserializeObject<SetupRequest>(requestBody)!;
 
-                if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password)) {
-                    string authToken = "";
-                    if (Request.Cookies.TryGetValue("AuthToken", out authToken!))
+                    if (setupRequest != null)
                     {
-                        AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken)!;
+                        email = setupRequest.Email;
+                        password = setupRequest.Password;
+                        cumpassword = setupRequest.Password_Cn;
 
-                        if (adminData != null)
+                        if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
                         {
-                            // idk why i didnt do this check before... :skull:
-
-                            if (password != cumpassword)
+                            string authToken = "";
+                            if (Request.Cookies.TryGetValue("AuthToken", out authToken!))
                             {
-                                return Json(new { error = "Password's doesn't match" });
-                            }
+                                AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken)!;
 
-                            string pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&'^\-_\#]{7,}$";
-
-
-                            Regex regex = new Regex(pattern);
-
-
-                            if (regex.IsMatch(password))
-                            {
-                                if (password != DefaultValues.AdminPassword)
+                                if (adminData != null)
                                 {
-                                    pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-                                    regex = new Regex(pattern);
-                                    if (regex.IsMatch(email))
+                                    if(!adminData.IsForcedAdmin) return Json(new { error = "THIS ENDPOINT IS FORCED ADMIN ONLY" });
+                                    // idk why i didnt do this check before... :skull:
+
+                                    if (password != cumpassword)
                                     {
-                                        if (email != DefaultValues.AdminEmail)
+                                        return Json(new { error = "Password's doesn't match" });
+                                    }
+
+                                    string pattern = @"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&'^\-_\#]{7,}$";
+
+
+                                    Regex regex = new Regex(pattern);
+
+
+                                    if (regex.IsMatch(password))
+                                    {
+                                        if (password != DefaultValues.AdminPassword)
                                         {
-                                            // Change email and passwrod
-                                            if (await GrabAdminData.ChangeForcedAdminPassword(email, password))
+                                            pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                                            regex = new Regex(pattern);
+                                            if (regex.IsMatch(email))
                                             {
-                                                return Json(new { login = true });
+                                                if (email != DefaultValues.AdminEmail)
+                                                {
+                                                    // Change email and passwrod
+                                                    if (await GrabAdminData.ChangeForcedAdminPassword(email, password))
+                                                    {
+                                                        return Json(new { login = true });
+                                                    }
+                                                    else
+                                                    {
+                                                        return Json(new { login = false });
+                                                    };
+                                                }
+                                                else
+                                                {
+                                                    return Json(new { message = "DONT USE DEFAULT EMAIL", error = true });
+                                                }
                                             }
                                             else
                                             {
-                                                return Json(new { login = false });
-                                            };
+                                                return Json(new { message = "DONT USE DEFAULT EMAIL", error = true });
+                                            }
                                         }
                                         else
                                         {
-                                            return Json(new { message = "DONT USE DEFAULT EMAIL", error = true });
+                                            return Json(new { message = "Email isnt in the correct format!", error = true });
                                         }
                                     }
                                     else
                                     {
-                                        return Json(new { message = "DONT USE DEFAULT EMAIL", error = true });
+                                        return Json(new { message = "Password must be at least 7 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.", error = true });
                                     }
                                 }
-                                else
-                                {
-                                    return Json(new { message = "Email isnt in the correct format!", error = true });
-                                }
                             }
-                            else
-                            {
-                                return Json(new { message = "Password must be at least 7 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.", error = true });
-                            }
+                        }
+                        else
+                        {
+                            return Json(new { message = "Password's doesn't match!", error = true });
                         }
                     }
                 }
-                else
-                {
-                    return Json(new { message = "Password's doesn't match!", error = true });
-                }      
             }
             catch (Exception ex)
             {

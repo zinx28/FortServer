@@ -14,6 +14,8 @@ using FortLibrary.EpicResponses.Profile.Quests;
 using FortLibrary;
 using System.Text.Json.Serialization;
 using FortBackend.src.App.Utilities.Helpers.Cached;
+using Discord;
+using FortBackend.src.App.Routes.ADMIN;
 
 namespace FortBackend.src.App.Routes.API
 {
@@ -241,8 +243,28 @@ namespace FortBackend.src.App.Routes.API
             });
         }
 
-      
-        ///api/v1/events/Fortnite/download/644812f9-5e5e-4fd4-a670-b306e5956fd9
+        [HttpGet("v1/events/Fortnite/{tournamentsID}/history/{accountId}")]
+        public async Task<IActionResult> EventsEndpoint(string tournamentsID, string accountId)
+        {
+            Response.ContentType = "application/json";
+            try
+            {
+                string filePath1 = PathConstants.CacheData($"History_{tournamentsID}.json");
+                if (System.IO.File.Exists(filePath1))
+                {
+                    string json1 = System.IO.File.ReadAllText(filePath1);
+
+                    return Content(json1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message);
+            }
+            return Ok(new List<object> { });
+        }
+
+                ///api/v1/events/Fortnite/download/644812f9-5e5e-4fd4-a670-b306e5956fd9
         [HttpGet("v1/events/Fortnite/download/{accountId}")]
         public async Task<IActionResult> DownloadEndpoint(string accountId)
         {
@@ -252,22 +274,58 @@ namespace FortBackend.src.App.Routes.API
                 var profileCacheEntry = await GrabData.Profile(accountId);
                 if (profileCacheEntry != null)
                 {
+                    // TODO ADD A CACHE FOR THIS ENDPOINT!
+
                     var userAgent = Request.Headers["User-Agent"].ToString();
                     int Season;
                     Season = (await Grabber.SeasonUserAgent(Request)).Season;
 
-
                     string filePath1 = PathConstants.Templates.Events;
                     string json1 = System.IO.File.ReadAllText(filePath1);
-                    var jsonResponse = JsonConvert.DeserializeObject<List<EventC>>(json1);
+                    var EventResponse = JsonConvert.DeserializeObject<List<EventC>>(json1) ?? new List<EventC>();
 
                     string filePath2 = PathConstants.Templates.Arena;
                     string json2 = System.IO.File.ReadAllText(filePath2);
-                    var jsonResponse2 = JsonConvert.DeserializeObject<List<TemplateC>>(json2);
+                    var TemplateResponse = JsonConvert.DeserializeObject<List<TemplateC>>(json2) ?? new List<TemplateC>();
 
-                    if (jsonResponse2 != null)
+                    string filePath3 = PathConstants.Templates.Score;
+                    string json3 = System.IO.File.ReadAllText(filePath3);
+                    var jsonResponse3 = JsonConvert.DeserializeObject<List<ScoreC>>(json3);
+
+            
+
+                    if (CupCache.cacheCupsDatas != null)
                     {
-                        foreach (var templateC in jsonResponse2)
+                        // all this does is get the top 10 events and pushes it to the corresponding value
+                        var top10Filtered = CupCache.cacheCupsDatas.Where(data => data.Region == "EU")
+                        .Take(10)
+                        .ToList();
+
+                        top10Filtered.ForEach(data =>
+                        {
+                            string EventData = PathConstants.CacheData($"Event_{data.ID}.json");
+                            if (System.IO.File.Exists(EventData))
+                            {
+                                string EventDataJson = System.IO.File.ReadAllText(EventData);
+                                var EventDataRS = JsonConvert.DeserializeObject<EventC>(EventDataJson);
+                                if (EventDataRS != null)
+                                    EventResponse.Add(EventDataRS);
+                            }
+
+                            string TemplateData = PathConstants.CacheData($"Template_{data.ID}.json");
+                            if (System.IO.File.Exists(TemplateData))
+                            {
+                                string TemplateDataJson = System.IO.File.ReadAllText(TemplateData);
+                                var TemplateDataRS = JsonConvert.DeserializeObject<TemplateC>(TemplateDataJson);
+                                if (TemplateDataRS != null)
+                                    TemplateResponse.Add(TemplateDataRS);
+                            }
+                        });
+                    }
+
+                    if (TemplateResponse != null)
+                    {
+                        foreach (var templateC in TemplateResponse)
                         {
                             if (templateC.eventTemplateId.Contains("S15"))
                             {
@@ -276,21 +334,95 @@ namespace FortBackend.src.App.Routes.API
                         }
                     }
 
-                    if (jsonResponse != null)
+                    List<object> leaderboardDefs = new List<object>();
+                    if (EventResponse != null)
                     {
-                        foreach (EventC templateC in jsonResponse)
+                        // this is more for arena then anything else, this saves time for different fortnite versions
+                        foreach (EventC templateC in EventResponse)
                         {
+                          
+
                             if (templateC.eventId.Contains("S15"))
                             {
                                 templateC.eventId = templateC.eventId.Replace("S15", $"S{Season}");
                             }
 
+                            if(templateC.metadata == null)
+                            {
+                                templateC.metadata = new MetaDataC()
+                                {
+                                    TrackedStats = new string[] {
+                                        "PLACEMENT_STAT_INDEX",
+                                        "TEAM_ELIMS_STAT_INDEX",
+                                        "MATCH_PLAYED_STAT"
+                                    },
+                                    minimumAccountLevel = 0,
+                                };
+                            }
+
                             foreach (EventWindowC EventWindowOb in templateC.eventWindows)
                             {
+                                if (!templateC.displayDataId.Contains("arena"))
+                                {
+                                    leaderboardDefs.Add(new
+                                    {
+                                        gameId = "Fortnite",
+                                        leaderboardDefId = EventWindowOb.scoreLocations[0].leaderboardDefId,
+                                        leaderboardStorageId = "Fortnite_GLOBAL",
+                                        leaderboardInstanceGroupingKeyFormat = "${eventId}",
+                                        leaderboardInstanceIdFormat = "${windowId}",
+                                        maxSessionHistorySize = 10,
+                                        useIndividualScores = false,
+                                        tiebreakerFormula = new
+                                        {
+                                            basePointsBits = 11,
+                                            components = new List<object>()
+                                            {
+                                                new
+                                                {
+                                                    trackedStat = "VICTORY_ROYALE_STAT",
+                                                    bits = 4,
+                                                    aggregation = "sum"
+                                                },
+                                                new
+                                                {
+                                                    trackedStat = "TEAM_ELIMS_STAT_INDEX",
+                                                    bits = 13,
+                                                    aggregation = "avg",
+                                                    multiplier = 100
+                                                },
+                                                new
+                                                {
+                                                    trackedStat = "PLACEMENT_TIEBREAKER_STAT",
+                                                    bits = 14,
+                                                    aggregation = "avg",
+                                                    multiplier = 100
+                                                },
+                                                new
+                                                {
+                                                    trackedStat = "TIME_ALIVE_STAT",
+                                                    bits = 11,
+                                                    aggregation = "avg"
+                                                }
+                                            },
+                                            scoringRuleSetId = "SomeDefaultForcedSetRules",
+                                            clampsToZero = true,
+                                            hidePlayerScores = false,
+                                            requiredPlayerListings = new string[0]
+                                        }
+                                    });
+                                }
+
                                 if (EventWindowOb.eventTemplateId.Contains("S15"))
                                 {
                                     EventWindowOb.eventTemplateId = EventWindowOb.eventTemplateId.Replace("S15", $"S{Season}");
                                 }
+
+                                if (EventWindowOb.metadata == null)
+                                {
+                                    EventWindowOb.metadata = new EventWindowMetaDataC();
+                                }
+
                                 if (EventWindowOb.eventWindowId.Contains("S15"))
                                 {
                                     EventWindowOb.eventWindowId = EventWindowOb.eventWindowId.Replace("S15", $"S{Season}");
@@ -342,9 +474,14 @@ namespace FortBackend.src.App.Routes.API
                         ((IDictionary<string, object>)persistentScores)[$"Hype_{Season}"] = seasonObject.events.persistentScores.Hype;
                         if (Season >= 8 && Season < 23)
                         {
+                            var Nullifier = new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore // if null then ggs
+                            };
+
                             return Content(JsonConvert.SerializeObject(new
                             {
-                                events = jsonResponse,
+                                events = EventResponse,
                                 player = new
                                 {
                                     accountId,
@@ -359,8 +496,21 @@ namespace FortBackend.src.App.Routes.API
                                     teams = new { },
                                     seasonObject.events.tokens,
                                 },
-                                templates = jsonResponse2,
-                            }));
+                                scoringRuleSets = new Dictionary<string, List<ScoreC>>()
+                                {
+                                    { "SomeDefaultForcedSetRules", jsonResponse3 ?? new() }
+                                },
+                                leaderboardDefs = leaderboardDefs,
+                                resolvedWindowLocations = new Dictionary<string, string[]>()
+                                {
+                                    {
+                                        "Fortnite:IGyatYou:Fantum", new string[]{
+                                            "Fortnite:IGyatYou:Fantum"
+                                        }
+                                    }
+                                },
+                                templates = TemplateResponse,
+                            }, Nullifier));
                         }
                         else
                         {
@@ -389,7 +539,7 @@ namespace FortBackend.src.App.Routes.API
             }
             catch (Exception ex)
             {
-                Logger.Log("DownloadEnpoint: " + ex.Message);
+                Logger.Error("DownloadEndpoint: " + ex.Message);
             }
             return Content(JsonConvert.SerializeObject(new
             {

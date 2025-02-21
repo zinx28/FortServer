@@ -81,6 +81,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                             await Who.Respond(command, newTask.Token);
                         }
                         break;
+                    case "details":
+                        await Details.Respond(command);
+                        break;
                     case "register":
                         await Create.Respond(command);
                         break;

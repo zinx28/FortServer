@@ -21,6 +21,12 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
                 .WithDescription("FortBackend Test Command / Check if backend is online")
                 .WithContextTypes(InteractionContextType.Guild);
 
+            var DetailsCommand = new SlashCommandBuilder()
+             .WithName("details")
+             .WithDescription("Check your account details")
+             .WithContextTypes(InteractionContextType.Guild);
+
+
             var CreateCommand = new SlashCommandBuilder()
             .WithName("register")
             .WithDescription("Create an account using FortBackend")
@@ -77,6 +83,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             //    .WithContextTypes(InteractionContextType.Guild);
 
             //await guild.CreateApplicationCommandAsync(TourEventsCommand.Build());
+            await guild.CreateApplicationCommandAsync(DetailsCommand.Build());
             await guild.CreateApplicationCommandAsync(TempCommand.Build());
             await guild.CreateApplicationCommandAsync(WhoCommand.Build());
             await guild.CreateApplicationCommandAsync(CreateCommand.Build());

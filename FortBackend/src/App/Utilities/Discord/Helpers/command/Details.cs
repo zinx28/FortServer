@@ -12,7 +12,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
             if (FindDiscordID == null || string.IsNullOrEmpty(FindDiscordID.AccountId))
             {
                 var embed = new EmbedBuilder()
-                .WithTitle("Failed To Change Password")
+                .WithTitle("Failed to find account!")
                 .WithDescription("You don't have a FortBackend Account.")
                 .WithColor(Color.Blue)
                 .WithCurrentTimestamp();

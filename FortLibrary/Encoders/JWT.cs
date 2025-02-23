@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using FortLibrary.Shop;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -8,17 +9,18 @@ namespace FortLibrary.Encoders
 {
     public class JWT
     {
-        public static string GenerateJwtToken(Claim[] claims, int expires)
+        public static string GenerateJwtToken(Claim[] claims, int expires, string secret)
         {
             var GrabBytes = new byte[32];
             RandomNumberGenerator.Fill(GrabBytes);
 
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateJwtSecurityToken(new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddHours(expires),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(GrabBytes), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature)
             });
 
             var tokenString = tokenHandler.WriteToken(token);

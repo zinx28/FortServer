@@ -273,7 +273,7 @@ namespace FortBackend.src.App.Routes.Oauth
                     }
 
                 }
-
+              
                 if (FormRequest.TryGetValue("username", out var username))
                 {
                     if (!string.IsNullOrEmpty(username))
@@ -364,6 +364,7 @@ namespace FortBackend.src.App.Routes.Oauth
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile("", true, exchange_token);
                         if (!string.IsNullOrEmpty(profileCacheEntry.UserData.AccountId))
                         {
+                            Logger.Error("FOUND ACCOUNT " + profileCacheEntry.UserData.Username);
                             DisplayName = profileCacheEntry.UserData.Username;
                             AccountId = profileCacheEntry.UserData.AccountId;
                             IsMyFavUserBanned = profileCacheEntry.UserData.banned;
@@ -451,7 +452,6 @@ namespace FortBackend.src.App.Routes.Oauth
 
                     case "client_credentials":
 
-                      
                         if (string.IsNullOrEmpty(clientId))
                         {
                             throw new BaseError
@@ -479,7 +479,7 @@ namespace FortBackend.src.App.Routes.Oauth
                             new Claim("am", grant_type),
                             new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
                             new Claim("jti", Hex.GenerateRandomHexString(32).ToLower()),
-                        }, 24);
+                        }, 24, Saved.DeserializeConfig.JWTKEY);
 
 
 
@@ -687,27 +687,27 @@ namespace FortBackend.src.App.Routes.Oauth
                     new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1920 * 1920).ToString()),
                     new Claim("am", grant_type),
                     new Claim("jti", Hex.GenerateRandomHexString(32)),
-                }, 24);
-
+                }, 24, Saved.DeserializeConfig.JWTKEY);
+        
                 string AccessToken = JWT.GenerateJwtToken(new[]
                 {
-                        new Claim("app", "fortnite"),
-                        new Claim("sub",  AccountId),
-                        new Claim("dvid", DeviceID),
-                        new Claim("mver", "false"),
-                        new Claim("clid", clientId),
-                        new Claim("dn",  DisplayName!),
-                        new Claim("am", grant_type),
-                        new Claim("sec", "1"),
-                        new Claim("p", Hex.GenerateRandomHexString(256)),
-                        new Claim("iai",  AccountId),
-                        new Claim("clsvc", "fortnite"),
-                        new Claim("t", "s"),
-                        new Claim("ic", "true"),
-                        new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 480 * 480).ToString()),
-                        new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
-                        new Claim("jti", Hex.GenerateRandomHexString(32)),
-                }, 8);
+                    new Claim("app", "fortnite"),
+                    new Claim("sub",  AccountId),
+                    new Claim("dvid", DeviceID),
+                    new Claim("mver", "false"),
+                    new Claim("clid", clientId),
+                    new Claim("dn",  DisplayName!),
+                    new Claim("am", grant_type),
+                    new Claim("sec", "1"),
+                    new Claim("p", Hex.GenerateRandomHexString(256)),
+                    new Claim("iai",  AccountId),
+                    new Claim("clsvc", "fortnite"),
+                    new Claim("t", "s"),
+                    new Claim("ic", "true"),
+                    new Claim("exp", (DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 480 * 480).ToString()),
+                    new Claim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
+                    new Claim("jti", Hex.GenerateRandomHexString(32)),
+                }, 8, Saved.DeserializeConfig.JWTKEY);
 
                 TokenData AccessTokenClient = new TokenData
                 {
@@ -749,6 +749,7 @@ namespace FortBackend.src.App.Routes.Oauth
             {
                 var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
                 StatusCode(500);
+                Logger.Error("BaseError -> " + ex.Message, "OauthToken");
                 return new ContentResult()
                 {
                     Content = jsonResult,

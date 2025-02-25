@@ -20,7 +20,17 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 var GrabData = default(KeyValuePair<string, ProfileCacheEntry>);
                 if (CacheMiddleware.GlobalCacheProfiles.Any())
                 {
-                    GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Value.UserData.DiscordId == DiscordId);
+                    // ik it looks bad but deal with it </3
+                    GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e =>
+                    {
+                        //Console.WriteLine(e.Value.UserData.GetType().GetProperty(SearchKey));
+                        //Console.WriteLine(e.Value.UserData.GetType().GetProperty(SearchKey)?.GetValue(e.Value.UserData));
+                        var t = e.Value.UserData.GetType().GetProperty(SearchKey)?.GetValue(e.Value.UserData)?.ToString();
+
+                        return t == DiscordId;
+                    });
+               
+                    //Console.WriteLine(SearchKey);
                 }
                 if (GrabData.Value == null)
                 {

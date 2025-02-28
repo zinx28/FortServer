@@ -46,6 +46,7 @@
 - /test
 - /register
 - /change_password
+- /details
 
 ### Admin commands
 - required to have "RoleID" (the role in config.json)

@@ -46,10 +46,11 @@
 - /test
 - /register
 - /change_password
+- /details
 
 ### Admin commands
 - required to have "RoleID" (the role in config.json)
 - /who (this command only works if the user has a role, let's say moderator.. ig)
-   - Ban (Perm ban, w/ ban assits)
+   - Ban (Perm ban, w/ ban assist)
    - Temp Ban (season 7 and above get a ban message in lobby)
    - Vbucks

@@ -19,8 +19,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 
                 if (PasswordOption?.Value is string password)
                 {
-                    var FindDiscordId = await Handlers.FindOne<User>("DiscordId", command.User.Id.ToString());
-                    if (FindDiscordId == "Error")
+                    var FindDiscordID = await GrabData.ProfileDiscord(command.User.Id.ToString());
+                    if (FindDiscordID == null || string.IsNullOrEmpty(FindDiscordID.AccountId))
                     {
                         var embed = new EmbedBuilder()
                         .WithTitle("Failed To Change Password")
@@ -32,30 +32,26 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     }
                     else
                     {
-                        User RespondBack = JsonConvert.DeserializeObject<User[]>(FindDiscordId)![0];
-                        if (password.Length >= 7 && RespondBack != null)
+                        if (password.Length >= 7)
                         {
                             try
                             {
-                                await MongoSaveData.SaveToDB(RespondBack.AccountId);
-                                CacheMiddleware.GlobalCacheProfiles.Remove(RespondBack.AccountId);
+                                FindDiscordID.UserData.Password = CryptoGen.HashPassword(password);
+                                await MongoSaveData.SaveToDB(FindDiscordID.AccountId);
+
+                                var embed = new EmbedBuilder()
+                                 .WithTitle("Password Changed")
+                                 .WithDescription($"You have changed the password on your account!")
+                                 .WithColor(Color.Blue)
+                                 .WithCurrentTimestamp();
+
+                                await command.RespondAsync(embed: embed.Build(), ephemeral: true);
+
+                                CacheMiddleware.GlobalCacheProfiles.Remove(FindDiscordID.AccountId);
                             }
                             catch (Exception ex) { }
-                           
-                            await Handlers.UpdateOne<User>("DiscordId", command.User.Id.ToString(), new Dictionary<string, object>()
-                            {
-                                {
-                                    "Password", CryptoGen.HashPassword(password)
-                                }
-                            });
 
-                            var embed = new EmbedBuilder()
-                            .WithTitle("Password Changed")
-                            .WithDescription($"You have changed the password on your account!")
-                            .WithColor(Color.Blue)
-                            .WithCurrentTimestamp();
-
-                            await command.RespondAsync(embed: embed.Build(), ephemeral: true);
+                         
                             return;
                             //CryptoGen.HashPassword(CreateAccArg.Password)
                         }

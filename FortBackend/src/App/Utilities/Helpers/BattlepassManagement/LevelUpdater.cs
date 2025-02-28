@@ -24,15 +24,19 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 }
 
             }
-          
+
+         
+
             if (seasonXp != null && seasonXp.Count > 0)
             {
                 foreach (SeasonXP item in seasonXp)
                 {
                     if (item.Level == FoundSeason.Level)
                     {
+                        Logger.Error("SIGMAAGAIN");
                         if (FoundSeason.SeasonXP > item.XpToNextLevel)
                         {
+                          
                             FoundSeason.SeasonXP -= item.XpToNextLevel;
 
                             if(FoundSeason.SeasonXP < 0)
@@ -92,6 +96,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 // They are added back during chapter 2 season 7 but they don't auto claim
                 if (Season > 1 && Season <= 10)
                 {
+                    Logger.Error("s");
                     while (FoundSeason.BookXP >= 10)
                     {
                         if (FoundSeason.BookLevel == 100) break;

@@ -1,0 +1,84 @@
+{
+  "BundleId": "QuestBundle_S12_SpyGames",
+  "BundleSchedule": "ChallengeBundleSchedule:schedule_ltm_S12_spygames",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "GrantByQuest": true,
+    "Weekly": true
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:quest_operation_winmatch",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 80000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_operation_winmatch_obj",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_operation_damageplayers",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 80000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_operation_damageplayers_obj",
+          "Count": 1000
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:quest_operation_eliminateplayers",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 80000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_operation_eliminateplayers_obj",
+          "Count": 10
+        }
+      ]
+    }
+  ]
+}

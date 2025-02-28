@@ -23,8 +23,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 {
     public class Who
     {
-
-        public static async void CheckAccount(SocketSlashCommand command, SocketGuildUser user, string ign, string id)
+        public static async void CheckAccount(SocketSlashCommand command, SocketGuildUser user, string ign, string id, CancellationToken tokenSource)
         {
             try
             {
@@ -39,7 +38,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             var userfound = await DiscordBot.Client.Rest.GetUserAsync(userId);
                             UserId = id;
                             UserName = userfound.Username;
-                            Logger.Log($"Found user {UserName}", "DiscordBot");
+                            Logger.Log($"Found user {UserName} : {UserId}", "DiscordBot");
                         }
                     }
                     else
@@ -63,9 +62,12 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                 {
                     if (UserId == null)
                     {
+                        Logger.Error("Failed To Find User!", "DiscordBot");
                         return;
                     }
-                    FindDiscordID = await Handlers.FindOne<User>("DiscordId", UserId);
+                    FindDiscordID = await Handlers.FindOne<User>("DiscordId", UserId, true);
+                    User RespondBack = JsonConvert.DeserializeObject<User[]>(FindDiscordID)![0];
+                    Logger.Log(RespondBack.Username);
                 }
 
                 if (FindDiscordID != "Error")
@@ -119,14 +121,20 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                     bool Banned = RespondBack.banned;
                     bool InProgess = false;
                     string SelectedAction = RespondBack.banned ? "unban" : "ban";
-                    DiscordBot.Client.InteractionCreated += async (interaction) =>
+                    async Task InteractionHandler(SocketInteraction interaction)
                     {
+                        if (tokenSource.IsCancellationRequested)
+                        {
+                            DiscordBot.Client.InteractionCreated -= InteractionHandler;
+                            return;
+                        }
+
                         if (InProgess || interaction.User.Id != command.User.Id)
                         {
                             return;
                         }
 
-                        if(interaction is SocketMessageComponent MessageComp && MessageComp.User.Id == command.User.Id)
+                        if (interaction is SocketMessageComponent MessageComp && MessageComp.User.Id == command.User.Id)
                         {
                             if (MessageComp.Data.CustomId == "select_action")
                             {
@@ -193,7 +201,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                 InProgess = true;
 
                                 List<SocketMessageComponentData> components = SocketComp.Data.Components.ToList();
-                                if(components.Count == 0)
+                                if (components.Count == 0)
                                 {
                                     return; // shouldn't work
                                 }
@@ -231,7 +239,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                             profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
                                             {
                                                 templateId = Season > 10 ? "GiftBox:GB_RMTOffer" : "GiftBox:GB_Default", // use gb_default instead if giftbox doesnt work
-                                                attributes = new GiftCommonCoreItemAttributes {
+                                                attributes = new GiftCommonCoreItemAttributes
+                                                {
                                                     lootList = new List<NotificationsItemsClassOG>()
                                                     {
                                                         new NotificationsItemsClassOG
@@ -543,6 +552,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 
                         InProgess = false;
                     };
+
+                    DiscordBot.Client.InteractionCreated -= InteractionHandler;
+                    DiscordBot.Client.InteractionCreated += InteractionHandler;
                 }
                 else
                 {
@@ -560,16 +572,17 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                 Logger.Error(ex.Message, "CheckAccount");
             }
         }
-        public static async Task Respond(SocketSlashCommand command)
+        public static async Task Respond(SocketSlashCommand command, CancellationToken tokenSource)
         {
             try
             {
+                //  _userInteractionCache[command.User.Id].SetCanceled();
                 if (command.Data.Options.FirstOrDefault(o => o.Name == "mention")?.Value != null)
                 {
                     var username = command.Data.Options.FirstOrDefault(o => o.Name == "mention")?.Value as SocketGuildUser;
                     if (username != null)
                     {
-                        CheckAccount(command, username, null!, null!);
+                        CheckAccount(command, username, null!, null!, tokenSource);
                     }
                     else
                     {
@@ -578,11 +591,11 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                 }
                 else if (command.Data.Options.FirstOrDefault(o => o.Name == "id")?.Value != null)
                 {
-                    CheckAccount(command, null!, null!, command.Data.Options.FirstOrDefault(o => o.Name == "id")?.Value?.ToString()!);
+                    CheckAccount(command, null!, null!, command.Data.Options.FirstOrDefault(o => o.Name == "id")?.Value?.ToString()!, tokenSource);
                 }
                 else if (command.Data.Options.FirstOrDefault(o => o.Name == "ign")?.Value != null)
                 {
-                    CheckAccount(command, null!, command.Data.Options.FirstOrDefault(o => o.Name == "ign")?.Value?.ToString()!, null!);
+                    CheckAccount(command, null!, command.Data.Options.FirstOrDefault(o => o.Name == "ign")?.Value?.ToString()!, null!, tokenSource);
                 }
                 else
                 {

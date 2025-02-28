@@ -26,11 +26,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                 if(!string.IsNullOrEmpty(requestBodyy.giftBoxItemId))
                 {
-                    Console.WriteLine(requestBodyy.giftBoxItemId);
+                    Logger.Warn(requestBodyy.giftBoxItemId, "SingleBox");
                     string GiftBoxID = requestBodyy.giftBoxItemId.ToString();
                     GiftCommonCoreItem tests = profileCacheEntry.AccountData.commoncore.Gifts.FirstOrDefault(e => e.Key == GiftBoxID).Value;
                     if(tests != null)
                     {
+                        Logger.Log("Removed GiftBox");
                         profileCacheEntry.AccountData.commoncore.Gifts.Remove(GiftBoxID);
                         MultiUpdates.Add(new
                         {
@@ -47,6 +48,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         GiftCommonCoreItem GiftBoxItem = profileCacheEntry.AccountData.commoncore.Gifts.FirstOrDefault(e => e.Key == GiftBoxID).Value;
                         if (GiftBoxItem != null)
                         {
+                            Logger.Log("Removed GiftBox");
                             profileCacheEntry.AccountData.commoncore.Gifts.Remove(GiftBoxID);
                             MultiUpdates.Add(new
                             {
@@ -63,6 +65,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 {
                     profileCacheEntry.AccountData.commoncore.RVN += 1;
                     profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                    profileCacheEntry.LastUpdated = DateTime.UtcNow;
                 }
 
                 if (BaseRev != RVN)

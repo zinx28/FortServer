@@ -145,7 +145,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                         contentType = "application/octet-stream",
                         uploaded = file.UploadedTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         storageType = "S3",
-                        doNotCache = false
+                        doNotCache = true
                     });
                 });
             }

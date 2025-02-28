@@ -28,7 +28,8 @@
     "Rewards": [
       {
         "templateId": "Currency:mtxgiveaway",
-        "connectedTemplate": ""
+        "connectedTemplate": "",
+        "Quantity": 100
       }
     ],
     "Level": 5

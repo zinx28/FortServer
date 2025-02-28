@@ -1,4 +1,5 @@
-﻿using FortLibrary;
+﻿using FortBackend.src.App.Utilities.Saved;
+using FortLibrary;
 using FortLibrary.Encoders;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver.Core.Misc;
@@ -35,7 +36,7 @@ namespace FortBackend.src.App.Routes.Oauth
                     new Claim("exp", "1714598878"),
                     new Claim("iat", "1714595278"),
                     new Claim("jti", "ecbe3f222a8b4f679084d2a0e6476cf5"),
-                }, 24);
+                }, 24, Saved.DeserializeConfig.JWTKEY);
 
                 var response = new
                 {

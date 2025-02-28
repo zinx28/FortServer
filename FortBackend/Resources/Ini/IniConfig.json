@@ -3,107 +3,107 @@
     "FileData": [
         {
             "Name": "DefaultGame.ini",
-            "Data": [
+          "Data": [
+            {
+              "Title": "/Script/FortniteGame.FortChatManage",
+              "Data": [
                 {
-                    "Title": "/Script/FortniteGame.FortChatManage",
-                    "Data": [
-                        {
-                            "Name": "bShouldRequestGeneralChatRooms",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bShouldJoinGlobalChat",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bShouldJoinFounderChat",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bIsAthenaGlobalChatEnabled",
-                            "Value": true
-                        }
-                    ]
+                  "Name": "bShouldRequestGeneralChatRooms",
+                  "Value": true
                 },
                 {
-                    "Title": "/Script/FortniteGame.FortOnlineAccount",
-                    "Data": [
-                        {
-                            "Name": "bShouldRequestGeneralChatRooms",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bShouldJoinGlobalChat",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bShouldJoinFounderChat",
-                            "Value": true
-                        },
-                        {
-                            "Name": "bShouldGrantFreeAccess",
-                            "Value": true
-                        },
-                        {
-                          "Name": "bEnableEulaCheck",
-                          "Value": false
-                        },
-                        {
-                          "Name": "bShouldCheckIfPlatformAllowed",
-                          "Value": false
-                        }
-                    ]
+                  "Name": "bShouldJoinGlobalChat",
+                  "Value": true
                 },
                 {
-                    "Title": "/Script/FortniteGame.FortGlobals",
-                    "Data": [
-                        {
-                            "Name": "bAllowLogout",
-                            "Value": true
-                        }
-                    ]
+                  "Name": "bShouldJoinFounderChat",
+                  "Value": true
                 },
                 {
-                    "Title": "VoiceChatManager",
-                    "Data": [
-                        {
-                            "Name": "bEnabled",
-                            "Value": true
-                        }
-                    ]
+                  "Name": "bIsAthenaGlobalChatEnabled",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "Title": "/Script/FortniteGame.FortOnlineAccount",
+              "Data": [
+                {
+                  "Name": "bShouldRequestGeneralChatRooms",
+                  "Value": true
                 },
-              {
-                "Title": "Vivox",
-                "Data": [
-                  {
-                    "Name": "bEnabled",
-                    "Value": true
-                  },
-                  {
-                    "Name": "ServerUrl",
-                    "Value": "\"https://mt1s.www.vivox.com/api2/\""
-                  },
-                  {
-                    "Name": "ServiceUrl",
-                    "Value": "\"https://mt1s.www.vivox.com/api2/\""
-                  },
-                  {
-                    "Name": "Domain",
-                    "Value": "\"mt1s.vivox.com\""
-                  },
-                  {
-                    "Name": "Issuer",
-                    "Value": "\"martin9374-fo28-dev\""
-                  },
-                  {
-                    "Name": "Domain",
-                    "Value": "\"mt1s.vivox.com\""
-                  }
-                ]
-              }
-             
+                {
+                  "Name": "bShouldJoinGlobalChat",
+                  "Value": true
+                },
+                {
+                  "Name": "bShouldJoinFounderChat",
+                  "Value": true
+                },
+                {
+                  "Name": "bShouldGrantFreeAccess",
+                  "Value": true
+                },
+                {
+                  "Name": "bEnableEulaCheck",
+                  "Value": false
+                },
+                {
+                  "Name": "bShouldCheckIfPlatformAllowed",
+                  "Value": false
+                }
+              ]
+            },
+            {
+              "Title": "/Script/FortniteGame.FortGlobals",
+              "Data": [
+                {
+                  "Name": "bAllowLogout",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "Title": "VoiceChatManager",
+              "Data": [
+                {
+                  "Name": "bEnabled",
+                  "Value": true
+                }
+              ]
+            },
+            {
+              "Title": "Vivox",
+              "Data": [
+                {
+                  "Name": "bEnabled",
+                  "Value": true
+                },
+                {
+                  "Name": "ServerUrl",
+                  "Value": "\"https://mt1s.www.vivox.com/api2/\""
+                },
+                {
+                  "Name": "ServiceUrl",
+                  "Value": "\"https://mt1s.www.vivox.com/api2/\""
+                },
+                {
+                  "Name": "Domain",
+                  "Value": "\"mt1s.vivox.com\""
+                },
+                {
+                  "Name": "Issuer",
+                  "Value": "\"martin9374-fo28-dev\""
+                },
+                {
+                  "Name": "Domain",
+                  "Value": "\"mt1s.vivox.com\""
+                }
+              ]
+            }
 
-            ]
+
+          ]
         },
         {
             "Name": "DefaultEngine.ini",

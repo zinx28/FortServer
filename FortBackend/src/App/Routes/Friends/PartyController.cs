@@ -31,6 +31,38 @@ namespace FortBackend.src.App.Routes.Friends
     [Route("party")]
     public class PartyController : ControllerBase
     {
+        [HttpGet("api/v1/Fortnite/parties/{partyId}")]
+        public IActionResult FortnitePartyGet(string partyId)
+        {
+            try
+            {
+                Response.ContentType = "application/json";
+                var Party = GlobalData.parties.Find(x => x.id == partyId);
+                Console.WriteLine("TESTAAA " + Party);
+                if (Party != null)
+                {
+                    return Content(JsonConvert.SerializeObject(Party), "application/json");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("FortnitePartyGet: " + ex.Message);
+            }
+
+            return BadRequest(new BaseError
+            {
+                errorCode = "errors.com.epicgames.iforgot",
+                errorMessage = $"NGL for GET: /party/api/v1/Fortnite/parties/{partyId}",
+                messageVars = new List<string> { $"/party/api/v1/Fortnite/parties/{partyId}" },
+                numericErrorCode = 1032,
+                originatingService = "party",
+                intent = "prod",
+                error_description = $"NGL for GET: /party/api/v1/Fortnite/parties/{partyId}",
+            });
+        }
+
+
         [HttpGet("api/v1/Fortnite/user/{accountId}")]
         public async Task<IActionResult> FortnitePartyUser(string accountId)
         {
@@ -115,34 +147,42 @@ namespace FortBackend.src.App.Routes.Friends
         }
          * */
 
-        [HttpGet("api/v1/Fortnite/parties/{partyId}")]
-        public IActionResult FortnitePartyGet(string partyId)
+        [HttpGet("api/v1/Fortnite/user/{accountId}/notifications/undelivered/count")]
+        public async Task<IActionResult> NotfiCount(string accountId)
         {
             try
             {
                 Response.ContentType = "application/json";
-                var Party = GlobalData.parties.Find(x => x.id == partyId);
-                Console.WriteLine("TESTAAA " + Party);
-                if(Party != null)
+                var UserData = await Handlers.FindOne<User>("accountId", accountId);
+
+                if (UserData != "Error")
                 {
-                    return Content(JsonConvert.SerializeObject(Party), "application/json");
+                    var CurrentParty = GlobalData.parties.FindAll(e => e.members.Any(a => a.account_id == accountId));
+                    var Pings = GlobalData.pings.FindAll(e => e.sent_to == accountId);
+
+                    return Ok(new
+                    {
+                        current = CurrentParty != null ? CurrentParty : new List<Parties>(),
+                        pending = Array.Empty<object>(),
+                        invites = Array.Empty<object>(),
+                        pings = Pings != null ? Pings : new List<Pings>()
+                    });
                 }
-                
             }
             catch (Exception ex)
             {
-                Logger.Error("FortnitePartyGet: " + ex.Message);
+                Logger.Error("PartyUserController: " + ex.Message);
             }
 
             return BadRequest(new BaseError
             {
-                errorCode = "errors.com.epicgames.iforgot",
-                errorMessage = $"NGL for GET: /party/api/v1/Fortnite/parties/{partyId}",
-                messageVars = new List<string> { $"/party/api/v1/Fortnite/parties/{partyId}" },
+                errorCode = "errors.com.epicgames.common.authentication.authentication_failed",
+                errorMessage = $"Authentication failed for /api/v1/Fortnite/user/{accountId}",
+                messageVars = new List<string> { $"/api/v1/Fortnite/user/{accountId}" },
                 numericErrorCode = 1032,
                 originatingService = "party",
                 intent = "prod",
-                error_description = $"NGL for GET: /party/api/v1/Fortnite/parties/{partyId}",
+                error_description = $"Authentication failed for /api/v1/Fortnite/user/{accountId}",
             });
         }
 

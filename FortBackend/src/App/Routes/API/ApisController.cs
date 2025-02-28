@@ -688,19 +688,19 @@ namespace FortBackend.src.App.Routes.API
                 var profileCacheEntry = await GrabData.Profile(accountId);
                 if (profileCacheEntry != null)
                 {
-                    //return Ok(new List<object>() {
-                    //    new
-                    //    {
-                    //        accountId = accountId,
-                    //        key = "avatar",
-                    //        value = $"{AccountDataParsed.athena.Items[AccountDataParsed.athena.last_applied_loadout]["attributes"]["locker_slots_data"]["slots"]["character"]["items"][0]}"
-                    //    },
-                    //    new {
-                    //        accountId = accountId,
-                    //        key = "avatarBackground",
-                    //        value = "[\"#B4F2FE\",\"#00ACF2\",\"#005679\"]" // TEMP DON't WRRORY!
-                    //    }
-                    //});
+                    return Ok(new List<object>() {
+                        new
+                        {
+                            accountId = accountId,
+                            key = "avatar",
+                            value = $"{profileCacheEntry.AccountData.athena.loadouts_data[profileCacheEntry.AccountData.athena.last_applied_loadout].attributes.locker_slots_data.slots.character.items[0]}"
+                        },
+                        new {
+                            accountId = accountId,
+                            key = "avatarBackground",
+                            value = "[\"#B4F2FE\",\"#00ACF2\",\"#005679\"]"
+                        }
+                    });
                 }
             }
             catch (Exception ex)

@@ -420,6 +420,10 @@
                       "Value": "(CohortPercent=100,ExperimentNum=20)"
                     },
                     {
+                      "Name": "+ExperimentalCohortPercent",
+                      "Value": "(CohortPercent=80,ExperimentNum=2)"
+                    },
+                    {
                       "Name": "MinimumAccountLevelForTournamentPlay",
                       "Value": 0
                     }

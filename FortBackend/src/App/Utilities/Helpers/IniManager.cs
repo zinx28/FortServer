@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using System.Text;
 using static System.Collections.Specialized.BitVector32;
 using FortBackend.src.App.Utilities.Constants;
+using FortLibrary;
+using System.Security.Cryptography;
 
 namespace FortBackend.src.App.Utilities.Helpers
 {
@@ -15,6 +17,27 @@ namespace FortBackend.src.App.Utilities.Helpers
          FORTBACKEND INI MANAGER
         */
         public static IniConfig IniConfigData { get; set; } = new IniConfig();
+
+        public static string GetFileHashfrfr(string filePath)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] fileNameBytes = System.Text.Encoding.UTF8.GetBytes(Path.GetFileName(filePath));
+                byte[] hashBytes = sha256.ComputeHash(fileNameBytes);
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
+        }
+
+        public static string GetFileHashBasicversionfrfrfr(string filePath)
+        {
+            using (var md5 = MD5.Create())
+            {
+                byte[] fileNameBytes = System.Text.Encoding.UTF8.GetBytes(Path.GetFileName(filePath));
+                byte[] hashBytes = md5.ComputeHash(fileNameBytes);
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
+        }
+
         public static string GrabIniFile(string FileName)
         {
             StringBuilder iniBuilder = new StringBuilder();
@@ -55,17 +78,18 @@ namespace FortBackend.src.App.Utilities.Helpers
                         iniBuilder.AppendLine($"PingTimeout=3.0");
                         iniBuilder.AppendLine($"!RegionDefinitions=ClearArray");
 
+                        
                         // updates live
                         RegionManagerconfig.RegionDefinitions.ForEach(e =>
                         {
-                            iniBuilder.AppendLine($"+RegionDefinitions=(DisplayName=\"{e.Region}\", RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled}, bVisible={e.bVisible}, bAutoAssignable={e.bAutoAssignable})");
+                            iniBuilder.AppendLine($"+RegionDefinitions=(DisplayName=\"{e.Region}\", RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled.ToString().ToLower()}, bVisible={e.bVisible}, bAutoAssignable={e.bAutoAssignable})");
                         });
 
                         iniBuilder.AppendLine($"!DatacenterDefinitions=ClearArray");
 
                         RegionManagerconfig.DatacenterDefinitions.ForEach(e =>
                         {
-                            iniBuilder.AppendLine($"+DatacenterDefinitions=(Id=\"{e.Id}\", RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled}, Servers[0]=(Address=\"{e.Address}\", Port={e.Port}))");
+                            iniBuilder.AppendLine($"+DatacenterDefinitions=(Id=\"{e.Id}\", RegionId=\"{e.RegionId}\", bEnabled={e.bEnabled.ToString().ToLower()}, Servers[0]=(Address=\"{e.Address}\", Port={e.Port}))");
                         });
                     }
 
@@ -73,9 +97,12 @@ namespace FortBackend.src.App.Utilities.Helpers
                     {
                         iniBuilder.AppendLine($"");
                         iniBuilder.AppendLine($"[{file.Title}]");
-    
-                        foreach(IniConfigValues filedata in file.Data)
+
+                        foreach (IniConfigValues filedata in file.Data)
                         {
+                            if (filedata.Value is bool boolValue)
+                                filedata.Value = filedata.Value.ToString().ToLower();
+
                             iniBuilder.AppendLine($"{filedata.Name}={filedata.Value}");
                         }
                     }
@@ -92,7 +119,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                             PlaylistDataconfig.ForEach(file =>
                             {
                                 var PlaylistAccess = file.PlaylistAccess;
-                                iniBuilder.AppendLine($"+FrontEndPlaylistData=(PlaylistName={file.PlaylistName}, PlaylistAccess=(bEnabled={PlaylistAccess.bEnabled}, bIsDefaultPlaylist={PlaylistAccess.bIsDefaultPlaylist}, bVisibleWhenDisabled={PlaylistAccess.bVisibleWhenDisabled}, bDisplayAsNew={PlaylistAccess.bDisplayAsNew}, CategoryIndex={PlaylistAccess.CategoryIndex}, bDisplayAsLimitedTime={PlaylistAccess.bDisplayAsLimitedTime}, DisplayPriority={PlaylistAccess.DisplayPriority}))");
+                                iniBuilder.AppendLine($"+FrontEndPlaylistData=(PlaylistName={file.PlaylistName}, PlaylistAccess=(bEnabled={PlaylistAccess.bEnabled.ToString().ToLower()}, bIsDefaultPlaylist={PlaylistAccess.bIsDefaultPlaylist}, bVisibleWhenDisabled={PlaylistAccess.bVisibleWhenDisabled.ToString().ToLower()}, bDisplayAsNew={PlaylistAccess.bDisplayAsNew.ToString().ToLower()}, CategoryIndex={PlaylistAccess.CategoryIndex}, bDisplayAsLimitedTime={PlaylistAccess.bDisplayAsLimitedTime.ToString().ToLower()}, DisplayPriority={PlaylistAccess.DisplayPriority}))");
                             });
                         }
                     }
@@ -134,6 +161,8 @@ namespace FortBackend.src.App.Utilities.Helpers
                             retardedfilecal += e.Name.Length;
                         }
                     }
+
+                    //GetFileHashBasicversionfrfrfr
 
                     list.Add(new CloudstorageFileShort
                     {

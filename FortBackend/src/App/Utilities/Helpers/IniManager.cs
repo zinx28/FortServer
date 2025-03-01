@@ -162,8 +162,6 @@ namespace FortBackend.src.App.Utilities.Helpers
                         }
                     }
 
-                    //GetFileHashBasicversionfrfrfr
-
                     list.Add(new CloudstorageFileShort
                     {
                         uniqueFilename = file.Name,

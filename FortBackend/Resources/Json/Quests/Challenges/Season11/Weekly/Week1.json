@@ -1,0 +1,762 @@
+{
+  "BundleId": "MissionBundle_S11_Week_01A",
+  "BundleSchedule": "Season11_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "CompleteItems": [
+      {
+        "TemplateId": "AthenaLoadingScreen:LSID_180_S11Cumulative01",
+        "Quantity": 1
+      }
+    ]
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S11_W01a_01",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Count": 10
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_BeachyBluffs",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_DirtyDocks",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_FrenzyFarm",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_HollyHedges",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_LazyLake",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_MountainMeadow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_PowerPlant",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_SlurpySwamp",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_SunnyShores",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_WeepingWoods",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_RetailRow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_SaltySprings",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_01_Visit_Location_PleasantPark",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_02",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_02_elims_lazyormisty",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_03",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true,
+        "Count": 10
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_militarycamp_01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_militarycamp_02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_militarycamp_03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_militarycamp_04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_militarycamp_05",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_crashedairplane",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_angryapples",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_campcod",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_coralcove",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_lighthouse",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_fortruin",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_beachsidemansion",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_digsite",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bonfirecampsite",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_riskyreels",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_radiostation",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_scrapyard",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_powerdam",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_weatherstation",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_islandlodge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_waterfallgorge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_canoerentals",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_mountainvault",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_swampville",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_cliffsideruinedhouses",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_sawmill",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_pipeplayground",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_pipeperson",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_hayhillbilly",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_lawnmowerraces",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_shipwreckcove",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_tallestmountain",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_beachbus",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bobsbluff",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_buoyboat",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_chair",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_forkknifetruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_durrburgertruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_snowconetruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_pizzapetetruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_beachrentals",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_overgrownheads",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_loverslookout",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_toiletthrone",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_hatch_a",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_hatch_b",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_hatch_c",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bigbridge_blue",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bigbridge_red",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bigbridge_yellow",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bigbridge_green",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bigbridge_purple",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_captaincarpstruck",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_mountf8",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_mounth7",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_basecamphotel",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_basecampfoxtrot",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_basecampgolf",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_lazylakeisland",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_boatlaunch",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_crashedcargo",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_homelyhills",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_flopperpond",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_hilltophouse",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_stackshack",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_unremarkableshack",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_rapidsrest",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_stumpyridge",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_corruptedisland",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_bushface",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_mountaindanceclub",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_icechair",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_icehotel",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_toyfactory",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_iceblockfactory",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_crackshotscabin",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_galileosite1",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_galileosite2",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_galileosite3",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_galileosite4",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "s11_w01a_03_visit_landmark_galileosite5",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_04",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_04_ride_boat_dm",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_05",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_05_damage_assaultrifles",
+          "Count": 500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_06",
+      "quest_data": {
+        "RequireBP": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_06_chests_sweaty_or_retail",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_07",
+      "quest_data": {
+        "RequireBP": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_07_elims_different_matches",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_08",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_08_catch_weapon",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_09",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true,
+        "Count": 3
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_09_damage_smg",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "quest_s11_w01a_09_damage_shotgun",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "quest_s11_w01a_09_damage_pistol",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_10",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_10_carry_dbno_10m",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_W01a_11",
+      "quest_data": {
+        "RequireBP": false,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 14000
+          },
+          {
+            "TemplateId": "Token:athenabattlepass_letter_token",
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "quest_s11_w01a_11_search_hiddenletter_loadingscreen",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

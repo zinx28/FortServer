@@ -1,283 +1,753 @@
 [
   {
     "Type": "FortQuestItemDefinition",
-    "Name": "Quest_BR_S4W10_Cumulative_CompleteAll",
+    "Name": "Quest_S11_W06_07",
     "Class": "UScriptClass'FortQuestItemDefinition'",
+    "Flags": "RF_Public | RF_Standalone | RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
     "Properties": {
       "QuestType": "EFortQuestType::AthenaChallengeBundleQuest",
-      "Rewards": [
-        {
-          "ItemDefinition": {
-            "AssetPathName": "/Game/Items/Tokens/AthenaBattlePass_S4_WeeklyChallenge_Token.AthenaBattlePass_S4_WeeklyChallenge_Token",
-            "SubPathString": ""
-          },
-          "Quantity": 1
-        }
-      ],
+      "bShouldDisplayOverallQuestInformation": true,
+      "bAthenaMustCompleteInSingleMatch": true,
+      "bIncludedInCategories": false,
+      "ObjectiveCompletionCount": 3,
+      "RewardsTable": {
+        "ObjectName": "DataTable'AthenaChallengeRewardS11Std'",
+        "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaChallengeRewardS11Std.0"
+      },
       "Objectives": [
         {
-          "BackendName": "battlepass_completed_s4w10_quest1",
+          "BackendName": "questobj_s11_w06_q07_obj01",
           "ObjectiveStatHandle": {
-            "DataTable": null,
-            "RowName": "None"
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_BeachyBluffs"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "ItemReference": {
-            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Interact_Chests_Location_JunkJunction.Quest_BR_Interact_Chests_Location_JunkJunction",
+            "AssetPathName": "None",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
-          "LinkVaultTab": "EFortInventoryFilter::Max_None",
-          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": null,
-          "HudShortDescription": null,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
           "Count": 1,
           "Stage": -1,
-          "bHidden": false,
-          "bRequirePrimaryMissionCompletion": false,
-          "bCanProgressInZone": true,
-          "bDisplayDynamicAnnouncementUpdate": false,
-          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
           "DynamicStatusUpdatePercentInterval": 25,
           "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         },
         {
-          "BackendName": "battlepass_completed_s4w10_quest2",
+          "BackendName": "questobj_s11_w06_q07_obj02",
           "ObjectiveStatHandle": {
-            "DataTable": null,
-            "RowName": "None"
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_DirtyDocks"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "ItemReference": {
-            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Damage_Enemy_Buildings.Quest_BR_Damage_Enemy_Buildings",
+            "AssetPathName": "None",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
-          "LinkVaultTab": "EFortInventoryFilter::Max_None",
-          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": null,
-          "HudShortDescription": null,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
           "Count": 1,
           "Stage": -1,
-          "bHidden": false,
-          "bRequirePrimaryMissionCompletion": false,
-          "bCanProgressInZone": true,
-          "bDisplayDynamicAnnouncementUpdate": false,
-          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
           "DynamicStatusUpdatePercentInterval": 25,
           "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         },
         {
-          "BackendName": "battlepass_completed_s4w10_quest3",
+          "BackendName": "questobj_s11_w06_q07_obj03",
           "ObjectiveStatHandle": {
-            "DataTable": null,
-            "RowName": "None"
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_FrenzyFarm"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "ItemReference": {
-            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Interact_ChestAmmoBoxSupplyDrop_SingleMatch.Quest_BR_Interact_ChestAmmoBoxSupplyDrop_SingleMatch",
+            "AssetPathName": "None",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
-          "LinkVaultTab": "EFortInventoryFilter::Max_None",
-          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": null,
-          "HudShortDescription": null,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
           "Count": 1,
           "Stage": -1,
-          "bHidden": false,
-          "bRequirePrimaryMissionCompletion": false,
-          "bCanProgressInZone": true,
-          "bDisplayDynamicAnnouncementUpdate": false,
-          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
           "DynamicStatusUpdatePercentInterval": 25,
           "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         },
         {
-          "BackendName": "battlepass_completed_s4w10_quest4",
+          "BackendName": "questobj_s11_w06_q07_obj04",
           "ObjectiveStatHandle": {
-            "DataTable": null,
-            "RowName": "None"
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_HollyHedges"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "ItemReference": {
-            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Skydive_Rings.Quest_BR_Skydive_Rings",
+            "AssetPathName": "None",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
-          "LinkVaultTab": "EFortInventoryFilter::Max_None",
-          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": null,
-          "HudShortDescription": null,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
           "Count": 1,
           "Stage": -1,
-          "bHidden": false,
-          "bRequirePrimaryMissionCompletion": false,
-          "bCanProgressInZone": true,
-          "bDisplayDynamicAnnouncementUpdate": false,
-          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
           "DynamicStatusUpdatePercentInterval": 25,
           "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         },
         {
-          "BackendName": "battlepass_completed_s4w10_quest5",
+          "BackendName": "questobj_s11_w06_q07_obj05",
           "ObjectiveStatHandle": {
-            "DataTable": null,
-            "RowName": "None"
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_LazyLake"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "ItemReference": {
-            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Interact_ScavengerHunt_Triangulate_05.Quest_BR_Interact_ScavengerHunt_Triangulate_05",
+            "AssetPathName": "None",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
-          "LinkVaultTab": "EFortInventoryFilter::Max_None",
-          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": null,
-          "HudShortDescription": null,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
           "Count": 1,
           "Stage": -1,
-          "bHidden": false,
-          "bRequirePrimaryMissionCompletion": false,
-          "bCanProgressInZone": true,
-          "bDisplayDynamicAnnouncementUpdate": false,
-          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
           "DynamicStatusUpdatePercentInterval": 25,
           "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         },
         {
-          "BackendName": "battlepass_completed_s4w10_quest6",
+          "BackendName": "questobj_s11_w06_q07_obj06",
           "ObjectiveStatHandle": {
-            "DataTable": null,
-            "RowName": "None"
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_MountainMeadow"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "ItemReference": {
-            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Eliminate.Quest_BR_Eliminate",
+            "AssetPathName": "None",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
-          "LinkVaultTab": "EFortInventoryFilter::Max_None",
-          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": null,
-          "HudShortDescription": null,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
           "Count": 1,
           "Stage": -1,
-          "bHidden": false,
-          "bRequirePrimaryMissionCompletion": false,
-          "bCanProgressInZone": true,
-          "bDisplayDynamicAnnouncementUpdate": false,
-          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
           "DynamicStatusUpdatePercentInterval": 25,
           "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         },
         {
-          "BackendName": "battlepass_completed_s4w10_quest7",
+          "BackendName": "questobj_s11_w06_q07_obj07",
           "ObjectiveStatHandle": {
-            "DataTable": null,
-            "RowName": "None"
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_SlurpySwamp"
           },
           "AlternativeStatHandles": [],
-          "ItemEvent": "EFortQuestObjectiveItemEvent::HasCompletedQuest",
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
           "ItemReference": {
-            "AssetPathName": "/Game/Athena/Items/Quests/BattlePass/Quest_BR_Eliminate_Location_FatalFields.Quest_BR_Eliminate_Location_FatalFields",
+            "AssetPathName": "None",
             "SubPathString": ""
           },
           "ItemTemplateIdOverride": "",
           "LinkSquadID": "None",
           "LinkSquadIndex": 0,
-          "LinkVaultTab": "EFortInventoryFilter::Max_None",
-          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
-          "Description": null,
-          "HudShortDescription": null,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
           "HudIcon": {
             "AssetPathName": "None",
             "SubPathString": ""
           },
           "Count": 1,
           "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "questobj_s11_w06_q07_obj08",
+          "ObjectiveStatHandle": {
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_PowerPlant"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
           "bHidden": false,
           "bRequirePrimaryMissionCompletion": false,
           "bCanProgressInZone": true,
           "bDisplayDynamicAnnouncementUpdate": false,
           "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
           "DynamicStatusUpdatePercentInterval": 25,
           "DynamicUpdateCompletionDelay": 0.0,
           "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "questobj_s11_w06_q07_obj09",
+          "ObjectiveStatHandle": {
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_SunnyShores"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "questobj_s11_w06_q07_obj10",
+          "ObjectiveStatHandle": {
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "Visit_Apollo_Location_WeepingWoods"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "questobj_s11_w06_q07_obj11",
+          "ObjectiveStatHandle": {
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "visit_location_retailrow"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "questobj_s11_w06_q07_obj12",
+          "ObjectiveStatHandle": {
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "visit_location_saltysprings"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          }
+        },
+        {
+          "BackendName": "questobj_s11_w06_q07_obj13",
+          "ObjectiveStatHandle": {
+            "DataTable": {
+              "ObjectName": "DataTable'AthenaObjectiveStatTable'",
+              "ObjectPath": "FortniteGame/Content/Athena/Items/Quests/AthenaObjectiveStatTable.0"
+            },
+            "RowName": "visit_location_pleasantpark"
+          },
+          "AlternativeStatHandles": [],
+          "ItemEvent": "EFortQuestObjectiveItemEvent::Max_None",
+          "bHidden": false,
+          "bRequirePrimaryMissionCompletion": false,
+          "bCanProgressInZone": true,
+          "bDisplayDynamicAnnouncementUpdate": false,
+          "DynamicStatusUpdateType": "EObjectiveStatusUpdateType::Always",
+          "LinkVaultTab": "EFortInventoryFilter::Max_None",
+          "LinkToItemManagement": "EFortFrontendInventoryFilter::Max_None",
+          "ItemReference": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "ItemTemplateIdOverride": "",
+          "LinkSquadID": "None",
+          "LinkSquadIndex": 0,
+          "Description": {
+            "Namespace": "",
+            "Key": "4153505143AA153CB5D00B86363A4D5F",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudShortDescription": {
+            "Namespace": "",
+            "Key": "EF5E7C40402DBEAAB3BBB1B46A2B084B",
+            "SourceString": "Visit Named Locations in a single match",
+            "LocalizedString": "Visit Named Locations in a single match"
+          },
+          "HudIcon": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "Count": 1,
+          "Stage": -1,
+          "DynamicStatusUpdatePercentInterval": 25,
+          "DynamicUpdateCompletionDelay": 0.0,
+          "ScriptedAction": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "FrontendScriptedAction": {
             "AssetPathName": "None",
             "SubPathString": ""
           }
         }
       ],
-      "bHidden": true,
-      "bIncludedInCategories": false,
-      "GrantToProfileType": "athena"
+      "CompletionText": {
+        "Namespace": "",
+        "Key": "9F3F2AD344C3507A005D43A0D7ADC8A9",
+        "SourceString": "Challenge Completed!",
+        "LocalizedString": "Challenge Completed!"
+      },
+      "GrantToProfileType": "athena",
+      "DisplayName": {
+        "Namespace": "",
+        "Key": "A1BD0C824D46E6E4814F7D931CB9AE16",
+        "SourceString": "Visit Named Locations in a single match",
+        "LocalizedString": "Visit Named Locations in a single match"
+      },
+      "Description": {
+        "Namespace": "",
+        "Key": "E8E9A48F4C750D9BD627F8AF2EE6F94A",
+        "SourceString": "Visit Named Locations in a single match",
+        "LocalizedString": "Visit Named Locations in a single match"
+      },
+      "GameplayTags": [
+        "Quest.Metadata.PartyAssist"
+      ],
+      "SmallPreviewImage": {
+        "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Story-64.T-Icon-Story-64",
+        "SubPathString": ""
+      },
+      "LargePreviewImage": {
+        "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Mission/T-Icon-Story-128.T-Icon-Story-128",
+        "SubPathString": ""
+      }
     }
   }
 ]

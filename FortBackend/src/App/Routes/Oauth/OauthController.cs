@@ -748,6 +748,7 @@ namespace FortBackend.src.App.Routes.Oauth
             catch (BaseError ex)
             {
                 var jsonResult = JsonConvert.SerializeObject(BaseError.FromBaseError(ex));
+
                 StatusCode(500);
                 Logger.Error("BaseError -> " + ex.Message, "OauthToken");
                 return new ContentResult()
@@ -762,7 +763,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 Logger.Error("OauthToken -> " + ex.Message);
             }
 
-            return BadRequest(new BaseError
+            return BadRequest(new
             {
                 errorCode = "errors.com.epicgames.account.invalid_account_credentials",
                 errorMessage = "Seems like there has been a error on the backend",

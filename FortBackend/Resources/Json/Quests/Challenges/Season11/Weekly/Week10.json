@@ -1,0 +1,356 @@
+{
+  "BundleId": "MissionBundle_S11_StretchGoals2",
+  "BundleSchedule": "Season11_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Damage_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Damage_03",
+          "Count": 5000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Shotgun_Assault_Specialist",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Shotgun_Assault_Specialist",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Pistol_SMG_Specialist",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Pistol_SMG_Specialist",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Sniper_Explosive_Specialist",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Sniper_Explosive_Specialist",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_CatchWeapons_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_CatchWeapons_03",
+          "Count": 10,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Elim_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Elim_03",
+          "Count": 25,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Outlast_03",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Outlast_03",
+          "Count": 2000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Damage_Prestige",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Damage_Prestige",
+          "Count": 250000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Shotgun_Assault_Specialist_Prestige",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Shotgun_Assault_Specialist_Prestige",
+          "Count": 150,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Pistol_SMG_Specialist_Prestige",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Pistol_SMG_Specialist_Prestige",
+          "Count": 100,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Sniper_Explosive_Specialist_Prestige",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Sniper_Explosive_Specialist_Prestige",
+          "Count": 75,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_CatchWeapons_Prestige",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_CatchWeapons_Prestige",
+          "Count": 250,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Elim_Prestige",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Elim_Prestige",
+          "Count": 1000,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_StretchGoals_Outlast_Prestige",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false,
+        "IsWeekly": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 800000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "Quest_S11_StretchGoals_Outlast_Prestige",
+          "Count": 20000,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

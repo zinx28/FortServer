@@ -1,0 +1,1081 @@
+[
+  {
+    "Rewards": [],
+    "Level": 0
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_565_athena_commando_f_rockclimber",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      },
+      {
+        "templateId": "AthenaCharacter:cid_564_athena_commando_m_tacticalfisherman",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season11_alterego_schedule",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 1
+  },
+  {
+    "Rewards": [],
+    "Level": 2
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_367_tacticalfishermanmale",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 3
+  },
+  {
+    "Rewards": [],
+    "Level": 4
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 5
+  },
+  {
+    "Rewards": [],
+    "Level": 6
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s11_headshot",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 7
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_149_fishermanalterego",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 8
+  },
+  {
+    "Rewards": [],
+    "Level": 9
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_292_tacticalfisherman1h",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat0",
+            "owned": [
+              "Mat0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 10
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_162_s11_rockclimber",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 11
+  },
+  {
+    "Rewards": [],
+    "Level": 12
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_191_tznutcracker",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 13
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_183_tacticalfisherman",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Particle",
+            "active": "Particle0",
+            "owned": [
+              "Particle0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 14
+  },
+  {
+    "Rewards": [],
+    "Level": 15
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_hifive",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 16
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs11treesymbol",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 17
+  },
+  {
+    "Rewards": [],
+    "Level": 18
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 19
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_570_athena_commando_m_slurpmonster",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 20
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_192_juwiggle",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 21
+  },
+  {
+    "Rewards": [],
+    "Level": 22
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_163_s11_bees",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 23
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaSkyDiveContrail:trails_id_078_slurpmonster",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 24
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 25
+  },
+  {
+    "Rewards": [],
+    "Level": 26
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_193_jmhollowhead",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 27
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_152_slurpmonster",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 28
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s11_checkeredflag",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 29
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_crazydance",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 30
+  },
+  {
+    "Rewards": [],
+    "Level": 31
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_194_ktdeadfire",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 32
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs11diamondshapes",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 33
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaSkyDiveContrail:trails_id_079_zeropoint",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 34
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_164_s11_pinkteeth",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 35
+  },
+  {
+    "Rewards": [],
+    "Level": 36
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_195_h7skull",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 37
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_291_slurpmonster",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Particle",
+            "active": "Particle0",
+            "owned": [
+              "Particle0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 38
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 39
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_567_athena_commando_f_rebirthmedic",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 40
+  },
+  {
+    "Rewards": [],
+    "Level": 41
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_370_rebirthmedic",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 42
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_196_amrockstar",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 43
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_156_sheathalterego",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 44
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 45
+  },
+  {
+    "Rewards": [],
+    "Level": 46
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_armwave",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 47
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaMusicPack:musicpack_034_sxrocketevent",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 48
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_197_smrobot",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 49
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_288_rebirthmedicfemale",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Mesh",
+            "active": "Stage0",
+            "owned": [
+              "Stage0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 50
+  },
+  {
+    "Rewards": [],
+    "Level": 51
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 52
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s11_wink",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 53
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_179_crazyeight",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Particle",
+            "active": "Particle0",
+            "owned": [
+              "Particle0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 54
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_198_jyseasonx",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 55
+  },
+  {
+    "Rewards": [],
+    "Level": 56
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs11eightball",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 57
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_hulahoopchallenge",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 58
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 59
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_566_athena_commando_m_crazyeight",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 60
+  },
+  {
+    "Rewards": [],
+    "Level": 61
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_369_crazyeight",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 62
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s11_uturn",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 63
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_148_crazyeight",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 64
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 65
+  },
+  {
+    "Rewards": [],
+    "Level": 66
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_284_crazyeight1h",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Material",
+            "active": "Mat0",
+            "owned": [
+              "Mat0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 67
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaSkyDiveContrail:trails_id_076_reactivelight",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 68
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_200_judrift",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 69
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs11toadstool",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 70
+  },
+  {
+    "Rewards": [],
+    "Level": 71
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 72
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_167_s11_pug",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 73
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_182_sheath",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Particle",
+            "active": "Particle0",
+            "owned": [
+              "Particle0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 74
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_201_jminferno",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 75
+  },
+  {
+    "Rewards": [],
+    "Level": 76
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s11_hotdrop",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 77
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_371_sheath",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 78
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 79
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_571_athena_commando_f_sheath",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 80
+  },
+  {
+    "Rewards": [],
+    "Level": 81
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_290_sheath1h",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Particle",
+            "active": "Particle0",
+            "owned": [
+              "Particle0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 82
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_202_tzdemi",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 83
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaMusicPack:musicpack_032_groovejam",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 84
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 85
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_pogotraversal",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 86
+  },
+  {
+    "Rewards": [],
+    "Level": 87
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaSkyDiveContrail:trails_id_080_dnahelix",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 88
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_175_s11_squid",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 89
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_184_viper",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Particle",
+            "active": "Particle0",
+            "owned": [
+              "Particle0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 90
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_204_ntbear",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 91
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 92
+  },
+  {
+    "Rewards": [],
+    "Level": 93
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_372_viper",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 94
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs11pawmark",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 95
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_155_viperalterego",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 96
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_205_ameternal",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 97
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_293_viper",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Particle",
+            "active": "Particle0",
+            "owned": [
+              "Particle0"
+            ]
+          }
+        ],
+        "quantity": 1
+      }
+    ],
+    "Level": 98
+  },
+  {
+    "Rewards": [],
+    "Level": 99
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_572_athena_commando_m_viper",
+        "connectedTemplate": "",
+        "variants": [
+          {
+            "channel": "Progressive",
+            "active": "Stage1",
+            "owned": [
+              "Stage1"
+            ]
+          }
+        ],
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season11_unfused_schedule",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 100
+  }
+]

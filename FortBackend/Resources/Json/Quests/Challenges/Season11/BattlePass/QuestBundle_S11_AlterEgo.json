@@ -1,0 +1,971 @@
+{
+  "BundleId": "QuestBundle_S11_AlterEgo",
+  "BundleSchedule": "ChallengeBundleSchedule:season11_alterego_schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1,
+    "Weekly": true
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_01a",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_01b",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_01a_reach_bp_tier",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_01b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_01c",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_01b_finish_missions",
+          "Count": 2,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_01c",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_357_TacticalFisherman_StyleB",
+            "connectedTemplate": "AthenaCharacter:CID_564_Athena_Commando_M_TacticalFisherman",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_366_TacticalFisherman_Backbling_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_367_TacticalFishermanMale",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_383_TacticalFishermanPickaxe_StyleB",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_292_TacticalFisherman1H",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_376_TacticalFishermanGlider_StyleB",
+            "connectedTemplate": "AthenaGlider:Glider_ID_183_TacticalFisherman",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_01c_catch_fish_with_outfit",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_02a",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_02b",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_02a_reach_bp_tier",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_01b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_02c",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_02b_finish_missions",
+          "Count": 2,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_02c",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_358_RockClimber_StyleB",
+            "connectedTemplate": "AthenaCharacter:CID_564_Athena_Commando_M_TacticalFisherman",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_367_RockClimber_Backbling_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_368_RockClimber",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_379_RockClimberPickaxe_StyleB",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_287_RockClimber1H",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_374_RockClimberGlider_StyleB",
+            "connectedTemplate": "AthenaGlider:Glider_ID_181_RockClimber",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_02c_summit_mountain_wearing_outfit",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_03a",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_03b",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_03a_reach_bp_tier",
+          "Count": 20,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_03b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_03c",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_02b_finish_missions",
+          "Count": 4,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_03c",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_360_SlurpMonster_StyleB",
+            "connectedTemplate": "AthenaCharacter:CID_570_Athena_Commando_M_SlurpMonster",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_382_SlurpMonsterPickaxe_StyleB",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_291_SlurpMonster",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_03c_slurpvat_wearing_outfit",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_04a",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_04b",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_04a_reach_bp_tier",
+          "Count": 40,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_04b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_04c",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_04b_finish_missions",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_04c",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_364_RebirthMedic_StyleB",
+            "connectedTemplate": "AthenaCharacter:CID_567_Athena_Commando_F_RebirthMedic",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_365_RebirthMedic_StyleC",
+            "connectedTemplate": "AthenaCharacter:CID_567_Athena_Commando_F_RebirthMedic",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_369_RebirthMedic_Backbling_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_370_RebirthMedic",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_380_RebirthMedicPickaxe_StyleB",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_288_RebirthMedicFemale",
+            "new_variants": [
+              {
+                "channel": "Mesh",
+                "added": [
+                  "Stage1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_05c_heal_teammate_wearing_outfit",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_05a",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_05b",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_05a_reach_bp_tier",
+          "Count": 60,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_05b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_05c",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_05b_finish_missions",
+          "Count": 6,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_05c",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_359_CrazyEight_StyleB",
+            "connectedTemplate": "AthenaCharacter:CID_566_Athena_Commando_M_CrazyEight",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_368_CrazyEight_Backbling_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_369_CrazyEight",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_378_CrazyEightPickaxe_StyleB",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_284_CrazyEight1H",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_373_CrazyEightGlider_StyleB",
+            "connectedTemplate": "AthenaGlider:Glider_ID_179_CrazyEight",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_05c_sink_8ball_wearing_outfit",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_06a",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_06b",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_06a_reach_bp_tier",
+          "Count": 80,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_06b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_06c",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_06b_finish_missions",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_06c",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_361_Sheath_StyleB",
+            "connectedTemplate": "AthenaCharacter:CID_571_Athena_Commando_F_Sheath",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_370_Sheath_Backbling_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_371_Sheath",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_381_SheathPickaxe_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_371_Sheath",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_375_SheathGlider_StyleB",
+            "connectedTemplate": "AthenaGlider:Glider_ID_182_Sheath",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_06c_obj1",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_08",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_08_b",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "Quest:quest_s11_alterego_08_varianta",
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "Quest:quest_s11_alterego_08_variantb",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaCharacter:CID_615_Athena_Commando_F_Bane",
+            "connectedTemplate": "",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_08_collect_fortnite",
+          "Count": 8,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:quest_s11_alterego_08_varianta",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_412_Bane_StyleB",
+            "connectedTemplate": "AthenaGlider:Glider_ID_182_Sheath",
+            "new_variants": [
+              {
+                "channel": "Particle",
+                "added": [
+                  "Particle1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_414_Bane_Backbling_StyleB",
+            "connectedTemplate": "AthenaBackpack:BID_411_BaneFemale",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_416_Bane_Pickaxe_StyleB",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_315_BaneFemale1H",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat2"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_08_varianta",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:questobj_s11_alterego_08_variantb",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_413_Bane_StyleC",
+            "connectedTemplate": "AthenaGlider:CID_615_Athena_Commando_F_Bane",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_415_Bane_Backbling_StyleC",
+            "connectedTemplate": "AthenaBackpack:BID_411_BaneFemale",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          },
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_417_Bane_Pickaxe_StyleC",
+            "connectedTemplate": "AthenaPickaxe:Pickaxe_ID_315_BaneFemale1H",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat3"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_08_varianta",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_08_b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_AlterEgo_08_c",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaBackpack:BID_411_BaneFemale",
+            "connectedTemplate": "",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_08_search_backbling",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_AlterEgo_08_b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "Steps": false
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "AthenaPickaxe:Pickaxe_ID_315_BaneFemale1H",
+            "connectedTemplate": "",
+            "new_variants": [
+              {
+                "channel": "Material",
+                "added": [
+                  "Mat1"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_alterego_08_do_the_thing",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

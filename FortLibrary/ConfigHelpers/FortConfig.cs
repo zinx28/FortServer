@@ -39,6 +39,7 @@ namespace FortLibrary.ConfigHelpers
         public string GameServerIP { get; set; } = "127.0.0.1";
         public int GameServerPort { get; set; } = 7777;
         public bool CustomMatchmaker { get; set; } = false; // Enable to use other matchmakers
+        public bool bUseWSS { get; set; } = false; // this is for matchmaker connections, if you use http but servers redirect to https without the backend
 
         // -- //
 

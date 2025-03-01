@@ -247,6 +247,8 @@ namespace FortBackend.src.App.Routes.Matchmaker
                         string encryptedData = GenerateAES.EncryptAES256(jsonData, config.JWTKEY);
                         string WssConnection = BackendCachedData.DefaultProtocol == "http://" ? "ws://" : "wss://";
 
+                        if (Saved.DeserializeConfig.bUseWSS)
+                            WssConnection = "wss://";
 
                         return Ok(new
                         {

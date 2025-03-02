@@ -11,6 +11,9 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
         public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)> Init(List<SeasonXP> SeasonXpIg, SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)
         {
             var beforeLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.Level == FoundSeason.Level);
+            if(beforeLevelXPElement == null)
+                return (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
+            var CurrentLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP));
             //
             int CurrentLevelXP;
             if (beforeLevelXPElement != null && SeasonXpIg.IndexOf(beforeLevelXPElement) == SeasonXpIg.Count - 1)
@@ -18,7 +21,10 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                 FoundSeason.SeasonXP = 0;
             }
 
-            CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
+            if (CurrentLevelXPElement == null)
+                return (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
+
+            CurrentLevelXP = CurrentLevelXPElement.XpTotal + FoundSeason.SeasonXP;
 
             bool testerfnmp = false;
             foreach (var Quests in FoundSeason.Quests)

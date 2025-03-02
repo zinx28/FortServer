@@ -156,7 +156,7 @@
       ]
     },
     {
-      "templateId": "Quest:Quest_S11_AlterEgo_01b",
+      "templateId": "Quest:Quest_S11_AlterEgo_02b",
       "quest_data": {
         "RequireBP": true,
         "ExtraQuests": true,
@@ -175,7 +175,7 @@
       "Objectives": [
         {
           "BackendName": "questobj_s11_alterego_02b_finish_missions",
-          "Count": 2,
+          "Count": 3,
           "Stage": -1
         }
       ]

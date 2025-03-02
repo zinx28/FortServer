@@ -248,7 +248,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                             {
                                                 FindFirstOrDe.Add($"ChallengeBundle:{QuestJson.BundleId}");
                                             }
-                                            int CurrentXP = 0;
+                                            //int CurrentXP = 0;
                                             List<string> OkayIG = new List<string>();
 
                                             foreach (var Quests in QuestJson.BundlesObject)

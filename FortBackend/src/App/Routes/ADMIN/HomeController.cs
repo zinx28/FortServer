@@ -36,9 +36,9 @@ namespace FortBackend.src.App.Routes.ADMIN
 
             try
             {
-                if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                 {
-                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken)!;
                     if (adminData != null)
                     {
                         if (adminData.bIsSetup)
@@ -60,7 +60,7 @@ namespace FortBackend.src.App.Routes.ADMIN
         }
 
         [HttpPost("new/dashboard")] // Used to check if the user has access to the page.. this data could change +
-                                      // a websocket would prob be better
+                                    // a websocket would prob be better
         public IActionResult DashboardCheck()
         {
             Response.ContentType = "application/json";
@@ -102,7 +102,7 @@ namespace FortBackend.src.App.Routes.ADMIN
         }
 
         [HttpPost("new/dashboard/panel")] // Used to check if the user has access to the page.. this data could change +
-                                    // a websocket would prob be better
+                                          // a websocket would prob be better
         public IActionResult DashboardPanelCheck()
         {
             Response.ContentType = "application/json";
@@ -165,7 +165,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                 var email = "";
                 var password = "";
                 var FormRequest = HttpContext.Request.Form;
-               
+
                 if (FormRequest.TryGetValue("email", out var emailL))
                 {
                     Console.WriteLine("GI " + emailL);
@@ -200,13 +200,12 @@ namespace FortBackend.src.App.Routes.ADMIN
                         Response.Cookies.Append("AuthToken", Token, new CookieOptions
                         {
                             HttpOnly = true,
-                            Secure = false,
+                            Secure = Saved.DeserializeConfig.SecureSite,
                             SameSite = SameSiteMode.Lax,
                             Expires = DateTime.UtcNow.AddDays(7)
                         });
 
                         Console.WriteLine("ADDED TOKEN!");
-
 
                         return Ok(new { message = "Login successful", Token, setup = true }); // setup? ig
                     }
@@ -219,21 +218,28 @@ namespace FortBackend.src.App.Routes.ADMIN
                     {
                         var Token = JWT.GenerateRandomJwtToken(24, Saved.DeserializeConfig.JWTKEY);
 
-                        AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == email);
+                        AdminData adminData = Saved.CachedAdminData.Data.FirstOrDefault(e => e.AdminUserEmail == email)!;
                         if (adminData != null)
                         {
-                            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                            if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                             {
                                 if (adminData.AccessToken == authToken)
                                 {
                                     return Ok(new { message = "Login successful", Token, setup = false });
                                 }
-
                             }
+
+                            Saved.CachedAdminData.Data.Add(new AdminData
+                            {
+                                AccessToken = Token,
+                                AdminUserEmail = email,
+                                IsForcedAdmin = email == Saved.DeserializeConfig.AdminEmail,
+                                RoleId = AdminDashboardRoles.Admin
+                            });
                         }
                         else
                         {
-                            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                            if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                             {
                                 Console.WriteLine(authToken);
                                 if (adminData != null)
@@ -259,7 +265,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                         Response.Cookies.Append("AuthToken", Token, new CookieOptions
                         {
                             HttpOnly = true,
-                            Secure = false,
+                            Secure = Saved.DeserializeConfig.SecureSite,
                             SameSite = SameSiteMode.Lax,
                             Expires = DateTime.UtcNow.AddDays(7)
                         });
@@ -277,7 +283,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                     {
                         if (string.IsNullOrEmpty(password))
                         {
-                            return Ok(new { message = "Invalid email or password.", Token = "", setup = false, error = true }); 
+                            return Ok(new { message = "Invalid email or password.", Token = "", setup = false, error = true });
                         }
 
                         ProfileCacheEntry profileCacheEntry = FoundAcc.profileCacheEntry;
@@ -292,7 +298,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == email)!;
                                 if (adminData != null)
                                 {
-                                    if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                                    if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                                     {
                                         if (adminData.AccessToken == authToken)
                                         {
@@ -302,7 +308,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 }
                                 else
                                 {
-                                    if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+                                    if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                                     {
                                         if (adminData != null)
                                         {
@@ -328,7 +334,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 Response.Cookies.Append("AuthToken", Token, new CookieOptions
                                 {
                                     HttpOnly = true,
-                                    Secure = false,
+                                    Secure = Saved.DeserializeConfig.SecureSite,
                                     SameSite = SameSiteMode.Lax,
                                     Expires = DateTime.UtcNow.AddDays(7)
                                 });
@@ -340,7 +346,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                     }
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 Logger.Error(ex.Message, "LoginDS");
             }
@@ -379,7 +385,7 @@ namespace FortBackend.src.App.Routes.ADMIN
 
                                 if (adminData != null)
                                 {
-                                    if(!adminData.IsForcedAdmin) return Json(new { error = "THIS ENDPOINT IS FORCED ADMIN ONLY" });
+                                    if (!adminData.IsForcedAdmin) return Json(new { error = "THIS ENDPOINT IS FORCED ADMIN ONLY" });
                                     // idk why i didnt do this check before... :skull:
 
                                     if (password != cumpassword)
@@ -454,11 +460,11 @@ namespace FortBackend.src.App.Routes.ADMIN
         [HttpPost("new/logout")]
         public IActionResult NewLogout()
         {
-            if (Request.Cookies.TryGetValue("AuthToken", out string authToken))
+            if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
             {
                 if (!string.IsNullOrEmpty(authToken) && Saved.CachedAdminData.Data != null)
                 {
-                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken)!;
                     if (adminData != null)
                     {
                         Saved.CachedAdminData.Data!.Remove(adminData);

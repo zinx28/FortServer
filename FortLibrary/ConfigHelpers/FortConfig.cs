@@ -102,9 +102,10 @@ namespace FortLibrary.ConfigHelpers
         // - could be in game config in the future
         public bool FullLockerForEveryone { get; set; } = false; // full locker (should show all up to 29.10 - .20 i forgot)
         // ^^ i need a better name
-
+        public bool Secure { get; set; } = false; // if your site is https then true! but you could use a proxy that converts http://127.0.0.1:1111 -> https://yourdomain.com
         // USELESS ATM
 
         public bool EnableDetections { get; set; } = true; // this isn't used atm
+        
     }
 }

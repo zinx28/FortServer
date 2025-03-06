@@ -14,12 +14,12 @@ namespace FortLibrary
         private static StreamWriter? writer;
         private static readonly object _lock = new();
 
-        private Logger()
+        static Logger()
         {
             try
             {
                 InitializeLogger();
-                
+
                 if (writer == null)
                     throw new InvalidOperationException("Logger StreamWriter is not initialized.");
             }
@@ -28,7 +28,7 @@ namespace FortLibrary
                 Console.Error.WriteLine($"Logger failed to initialize: {ex.Message}");
             }
         }
-
+        private Logger() { InitializeLogger(); }
 
         private static void InitializeLogger()
         {

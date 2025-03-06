@@ -113,7 +113,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         {
                             var Variants = profileCacheEntry.AccountData.athena.Items[Body.itemToSlot].attributes.variants;
 
-                            foreach ( var variant in Body.variantUpdates)
+                            foreach (var variant in Body.variantUpdates)
                             {
                                 var FindVar = Variants.FirstOrDefault(e => e.channel == variant.channel);
                                 if(FindVar != null)

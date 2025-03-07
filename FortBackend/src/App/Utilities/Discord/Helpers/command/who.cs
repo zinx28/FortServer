@@ -65,12 +65,16 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         Logger.Error("Failed To Find User!", "DiscordBot");
                         return;
                     }
+                    Console.WriteLine(UserId);
                     FindDiscordID = await Handlers.FindOne<User>("DiscordId", UserId, true);
-                    User RespondBack = JsonConvert.DeserializeObject<User[]>(FindDiscordID)![0];
-                    Logger.Log(RespondBack.Username);
+                    if(FindDiscordID != null && FindDiscordID != "Error")
+                    {
+                        User RespondBack = JsonConvert.DeserializeObject<User[]>(FindDiscordID)![0];
+                        Logger.Log(RespondBack.Username);
+                    }
                 }
 
-                if (FindDiscordID != "Error")
+                if (!string.IsNullOrEmpty(FindDiscordID) && FindDiscordID != "Error")
                 {
                     User RespondBack = JsonConvert.DeserializeObject<User[]>(FindDiscordID)![0];
                     if (RespondBack == null)
@@ -569,6 +573,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
             }
             catch (Exception ex)
             {
+                await command.RespondAsync($"Error", ephemeral: true);
+                Logger.Error(ex.Source, "error");
                 Logger.Error(ex.Message, "CheckAccount");
             }
         }
@@ -576,7 +582,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
         {
             try
             {
-                //  _userInteractionCache[command.User.Id].SetCanceled();
+              //  _userInteractionCache[command.User.Id].SetCanceled();
                 if (command.Data.Options.FirstOrDefault(o => o.Name == "mention")?.Value != null)
                 {
                     var username = command.Data.Options.FirstOrDefault(o => o.Name == "mention")?.Value as SocketGuildUser;

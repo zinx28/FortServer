@@ -3,7 +3,7 @@ import store from "./store";
 import "./style.css";
 import App from "./App.vue";
 import NotFound from "./components/NotFound.vue";
-import Login from "./components/Login.vue";
+//import Login from "./components/Login.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import VueCookies from "vue-cookies";
 import { createPinia } from "pinia";
@@ -14,14 +14,11 @@ const router = createRouter({
     {
       path: "/login",
       name: "Login",
-      component: () => Login,
+      component: () => import("./components/Login.vue"),
       beforeEnter: async (_, __, next) => {
         if (!store().isAuthenticated) {
-          store()
-            .checkAuth()
-            .then(() => {
-              if (store().isAuthenticated) router.push({ name: "Dashboard" });
-            });
+          await store().checkAuth();
+          if (store().isAuthenticated) router.push({ name: "Dashboard" });
         } else {
           router.push({ name: "Dashboard" });
         }
@@ -40,7 +37,7 @@ const router = createRouter({
     {
       path: "/dashboard/content",
       name: "DashboardContent",
-      redirect: '/dashboard/content/news',
+      redirect: "/dashboard/content/news",
     },
     {
       path: "/dashboard/content/:id",
@@ -54,7 +51,6 @@ const router = createRouter({
       component: () => import("./components/DashboardAdmin.vue"),
       meta: { requiresAuth: true },
     },
-
     {
       path: "/:pathMatch(.*)*", // nothing special just 404 page
       name: "NotFound",
@@ -64,21 +60,18 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  console.log("omg");
   if (to.meta.requiresAuth) {
     if (!store().isAuthenticated) {
-        store()
-        .checkAuth()
-        .then(() => {
-          if (store().isAuthenticated) {
-             if(from.fullPath.includes("login")){
-                router.push({ name: "Dashboard" });
-             }
-          }
-          else router.push({ name: "Login" });
-        });
+      await store().checkAuth();
+      if (store().isAuthenticated) {
+        if (from.fullPath.includes("login")) {
+          router.push({ name: "Dashboard" });
+        }
+      } else router.push({ name: "Login" });
     }
   }
-
+  console.log("test!");
   next();
 });
 

@@ -10,10 +10,10 @@ namespace FortLibrary.EpicResponses.Profile
         public int profileChangesBaseRevision { get; set; } = 1;
         public List<dynamic> profileChanges { get; set; } = new List<dynamic>();
      
-        public List<dynamic> notifications { get; set; } = new List<dynamic>();
+        public List<dynamic>? notifications { get; set; } = new List<dynamic>();
 
         public int profileCommandRevision { get; set; } = 1;
-        public string serverTime { get; set; }
+        public string serverTime { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
         public List<object> multiUpdate { get; set; } = new List<object>();
         public int responseVersion { get; set; } = 1;

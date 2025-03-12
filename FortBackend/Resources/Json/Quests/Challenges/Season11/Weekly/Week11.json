@@ -1,0 +1,379 @@
+{
+  "BundleId": "MissionBundle_S11_OT1",
+  "BundleSchedule": "Season11_Mission_Schedule",
+  "BundleRequired": {
+    "RequiredLevel": 1
+  },
+  "BundlesObject": [
+    {
+      "templateId": "Quest:Quest_S11_OT1_01a",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [
+          {
+            "TemplateId": "Quest:Quest_S11_OT1_01b",
+            "Quantity": 1
+          }
+        ],
+        "GrantedItems": []
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q01a_obj01",
+          "Count": 40,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_01b",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": true,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "Quest": [],
+        "GrantedItems": [
+          {
+            "TemplateId": "CosmeticVariantToken:VTID_423_RebirthMedic_StyleC",
+            "connectedTemplate": "AthenaCharacter:CID_567_Athena_Commando_F_RebirthMedic",
+            "new_variants": [
+              {
+                "channel": "Progressive",
+                "added": [
+                  "Stage4"
+                ]
+              }
+            ],
+            "Quantity": 1
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q01b_obj01",
+          "Count": 9,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_02",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true,
+        "Count": 3
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q02_obj01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q02_obj02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q02_obj03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q02_obj04",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_03alt",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q03alt_obj01",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_04",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q04_obj01",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_05",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q05_obj01",
+          "Count": 7,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_06",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q06_obj01",
+          "Count": 3,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_07",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true,
+        "Count": 3
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q07_obj01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q07_obj02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q07_obj03",
+          "Count": 2,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_08alt",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q08alt_obj01",
+          "Count": 2500,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_09",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true,
+        "Count": 3
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q09_obj01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q09_obj02",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q09_obj03",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q09_obj04",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q09_obj05",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_10alt",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q10alt_obj01",
+          "Count": 5,
+          "Stage": -1
+        }
+      ]
+    },
+    {
+      "templateId": "Quest:Quest_S11_OT1_11",
+      "quest_data": {
+        "RequireBP": true,
+        "ExtraQuests": false,
+        "IsWeekly": true,
+        "Steps": true,
+        "Count": 1
+      },
+      "Rewards": {
+        "BattleStars": 0,
+        "GrantedItems": [
+          {
+            "TemplateId": "AccountResource:athenaseasonalxp",
+            "Quantity": 52000
+          }
+        ]
+      },
+      "Objectives": [
+        {
+          "BackendName": "questobj_s11_ot1_q11_obj00",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q11_obj01",
+          "Count": 1,
+          "Stage": -1
+        },
+        {
+          "BackendName": "questobj_s11_ot1_q11_obj02",
+          "Count": 1,
+          "Stage": -1
+        }
+      ]
+    }
+  ]
+}

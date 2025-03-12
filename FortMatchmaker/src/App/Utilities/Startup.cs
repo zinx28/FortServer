@@ -135,14 +135,11 @@ namespace FortMatchmaker.src.App.Utilities
                 Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}?{context.HttpContext.Request.Query}");
                 if (context.HttpContext.Request.Path == "/")
                 {
-                    var responseObj = new
+                    response.StatusCode = (int)HttpStatusCode.OK;
+                    await response.WriteAsJsonAsync(new
                     {
                         status = "OK"
-                    };
-                    var jsonResponse = System.Text.Json.JsonSerializer.Serialize(responseObj);
-                    context.HttpContext.Request.ContentType = "application/json";
-                    response.StatusCode = (int)HttpStatusCode.OK;
-                    await response.WriteAsync(jsonResponse);
+                    });
                 }
                 if (response.StatusCode == (int)HttpStatusCode.NotFound)
                 {

@@ -38,9 +38,10 @@ for(var index in datafile) {
  
   //console.log({ "Rewards": temp })
 }
-console.log(JSON.stringify(Data));*/
+console.log(JSON.stringify(Data));
+*/
 
-/*
+
 const DataFile = require("./SingleQuest.json");
 var DataResponse = [];
 var Level = 0;
@@ -165,10 +166,10 @@ for(var index in DataFile){
   })
 }
 
-console.log(JSON.stringify(DataResponse, null, 2));*/
+console.log(JSON.stringify(DataResponse, null, 2));
+
 
 /*
-
 const datafile = require("./BattlePass.json");
 var Data = [];
 var Level = 0;
@@ -233,7 +234,7 @@ for(var index in datafile){
      rewards.push({
         templateId: templatePush,
         connectedTemplate: "",
-        quantity: e.Quantityd
+        quantity: e.Quantity
      })
   })
 
@@ -276,7 +277,7 @@ for(var index in datafile){
 
 console.log(JSON.stringify(Data));*/
 
-
+/*
 const datafile = require("./Quest.json")
 var tesa =0;
 for(var index in datafile) {
@@ -347,6 +348,7 @@ for(var index in datafile) {
 
   console.log(JSON.stringify(temp[0]))
 }
+*/
 
 /*
 const datafile = require("./QuestS13.json")

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FortLibrary.EpicResponses.Lightswitch
 {
@@ -8,6 +9,7 @@ namespace FortLibrary.EpicResponses.Lightswitch
         public string catalogItemId { get; set; } = "4fe75bbc5a674f4f9b356b5c90567da5";
 
         [JsonProperty("namespace")]
+        [JsonPropertyName("namespace")]
         public string Namespace { get; set; } = "fn";
     }
 }

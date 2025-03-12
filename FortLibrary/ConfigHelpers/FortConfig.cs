@@ -39,6 +39,7 @@ namespace FortLibrary.ConfigHelpers
         public string GameServerIP { get; set; } = "127.0.0.1";
         public int GameServerPort { get; set; } = 7777;
         public bool CustomMatchmaker { get; set; } = false; // Enable to use other matchmakers
+        public bool bUseWSS { get; set; } = false; // this is for matchmaker connections, if you use http but servers redirect to https without the backend
 
         // -- //
 
@@ -101,9 +102,10 @@ namespace FortLibrary.ConfigHelpers
         // - could be in game config in the future
         public bool FullLockerForEveryone { get; set; } = false; // full locker (should show all up to 29.10 - .20 i forgot)
         // ^^ i need a better name
-
+        public bool SecureSite { get; set; } = false; // if your site is https then true! but you could use a proxy that converts http://127.0.0.1:1111 -> https://yourdomain.com
         // USELESS ATM
 
         public bool EnableDetections { get; set; } = true; // this isn't used atm
+        
     }
 }

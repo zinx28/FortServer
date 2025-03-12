@@ -88,11 +88,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     responseVersion = 1
                 };
-        
 
-
-
-              
+            }
+            else
+            {
+                Logger.Error("TRHIS SHOULDNT BE CALLED", ProfileId);
             }
             return new Mcp();
         }

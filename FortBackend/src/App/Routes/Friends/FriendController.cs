@@ -1,4 +1,4 @@
-﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
@@ -373,7 +373,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                 )
                                            );
 
-                                            await XmppFriend.GrabSomeonesPresence(accountId1, friendsprofileCacheEntry.AccountId, false);
+                                            await XmppFriend.GrabSomeonesPresence(friendsprofileCacheEntry.AccountId, accountId1, false);
                                         }
                                         Clients targetClient2 = GlobalData.Clients.FirstOrDefault(client => client.accountId == friendID)!;
                                       

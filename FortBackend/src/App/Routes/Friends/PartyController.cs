@@ -76,13 +76,6 @@ namespace FortBackend.src.App.Routes.Friends
                     var CurrentParty = GlobalData.parties.FindAll(e => e.members.Any(a => a.account_id == accountId));
                     var Pings = GlobalData.pings.FindAll(e => e.sent_to == accountId);
 
-                    //Console.WriteLine(new
-                    //{
-                    //    current = CurrentParty != null ? CurrentParty : new List<Parties>(),
-                    //    pending = Array.Empty<object>(),
-                    //    invites = Array.Empty<object>(),
-                    //    pings = Pings != null ? Pings : new List<Pings>()
-                    //});
                     return Ok(new
                     {
                         current = CurrentParty != null ? CurrentParty : new List<Parties>(),

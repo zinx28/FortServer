@@ -25,8 +25,12 @@
                 </div>
             </div>
             <div class="GridThing">
-                <div class="BuildImageHOlder">
+                <div class="AddBuildB">
+                    <div style="width: 50px; height: 50px; background-color: gray; border-radius: 40px;">
 
+                    </div>
+                    <a style="color:white; margin-top: 10px;">Import</a>
+                    <a style="color: #9c9891; font-size: 12px; margin-top: 2px;">Add existing installation</a>
                 </div>
             </div>
         </div>
@@ -120,6 +124,24 @@
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+}
+
+
+.AddBuildB {
+    width: 170px;
+    background-color: transparent;
+    border-style: dotted;
+    border-width: 2px;
+    border-color: #3a3a52;
+    height: 225px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    flex-direction: column;
 }
 
 .GridThing {

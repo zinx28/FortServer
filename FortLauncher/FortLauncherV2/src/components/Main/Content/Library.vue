@@ -57,6 +57,12 @@
     transition: opacity 0.3s ease;
 }
 
+
+.BuildImageHOlder:hover {
+    background-color: #5f5f5ffb;
+}
+
+
 .BuildImageHOlder:hover .launchButton {
     opacity: 1;
     visibility: visible;
@@ -102,7 +108,7 @@
 
 .BuildImageHOlder {
     width: 170px;
-    background-color: #13131d;
+    background-color: #a5a5a5;
     border-style: solid;
     border-width: 1px;
     border-color: #1e1e2d;

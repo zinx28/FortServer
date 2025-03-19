@@ -6,7 +6,7 @@ import SideBar from './SideBar.vue';
 </script>
 
 <template>
-    <SideBar @changeTab="setTab" :LoginResponse="getData" />
+    <SideBar @changeTab="setTab" :RizzlerTab="currentTab" :LoginResponse="getData" />
     <div v-if="currentTab === 'home'"  style="margin-left: 270px;">
         <Home :LoginResponse="getData" />
     </div>

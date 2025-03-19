@@ -39,7 +39,7 @@ export default {
         LoginResponse: {
             type: Object,
             default: () => ({})
-        },
+        }
     },
     computed: {
         user() {

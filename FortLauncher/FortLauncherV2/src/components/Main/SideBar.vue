@@ -3,12 +3,12 @@
         <a class="title">FortLauncher</a>
         <ul class="nav-links">
             <li>
-                <a class="nav-active" style="display: flex; justify-content: space-between;">
+                <a class="nav-active"  @click="$emit('changeTab', 'home')" style="display: flex; justify-content: space-between;">
                     <span style="margin-left: 10px;">Home</span>
                 </a>
             </li>
             <li>
-                <a style="display: flex; justify-content: space-between;">
+                <a @click="$emit('changeTab', 'library')" style="display: flex; justify-content: space-between;">
                     <span style="margin-left: 10px;">Library</span>
                 </a>
             </li>

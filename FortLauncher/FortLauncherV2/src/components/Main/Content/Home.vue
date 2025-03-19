@@ -6,7 +6,7 @@
             </div>
             <div style="margin: 15px; width: max-content;">
                 <a style="color: #9c9891;font-size: 25px; display: block; text-align: left;">
-                    <strong style="color:white; ">Welcome Back,</strong> User
+                    <strong style="color:white; ">Welcome Back,</strong> {{ user?.username || "User" }}
                 </a>
                 <a style="color: #9c9891; font-size: 20px; display: block; text-align: left; margin-top: 3px;">
                     This launcher is still "WIP"
@@ -33,6 +33,21 @@
     </div>
 </template>
 
+<script>
+export default {
+    props: {
+        LoginResponse: {
+            type: Object,
+            default: () => ({})
+        },
+    },
+    computed: {
+        user() {
+            return this.LoginResponse
+        }
+    }
+}
+</script>
 <style scoped>
 .CenterContent {
     margin-top: 15px;

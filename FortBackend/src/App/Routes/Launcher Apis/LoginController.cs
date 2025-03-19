@@ -56,7 +56,6 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                 character = Character,
                                 DiscordId = profileCacheEntry.UserData.DiscordId,
                             });
-                            return Unauthorized(); // Banned
                         }
                         SandboxLoadout sandboxLoadout = profileCacheEntry.AccountData.athena.loadouts_data.FirstOrDefault(e => e.Key.Contains("sandbox_loadout"))!.Value;
                         if (sandboxLoadout != null)

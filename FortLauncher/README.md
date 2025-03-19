@@ -1,11 +1,7 @@
-# FORTLAUNCHER (WIP)
+# FORTLAUNCHER (Rewrite)
 
-This launcher may have issues, won't support latest (detection broke -> 30.20)
+- npm or bun!
 
-
-- any issues check log file this is located in %appdata%/FortLauncher
-
-^^ i'll redo this readme in the future ;(
-
--> THIS REQUIRES THE BACKEND (CHANGED Services/Globals/LauncherConfig.cs -> http://127.0.0.1 to your vps ip/ domain?)
-
+- npm i 
+- npm run dev 
+- more info like at some potujn!

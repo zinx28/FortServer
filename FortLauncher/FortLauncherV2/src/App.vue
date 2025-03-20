@@ -12,7 +12,7 @@ const IsLoggedIn = ref<boolean | false>(false)
 
 const LoginData = ref<AuthData>()
 window.ipcRenderer.invoke('fortlauncher:ping').then(async (e) => {
-  if(!e) return;
+  if (!e) return;
   console.log(e);
   await window.ipcRenderer.invoke('fortlauncher:login').then((LoginResponse) => {
     console.log(LoginResponse)
@@ -35,13 +35,23 @@ onMounted(() => {
     status
   }
 });
+
+const NewData = (arg: any) => {
+  console.log("Received data:", arg);
+  if (arg?.username) {
+    console.log("hi")
+    IsLoggedIn.value = true;
+    LoginData.value = arg;
+  }
+};
 </script>
 
 <template>
   <Offline v-if="statusValue === 'offline'" />
-  <Login v-else-if="statusValue === 'online' && !IsLoggedIn" />
-  <Dashboard  :LoginResponse="LoginData" v-else-if="IsLoggedIn" />
+  <Login v-else-if="statusValue === 'online' && !IsLoggedIn" @loginData="NewData" />
+  <Dashboard :LoginResponse="LoginData" v-else-if="IsLoggedIn" />
   <Loading v-else />
 </template>
+
 
 <style scoped></style>

@@ -24,7 +24,8 @@ export default user;
 
 
 export async function login(
-  mainWindow: BrowserWindow
+  mainWindow: BrowserWindow,
+  DONTLOGINBABE = false
 ): Promise<AuthData | null> {
   var TOKEN = readTokenFromIni();
   try {
@@ -37,7 +38,8 @@ export async function login(
     if (response.data) {
         console.log(response.data);
         user.login(response.data, TOKEN);
-        mainWindow!.webContents.send('IsLoggedIn', true)
+        if(!DONTLOGINBABE)
+         mainWindow!.webContents.send('IsLoggedIn', true)
         return user.user;
     }
   } catch (err) {

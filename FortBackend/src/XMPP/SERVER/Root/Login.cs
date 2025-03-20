@@ -29,7 +29,7 @@
 //                    return;
 //                }
 
-               
+
 
 //                var token = xmlDoc.Root?.Element("token")?.Value;
 
@@ -137,7 +137,8 @@
 //                                            });
 //                                        }
 //                                        ClientFix.Init(webSocket, dataSaved, clientId);
-//                                    }else
+//                                    }
+//                                    else
 //                                    {
 //                                        await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "banned", CancellationToken.None);
 //                                        return;
@@ -145,9 +146,10 @@
 //                                    //Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName} with account id {dataSaved.AccountId}");
 
 //                                    // LOGS THE USER IN IF THEY ARE NOT BANNED
-                                   
+
 //                                }
-//                            }else
+//                            }
+//                            else
 //                            {
 //                                await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "banned", CancellationToken.None);
 //                                return;
@@ -157,7 +159,7 @@
 //                    else
 //                    {
 //                        Console.WriteLine("FAILED");
-//                    }                
+//                    }
 //                }
 //            }
 //            catch (Exception ex)

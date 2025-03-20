@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
@@ -11,7 +12,7 @@
 
             <div class="BottomPart">
                 <input type="email" class="InputBox" placeholder="Email" v-model="Email" />
-                <input class="InputBox" placeholder="Password" v-model="Password">
+                <input class="InputBox" type="password" placeholder="Password" v-model="Password">
                 <div class="LoginButtonFr" @click="Login">
                     Login
                 </div>
@@ -25,27 +26,42 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  data() {
-    return {
-        Email: "",
-        Password: "",
-        ErrorMsg: ""
-    };
-  },
-  methods: { 
-    Login() {
-        console.log("NO")
-        //if() client side checks
-        window.ipcRenderer.invoke('fortlauncher:login~email', { email: this.Email, password: this.Password}).then(async (e) => {
-            
-            if(e.error == true)
-                this.ErrorMsg = e.message;
-          
-        });
+    data() {
+        return {
+            Email: "",
+            Password: "",
+            ErrorMsg: ""
+        };
+    },
+    methods: {
+        async test() {
+            this.$emit('loginData', { "hi": "yeah" });
+        },
+        async Login() {
+            console.log("NO")
+            //if() client side checks
+            try {
+                const e = await window.ipcRenderer.invoke('fortlauncher:login~email', { email: this.Email, password: this.Password });
+
+                var Sigmareal = JSON.stringify(e);
+               
+                if (!Sigmareal)
+                    this.ErrorMsg = "e is null! what the flop";
+                console.log("d " + Sigmareal);
+
+                if (e?.error == true) {
+                    this.ErrorMsg = e.message;
+                    console.log("Failed to login!")
+                }
+                else
+                    this.$emit('loginData', e);
+            } catch (Err) {
+                console.log("ERROR " + Err);
+            }
+        }
     }
-  }
 }
 
 </script>
@@ -105,7 +121,7 @@ h1 {
     justify-content: center;
     align-items: center;
     transition: 0.3s;
-  
+
 }
 
 .LoginButtonFr:hover {

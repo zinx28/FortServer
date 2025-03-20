@@ -70,44 +70,55 @@ function createWindow(): void {
     ipcMain.handle("fortlauncher:login~email", async (e, s) => {
       console.log(process.env.VITE_BACKEND_URL);
       try {
-        console.log(JSON.stringify(s));
-        await axios
-          .post(`${process.env.VITE_BACKEND_URL}/launcher/api/v1/login`, s, {
+        console.log("f " + JSON.stringify(s));
+        const response = await axios.post(
+          `${process.env.VITE_BACKEND_URL}/launcher/api/v1/login`,
+          s,
+          {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          })
-          .then((response) => {
-            if (response.data) {
-              console.log("g");
-              console.log(response.data);
-              if(response.data.token) 
-              {
-                saveTokenToIni(response.data.token);
-                return {
-                  message: response.data.token,
-                  error: false
-                }
-              }
-            }
+          }
+        );
 
-            if (response.status) {
-              console.log(response.status);
-            }
-          });
+        if (response.data) {
+          console.log("g");
+          console.log(response.data);
+          if (response.data.token) {
+            saveTokenToIni(response.data.token);
+            var LoginData = await login(mainWindow!, true);
+            console.log("YEAH");
+            console.log(LoginData);
+            if (LoginData) return LoginData;
+            else
+              return {
+                message: "Failed to login",
+                error: true,
+              };
+          }
+        }
+
+        if (response.status) {
+          console.log(response.status);
+        }
       } catch (err: any) {
         if (err.response) {
           console.log("Daata:", err.response.data);
-          return { 
+          return {
             message: err.response.data.message,
-            error: true
-          }
+            error: true,
+          };
         }
         return {
           message: "failed to login!",
-          error: true
+          error: true,
         };
       }
+
+      return {
+        message: "uhgm!",
+        error: true,
+      };
     });
   }
 }

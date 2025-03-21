@@ -35,6 +35,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <style scoped>
@@ -132,7 +133,7 @@
     background-color: transparent;
     border-style: dotted;
     border-width: 2px;
-    border-color: #3a3a52;
+    border-color: #a0a0b8;
     height: 225px;
     border-radius: 10px;
     display: flex;

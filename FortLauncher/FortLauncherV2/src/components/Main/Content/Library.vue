@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="GridThing">
-                <div class="AddBuildB">
+                <div @click="$emit('buildpath')" class="AddBuildB">
                     <div style="width: 50px; height: 50px; background-color: gray; border-radius: 40px;">
 
                     </div>

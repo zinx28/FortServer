@@ -11,22 +11,29 @@ import SideBar from './SideBar.vue';
         <Home :LoginResponse="getData" />
     </div>
     <div v-if="currentTab === 'library'" style="margin-left: 270px;">
-        <Library />
+        <Library @buildpath="OpenBuildPopup" />
     </div>
 
 
-    <div class="AddBuildPopup">
-        <div class="BuildContainer">
+    <div @click="OpenBuildPopup(false)" v-if="LibraryPopup" class="AddBuildPopup">
+        <div @click.stop class="BuildContainer">
             <div class="TopPartIdk">
                 <a style="margin-left: 20px; color: white;">Add an installition</a>
             </div>
-            <div style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #0a0a14;">
-                uhm
+            <div style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;;">
+                Make sure the path has "FortniteGame" and "Engine"
             </div>
-            <div style="width: 95%; margin-top: 10px; height: 55px; border-radius: 10px; background-color: #0a0a14;">
-                Choose a path
+            <div class="PathContainer">
+                <div style=" margin-left: 20px;">
+                    Choose a path
+                </div>
+                <div style="width: 60px;     display: flex; height: 60%; background-color: #3f3f46; margin-right: 20px; text-align: center; border-radius: 10px; padding: 2px 5px;justify-content: center;
+                    align-items: center;">
+                    Browse
+                </div>
             </div>
-            <div style="margin-top: auto; margin-left: auto; margin-bottom: 14px; margin-right: 20px; background-color: #18181b; border-radius: 10px; padding: 10px 15px;">
+            <div
+                style="margin-top: auto; margin-left: auto; margin-bottom: 14px; margin-right: 20px; background-color: #18181b; border-radius: 10px; padding: 10px 15px;">
                 Next ->
             </div>
         </div>
@@ -46,10 +53,21 @@ import SideBar from './SideBar.vue';
     left: 0;
 }
 
+.PathContainer {
+    width: 95%;
+    margin-top: 10px;
+    height: 55px;
+    border-radius: 10px;
+    background-color: #101018;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .TopPartIdk {
     width: 100%;
     height: 40px;
-    background-color: #0a0a14;
+    background-color: #101018;
     top: 0;
     display: flex;
     border-top-left-radius: 10px;
@@ -75,6 +93,7 @@ export default {
         return {
             currentTab: 'home',
             TabName: 'home',
+            LibraryPopup: true
         }
     },
     props: {
@@ -96,6 +115,9 @@ export default {
                 this.currentTab = tab
             }
         },
+        OpenBuildPopup(value = true){
+            this.LibraryPopup = value;
+        }
     }
 }
 </script>

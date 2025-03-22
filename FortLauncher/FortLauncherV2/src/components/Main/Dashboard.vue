@@ -25,9 +25,9 @@ import SideBar from './SideBar.vue';
             </div>
             <div class="PathContainer">
                 <div style=" margin-left: 20px;">
-                    Choose a path
+                    {{ GamePath }}
                 </div>
-                <div style="width: 60px;     display: flex; height: 60%; background-color: #3f3f46; margin-right: 20px; text-align: center; border-radius: 10px; padding: 2px 5px;justify-content: center;
+                <div @click="OpenFileExplorer" style="width: 60px;     display: flex; height: 60%; background-color: #3f3f46; margin-right: 20px; text-align: center; border-radius: 10px; padding: 2px 5px;justify-content: center;
                     align-items: center;">
                     Browse
                 </div>
@@ -93,7 +93,8 @@ export default {
         return {
             currentTab: 'home',
             TabName: 'home',
-            LibraryPopup: true
+            LibraryPopup: true,
+            GamePath: "Choose a path"
         }
     },
     props: {
@@ -117,6 +118,21 @@ export default {
         },
         OpenBuildPopup(value = true){
             this.LibraryPopup = value;
+        },
+        OpenFileExplorer() {
+            window.ipcRenderer.invoke("fortlauncher:openfile").then((filepath) => {
+                if(filepath) {
+                    if(filepath.startsWith('Error~~'))
+                    {
+                        console.log("darn it man!");
+                    }
+                    else {
+                        console.log("hi");
+                        this.GamePath = filepath;
+                    }
+                    console.log(filepath + "sigmais");
+                }
+            })
         }
     }
 }

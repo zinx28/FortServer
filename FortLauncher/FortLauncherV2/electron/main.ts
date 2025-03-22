@@ -1,9 +1,10 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, dialog, ipcMain } from "electron";
 import axios from "axios";
-import { join } from "path";
+import path, { join } from "path";
 import icon from "../public/vite.svg";
 import { login } from "./login";
 import { saveTokenToIni } from "./IniConfig";
+import { existsSync, lstatSync } from "fs";
 
 let mainWindow: BrowserWindow | null;
 
@@ -65,6 +66,30 @@ function createWindow(): void {
 
     ipcMain.handle("fortlauncher:login", async () => {
       return login(mainWindow!);
+    });
+
+    ipcMain.handle("fortlauncher:openfile", async () => {
+        const result = await dialog.showOpenDialog({
+          properties: ['openDirectory']
+          
+        })
+
+        if(result.canceled){
+          return null; // might need a message instweaD?
+        }
+        else {
+          const selectedPath = result.filePaths[0];
+          const fortniteGamePath = path.join(selectedPath, "FortniteGame")
+          const EnginePath = path.join(selectedPath, "Engine")
+
+          const hasFortniteGame = existsSync(fortniteGamePath) && lstatSync(fortniteGamePath).isDirectory();
+          const hasEngine = existsSync(EnginePath) && lstatSync(EnginePath).isDirectory();
+
+          if(hasFortniteGame && hasEngine)
+            return selectedPath;
+          else
+            return 'Error~~'
+        }
     });
 
     ipcMain.handle("fortlauncher:login~email", async (e, s) => {

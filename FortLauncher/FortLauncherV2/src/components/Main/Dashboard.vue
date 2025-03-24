@@ -2,6 +2,7 @@
 import Home from './Content/Home.vue';
 import SideBar from './SideBar.vue';
 import Library from './Content/Library.vue';
+
 </script>
 
 <template>

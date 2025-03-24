@@ -2,7 +2,7 @@
     <div class="CenterContent">
         <a style="color: white; font-size: 22px; font-weight: bold; text-align: left;  width: 95%;">Library</a>
         <div class="GridContainer">
-            <div  v-for="(note, index) in builds" class="GridThing">
+            <div v-for="(note, index) in builds" class="GridThing">
                 <div class="BuildImageHOlder">
                     <div class="launchButton">
                         Launch
@@ -117,7 +117,8 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, 170px);
     gap: 15px;
-    width: 95%;
+    width: 90%;
+    height: 170px;
     justify-content: start;
 
 }
@@ -176,7 +177,7 @@ export default {
     display: flex;
     flex-direction: column;
     width: 170px;
-    height: 295px;
+    height: 290x;
     justify-content: flex-start;
     border-radius: 10px;
     align-items: flex-start;

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Home from './Content/Home.vue';
-import Library from './Content/Library.vue';
 import SideBar from './SideBar.vue';
-
+import Library from './Content/Library.vue';
 </script>
 
 <template>
@@ -34,7 +33,8 @@ import SideBar from './SideBar.vue';
                 </div>
             </div>
 
-            <div v-if="NextStep" style="height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div v-if="NextStep"
+                style="height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <a style="margin-top: 20px;  display: block; color: white;">Import Installation</a>
                 <div
                     style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;;">
@@ -167,12 +167,14 @@ export default {
                     this.FortniteVersion = AddPath.data.VersionID
                 }
 
-            }else if(this.NextStep){
+            } else if (this.NextStep) {
                 const AddPathV2 = await window.ipcRenderer.invoke('fortlauncher:addpathV2')
 
                 if (AddPathV2 && !AddPathV2.startsWith('Error')) {
-                    this.OpenBuildPopup(false)
-                    this.$refs.libraryTab.loadBuilds(true)
+                    this.OpenBuildPopup(false);
+
+                    (this.$refs.libraryTab as any).loadBuilds(true);
+
                 }
 
             }

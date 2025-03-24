@@ -13,6 +13,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "electron"],
+  "include": ["src/**/*", "electron"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

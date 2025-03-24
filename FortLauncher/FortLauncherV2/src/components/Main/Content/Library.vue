@@ -4,8 +4,12 @@
         <div class="GridContainer">
             <div v-for="(note, index) in builds" class="GridThing">
                 <div class="BuildImageHOlder">
-                    <div class="launchButton">
-                        Launch
+                    <div class="launchButton" @click="launchGame(note, index)" :class="{
+                        launched: note.status === 'Launched',
+                        running: note.status === 'Running',
+                    }"
+                        :style="{ cursor: note.status === 'Running' || note.status === 'Launched' ? 'not-allowed' : 'pointer' }">
+                        {{ note.status === 'Running' ? 'Running' : note.status === 'Launched' ? 'Launched' : 'Launch' }}
                     </div>
                 </div>
                 <div class="SomeDivINthebuild">
@@ -33,7 +37,8 @@ export default {
         return {
             builds: [],
             versionCache: {},
-            dataLoaded: false
+            dataLoaded: false,
+            isButtonDisabled: false
         }
     },
     methods: {
@@ -58,6 +63,19 @@ export default {
                 console.error('Failed to load builds:', error)
             }
         },
+        launchGame(currentBuild, currentIndex) {
+            if(this.isButtonDisabled)
+                return;
+            this.isButtonDisabled = true;
+            this.builds.forEach((build, index) => {
+                if (index !== currentIndex) {
+                    build.status = 'Launched';
+                }
+            });
+
+
+            currentBuild.status = 'Running';
+        }
     },
     mounted() {
         this.loadBuilds()
@@ -98,6 +116,15 @@ export default {
 .BuildImageHOlder:hover .launchButton {
     opacity: 1;
     visibility: visible;
+}
+
+.launchButton.running {
+    background-color: #27ae60;
+}
+
+.launchButton:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
 }
 
 .launchButton {

@@ -6,7 +6,6 @@ import { login } from "./login";
 import { saveTokenToIni } from "./IniConfig";
 import {
   existsSync,
-  fsyncSync,
   lstatSync,
   readFileSync,
   writeFileSync,
@@ -201,7 +200,7 @@ function createWindow(): void {
       }
     );
 
-    ipcMain.handle("fortlauncher:login~email", async (e, s) => {
+    ipcMain.handle("fortlauncher:login~email", async (_, s) => {
       console.log(process.env.VITE_BACKEND_URL);
       try {
         console.log("f " + JSON.stringify(s));

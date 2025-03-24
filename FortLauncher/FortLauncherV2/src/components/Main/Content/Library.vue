@@ -44,7 +44,6 @@ export default {
             try {
                 const response = await window.ipcRenderer.invoke('fortlauncher:get-builds')
                 this.builds = response
-                console.log('NIG' + this.builds)
 
                 for (const note of this.builds) {
                     if (note.VersionID && !this.versionCache[note.VersionID]) {

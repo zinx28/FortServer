@@ -11,7 +11,7 @@ import SideBar from './SideBar.vue';
         <Home :LoginResponse="getData" />
     </div>
     <div v-if="currentTab === 'library'" style="margin-left: 270px;">
-        <Library @buildpath="OpenBuildPopup" />
+        <Library ref="libraryTab" @buildpath="OpenBuildPopup" />
     </div>
 
 
@@ -104,7 +104,7 @@ export default {
         return {
             currentTab: 'home',
             TabName: 'home',
-            LibraryPopup: true,
+            LibraryPopup: false,
             GamePath: "Choose a path",
             GamePath2: "",
             NextStep: false,
@@ -169,6 +169,12 @@ export default {
 
             }else if(this.NextStep){
                 const AddPathV2 = await window.ipcRenderer.invoke('fortlauncher:addpathV2')
+
+                if (AddPathV2 && !AddPathV2.startsWith('Error')) {
+                    this.OpenBuildPopup(false)
+                    this.$refs.libraryTab.loadBuilds(true)
+                }
+
             }
         }
     }

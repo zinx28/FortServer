@@ -70,12 +70,24 @@ export async function getBuildVersion(exePath: string): Promise<string> {
                 const chunkText = buffer.toString('utf16le');
                
                 // higher builds cant grab this <3
+                //console.log(chunkText);
+           
                 const match = chunkText.match(/\+\+Fortnite\+Release-(\d+(\.\d+){0,2}|Live|Next|Cert)-CL-\d+/i);
 
                 if (match) {
                     result = match[0];
                     break;
                 }
+                else 
+                {
+                    const match = chunkText.match(/\+\+Fortnite\+Release-Live.*/i);
+                    if(match)
+                    {
+                        result = "++Fortnite+Release-Live"; // this is fortnite alpha builds ik its skunked
+                        break;
+                    }
+                }
+                
             }
         }
 

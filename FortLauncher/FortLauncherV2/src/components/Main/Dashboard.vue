@@ -38,7 +38,7 @@ import SideBar from './SideBar.vue';
                 <a style="margin-top: 20px;  display: block; color: white;">Import Installation</a>
                 <div
                     style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;;">
-a
+                    Version: {{ FortniteVersion }}
                 </div>
             </div>
 
@@ -109,6 +109,7 @@ export default {
             GamePath2: "",
             NextStep: false,
             ErrorIfSoNotSigma: false,
+            FortniteVersion: ""
         }
     },
     props: {
@@ -163,9 +164,11 @@ export default {
                 else {
                     console.log(AddPath);
 
-
+                    this.FortniteVersion = AddPath.data.VersionID
                 }
 
+            }else if(this.NextStep){
+                const AddPathV2 = await window.ipcRenderer.invoke('fortlauncher:addpathV2')
             }
         }
     }

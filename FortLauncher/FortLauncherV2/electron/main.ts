@@ -4,9 +4,10 @@ import path, { join } from "path";
 import icon from "../public/vite.svg";
 import { login } from "./login";
 import { saveTokenToIni } from "./IniConfig";
-import { existsSync, fsyncSync, lstatSync } from "fs";
+import { existsSync, fsyncSync, lstatSync, readFileSync, writeFileSync } from "fs";
 import { getBuildVersion } from "./VersionSearcher";
-import { TempBuildData } from "./JsonConfig";
+import { handleBuildConfig, TempBuildData } from "./JsonConfig";
+import { FortniteDetect } from "./FortniteDetect";
 
 let mainWindow: BrowserWindow | null;
 
@@ -151,6 +152,38 @@ function createWindow(): void {
         };
       }
     });
+
+    ipcMain.handle('fortlauncher:addpathV2', async (_) => {
+      var Response = await handleBuildConfig(
+        TempBuildData.buildID,
+        TempBuildData.VersionID,
+        TempBuildData.buildPath
+      )
+
+      console.log(Response)
+
+      return Response
+    })
+
+    
+    ipcMain.handle('fortlauncher:get-builds', async () => {
+      try {
+        const lunaFolderPath = join(app.getPath('userData'), 'FortLauncher')
+        const FilePath = join(lunaFolderPath, 'builds.json')
+        if (!existsSync(FilePath)) {
+          writeFileSync(FilePath, JSON.stringify([]))
+        }
+        const builds = JSON.parse(readFileSync(FilePath, 'utf-8'))
+        return builds
+      } catch (error) {
+        console.error('Error reading build.json file!', error)
+        return []
+      }
+    })
+
+    ipcMain.handle('fortlauncher:getBuildVersion', async (_, buildString: string) => {
+      return FortniteDetect(buildString)
+    })
 
     ipcMain.handle("fortlauncher:login~email", async (e, s) => {
       console.log(process.env.VITE_BACKEND_URL);

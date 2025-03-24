@@ -2,26 +2,15 @@
     <div class="CenterContent">
         <a style="color: white; font-size: 22px; font-weight: bold; text-align: left;  width: 95%;">Library</a>
         <div class="GridContainer">
-            <div class="GridThing">
+            <div  v-for="(note, index) in builds" class="GridThing">
                 <div class="BuildImageHOlder">
                     <div class="launchButton">
                         Launch
                     </div>
                 </div>
                 <div class="SomeDivINthebuild">
-                    <a class="BuildTitle">???</a>
-                    <a class="BuildBody">1.11-CL-2929219</a>
-                </div>
-            </div>
-            <div class="GridThing">
-                <div class="BuildImageHOlder">
-                    <div class="launchButton">
-                        Launch
-                    </div>
-                </div>
-                <div class="SomeDivINthebuild">
-                    <a class="BuildTitle">???</a>
-                    <a class="BuildBody">1.11-CL-2929219</a>
+                    <a class="BuildTitle"> Fortnite </a>
+                    <a class="BuildBody">{{ versionCache[note.VersionID] || 'Loading...' }}</a>
                 </div>
             </div>
             <div class="GridThing">
@@ -37,6 +26,45 @@
     </div>
 
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            builds: [],
+            versionCache: {},
+            dataLoaded: false
+        }
+    },
+    methods: {
+        async loadBuilds(shouldturnfalse) {
+            if (shouldturnfalse) this.dataLoaded = false
+            console.log(this.dataLoaded)
+            if (this.dataLoaded) return
+            try {
+                const response = await window.ipcRenderer.invoke('fortlauncher:get-builds')
+                this.builds = response
+                console.log('NIG' + this.builds)
+
+                for (const note of this.builds) {
+                    if (note.VersionID && !this.versionCache[note.VersionID]) {
+                        this.versionCache[note.VersionID] = await window.ipcRenderer.invoke(
+                            'fortlauncher:getBuildVersion',
+                            note.VersionID
+                        )
+                    }
+                }
+                this.dataLoaded = true
+            } catch (error) {
+                console.error('Failed to load builds:', error)
+            }
+        },
+    },
+    mounted() {
+        this.loadBuilds()
+    }
+}
+</script>
 
 <style scoped>
 .CenterContent {

@@ -2,15 +2,15 @@ import { app } from 'electron'
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
 import ini from 'ini'
 import { join } from 'path'
-const lunaFolderPath = join(app.getPath('userData'), 'FortLauncher')
-const configFilePath = join(lunaFolderPath, 'config.ini')
+const fortlauncherFolderPath = join(app.getPath('userData'), 'FortLauncher')
+const configFilePath = join(fortlauncherFolderPath, 'config.ini')
 
 const checkIfExisests = async () => {
-  if (!existsSync(lunaFolderPath)) {
-    mkdirSync(lunaFolderPath)
+  if (!existsSync(fortlauncherFolderPath)) {
+    mkdirSync(fortlauncherFolderPath)
   }
 
-  console.log(lunaFolderPath)
+  console.log(fortlauncherFolderPath)
 
   if (!existsSync(configFilePath)) {
     const defaultConfig = {

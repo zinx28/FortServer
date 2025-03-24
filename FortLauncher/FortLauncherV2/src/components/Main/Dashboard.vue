@@ -20,10 +20,11 @@ import SideBar from './SideBar.vue';
             <div class="TopPartIdk">
                 <a style="margin-left: 20px; color: white;">Add an installition</a>
             </div>
-            <div style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;;">
+            <div v-if="!NextStep"
+                style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;;">
                 Make sure the path has "FortniteGame" and "Engine"
             </div>
-            <div class="PathContainer">
+            <div v-if="!NextStep" class="PathContainer">
                 <div style=" margin-left: 20px;">
                     {{ GamePath }}
                 </div>
@@ -32,10 +33,20 @@ import SideBar from './SideBar.vue';
                     Browse
                 </div>
             </div>
-            <div
+
+            <div v-if="NextStep" style="height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <a style="margin-top: 20px;  display: block; color: white;">Import Installation</a>
+                <div
+                    style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;;">
+a
+                </div>
+            </div>
+
+            <div @click="BuildNextButton"
                 style="margin-top: auto; margin-left: auto; margin-bottom: 14px; margin-right: 20px; background-color: #18181b; border-radius: 10px; padding: 10px 15px;">
                 Next ->
             </div>
+
         </div>
     </div>
 </template>
@@ -94,7 +105,10 @@ export default {
             currentTab: 'home',
             TabName: 'home',
             LibraryPopup: true,
-            GamePath: "Choose a path"
+            GamePath: "Choose a path",
+            GamePath2: "",
+            NextStep: false,
+            ErrorIfSoNotSigma: false,
         }
     },
     props: {
@@ -116,23 +130,43 @@ export default {
                 this.currentTab = tab
             }
         },
-        OpenBuildPopup(value = true){
+        OpenBuildPopup(value = true) {
             this.LibraryPopup = value;
+            this.GamePath = 'Choose a path';
+            this.GamePath2 = '';
+            this.NextStep = false; // reset duh!
         },
         OpenFileExplorer() {
             window.ipcRenderer.invoke("fortlauncher:openfile").then((filepath) => {
-                if(filepath) {
-                    if(filepath.startsWith('Error~~'))
-                    {
+                if (filepath) {
+                    if (filepath.startsWith('Error~~')) {
                         console.log("darn it man!");
                     }
                     else {
                         console.log("hi");
                         this.GamePath = filepath;
+                        this.GamePath2 = filepath;
                     }
                     console.log(filepath + "sigmais");
                 }
             })
+        },
+        // i didnt know what to call this
+        async BuildNextButton() {
+            if (this.GamePath2 && this.GamePath2 != '' && !this.NextStep) {
+                this.NextStep = true;
+                const AddPath = await window.ipcRenderer.invoke('fortlauncher:addpath', { PathValue: this.GamePath2 })
+                if (!AddPath || AddPath.error) {
+                    console.log("cookde");
+
+                }
+                else {
+                    console.log(AddPath);
+
+
+                }
+
+            }
         }
     }
 }

@@ -4,7 +4,9 @@ import path, { join } from "path";
 import icon from "../public/vite.svg";
 import { login } from "./login";
 import { saveTokenToIni } from "./IniConfig";
-import { existsSync, lstatSync } from "fs";
+import { existsSync, fsyncSync, lstatSync } from "fs";
+import { getBuildVersion } from "./VersionSearcher";
+import { TempBuildData } from "./JsonConfig";
 
 let mainWindow: BrowserWindow | null;
 
@@ -69,27 +71,85 @@ function createWindow(): void {
     });
 
     ipcMain.handle("fortlauncher:openfile", async () => {
-        const result = await dialog.showOpenDialog({
-          properties: ['openDirectory']
-          
-        })
+      const result = await dialog.showOpenDialog({
+        properties: ["openDirectory"],
+      });
 
-        if(result.canceled){
-          return null; // might need a message instweaD?
+      if (result.canceled) {
+        return null; // might need a message instweaD?
+      } else {
+        const selectedPath = result.filePaths[0];
+        const fortniteGamePath = path.join(selectedPath, "FortniteGame");
+        const EnginePath = path.join(selectedPath, "Engine");
+
+        const hasFortniteGame =
+          existsSync(fortniteGamePath) &&
+          lstatSync(fortniteGamePath).isDirectory();
+        const hasEngine =
+          existsSync(EnginePath) && lstatSync(EnginePath).isDirectory();
+
+        if (hasFortniteGame && hasEngine) return selectedPath;
+        else return "Error~~";
+      }
+    });
+
+    ipcMain.handle("fortlauncher:addpath", async (_, { PathValue }) => {
+      console.log(PathValue);
+      const fortniteGamePath = path.join(PathValue, "FortniteGame");
+      const enginePath = path.join(PathValue, "Engine");
+      const hasFortniteGame =
+        existsSync(fortniteGamePath) &&
+        lstatSync(fortniteGamePath).isDirectory();
+      const hasEngine =
+        existsSync(enginePath) && lstatSync(enginePath).isDirectory();
+
+      if (hasFortniteGame && hasEngine) {
+        const engineExecutablePath = path.join(
+          PathValue,
+          "Engine\\Binaries\\Win64\\CrashReportClient.exe"
+        );
+        var result = "ERROR";
+        if (existsSync(engineExecutablePath)) {
+          // CrashReportClient is way smaller
+          result = await getBuildVersion(engineExecutablePath);
+        } else {
+          const gameExecutablePath = path.join(
+            PathValue,
+            "FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping_BE.exe"
+          );
+
+          result = await getBuildVersion(gameExecutablePath);
         }
-        else {
-          const selectedPath = result.filePaths[0];
-          const fortniteGamePath = path.join(selectedPath, "FortniteGame")
-          const EnginePath = path.join(selectedPath, "Engine")
 
-          const hasFortniteGame = existsSync(fortniteGamePath) && lstatSync(fortniteGamePath).isDirectory();
-          const hasEngine = existsSync(EnginePath) && lstatSync(EnginePath).isDirectory();
+        if (result == "ERROR") {
+          return {
+            error: true,
+            data: {},
+          };
+        } else {
+          var VersionID = Buffer.from(result, "utf-8").toString("base64");
+          console.log("BUILD ID IS " + VersionID);
+          TempBuildData.VersionID = result;
+          TempBuildData.buildID = VersionID;
+          TempBuildData.buildPath = PathValue;
+          TempBuildData.played = "0";
 
-          if(hasFortniteGame && hasEngine)
-            return selectedPath;
-          else
-            return 'Error~~'
+          return {
+            error: false,
+            data: {
+              VersionID: result,
+              buildID: VersionID,
+              buildPath: PathValue,
+              played: "0",
+            },
+          };
         }
+      } else {
+        return {
+          error: true,
+          data: {},
+        };
+      }
     });
 
     ipcMain.handle("fortlauncher:login~email", async (e, s) => {

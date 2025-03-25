@@ -73,8 +73,9 @@ export default {
                 }
             });
 
-
+            //buildPath
             currentBuild.status = 'Running';
+            window.ipcRenderer.send('fortlauncher:launchgame', { gameExePath: currentBuild.buildPath });
         }
     },
     mounted() {

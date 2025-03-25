@@ -1,25 +1,26 @@
 import { app, BrowserWindow, dialog, ipcMain } from "electron";
 import axios from "axios";
 import path, { join } from "path";
-import icon from "../public/vite.svg";
-import { login } from "./login";
+import icon from '../../resources/icon.png?asset'
+import user, { login } from "./login";
 import { saveTokenToIni } from "./IniConfig";
 import {
   existsSync,
   lstatSync,
+  mkdirSync,
   readFileSync,
   writeFileSync,
 } from "fs";
 import { getBuildVersion } from "./VersionSearcher";
 import { handleBuildConfig, TempBuildData } from "./JsonConfig";
 import { FortniteDetect } from "./FortniteDetect";
-
+import { Worker, WorkerOptions } from 'worker_threads'
 let mainWindow: BrowserWindow | null;
 
 function createWindow(): void {
   console.log(process.env.VITE_BACKEND_URL);
   console.log(__dirname);
-  const preloadPath = join(__dirname, "preload.mjs");
+  const preloadPath = join(__dirname, '../main/preload.js')
   console.log("Preload script path:", preloadPath);
 
   if (!mainWindow) {
@@ -29,7 +30,7 @@ function createWindow(): void {
       show: false,
       ...(process.platform === "linux" ? { icon } : {}),
       webPreferences: {
-        preload: join(__dirname, "preload.js"),
+        preload: preloadPath,
         contextIsolation: true,
         nodeIntegration: false,
         sandbox: false,
@@ -167,6 +168,64 @@ function createWindow(): void {
       }
     });
 
+    ipcMain.on("fortlauncher:launchgame", (_, { gameExePath }) => {
+      setImmediate(() => {
+        const fortlauncherFolderPath = join(app.getPath("userData"), "FortLauncher");
+        const dllPath = join(fortlauncherFolderPath, "FortCurl.dll");
+
+        if (!existsSync(fortlauncherFolderPath)) {
+          mkdirSync(fortlauncherFolderPath, { recursive: true });
+        }
+
+        mainWindow?.webContents.send("gameStatus", {
+          Launching: false,
+          Type: "Message",
+          Message: "Launching",
+        });
+
+        const workerOptions: WorkerOptions = {
+          workerData: { gameExePath, dllPath, user: user },
+        };
+
+        const worker = new Worker(
+          path.join(__dirname, "_gameWorker.js"),
+          workerOptions
+        );
+
+        worker.on("message", (message) => {
+          if (message.status === "success") {
+            console.log("Game launched successfully!");
+            mainWindow?.webContents.send("gameStatus", {
+              Launching: false,
+              Type: "",
+            });
+          } else {
+            console.error("Error launching game:", message.message);
+            mainWindow?.webContents.send("gameStatus", {
+              Launching: false,
+              Type: "Error",
+            });
+          }
+        });
+
+        worker.on("error", (error) => {
+          console.error("Worker error:", error);
+          mainWindow?.webContents.send("gameStatus", {
+            Launching: false,
+            Type: "Error",
+          });
+        });
+
+        worker.on("exit", (code) => {
+          if (code !== 0) {
+            console.error(`Worker stopped with exit code ${code}`);
+          }
+        });
+      });
+
+      console.log("PORN!");
+    });
+
     ipcMain.handle("fortlauncher:addpathV2", async (_) => {
       var Response = await handleBuildConfig(
         TempBuildData.buildID,
@@ -181,8 +240,8 @@ function createWindow(): void {
 
     ipcMain.handle("fortlauncher:get-builds", async () => {
       try {
-        const lunaFolderPath = join(app.getPath("userData"), "FortLauncher");
-        const FilePath = join(lunaFolderPath, "builds.json");
+        const fortlauncherFolderPath = join(app.getPath("userData"), "FortLauncher");
+        const FilePath = join(fortlauncherFolderPath, "builds.json");
         if (!existsSync(FilePath)) {
           writeFileSync(FilePath, JSON.stringify([]));
         }

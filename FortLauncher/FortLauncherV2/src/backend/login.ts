@@ -14,8 +14,6 @@ class UserService {
   async login(authData: AuthData, TOKEN: string) {
     this.user = authData;
     this.user.AccessToken = TOKEN;
-    //this.user.RoleColor = this.DoTheRolesBud(authData.RoleName);
-    //this.user.character = await this.DoMyCharacterBud(authData.character);
   }
 }
 

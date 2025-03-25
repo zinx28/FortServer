@@ -3,7 +3,7 @@ import { ref, computed, onMounted } from 'vue'
 import Login from './components/Login.vue'
 import Loading from './components/Loading.vue'
 import Offline from './components/Offline.vue'
-import { AuthData } from '../electron/types/AuthData';
+import { AuthData } from '../backend/types/AuthData';
 import Dashboard from './components/Main/Dashboard.vue';
 
 const status = ref<{ status: string } | null>(null);

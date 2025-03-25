@@ -407,3 +407,4 @@ CosmosBackend/Resources/Certificates/lunar.cert
 /build
 /FortLauncher/FortLauncherV2/dist-electron
 /FortLauncher/FortLauncherV2/.vscode
+/FortLauncher/FortLauncherV2/out

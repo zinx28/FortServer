@@ -17,6 +17,7 @@ import { FortniteDetect } from "./FortniteDetect";
 let mainWindow: BrowserWindow | null;
 
 function createWindow(): void {
+  console.log(process.env.VITE_BACKEND_URL);
   console.log(__dirname);
   const preloadPath = join(__dirname, "preload.mjs");
   console.log("Preload script path:", preloadPath);

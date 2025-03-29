@@ -78,6 +78,11 @@ const toggleCheckbox = () => {
   align-items: center;
   justify-content: center;
   width: 300px;
+  border: 0.5px;
+  border-style: solid;
+  border-color: #313335;
+  padding: 30px;
+  border-radius: 10px;
 }
 .LoginTitle {
   font-size: 30px;

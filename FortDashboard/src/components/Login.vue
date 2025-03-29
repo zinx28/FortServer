@@ -65,7 +65,7 @@ const toggleCheckbox = () => {
     <div class="" id="error-text">
       {{ ErrorMessage }}
     </div>
-    <p class="">Any issues, suggestions join the discord!</p>
+    <p class="">Any issues, suggestions <a href="https://discord.gg/8kCu6PDvPd">join the discord!</a></p>
   </form>
   </div>
 </template>

@@ -882,7 +882,6 @@ namespace FortBackend.src.App.Routes.Friends
                                         member_state_update = new { },
                                         party_id = Party.id,
                                         // kicked = true,
-                                        //updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK"),
                                         sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         revision = Party.revision,
                                         ns = "Fortnite",
@@ -896,9 +895,74 @@ namespace FortBackend.src.App.Routes.Friends
                         {
                             Party.revision += 1;
                             Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-
                             // todo, theres left over users.... if the leader left we could give it to the first person in the array
                             // we also need to do other stuff
+
+                            var Captain = Party.members.Find(x => x.role == "CAPTAIN");
+                            if (Captain == null)
+                            {
+                                Party.members[0].role = "CAPTAIN";
+                                Captain = Party.members[0];
+                            }
+
+                            var v = Party.meta.ContainsKey("Default:RawSquadAssignments_j") ? "Default:RawSquadAssignments_j" : "RawSquadAssignments_j";
+
+                            if (Party.meta.TryGetValue(v, out var metaValue) && metaValue is string stringValue)
+                            {
+                                var rsa = JsonConvert.DeserializeObject<RawSquadAssignmentsWrapper>(stringValue);
+                                if (rsa != null && rsa.RawSquadAssignments != null)
+                                {
+                                    var UserToRemove = rsa.RawSquadAssignments.FirstOrDefault(e => e.memberId == accountId);
+                                    if (UserToRemove != null)
+                                    {
+                                        rsa.RawSquadAssignments.Remove(UserToRemove);
+                                        Party.meta[v] = JsonConvert.SerializeObject(rsa);
+                                        Party.revision++;
+                                    }
+                                }
+                                Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+
+                                Party.members.ForEach(async x =>
+                                {
+                                    var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == x.account_id);
+
+                                    if (foundClient != null)
+                                    {
+                                        XNamespace clientNs = "jabber:client";
+
+                                        await SERVER.Send.Client.SendClientMessage(foundClient, new XElement(clientNs + "message",
+                                           new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                           new XAttribute("to", foundClient.jid),
+                                               new XElement("body", JsonConvert.SerializeObject(new
+                                               {
+                                                   captain_id = Captain.account_id,
+                                                   created_at = Party.created_at,
+                                                   invite_ttl_seconds = 14400,
+                                                   max_number_of_members = Party.config["max_size"],
+                                                   ns = "Fortnite",
+                                                   party_id = Party.id,
+                                                   party_privacy_type = Party.config["joinability"],
+                                                   party_state_overriden = new Dictionary<string, object>(),
+                                                   party_state_removed = new List<string>(),
+                                                   party_state_updated = new Dictionary<string, object>
+                                                   {
+                                                        {
+                                                            v, JsonConvert.SerializeObject(rsa)
+                                                        }
+                                                   },
+                                                   party_sub_type = Party.meta["urn:epic:cfg:party-type-id_s"],
+                                                   party_type = "DEFAULT",
+                                                   revision = Party.revision,
+                                                   sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                   type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
+                                                   updated_at = Party.updated_at
+                                               }))
+                                       ));
+
+                                    }
+                                });
+
+                            }
                         }
                         else
                         {
@@ -953,7 +1017,7 @@ namespace FortBackend.src.App.Routes.Friends
                             using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                             {
                                 string requestBody = await reader.ReadToEndAsync();
-                                Console.WriteLine("JOIN THE PARTY + " + requestBody);
+
                                 if (string.IsNullOrEmpty(requestBody))
                                 {
                                     throw new BaseError
@@ -1021,7 +1085,6 @@ namespace FortBackend.src.App.Routes.Friends
 
                                             if (Party.meta.TryGetValue(v, out var metaValue) && metaValue is string stringValue)
                                             {
-                                                //{"RawSquadAssignments":[{"memberId":"88e30971-b97d-451d-ba55-e6322bcfe31f","absoluteMemberIdx":0}]}
                                                 var rsa = JsonConvert.DeserializeObject<RawSquadAssignmentsWrapper>(stringValue);
                                                 if (rsa != null)
                                                 {
@@ -1056,7 +1119,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                                 Console.WriteLine(testig.Key + " " + testig.Value);
                                                             }
                                                             
-                                                            // unfinihsed broken!
+                        
                                                             await SERVER.Send.Client.SendClientMessage(foundClient, new XElement(clientNs + "message",
                                                                 new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
                                                                 new XAttribute("to", foundClient.jid),

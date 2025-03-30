@@ -489,19 +489,13 @@ namespace FortBackend.src.App.Routes.Friends
                         if (matchingPing != null)
                             GlobalData.pings.RemoveAll(x => x.sent_to == accountId);
 
-                        using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
-                        {
-                            string requestBody = await reader.ReadToEndAsync();
-
-                            Logger.Warn(requestBody, "FORTBAKCNENDIUODNEIDHJNIODNEIU");
-                        }
-
                         var PingResp = new Pings
                         {
                             sent_to = accountId,
                             sent_by = pingerId,
                             sent_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                             expires_at = DateTime.UtcNow.AddHours(1).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                            time = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                             meta = new { },
                         };
 
@@ -523,7 +517,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     new XElement("body", JsonConvert.SerializeObject(new
                                     {
                                         expires = PingResp.expires_at,
-                                        meta = new { },
+                                        meta = PingResp.meta,
                                         ns = "Fortnite",
                                         pinger_dn = profileCacheEntry.UserData.Username,
                                         pinger_id = PingResp.sent_by,
@@ -589,7 +583,7 @@ namespace FortBackend.src.App.Routes.Friends
                                 members = party.members,
                                 applicants = new List<object>(), 
                                 meta = party.meta,
-                                invites = new List<object>(),
+                                invites = party.invites,
                                 revision = party.revision
                             }).ToList();
 

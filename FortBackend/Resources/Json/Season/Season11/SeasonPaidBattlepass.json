@@ -37,6 +37,11 @@
         "templateId": "ChallengeBundleSchedule:season11_alterego_schedule",
         "connectedTemplate": "",
         "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:QuestBundle_S11_Discover",
+        "connectedTemplate": "",
+        "quantity": 1
       }
     ],
     "Level": 1

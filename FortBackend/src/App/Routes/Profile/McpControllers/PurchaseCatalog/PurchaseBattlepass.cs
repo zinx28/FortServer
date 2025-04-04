@@ -571,7 +571,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
 
                         string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
-                        Console.WriteLine(mcpJson);
+                        //Console.WriteLine(mcpJson);
 
                         return mcp;
                     }

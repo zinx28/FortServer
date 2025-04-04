@@ -194,7 +194,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                         StatsData = AccStatsDataParsed,
                         UserData = UserDataParsed,
                         UserFriends = FriendsDataParsed,
-                        LastUpdated = DateTime.Now,
+                        LastUpdated = DateTime.UtcNow,
                     };
 
                     CacheMiddleware.GlobalCacheProfiles.Add(UserDataParsed.AccountId, ProfileCacheEntry);

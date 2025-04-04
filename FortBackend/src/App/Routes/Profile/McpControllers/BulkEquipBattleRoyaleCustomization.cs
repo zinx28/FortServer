@@ -67,7 +67,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 
                 if (ProfileChanges.Count > 0)
                 {
-                    profileCacheEntry.LastUpdated = DateTime.Now;
+                    profileCacheEntry.LastUpdated = DateTime.UtcNow;
                     profileCacheEntry.AccountData.athena.RVN += 1;
                     profileCacheEntry.AccountData.athena.CommandRevision += 1;
                     profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots = UpdatedData;

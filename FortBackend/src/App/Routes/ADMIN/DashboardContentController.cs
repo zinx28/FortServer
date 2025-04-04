@@ -333,7 +333,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                     IniConfigFiles iniConfigFiles = IniManager.IniConfigData.FileData[SectionId];
                                     if(iniConfigFiles != null)
                                     {
-                                        iniConfigFiles.UploadedTime = DateTime.Now;
+                                        iniConfigFiles.UploadedTime = DateTime.UtcNow;
 
                                         IniConfigValues iniConfigValues = iniConfigFiles.Data[NewsID].Data[ArrayIndex];
 
@@ -408,120 +408,120 @@ namespace FortBackend.src.App.Routes.ADMIN
                             }
                         }
 
-                     /*   if (tempData.TryGetProperty("IniChanges", out JsonElement IniChangesData))
-                        {
-                            string dataValue = IniChangesData.ToString();
-                            if (!string.IsNullOrEmpty(dataValue))
+                        /*   if (tempData.TryGetProperty("IniChanges", out JsonElement IniChangesData))
+                           {
+                               string dataValue = IniChangesData.ToString();
+                               if (!string.IsNullOrEmpty(dataValue))
 
-                            {
-                                Console.WriteLine(dataValue);
+                               {
+                                   Console.WriteLine(dataValue);
 
-                                SavingCloudStorage DeserializeSavingCloudStorage = JsonConvert.DeserializeObject<SavingCloudStorage>(dataValue);
+                                   SavingCloudStorage DeserializeSavingCloudStorage = JsonConvert.DeserializeObject<SavingCloudStorage>(dataValue);
 
-                                if(DeserializeSavingCloudStorage != null)
-                                {
-                                    Console.WriteLine(DeserializeSavingCloudStorage.Title);
+                                   if(DeserializeSavingCloudStorage != null)
+                                   {
+                                       Console.WriteLine(DeserializeSavingCloudStorage.Title);
 
-                                    if (System.IO.File.Exists(PathConstants.CloudStorage.IniConfig))
-                                    {
-                                        var ReadFile = System.IO.File.ReadAllText(PathConstants.CloudStorage.IniConfig);
-                                        if (ReadFile != null)
-                                        {
-                                            IniConfig DeserializeConfig = JsonConvert.DeserializeObject<IniConfig>(ReadFile);
-                                            if( DeserializeConfig != null)
-                                            {
-                                                foreach (IniConfigFiles item in DeserializeConfig.FileData)
-                                                {
-                                                    if(item.Name == DeserializeSavingCloudStorage.Title)
-                                                    {
-                                                        Console.WriteLine("Valid File Name");
+                                       if (System.IO.File.Exists(PathConstants.CloudStorage.IniConfig))
+                                       {
+                                           var ReadFile = System.IO.File.ReadAllText(PathConstants.CloudStorage.IniConfig);
+                                           if (ReadFile != null)
+                                           {
+                                               IniConfig DeserializeConfig = JsonConvert.DeserializeObject<IniConfig>(ReadFile);
+                                               if( DeserializeConfig != null)
+                                               {
+                                                   foreach (IniConfigFiles item in DeserializeConfig.FileData)
+                                                   {
+                                                       if(item.Name == DeserializeSavingCloudStorage.Title)
+                                                       {
+                                                           Console.WriteLine("Valid File Name");
 
-                                                        foreach(IniConfigData item2 in item.Data)
-                                                        {
-                                                            if(item2.Title == DeserializeSavingCloudStorage.Body.Name)
-                                                            {
-                                                                Console.WriteLine("Valid File Name 2");
-                                                                item2.Data = DeserializeSavingCloudStorage.Body.CachedData;
+                                                           foreach(IniConfigData item2 in item.Data)
+                                                           {
+                                                               if(item2.Title == DeserializeSavingCloudStorage.Body.Name)
+                                                               {
+                                                                   Console.WriteLine("Valid File Name 2");
+                                                                   item2.Data = DeserializeSavingCloudStorage.Body.CachedData;
 
-                                                            }
-                                                        }
+                                                               }
+                                                           }
 
-                                                        item.UploadedTime = DateTime.Now;
-                                                    }
-                                                }
-
-
-                                                System.IO.File.WriteAllText(PathConstants.CloudStorage.IniConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
-                                                IniManager.IniConfigData = DeserializeConfig;
-                                            }
-                                          
-                                           // IniManager.IniConfigData = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
-                                        }
-                                    }
-                                }
-                                //SavingCloudStorage
-                                //  Console.WriteLine(dataValue.Title);
-                            }
-
-                        }
-
-                        if (tempData.TryGetProperty("BackendConfig", out JsonElement BackenddataElement))
-                        {
-                            string dataValue = BackenddataElement.ToString();
-                            //Console.WriteLine(dataValue);
-                            if (!string.IsNullOrEmpty(dataValue))
-                            {
-                                if (System.IO.File.Exists(PathConstants.CachedPaths.FortGame))
-                                {
-
-                                    var FortDataConfig = JsonConvert.DeserializeObject<FortGameConfig>(dataValue);
-                                    if(FortDataConfig != null)
-                                    {
-                                        var ReadFile = System.IO.File.ReadAllText(PathConstants.CachedPaths.FortGame);
-                                        if(ReadFile != null)
-                                        {
-                                            FortGameConfig DeserializeConfig = JsonConvert.DeserializeObject<FortGameConfig>(ReadFile);
-
-                                            if (DeserializeConfig != null)
-                                            {
-                                                Saved.DeserializeGameConfig.Season = FortDataConfig.Season;
-                                                Saved.DeserializeGameConfig.ForceSeason = FortDataConfig.ForceSeason;
-
-                                                DeserializeConfig.Season = FortDataConfig.Season;
-                                                DeserializeConfig.ForceSeason = FortDataConfig.ForceSeason;
+                                                           item.UploadedTime = DateTime.UtcNow;
+                                                       }
+                                                   }
 
 
-                                                System.IO.File.WriteAllText(PathConstants.CachedPaths.FortGame, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                                                   System.IO.File.WriteAllText(PathConstants.CloudStorage.IniConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
+                                                   IniManager.IniConfigData = DeserializeConfig;
+                                               }
 
-                        if (tempData.TryGetProperty("data", out JsonElement dataElement))
-                        {
-                            string dataValue = dataElement.ToString();
-                            //Console.WriteLine(dataValue);
-                            if (!string.IsNullOrEmpty(dataValue))
-                            {
-                                if (dataElement.ValueKind == JsonValueKind.Array && dataElement.GetArrayLength() == 0)
-                                {
-                                    Console.WriteLine("Array Empty!");
-                                }
-                                else
-                                {
-                                    Console.WriteLine(dataValue);
-                                    NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
-                                    NewsManager.Update();
-                                }
-                             
-                               
-                            }
-                        }*/
+                                              // IniManager.IniConfigData = JsonConvert.DeserializeObject<IniConfig>(filePath)!;
+                                           }
+                                       }
+                                   }
+                                   //SavingCloudStorage
+                                   //  Console.WriteLine(dataValue.Title);
+                               }
 
-    }
-}
+                           }
+
+                           if (tempData.TryGetProperty("BackendConfig", out JsonElement BackenddataElement))
+                           {
+                               string dataValue = BackenddataElement.ToString();
+                               //Console.WriteLine(dataValue);
+                               if (!string.IsNullOrEmpty(dataValue))
+                               {
+                                   if (System.IO.File.Exists(PathConstants.CachedPaths.FortGame))
+                                   {
+
+                                       var FortDataConfig = JsonConvert.DeserializeObject<FortGameConfig>(dataValue);
+                                       if(FortDataConfig != null)
+                                       {
+                                           var ReadFile = System.IO.File.ReadAllText(PathConstants.CachedPaths.FortGame);
+                                           if(ReadFile != null)
+                                           {
+                                               FortGameConfig DeserializeConfig = JsonConvert.DeserializeObject<FortGameConfig>(ReadFile);
+
+                                               if (DeserializeConfig != null)
+                                               {
+                                                   Saved.DeserializeGameConfig.Season = FortDataConfig.Season;
+                                                   Saved.DeserializeGameConfig.ForceSeason = FortDataConfig.ForceSeason;
+
+                                                   DeserializeConfig.Season = FortDataConfig.Season;
+                                                   DeserializeConfig.ForceSeason = FortDataConfig.ForceSeason;
+
+
+                                                   System.IO.File.WriteAllText(PathConstants.CachedPaths.FortGame, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+
+                           if (tempData.TryGetProperty("data", out JsonElement dataElement))
+                           {
+                               string dataValue = dataElement.ToString();
+                               //Console.WriteLine(dataValue);
+                               if (!string.IsNullOrEmpty(dataValue))
+                               {
+                                   if (dataElement.ValueKind == JsonValueKind.Array && dataElement.GetArrayLength() == 0)
+                                   {
+                                       Console.WriteLine("Array Empty!");
+                                   }
+                                   else
+                                   {
+                                       Console.WriteLine(dataValue);
+                                       NewsManager.ContentConfig = JsonConvert.DeserializeObject<ContentConfig>(dataValue);
+                                       NewsManager.Update();
+                                   }
+
+
+                               }
+                           }*/
+
+                    }
+                }
             }
             catch (Exception ex)
             {

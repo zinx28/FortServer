@@ -100,7 +100,7 @@ namespace FortBackend.src.App
 #if !DEVELOPMENT
             var DiscordBotServer = new Thread(async () =>
             {
-                await DiscordBot.Start(); // dont away... app.run does it for you
+                await DiscordBot.Start();
             });
             DiscordBotServer.Start();
 #endif

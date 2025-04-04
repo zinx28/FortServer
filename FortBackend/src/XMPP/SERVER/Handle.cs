@@ -66,7 +66,6 @@ namespace FortBackend.src.App.SERVER
                                     // case "login":
                                     //Login.Init(webSocket, xmlDoc, clientId, IP);
                                     // break;
-                                    // THIS PUSH WILL BREAK THE LUNA XMPP AND FIX THE NORMAL XMPP.. ILL THINK OF SOMETHING ELSE
                                     case "open":
                                         OpenHandler.Init(webSocket, UserDataSaved, clientId);
                                         break;

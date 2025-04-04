@@ -20,7 +20,7 @@ namespace FortLibrary.XMPP
         public lastPresenceUpdate lastPresenceUpdate { get; set; } = new lastPresenceUpdate();
         public string accountId { get; set; } = string.Empty;
 
-        public string[] Rooms = new string[] { };
+        public List<string> Rooms = new List<string> { };
 
         // PARTY V2? stuff i think~
         public string id = "";

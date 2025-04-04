@@ -1,6 +1,9 @@
 ﻿using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.App.Utilities.Saved;
 using FortLibrary;
+using FortLibrary.Dynamics;
 using FortLibrary.MongoDB.Module;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
@@ -191,5 +194,116 @@ namespace FortBackend.src.App.Routes.API
         {
             return Ok(new { });
         }
+
+        [HttpPost("game/v2/toxicity/account/{accountId}/report/{reportID}")]
+        [AuthorizeToken]
+        public async Task<IActionResult> ReportUserTox(string accountId, string reportID)
+        {
+            try
+            {
+                Response.ContentType = "application/json";
+
+                if(string.IsNullOrEmpty(Saved.DeserializeConfig.ReportsWebhookUrl))
+                    return Ok(new { });
+
+                using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
+                {
+                    string RequestBody = await reader.ReadToEndAsync();
+                    if (string.IsNullOrEmpty(RequestBody)) return Ok(new { }); // uhm?
+                    Console.WriteLine(RequestBody);
+                    //ReportUserClass
+                    ReportUserClass reportUserClass = JsonConvert.DeserializeObject<ReportUserClass>(RequestBody)!;
+
+
+                    ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+
+                    if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                    {
+                        ProfileCacheEntry reportCacheEntry = await GrabData.Profile(reportID);
+                        if (string.IsNullOrEmpty(reportCacheEntry.AccountId))
+                            return Ok(new { });
+
+                        var embed = new
+                        {
+                            title = "Reporter:",
+                            fields = new[]
+                            {
+                                new
+                                {
+                                    name = "Reason",
+                                    value = $"{reportUserClass.reason ?? "Unknown - Please Resend"}",
+                                    inline = true
+                                },
+                                new
+                                {
+                                    name = "Choosing To Report",
+                                    value = reportCacheEntry.UserData.Username ?? "uhm?",
+                                    inline = true
+                                },
+                                new
+                                {
+                                    name = "Details",
+                                    value = reportUserClass.details,
+                                    inline = false
+                                },
+                                new
+                                {
+                                    name = "Game Id",
+                                    value = reportUserClass.gameSessionId ?? "GameSessionID null",
+                                    inline = true
+                                },
+                                new
+                                {
+                                    name = "Token",
+                                    value = reportUserClass.token ?? "Token null!",
+                                    inline = true
+                                },
+                                new
+                                {
+                                    name = "Playlist ID",
+                                    value = reportUserClass.playlistName,
+                                    inline = true
+                                },
+                            },
+                            footer = new { text = $"This was sent by {profileCacheEntry.UserData.Username}" },
+                            color = 0x00FFFF
+                        };
+
+                        string jsonEmbed = JsonConvert.SerializeObject(embed, Formatting.Indented);
+                        string jsonPayload1 = JsonConvert.SerializeObject(new { embeds = new[] { embed } });
+
+                        using (var httpClient = new HttpClient())
+                        {
+                            HttpContent httpContent1 = new StringContent(jsonPayload1, Encoding.UTF8, "application/json");
+                            try
+                            {
+                                HttpResponseMessage response32 = await httpClient.PostAsync(Saved.DeserializeConfig.ReportsWebhookUrl, httpContent1);
+                                if (response32.IsSuccessStatusCode)
+                                {
+                                    Console.WriteLine("Message sent successfully!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Failed to send message. Status code: {response32.StatusCode}");
+                                }
+                            }
+                            catch (HttpRequestException ex)
+                            {
+                                Console.WriteLine($"Error sending request: {ex.Message}");
+                            }
+                            //}
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "ReportUserTox");
+            }
+
+            return Ok(new { });
+        }
+
     }
 }

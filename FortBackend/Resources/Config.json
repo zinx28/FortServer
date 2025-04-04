@@ -16,6 +16,7 @@
   "ApplicationURI": "",
   "ShopWebhookUrl": "",
   "DetectedWebhookUrl": "",
+  "ReportsWebhookUrl": "",
   "EnableDetections": true,
   "FullLockerForEveryone": false,
   "Cloudflare": false,

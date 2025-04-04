@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Resources\Json\discovery.json" />
+    <_ContentIncludedByDefault Remove="Resources\Json\Quests\Challenges\Season11\BattlePass\QuestBundle_S11_Discover.json" />
   </ItemGroup>
 
   <ItemGroup>

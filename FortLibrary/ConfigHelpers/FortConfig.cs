@@ -62,6 +62,7 @@ namespace FortLibrary.ConfigHelpers
         // - Discord Webhook messages - /
         public string ShopWebhookUrl { get; set; } = ""; // Not Finished * Skunekd? ig
         public string DetectedWebhookUrl { get; set; } = ""; // auto ban webhook
+        public string ReportsWebhookUrl { get; set; } = "";
 
         // - //
 

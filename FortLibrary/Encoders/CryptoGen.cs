@@ -9,6 +9,11 @@ namespace FortLibrary.Encoders
 {
     public class CryptoGen
     {
+        /// <summary>
+        /// Hash a password
+        /// </summary>
+        /// <param name="password">The given password to hash</param>
+        /// <returns>Returns a hashed password</returns>
         public static string HashPassword(string password)
         {
             byte[] salt = new byte[16];
@@ -24,6 +29,12 @@ namespace FortLibrary.Encoders
             return Convert.ToBase64String(hashBytes);
         }
 
+        /// <summary>
+        /// Verifies the hashed password the given password
+        /// </summary>
+        /// <param name="password">The given password to verify</param>
+        /// <param name="hashedPassword">The hashed password</param>
+        /// <returns>Returns true if the password is valid, otherwise false.</returns>
         public static bool VerifyPassword(string password, string hashedPassword)
         {
             byte[] hashBytes = Convert.FromBase64String(hashedPassword);

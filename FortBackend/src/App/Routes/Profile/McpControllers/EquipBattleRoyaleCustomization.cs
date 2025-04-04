@@ -8,6 +8,7 @@ using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.MongoDB.Module;
 using FortLibrary.Dynamics;
+using FortBackend.src.App.Utilities.Saved;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -46,22 +47,24 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         (SpecialItems.Contains(itemToSlot) ||
                             SpecialItems.Contains(itemToSlot.Split(":")[1]) ||
                             itemToSlot == ":")))
-                    { 
-                        AthenaItem FoundAccItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key.ToLower() == itemToSlot).Value;
-                        if (!SpecialItems.Contains(itemToSlot.Split(":")[1]) && FoundAccItem == null)
+                    {
+                        if (!Saved.DeserializeConfig.FullLockerForEveryone)
                         {
-                            throw new BaseError
+                            AthenaItem FoundAccItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key.ToLower() == itemToSlot).Value;
+                            if (!SpecialItems.Contains(itemToSlot.Split(":")[1]) && FoundAccItem == null)
                             {
-                                errorCode = "errors.com.epicgames.fortnite.invalid_parameter",
-                                errorMessage = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
-                                messageVars = new List<string> { itemToSlot },
-                                numericErrorCode = 16040,
-                                originatingService = "any",
-                                intent = "prod",
-                                error_description = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
-                            };
+                                throw new BaseError
+                                {
+                                    errorCode = "errors.com.epicgames.fortnite.invalid_parameter",
+                                    errorMessage = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
+                                    messageVars = new List<string> { itemToSlot },
+                                    numericErrorCode = 16040,
+                                    originatingService = "any",
+                                    intent = "prod",
+                                    error_description = $"Profile does not own item {itemToSlot} (slot {IndexWithinSlot})",
+                                };
+                            }
                         }
-
                     }
 
 

@@ -405,3 +405,7 @@ CosmosBackend/Resources/Certificates/lunar.cert
 *.xml
 /TLS-TEST
 /build
+/FortLauncher/FortLauncherV2/dist-electron
+/FortLauncher/FortLauncherV2/.vscode
+/FortLauncher/FortLauncherV2/out
+/FortRedirect

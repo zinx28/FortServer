@@ -8,7 +8,7 @@ Added/Not Added
 - Cloudstorage, ClientSaving [+]
 - 24/7 Shop [+]
 - XMPP [!]
-- PartyV2 [-]
+- PartyV2 [!]
 - Friends [+]
 - Matchmaker (w/ FortHoster) [!]
 

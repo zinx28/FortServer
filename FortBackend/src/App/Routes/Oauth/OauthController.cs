@@ -671,9 +671,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 }
 
                 if (string.IsNullOrEmpty(DisplayName))
-                {
                     return Ok(new { });
-                }
 
                 var DeviceID = Hex.GenerateRandomHexString(16);
 

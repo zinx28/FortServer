@@ -106,7 +106,7 @@ namespace FortBackend.src.App.SERVER.Root
                         break;
                 }
 
-                if (string.IsNullOrEmpty(Type) || string.IsNullOrEmpty((string)xmlDoc.Root?.Attribute("to")!) || string.IsNullOrEmpty((string)xmlDoc.Root.Attribute("id")!))
+                if (/*string.IsNullOrEmpty(Type) || */xmlDoc.Root?.Attribute("to") == null || xmlDoc.Root.Attribute("id") == null)
                     return;
 
                 await XmppFriend.SendMessageToClient(Saved_Clients.jid, xmlDoc, body);

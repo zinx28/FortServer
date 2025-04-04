@@ -1,0 +1,14 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
+  "include": [
+    "electron.vite.config.*",
+     "src/backend/**/*"
+   ],
+  "compilerOptions": {
+    "target": "es2022",   
+    "module": "commonjs",  
+    "sourceMap": false,
+    "composite": true,
+    "types": ["electron-vite/node"]
+  }
+}

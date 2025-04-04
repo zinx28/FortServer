@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "composite": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": [
+      "electron-vite/node", 
+      "@electron-toolkit/preload",
+    ],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "electron.vite.config.*", 
+    "src/main/**/*", 
+    "src/**/*"
+  ],
+}

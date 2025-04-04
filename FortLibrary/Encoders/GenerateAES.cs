@@ -5,6 +5,12 @@ namespace FortLibrary.Encoders
 {
     public class GenerateAES
     {
+        /// <summary>
+        /// Encrypts a string using AES-256 with CBC mode and PKCS7 padding.
+        /// </summary>
+        /// <param name="input">The string to encrypt.</param>
+        /// <param name="key">The encryption key.</param>
+        /// <returns>A base64-encoded string of the encrypted data.</returns>
         public static string EncryptAES256(string input, string key)
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);
@@ -34,6 +40,12 @@ namespace FortLibrary.Encoders
             }
         }
 
+        /// <summary>
+        /// Decrypts a base64-encoded string using AES-256 with CBC mode and PKCS7 padding.
+        /// </summary>
+        /// <param name="encryptedBase64">The base64-encoded string to decrypt.</param>
+        /// <param name="key">The encryption key.</param>
+        /// <returns>The decrypted string.</returns>
         public static string DecryptAES256(string encryptedBase64, string key)
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);

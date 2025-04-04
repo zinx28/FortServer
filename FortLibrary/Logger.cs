@@ -49,38 +49,60 @@ namespace FortLibrary
             }
         }
 
-        public static void PlainLog(string Message)
+        /// <summary>
+        /// Logs plain text
+        /// </summary>
+        /// <param name="message">Message that will be printed</param>
+        public static void PlainLog(string message)
         {
             if(writer != null)
-                writer.WriteLine(Message);
+                writer.WriteLine(message);
 
-            Console.WriteLine(Message);
+            Console.WriteLine(message);
         }
 
-        public static void Log(string Message, string Custom = "Log")
+        /// <summary>
+        /// Logs the default log
+        /// </summary>
+        /// <param name="message">Message that will be printed</param>
+        /// <param name="custom">Custom log type (e.g., 'Log', 'FortServer')</param>
+        public static void Log(string message, string custom = "Log")
         {
             if (writer != null)
-                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}] " + Message);
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {custom}] " + message);
 
-            Console.WriteLine($"\u001B[32m[{Custom}]: {Message}\u001B[0m");
+            Console.WriteLine($"\u001B[32m[{custom}]: {message}\u001B[0m");
         }
 
-        public static void Warn(string Message, string Custom = "Warn")
+        /// <summary>
+        /// Logs the warn log
+        /// </summary>
+        /// <param name="message">Message that will be printed</param>
+        /// <param name="custom">Custom log type (e.g., 'Warn', 'FortServer')</param>
+        public static void Warn(string message, string custom = "Warn")
         {
             if (writer != null)
-                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}:Warn] " + Message);
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {custom}:Warn] " + message);
 
-            Console.WriteLine($"\u001B[33m[{Custom}]: {Message}\u001B[0m");
+            Console.WriteLine($"\u001B[33m[{custom}]: {message}\u001B[0m");
         }
 
-        public static void Error(string Message, string Custom = "Error")
+        /// <summary>
+        /// Logs the error log
+        /// </summary>
+        /// <param name="message">Message that will be printed</param>
+        /// <param name="custom">Custom log type (e.g., 'Error', 'FortServer')</param>
+        public static void Error(string message, string custom = "Error")
         {
             if (writer != null)
-                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {Custom}] " + Message);
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {custom}:Error] " + message);
 
-            Console.WriteLine($"\u001B[31m[{Custom}]: {Message}\u001B[0m");
+            Console.WriteLine($"\u001B[31m[{custom}]: {message}\u001B[0m");
         }
 
+        /// <summary>
+        /// Closes the log writer
+        /// </summary>
         public static void Close()
         {
             if (writer == null) return;

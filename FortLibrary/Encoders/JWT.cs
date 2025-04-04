@@ -9,6 +9,13 @@ namespace FortLibrary.Encoders
 {
     public class JWT
     {
+        /// <summary>
+        /// Generates the JWT Token from the given claims and expiration time
+        /// </summary>
+        /// <param name="claims">An array of claims that will be included in the JWT token.</param>
+        /// <param name="expires">The expiration time in hours for the JWT token.</param>
+        /// <param name="secret">The secret key used to sign the JWT token.</param>
+        /// <returns>The JWT token as a string</returns>
         public static string GenerateJwtToken(Claim[] claims, int expires, string secret)
         {
             var GrabBytes = new byte[32];
@@ -28,6 +35,12 @@ namespace FortLibrary.Encoders
             return tokenString;
         }
 
+        /// <summary>
+        /// Generates a random JWT Token from the given expiration time
+        /// </summary>
+        /// <param name="expires">The expiration time in hours for the JWT token.</param>
+        /// <param name="secret">The secret key used to sign the JWT token.</param>
+        /// <returns>The JWT token as a string</returns>
         public static string GenerateRandomJwtToken(int expires, string secret)
         {
             var GrabBytes = new byte[32];
@@ -47,6 +60,12 @@ namespace FortLibrary.Encoders
             return tokenString;
         }
 
+        /// <summary>
+        /// Verifies the given token by a 'secret'
+        /// </summary>
+        /// <param name="token">The jwt token string to verify.</param>
+        /// <param name="secret">The secret key used to validate the JWT token.</param>
+        /// <returns>Returns true if the token is valid, otherwise false.</returns>
         public static bool VerifyJwtToken(string token, string secret) // string secretKey
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -63,6 +82,7 @@ namespace FortLibrary.Encoders
                 ValidateAudience = false
             };
 
+            // todo redo this
             try
             {
                 tokenHandler.ValidateToken(token, parameters, out _);

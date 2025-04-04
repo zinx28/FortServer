@@ -166,8 +166,8 @@ namespace FortBackend.src.App.Utilities.Helpers
                     {
                         uniqueFilename = file.Name,
                         filename = file.Name,
-                        hash = Hex.MakeHexWithString(file.Name),
-                        hash256 = Hex.MakeHexWithString2(file.Name),
+                        hash = Hex.ConvStringToSHA1(file.Name),
+                        hash256 = Hex.ConvStringToSHA256(file.Name),
                         length = retardedfilecal,
                         contentType = "application/octet-stream",
                         uploaded = file.UploadedTime.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),

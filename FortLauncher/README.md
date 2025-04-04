@@ -1,11 +1,12 @@
-# FORTLAUNCHER (WIP)
+# FORTLAUNCHER (Rewrite)
 
-This launcher may have issues, won't support latest (detection broke -> 30.20)
+### this launcher is very unfinished and buggy
+-- i recommend v1 [here](https://github.com/zinx28/FortServer/tree/57da7350883880e3e6f44bfb8d2248132ecc0b4e/FortLauncher)
 
+## Installation
 
-- any issues check log file this is located in %appdata%/FortLauncher
+- npm or bun!
 
-^^ i'll redo this readme in the future ;(
-
--> THIS REQUIRES THE BACKEND (CHANGED Services/Globals/LauncherConfig.cs -> http://127.0.0.1 to your vps ip/ domain?)
-
+- npm i 
+- npm run dev 
+- more info like at some potujn!

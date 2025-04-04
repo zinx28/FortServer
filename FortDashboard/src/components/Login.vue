@@ -65,7 +65,7 @@ const toggleCheckbox = () => {
     <div class="" id="error-text">
       {{ ErrorMessage }}
     </div>
-    <p class="">Any issues, suggestions join the discord!</p>
+    <p class="">Any issues, suggestions <a href="https://discord.gg/8kCu6PDvPd">join the discord!</a></p>
   </form>
   </div>
 </template>
@@ -78,6 +78,11 @@ const toggleCheckbox = () => {
   align-items: center;
   justify-content: center;
   width: 300px;
+  border: 0.5px;
+  border-style: solid;
+  border-color: #313335;
+  padding: 30px;
+  border-radius: 10px;
 }
 .LoginTitle {
   font-size: 30px;

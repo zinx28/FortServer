@@ -15,6 +15,10 @@ namespace FortBackend.src.App.Utilities.Helpers
     {
         public static async Task<string> Init(string Ip, User UserData)
         {
+            if (!Saved.Saved.DeserializeConfig.EnableDetections)
+                return "ok";
+            if (MongoDBStart.Database is null) return "unknown";
+
             IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database.GetCollection<StoreInfo>("StoreInfo");
             var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, Ip);
             var count = await StoreInfocollection.CountDocumentsAsync(filter);
@@ -52,9 +56,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                     {
                         var FindAccessToken = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == UserData.AccountId);
                         if(FindAccessToken != null)
-                        {
                             GlobalData.AccessToken.Remove(FindAccessToken);
-                        }
                         
                         await MongoSaveData.SaveToDB(UserData.AccountId);
                         CacheMiddleware.GlobalCacheProfiles.Remove(UserData.AccountId);
@@ -78,9 +80,6 @@ namespace FortBackend.src.App.Utilities.Helpers
                 {
                     return "unknown";
                 }
-
-                //return BadRequest(new { Error = "You are banned!" });
-
             }
             return "ok";
         }

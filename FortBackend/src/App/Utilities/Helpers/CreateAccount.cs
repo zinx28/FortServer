@@ -40,21 +40,17 @@ namespace FortBackend.src.App.Utilities.Helpers
         {
             try
             {
-                
+
                 var Ip = "";
                 if (Saved.Saved.DeserializeConfig.Cloudflare)
-                {
                     Ip = httpContext.Request.Headers["CF-Connecting-IP"];
-                }
                 else
-                {
                     Ip = httpContext.Connection.RemoteIpAddress!.ToString();
-                }
+
                 var username = responseData1.username;
                 var GlobalName = responseData1.global_name;
                 var DiscordId = responseData1.id;
 
-                //var email = responseData1.email;
                 IMongoCollection<User> Usercollection = _database.GetCollection<User>("User");
                 IMongoCollection<UserFriends> UserFriendscollection = _database.GetCollection<UserFriends>("UserFriends");
                 IMongoCollection<Account> Accountcollection = _database.GetCollection<Account>("Account");
@@ -100,7 +96,8 @@ namespace FortBackend.src.App.Utilities.Helpers
                     Email = Generate.RandomString(10) + "@fortbackend.com",
                     Password = Generate.RandomString(15),
                     UserIps = UserIp,
-                    banned = BanUser
+                    banned = BanUser,
+                    NewAccessToken = NewAccessToken,
                 });
 
                 return NewAccessToken;

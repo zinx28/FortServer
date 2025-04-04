@@ -20,7 +20,8 @@ namespace FortBackend.src.App.Utilities.MongoDB.Management
             if(string.IsNullOrEmpty(CreateAccArg.AccountID))
                 CreateAccArg.AccountID = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12) + CreateAccArg.DiscordId;
 
-            string NewAccessToken = JWT.GenerateRandomJwtToken(15, Saved.Saved.DeserializeConfig.JWTKEY);
+            if(string.IsNullOrEmpty(CreateAccArg.NewAccessToken))
+                CreateAccArg.NewAccessToken = JWT.GenerateRandomJwtToken(15, Saved.Saved.DeserializeConfig.JWTKEY);
 
             User UserData = new User
             {
@@ -28,7 +29,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Management
                 DiscordId = CreateAccArg.DiscordId,
                 Username = CreateAccArg.DisplayName,
                 Email = CreateAccArg.Email,
-                accesstoken = NewAccessToken,
+                accesstoken = CreateAccArg.NewAccessToken,
                 UserIps = new string[0],
                 banned = false,
                 Password = CryptoGen.HashPassword(CreateAccArg.Password),

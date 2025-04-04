@@ -95,17 +95,18 @@ namespace FortLibrary.ConfigHelpers
 
         // -- //
 
-        public bool EnableLogs { get; set; } = false;
-
-        public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
+        public bool EnableLogs { get; set; } = false; // http requests
 
         // - could be in game config in the future
         public bool FullLockerForEveryone { get; set; } = false; // full locker (should show all up to 29.10 - .20 i forgot)
         // ^^ i need a better name
         public bool SecureSite { get; set; } = false; // if your site is https then true! but you could use a proxy that converts http://127.0.0.1:1111 -> https://yourdomain.com
-        // USELESS ATM
 
-        public bool EnableDetections { get; set; } = true; // this isn't used atm
+        // - DETECTIONS - //
+        public bool EnableDetections { get; set; } = true; // most of the code has this forced on, some parts are slowly using this check
+        public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
+
+        // -- //
         public bool AllowAllCores { get; set; } = false;
         
     }

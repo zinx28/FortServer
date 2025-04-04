@@ -65,32 +65,36 @@ namespace FortBackend.src.App.Utilities.Helpers
                 string NewAccessToken = JWT.GenerateRandomJwtToken(15, Saved.Saved.DeserializeConfig.JWTKEY);
                 string[] UserIp = new string[] { Ip };
 
-
-                IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
-                var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, Ip);
-                var count = await StoreInfocollection.CountDocumentsAsync(filter);
                 bool BanUser = false;
-                if (count > 0)
+
+                if (Saved.Saved.DeserializeConfig.EnableDetections)
                 {
-                    BanUser = true;
-
-                    var update = Builders<StoreInfo>.Update
-                        .PushEach(e => e.UserIps, new[] { Ip })
-                        .PushEach(e => e.UserIds, new[] { AccountId });
-
-                    var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);
-
-                    if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
+                    IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
+                    var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, Ip);
+                    var count = await StoreInfocollection.CountDocumentsAsync(filter);
+                    if (count > 0)
                     {
-                        if (Saved.Saved.DeserializeConfig.DetectedWebhookUrl != null)
+                        BanUser = true;
+
+                        var update = Builders<StoreInfo>.Update
+                            .PushEach(e => e.UserIps, new[] { Ip })
+                            .PushEach(e => e.UserIds, new[] { AccountId });
+
+                        var updateResult = await StoreInfocollection.UpdateManyAsync(filter, update);
+
+                        if (updateResult.IsAcknowledged && updateResult.ModifiedCount > 0)
                         {
-                            await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, responseData1);
+                            if (Saved.Saved.DeserializeConfig.DetectedWebhookUrl != null)
+                            {
+                                await BanAndWebHooks.Init(Saved.Saved.DeserializeConfig, responseData1);
+                            }
                         }
                     }
                 }
 
                 await MongoDBCreateAccount.Init(new CreateAccountArg
                 {
+                    AccountID = AccountId,
                     DiscordId = DiscordId,
                     DisplayName = Global ? GlobalName : username,
                     Email = Generate.RandomString(10) + "@fortbackend.com",

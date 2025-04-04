@@ -21,7 +21,7 @@ namespace FortLibrary.ConfigHelpers
 
         // change with a different method
         public long FileSize { get; set; } = 0;
-        public DateTime UploadedTime { get; set; } = DateTime.Now;
+        public DateTime UploadedTime { get; set; } = DateTime.UtcNow;
     }
 
     public class IniConfigData

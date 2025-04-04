@@ -1,4 +1,5 @@
-﻿using FortLibrary.Encoders;
+﻿using FortLibrary.Default;
+using FortLibrary.Encoders;
 using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.MongoDB;
 using FortLibrary.MongoDB.Module;
@@ -10,19 +11,20 @@ namespace FortBackend.src.App.Utilities.MongoDB.Management
     {
         public static async Task Init(CreateAccountArg CreateAccArg)
         {
+            if (MongoDBStart.Database is null) return;
             IMongoCollection<User> Usercollection = MongoDBStart.Database.GetCollection<User>("User");
             IMongoCollection<UserFriends> UserFriendscollection = MongoDBStart.Database.GetCollection<UserFriends>("UserFriends");
             IMongoCollection<Account> Accountcollection = MongoDBStart.Database.GetCollection<Account>("Account");
             IMongoCollection<StatsInfo> Statscollection = MongoDBStart.Database.GetCollection<StatsInfo>("StatsInfo");
+            
+            if(string.IsNullOrEmpty(CreateAccArg.AccountID))
+                CreateAccArg.AccountID = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12) + CreateAccArg.DiscordId;
 
-            string AccountId = Guid.NewGuid().ToString("N").Replace("-", "").Substring(0, 12) + CreateAccArg.DiscordId;
             string NewAccessToken = JWT.GenerateRandomJwtToken(15, Saved.Saved.DeserializeConfig.JWTKEY);
-
-            //string Password = BCrypt.Net.BCrypt.HashPassword(CreateAccArg.Password);
 
             User UserData = new User
             {
-                AccountId = AccountId,
+                AccountId = CreateAccArg.AccountID,
                 DiscordId = CreateAccArg.DiscordId,
                 Username = CreateAccArg.DisplayName,
                 Email = CreateAccArg.Email,
@@ -34,172 +36,48 @@ namespace FortBackend.src.App.Utilities.MongoDB.Management
 
             UserFriends UserFriendsData = new UserFriends
             {
-                AccountId = AccountId,
+                AccountId = CreateAccArg.AccountID,
                 DiscordId = CreateAccArg.DiscordId
             };
 
-            Account AccountData = new Account
+            Account AccountData = DefaultAccount.Init(new AccountJsonFor
             {
-                AccountId = AccountId,
-                athena = new Athena()
-                {
-                    Items = new Dictionary<string, AthenaItem>()
-                    {
-                        ["AthenaPickaxe:DefaultPickaxe"] = new AthenaItem
-                        {
-                            templateId = "AthenaPickaxe:DefaultPickaxe",
-                            attributes = new AthenaItemAttributes
-                            {
-                                item_seen = true
-                            }
-                        },
-                        ["AthenaGlider:DefaultGlider"] = new AthenaItem
-                        {
-                            templateId = "AthenaGlider:DefaultGlider",
-                            attributes = new AthenaItemAttributes
-                            {
-                                item_seen = true
-                            }
-                        },
-                        ["AthenaDance:EID_DanceMoves"] = new AthenaItem
-                        {
-                            templateId = "AthenaDance:EID_DanceMoves",
-                            attributes = new AthenaItemAttributes
-                            {
-                                item_seen = true
-                            }
-                        }
-                    },
-                    loadouts_data = new Dictionary<string, SandboxLoadout>()
-                    {
-                        ["sandbox_loadout"] = new SandboxLoadout() // dont need much just the default obj
-                        {
-                            templateId = "CosmeticLocker:cosmeticlocker_athena",
-                            attributes = new SandboxLoadoutAttributes
-                            {
-                                locker_slots_data = new SandboxLoadoutSlots
-                                {
-                                    slots = new LockerSlotsData
-                                    {
-                                        musicpack = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                ""
-                                            }
-                                        },
-                                        character = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                ""
-                                            },
-                                            activevariants = new List<object>()
-                                        },
-                                        backpack = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                ""
-                                            },
-                                            activevariants = new List<object>()
-                                        },
-                                        pickaxe = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                "AthenaPickaxe:DefaultPickaxe"
-                                            },
-                                            activevariants = new List<object>()
-                                        },
-                                        skydivecontrail = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                ""
-                                            }
-                                        },
-                                        dance = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                ""
-                                            }
-                                        },
-                                        loadingscreen = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                ""
-                                            }
-                                        },
-                                        glider = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                "AthenaGlider:DefaultGlider"
-                                            }
-                                        },
-                                        itemwrap = new Slots
-                                        {
-                                            items = new List<string>
-                                            {
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                "",
-                                                ""
-                                            }
-                                        }
-                                    }
-                                },
-                                use_count = 0,
-                                banner_color_template = "",
-                                banner_icon_template = "",
-                                locker_name = "",
-                                item_seen = false,
-                                favorite = false
-                            },
-                            quantity = 1
-                        }
-                    }
-                },
-                commoncore = new CommonCore()
-                {
-                    Items = new Dictionary<string, CommonCoreItem>()
-                    {
-                        ["Currency"] = new CommonCoreItem
-                        {
-                            templateId = "Currency:MtxPurchased",
-                            //attributes = new CommonCoreItemAttributes
-                            //{
-                            //     platform = "EpicPC"
-                            // },
-                            quantity = 1000
-                        }
-                    }
-                },
-                DiscordId = CreateAccArg.DiscordId
-            };
+                AccountID = CreateAccArg.AccountID,
+                DiscordId = CreateAccArg.DiscordId,
+            });
 
             StatsInfo statsData = new StatsInfo()
             {
-                AccountId = AccountId,
+                AccountId = CreateAccArg.AccountID,
                 DiscordId = CreateAccArg.DiscordId
             };
 
-            await Accountcollection.InsertOneAsync(AccountData); // first if it fails then tell the user
-            Usercollection.InsertOne(UserData);
-            UserFriendscollection.InsertOne(UserFriendsData);
-            Statscollection.InsertOne(statsData); // stats data
+            var userBulkOps = new List<WriteModel<User>>()
+            {
+                new InsertOneModel<User>(UserData)
+            };
+
+            var userFriendsBulkOps = new List<WriteModel<UserFriends>>()
+            {
+                new InsertOneModel<UserFriends>(UserFriendsData)
+            };
+
+            var accountBulkOps = new List<WriteModel<Account>>()
+            {
+                new InsertOneModel<Account>(AccountData)
+            };
+
+            var statsBulkOps = new List<WriteModel<StatsInfo>>()
+            {
+                new InsertOneModel<StatsInfo>(statsData)
+            };
+
+            await Task.WhenAll(
+                Usercollection.BulkWriteAsync(userBulkOps),
+                UserFriendscollection.BulkWriteAsync(userFriendsBulkOps),
+                Accountcollection.BulkWriteAsync(accountBulkOps),
+                Statscollection.BulkWriteAsync(statsBulkOps)
+            );
         }
     }
 }

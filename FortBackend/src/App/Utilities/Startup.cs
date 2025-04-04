@@ -39,14 +39,21 @@ namespace FortBackend.src.App.Utilities
             {
                 options.AddPolicy("DynamicCORS", policy =>
                 {
-                    policy.WithOrigins("http://localhost:2222", Saved.Saved.DeserializeConfig.DashboardUrl)
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
+                    if (Saved.Saved.DeserializeConfig.AllowAllCores) // pretty sure this is how it works
+                        policy.AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                    else
+                        policy.WithOrigins("http://localhost:2222", Saved.Saved.DeserializeConfig.DashboardUrl)
+                           .AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .AllowCredentials();
+
                 });
             });
 
-            MongoDBStart.Initialize(services, Configuration); // better if this was a new MongoDBStart();
+            MongoDBStart.Initialize(services, Configuration);
 
             services.AddSingleton<CacheMiddleware>();
             services.AddHostedService<CacheMiddleware>();

@@ -106,6 +106,7 @@ namespace FortLibrary.ConfigHelpers
         // USELESS ATM
 
         public bool EnableDetections { get; set; } = true; // this isn't used atm
+        public bool AllowAllCores { get; set; } = false;
         
     }
 }

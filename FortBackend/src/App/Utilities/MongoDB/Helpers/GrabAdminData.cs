@@ -209,10 +209,11 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     AdminData adminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == Saved.Saved.DeserializeConfig.AdminEmail)!;
                     if (adminData != null)
                     {
-                        
+                        FortConfig DeserializeConfig = new FortConfig();
+                        string FortConfigStr = File.ReadAllText(PathConstants.CachedPaths.FortConfig);
+                        if (!string.IsNullOrEmpty(FortConfigStr))
+                            DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(FortConfigStr);
 
-                        FortConfig DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(File.ReadAllText(PathConstants.CachedPaths.FortConfig));
-                        
                         adminData.AdminUserEmail = Email;
                         adminData.bIsSetup = false;
 
@@ -221,8 +222,6 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
                         Saved.Saved.DeserializeConfig.AdminEmail = Email;
                         Saved.Saved.DeserializeConfig.AdminPassword = Password;
-
-                     
 
                         File.WriteAllText(PathConstants.CachedPaths.FortConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
 

@@ -48,19 +48,19 @@ namespace FortBackend.src.App.Utilities.MongoDB
 
             Database = database;
             Handlers.LaunchDataBase(database); // legit helps and cleans so much stuff up
-
+            
             services.AddSingleton<IMongoClient>(new MongoClient(connectionString));
+
+            var conventionPack = new ConventionPack
+            {
+                new IgnoreIfDefaultConvention(true),
+                new IgnoreExtraElementsConvention(true)
+            };
+            ConventionRegistry.Register("IgnoreConventions", conventionPack, t => true);
 
             services.AddScoped<IMongoDatabase>(serviceProvider =>
             {
                 var mongoClient = serviceProvider.GetRequiredService<IMongoClient>();
-
-                var conventionPack = new ConventionPack
-                {
-                    new IgnoreIfDefaultConvention(true),
-                    new IgnoreExtraElementsConvention(true)
-                };
-                ConventionRegistry.Register("IgnoreConventions", conventionPack, t => true);
 
                 return mongoClient.GetDatabase(connectionName);
             });

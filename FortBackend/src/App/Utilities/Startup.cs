@@ -37,20 +37,26 @@ namespace FortBackend.src.App.Utilities
 
             services.AddCors(options =>
             {
-                options.AddPolicy("DynamicCORS", policy =>
+                if (Saved.Saved.DeserializeConfig.AllowAllCores)
                 {
-                    if (Saved.Saved.DeserializeConfig.AllowAllCores) // pretty sure this is how it works
-                        policy.AllowAnyOrigin()
+                    options.AddPolicy("AllowAllWithCredentials", policy =>
+                    {
+                        policy.SetIsOriginAllowed(_ => true)
+                              .AllowAnyHeader()
+                              .AllowAnyMethod()
+                              .AllowCredentials();
+                    });
+                }
+                else
+                {
+                    options.AddPolicy("DynamicCORS", policy =>
+                    {
+                        policy.WithOrigins("http://localhost:2222", Saved.Saved.DeserializeConfig.DashboardUrl)
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();
-                    else
-                        policy.WithOrigins("http://localhost:2222", Saved.Saved.DeserializeConfig.DashboardUrl)
-                           .AllowAnyHeader()
-                           .AllowAnyMethod()
-                           .AllowCredentials();
-
-                });
+                    });
+                }
             });
 
             MongoDBStart.Initialize(services, Configuration);
@@ -76,7 +82,11 @@ namespace FortBackend.src.App.Utilities
                 app.UseMiddleware<LoggingMiddleware>();
             }
 
-            app.UseCors("DynamicCORS");
+            if (Saved.Saved.DeserializeConfig.AllowAllCores)
+                app.UseCors("AllowAllWithCredentials");
+            else
+                app.UseCors("DynamicCORS");
+
             app.UseRouting();
 
             Logger.Log("Loading all endpoints");

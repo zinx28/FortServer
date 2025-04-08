@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Text.Json;
 using static FortBackend.src.App.Routes.ADMIN.NewFolder.ContentUpdate;
+using static FortBackend.src.App.Utilities.MongoDB.Helpers.GrabAdminData;
 
 namespace FortBackend.src.App.Routes.ADMIN
 {
@@ -188,15 +189,21 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 {
                                     if (!string.IsNullOrEmpty(grantDataRQ.DiscordID))
                                     {
-                                        bool AddAdmin = await GrabAdminData.AddAdmin(grantDataRQ.DiscordID, adminData);
-                                        if (AddAdmin)
+                                        NewAdminClass AddAdmin = await GrabAdminData.AddAdmin(grantDataRQ.DiscordID, adminData);
+                                        if (!string.IsNullOrEmpty(AddAdmin.UserName))
                                         {
                                             return Json(new
                                             {
                                                 message = "Added Account!",
+                                                data = new
+                                                {
+                                                    DisplayName = AddAdmin.UserName,
+                                                    AccountId = AddAdmin.AccountID
+                                                },
                                                 error = false,
                                             });
                                         }
+
                                         return Json(new
                                         {
                                             message = "Failed To Account!",

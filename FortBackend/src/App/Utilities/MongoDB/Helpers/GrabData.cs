@@ -17,21 +17,14 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
             try
             {
-                var GrabData = default(KeyValuePair<string, ProfileCacheEntry>);
-                if (CacheMiddleware.GlobalCacheProfiles.Any())
+                KeyValuePair<string, ProfileCacheEntry> GrabData = CacheMiddleware.GlobalCacheProfiles .FirstOrDefault(e =>
                 {
-                    // ik it looks bad but deal with it </3
-                    GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e =>
-                    {
-                        //Console.WriteLine(e.Value.UserData.GetType().GetProperty(SearchKey));
-                        //Console.WriteLine(e.Value.UserData.GetType().GetProperty(SearchKey)?.GetValue(e.Value.UserData));
-                        var t = e.Value.UserData.GetType().GetProperty(SearchKey)?.GetValue(e.Value.UserData)?.ToString();
+                    var t = e.Value.UserData.GetType().GetProperty(SearchKey)?
+                        .GetValue(e.Value.UserData)?.ToString();
 
-                        return t == DiscordId;
-                    });
-               
-                    //Console.WriteLine(SearchKey);
-                }
+                    return t == DiscordId;
+                });
+
                 if (GrabData.Value == null)
                 {
                     var UserData = await Handlers.FindOne<User>(SearchKey, DiscordId, true);

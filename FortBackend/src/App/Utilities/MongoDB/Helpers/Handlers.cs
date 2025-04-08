@@ -15,7 +15,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             _database = database;
         }
 
-        public async static Task<string> FindOne<T>(string FindData, object valueData, bool MakeItSo11 = false)
+        public async static Task<string> FindOne<T>(string FindData, object valueData, bool MatchValue = false)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     var filterBuilder = Builders<T>.Filter;
                     var exactValue = Regex.Escape(valueData?.ToString()!);
                     var regexPattern = "";
-                    if(MakeItSo11)
+                    if(!MatchValue)
                     {
                         regexPattern = $"{exactValue}";
                     }

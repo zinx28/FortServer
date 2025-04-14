@@ -185,7 +185,6 @@ export default function DashboardBase() {
 
   const GrabPanelData = async () => {
     var apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    console.log(apiUrl);
     const apiResponse = await fetch(`${apiUrl}/admin/new/dashboard/panel`, {
       method: "POST",
       headers: {

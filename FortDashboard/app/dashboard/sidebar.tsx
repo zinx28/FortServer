@@ -1,15 +1,31 @@
-import { Activity, Settings, Users } from "lucide-react";
+import { Activity, LogOut, Settings, Users } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/hooks/useUserStore";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 
 const Sidebar = () => {
   const { user } = useUserStore();
   const pathname = usePathname();
 
-  console.log(user?.displayName);
+  const LogoutDashboard = async () => {
+    var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const response = await fetch(`${apiUrl}/admin/new/logout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      credentials: "include",
+    });
+
+    const JsonParsed = await response.json();
+
+    if (JsonParsed) {
+      window.location.reload();
+    }
+  }
 
   return (
     <div className="fixed left-0 top-0 h-full w-64 border-r bg-muted/40 z-50">
@@ -63,10 +79,25 @@ const Sidebar = () => {
             <div className="flex-1">
               <p className="text-sm font-medium">{user?.displayName}</p>
             </div>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <Settings className="h-4 w-4" />
-              <span className="sr-only">Settings</span>
-            </Button>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="h-8 w-8">
+                    <Settings className="h-4 w-4" />
+                    <span className="sr-only">Settings</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem>
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="text-red-500" onClick={() => LogoutDashboard()}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Logout</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
           </div>
         </div>
       </div>

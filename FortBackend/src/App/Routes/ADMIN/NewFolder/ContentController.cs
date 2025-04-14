@@ -114,7 +114,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                             },
                             "news" when contentId == "3" => new
                             {
-                                Type = "Playlist",
+                                Type = "LoginMessage",
                                 Data = NewsManager.ContentConfig.loginmessage,
                             },
                             "news" when contentId == "4" => new

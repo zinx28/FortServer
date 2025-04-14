@@ -4,6 +4,7 @@ using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.Saved;
 using FortLibrary.ConfigHelpers;
+using FortLibrary.Dynamics;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using System;
@@ -32,8 +33,10 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
         }
         public class ContentRequest
         {
-            public string title { get; set; } = string.Empty;
-            public string body { get; set; } = string.Empty;
+            public Languages title { get; set; } = new();
+            public Languages? display_name { get; set; } = new();
+            public Languages? body { get; set; } = new();
+            public Languages? description { get; set; } = new();
             public string? image { get; set; } = null;
         }
         public static object Update(string Body, string ContentName, string ContentID, int Index)
@@ -60,8 +63,10 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                             .Select(e => e))
                             .ToList();
 
-                        NewCombineed[Index].title.en = contentRequest.title;
-                        NewCombineed[Index].body.en = contentRequest.body;
+                        NewCombineed[Index].title = contentRequest.title;
+                        if (contentRequest.body is not null)
+                            NewCombineed[Index].body = contentRequest.body;
+
                         NewCombineed[Index].image = contentRequest.image;
 
                         NewsManager.Update();
@@ -77,8 +82,9 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                         // Emergency
                         var EmergencyContent = NewsManager.ContentConfig.emergencynotice[Index];
 
-                        EmergencyContent.title.en = contentRequest.title;
-                        EmergencyContent.body.en = contentRequest.body;
+                        EmergencyContent.title = contentRequest.title;
+                        if (contentRequest.body is not null)
+                            EmergencyContent.body = contentRequest.body;
 
                         NewsManager.Update();
 
@@ -90,10 +96,12 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                     }
                     else if (ContentID == "3")
                     {
-                        var Loginmessage = NewsManager.ContentConfig.loginmessage;
+                        var LoginMessage = NewsManager.ContentConfig.loginmessage;
 
-                        Loginmessage.title.en = contentRequest.title;
-                        Loginmessage.body.en = contentRequest.body;
+                        LoginMessage.title = contentRequest.title;
+                        if (contentRequest.body is not null)
+                            LoginMessage.body = contentRequest.body;
+ 
 
                         NewsManager.Update();
 
@@ -107,8 +115,14 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                     {
                         var PlaylistInfo = NewsManager.ContentConfig.playlistinformation[Index];
 
-                        PlaylistInfo.display_name.en = contentRequest.title;
-                        PlaylistInfo.description.en = contentRequest.body;
+                        if (contentRequest.display_name is not null)
+                            PlaylistInfo.display_name = contentRequest.display_name;
+
+                        if (contentRequest.image is not null)
+                            PlaylistInfo.image = contentRequest.image;
+
+                        if (contentRequest.description is not null)
+                            PlaylistInfo.description = contentRequest.description;
 
                         NewsManager.Update();
 

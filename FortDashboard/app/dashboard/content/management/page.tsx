@@ -93,12 +93,12 @@ export default function DashboardBase() {
     ShopRotation?: boolean;
     WeeklyQuests?: number;
   };
-  
+
   const [SecondTabContent, setSecondTabContent] = useState<YKY>();
 
-  const handleTabChange = async (value: string) => {
-    setActiveTab(value);
-    if (value === "server-management") {
+  
+  useEffect(() => {
+    const test = async () => {
       var apiUrl = process.env.NEXT_PUBLIC_API_URL;
       const response = await fetch(
         `${apiUrl}/dashboard/v2/content/data/server/1/69`,
@@ -111,12 +111,17 @@ export default function DashboardBase() {
         }
       );
       const ApiResponse = await response.json();
-
+  
       if (ApiResponse) {
         console.log(ApiResponse);
         setSecondTabContent(ApiResponse);
       }
     }
+    test();
+  }, []);
+
+  const handleTabChange = async (value: string) => {
+    setActiveTab(value);
   };
 
   const saveSEcondTabContent = async () => {

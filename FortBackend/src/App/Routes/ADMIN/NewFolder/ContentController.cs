@@ -126,7 +126,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                             {
                                 // not implemetned to change yet
                                 ForcedSeason = Saved.DeserializeGameConfig.ForceSeason,
-                                SeasonForced = Saved.DeserializeGameConfig.Season,
+                                Season = Saved.DeserializeGameConfig.Season,
                                 WeeklyQuests = Saved.DeserializeGameConfig.WeeklyQuest,
                                 ShopRotation = Saved.DeserializeGameConfig.ShopRotation,
                             },

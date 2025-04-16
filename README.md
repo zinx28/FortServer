@@ -28,7 +28,7 @@
 ## TODO/Added
 - [todo.md](https://github.com/zinx28/FortBackend/blob/main/todo.md)
 
-## Admin Panel (WIP)
+## Admin Panel (CMS)
 I've created an admin page to make it easier to manage JSON configs.
 
 ### About
@@ -39,7 +39,7 @@ I've created an admin page to make it easier to manage JSON configs.
 
 ### Setup and Login
 - Start the FortBackend application.
-- Access the login page [here](http://127.0.0.1:2222/login) (right-click to copy the link).
+- Access the login page [here](http://127.0.0.1:3000/login) (right-click to copy the link).
 - Use the default email (Admin@gmail.com) and password (AdminPassword123).
 - Upon first login, you will be prompted to change your email and password. 
 

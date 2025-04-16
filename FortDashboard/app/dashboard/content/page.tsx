@@ -17,6 +17,7 @@ import {
   ArrowLeft,
   Edit,
   Check,
+  Save,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -62,6 +63,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export default function DashboardBase() {
   const { user, isAuthenticated } = useUserStore();
@@ -266,6 +273,17 @@ export default function DashboardBase() {
     setIsLoading(false);
   };
 
+  type YKY = {
+    ForcedSeason?: boolean;
+    Season?: number;
+    ShopRotation?: boolean;
+    WeeklyQuests?: number;
+  };
+
+  const handleTabChange = async (value: string) => {
+    setActiveTab(value);
+  };
+
   return (
     <div className="flex flex-1 flex-col">
       <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6 lg:px-8">
@@ -284,15 +302,15 @@ export default function DashboardBase() {
         {/* Main tabs */}
         <Tabs
           value={activeTab}
-          onValueChange={setActiveTab}
+          onValueChange={handleTabChange}
           className="space-y-6"
         >
           <TabsList className="grid w-full grid-cols-4 mb-4">
             <TabsTrigger value="news-update">News Update</TabsTrigger>
-            <TabsTrigger value="server-management">
+            <TabsTrigger value="server-management" onClick={() => router.push("/dashboard/content/management")}>
               Server Management
             </TabsTrigger>
-            <TabsTrigger value="ini-management">Ini Management</TabsTrigger>
+            <TabsTrigger value="ini-management" onClick={() => router.push("/dashboard/content/ini")}>Ini Management</TabsTrigger>
             <TabsTrigger value="tournaments">Tournaments</TabsTrigger>
           </TabsList>
 

@@ -36,9 +36,9 @@ export default function DashboardBase() {
   if (!isAuthenticated) return <div>Redirecting</div>;
 
   type IniFIleDataDATATAT = {
-    FileName: string,
-    IniValue: string,
-  }
+    FileName: string;
+    IniValue: string;
+  };
 
   type IniFileData = {
     FileName: string;
@@ -49,7 +49,8 @@ export default function DashboardBase() {
     ];
   };
   const [iniFileData, setiniFileData] = useState<IniFileData[]>();
-  const [iniFullFileData, setiniFullFileData] = useState<IniFIleDataDATATAT[]>();
+  const [iniFullFileData, setiniFullFileData] =
+    useState<IniFIleDataDATATAT[]>();
   const [advancedType, setAdvancedType] = useState(false);
 
   useEffect(() => {
@@ -157,7 +158,7 @@ export default function DashboardBase() {
                   <Tabs value={activeIniTab} onValueChange={setActiveIniTab}>
                     <TabsList className="grid w-full grid-cols-4">
                       {iniFileData?.map((e) => (
-                        <TabsTrigger value={e.FileName}>
+                        <TabsTrigger key={e.FileName} value={e.FileName}>
                           {e.FileName}
                         </TabsTrigger>
                       ))}
@@ -219,16 +220,20 @@ export default function DashboardBase() {
                             </CardHeader>
 
                             <CardContent>
-                            <div className="relative">
-                              <ScrollArea className="h-[600px] w-full rounded-md border">
-                                <Textarea
-                                  className="min-h-[600px] font-mono text-sm resize-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-4"
-                                  placeholder="Enter INI content..."
-                                  value={iniFullFileData?.find((e) => e.FileName == activeIniTab)?.IniValue}
-                                />
-                              </ScrollArea>
-                            </div>
-                          </CardContent>
+                              <div className="relative">
+                                <ScrollArea className="h-[600px] w-full rounded-md border">
+                                  <Textarea
+                                    className="min-h-[600px] font-mono text-sm resize-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-4"
+                                    placeholder="Enter INI content..."
+                                    value={
+                                      iniFullFileData?.find(
+                                        (e) => e.FileName == activeIniTab
+                                      )?.IniValue
+                                    }
+                                  />
+                                </ScrollArea>
+                              </div>
+                            </CardContent>
                           </Card>
                         </>
                       )}

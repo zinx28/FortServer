@@ -21,6 +21,8 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function DashboardBase() {
   const { user, isAuthenticated } = useUserStore();
@@ -33,13 +35,22 @@ export default function DashboardBase() {
 
   if (!isAuthenticated) return <div>Redirecting</div>;
 
+  type IniFIleDataDATATAT = {
+    FileName: string,
+    IniValue: string,
+  }
+
   type IniFileData = {
     FileName: string;
-    Data: [{
-      Title: string;
-    }];
+    Data: [
+      {
+        Title: string;
+      }
+    ];
   };
   const [iniFileData, setiniFileData] = useState<IniFileData[]>();
+  const [iniFullFileData, setiniFullFileData] = useState<IniFIleDataDATATAT[]>();
+  const [advancedType, setAdvancedType] = useState(false);
 
   useEffect(() => {
     const test = async () => {
@@ -64,6 +75,28 @@ export default function DashboardBase() {
 
   const handleTabChange = async (value: string) => {
     setActiveTab(value);
+  };
+
+  const handleIniTabChange = async () => {
+    if (!advancedType) {
+      console.log("hi");
+      var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(
+        `${apiUrl}/admin/new/dashboard/content/dataV2/ini/2`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+      const frfr = await response.json();
+      console.log(frfr);
+
+      setiniFullFileData(frfr);
+    }
+    setAdvancedType(!advancedType);
   };
 
   const [activeIniTab, setActiveIniTab] = useState("DefaultGame.ini");
@@ -113,7 +146,7 @@ export default function DashboardBase() {
                   <CardTitle>INI File Management</CardTitle>
                   <CardDescription>Manage configuration files</CardDescription>
                 </div>
-                <Button>
+                <Button onClick={() => handleIniTabChange()}>
                   <FileText className="mr-2 h-4 w-4" />
                   Advanced INI Manager
                 </Button>
@@ -131,46 +164,74 @@ export default function DashboardBase() {
                     </TabsList>
 
                     <TabsContent value={activeIniTab} className="mt-6">
-                      <div className="flex justify-end mb-4">
-                        <Button disabled>
-                          <Plus className="mr-2 h-4 w-4" />
-                          New
-                        </Button>
-                      </div>
+                      {!advancedType ? (
+                        <>
+                          <div className="flex justify-end mb-4">
+                            <Button disabled>
+                              <Plus className="mr-2 h-4 w-4" />
+                              New
+                            </Button>
+                          </div>
 
-                      <div className="rounded-md border">
-                        <Table>
-                          <TableHeader>
-                            <TableRow>
-                              <TableHead className="w-[70%]">Section</TableHead>
-                              <TableHead className="text-right">
-                                Action
-                              </TableHead>
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {iniFileData?.find((e) => e.FileName == activeIniTab)?.Data.map((section) => (
-                              <TableRow key={section.Title}>
-                                <TableCell className="font-medium">
-                                  <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-                                    {section.Title}
-                                  </code>
-                                </TableCell>
-                                <TableCell className="text-right">
-                                  <Button
-                                    variant="secondary"
-                                    size="sm"
-                                   
-                                  >
-                                    <Edit className="mr-2 h-4 w-4" />
-                                    Edit
-                                  </Button>
-                                </TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </div>
+                          <div className="rounded-md border">
+                            <Table>
+                              <TableHeader>
+                                <TableRow>
+                                  <TableHead className="w-[70%]">
+                                    Section
+                                  </TableHead>
+                                  <TableHead className="text-right">
+                                    Action
+                                  </TableHead>
+                                </TableRow>
+                              </TableHeader>
+                              <TableBody>
+                                {iniFileData
+                                  ?.find((e) => e.FileName == activeIniTab)
+                                  ?.Data.map((section) => (
+                                    <TableRow key={section.Title}>
+                                      <TableCell className="font-medium">
+                                        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+                                          {section.Title}
+                                        </code>
+                                      </TableCell>
+                                      <TableCell className="text-right">
+                                        <Button variant="secondary" size="sm">
+                                          <Edit className="mr-2 h-4 w-4" />
+                                          Edit
+                                        </Button>
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                              </TableBody>
+                            </Table>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <Card>
+                            <CardHeader>
+                              <CardTitle>Edit {activeIniTab}</CardTitle>
+                              <CardDescription>
+                                Directly edit the INI file content. Changes will
+                                be validated before saving.
+                              </CardDescription>
+                            </CardHeader>
+
+                            <CardContent>
+                            <div className="relative">
+                              <ScrollArea className="h-[600px] w-full rounded-md border">
+                                <Textarea
+                                  className="min-h-[600px] font-mono text-sm resize-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-4"
+                                  placeholder="Enter INI content..."
+                                  value={iniFullFileData?.find((e) => e.FileName == activeIniTab)?.IniValue}
+                                />
+                              </ScrollArea>
+                            </div>
+                          </CardContent>
+                          </Card>
+                        </>
+                      )}
                     </TabsContent>
                   </Tabs>
                 </div>

@@ -38,7 +38,7 @@ namespace FortBackend.src.App.Utilities.Helpers
             }
         }
 
-        public static string GrabIniFile(string FileName)
+        public static string GrabIniFile(string FileName, bool isDashboard = false)
         {
             StringBuilder iniBuilder = new StringBuilder();
 
@@ -62,7 +62,8 @@ namespace FortBackend.src.App.Utilities.Helpers
 
             if (IniManager.IniConfigData != null)
             {
-                iniBuilder.AppendLine($";{IniManager.IniConfigData.Info} // Generated {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffffffZ")} - {FileName}");
+                if(!isDashboard)
+                    iniBuilder.AppendLine($";{IniManager.IniConfigData.Info} // Generated {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffffffZ")} - {FileName}");
 
                 int FindIndex = IniManager.IniConfigData.FileData.FindIndex(e => e.Name == FileName);
                 if (FindIndex != -1)

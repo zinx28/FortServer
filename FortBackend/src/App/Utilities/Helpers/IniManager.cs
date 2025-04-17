@@ -38,7 +38,7 @@ namespace FortBackend.src.App.Utilities.Helpers
             }
         }
 
-        public static string GrabIniFile(string FileName, bool isDashboard = false)
+        public static string GrabIniFile(string FileName)
         {
             StringBuilder iniBuilder = new StringBuilder();
 
@@ -62,8 +62,7 @@ namespace FortBackend.src.App.Utilities.Helpers
 
             if (IniManager.IniConfigData != null)
             {
-                if(!isDashboard)
-                    iniBuilder.AppendLine($";{IniManager.IniConfigData.Info} // Generated {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffffffZ")} - {FileName}");
+                iniBuilder.AppendLine($";{IniManager.IniConfigData.Info} // Generated {DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.ffffffZ")} - {FileName}");
 
                 int FindIndex = IniManager.IniConfigData.FileData.FindIndex(e => e.Name == FileName);
                 if (FindIndex != -1)
@@ -129,6 +128,36 @@ namespace FortBackend.src.App.Utilities.Helpers
                 }else
                 {
                     return "NotFound";
+                }
+            }
+
+            return iniBuilder.ToString();
+        }
+
+        public static string GrabRawIniFile(string FileName)
+        {
+            StringBuilder iniBuilder = new StringBuilder();
+
+            if (IniManager.IniConfigData != null)
+            {
+                int FindIndex = IniManager.IniConfigData.FileData.FindIndex(e => e.Name == FileName);
+                if (FindIndex != -1)
+                {
+                    IniConfigFiles iniConfigFiles = IniManager.IniConfigData.FileData[FindIndex];
+
+                    foreach (IniConfigData file in iniConfigFiles.Data)
+                    {
+                        iniBuilder.AppendLine($"");
+                        iniBuilder.AppendLine($"[{file.Title}]");
+
+                        foreach (IniConfigValues filedata in file.Data)
+                        {
+                            if (filedata.Value is bool boolValue)
+                                filedata.Value = filedata.Value.ToString().ToLower();
+
+                            iniBuilder.AppendLine($"{filedata.Name}={filedata.Value}");
+                        }
+                    }
                 }
             }
 

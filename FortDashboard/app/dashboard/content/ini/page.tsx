@@ -4,21 +4,7 @@ import { useUserStore } from "@/hooks/useUserStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Activity,
-  AlertTriangle,
-  Bell,
-  Settings,
-  Users,
-  Calendar,
-  AlertCircle,
-  Shield,
-  Globe,
-  ArrowLeft,
-  Edit,
-  Check,
-  Save,
-} from "lucide-react";
+import { Bell, Edit, FileText, Plus } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
@@ -27,57 +13,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useTheme } from "next-themes";
-import Link from "next/link";
-import {
-  Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
+  Table,
   TableRow,
+  TableCell,
 } from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@/components/ui/accordion";
 
 export default function DashboardBase() {
   const { user, isAuthenticated } = useUserStore();
   const [activeTab, setActiveTab] = useState("ini-management");
-  const [activeLanguage, setActiveLanguage] = useState("en");
-  const [contentView, setContentView] = useState("list");
-  const [contentArraySections, setcontentArraySections] = useState([]);
-  const [showAddDialog, setShowAddDialog] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -86,10 +33,40 @@ export default function DashboardBase() {
 
   if (!isAuthenticated) return <div>Redirecting</div>;
 
- 
+  type IniFileData = {
+    FileName: string;
+    Data: [{
+      Title: string;
+    }];
+  };
+  const [iniFileData, setiniFileData] = useState<IniFileData[]>();
+
+  useEffect(() => {
+    const test = async () => {
+      var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(
+        `${apiUrl}/admin/new/dashboard/content/dataV2/ini/1`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+      const frfr = await response.json();
+
+      setiniFileData(frfr);
+      console.log(frfr);
+    };
+    test();
+  }, []);
+
   const handleTabChange = async (value: string) => {
     setActiveTab(value);
   };
+
+  const [activeIniTab, setActiveIniTab] = useState("DefaultGame.ini");
 
   return (
     <div className="flex flex-1 flex-col">
@@ -113,8 +90,16 @@ export default function DashboardBase() {
           className="space-y-6"
         >
           <TabsList className="grid w-full grid-cols-4 mb-4">
-            <TabsTrigger value="news-update" onClick={() => router.push("/dashboard/content")}>News Update</TabsTrigger>
-            <TabsTrigger value="server-management" onClick={() => router.push("/dashboard/content")}>
+            <TabsTrigger
+              value="news-update"
+              onClick={() => router.push("/dashboard/content")}
+            >
+              News Update
+            </TabsTrigger>
+            <TabsTrigger
+              value="server-management"
+              onClick={() => router.push("/dashboard/content/management")}
+            >
               Server Management
             </TabsTrigger>
             <TabsTrigger value="ini-management">Ini Management</TabsTrigger>
@@ -123,17 +108,71 @@ export default function DashboardBase() {
 
           <TabsContent value="ini-management" className="space-y-6">
             <Card>
-              <CardHeader>
-                <CardTitle>Server Configuration</CardTitle>
-                <CardDescription>
-                  Manage server settings and game parameters
-                </CardDescription>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0">
+                <div>
+                  <CardTitle>INI File Management</CardTitle>
+                  <CardDescription>Manage configuration files</CardDescription>
+                </div>
+                <Button>
+                  <FileText className="mr-2 h-4 w-4" />
+                  Advanced INI Manager
+                </Button>
               </CardHeader>
 
               <CardContent>
                 <div className="space-y-6">
-                 
-                
+                  <Tabs value={activeIniTab} onValueChange={setActiveIniTab}>
+                    <TabsList className="grid w-full grid-cols-4">
+                      {iniFileData?.map((e) => (
+                        <TabsTrigger value={e.FileName}>
+                          {e.FileName}
+                        </TabsTrigger>
+                      ))}
+                    </TabsList>
+
+                    <TabsContent value={activeIniTab} className="mt-6">
+                      <div className="flex justify-end mb-4">
+                        <Button disabled>
+                          <Plus className="mr-2 h-4 w-4" />
+                          New
+                        </Button>
+                      </div>
+
+                      <div className="rounded-md border">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead className="w-[70%]">Section</TableHead>
+                              <TableHead className="text-right">
+                                Action
+                              </TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {iniFileData?.find((e) => e.FileName == activeIniTab)?.Data.map((section) => (
+                              <TableRow key={section.Title}>
+                                <TableCell className="font-medium">
+                                  <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+                                    {section.Title}
+                                  </code>
+                                </TableCell>
+                                <TableCell className="text-right">
+                                  <Button
+                                    variant="secondary"
+                                    size="sm"
+                                   
+                                  >
+                                    <Edit className="mr-2 h-4 w-4" />
+                                    Edit
+                                  </Button>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
                 </div>
               </CardContent>
             </Card>

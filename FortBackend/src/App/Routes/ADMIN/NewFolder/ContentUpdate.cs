@@ -24,6 +24,11 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
             public int index { get; set; }
             public dynamic value { get; set; } // skunked response
         }
+        public class IniContextRequestNew
+        {
+            public string FileName { get; set; }
+            public string IniValue { get; set; } // skunked response
+        }
         public class ServerContentRequest
         {
             public bool ForcedSeason { get; set; }
@@ -185,6 +190,81 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                 }
 
             }
+            else if (ContentName == "iniv128") // its like 2am, I can't call my friends
+            {
+                IniContextRequestNew ResponseConv = JsonConvert.DeserializeObject<IniContextRequestNew>(Body)!;
+
+                if(ResponseConv != null)
+                {
+                    IniConfigFiles? iniConfigFiles = IniManager.IniConfigData.FileData.Find((e) => e.Name == ResponseConv.FileName);
+
+                    if (iniConfigFiles == null)
+                    {
+                        iniConfigFiles = new()
+                        {
+                            Name = ResponseConv.FileName,
+                            Data = new()
+                        };
+
+                        IniManager.IniConfigData.FileData.Add(iniConfigFiles);
+                    }
+                    else iniConfigFiles.Data = new();
+
+                    Console.WriteLine(ResponseConv.FileName);
+
+                    var lines = ResponseConv.IniValue.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+                    IniConfigData? currentSection = null;
+
+                    foreach (var line in lines)
+                    {
+                        var trimmedLine = line.Trim();
+                        if (trimmedLine.StartsWith("[") && trimmedLine.EndsWith("]"))
+                        {
+                            
+                            if (currentSection != null)
+                            {
+                                iniConfigFiles.Data.Add(currentSection);
+                            }
+
+                            
+                            var sectionName = trimmedLine.Trim('[', ']'); // [value]
+                            currentSection = new IniConfigData
+                            {
+                                Title = sectionName,
+                                Data = new()
+                            };
+                        }
+                        else if (currentSection != null && trimmedLine.Contains("="))
+                        {
+                            var keyValue = trimmedLine.Split(new[] { '=' }, 2);
+                            if (keyValue.Length == 2)
+                            {
+                                // we convert bools to the correct type true, fals
+                                // this convertion isnt actually needed
+                                dynamic valuefr = keyValue[1].Trim();
+                                if (bool.TryParse(valuefr, out bool boolValue))
+                                {
+                                    valuefr = boolValue;
+                                }
+                               
+                                currentSection.Data.Add(new IniConfigValues
+                                {
+                                    Name = keyValue[0].Trim(),
+                                    Value = valuefr
+                                });
+                            }
+                        }
+                    }
+
+                    System.IO.File.WriteAllText(PathConstants.CloudStorage.IniConfig, JsonConvert.SerializeObject(IniManager.IniConfigData, Formatting.Indented));
+
+                    return new
+                    {
+                        message = "Updated Content",
+                        error = false,
+                    };
+                }
+            }
             else if(ContentName == "config")
             {
                 // this is like skunked and i dont want to recode
@@ -211,11 +291,21 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                             if (currentValue != null)
                             {
                                 Console.WriteLine("E");
-                                if (Configdata.Type == "string" || Configdata.Type == "ulong")
+                                if (Configdata.Type == "string")
                                 {
                                     if (!currentValue.Equals(x.value))
                                     {
                                         property.SetValue(fortConfig, x.value);
+                                    }
+                                }
+                                else if (Configdata.Type == "ulong")
+                                {
+                                    if (ulong.TryParse(x.value, out ulong ulongValue))
+                                    {
+                                        if (!currentValue.Equals(ulongValue))
+                                        {
+                                            property.SetValue(fortConfig, ulongValue);
+                                        }
                                     }
                                 }
                                 else if (Configdata.Type == "bool")

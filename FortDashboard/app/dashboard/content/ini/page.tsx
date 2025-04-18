@@ -4,7 +4,7 @@ import { useUserStore } from "@/hooks/useUserStore";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Bell, Edit, FileText, Plus } from "lucide-react";
+import { AlertTriangle, Bell, Edit, FileText, Plus, Save } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/table";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Textarea } from "@/components/ui/textarea";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function DashboardBase() {
   const { user, isAuthenticated } = useUserStore();
@@ -49,6 +50,9 @@ export default function DashboardBase() {
     ];
   };
   const [iniFileData, setiniFileData] = useState<IniFileData[]>();
+  const [validationError, setValidationError] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+  const [showSavedMessage, setShowSavedMessage] = useState(false);
   const [iniFullFileData, setiniFullFileData] =
     useState<IniFIleDataDATATAT[]>();
   const [advancedType, setAdvancedType] = useState(false);
@@ -101,6 +105,85 @@ export default function DashboardBase() {
   };
 
   const [activeIniTab, setActiveIniTab] = useState("DefaultGame.ini");
+
+  const handleSaveContent = async () => {
+    setIsSaving(true);
+    setValidationError("");
+    setShowSavedMessage(false);
+
+    //iniv128
+
+    try {
+      const content = iniFullFileData?.find(
+        (e) => e.FileName == activeIniTab
+      )?.IniValue;
+      if (!content) return;
+      const errors: string[] = [],
+        lines = content.split("\n");
+
+      // all you need to know, this does the syntax checks, it works about how i need it for now
+      lines.forEach((line, i) => {
+        const t = line.trim();
+        if (t && !t.startsWith(";") && !t.startsWith("#")) {
+          if (t.startsWith("[") && t.endsWith("]")) {
+            const section = t.slice(1, -1).trim();
+
+            if (!/^[A-Za-z0-9_./ ]+$/.test(section))
+              errors.push(`Line ${i + 1}: Invalid section name.`);
+          } else if (t.startsWith("!") && t.includes("=")) {
+            const [key, value] = t
+              .slice(1)
+              .split("=")
+              .map((s) => s.trim());
+
+            if (!/^[A-Za-z0-9_.]+$/.test(key))
+              errors.push(`Line ${i + 1}: Invalid key in commented line.`);
+          } else if (t.startsWith("+") && t.includes("=")) {
+            const key = t.slice(1).split("=")[0].trim();
+
+            if (!/^[A-Za-z0-9_.]+$/.test(key))
+              errors.push(`Line ${i + 1}: Invalid key in complex key-value.`);
+          } else if (!t.includes("=")) {
+            errors.push(
+              `Line ${i + 1}: Missing equals sign in key-value pair.`
+            );
+          } else {
+            const [key, value] = t.split("=").map((s) => s.trim());
+
+            if (!/^[A-Za-z0-9_.]+$/.test(key) || !value) {
+              errors.push(`Line ${i + 1}: Invalid key-value format.`);
+            }
+          }
+        }
+      });
+
+      setValidationError(errors.join("\n"));
+
+      // no errors
+      if (errors.length <= 0) {
+        var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(
+          `${apiUrl}/dashboard/v2/content/update/iniv128/uhm/thisisrequired`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+              iniFullFileData?.find((e) => e.FileName == activeIniTab)
+            ),
+            credentials: "include",
+          }
+        );
+
+        const JsonParsed = await response.json();
+
+        console.log(JsonParsed);
+      }
+    } catch (err) {}
+
+    setIsSaving(false);
+  };
 
   return (
     <div className="flex flex-1 flex-col">
@@ -210,13 +293,62 @@ export default function DashboardBase() {
                         </>
                       ) : (
                         <>
+                          {validationError && (
+                            <Alert className="bg-destructive/10 text-destructive border-destructive/20">
+                              <AlertTriangle className="h-4 w-4" />
+                              <AlertTitle>Syntax Error</AlertTitle>
+                              <AlertDescription>
+                                {validationError}
+                              </AlertDescription>
+                            </Alert>
+                          )}
                           <Card>
                             <CardHeader>
-                              <CardTitle>Edit {activeIniTab}</CardTitle>
-                              <CardDescription>
-                                Directly edit the INI file content. Changes will
-                                be validated before saving.
-                              </CardDescription>
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <CardTitle>Edit {activeIniTab}</CardTitle>
+                                  <CardDescription>
+                                    Directly edit the INI file content. Changes
+                                    will be validated before saving.
+                                  </CardDescription>
+                                </div>
+
+                                <Button
+                                  onClick={handleSaveContent}
+                                  disabled={isSaving}
+                                >
+                                  {isSaving ? (
+                                    <>
+                                      <svg
+                                        className="mr-2 h-4 w-4 animate-spin"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <circle
+                                          className="opacity-25"
+                                          cx="12"
+                                          cy="12"
+                                          r="10"
+                                          stroke="currentColor"
+                                          strokeWidth="4"
+                                        ></circle>
+                                        <path
+                                          className="opacity-75"
+                                          fill="currentColor"
+                                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                        ></path>
+                                      </svg>
+                                      Saving...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Save className="mr-2 h-4 w-4" />
+                                      Save
+                                    </>
+                                  )}
+                                </Button>
+                              </div>
                             </CardHeader>
 
                             <CardContent>
@@ -225,6 +357,19 @@ export default function DashboardBase() {
                                   <Textarea
                                     className="min-h-[600px] font-mono text-sm resize-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 p-4"
                                     placeholder="Enter INI content..."
+                                    onChange={(e) => {
+                                      setiniFullFileData((prev) =>
+                                        prev?.map((file) =>
+                                          file.FileName === activeIniTab
+                                            ? {
+                                                ...file,
+                                                IniValue: e.target.value,
+                                              }
+                                            : file
+                                        )
+                                      );
+                                      setValidationError("");
+                                    }}
                                     value={
                                       iniFullFileData?.find(
                                         (e) => e.FileName == activeIniTab

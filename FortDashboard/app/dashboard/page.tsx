@@ -50,6 +50,39 @@ export default function DashboardBase() {
 
   const { theme, setTheme, resolvedTheme } = useTheme();
 
+
+  type YKY = {
+    ForcedSeason?: boolean;
+    Season?: number;
+    ShopRotation?: boolean;
+    WeeklyQuests?: number;
+  };
+
+  const [SecondTabContent, setSecondTabContent] = useState<YKY>();
+
+  useEffect(() => {
+    const test = async () => {
+      var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(
+        `${apiUrl}/dashboard/v2/content/data/server/1/69`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+      const ApiResponse = await response.json();
+  
+      if (ApiResponse) {
+        console.log(ApiResponse);
+        setSecondTabContent(ApiResponse);
+      }
+    }
+    test();
+  }, []);
+
   return (
     <div className="flex flex-1 flex-col">
       <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background px-4 sm:px-6 lg:px-8">
@@ -107,7 +140,7 @@ export default function DashboardBase() {
                       Inactive
                     </Badge>
                     <span className="text-sm text-muted-foreground">
-                      Forced Season: false
+                      Forced Season: {SecondTabContent?.ForcedSeason?.toString()}
                     </span>
                   </div>
                   <p className="mt-2 text-xs text-amber-500">

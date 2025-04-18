@@ -140,7 +140,7 @@ export default function DashboardBase() {
   ];
 
   const getInputType = (type: string) => {
-    if (type === "int" || type === "ulong") {
+    if (type === "int") {
       return "number";
     }
     return "text";
@@ -386,7 +386,7 @@ export default function DashboardBase() {
       
       value = value.toString();
     } else if (typeof updatedSection.Data[index]?.Value === "number") {
-      value = parseInt(value, 10).toString() || "0";
+      value = BigInt(value).toString() || "0";
     }
 
     console.log(index);
@@ -733,12 +733,11 @@ export default function DashboardBase() {
                                         value={field.Value}
                                         onChange={(e) => {
                                           const value =
-                                            field.Type === "int" ||
-                                            field.Type === "ulong"
-                                              ? Number.parseInt(
-                                                  e.target.value
-                                                ) || 0
-                                              : e.target.value;
+                                          field.Type === "int"
+                                            ? Number.parseInt(
+                                                e.target.value
+                                              ) || 0
+                                            : e.target.value;
                                           handleUpdateField(index, value);
                                         }}
                                       />

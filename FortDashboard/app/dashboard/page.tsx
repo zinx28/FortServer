@@ -110,10 +110,6 @@ export default function DashboardBase() {
                       Forced Season: false
                     </span>
                   </div>
-                  <div className="mt-3 flex items-center space-x-2">
-                    <Switch id="forced-season" />
-                    <Label htmlFor="forced-season">Enable Forced Season</Label>
-                  </div>
                   <p className="mt-2 text-xs text-amber-500">
                     Forced season is recommended
                   </p>

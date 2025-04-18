@@ -133,12 +133,6 @@ export default function DashboardBase() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center space-x-2">
-                    <Badge
-                      variant="outline"
-                      className="text-amber-500 border-amber-500"
-                    >
-                      Inactive
-                    </Badge>
                     <span className="text-sm text-muted-foreground">
                       Forced Season: {SecondTabContent?.ForcedSeason?.toString()}
                     </span>

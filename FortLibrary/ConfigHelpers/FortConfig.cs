@@ -9,9 +9,7 @@ using System.Threading.Tasks;
 
 namespace FortLibrary.ConfigHelpers
 {
-    // Since we parse the config this basicalyl needs to be 1:1 else it be dynamic huh
-
-    // I will work on something in the future to show how to set stuff up
+    // Since we parse the config this basically needs to be 1:1 else it be dynamic huh
     public class FortConfig
     {
         [JsonPropertyName("//")]

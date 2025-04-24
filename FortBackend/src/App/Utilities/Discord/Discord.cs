@@ -82,11 +82,6 @@ namespace FortBackend.src.App.Utilities.Discord
             return Task.CompletedTask;
         }
 
-        //private static async Task OnInteractionCreated(SocketInteraction interaction)
-        //{
-        //    //await RegisterCommands.Connect(Saved.Saved.DeserializeConfig, guild);
-        //}
-
         private static Task OnDisconnected(Exception exception)
         {
             Logger.Log("DISCONNECTED", "Discord");

@@ -102,26 +102,26 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog.BP
                                                     {
                                                         templateId = $"{Bundles.templateId}",
                                                         attributes = new Dictionary<string, object>
-                                                                            {
-                                                                                { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                                { "level", -1 },
-                                                                                { "item_seen", false },
-                                                                                { "playlists", new List<object>() },
-                                                                                { "sent_new_notification", true },
-                                                                                { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
-                                                                                { "xp_reward_scalar", 1 },
-                                                                                { "challenge_linked_quest_given", "" },
-                                                                                { "quest_pool", "" },
-                                                                                { "quest_state", "Active" },
-                                                                                { "bucket", "" },
-                                                                                { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                                { "challenge_linked_quest_parent", "" },
-                                                                                { "max_level_bonus", 0 },
-                                                                                { "xp", 0 },
-                                                                                { "quest_rarity", "uncommon" },
-                                                                                { "favorite", false },
-                                                                                // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                                            },
+                                                        {
+                                                            { "creation_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                            { "level", -1 },
+                                                            { "item_seen", false },
+                                                            { "playlists", new List<object>() },
+                                                            { "sent_new_notification", true },
+                                                            { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
+                                                            { "xp_reward_scalar", 1 },
+                                                            { "challenge_linked_quest_given", "" },
+                                                            { "quest_pool", "" },
+                                                            { "quest_state", "Active" },
+                                                            { "bucket", "" },
+                                                            { "last_state_change_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                            { "challenge_linked_quest_parent", "" },
+                                                            { "max_level_bonus", 0 },
+                                                            { "xp", 0 },
+                                                            { "quest_rarity", "uncommon" },
+                                                            { "favorite", false },
+                                                            // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                                        },
                                                         quantity = 1
                                                     };
 

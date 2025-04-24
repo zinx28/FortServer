@@ -8,32 +8,32 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 {
     public class MongoSaveData
     {
-        public static async Task SaveToDB(string AccountId)
+        public static async Task SaveToDB(string accountId)
         {
-            var GrabData = CacheMiddleware.GlobalCacheProfiles.FirstOrDefault(e => e.Key == AccountId);
+            if (!CacheMiddleware.GlobalCacheProfiles.TryGetValue(accountId, out var profileEntry)) return;
 
-            if (!GrabData.Equals(default(KeyValuePair<string, ProfileCacheEntry>)))
+            var db = MongoDBStart.Database;
+            if (db == null) return;
+
+            var userCollection = db.GetCollection<User>("User");
+            var accountCollection = db.GetCollection<Account>("Account");
+            var statsCollection = db.GetCollection<StatsInfo>("StatsInfo");
+            var friendsCollection = db.GetCollection<UserFriends>("UserFriends");
+
+            var userFilter = Builders<User>.Filter.Eq(x => x.AccountId, accountId);
+            var accountFilter = Builders<Account>.Filter.Eq(x => x.AccountId, accountId);
+            var statsFilter = Builders<StatsInfo>.Filter.Eq(x => x.AccountId, accountId);
+            var friendsFilter = Builders<UserFriends>.Filter.Eq(x => x.AccountId, accountId);
+
+            var tasks = new Task[]
             {
-                var filter1 = Builders<User>.Filter.Eq(x => x.AccountId, AccountId);
-                var filter2 = Builders<Account>.Filter.Eq(x => x.AccountId, AccountId);
-                var filter3 = Builders<StatsInfo>.Filter.Eq(x => x.AccountId, AccountId);
-                var filter4 = Builders<UserFriends>.Filter.Eq(x => x.AccountId, AccountId);
+                userCollection.ReplaceOneAsync(userFilter, profileEntry.UserData),
+                accountCollection.ReplaceOneAsync(accountFilter, profileEntry.AccountData),
+                statsCollection.ReplaceOneAsync(statsFilter, profileEntry.StatsData),
+                friendsCollection.ReplaceOneAsync(friendsFilter, profileEntry.UserFriends)
+            };
 
-                var collection = MongoDBStart.Database?.GetCollection<User>("User");
-                var collection2 = MongoDBStart.Database?.GetCollection<Account>("Account");
-                var collection3 = MongoDBStart.Database?.GetCollection<StatsInfo>("StatsInfo");
-                var collection4 = MongoDBStart.Database?.GetCollection<UserFriends>("UserFriends");
-
-                if (collection != null && collection2 != null && collection3 != null && collection4 != null)
-                {
-                    await collection.ReplaceOneAsync(filter1, GrabData.Value.UserData);
-                    await collection2.ReplaceOneAsync(filter2, GrabData.Value.AccountData);
-                    await collection3.ReplaceOneAsync(filter3, GrabData.Value.StatsData);
-                    await collection4.ReplaceOneAsync(filter4, GrabData.Value.UserFriends);
-                }
-            }
-
-            return;
+            await Task.WhenAll(tasks);
         }
     }
 }

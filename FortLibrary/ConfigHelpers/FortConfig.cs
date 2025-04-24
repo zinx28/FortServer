@@ -31,7 +31,7 @@ namespace FortLibrary.ConfigHelpers
         public int AdminPort { get; set; } = 2134;
         public string MatchmakerIP { get; set; } = "127.0.0.1"; // Change if your hosting the matchmaker on a different ip
 
-        public string DashboardUrl { get; set; } = "http://127.0.0.1:2222"; // MAKE SURE THIS IS THE DASHBOARD FULL LINK (IF HOSTED ON DOMAIN THAT REDIRECTS THE PORT THEN DW ABOUT THE PORT YKYK)
+        public string DashboardUrl { get; set; } = "http://127.0.0.1:3000"; // MAKE SURE THIS IS THE DASHBOARD FULL LINK (IF HOSTED ON DOMAIN THAT REDIRECTS THE PORT THEN DW ABOUT THE PORT YKYK)
         // -- XMPP -- //
         public int TCPXmppPort { get; set; } = 8443; // Tcp doesn't work.. i can't get it to connect on the vps with the cert
         public int XmppPort { get; set; } = 443; // 443 default ig
@@ -62,6 +62,7 @@ namespace FortLibrary.ConfigHelpers
         // - Discord Webhook messages - /
         public string ShopWebhookUrl { get; set; } = ""; // Not Finished * Skunekd? ig
         public string DetectedWebhookUrl { get; set; } = ""; // auto ban webhook
+        public string ReportsWebhookUrl { get; set; } = "";
 
         // - //
 
@@ -95,17 +96,19 @@ namespace FortLibrary.ConfigHelpers
 
         // -- //
 
-        public bool EnableLogs { get; set; } = false;
-
-        public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
+        public bool EnableLogs { get; set; } = false; // http requests
 
         // - could be in game config in the future
         public bool FullLockerForEveryone { get; set; } = false; // full locker (should show all up to 29.10 - .20 i forgot)
         // ^^ i need a better name
         public bool SecureSite { get; set; } = false; // if your site is https then true! but you could use a proxy that converts http://127.0.0.1:1111 -> https://yourdomain.com
-        // USELESS ATM
 
-        public bool EnableDetections { get; set; } = true; // this isn't used atm
+        // - DETECTIONS - //
+        public bool EnableDetections { get; set; } = true; // most of the code has this forced on, some parts are slowly using this check
+        public bool Cloudflare { get; set; } = false; // this uses different method to grab ip
+
+        // -- //
+        public bool AllowAllCores { get; set; } = false;
         
     }
 }

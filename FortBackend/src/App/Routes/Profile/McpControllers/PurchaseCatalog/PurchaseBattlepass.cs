@@ -203,7 +203,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                             templateId = $"{Bundle.templateId}",
                                                                             attributes = new Dictionary<string, object>
                                                                             {
-                                                                                { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                                                { "creation_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                                                 { "level", -1 },
                                                                                 { "item_seen", false },
                                                                                 { "playlists", new List<object>() },
@@ -214,7 +214,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                                                 { "quest_pool", "" },
                                                                                 { "quest_state", "Active" },
                                                                                 { "bucket", "" },
-                                                                                { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                                                { "last_state_change_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                                                 { "challenge_linked_quest_parent", "" },
                                                                                 { "max_level_bonus", 0 },
                                                                                 { "xp", 0 },
@@ -571,7 +571,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
 
                         string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
-                        Console.WriteLine(mcpJson);
+                        //Console.WriteLine(mcpJson);
 
                         return mcp;
                     }

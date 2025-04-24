@@ -16,10 +16,10 @@ namespace FortLibrary.EpicResponses.Profile.Quests
     public class DailyQuestsDataDB
     {
         [JsonProperty("creation_time")]
-        public string creation_time { get; set; } = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+        public string creation_time { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
         [JsonProperty("unlock_epoch")]
-        public string unlock_epoch { get; set; } = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+        public string unlock_epoch { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
         [JsonProperty("level")]
         public int level { get; set; } = -1;
@@ -55,7 +55,7 @@ namespace FortLibrary.EpicResponses.Profile.Quests
         public string bucket { get; set; } = "";
 
         [JsonProperty("last_state_change_time")]
-        public string last_state_change_time { get; set; } = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+        public string last_state_change_time { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
         [JsonProperty("challenge_linked_quest_parent")]
         public string challenge_linked_quest_parent { get; set; } = "";
@@ -118,7 +118,7 @@ namespace FortLibrary.EpicResponses.Profile.Quests
     public class DailyQuestsDataAttributes
     {
         [JsonProperty("creation_time")]
-        public string creation_time { get; set; } = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+        public string creation_time { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
         [JsonProperty("level")]
         public int level { get; set; } = -1;
@@ -151,7 +151,7 @@ namespace FortLibrary.EpicResponses.Profile.Quests
         public string bucket { get; set; } = "";
 
         [JsonProperty("last_state_change_time")]
-        public string last_state_change_time { get; set; } = DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+        public string last_state_change_time { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
         
         [JsonProperty("challenge_linked_quest_parent")]
         public string challenge_linked_quest_parent { get; set; } = "";

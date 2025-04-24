@@ -37,16 +37,29 @@ namespace FortBackend.src.App.Utilities
 
             services.AddCors(options =>
             {
-                options.AddPolicy("DynamicCORS", policy =>
+                if (Saved.Saved.DeserializeConfig.AllowAllCores)
                 {
-                    policy.WithOrigins("http://localhost:2222", Saved.Saved.DeserializeConfig.DashboardUrl)
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials();
-                });
+                    options.AddPolicy("AllowAllWithCredentials", policy =>
+                    {
+                        policy.SetIsOriginAllowed(_ => true)
+                              .AllowAnyHeader()
+                              .AllowAnyMethod()
+                              .AllowCredentials();
+                    });
+                }
+                else
+                {
+                    options.AddPolicy("DynamicCORS", policy =>
+                    {
+                        policy.WithOrigins("http://localhost:2222", Saved.Saved.DeserializeConfig.DashboardUrl)
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                    });
+                }
             });
 
-            MongoDBStart.Initialize(services, Configuration); // better if this was a new MongoDBStart();
+            MongoDBStart.Initialize(services, Configuration);
 
             services.AddSingleton<CacheMiddleware>();
             services.AddHostedService<CacheMiddleware>();
@@ -65,11 +78,15 @@ namespace FortBackend.src.App.Utilities
 
             if (Saved.Saved.DeserializeConfig.EnableLogs)
             {
-                Logger.Log("Enabled Logs", "SETUP");
+                Logger.Log("Logs are enabled", "SETUP");
                 app.UseMiddleware<LoggingMiddleware>();
             }
 
-            app.UseCors("DynamicCORS");
+            if (Saved.Saved.DeserializeConfig.AllowAllCores)
+                app.UseCors("AllowAllWithCredentials");
+            else
+                app.UseCors("DynamicCORS");
+
             app.UseRouting();
 
             Logger.Log("Loading all endpoints");
@@ -97,6 +114,7 @@ namespace FortBackend.src.App.Utilities
             {
                 int MappedNum = 0;
                 var actionDescriptors = app.ApplicationServices.GetRequiredService<IActionDescriptorCollectionProvider>().ActionDescriptors.Items;
+                
                 foreach (var actionDescriptor in actionDescriptors)
                 {
                     if (actionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
@@ -107,10 +125,10 @@ namespace FortBackend.src.App.Utilities
                         var controller = actionDescriptor.RouteValues["controller"];
 
                         var HttpMethod = controllerActionDescriptor.MethodInfo
-                        .GetCustomAttributes(true)
-                        .OfType<HttpMethodAttribute>()
-                        .SelectMany(attr => attr.HttpMethods)
-                        .Distinct();
+                            .GetCustomAttributes(true)
+                            .OfType<HttpMethodAttribute>()
+                            .SelectMany(attr => attr.HttpMethods)
+                            .Distinct();
 
                         Logger.Log($"/{route}", string.Join(",", HttpMethod));
 
@@ -120,7 +138,6 @@ namespace FortBackend.src.App.Utilities
                             pattern: $"/{route}",
                             defaults: new { controller = controller }
                         );
-
 
                         MappedNum += 1;
                     }
@@ -134,7 +151,7 @@ namespace FortBackend.src.App.Utilities
             app.UseStatusCodePages(async (StatusCodeContext context) =>
             {
                 var response = context.HttpContext.Response;
-                Logger.Warn($"[{context.HttpContext.Request.Method}]: {context.HttpContext.Request.Path.ToString()}?{context.HttpContext.Request.Query}");
+                Logger.Warn($"{context.HttpContext.Request.Path.ToString()}?{context.HttpContext.Request.Query}", context.HttpContext.Request.Method);
                
                 if (context.HttpContext.Request.Path == "/")
                 {

@@ -199,6 +199,7 @@ namespace FortBackend.src.App.Routes.Development
             return BadRequest(new { message = "error" });
         }
 
+
         /*
          * Add Vbucks
          * POST Request
@@ -295,8 +296,7 @@ namespace FortBackend.src.App.Routes.Development
                                         }
                                     }
                                 }
-                                Logger.Warn("SIGMA");
-                                Logger.Error(purchasedGift.Key);
+
                                 if (string.IsNullOrEmpty(purchasedGift.Key))
                                 {
                                     // user has no gicffts
@@ -324,6 +324,7 @@ namespace FortBackend.src.App.Routes.Development
                                         },
                                         quantity = 1
                                     });
+
                                     profileCacheEntry.AccountData.commoncore.RVN += 1;
                                     profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
 
@@ -381,8 +382,6 @@ namespace FortBackend.src.App.Routes.Development
                         Status = 400
                     });
                 }
-               
-               
             }
             catch (Exception ex)
             {

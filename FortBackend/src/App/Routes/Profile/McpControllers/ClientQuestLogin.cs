@@ -157,7 +157,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                     templateId = $"Quest:{dailyQuests.Name}",
                                                     attributes = new Dictionary<string, object>
                                                     {
-                                                        { "creation_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "creation_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                         { "level", -1 },
                                                         { "item_seen", false },
                                                         { "playlists", new List<object>() },
@@ -168,7 +168,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                                         { "quest_pool", "" },
                                                         { "quest_state", "Active" },
                                                         { "bucket", "" },
-                                                        { "last_state_change_time", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "last_state_change_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                         { "challenge_linked_quest_parent", "" },
                                                         { "max_level_bonus", 0 },
                                                         { "xp", 0 },
@@ -413,7 +413,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     if (MultiUpdates.Count > 0)
                     {
-                        profileCacheEntry.LastUpdated = DateTime.Now;
+                        profileCacheEntry.LastUpdated = DateTime.UtcNow;
                         profileCacheEntry.AccountData.athena.RVN += 1;
                         profileCacheEntry.AccountData.athena.CommandRevision += 1;
                     }
@@ -422,7 +422,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     if(MultiUpdatesForCommonCore.Count > 0)
                     {
                         var BeofreUpdate = profileCacheEntry.AccountData.commoncore.RVN;
-                        profileCacheEntry.LastUpdated = DateTime.Now;
+                        profileCacheEntry.LastUpdated = DateTime.UtcNow;
                         profileCacheEntry.AccountData.commoncore.RVN += 1;
                         profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
 

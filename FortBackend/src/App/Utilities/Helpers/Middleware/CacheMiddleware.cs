@@ -41,8 +41,6 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
         {
             Console.WriteLine("Saving Data Before Shutdown");
 
-            var now = DateTime.Now;
-
             foreach (var kvp in GlobalCacheProfiles)
             {
                 var profileId = kvp.Key;
@@ -54,8 +52,6 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
 
             Console.WriteLine("Waiting ");
             await Task.Delay(TimeSpan.FromSeconds(10));
-
-
         }
 
         public static async Task CleanupCache(CancellationToken cancellationToken)
@@ -65,7 +61,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
             {
                 await Task.Delay(TimeSpan.FromMinutes(10));
 
-                var now = DateTime.Now;
+                var now = DateTime.UtcNow;
 
                 foreach (var kvp in GlobalCacheProfiles)
                 {

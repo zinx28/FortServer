@@ -187,7 +187,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                             // THIS IS INST THE PROPER WAY BUT IT'S BETTER NTO STORING THIS IN THE CODE UNLESS IS ACTUALLY NEEDED
                             var ResponseId = "";
-                            if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
+                            if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson>? WeeklyQuestsArray))
                             {
                                 if(WeeklyQuestsArray.Count > 0)
                                 {
@@ -195,6 +195,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             
                                     foreach(var kvp in WeeklyQuestsArray)
                                     {
+                                        if (!kvp.BundleRequired.QuestBundleID) continue;
                                         ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
                                         ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
                                         //kvp.BundleId
@@ -215,7 +216,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             {
                                                 if (seasonObject.BookPurchased)
                                                 {
-                                                    if (seasonObject.Quests.TryGetValue(FreeBundles.templateId, out DailyQuestsData value))
+                                                    if (seasonObject.Quests.TryGetValue(FreeBundles.templateId, out DailyQuestsData? value))
                                                     {
                                                         grantedquestinstanceids.Add(FreeBundles.templateId);
                                                     }
@@ -223,7 +224,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                             }
                                             else
                                             {
-                                                if (seasonObject.Quests.TryGetValue(FreeBundles.templateId, out DailyQuestsData value))
+                                                if (seasonObject.Quests.TryGetValue(FreeBundles.templateId, out DailyQuestsData? value))
                                                 {
                                                     grantedquestinstanceids.Add(FreeBundles.templateId);
                                                 }
@@ -313,7 +314,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         // var ResponseId = "";
                                         foreach (var kvp in BPQuestsArray)
                                         {
-                                            
+                                            if (!kvp.BundleRequired.QuestBundleID) continue;
                                             if (kvp.BundleRequired.RequiredLevel > seasonObject.Level) continue;
 
                                             List<string> FindFirstOrDe = ResponseIG.FirstOrDefault(e => e.Key == kvp.BundleSchedule).Value;

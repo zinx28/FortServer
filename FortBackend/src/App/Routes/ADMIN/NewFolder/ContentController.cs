@@ -114,7 +114,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                             },
                             "news" when contentId == "3" => new
                             {
-                                Type = "Playlist",
+                                Type = "LoginMessage",
                                 Data = NewsManager.ContentConfig.loginmessage,
                             },
                             "news" when contentId == "4" => new
@@ -126,7 +126,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                             {
                                 // not implemetned to change yet
                                 ForcedSeason = Saved.DeserializeGameConfig.ForceSeason,
-                                SeasonForced = Saved.DeserializeGameConfig.Season,
+                                Season = Saved.DeserializeGameConfig.Season,
                                 WeeklyQuests = Saved.DeserializeGameConfig.WeeklyQuest,
                                 ShopRotation = Saved.DeserializeGameConfig.ShopRotation,
                             },

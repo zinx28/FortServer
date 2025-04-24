@@ -257,7 +257,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         }
 
                                         Parties.revision += 1;
-                                        Parties.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+                                        Parties.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
                                         var captain = Parties.members.FirstOrDefault(x => x.role == "CAPTAIN");
 
@@ -293,7 +293,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                             party_sub_type = Parties.meta["urn:epic:cfg:party-type-id_s"],
                                                             party_type = "DEFAULT",
                                                             revision = Parties.revision,
-                                                            sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                            sent = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                                             type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
                                                             updated_at = Parties.updated_at
                                                         }))
@@ -409,8 +409,8 @@ namespace FortBackend.src.App.Routes.Friends
                         }
 
                     //Parties.members[members].revision += 1;
-                        Parties.members[membersidx].updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-                        Parties.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+                        Parties.members[membersidx].updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+                        Parties.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
                         Parties.members.ForEach(async x =>
                         {
@@ -431,8 +431,8 @@ namespace FortBackend.src.App.Routes.Friends
                                         member_state_removed = PartiesGR.delete,
                                         member_state_overridden = new { },
                                         party_id = Parties.id,
-                                        updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                        sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        sent = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         revision = Parties.members[membersidx].revision,
                                         ns = "Fortnite",
                                         type = "com.epicgames.social.party.notification.v0.MEMBER_STATE_UPDATED"
@@ -777,8 +777,8 @@ namespace FortBackend.src.App.Routes.Friends
                             {
                                 id = foundClient.id,
                                 //privacy = "PUBLIC",
-                                created_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                created_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 config = Parties.config,
                                 members = new List<Members>() {
                                     new Members
@@ -790,15 +790,15 @@ namespace FortBackend.src.App.Routes.Friends
                                             new Dictionary<string, object>
                                             {
                                                 { "id", Parties.join_info.connection.id },
-                                                { "connected_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                { "updated_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")},
+                                                { "connected_at", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                { "updated_at", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")},
                                                 { "yield_leadership", Parties.join_info.connection.yield_leadership },
                                                 { "meta", Parties.join_info.connection.meta ?? new() }
                                             }
                                         },
                                         revision = 0,
-                                        updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                        joined_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        joined_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         role = "CAPTAIN"
                                     }
                                 },
@@ -876,7 +876,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         member_state_update = new { },
                                         party_id = Party.id,
                                         // kicked = true,
-                                        sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                        sent = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         revision = Party.revision,
                                         ns = "Fortnite",
                                         type = "com.epicgames.social.party.notification.v0.MEMBER_LEFT"
@@ -888,7 +888,7 @@ namespace FortBackend.src.App.Routes.Friends
                         if (Party.members.Count > 0)
                         {
                             Party.revision += 1;
-                            Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+                            Party.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
                             // todo, theres left over users.... if the leader left we could give it to the first person in the array
                             // we also need to do other stuff
 
@@ -914,7 +914,7 @@ namespace FortBackend.src.App.Routes.Friends
                                         Party.revision++;
                                     }
                                 }
-                                Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+                                Party.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
                                 Party.members.ForEach(async x =>
                                 {
@@ -947,7 +947,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                    party_sub_type = Party.meta["urn:epic:cfg:party-type-id_s"],
                                                    party_type = "DEFAULT",
                                                    revision = Party.revision,
-                                                   sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                   sent = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                                    type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
                                                    updated_at = Party.updated_at
                                                }))
@@ -1061,15 +1061,15 @@ namespace FortBackend.src.App.Routes.Friends
                                                    new Dictionary<string, object>
                                                     {
                                                         { "id", JoinParty.connection.id },
-                                                        { "connected_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                        { "updated_at", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "connected_at", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "updated_at", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
                                                         { "yield_leadership", JoinParty.connection.yield_leadership },
                                                         { "meta", JoinParty.connection.meta }
                                                     }
                                                 },
                                                 revision = 0,
-                                                updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                                joined_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                joined_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                                 role = JoinParty.connection.yield_leadership ? "CAPTAIN": "MEMBER"
                                             };
 
@@ -1092,7 +1092,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                 
                                                 Party.meta[v] = JsonConvert.SerializeObject(rsa);
                                                 Party.revision++;
-                                                Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+                                                Party.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
 
                                                 var Captain = Party.members.Find(x => x.role == "CAPTAIN");
@@ -1123,12 +1123,12 @@ namespace FortBackend.src.App.Routes.Friends
                                                                         account_dn = profileCacheEntry.UserData.Username,
                                                                         connection = new
                                                                         {
-                                                                            connected_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                                            connected_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                                                             id = JoinParty.connection.id,
                                                                             meta = JoinParty.connection.meta,
-                                                                            updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                                                            updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                                                                         },
-                                                                        joined_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                                        joined_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                                                         member_state_updated = JoinParty.meta,
                                                                         ns = "Fortnite",
                                                                         party_id = Party.id,
@@ -1162,7 +1162,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                                        party_sub_type = Party.meta["urn:epic:cfg:party-type-id_s"],
                                                                        party_type = "DEFAULT",
                                                                        revision = Party.revision,
-                                                                       sent = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                                                       sent = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                                                        type = "com.epicgames.social.party.notification.v0.PARTY_UPDATED",
                                                                        updated_at = Party.updated_at
                                                                    }))
@@ -1207,7 +1207,7 @@ namespace FortBackend.src.App.Routes.Friends
 
                     //    Party.members.Remove(RemovedMember);
                     //    Party.revision += 1;
-                    //    Party.updated_at = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
+                    //    Party.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK");
 
                     //    Party.members.ForEach(async x =>
                     //    {
@@ -1224,8 +1224,8 @@ namespace FortBackend.src.App.Routes.Friends
                     //                        ""account_id"": """ + accountId + @""",
                     //                        ""party_id"": " + Party.id + @",
                     //                        ""kicked"": " + true + @",
-                    //                        ""updated_at"": " + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
-                    //                        ""sent"": " + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
+                    //                        ""updated_at"": " + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
+                    //                        ""sent"": " + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffffffK") + @""",
                     //                        ""revision"": " + Party.revision + @""",
                     //                        ""ns"": ""Fortnite"",
                     //                        ""type"": ""com.epicgames.social.party.notification.v0.MEMBER_KICKED""

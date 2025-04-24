@@ -61,7 +61,6 @@ namespace FortBackend.src.App.SERVER.Send
                         openElement.Add(new XElement(clientNs1 + "status", status));
 
                         xmlMessage = openElement.ToString();
-                        //Console.WriteLine("veryporper " + xmlMessage);
                         buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
                         await FriendsClientData.Game_Client.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);

@@ -25,7 +25,7 @@ namespace FortLibrary.Dynamics
         public int RequiredLevel { get; set; } = 1;
         public bool GrantByQuest { get; set; } = false;
         public bool Weekly { get; set; } = false;
-     
+        public bool QuestBundleID { get; set; } = true;
         public List<WeeklyRewards> CompleteItems { get; set; } = new List<WeeklyRewards>();
 }
 

@@ -21,7 +21,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
     {
         public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)> Init(SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)
         {
-            if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
+            if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson>? WeeklyQuestsArray))
             {
                 if (WeeklyQuestsArray.Count > 0)
                 {
@@ -29,7 +29,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                 }
             }
 
-            if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson> BPQuestsArray))
+            if (WeeklyQuestManager.BPSeasonBundleScheduleDictionary.TryGetValue($"Season{FoundSeason.SeasonNumber}", out List<WeeklyQuestsJson>? BPQuestsArray))
             {
                 if (BPQuestsArray.Count > 0)
                 {
@@ -49,19 +49,20 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
         public static async Task<(List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry)> QuestGrabber(SeasonClass FoundSeason, List<object> MultiUpdates, List<object> MultiUpdatesForCommonCore, ProfileCacheEntry profileCacheEntry, List<WeeklyQuestsJson> WeeklyQuestsArray)
         {
             List<GiftClass> GiftClassList = new List<GiftClass>();
-           // List<NotificationsItemsClassOG> ItemClassOG = new List<NotificationsItemsClassOG>();
+            // List<NotificationsItemsClassOG> ItemClassOG = new List<NotificationsItemsClassOG>();
 
             List<string> AddedBundles = new List<string>();
             var ResponseId = "";
 
-         //   bool bNewQuest = false;
-          //  int NewBundleCount = 0;
-         //   bool bAddMoreBundles = false;
+            //   bool bNewQuest = false;
+            //  int NewBundleCount = 0;
+            //   bool bAddMoreBundles = false;
             foreach (WeeklyQuestsJson WeeklyQuests in WeeklyQuestsArray)
             {
-                if(
+                if (
                     !string.IsNullOrEmpty(ResponseId) &&
                     ResponseId != $"ChallengeBundleSchedule:{WeeklyQuests.BundleSchedule}"
+                    && WeeklyQuests.BundleRequired.QuestBundleID
                 )
                 {
                     var ItemObj = new
@@ -99,13 +100,8 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                 foreach (var AllBundles in WeeklyQuests.BundlesObject)
                 {
                     if (AllBundles.quest_data.RequireBP)
-                    {
                         if (!FoundSeason.BookPurchased)
-                        {
                             continue;
-                        }
-                    }
-
 
                     grantedquestinstanceids.Add(AllBundles.templateId);
 
@@ -206,12 +202,12 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                 }
 
                                 bShouldGrantItems = true;
-                             
+
                             }
                         }
                         else
                         {
-                            if(!string.IsNullOrEmpty(FoundSeason.Quests[AllBundles.templateId].attributes.questData.SchemeData))
+                            if (!string.IsNullOrEmpty(FoundSeason.Quests[AllBundles.templateId].attributes.questData.SchemeData))
                             {
                                 bShouldGrantItems = true;
                             }
@@ -333,9 +329,6 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
 
 
                                             }
-                                            //else if (// ... //) {
-                                            //   WeeklyQuestsArray.Find(e => e.BundleSchedule == )
-                                            // }
                                             else
                                             {
                                                 Logger.Log($"{GrantedItems.TemplateId} is not supported", "ClientQuestLogin");
@@ -402,7 +395,8 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                                 quantity = GrantedItems.Quantity,
                                             });
 
-                                            GiftClass existingGiftClass = GiftClassList.FirstOrDefault(g => g.GiftBox == "GiftBox:gb_generic");
+
+                                            GiftClass existingGiftClass = GiftClassList.FirstOrDefault(g => g.GiftBox == "GiftBox:gb_generic")!;
                                             if (existingGiftClass != null)
                                             {
                                                 existingGiftClass.GiftClassList.Add(new NotificationsItemsClassOG
@@ -416,14 +410,14 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                             {
                                                 GiftClass newGiftClass = new GiftClass
                                                 {
-                                                    GiftClassList = new List<NotificationsItemsClassOG> { 
+                                                    GiftClassList = new List<NotificationsItemsClassOG> {
                                                         new NotificationsItemsClassOG
                                                         {
                                                             itemType = GrantedItems.TemplateId,
                                                             itemGuid = GrantedItems.TemplateId,
                                                             quantity = 1
-                                                        } 
-                                                    } 
+                                                        }
+                                                    }
                                                 };
 
                                                 GiftClassList.Add(newGiftClass);
@@ -506,7 +500,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
 
                                                     if (DPData != null)
                                                     {
-                                                      //  bNewQuest = true;
+                                                        //  bNewQuest = true;
                                                         (FoundSeason, MultiUpdates) = await QuestDataHandler.Add(DPData, FoundSeason, WeeklyQuestsARR, MultiUpdates);
 
                                                         FoundSeason.Quests[AllBundles.templateId].attributes.questData.SchemeData = "";
@@ -609,6 +603,9 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                         quantity = 1
                                     };
 
+                                    if (!WeeklyQuests.BundleRequired.QuestBundleID)
+                                        ItemObjectResponse.attributes["challenge_bundle_id"] = ""; // yeah crazy right
+
                                     foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
                                     {
                                         ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
@@ -658,20 +655,27 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                 {
                                     List<SeasonXP> SeasonXpIg = BattlepassManager.SeasonBattlePassXPItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
                                     var beforeLevelXPElement = SeasonXpIg.FirstOrDefault(e => e.Level == FoundSeason.Level);
-
-                                    int CurrentLevelXP;
-                                    if (beforeLevelXPElement != null && SeasonXpIg.IndexOf(beforeLevelXPElement) == SeasonXpIg.Count - 1)
+                                    if (SeasonXpIg != null && beforeLevelXPElement != null)
                                     {
-                                        FoundSeason.SeasonXP = 0;
+
+                                        int CurrentLevelXP;
+                                        if (SeasonXpIg.IndexOf(beforeLevelXPElement) == SeasonXpIg.Count - 1)
+                                        {
+                                            FoundSeason.SeasonXP = 0;
+                                        }
+
+                                        var SeasonXPItem = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP));
+                                        if (SeasonXPItem != null)
+                                        {
+                                            CurrentLevelXP = SeasonXPItem.XpTotal + FoundSeason.SeasonXP;
+                                            QuestObjectStats.Add(new DailyQuestsObjectiveStates
+                                            {
+                                                Name = $"completion_{ObjectiveItems.BackendName}",
+                                                Value = CurrentLevelXP,
+                                                MaxValue = ObjectiveItems.Count
+                                            });
+                                        }
                                     }
-
-                                    CurrentLevelXP = SeasonXpIg.FirstOrDefault(e => e.XpTotal >= (beforeLevelXPElement.XpTotal + FoundSeason.SeasonXP)).XpTotal + FoundSeason.SeasonXP;
-                                    QuestObjectStats.Add(new DailyQuestsObjectiveStates
-                                    {
-                                        Name = $"completion_{ObjectiveItems.BackendName}",
-                                        Value = CurrentLevelXP,
-                                        MaxValue = ObjectiveItems.Count
-                                    });
                                 }
                             }
                             else
@@ -725,6 +729,9 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                             quantity = 1
                         };
 
+                        if (!WeeklyQuests.BundleRequired.QuestBundleID)
+                            ItemObjectResponse.attributes["challenge_bundle_id"] = ""; // yeah crazy right
+
                         foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
                         {
                             ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
@@ -739,7 +746,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                     }
                 }
 
-                
+
                 //if (!FoundSeason.Quests.TryGetValue(WeeklyQuests.BundleId, out DailyQuestsData value))
                 //{
                 //    NewBundleCount += 1;
@@ -776,7 +783,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                 //            num_granted_bundle_quests = grantedquestinstanceids.Count(),
                 //            challenge_bundle_schedule_id = ResponseId,
                 //            sent_new_notification = false,
-                            
+
                 //        },
                 //        quantity = 1
                 //    });
@@ -788,18 +795,18 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                 //        item = AthenaItemChallengeBundle
                 //    });
                 //}
-               // else
+                // else
                 //{
-                   // if(value.attributes.grantedquestinstanceids != grantedquestinstanceids)
-                   // {
-                        MultiUpdates.Add(new
-                        {
-                            changeType = "itemAttrChanged",
-                            ItemId = ResponseId,
-                            attributeName = $"grantedquestinstanceids",
-                            attributeValue = grantedquestinstanceids
-                        });
-                   // }
+                // if(value.attributes.grantedquestinstanceids != grantedquestinstanceids)
+                // {
+                MultiUpdates.Add(new
+                {
+                    changeType = "itemAttrChanged",
+                    ItemId = ResponseId,
+                    attributeName = $"grantedquestinstanceids",
+                    attributeValue = grantedquestinstanceids
+                });
+                // }
                 // }
             }
 
@@ -832,22 +839,22 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
             //}
             //else
             //{
-               
-             //   if(AddedBundles.Count > NewBundleCount)
-              //  {
-                    MultiUpdates.Add(new
-                    {
-                        changeType = "itemAttrChanged",
-                        ItemId = ResponseId,
-                        attributeName = $"granted_bundles",
-                        attributeValue = AddedBundles
-                    });
+
+            //   if(AddedBundles.Count > NewBundleCount)
+            //  {
+            MultiUpdates.Add(new
+            {
+                changeType = "itemAttrChanged",
+                ItemId = ResponseId,
+                attributeName = $"granted_bundles",
+                attributeValue = AddedBundles
+            });
             // }
             // }
 
-            if(GiftClassList.Count > 0)
+            if (GiftClassList.Count > 0)
             {
-                foreach(var gift in GiftClassList)
+                foreach (var gift in GiftClassList)
                 {
                     var RandomOfferId = Guid.NewGuid().ToString();
 
@@ -878,7 +885,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                         }
                     });
                 }
-               
+
 
                 if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
                 {

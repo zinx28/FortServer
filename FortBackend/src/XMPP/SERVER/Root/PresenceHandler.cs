@@ -6,6 +6,7 @@ using FortLibrary;
 using FortLibrary.XMPP;
 using Newtonsoft.Json;
 using System;
+using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
@@ -26,6 +27,8 @@ namespace FortBackend.src.App.SERVER.Root
                     await Client.CloseClient(webSocket);
                     return;
                 }
+                XNamespace clientNs = "jabber:client";
+                XNamespace MucNamespace = "http://jabber.org/protocol/muc#user";
 
                 var Saved_Clients = GlobalData.Clients.FirstOrDefault(e => e.accountId == UserDataSaved.AccountId);
                 if (Saved_Clients == null) { await Client.CloseClient(webSocket); return; }
@@ -36,6 +39,55 @@ namespace FortBackend.src.App.SERVER.Root
                 {
                     case "unavailable":
                         Console.WriteLine("UNNNNNNNNNNNNNN");
+                        if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value))
+                        {
+                            break;
+                        }
+
+                        string ToValue = xmlDoc.Root.Attribute("to")!.Value;
+
+                        if (ToValue.EndsWith("@muc.prod.ol.epicgames.com") ||
+                        ToValue.Split("/")[0].EndsWith("@muc.prod.ol.epicgames.com"))
+                        {
+                            var RoomName = ToValue.Split("@")[0];
+                            if (GlobalData.Rooms.ContainsKey(RoomName))
+                            {
+                                var RoomData = GlobalData.Rooms[RoomName];
+
+                                if (RoomData != null)
+                                {
+                                    var MemberIndex = RoomData.members.FindIndex(m => m.accountId == Saved_Clients.accountId);
+
+                                    if (MemberIndex != -1)
+                                    {
+                                        RoomData.members.RemoveAt(MemberIndex);
+                                        Saved_Clients.Rooms.RemoveAt(Saved_Clients.Rooms.IndexOf(RoomName));
+                                    }
+
+                                    XNamespace mucUserNs = XNamespace.Get("http://jabber.org/protocol/muc#user");
+
+                                    XElement featuresElement = new XElement(clientNs + "presence",
+                                     new XAttribute("to", Saved_Clients.jid),
+                                     new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
+                                        new XElement(MucNamespace + "x",
+                                            new XElement("item",
+                                                new XAttribute("nick", $"{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
+                                                new XAttribute("jid", Saved_Clients.jid),
+                                                new XAttribute("role", "none")
+                                            )
+                                        ),
+                                        new XElement("status", new XAttribute("code", "110")),
+                                        new XElement("status", new XAttribute("code", "100")),
+                                        new XElement("status", new XAttribute("code", "170"))
+                                    );
+
+                                    xmlMessage = featuresElement.ToString();
+                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
+                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                }
+                            }
+                        }
+
                         break;
                     default:
                        // Console.WriteLine(xmlDoc.Root?.Attribute("type")?.Value);
@@ -85,13 +137,13 @@ namespace FortBackend.src.App.SERVER.Root
                                 // Console.WriteLine("MUCX NOT NULL");
 
 
-                                XNamespace clientNs = "jabber:client";
-                                XNamespace fdsfdsdsfds = "http://jabber.org/protocol/muc#user";
+                           
+
 
                                 XElement featuresElement = new XElement(clientNs + "presence",
                                     new XAttribute("to", Saved_Clients.jid),
                                     new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
-                                    new XElement(fdsfdsdsfds + "x",
+                                    new XElement(MucNamespace + "x",
                                         new XElement("item",
                                             new XAttribute("nick", $"{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
                                             new XAttribute("jid", Saved_Clients.jid),
@@ -120,7 +172,7 @@ namespace FortBackend.src.App.SERVER.Root
                                         XElement presenceElement = new XElement(clientNs + "presence",
                                             new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
                                             new XAttribute("to", ClientData.jid),
-                                            new XElement(fdsfdsdsfds + "x",
+                                            new XElement(MucNamespace + "x",
                                                     new XElement("item",
                                                     new XAttribute("nick", $"{Uri.EscapeDataString(ClientData.displayName)}:{ClientData.accountId}:{ClientData.resource}"),
                                                     new XAttribute("jid", ClientData.jid),
@@ -139,7 +191,7 @@ namespace FortBackend.src.App.SERVER.Root
                                         presenceElement = new XElement(clientNs + "presence",
                                             new XAttribute("from", $"{RoomName}@muc.prod.ol.epicgames.com/{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
                                             new XAttribute("to", Saved_Clients.jid),
-                                             new XElement(fdsfdsdsfds + "x",
+                                             new XElement(MucNamespace + "x",
                                                 new XElement("item",
                                                     new XAttribute("nick", $"{Uri.EscapeDataString(Saved_Clients.displayName)}:{Saved_Clients.accountId}:{Saved_Clients.resource}"),
                                                     new XAttribute("jid", Saved_Clients.jid),

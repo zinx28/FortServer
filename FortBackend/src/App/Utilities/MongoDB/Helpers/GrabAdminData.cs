@@ -21,6 +21,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             {
                 if (MongoDBStart.Database != null)
                 {
+                    if(AdminUsers == null)
+                        AdminUsers = new List<AdminProfileCacheEntry>();
+
                     IMongoCollection<AdminInfo> AdminInfocollection = MongoDBStart.Database.GetCollection<AdminInfo>("AdminInfo");
 
                     var filter = Builders<AdminInfo>.Filter.Eq(x => x.DiscordId, adminInfo.DiscordId);
@@ -28,17 +31,17 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                  
                     AdminInfocollection.ReplaceOne(filter, adminInfo);
 
-                    AdminProfileCacheEntry checkvalue = AdminUsers.FirstOrDefault(e => e.adminInfo.AccountId == adminInfo.AccountId);
-                    if (checkvalue != null)
+                    AdminProfileCacheEntry? CheckAdminUser = AdminUsers.FirstOrDefault(e => e.adminInfo.AccountId == adminInfo.AccountId);
+                    if (CheckAdminUser != null)
                     {
-                        AdminData cachedAdminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == checkvalue.profileCacheEntry.UserData.Email);
+                        AdminData? cachedAdminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == CheckAdminUser.profileCacheEntry.UserData.Email);
                         if(cachedAdminData != null)
                         {
                             Console.WriteLine("CHANGING ROLES");
                             cachedAdminData.RoleId = adminInfo.Role;
                         }
 
-                        checkvalue.adminInfo = adminInfo;
+                        CheckAdminUser.adminInfo = adminInfo;
                     }
 
                     //var existingAdmin = await AdminInfocollection.Find(x => x.DiscordId == adminInfo.DiscordId).FirstOrDefaultAsync();
@@ -118,7 +121,14 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             return false;
         }
 
-        public static async Task<bool> AddAdmin(string DiscordIds, AdminData adminData)
+        public class NewAdminClass 
+        {
+            public string UserName { get; set; } = string.Empty;
+            public string AccountID { get; set; } = string.Empty;
+        }
+
+
+        public static async Task<NewAdminClass> AddAdmin(string DiscordIds, AdminData adminData)
         {
             try
             {
@@ -128,8 +138,9 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
                     var existingAdmin = await AdminInfocollection.Find(x => x.DiscordId == DiscordIds).FirstOrDefaultAsync();
 
-                    if(existingAdmin == null)
+                    if (existingAdmin == null)
                     {
+
                         ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(DiscordIds);
                         if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
                         {
@@ -148,7 +159,11 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
                             Logger.Log($"Admin with Discord ID {DiscordIds} added successfully.", "ADMIN ADD PANEL");
 
-                            return true;
+                            return new NewAdminClass
+                            {
+                                UserName = profileCacheEntry.UserData.Username,
+                                AccountID = profileCacheEntry.AccountId
+                            };
                         }
                     }
                 }
@@ -158,7 +173,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                 Logger.Error(ex.Message, "ADMIN ADD PANEL");
             }
 
-            return false;
+            return new();
         }
 
         public static async Task GrabAllAdmin()
@@ -209,10 +224,12 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     AdminData adminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == Saved.Saved.DeserializeConfig.AdminEmail)!;
                     if (adminData != null)
                     {
-                        
+                        FortConfig DeserializeConfig = new FortConfig();
+                        string FortConfigStr = File.ReadAllText(PathConstants.CachedPaths.FortConfig);
 
-                        FortConfig DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(File.ReadAllText(PathConstants.CachedPaths.FortConfig));
-                        
+                        if (!string.IsNullOrEmpty(FortConfigStr))
+                            DeserializeConfig = JsonConvert.DeserializeObject<FortConfig>(FortConfigStr) ?? new();
+
                         adminData.AdminUserEmail = Email;
                         adminData.bIsSetup = false;
 
@@ -221,8 +238,6 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
 
                         Saved.Saved.DeserializeConfig.AdminEmail = Email;
                         Saved.Saved.DeserializeConfig.AdminPassword = Password;
-
-                     
 
                         File.WriteAllText(PathConstants.CachedPaths.FortConfig, JsonConvert.SerializeObject(DeserializeConfig, Formatting.Indented));
 

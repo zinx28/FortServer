@@ -120,7 +120,6 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                 if (string.IsNullOrEmpty(config.ApplicationClientID) || string.IsNullOrEmpty(config.ApplicationURI) || string.IsNullOrEmpty(config.ApplicationSecret))
                 {
                     throw new Exception("BLANK APPLICATION INFO");
-                    //return Ok(new { test = "Blank Application Info" });
                 }
 
                 var Client = new HttpClient();
@@ -132,7 +131,7 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                     { "code", code },
                     { "redirect_uri", config.ApplicationURI }
                 };
-                Console.WriteLine(JsonConvert.SerializeObject(formData));
+
                 var content = new FormUrlEncodedContent(formData);
                 var response = await Client.PostAsync("https://discord.com/api/oauth2/token", content);
                 if (response.IsSuccessStatusCode)
@@ -143,7 +142,6 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                     if (responseData == null)
                     {
                         throw new Exception("responseContent is null");
-                        return Ok(new { test = "Null!" });
                     }
                  
 
@@ -170,7 +168,6 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                         if (httpContext == null)
                         {
                             throw new Exception("Context is null");
-                            return Ok(new { test = "Context is null" });
                         }
 
                         if (IsInServer)
@@ -214,13 +211,9 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
 
                                 var Ip = "";
                                 if (Saved.DeserializeConfig.Cloudflare)
-                                {
                                     Ip = httpContext.Request.Headers["CF-Connecting-IP"];
-                                }
                                 else
-                                {
                                     Ip = httpContext.Connection.RemoteIpAddress!.ToString();
-                                }
 
                                 if (UpdateResponse != "Error")
                                 {
@@ -229,72 +222,71 @@ namespace FortBackend.src.App.Routes.LUNA_CUSTOMS
                                     {
                                         if (UserData.banned)
                                         {
-                                            string encodedMessage = Uri.EscapeDataString("You are banned from Luna.");
+                                            string encodedMessage = Uri.EscapeDataString($"You are banned from {Saved.DeserializeConfig.ProjectName}.");
                                             return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
                                         }
 
-                                        Console.WriteLine("TEST");
                                         string[] UserIp = new string[] { Ip };
 
-                                        IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
-                                        var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, Ip);
-                                        var count = await StoreInfocollection.CountDocumentsAsync(filter);
-                                        if (count > 0)
+                                        if (Saved.DeserializeConfig.EnableDetections)
                                         {
-                                            bool hasUpdates = false;
-                                            var update = Builders<StoreInfo>.Update.Combine();
-
-                                            var existingIPs = await StoreInfocollection.Find(filter).Project(b => b.UserIps).FirstOrDefaultAsync();
-                                            var newIps = UserData.UserIps.Except(existingIPs).ToArray();
-                                            if (newIps.Count() > 0)
+                                            IMongoCollection<StoreInfo> StoreInfocollection = _database.GetCollection<StoreInfo>("StoreInfo");
+                                            var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIps, Ip);
+                                            var count = await StoreInfocollection.CountDocumentsAsync(filter);
+                                            if (count > 0)
                                             {
-                                                update = update.PushEach(b => b.UserIps, newIps);
-                                                hasUpdates = true;
-                                            }
+                                                bool hasUpdates = false;
+                                                var update = Builders<StoreInfo>.Update.Combine();
 
-                                            var existingIds = await StoreInfocollection.Find(filter).Project(b => b.UserIds).FirstOrDefaultAsync();
-                                            string[] SoReal = new string[] { UserData.AccountId };
-                                            var newIds = SoReal.Except(existingIds).ToArray();
-
-                                            if (newIds.Count() > 0)
-                                            {
-                                                update = update.PushEach(b => b.UserIds, newIds);
-                                                hasUpdates = true;
-                                            }
-
-
-                                            if (hasUpdates)
-                                            {
-                                                await StoreInfocollection.UpdateManyAsync(filter, update);
-                                            }
-                                            try
-                                            {
-                                                await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
-
-                                                await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
+                                                var existingIPs = await StoreInfocollection.Find(filter).Project(b => b.UserIps).FirstOrDefaultAsync();
+                                                var newIps = UserData.UserIps.Except(existingIPs).ToArray();
+                                                if (newIps.Count() > 0)
                                                 {
-                                                    { "banned", true }
-                                                });
+                                                    update = update.PushEach(b => b.UserIps, newIps);
+                                                    hasUpdates = true;
+                                                }
 
-                                                string encodedMessage = Uri.EscapeDataString("You are banned from Luna.");
-                                                return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
+                                                var existingIds = await StoreInfocollection.Find(filter).Project(b => b.UserIds).FirstOrDefaultAsync();
+                                                string[] SoReal = new string[] { UserData.AccountId };
+                                                var newIds = SoReal.Except(existingIds).ToArray();
+
+                                                if (newIds.Count() > 0)
+                                                {
+                                                    update = update.PushEach(b => b.UserIds, newIds);
+                                                    hasUpdates = true;
+                                                }
+
+
+                                                if (hasUpdates)
+                                                {
+                                                    await StoreInfocollection.UpdateManyAsync(filter, update);
+                                                }
+                                                try
+                                                {
+                                                    await BanAndWebHooks.Init(Saved.DeserializeConfig, responseData1);
+
+                                                    await Handlers.UpdateOne<User>("DiscordId", UserData.DiscordId, new Dictionary<string, object>()
+                                                    {
+                                                        { "banned", true }
+                                                    });
+
+                                                    string encodedMessage = Uri.EscapeDataString($"You are banned from {Saved.DeserializeConfig.ProjectName}.");
+                                                    return Redirect($"http://127.0.0.1:2158/callback?code=&message={encodedMessage}");
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Logger.Error("~232~ " + ex.Message);
+                                                }
                                             }
-                                            catch (Exception ex)
+                                            else
                                             {
-                                                Logger.Error("~232~ " + ex.Message);
-                                            }
-
-                                            //return BadRequest(new { Error = "You are banned!" });
-
-                                        }
-                                        else
-                                        {
-                                            if (!UserData.UserIps.Contains(UserIp[0]))
-                                            {
-                                                await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
-                                            {
-                                                { "UserIps", Ip }
-                                            }, false);
+                                                if (!UserData.UserIps.Contains(UserIp[0]))
+                                                {
+                                                    await Handlers.PushOne<User>("DiscordId", id, new Dictionary<string, object>()
+                                                    {
+                                                        { "UserIps", Ip }
+                                                    }, false);
+                                                }
                                             }
                                         }
 

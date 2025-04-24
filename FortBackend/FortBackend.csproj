@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Resources\Json\discovery.json" />
+    <_ContentIncludedByDefault Remove="Resources\Json\Quests\Challenges\Season11\BattlePass\QuestBundle_S11_Discover.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,7 +65,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.17" />
 	<PackageReference Include="SkiaSharp" Version="2.88.7" />
-	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
   </ItemGroup>
 
   <ItemGroup>

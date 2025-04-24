@@ -30,13 +30,9 @@ namespace FortBackend.src.App.Utilities.Helpers
 
                 foreach (var stats in top100)
                 {
-                    //Console.WriteLine(stats.AccountId);
-                    //Console.WriteLine(statName);
                     int statsValue = -1;
                     if (stats.stats.TryGetValue(statName, out int value69))
-                    {
                         statsValue = value69;
-                    }
 
                     ListStatsData.Add(stats.AccountId, statsValue);
                 }
@@ -53,7 +49,8 @@ namespace FortBackend.src.App.Utilities.Helpers
         }
         public static async Task GrabLatest()
         {
-            //LeaderBoardData
+            if (MongoDBStart.Database is null) return;
+
             Collection = MongoDBStart.Database.GetCollection<StatsInfo>("StatsInfo");
 
             LeaderboardCached.Data = await GrabTop100();

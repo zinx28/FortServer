@@ -1,0 +1,1519 @@
+[
+  {
+    "Rewards": [],
+    "Level": 0
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_960_athena_commando_m_cosmos",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_00",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_06",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_07",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_08",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_09",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_10",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_11",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_06",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_07",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_08",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_09",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 1
+  },
+  {
+    "Rewards": [],
+    "Level": 2
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs15_cosmosa",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 3
+  },
+  {
+    "Rewards": [],
+    "Level": 4
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_237_s15_cosmos",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 5
+  },
+  {
+    "Rewards": [],
+    "Level": 6
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s15_cosmosa",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 7
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_254_cosmosmale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 8
+  },
+  {
+    "Rewards": [],
+    "Level": 9
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_265_spacefighter",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 10
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_661_spacefighter",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 11
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 12
+  },
+  {
+    "Rewards": [],
+    "Level": 13
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaSkyDiveContrail:trails_id_109_spacefighter",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 14
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_965_athena_commando_f_spacefighter",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 15
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:eid_boombox",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 16
+  },
+  {
+    "Rewards": [],
+    "Level": 17
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_515_spacefighterfemale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 18
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 19
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_261_spacefighterfemale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 20
+  },
+  {
+    "Rewards": [],
+    "Level": 21
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_838_spacefighterfemale_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_840_spacefighterfemale_backbling_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_842_spacefighterfemale_pickaxe_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_844_spacefighterfemale_glider_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 22
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_309_flapjackwrangler",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 23
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_235_s15_flapjack",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 24
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s15_flapjack",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 25
+  },
+  {
+    "Rewards": [],
+    "Level": 26
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 27
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaSkyDiveContrail:trails_id_104_flapjackwrangler",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 28
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_962_athena_commando_m_flapjackwrangler",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 29
+  },
+  {
+    "Rewards": [],
+    "Level": 30
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs15_flapjackwrangler",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 31
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:EID_GunspinnerTeacup",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 32
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_659_flapjackwrangler",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 33
+  },
+  {
+    "Rewards": [],
+    "Level": 34
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 35
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_848_flapjackwrangler_styled",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_847_flapjackwrangler_stylec",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_850_flapjackwrangler_glider_stylec",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 36
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_513_shapeshifterfemale1h",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 37
+  },
+  {
+    "Rewards": [],
+    "Level": 38
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_306_shapeshifter",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 39
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 40
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_961_athena_commando_f_shapeshifter",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 41
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_660_shapeshifter",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 42
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs15_shapeshifter",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 43
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_260_shapeshifterfemale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 44
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_851_shapeshifterfemale_pickaxe_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 45
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_917_shapeshifterfemale_hair_stylea",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_918_shapeshifterfemale_hair_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_855_shapeshifterfemale_backbling_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 46
+  },
+  {
+    "Rewards": [],
+    "Level": 47
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_853_shapeshifterfemale_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 48
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_852_shapeshifterfemale_pickaxe_stylec",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 49
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_261_shapeshifter",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 50
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_915_shapeshifterfemale_tail_stylea",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_916_shapeshifterfemale_tail_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_856_shapeshifterfemale_backbling_stylec",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 51
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 52
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_854_shapeshifterfemale_stylec",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 53
+  },
+  {
+    "Rewards": [],
+    "Level": 54
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_263_futuresamurai",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 55
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_256_futuresamuraimale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 56
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs15_futuresamurai",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 57
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 58
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_234_s15_futuresamurai",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 59
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_966_athena_commando_m_futuresamurai",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 60
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_662_futuresamuraimale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 61
+  },
+  {
+    "Rewards": [],
+    "Level": 62
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_507_futuresamuraimale1h",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 63
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_308_futuresamurai",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 64
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 65
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:EID_FutureSamurai",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 66
+  },
+  {
+    "Rewards": [],
+    "Level": 67
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_233_s15_lexa",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 68
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaGlider:glider_id_259_lexafemale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 69
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 70
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s15_lexa",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 71
+  },
+  {
+    "Rewards": [],
+    "Level": 72
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_963_athena_commando_f_lexa",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_06",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 73
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaItemWrap:wrap_307_lexa",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 74
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_511_lexafemale1h",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 75
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_262_lexa",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 76
+  },
+  {
+    "Rewards": [],
+    "Level": 77
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 78
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:EID_Lexa",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 79
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaLoadingScreen:lsid_260_ancientgladiator",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 80
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaBackpack:bid_656_ancientgladiatormale",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 81
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 82
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:cid_967_athena_commando_m_ancientgladiator",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_07",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 83
+  },
+  {
+    "Rewards": [],
+    "Level": 84
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_872_ancientgladiator_helmetb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 85
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s15_ancientgladiator",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 86
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaPickaxe:pickaxe_id_505_ancientgladiatormale1h",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 87
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_869_ancientgladiator_styleb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 88
+  },
+  {
+    "Rewards": [],
+    "Level": 89
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_873_ancientgladiator_helmetc",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 90
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:spid_231_s15_ancientgladiator",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 91
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_874_ancientgladiator_helmetc_alt",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "CosmeticVariantToken:vtid_910_ancientgladiator_styleb_fx",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 92
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "Currency:mtxgiveaway",
+        "connectedTemplate": "",
+        "quantity": 100
+      }
+    ],
+    "Level": 93
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_870_ancientgladiator_stylec",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 94
+  },
+  {
+    "Rewards": [],
+    "Level": 95
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "CosmeticVariantToken:vtid_875_ancientgladiator_helmetd",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 96
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "HomebaseBannerIcon:brs15_cosmosb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 97
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaDance:emoji_s15_cosmosb",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 98
+  },
+  {
+    "Rewards": [],
+    "Level": 99
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_08",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "AthenaBackpack:petcarrier_015_cosmos",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:season15_cosmos_schedule_09_cumulative",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 100
+  },
+  {
+    "Rewards": [],
+    "Level": 101
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_00",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 102
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 103
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 104
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 105
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 106
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 107
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_06",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 108
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_07",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 109
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_08",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 110
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_09",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 111
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_10",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 112
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_alternatestyles_schedule_11",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 113
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 114
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 115
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 116
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 117
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 118
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_06",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 119
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_07",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 120
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_08",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 121
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_nightmare_schedule_09",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 122
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 123
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 124
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 125
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 126
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t1_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 127
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 128
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 129
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 130
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 131
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t2_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 132
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_01",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 133
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_02",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 134
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_03",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 135
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_04",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 136
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "ChallengeBundleSchedule:season15_superstyles_t3_schedule_05",
+        "connectedTemplate": "",
+        "quantity": 1
+      }
+    ],
+    "Level": 137
+  }
+]

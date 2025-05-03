@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\Json\Quests\Challenges\Season15\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season3\Special\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season4\Special\" />
     <Folder Include="Resources\Json\Quests\Challenges\Season5\Special\" />

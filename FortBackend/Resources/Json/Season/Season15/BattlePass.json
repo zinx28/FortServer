@@ -1,9 +1,9 @@
 {
-  "name": "BRSeason12",
+  "name": "BRSeason15",
   "catalogEntries": [
     {
-      "offerId": "89DED540434B169187E1D6A5C2086AA2",
-      "devName": "BR.Season12.BattlePass.01",
+      "offerId": "73EBC6CE41D5BDB460059EB324D07A00",
+      "devName": "BR.Season15.BattlePass.01",
       "offerType": "StaticPrice",
       "prices": [
         {
@@ -24,7 +24,7 @@
       "requirements": [
         {
           "requirementType": "DenyOnFulfillment",
-          "requiredId": "89DED540434B169187E1D6A5C2086AA2",
+          "requiredId": "73EBC6CE41D5BDB460059EB324D07A00",
           "minQuantity": 1
         }
       ],
@@ -52,7 +52,7 @@
         "de": "Kampfpass"
       },
       "shortDescription": {
-        "en": "Chapter 2 - Season 2",
+        "en": "Chapter 2 - Season 5",
         "es": "",
         "es-419": "",
         "fr": "",
@@ -66,7 +66,7 @@
         "de": ""
       },
       "description": {
-        "en": "Chapter 2 - Season 2 through April 16.",
+        "en": "Chapter 2 - Season 5 through April 16.",
         "es": "pp",
         "es-419": "",
         "fr": "",
@@ -79,12 +79,12 @@
         "tr": "",
         "de": ""
       },
-      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season12_BattlePass.DA_BR_Season12_BattlePass",
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season15_BattlePass.DA_BR_Season15_BattlePass",
       "itemGrants": []
     },
     {
-      "offerId": "350050574100C333CB9ACA8D1CEF9BF6",
-      "devName": "BR.Season12.SingleTier.01",
+      "offerId": "19D35E9B40B07AE37CD165AB4CF7AB33",
+      "devName": "BR.Season15.SingleTier.01",
       "offerType": "StaticPrice",
       "prices": [
         {
@@ -159,8 +159,8 @@
       "itemGrants": []
     },
     {
-      "offerId": "C04CD6524D6F1D730FDE208D5FFA07A7",
-      "devName": "BR.Season12.BattleBundle.01",
+      "offerId": "DACC300C4373FE1D97F4F6BEE90DB41B",
+      "devName": "BR.Season15.BattleBundle.01",
       "offerType": "StaticPrice",
       "prices": [
         {
@@ -182,7 +182,7 @@
       "requirements": [
         {
           "requirementType": "DenyOnFulfillment",
-          "requiredId": "C04CD6524D6F1D730FDE208D5FFA07A7",
+          "requiredId": "DACC300C4373FE1D97F4F6BEE90DB41B",
           "minQuantity": 1
         }
       ],
@@ -224,7 +224,7 @@
         "de": ""
       },
       "description": {
-        "en": "Chapter 2 - Season 2 through April 16.",
+        "en": "Chapter 2 - Season 5 through April 16.",
         "es": "pp",
         "es-419": "",
         "fr": "",
@@ -237,7 +237,7 @@
         "tr": "",
         "de": ""
       },
-      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season12_BattlePassWithLevels.DA_BR_Season12_BattlePassWithLevels",
+      "displayAssetPath": "/Game/Catalog/DisplayAssets/DA_BR_Season15_BattlePassWithLevels.DA_BR_Season15_BattlePassWithLevels",
       "itemGrants": []
     }
   ]

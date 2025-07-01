@@ -3,10 +3,13 @@
     "Rewards": []
   },
   {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_00.Season15_AlternateStyles_Schedule_00",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/MusicPacks/MusicPack_068_S14EndEvent.MusicPack_068_S14EndEvent",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -25,10 +28,38 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_01.Season15_AlternateStyles_Schedule_01",
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal",
+        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_266_Cosmos.LSID_266_Cosmos",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -47,10 +78,16 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_02.Season15_AlternateStyles_Schedule_02",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_310_SpaceFighter.Wrap_310_SpaceFighter",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -69,10 +106,19 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_03.Season15_AlternateStyles_Schedule_03",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_S15_SpaceFighter.Emoji_S15_SpaceFighter",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -91,10 +137,19 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_04.Season15_AlternateStyles_Schedule_04",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_236_S15_SpaceFighter.SPID_236_S15_SpaceFighter",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -113,10 +168,19 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_05.Season15_AlternateStyles_Schedule_05",
+          "AssetPathName": "/Game/Items/BannerIcons/BRS15_SpaceFighter.BRS15_SpaceFighter",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -135,10 +199,22 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_06.Season15_AlternateStyles_Schedule_06",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Pickaxes/Pickaxe_ID_506_FlapjackWranglerMale.Pickaxe_ID_506_FlapjackWranglerMale",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -157,10 +233,19 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_07.Season15_AlternateStyles_Schedule_07",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Gliders/Glider_ID_255_FlapjackWranglerMale.Glider_ID_255_FlapjackWranglerMale",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -179,10 +264,19 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_08.Season15_AlternateStyles_Schedule_08",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/LoadingScreens/LSID_264_Flapjack.LSID_264_Flapjack",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -201,10 +295,19 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_09.Season15_AlternateStyles_Schedule_09",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Sprays/SPID_232_S15_Shapeshifter.SPID_232_S15_Shapeshifter",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -223,10 +326,74 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_10.Season15_AlternateStyles_Schedule_10",
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 100,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::Normal",
+        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_105_FutureSamurai.Trails_ID_105_FutureSamurai",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -245,10 +412,31 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_AlternateStyles_Schedule_11.Season15_AlternateStyles_Schedule_11",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/Emoji/Emoji_S15_FutureSamurai.Emoji_S15_FutureSamurai",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -267,10 +455,22 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_01.Season15_Nightmare_Schedule_01",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/MusicPacks/MusicPack_070_StarPowerRemix.MusicPack_070_StarPowerRemix",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -289,10 +489,22 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_02.Season15_Nightmare_Schedule_02",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Contrails/Trails_ID_110_Lexa.Trails_ID_110_Lexa",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -311,10 +523,41 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_03.Season15_Nightmare_Schedule_03",
+          "AssetPathName": "/BattlepassS15/Items/Tokens/Athena_S15_NoBattleBundleOption_Token.Athena_S15_NoBattleBundleOption_Token",
+          "SubPathString": ""
+        },
+        "TemplateId": "",
+        "Quantity": 1,
+        "RewardGiftBox": {
+          "GiftBoxToUse": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "GiftBoxFormatData": []
+        },
+        "IsChaseReward": false,
+        "RewardType": "EAthenaRewardItemType::GiftboxHiddenReward",
+        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
+      }
+    ]
+  },
+  {
+    "Rewards": [
+      {
+        "ItemDefinition": {
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Backpacks/BID_657_LexaFemale.BID_657_LexaFemale",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -333,10 +576,28 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_04.Season15_Nightmare_Schedule_04",
+          "AssetPathName": "/Game/Items/BannerIcons/BRS15_AncientGladiator.BRS15_AncientGladiator",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -355,10 +616,22 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_05.Season15_Nightmare_Schedule_05",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/ItemWraps/Wrap_305_AncientGladiator.Wrap_305_AncientGladiator",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -377,10 +650,25 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_06.Season15_Nightmare_Schedule_06",
+          "AssetPathName": "/Game/Athena/Items/Cosmetics/Dances/EID_AncientGladiator.EID_AncientGladiator",
           "SubPathString": ""
         },
         "TemplateId": "",
@@ -399,14 +687,23 @@
     ]
   },
   {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
+    "Rewards": []
+  },
+  {
     "Rewards": [
       {
         "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_07.Season15_Nightmare_Schedule_07",
+          "AssetPathName": "/Game/Items/Currency/MtxGiveaway.MtxGiveaway",
           "SubPathString": ""
         },
         "TemplateId": "",
-        "Quantity": 1,
+        "Quantity": 100,
         "RewardGiftBox": {
           "GiftBoxToUse": {
             "AssetPathName": "None",
@@ -421,377 +718,6 @@
     ]
   },
   {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_08.Season15_Nightmare_Schedule_08",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_Nightmare_Schedule_09.Season15_Nightmare_Schedule_09",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T1_Schedule_01.Season15_SuperStyles_T1_Schedule_01",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T1_Schedule_02.Season15_SuperStyles_T1_Schedule_02",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T1_Schedule_03.Season15_SuperStyles_T1_Schedule_03",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T1_Schedule_04.Season15_SuperStyles_T1_Schedule_04",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T1_Schedule_05.Season15_SuperStyles_T1_Schedule_05",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T2_Schedule_01.Season15_SuperStyles_T2_Schedule_01",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T2_Schedule_02.Season15_SuperStyles_T2_Schedule_02",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T2_Schedule_03.Season15_SuperStyles_T2_Schedule_03",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T2_Schedule_04.Season15_SuperStyles_T2_Schedule_04",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T2_Schedule_05.Season15_SuperStyles_T2_Schedule_05",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T3_Schedule_01.Season15_SuperStyles_T3_Schedule_01",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T3_Schedule_02.Season15_SuperStyles_T3_Schedule_02",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T3_Schedule_03.Season15_SuperStyles_T3_Schedule_03",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T3_Schedule_04.Season15_SuperStyles_T3_Schedule_04",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
-  },
-  {
-    "Rewards": [
-      {
-        "ItemDefinition": {
-          "AssetPathName": "/BattlepassS15/Items/QuestSchedules/Season15_SuperStyles_T3_Schedule_05.Season15_SuperStyles_T3_Schedule_05",
-          "SubPathString": ""
-        },
-        "TemplateId": "",
-        "Quantity": 1,
-        "RewardGiftBox": {
-          "GiftBoxToUse": {
-            "AssetPathName": "None",
-            "SubPathString": ""
-          },
-          "GiftBoxFormatData": []
-        },
-        "IsChaseReward": false,
-        "RewardType": "EAthenaRewardItemType::Normal",
-        "RewardVisualImportanceType": "EAthenaRewardVisualImportanceType::Normal"
-      }
-    ]
+    "Rewards": []
   }
 ]

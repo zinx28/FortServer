@@ -18,6 +18,7 @@ import {
   Edit,
   Check,
   Save,
+  Loader2,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -96,7 +97,6 @@ export default function DashboardBase() {
 
   const [SecondTabContent, setSecondTabContent] = useState<YKY>();
 
-  
   useEffect(() => {
     const test = async () => {
       var apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -111,23 +111,46 @@ export default function DashboardBase() {
         }
       );
       const ApiResponse = await response.json();
-  
+
       if (ApiResponse) {
         console.log(ApiResponse);
         setSecondTabContent(ApiResponse);
       }
-    }
+    };
     test();
   }, []);
 
   const handleTabChange = async (value: string) => {
     setActiveTab(value);
   };
-
+  const [isSavingConf, setIsSavingConf] = useState(false);
   const saveSEcondTabContent = async () => {
     var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    setIsSavingConf(true);
     const response = await fetch(
-      `${apiUrl}/dashboard/v2/content/update/server/1/69`, 
+      `${apiUrl}/dashboard/v2/content/update/server/1/69`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(SecondTabContent),
+        credentials: "include",
+      }
+    );
+
+    const ApiResponse = await response.json();
+
+    if (ApiResponse) {
+      console.log(ApiResponse);
+      setIsSavingConf(false);
+    }
+  };
+
+  const RefreshShopAuraIK = async () => {
+    var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const response = await fetch(
+      `${apiUrl}/admin/new/dashboard/content/refresh-shop`,
       {
         method: "POST",
         headers: {
@@ -143,7 +166,7 @@ export default function DashboardBase() {
     if (ApiResponse) {
       console.log(ApiResponse);
     }
-  }
+  };
 
   return (
     <div className="flex flex-1 flex-col">
@@ -167,11 +190,21 @@ export default function DashboardBase() {
           className="space-y-6"
         >
           <TabsList className="grid w-full grid-cols-4 mb-4">
-            <TabsTrigger value="news-update" onClick={() => router.push("/dashboard/content")}>News Update</TabsTrigger>
+            <TabsTrigger
+              value="news-update"
+              onClick={() => router.push("/dashboard/content")}
+            >
+              News Update
+            </TabsTrigger>
             <TabsTrigger value="server-management">
               Server Management
             </TabsTrigger>
-            <TabsTrigger value="ini-management" onClick={() => router.push("/dashboard/content/ini")}>Ini Management</TabsTrigger>
+            <TabsTrigger
+              value="ini-management"
+              onClick={() => router.push("/dashboard/content/ini")}
+            >
+              Ini Management
+            </TabsTrigger>
             <TabsTrigger value="tournaments">Tournaments</TabsTrigger>
           </TabsList>
 
@@ -278,27 +311,45 @@ export default function DashboardBase() {
                                 </p>
                               </div>
 
-                              <div className="space-y-2">
-                                <Label
-                                  htmlFor="force-season"
-                                  className="text-base"
-                                >
-                                  Shop Rotation
-                                </Label>
-                                <p className="text-sm text-muted-foreground">
-                                  Shop rotations, resets daily
-                                </p>
+                              <div className="flex space-x-6 w-full">
+                                <div className="w-full space-y-4">
+                                  <Label
+                                    htmlFor="force-season"
+                                    className="text-base"
+                                  >
+                                    Shop Rotation
+                                  </Label>
+                                  <p className="text-sm text-muted-foreground">
+                                    Shop rotations, resets daily
+                                  </p>
+                                  <Switch
+                                    id="shop-rotation"
+                                    checked={SecondTabContent?.ShopRotation}
+                                    onCheckedChange={(checked) =>
+                                      setSecondTabContent((prev) => ({
+                                        ...prev,
+                                        ShopRotation: checked,
+                                      }))
+                                    }
+                                  />
+                                </div>
 
-                                <Switch
-                                  id="shop-rotation"
-                                  checked={SecondTabContent?.ShopRotation}
-                                  onCheckedChange={(checked) =>
-                                    setSecondTabContent((prev) => ({
-                                      ...prev,
-                                      ShopRotation: checked,
-                                    }))
-                                  }
-                                />
+                                <div className="w-full space-y-4">
+                                  <Label
+                                    htmlFor="daily-featured"
+                                    className="text-base"
+                                  >
+                                    Shop Refresh
+                                  </Label>
+                                  <p className="text-sm text-muted-foreground">
+                                    This refreshes the shop, eg. if you have
+                                    downtime for a few hours.. faster way to
+                                    quickly refresh
+                                  </p>
+                                  <Button onClick={() => RefreshShopAuraIK()}>
+                                    Refresh Shop
+                                  </Button>
+                                </div>
                               </div>
                             </>
                           )}
@@ -307,9 +358,23 @@ export default function DashboardBase() {
                     </AccordionItem>
                   </Accordion>
 
-                  <Button className="w-full" onClick={() => saveSEcondTabContent()}>
-                    <Save className="mr-2 h-4 w-4"/>
-                    Save Configuration
+                  <Button
+                    className="w-full"
+                    onClick={() => saveSEcondTabContent()}
+                    disabled={isSavingConf}
+                  >
+                    {isSavingConf ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        <Save className="mr-2 h-4 w-4" />
+                        Saving Configuration
+                      </>
+                    ) : (
+                      <>
+                        <Save className="mr-2 h-4 w-4" />
+                        Save Configuration
+                      </>
+                    )}
                   </Button>
                 </div>
               </CardContent>

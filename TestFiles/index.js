@@ -41,7 +41,7 @@ for(var index in datafile) {
 console.log(JSON.stringify(Data));
 */
 
-
+/*
 const DataFile = require("./SingleQuest.json");
 var DataResponse = [];
 var Level = 0;
@@ -167,81 +167,97 @@ for(var index in DataFile){
 }
 
 console.log(JSON.stringify(DataResponse, null, 2));
+*/
 
-
-/*
 const datafile = require("./BattlePass.json");
 var Data = [];
 var Level = 0;
 
-
-for(var index in datafile){
+for (var index in datafile) {
   var dataha = datafile[index];
 
   //var DataToPush = {
-     // Rewards: dataha.Rewards,
-     // Level: Level
+  // Rewards: dataha.Rewards,
+  // Level: Level
   //}
-  var rewards = []
-  dataha.Rewards.forEach(e => { 
-     var templatePush = "";
-     if(e.TemplateId != "") {
-        templatePush = e.TemplateId
-     }else {
-        if(e.ItemDefinition.AssetPathName) {
-            var test = e.ItemDefinition.AssetPathName.split(".")[1].toLowerCase();
-            console.log(e.ItemDefinition.AssetPathName);
-            //console.log(test);
-            //if(test.includes(""))
-            if(e.ItemDefinition.AssetPathName.includes("ChallengeBundleSchedules")){
-              templatePush = `ChallengeBundleSchedule:${test}`
-            }else
-            if(test.includes("eid") || test.includes("emoji") || test.includes("spid") || test.includes("toy")){
-               templatePush = `AthenaDance:${test}`
-            }else if(test.includes("vtid")){
-              templatePush = `CosmeticVariantToken:${test}`
-            }
-            else if(test.includes("mtxgiveaway")) {
-              templatePush = `Currency:${test}` 
-            }else if(test.includes("athenaseasonalxp")) {
-              templatePush = `AccountResource:${test}`
-            }else if(test.includes("glider")) {
-              templatePush = `AthenaGlider:${test}`
-            }else if(test.includes("cid")) {
-              templatePush = `AthenaCharacter:${test}`
-            }else if(test.includes("athenaseason") || test.includes("athenanextseason")) { // idk
-              templatePush = `Token:${test}`
-            }else if(test.includes("wrap")){
-              templatePush = `AthenaItemWrap:${test}`
-            }else if(test.includes("pickaxe")) {
-              templatePush = `AthenaPickaxe:${test}`
-            }else if(test.includes("lsid")) {
-              templatePush = `AthenaLoadingScreen:${test}`
-            }else if(test.includes("trails")) {
-              templatePush = `AthenaSkyDiveContrail:${test}`
-            }else if(test.includes("musicpack")){
-              templatePush = `AthenaMusicPack:${test}`
-            }else if(test.includes("bid") || test.includes("petcarrier")){
-              templatePush = `AthenaBackpack:${test}`
-            }//else if(test.includes("")){
-            //  templatePush = `HomebaseBannerIcon:${test}`
-            //}
-
-            console.log(templatePush)
+  var rewards = [];
+  dataha.Rewards.forEach((e) => {
+    var templatePush = "";
+    if (e.TemplateId != "") {
+      templatePush = e.TemplateId;
+    } else {
+      if (e.ItemDefinition.AssetPathName) {
+        var test = e.ItemDefinition.AssetPathName.split(".")[1].toLowerCase();
+        console.log(e.ItemDefinition.AssetPathName);
+        //console.log(test);
+        //if(test.includes(""))
+        if (
+          e.ItemDefinition.AssetPathName.includes("ChallengeBundleSchedules")
+        ) {
+          templatePush = `ChallengeBundleSchedule:${test}`;
+        } else if (
+          test.includes("eid") ||
+          test.includes("emoji") ||
+          test.includes("spid") ||
+          test.includes("toy")
+        ) {
+          templatePush = `AthenaDance:${test}`;
+        } else if (test.includes("vtid")) {
+          templatePush = `CosmeticVariantToken:${test}`;
+        } else if (test.includes("mtxgiveaway")) {
+          templatePush = `Currency:${test}`;
+        } else if (test.includes("athenaseasonalxp")) {
+          templatePush = `AccountResource:${test}`;
+        } else if (test.includes("glider")) {
+          templatePush = `AthenaGlider:${test}`;
+        } else if (test.includes("cid")) {
+          templatePush = `AthenaCharacter:${test}`;
+        } else if (
+          test.includes("athenaseason") ||
+          test.includes("athenanextseason")
+        ) {
+          // idk
+          templatePush = `Token:${test}`;
+        } else if (test.includes("wrap")) {
+          templatePush = `AthenaItemWrap:${test}`;
+        } else if (test.includes("pickaxe")) {
+          templatePush = `AthenaPickaxe:${test}`;
+        } else if (test.includes("lsid")) {
+          templatePush = `AthenaLoadingScreen:${test}`;
+        } else if (test.includes("trails")) {
+          templatePush = `AthenaSkyDiveContrail:${test}`;
+        } else if (test.includes("musicpack")) {
+          templatePush = `AthenaMusicPack:${test}`;
+        } else if (test.includes("bid") || test.includes("petcarrier")) {
+          templatePush = `AthenaBackpack:${test}`;
+        } else if (e.ItemDefinition.AssetPathName.includes("BannerIcons")) {
+          templatePush = `HomebaseBannerIcon:${test}`;
+        }else if (e.ItemDefinition.AssetPathName.includes("QuestSchedules")) {
+          templatePush = `ChallengeBundleSchedule:${test}`;
         }
-     }
-     
-     rewards.push({
-        templateId: templatePush,
-        connectedTemplate: "",
-        quantity: e.Quantity
-     })
-  })
+
+
+        //QuestSchedules
+        //HomebaseBannerIcon
+        //else if(test.includes("")){
+        //  templatePush = `HomebaseBannerIcon:${test}`
+        //}
+
+        console.log(templatePush);
+      }
+    }
+
+    rewards.push({
+      templateId: templatePush,
+      connectedTemplate: "",
+      quantity: e.Quantity,
+    });
+  });
 
   var DataToPush = {
-      Rewards: rewards,
-      Level: Level
-  }
+    Rewards: rewards,
+    Level: Level,
+  };
 
   Data.push(DataToPush);
 
@@ -249,8 +265,6 @@ for(var index in datafile){
 }
 
 console.log(JSON.stringify(Data));
-
-*/
 
 /*
 const datafile = require("./SeasonStars.json");

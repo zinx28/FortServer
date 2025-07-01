@@ -3,6 +3,7 @@ using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.Utilities.Shop;
 using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
@@ -197,6 +198,37 @@ namespace FortBackend.src.App.Routes.ADMIN
             });
         }
 
+        [HttpPost("refresh-shop")]
+        public async Task<IActionResult> RefreshShop()
+        {
+            try
+            {
+                if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
+                {
+                    AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
+                    if (adminData != null)
+                    {
+                        await GenerateShop.Init();
+                        return Json(new
+                        {
+                            message = "Refreshed Shop",
+                            error = false,
+                        });
+                    }   
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Json(new
+            {
+                message = "Couldn't find content",
+                error = true,
+            });
+        }
 
         // REMOVING IN THE FUTURE
         [HttpPost("update")]

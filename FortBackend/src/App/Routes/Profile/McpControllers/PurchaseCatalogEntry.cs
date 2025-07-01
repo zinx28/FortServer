@@ -67,24 +67,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                     };
                                 }
 
-                                // should be battlepass but we can verify that
-                                StoreBattlepassPages battlepass = BattlepassManager.BattlePasses.FirstOrDefault(e => e.Key == Season.Season).Value;
-
-                                if(battlepass == null)
-                                {
-                                    Logger.Error("Couldn't find bp items for this season", "PruchaseCatlaogEntry");
-                                    throw new BaseError
-                                    {
-                                        errorCode = "errors.com.epicgames.modules.catalog",
-                                        errorMessage = "Couldn't find battlepass offer: " + OfferId,
-                                        messageVars = new List<string> { "PurchaseCatalogEntry" },
-                                        numericErrorCode = 12801,
-                                        originatingService = "any",
-                                        intent = "prod",
-                                        error_description = "Catalog Limit is at least 1!",
-                                    };
-                                }
-
 
                                 if (OfferId.Contains(":/"))
                                 {
@@ -93,11 +75,29 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 }
                                 else
                                 {
+                                    // should be battlepass but we can verify that
+                                    StoreBattlepassPages battlepass = BattlepassManager.BattlePasses.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                                    if (battlepass == null)
+                                    {
+                                        Logger.Error("Couldn't find bp items for this season", "PruchaseCatlaogEntry");
+                                        throw new BaseError
+                                        {
+                                            errorCode = "errors.com.epicgames.modules.catalog",
+                                            errorMessage = "Couldn't find battlepass offer: " + OfferId,
+                                            messageVars = new List<string> { "PurchaseCatalogEntry" },
+                                            numericErrorCode = 12801,
+                                            originatingService = "any",
+                                            intent = "prod",
+                                            error_description = "Catalog Limit is at least 1!",
+                                        };
+                                    }
+
                                     var Sigma = battlepass.catalogEntries.FirstOrDefault(e => e.offerId == OfferId && e.devName.Contains("SingleTier"));
 
                                     if (battlepass != null)
                                     {
-                                        bool FoundId = false ;
+                                        bool FoundId = false;
                                         foreach (catalogEntrieStore a in battlepass.catalogEntries)
                                         {
                                             if(a.offerId == OfferId)

@@ -93,7 +93,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                         };
                                     }
 
-                                    var Sigma = battlepass.catalogEntries.FirstOrDefault(e => e.offerId == OfferId && e.devName.Contains("SingleTier"));
+                                    var SingleTierOffer = battlepass.catalogEntries.FirstOrDefault(e => e.offerId == OfferId && e.devName.Contains("SingleTier"));
 
                                     if (battlepass != null)
                                     {

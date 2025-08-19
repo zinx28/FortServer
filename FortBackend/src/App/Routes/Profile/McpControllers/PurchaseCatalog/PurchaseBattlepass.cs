@@ -141,7 +141,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                             {
                                                 currencyItem.quantity -= Price;
 
-                                                Logger.Warn("Sigma");
+                                                //Logger.Warn("Sigma");
                                                 // THIS SHOULD JUST BE IN A DIFFERENT FILE TO MAKE THIS CLEANER
                                                 if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray1))
                                                 {

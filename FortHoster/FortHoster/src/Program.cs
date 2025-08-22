@@ -5,7 +5,7 @@ using System;
 using System.Net.WebSockets;
 using System.Text;
 
-Console.WriteLine("FortHoster...");
+Console.WriteLine("FortHoster... Please note this project isnt fully tested and may come with big issues");
 Console.WriteLine("REDIRECT: if you havent you have to remove console logs on the dll");
 Console.WriteLine("DLL: do the same");
 

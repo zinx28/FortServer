@@ -6,7 +6,8 @@
    ],
   "compilerOptions": {
     "target": "es2022",   
-    "module": "commonjs",  
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "sourceMap": false,
     "composite": true,
     "types": ["electron-vite/node"]

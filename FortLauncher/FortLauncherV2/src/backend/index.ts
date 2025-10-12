@@ -20,7 +20,7 @@ let mainWindow: BrowserWindow | null;
 function createWindow(): void {
   console.log(process.env.VITE_BACKEND_URL);
   console.log(__dirname);
-  const preloadPath = join(__dirname, '../main/preload.js')
+  const preloadPath = join(app.getAppPath(), 'out/main/preload.js')
   console.log("Preload script path:", preloadPath);
 
   if (!mainWindow) {
@@ -50,7 +50,7 @@ function createWindow(): void {
     if (process.env.NODE_ENV === "development") {
       mainWindow.loadURL("http://localhost:5173");
     } else {
-      mainWindow.loadFile(join(__dirname, "../index.html"));
+      mainWindow.loadFile(join(app.getAppPath(), "out/renderer/index.html"));
     }
 
     ipcMain.handle("fortlauncher:ping", async () => {

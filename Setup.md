@@ -14,6 +14,7 @@ Once Visual Studio is installed, open the Visual Studio installer, then under th
 
 - **ASP.NET and web development**
 - **.NET Desktop Development**
+- **Desktop development with C++** (this is required while building the launcher)
 
 ### Step 3: Install each component
 

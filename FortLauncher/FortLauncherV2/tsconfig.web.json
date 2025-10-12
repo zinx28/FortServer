@@ -6,8 +6,9 @@
     "src/renderer/src/**/*.vue"
   ],
   "compilerOptions": {
-    "target": "ES6", 
-    "module": "commonjs",
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "sourceMap": false,
     "composite": true,
     "baseUrl": ".",

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain } from "electron";
+import { app, BrowserWindow, dialog, ipcMain, Menu } from "electron";
 import axios from "axios";
 import path, { join } from "path";
 import icon from '../../resources/icon.png?asset'
@@ -51,6 +51,7 @@ function createWindow(): void {
       mainWindow.loadURL("http://localhost:5173");
     } else {
       mainWindow.loadFile(join(app.getAppPath(), "out/renderer/index.html"));
+      Menu.setApplicationMenu(null);
     }
 
     ipcMain.handle("fortlauncher:ping", async () => {

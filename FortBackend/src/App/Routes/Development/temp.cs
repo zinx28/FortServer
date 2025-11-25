@@ -452,6 +452,23 @@ namespace FortBackend.src.App.Routes.Development
             }
         }
 
+        [HttpGet("/mesh/Fortnite/{file}/metadata")]
+        public IActionResult MeshMetaData()
+        {
+            try
+            {
+                Response.ContentType = "application/json";
+
+                return Ok(new { });
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex.Message, "CSS");
+            }
+
+            return NoContent();
+        }
+
         [HttpGet("/css/{file}")]
         public IActionResult FileResponse(string file)
         {

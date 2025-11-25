@@ -29,5 +29,7 @@ namespace FortLibrary.EpicResponses.FortniteServices.Content
         public ShopSections shopSections { get; set; } = new ShopSections();
         public PlaylistInformation playlistinformation { get; set; } = new PlaylistInformation();
         public Tournamentinformation tournamentinformation { get; set; } = new Tournamentinformation();
+
+
     }
 }

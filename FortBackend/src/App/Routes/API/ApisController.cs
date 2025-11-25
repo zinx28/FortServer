@@ -128,11 +128,9 @@ namespace FortBackend.src.App.Routes.API
 
         [HttpPut("/profile/play_region")]
 
-
         public IActionResult PlayRegion()
         {
-            Response.ContentType = "application/json";
-            return Ok(new { });
+            return StatusCode(204);
         }
 
         [HttpPost("/api/v1/fortnite-br/interactions")]
@@ -573,17 +571,17 @@ namespace FortBackend.src.App.Routes.API
             Response.ContentType = "application/json";
             try
             {
-                var DefaultSDKPath = PathConstants.FN_PROD;
+                var ProdSDKPath = PathConstants.FN_PROD;
 
-                if (System.IO.File.Exists(DefaultSDKPath))
+                if (System.IO.File.Exists(ProdSDKPath))
                 {
-                    var ReadFile = System.IO.File.ReadAllText(DefaultSDKPath);
+                    var ReadFile = System.IO.File.ReadAllText(ProdSDKPath);
                     if (!string.IsNullOrEmpty(ReadFile)) { return Content(ReadFile, "application/json"); }
                 }
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "SDKDEFAULT!!");
+                Logger.Error(ex.Message, "ProdSDKPath!!");
             }
 
             return Ok(new { });
@@ -639,8 +637,9 @@ namespace FortBackend.src.App.Routes.API
         }
 
         //v1/epic-settings/public/users/372da84236e342c297ca36599deb669d/values
-
-        [HttpGet("/v1/epic-settings/public/users/{accountId}/values")]
+        //http://api.kws.ol.epicgames.com:443/v1/epic-settings/public/users/78a3ef0f422d887059055770730499/values?productId=prod-fn&playtime=true
+        [AcceptVerbs("GET", "OPTIONS", "PUT", "PATCH")]
+        [Route("/v1/epic-settings/public/users/{accountId}/values")]
         public IActionResult EpicSettings(string accountId)
         {
             Response.ContentType = "application/json";
@@ -744,7 +743,7 @@ namespace FortBackend.src.App.Routes.API
                     return BadRequest("Invalid image parameter");
                 }
 
-                string ConfigFilePath = Path.Combine(PathConstants.BaseDir, filename);
+                string ConfigFilePath = Path.Combine(PathConstants.JsonDir, filename);
                
                 if (Path.Exists(ConfigFilePath))
                 {

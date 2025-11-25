@@ -33,17 +33,24 @@ try {
     dllinjector.freezeProcess(FortniteLauncherProcess.pid)
   }
 
-  const gameExecutablePath = path.join(
+  // should allow to launch on higher versions!
+  var gameExecutablePath = path.join(
     gameExePath,
-    'FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe'
+    'FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping_EAC_EOS.exe'
   )
+
+  if (!existsSync(gameExecutablePath))
+    gameExecutablePath = path.join(
+      gameExePath,
+      'FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe'
+    )
 
   if (existsSync(gameExecutablePath)) {
     execSync('set OPENSSL_ia32cap=:~0x20000000')
     const gameProcess = spawn(
       gameExecutablePath,
       (
-        '-epicapp=Fortnite -epicenv=Prod -epiclocale=en-us -epicportal -skippatchcheck -noeac -fromfl=be -fltoken=h1cdhchd10150221h130eB56 -frombe AUTH_TYPE=exchangecode -AUTH_LOGIN=unused -AUTH_PASSWORD=' +
+        '-epicapp=Fortnite -epicenv=Prod -epiclocale=en-us -epicportal -skippatchcheck -noeac -fromfl=be -fltoken=h1cdhchd10150221h130eB56 -caldera=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiYmU5ZGE1YzJmYmVhNDQwN2IyZjQwZWJhYWQ4NTlhZDQiLCJnZW5lcmF0ZWQiOjE2Mzg3MTcyNzgsImNhbGRlcmFHdWlkIjoiMzgxMGI4NjMtMmE2NS00NDU3LTliNTgtNGRhYjNiNDgyYTg2IiwiYWNQcm92aWRlciI6IkVhc3lBbnRpQ2hlYXQiLCJub3RlcyI6IiIsImZhbGxiYWNrIjpmYWxzZX0.VAWQB67RTxhiWOxx7DBjnzDnXyyEnX7OljJm-j2d88G_WgwQ9wrE6lwMEHZHjBd1ISJdUO1UVUqkfLdU5nofBQ -frombe AUTH_TYPE=exchangecode -AUTH_LOGIN=unused -AUTH_PASSWORD=' +
         user.user?.AccessToken
       ).split(' '),
       { env: { OPENSSL_ia32cap: ':~0x20000000' } }

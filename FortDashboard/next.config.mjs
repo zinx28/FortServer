@@ -1,22 +1,6 @@
-let userConfig = undefined
-try {
-  userConfig = await import('./v0-user-next.config.mjs')
-} catch (e) {
-  try {
-    // fallback to CJS import
-    userConfig = await import("./v0-user-next.config");
-  } catch (innerError) {
-    // ignore error
-  }
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ['127.0.0.1', 'localhost'],
-
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -27,25 +11,6 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
-  }
-}
-
-if (userConfig) {
-  // ESM imports will have a "default" property
-  const config = userConfig.default || userConfig
-
-  for (const key in config) {
-    if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
-    ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
-        ...config[key],
-      }
-    } else {
-      nextConfig[key] = config[key]
-    }
   }
 }
 

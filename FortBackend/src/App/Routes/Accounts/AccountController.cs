@@ -4,6 +4,7 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary;
 using FortLibrary.EpicResponses.Errors;
 using FortLibrary.MongoDB.Module;
+using FortLibrary.XMPP;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Newtonsoft.Json;
@@ -38,15 +39,19 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                         failedLoginAttempts = 0,
                         lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         numberOfDisplayNameChanges = 0,
-                        ageGroup = "UNKNOWN",
+                        phoneNumber = "0000000000",
+                        ageGroup = "ADULT",
+                        company = "FortServer",
                         headless = false,
-                        country = "US",
+                        country = "GB",
+                        preferredLanguage = "en",
+                        links = new { },
                         canUpdateDisplayName = false,
                         tfaEnabled = AccountDataParsed.commoncore.mfa_enabled,
                         emailVerified = true,
                         minorVerified = false,
                         minorExpected = false,
-                        minorStatus = "UNKOWN"
+                        minorStatus = "NOT_MINOR"
                     });
                 }
             }
@@ -167,15 +172,19 @@ namespace FortBackend.src.App.Routes.APIS.Accounts
                                 failedLoginAttempts = 0,
                                 lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                 numberOfDisplayNameChanges = 0,
-                                ageGroup = "UNKNOWN",
+                                phoneNumber = "0000000000",
+                                ageGroup = "ADULT",
+                                company = "FortServer",
                                 headless = false,
-                                country = "US",
+                                country = "GB",
+                                preferredLanguage = "en",
+                                links = new { },
                                 canUpdateDisplayName = false,
                                 tfaEnabled = AccountDataParsed.commoncore.mfa_enabled,
                                 emailVerified = true,
                                 minorVerified = false,
                                 minorExpected = false,
-                                minorStatus = "UNKOWN"
+                                minorStatus = "NOT_MINOR"
                             });
                         else
                             return Ok(new

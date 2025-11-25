@@ -5,7 +5,7 @@ using FortLibrary.EpicResponses.Storefront;
 using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Matching;
-using Newtonsoft.Json;
+using System.Text.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.Storefront
@@ -20,13 +20,16 @@ namespace FortBackend.src.App.Routes.Storefront
             Response.ContentType = "application/json";
             try
             {
+                //string JsonV2 = System.IO.File.ReadAllText(Path.Combine(PathConstants.JsonDir, "testv2.json"));
+                //return Ok(JsonSerializer.Deserialize<TimelineResponse>(JsonV2));
+
                 string Json = System.IO.File.ReadAllText(PathConstants.ShopJson.Shop);
                 if (Json == null)
                 {
                     return BadRequest(new { });
                 }
 
-                ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(Json)!;
+                ShopJson shopData = JsonSerializer.Deserialize<ShopJson>(Json)!;
 
                 if (shopData == null) { return BadRequest(new { }); } // if null return
 
@@ -42,15 +45,15 @@ namespace FortBackend.src.App.Routes.Storefront
                 {
                     channels = new TimelineResponseChannels
                     {
-                        ClientMatchmaking = new ClientMatchmakingTL() { cacheExpire = shopData?.expiration! },
+                        ClientMatchmaking = new ClientMatchmakingTL() { cacheExpire = shopData?.expiration!, states = { new() { } } },
                         StandaloneStore = new ClientMatchmakingTL()
                         {
-                            states = new object[]
+                            states = new()
                             {
-                                new
+                                new()
                                 {
-                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    activeEvents = new string[0],
+                                    validFrom = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new(),
                                     state = new
                                     {
                                         activePurchaseLimitingEventIds = new string[0],
@@ -64,12 +67,12 @@ namespace FortBackend.src.App.Routes.Storefront
                         },
                         tk = new ClientMatchmakingTL()
                         {
-                            states = new object[]
+                            states = new()
                             {
-                                new
+                                new()
                                 {
-                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    activeEvents = new string[0],
+                                    validFrom = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new(),
                                     state = new
                                     {
                                         k = new string[0]
@@ -80,17 +83,17 @@ namespace FortBackend.src.App.Routes.Storefront
                         },
                         CommunityVotes = new ClientMatchmakingTL()
                         {
-                            states = new object[]
+                            states = new()
                             {
-                                new
+                                new()
                                 {
-                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                    activeEvents = new string[0],
+                                    validFrom = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new(),
                                     state = new
                                     {
                                         electionId = "", // i want to look at this in the future
                                         candidates = new string[0],
-                                        electionEnds = shopData?.expiration,
+                                        electionEnds =  DateTime.MaxValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         numWinnners = 1
                                     }
                                 }
@@ -100,21 +103,21 @@ namespace FortBackend.src.App.Routes.Storefront
                         },
                         FeaturedIslands = new ClientMatchmakingTL()
                         {
-                            states = new object[]
+                            states = new()
+                            {
+                                new()
                                 {
-                                    new
+                                    validFrom = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    activeEvents = new(),
+                                    state = new
                                     {
-                                         validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                         activeEvents = new string[0],
-                                         state = new
-                                         {
-                                             islandCodes = new string[0],
-                                             playlistCuratedContent = new { },
-                                             playlistCuratedHub = new { },
-                                             islandTemplates = new string[0]
-                                         }
+                                        islandCodes = new string[0],
+                                        playlistCuratedContent = new { },
+                                        playlistCuratedHub = new { },
+                                        islandTemplates = new string[0]
                                     }
-                                },
+                                }
+                            },
                             cacheExpire = shopData?.expiration!
                         },
                         ClientEvents = new ClientEventsTL()
@@ -123,7 +126,7 @@ namespace FortBackend.src.App.Routes.Storefront
                             {
                                 new ClientEventsStates
                                 {
-                                    validFrom = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                    validFrom = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                     activeEvents = new List<ActiveEventData>
                                     {
                                         new ActiveEventData
@@ -141,15 +144,19 @@ namespace FortBackend.src.App.Routes.Storefront
                                     },
                                     state = new ClientEventsStatesState
                                     {
-                                        activeStorefronts = new object[] { },
-                                        eventNamedWeights = new object { },
+                                        activeStorefronts = new(),
+                                        eventNamedWeights = new(),
+                                        activeEvents = new(),
                                         seasonNumber = season.Season,
                                         seasonTemplateId = $"AthenaSeason:athenaseason{season.Season}",
                                         matchXpBonusPoints = 0,
+                                        eventPunchCardTemplateId = "", // Ah-ha!
                                         seasonBegin = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                                         seasonEnd = Saved.DeserializeGameConfig.SeasonEndDate,
                                         seasonDisplayedEnd = Saved.DeserializeGameConfig.SeasonEndDate,
                                         weeklyStoreEnd =  shopData?.expiration!,
+                                        sectionStoreEnds = new(),
+                                        rmtPromotion = "", 
                                         stwEventStoreEnd = shopData?.expiration!,
                                         stwWeeklyStoreEnd = shopData?.expiration!,
                                         dailyStoreEnd =  shopData?.expiration!
@@ -171,28 +178,28 @@ namespace FortBackend.src.App.Routes.Storefront
                     {
                         eventType = $"EventFlag.BR_Allow50v50",
                         activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                        activeSince = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                     });
 
                     Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
                     {
                         eventType = $"EventFlag.SupplyDropGift",
                         activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                        activeSince = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                     });
 
                     Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
                     {
                         eventType = $"EventFlag.WinterBattleBus",
                         activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                        activeSince = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                     });
 
                     Response.channels.ClientEvents.states[0].activeEvents.Add(new ActiveEventData
                     {
                         eventType = $"EventFlag.BR.CandyCaneGuns",
                         activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                        activeSince = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                     });
 
                     // removes like playlists on old ass seasons
@@ -200,7 +207,7 @@ namespace FortBackend.src.App.Routes.Storefront
                     {
                         eventType = $"EventFlag.BR.DisallowSquad",
                         activeUntil = Saved.DeserializeGameConfig.SeasonEndDate,
-                        activeSince = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                        activeSince = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                     });
                 }
 

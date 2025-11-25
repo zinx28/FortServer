@@ -1,6 +1,7 @@
 @echo off
 cls
 
+
 dotnet --version >nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo .NET SDK is not installed. Please install .NET SDK to continue.
@@ -29,33 +30,17 @@ if %ERRORLEVEL% neq 0 (
     exit /b
 )
 
+setlocal
+set "SCRIPT_DIR=%~dp0"
 
-echo Publishing FortLauncher to "build/FortLauncher" folder...
-dotnet publish "FortLauncher/FortLauncher/FortLauncher.csproj" --configuration Release --runtime win-x64 --output "%rootOutputDir%/FortLauncher" --self-contained -p:PublishSingleFile=true
+echo Installing "FortLauncherV2"...
+start "" /D "%SCRIPT_DIR%FortLauncher\FortLauncherV2" cmd /c install.bat
 
-if %ERRORLEVEL% neq 0 (
-    echo Publish failed for FortLauncher.
-    pause
-    exit /b
-)
+echo Installing "FortDashboard"...
+start "" /D "%SCRIPT_DIR%FortDashboard" cmd /c install.bat
 
-:: echo Building FortDashboard to "build/FortDashboard" folder...
-:: cd "$ROOT_OUTPUT_DIR/../FortDashboard"
-:: npm install --verbose
-:: if %ERRORLEVEL% neq 0 (
-::    echo npm install failed for FortDashboard.
-::    pause
-::    exit /b
-:: )
-
-:: echo npm install completed successfully.
-
-:: npm run build
-
-
-
-echo "Building FortDashboard..."
-
+endlocal
 
 echo All projects published successfully to the "build" folder!
+echo Note FortLauncher and FortDashboard modules has been installed, You manually have to build it!
 pause

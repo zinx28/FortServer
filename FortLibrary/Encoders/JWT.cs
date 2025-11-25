@@ -1,4 +1,5 @@
-﻿using FortLibrary.Shop;
+﻿using FortLibrary.Encoders.JWTCLASS;
+using FortLibrary.Shop;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -96,6 +97,39 @@ namespace FortLibrary.Encoders
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Checks if the token is expired
+        /// </summary>
+        /// <param name="token">The jwt token string to verify.</param>
+        /// <returns>Returns true if the token is expired, otherwise false.</returns>
+        public static bool VerifyTokenExpired(string token)
+        {
+            var accessToken = token.Replace("eg1~", "");
+            var handler = new JwtSecurityTokenHandler();
+            var DecodedToken = handler.ReadJwtToken(accessToken);
+            string[] tokenParts = DecodedToken.ToString().Split(".");
+
+            if (tokenParts.Length == 2)
+            {
+                var Payload = tokenParts[1];
+
+                TokenPayload tokenPayload = Newtonsoft.Json.JsonConvert.DeserializeObject<TokenPayload>(Payload)!;
+
+                if (tokenPayload != null && !string.IsNullOrEmpty(tokenPayload.Sub))
+                {
+                    var expTime = DateTimeOffset.FromUnixTimeSeconds(tokenPayload.Exp.Value);
+                    if (DateTimeOffset.UtcNow >= expTime)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

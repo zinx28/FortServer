@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu } from "electron";
+import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from "electron";
 import axios from "axios";
 import path, { join } from "path";
 import icon from '../../resources/icon.png?asset'
@@ -102,6 +102,21 @@ function createWindow(): void {
       }
     });
 
+    ipcMain.handle("fortlauncher:logout", async (_) => {
+      mainWindow!.webContents.send('IsLoggedIn', false);
+      saveTokenToIni(""); // skull
+      user.logout();
+    })
+
+    ipcMain.handle("fortlauncher:open-appdata", async (_) => {
+      const appDataPath = join(app.getPath("userData"), "FortLauncher");
+      if (appDataPath) {
+        await shell.openPath(appDataPath);
+        return true;
+      }
+      throw new Error("APPDATA environment variable not found");
+    });
+
     ipcMain.handle("fortlauncher:addpath", async (_, { PathValue }) => {
       console.log(PathValue);
       const fortniteGamePath = path.join(PathValue, "FortniteGame");
@@ -169,6 +184,8 @@ function createWindow(): void {
       }
     });
 
+
+
     ipcMain.on("fortlauncher:launchgame", (_, { gameExePath }) => {
       setImmediate(() => {
         const fortlauncherFolderPath = join(app.getPath("userData"), "FortLauncher");
@@ -223,8 +240,6 @@ function createWindow(): void {
           }
         });
       });
-
-      console.log("PORN!");
     });
 
     ipcMain.handle("fortlauncher:addpathV2", async (_) => {
@@ -276,12 +291,10 @@ function createWindow(): void {
         );
 
         if (response.data) {
-          console.log("g");
           console.log(response.data);
           if (response.data.token) {
             saveTokenToIni(response.data.token);
             var LoginData = await login(mainWindow!, true);
-            console.log("YEAH");
             console.log(LoginData);
             if (LoginData) return LoginData;
             else

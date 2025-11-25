@@ -22,11 +22,14 @@ namespace FortBackend.src.App.Utilities.Helpers.Middleware
         {
             try
             {
-                var tokenArray = context.HttpContext.Request.Headers["Authorization"].ToString().Split("bearer ");
+                var authHeader = context.HttpContext.Request.Headers["Authorization"].ToString();
+                var rawToken = authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase)
+                                ? authHeader.Substring("Bearer ".Length)
+                                : string.Empty;
 
-                if (tokenArray.Length > 0)
+                if (rawToken.Length > 0)
                 {
-                    var token = tokenArray.Length > 1 ? tokenArray[1] : "";
+                    var token = rawToken;
 
                     bool FoundAccount = GlobalData.AccessToken.Any(e => e.token == token) || GlobalData.ClientToken.Any(e => e.token == token) || GlobalData.RefreshToken.Any(e => e.token == token);
 

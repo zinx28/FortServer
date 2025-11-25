@@ -1,58 +1,67 @@
 {
   "client": {
-    "RateLimiter.InventoryClient": {
-      "MessageCount": 1000,
-      "TimeIntervalInSeconds": 60.0
-    },
     "BaseService": {
       "HttpRetryLimit": 4,
-      "HttpRetryResponseCodes": [ 429, 503, 504 ]
+      "HttpRetryResponseCodes": [
+        429,
+        503,
+        504
+      ]
     },
     "RateLimiter.AuthClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.PresenceClient.Operations": {
       "MessageCount": 3,
-      "TimeIntervalInSeconds": 20.0,
-      "Operation": [ "SendUpdate", "SetPresence" ]
+      "TimeIntervalInSeconds": 20,
+      "Operation": [
+        "SendUpdate",
+        "SetPresence"
+      ]
     },
     "RateLimiter.ReceiptValidatorClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.LeaderboardsClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
-    },
-    "RateLimiter.MetricsClient": {
-      "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.StatsClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
+    },
+    "RateLimiter.InventoryClient": {
+      "MessageCount": 1000,
+      "TimeIntervalInSeconds": 60
+    },
+    "RateLimiter.MatchmakingClient": {
+      "MessageCount": 300,
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.SDKConfigClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "RequestUpdate" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "RequestUpdate"
+      ]
     },
     "RateLimiter.WorldInventoryClient": {
       "MessageCount": 1000,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.TitleStorageClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.EcomClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.DataStorageClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "GetAccessLinks",
         "QueryFile",
@@ -71,8 +80,10 @@
     },
     "RateLimiter.CustomInvitesClient.Operations": {
       "MessageCount": 50,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "SendCustomInvite" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "SendCustomInvite"
+      ]
     },
     "HTTP": {
       "HttpReceiveTimeout": 30,
@@ -80,36 +91,46 @@
       "HttpTimeout": 30,
       "HttpConnectionTimeout": 60,
       "HttpSendTimeout": 30,
-      "MaxFlushTimeSeconds": 2.0
+      "MaxFlushTimeSeconds": 2
     },
     "RateLimiter.FriendClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "QueryFriends", "SendFriendInvite", "DeleteFriend" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "QueryFriends",
+        "SendFriendInvite",
+        "DeleteFriend"
+      ]
     },
     "RateLimiter.RTCAdminClient": {
       "MessageCount": 50,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.UserInfoClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
-    "/Script/Engine.NetworkSettings": { "n.VerifyPeer": false },
+    "/Script/Engine.NetworkSettings": {
+      "n.VerifyPeer": false
+    },
     "WebSockets.LibWebSockets": {
       "ThreadStackSize": 131072,
       "ThreadTargetFrameTimeInSeconds": 0.0333,
-      "ThreadMinimumSleepTimeInSeconds": 0.0
+      "ThreadMinimumSleepTimeInSeconds": 0
     },
-    "StatsClient": { "MaxQueryStatsStatNamesStrLength": 1900 },
+    "StatsClient": {
+      "MaxQueryStatsStatNamesStrLength": 1900
+    },
     "RateLimiter.MetricsClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "RegisterPlayerBackendSession" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "RegisterPlayerBackendSession"
+      ]
     },
     "RateLimiter.DataStorageClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "WorldInventoryClient": {
       "MaxBinaryDataSizeBytes": 104857600,
@@ -121,26 +142,41 @@
     },
     "RateLimiter.ModsClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "InstallMod", "UninstallMod", "UpdateMod", "EnumerateMods" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "InstallMod",
+        "UninstallMod",
+        "UpdateMod",
+        "EnumerateMods"
+      ]
     },
     "RateLimiter.ReportsClient.Operations": {
       "MessageCount": 100,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "SendPlayerBehaviorReport" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "SendPlayerBehaviorReport"
+      ]
     },
     "RateLimiter.RTCAdminClient.Operations": {
       "MessageCount": 50,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "QueryJoinRoomToken", "Kick", "SetParticipantHardMute" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "QueryJoinRoomToken",
+        "Kick",
+        "SetParticipantHardMute"
+      ]
+    },
+    "RateLimiter.K3SClient": {
+      "MessageCount": 300,
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.FriendClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.AchievementsClient": {
       "MessageCount": 100,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "LogFiles": {
       "PurgeLogsDays": 5,
@@ -149,20 +185,22 @@
     },
     "RateLimiter": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.AntiCheatClient": {
       "MessageCount": 120,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.ProgressionSnapshot": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
-    "SessionsClient": { "HeartbeatIntervalSecs": 30 },
+    "SessionsClient": {
+      "HeartbeatIntervalSecs": 30
+    },
     "RateLimiter.WorldInventoryClient.Operations": {
       "MessageCount": 1000,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "Open",
         "Close",
@@ -177,7 +215,7 @@
     },
     "RateLimiter.UserInfoClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "QueryLocalUserInfo",
         "QueryUserInfo",
@@ -191,9 +229,10 @@
       "LobbySocketURL": "wss://api.epicgames.dev/lobby/v1/`deploymentId/lobbies/connect",
       "NumConsecutiveFailuresAllowed": 5,
       "MaxResendDelayMs": 2000,
-      "WebSocketConnectTaskMaxNetworkWaitSeconds": 15.0,
+      "WebSocketConnectTaskMaxNetworkWaitSeconds": 15,
       "RecoveryWaitTimeSecs": 2,
       "InitialRetryDelaySeconds": 5,
+      "bDisableRTCVoice": false,
       "MaxSendRetries": 3,
       "SentMessageTimeout": 5,
       "HeartbeatIntervalSecs": 30,
@@ -201,8 +240,10 @@
     },
     "RateLimiter.SanctionsClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "QueryActivePlayerSanctions" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "QueryActivePlayerSanctions"
+      ]
     },
     "UIClient.SocialURLQueryParamNames": {
       "OSName": "os_name",
@@ -217,14 +258,13 @@
     },
     "RateLimiter.LobbyClient.ThrottledOperations": {
       "MessageCount": 30,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "CreateLobby",
         "DestroyLobby",
         "JoinLobby",
         "LeaveLobby",
         "HeartbeatLobby",
-        "UpdateLobby",
         "PromoteMember",
         "KickLobbyMember",
         "SendLobbyInvite",
@@ -237,19 +277,19 @@
     },
     "RateLimiter.SessionsClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.KWSClient": {
       "MessageCount": 20,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.PresenceClient": {
       "MessageCount": 60,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.KWSClient.Operations": {
       "MessageCount": 20,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "CreateUser",
         "UpdateParentEmail",
@@ -260,12 +300,15 @@
     },
     "RateLimiter.InventoryClient.Operations": {
       "MessageCount": 1000,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "Open", "Close", "Write" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "Open",
+        "Close"
+      ]
     },
     "RateLimiter.LeaderboardsClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "QueryLeaderboardDefinitions",
         "QueryLeaderboardRanks",
@@ -274,25 +317,38 @@
     },
     "RateLimiter.SanctionsClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "Messaging.EpicConnect": {
       "FailedConnectionDelayMultiplier": 2.5,
+      "RetryBackoffExponentialExponentBias": 0,
       "ServerHeartbeatIntervalMilliseconds": 0,
-      "FailedConnectionDelayMaxSeconds": 180,
+      "RetryBackoffMaxSeconds": 180,
+      "RetryBackoffJitterCoefficientMin": 0.5,
+      "Urlv2": "wss://connect.epicgames.dev/v2",
       "ClientHeartbeatIntervalMilliseconds": 30000,
+      "RetryBackoffExponentialBase": 2,
+      "RetryBackoffJitterCoefficientMax": 1,
+      "FailedConnectionDelayMaxSeconds": 180,
       "FailedConnectionDelayIntervalSeconds": 5,
+      "UseV2Connection": false,
       "Url": "wss://connect.epicgames.dev"
     },
-    "MetricsClient": { "HttpRetryLimit": 2 },
+    "MetricsClient": {
+      "HttpRetryLimit": 2
+    },
     "RateLimiter.TitleStorageClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "QueryFile", "QueryFileList", "ReadFile" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "QueryFile",
+        "QueryFileList",
+        "ReadFile"
+      ]
     },
     "RateLimiter.AchievementsClient.Operations": {
       "MessageCount": 100,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "QueryDefinitions",
         "QueryPlayerAchievements",
@@ -312,29 +368,39 @@
       "ClearInvalidFileCacheFrequencyDays": 2,
       "MaxSimultaneousReads": 10
     },
-    "TrustAndSafety": { "bQueryLocalPrivilegeEnabled": false },
+    "TrustAndSafety": {
+      "bQueryLocalPrivilegeEnabled": false
+    },
     "ConnectClient": {
       "MaxProductUserIdMappingsQueryUserIds": 128,
-      "MinProductUserIdMappingsUpdateTimeInSeconds": 900.0
+      "MinProductUserIdMappingsUpdateTimeInSeconds": 900
     },
     "RateLimiter.LobbyClient.Operations": {
       "MessageCount": 100,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "GetByLobbyId", "UpdateLobby" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "GetByLobbyId",
+        "UpdateLobby"
+      ]
     },
     "RateLimiter.AntiCheatClient.Operations": {
       "MessageCount": 120,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "QueryServiceStatus", "SendClientMessage" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "QueryServiceStatus",
+        "SendClientMessage"
+      ]
     },
     "EcomClient": {
-      "PurchaseUrl": "https://launcher-website-prod07.ol.epicgames.com/purchase",
       "PurchaseCookieName": "EPIC_BEARER_TOKEN",
-      "PurchaseEpicIdUrl": "https://www.epicgames.com/ecom/payment/v1/purchase"
+      "PurchaseEpicIdMobileLandscapeUrl": "https://www.epicgames.com/ecom/payment/v2/purchase",
+      "PurchaseEpicIdMobilePortraitUrl": "https://www.epicgames.com/ecom/payment/v2/purchase",
+      "PurchaseEpicIdUrl": "https://www.epicgames.com/ecom/payment/v1/purchase",
+      "PurchaseUrl": "https://launcher-website-prod07.ol.epicgames.com/purchase"
     },
     "RateLimiter.SessionsClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "UpdateSession",
         "JoinSession",
@@ -350,13 +416,18 @@
     },
     "RateLimiter.StatsClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "IngestStat", "QueryStats" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "IngestStat",
+        "QueryStats"
+      ]
     },
     "RateLimiter.ReceiptValidatorClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "VerifyPurchase" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "VerifyPurchase"
+      ]
     },
     "DataStorageClient": {
       "AccessLinkDurationSeconds": 300,
@@ -365,7 +436,7 @@
     },
     "RateLimiter.AuthClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "VerifyAuth",
         "DeletePersistentAuth",
@@ -380,17 +451,26 @@
       "SessionLockTTLSeconds": 60,
       "MaxNumberOfLockEntriesPerRequest": 10,
       "MaxNumberOfWriteEntriesPerRequest": 10,
-      "SessionLockUpdateIntervalRandomAddSeconds": 20.0,
+      "SessionLockUpdateIntervalRandomAddSeconds": 20,
       "MaxNumberOfParallelLockRequestsInFlight": 3,
-      "SessionLockUpdateIntervalSeconds": 30.0,
+      "SessionLockUpdateIntervalSeconds": 30,
       "MaxNumberOfSubTasksPerParallelLockTask": 20,
       "BaseUrlLive": "https://fngw-svc-ds-livefn.ol.epicgames.com/api/inventory",
-      "HttpRetryResponseCodes": [ 429, 500, 503, 504 ],
+      "HttpRetryResponseCodes": [
+        429,
+        500,
+        503,
+        504
+      ],
       "LockType": "Session",
       "BaseUrl": "https://fngw-svc-ds-prod.ol.epicgames.com/api/inventory",
       "MaxNumberOfSubTasksPerParallelUpdateTask": 20,
       "QueryInventoryPageLimit": 0,
-      "HttpRetryVerbs": [ "GET", "HEAD", "POST" ]
+      "HttpRetryVerbs": [
+        "GET",
+        "HEAD",
+        "POST"
+      ]
     },
     "P2PClient": {
       "IceServers": [
@@ -403,7 +483,7 @@
     },
     "RateLimiter.LobbyClient": {
       "MessageCount": 30,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "SDKAnalytics": {
       "BaseUrl": "https://api.epicgames.dev/telemetry/data/",
@@ -411,9 +491,23 @@
       "AppEnvironment": "Production",
       "UploadType": "sdkevents"
     },
+    "TextChatServerFN": {
+      "TextChatGatewayServerURL": "https://fngw-svc-ds-livefn.ol.epicgames.com/chat"
+    },
     "RateLimiter.ConnectClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
+    },
+    "RateLimiter.InventoryClient.ThrottledOperations": {
+      "MessageCount": 20000,
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "Write"
+      ]
+    },
+    "RateLimiter.MetricsClient": {
+      "MessageCount": 300,
+      "TimeIntervalInSeconds": 60
     },
     "AntiCheat.GameplayData": {
       "Url": "wss://api.epicgames.dev/cerberus-edge/v1/",
@@ -422,11 +516,11 @@
     "AuthClient": {
       "AccountPortalURLLocaleSuffix": "lang=`code",
       "PollInterval": 5,
-      "RefreshTokenThreshold": 100.0,
+      "RefreshTokenThreshold": 100,
       "VPCRegisterURL": "https://epicgames.com/id/register/quick/minor/await?code=`challenge_id&display=embedded",
       "AuthorizeContinuationEndpoint": "https://epicgames.com/id/login?continuation=`continuation&prompt=skip_merge%20skip_upgrade",
       "AuthorizeCodeEndpoint": "https://epicgames.com/id/authorize?client_id=`client_id&response_type=code&scope=`scope&redirect_uri=`redirect_uri&display=popup&prompt=login",
-      "VerifyTokenInterval": 600.0,
+      "VerifyTokenInterval": 600,
       "PollExpiresIn": 300,
       "IdTokenCacheMinExpirySeconds": 300,
       "AuthorizeEndpoint": "https://epicgames.com/id/authorize?exchange_code=`exchange_code&scope=`scope&prompt=skip_merge%20skip_upgrade",
@@ -437,8 +531,11 @@
     },
     "RateLimiter.ProgressionSnapshot.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "SubmitSnapshot", "DeleteSnapshot" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "SubmitSnapshot",
+        "DeleteSnapshot"
+      ]
     },
     "XMPP": {
       "bEnabled": true,
@@ -447,8 +544,40 @@
     },
     "RateLimiter.AntiCheatServer.Operations": {
       "MessageCount": 100000,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "QueryServiceStatus", "SendClientMessage" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "QueryServiceStatus",
+        "SendClientMessage"
+      ]
+    },
+    "RateLimiter.MatchmakingClient.Operations": {
+      "MessageCount": 300,
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "SessionRegister",
+        "SessionDeregister",
+        "SessionAcknowledgeAssignment",
+        "TicketJoin",
+        "TicketClose",
+        "SessionHeartbeat",
+        "TicketHeartbeat"
+      ]
+    },
+    "K3SClient.RemainingPlaytimeLimits": {
+      "play": [
+        1800,
+        900,
+        600,
+        120,
+        0
+      ],
+      "create": [
+        1800,
+        900,
+        600,
+        120,
+        0
+      ]
     },
     "Core.Log": {
       "LogEOS": "verbose",
@@ -471,11 +600,11 @@
     },
     "RateLimiter.AntiCheatServer": {
       "MessageCount": 100000,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.InventoryClient.WorldInventory.Operations": {
       "MessageCount": 1000,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "WorldOpen",
         "WorldClose",
@@ -487,22 +616,32 @@
     "Messaging.XMPP": {
       "ReconnectionDelayJitter": 1.5,
       "PingTimeout": 30,
-      "ReconnectionDelayBase": 4.0,
+      "ReconnectionDelayBase": 4,
       "ServerPort": 443,
       "bPrivateChatFriendsOnly": true,
-      "ReconnectionDelayMax": 300.0,
+      "ReconnectionDelayMax": 300,
       "Domain": "prod.ol.epicgames.com",
-      "ReconnectionDelayBackoffExponent": 2.0,
+      "ReconnectionDelayBackoffExponent": 2,
       "ServerAddr": "wss://xmpp-service-prod.ol.epicgames.com",
       "PingInterval": 60
     },
+    "RateLimiter.K3SClient.Operations": {
+      "MessageCount": 300,
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "QuerySettings",
+        "UpdateSettings",
+        "RequestAdditionalPlaytime",
+        "GrantAdditionalPlaytime"
+      ]
+    },
     "RateLimiter.SDKConfigClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.EcomClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "QueryOwnership",
         "QueryOwnershipToken",
@@ -513,23 +652,23 @@
       ]
     },
     "PresenceClient": {
-      "EpicConnectNotificationWaitTime": 5.0,
-      "PresenceQueryTimeoutSeconds": 60.0,
+      "EpicConnectNotificationWaitTime": 5,
+      "PresenceQueryTimeoutSeconds": 60,
       "bSetOfflineOnLogoutEnabled": true,
-      "PresenceAutoUpdateInSeconds": 600.0,
+      "PresenceAutoUpdateInSeconds": 600,
       "bSetOfflineOnShutdownEnabled": true
     },
     "RateLimiter.CustomInvitesClient": {
       "MessageCount": 50,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.ModsClient": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     },
     "RateLimiter.ConnectClient.Operations": {
       "MessageCount": 300,
-      "TimeIntervalInSeconds": 60.0,
+      "TimeIntervalInSeconds": 60,
       "Operation": [
         "LoginAccount",
         "CreateAccount",
@@ -540,37 +679,46 @@
         "TransferDeviceIdAccount",
         "QueryExternalAccountMappings",
         "QueryProductUserIdMappings",
-        "VerifyIdToken"
+        "VerifyIdToken",
+        "RequestExchangeToken"
       ]
     },
     "RateLimiter.AuthClient.SensitiveOperations": {
       "MessageCount": 12,
-      "TimeIntervalInSeconds": 60.0,
-      "Operation": [ "GenerateUserAuth" ]
+      "TimeIntervalInSeconds": 60,
+      "Operation": [
+        "GenerateUserAuth"
+      ]
     },
     "RateLimiter.ReportsClient": {
       "MessageCount": 100,
-      "TimeIntervalInSeconds": 60.0
+      "TimeIntervalInSeconds": 60
     }
   },
   "services": {
-    "RTCService": { "BaseUrl": "https://api.epicgames.dev/rtc" },
+    "RTCService": {
+      "BaseUrl": "https://api.epicgames.dev/rtc"
+    },
     "DataStorageService": {
       "BaseUrl": "https://api.epicgames.dev/datastorage"
     },
-    "AccountsEpicIdService": { "BaseUrl": "https://api.epicgames.dev" },
-    "MetricsService": { "BaseUrl": "https://api.epicgames.dev/datarouter" },
-    "EcommerceService": {
-      "BaseUrl": "https://ecommerceintegration-public-service-ecomprod02.ol.epicgames.com/ecommerceintegration"
+    "AccountsEpicIdService": {
+      "BaseUrl": "https://api.epicgames.dev"
     },
-    "KWSService": { "BaseUrl": "https://api.epicgames.dev/kws" },
-    "AntiCheatService": { "BaseUrl": "https://api.epicgames.dev/anticheat" },
-    "LobbyService": { "BaseUrl": "https://api.epicgames.dev/lobby" },
+    "MetricsService": {
+      "BaseUrl": "https://api.epicgames.dev/datarouter"
+    },
+    "LobbyService": {
+      "BaseUrl": "https://api.epicgames.dev/lobby"
+    },
     "StatsAchievementsService": {
       "BaseUrl": "https://api.epicgames.dev/stats"
     },
     "PriceEngineService": {
       "BaseUrl": "https://priceengine-public-service-ecomprod01.ol.epicgames.com/priceengine"
+    },
+    "MatchmakingService": {
+      "BaseUrl": "https://api.epicgames.dev/epic/matchmaking"
     },
     "AccountsService": {
       "BaseUrl": "https://egp-idsoc-proxy-prod.ol.epicgames.com/account",
@@ -582,12 +730,23 @@
     "PaymentEpicIdService": {
       "BaseUrl": "https://api.epicgames.dev/epic/payment"
     },
-    "SanctionsService": { "BaseUrl": "https://api.epicgames.dev/sanctions" },
+    "SanctionsService": {
+      "BaseUrl": "https://api.epicgames.dev/sanctions"
+    },
     "FriendService": {
       "BaseUrl": "https://egp-idsoc-proxy-prod.ol.epicgames.com/friends"
     },
+    "TextChatTrustedServerFNService": {
+      "BaseUrl": "https://api.epicgames.dev/epic/chat"
+    },
     "ReceiptValidatorService": {
       "BaseUrl": "https://api.epicgames.dev/receipt-validator"
+    },
+    "EcommerceService": {
+      "BaseUrl": "https://ecommerceintegration-public-service-ecomprod02.ol.epicgames.com/ecommerceintegration"
+    },
+    "EULATrackingService": {
+      "BaseUrl": "https://eulatracking-public-service-prod06.ol.epicgames.com/eulatracking"
     },
     "FriendEpicIdService": {
       "BaseUrl": "https://api.epicgames.dev/epic/friends"
@@ -595,22 +754,50 @@
     "CatalogService": {
       "BaseUrl": "https://catalog-public-service-prod06.ol.epicgames.com/catalog"
     },
-    "EOSAuthService": { "BaseUrl": "https://api.epicgames.dev" },
-    "SessionsService": { "BaseUrl": "https://api.epicgames.dev/matchmaking" },
-    "ModsService": { "BaseUrl": "https://api.epicgames.dev/mods" },
-    "ReportsService": { "BaseUrl": "https://api.epicgames.dev/player-reports" },
+    "KWSService": {
+      "BaseUrl": "https://api.epicgames.dev/kws"
+    },
+    "TextChatFNService": {
+      "BaseUrl": "https://api.epicgames.dev/epic/chat"
+    },
+    "PlaytimeTrackingService": {
+      "BaseUrl": "https://api.kws.ol.epicgames.com"
+    },
+    "AntiCheatService": {
+      "BaseUrl": "https://api.epicgames.dev/anticheat"
+    },
+    "EOSAuthService": {
+      "BaseUrl": "https://api.epicgames.dev"
+    },
+    "SessionsService": {
+      "BaseUrl": "https://api.epicgames.dev/matchmaking"
+    },
+    "ModsService": {
+      "BaseUrl": "https://api.epicgames.dev/mods"
+    },
+    "ReportsService": {
+      "BaseUrl": "https://api.epicgames.dev/player-reports"
+    },
     "ProgressionSnapshotService": {
       "BaseUrl": "https://api.epicgames.dev/snapshots"
     },
     "CustomInvitesService": {
       "BaseUrl": "https://api.epicgames.dev/notifications"
     },
-    "PresenceService": { "BaseUrl": "https://api.epicgames.dev/epic/presence" },
+    "PresenceService": {
+      "BaseUrl": "https://api.epicgames.dev/epic/presence"
+    },
     "TitleStorageService": {
       "BaseUrl": "https://api.epicgames.dev/titlestorage"
     },
     "StatsIngestService": {
       "BaseUrl": "https://api.epicgames.dev/ingestion/stats"
+    },
+    "SupervisedSettingsService": {
+      "BaseUrl": "https://api.kws.ol.epicgames.com"
+    },
+    "TextChatGatewayServerFNService": {
+      "BaseUrl": "https://fngw-svc-ds-livefn.ol.epicgames.com/chat"
     },
     "LeaderboardsService": {
       "BaseUrl": "https://api.epicgames.dev/leaderboards"
@@ -619,5 +806,5 @@
       "BaseUrl": "https://fngw-svc-ds-livefn.ol.epicgames.com/api/inventory"
     }
   },
-  "watermark": -350433057
+  "watermark": -36188152
 }

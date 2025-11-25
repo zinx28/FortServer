@@ -38,9 +38,9 @@ This will build the project for you. And you're all set!
 
 ## Step 5: Install Dashboard (OPTIONAL)
 
-1. you need download [Bun](https://bun.sh/)
+1. ~~you need download [Bun](https://bun.sh/)~~ `build.bat` builds the projects with npm! (nodejs)
 2. then run `run.bat` from "FortDashboard"
-3. i recommend using `127.0.0.1:port` instead of `localhost:port`
+3. you **HAVE** to use `127.0.0.1:port` and **NOT** `localhost:port`
 
 ## More Info
 

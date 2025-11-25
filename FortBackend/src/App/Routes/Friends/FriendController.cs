@@ -1,19 +1,21 @@
+using FortBackend.src.App.Routes.Development;
+using FortBackend.src.App.SERVER.Root;
+using FortBackend.src.App.SERVER.Send;
 using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
+using FortBackend.src.XMPP.Data;
+using FortLibrary;
+using FortLibrary.Encoders.JWTCLASS;
+using FortLibrary.EpicResponses.Friends;
 using FortLibrary.MongoDB.Module;
+using FortLibrary.XMPP;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Xml.Linq;
-using FortLibrary;
-using FortLibrary.XMPP;
-using FortBackend.src.App.SERVER.Send;
-using FortBackend.src.XMPP.Data;
-using FortBackend.src.App.SERVER.Root;
-using FortLibrary.Encoders.JWTCLASS;
 
 namespace FortBackend.src.App.Routes.Friends
 {
@@ -44,6 +46,88 @@ namespace FortBackend.src.App.Routes.Friends
             catch (Exception ex)
             {
                 Logger.Error("FriendController: " + ex.Message);
+            }
+
+            return Ok(FriendList);
+        }
+
+        [HttpGet("/epic/friends/v1/{accountId}/blocklist")]
+        public async Task<ActionResult> GrabC5BlockList(string accountId)
+        {
+            Response.ContentType = "application/json";
+            var FriendList = new List<dynamic>();
+            try
+            {
+                ProfileCacheEntry profileCacheEntry = await GrabData.Profile(accountId);
+                if (profileCacheEntry != null && !string.IsNullOrEmpty(profileCacheEntry.AccountId))
+                {
+                    foreach (FriendsObject BlockedUser in profileCacheEntry.UserFriends.Blocked)
+                    {
+                        FriendList.Add(new
+                        {
+                            accountId = BlockedUser.accountId,
+                            created = BlockedUser.created.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("FriendController: " + ex.Message);
+            }
+
+            return Ok(FriendList);
+        }
+
+        [HttpPost("/user/v9/product-users/search")]
+        public async Task<ActionResult> Ch5ProductUserSearch()
+        {
+            Response.ContentType = "application/json";
+            var FriendList = new List<dynamic>();
+            try
+            {
+                var Headers = Request.Headers;
+
+                using (var reader = new StreamReader(Request.Body))
+                {
+                    var body = await reader.ReadToEndAsync();
+                    var requestData = JsonConvert.DeserializeObject<ProjectUserSearchC>(body);
+                    Console.WriteLine(body);
+
+                    // i have issue something i rather do this then !=
+                    if(requestData is not null && requestData.productUserIds.Count > 0)
+                    {
+                        ProfileCacheEntry profileCacheEntry = await GrabData.Profile(requestData.productUserIds[0]);
+
+
+                        return Ok(new
+                        {
+                            productUsers = new Dictionary<string, object>
+                            {
+                                {
+                                    profileCacheEntry.AccountId,
+                                    new
+                                    {
+                                        accounts = new List<object>
+                                        {
+                                            new
+                                            {
+                                                accountId = profileCacheEntry.AccountId,
+                                                displayName = profileCacheEntry.UserData.Username,
+                                                identityProviderId = "epicgames",
+                                                lastLogin = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Hi: " + ex.Message);
             }
 
             return Ok(FriendList);

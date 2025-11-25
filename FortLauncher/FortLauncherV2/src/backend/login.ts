@@ -15,6 +15,11 @@ class UserService {
     this.user = authData;
     this.user.AccessToken = TOKEN;
   }
+
+  // not the best way
+  async logout() {
+    this.user = null;
+  }
 }
 
 const user = new UserService();
@@ -27,6 +32,7 @@ export async function login(
 ): Promise<AuthData | null> {
   var TOKEN = readTokenFromIni();
   try {
+    if(TOKEN == null) return null; // its empty no point
     const response = await axios.get(`${process.env.VITE_BACKEND_URL}/launcher/api/v1/login`, {
       headers: {
         Authorization: `${TOKEN}`
@@ -34,11 +40,11 @@ export async function login(
     })
 
     if (response.data) {
-        console.log(response.data);
-        user.login(response.data, TOKEN);
-        if(!DONTLOGINBABE)
-         mainWindow!.webContents.send('IsLoggedIn', true)
-        return user.user;
+      console.log(response.data);
+      user.login(response.data, TOKEN);
+      if (!DONTLOGINBABE)
+        mainWindow!.webContents.send('IsLoggedIn', true)
+      return user.user;
     }
   } catch (err) {
     console.log(err);

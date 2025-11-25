@@ -105,7 +105,7 @@ h1 {
 .SideImage {
     width: 50%;
     height: 100vh;
-    background: url("@/assets/LoginImage.png") no-repeat center center;
+    background: url("/assets/LoginImage.png") no-repeat center center;
     background-size: cover;
     background-position: 10% center;
 }

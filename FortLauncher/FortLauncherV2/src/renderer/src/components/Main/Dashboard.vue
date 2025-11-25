@@ -2,6 +2,7 @@
 import Home from './Content/Home.vue';
 import SideBar from './SideBar.vue';
 import Library from './Content/Library.vue';
+import Settings from './Content/Settings.vue';
 
 </script>
 
@@ -13,7 +14,9 @@ import Library from './Content/Library.vue';
     <div v-if="currentTab === 'library'" style="margin-left: 270px;">
         <Library ref="libraryTab" @buildpath="OpenBuildPopup" />
     </div>
-
+    <div v-if="currentTab === 'settings'" style="margin-left: 270px;">
+        <Settings ref="libraryTab"  />
+    </div>
 
     <div @click="OpenBuildPopup(false)" v-if="LibraryPopup" class="AddBuildPopup">
         <div @click.stop class="BuildContainer">
@@ -21,7 +24,7 @@ import Library from './Content/Library.vue';
                 <a style="margin-left: 20px; color: white;">Add an installition</a>
             </div>
             <div v-if="!NextStep"
-                style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;;">
+                style="width: 95%; margin-top: 10px; height: 100px; border-radius: 10px; background-color: #101018;">
                 Make sure the path has "FortniteGame" and "Engine"
             </div>
             <div v-if="!NextStep" class="PathContainer">

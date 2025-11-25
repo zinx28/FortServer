@@ -23,6 +23,7 @@ import {
   Copy,
   EyeOff,
   Eye,
+  RefreshCwIcon,
 } from "lucide-react";
 import {
   Dialog,
@@ -104,6 +105,7 @@ export default function DashboardBase() {
     null
   );
   const [showRawJsonDialog, setShowRawJsonDialog] = useState(false);
+  const [showRestartDialog, setRestartDialog] = useState(false);
   const [copied, setCopied] = useState(false);
   const [rawJsonString, setRawJsonString] = useState("");
   const [modifiedSections, setModifiedSections] = useState<Map<number, any>>(
@@ -211,9 +213,29 @@ export default function DashboardBase() {
     }
   };
 
+  const RestartServer = async () => {
+    // we need to make is better in the future but yeah
+    var apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const apiResponse = await fetch(`${apiUrl}/admin/restart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+
+    const JsonParsed = await apiResponse.json();
+    console.log(JsonParsed);
+    if (JsonParsed) {
+      if (!JsonParsed.error) {
+        setRestartDialog(true);
+      }
+    }
+  };
+
   useEffect(() => {
     GrabPanelData().finally(() => {
-      console.log("she moans, when she falls");
+      console.log("Grabbed Panel");
     });
   }, []);
 
@@ -293,7 +315,7 @@ export default function DashboardBase() {
       //  return section;
       //});
 
-     // setConfigSections(updatedSections);
+      // setConfigSections(updatedSections);
       //setContentView("list");
     } catch (error: any) {
       setError(error?.message || "Failed to save section");
@@ -367,7 +389,7 @@ export default function DashboardBase() {
         }
       }
       setIsLoading(false);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   //currentSection
@@ -383,7 +405,7 @@ export default function DashboardBase() {
     console.log(value);
 
     if (updatedSection.Data[index]?.Type === "bool") {
-      
+
       value = value.toString();
     } else if (typeof updatedSection.Data[index]?.Value === "number") {
       value = BigInt(value).toString() || "0";
@@ -460,6 +482,19 @@ export default function DashboardBase() {
       </header>
 
       <main className="flex-1 p-4 sm:p-6 lg:p-8">
+
+        <Dialog open={showRestartDialog}>
+          <DialogContent className="sm:max-w-md [&>button]:hidden">
+            <DialogHeader>
+              <DialogTitle>Backend is restarting!</DialogTitle>
+              <DialogDescription>
+                Please refresh the page :)
+              </DialogDescription>
+            </DialogHeader>
+
+          </DialogContent>
+        </Dialog>
+
         <Tabs
           value={activeTab}
           onValueChange={handleTabChange}
@@ -569,10 +604,16 @@ export default function DashboardBase() {
                   <h2 className="text-xl font-semibold">
                     Content Configuration
                   </h2>
-                  <Button onClick={() => setShowRawJsonDialog(true)}>
-                    <Code className="mr-2 h-4 w-4" />
-                    Edit Raw JSON
-                  </Button>
+                  <div className="flex gap-2">
+                    <Button onClick={() => RestartServer()}>
+                      <RefreshCwIcon className="mr-2 h-4 w-4" />
+                      Restart Server
+                    </Button>
+                    <Button onClick={() => setShowRawJsonDialog(true)}>
+                      <Code className="mr-2 h-4 w-4" />
+                      Edit Raw JSON
+                    </Button>
+                  </div>
                 </div>
 
                 <Card>
@@ -733,11 +774,11 @@ export default function DashboardBase() {
                                         value={field.Value}
                                         onChange={(e) => {
                                           const value =
-                                          field.Type === "int"
-                                            ? Number.parseInt(
+                                            field.Type === "int"
+                                              ? Number.parseInt(
                                                 e.target.value
                                               ) || 0
-                                            : e.target.value;
+                                              : e.target.value;
                                           handleUpdateField(index, value);
                                         }}
                                       />

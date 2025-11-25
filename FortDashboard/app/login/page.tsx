@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUserStore } from "@/hooks/useUserStore";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function DashboardLogin() {
   const [isLoading, setIsLoading] = useState(false);
@@ -83,8 +84,7 @@ export default function DashboardLogin() {
       if (JsonParsed) {
         if (!JsonParsed.error) {
           window.location.reload();
-        }else
-        {
+        } else {
           setApiError(JsonParsed.message)
         }
       }
@@ -97,22 +97,21 @@ export default function DashboardLogin() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
-      <Card className="mx-auto w-full max-w-md shadow-lg">
-        <CardHeader className="space-y-2 text-center">
-          <div className="flex justify-center">
-            <div className="rounded-full bg-primary p-2 text-primary-foreground">
-              <BarChart3 className="h-6 w-6" />
-            </div>
+    <div className="flex min-h-screen items-center justify-center bg-muted/40 p-6">
+      <Card className="w-full max-w-md mx-auto shadow-lg">
+        <CardHeader className="flex flex-col items-center gap-4 text-center">
+          <div className="rounded-full bg-primary p-3 text-primary-foreground flex items-center justify-center">
+            <BarChart3 className="h-6 w-6" />
           </div>
           <CardTitle className="text-2xl font-bold">Dashboard Login</CardTitle>
-          <CardDescription>
+          <CardDescription className="text-sm text-muted-foreground">
             Enter your credentials to access your dashboard
           </CardDescription>
         </CardHeader>
+
         <form onSubmit={handleSubmit}>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
+          <CardContent className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -125,7 +124,8 @@ export default function DashboardLogin() {
                 disabled={isLoading}
               />
             </div>
-            <div className="space-y-2">
+
+            <div className="flex flex-col gap-1.5">
               <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
@@ -137,7 +137,8 @@ export default function DashboardLogin() {
                 disabled={isLoading}
               />
             </div>
-            <div className="flex items-center space-x-2">
+
+            <div className="flex items-center gap-2">
               <Checkbox
                 id="remember"
                 checked={rememberMe}
@@ -150,16 +151,14 @@ export default function DashboardLogin() {
             </div>
 
             {apiError && (
-              <div className="rounded-md bg-destructive/15 p-3 text-sm text-destructive">
-                <div className="flex items-center gap-2">
-                  <AlertTriangle className="h-4 w-4" />
-                  <p>{apiError}</p>
-                </div>
+              <div className="flex items-center gap-2 rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                <AlertTriangle className="h-4 w-4" />
+                <p>{apiError}</p>
               </div>
             )}
-
           </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
+
+          <CardFooter className="flex flex-col gap-4">
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? (
                 <>
@@ -170,6 +169,7 @@ export default function DashboardLogin() {
                 "Sign in"
               )}
             </Button>
+
             <Link
               href="https://discord.gg/yapyap"
               target="_blank"
@@ -177,11 +177,12 @@ export default function DashboardLogin() {
               className="flex items-center justify-center gap-2 text-sm text-primary hover:underline"
             >
               <MessageSquare className="h-4 w-4" />
-              Any issues, suggestions join the discord!
+              Any issues, suggestions? Join the Discord!
             </Link>
           </CardFooter>
         </form>
       </Card>
     </div>
+
   );
 }

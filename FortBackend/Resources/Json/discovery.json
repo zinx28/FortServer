@@ -78,6 +78,40 @@
           "hasMore": false
         }
       ]
+    },
+    {
+      "PanelName": "CreativeDiscoverySurface_Frontend",
+      "Pages": [
+        {
+          "results": [
+            {
+              "linkData": {
+                "namespace": "fn",
+                "mnemonic": "0000-0000-0000",
+                "linkType": "Creative:Island",
+                "active": true,
+                "disabled": false,
+                "version": 95,
+                "moderationStatus": "Unmoderated",
+                "accountId": "epic",
+                "creatorName": "Epic",
+                "descriptionTags": [],
+                "metadata": {
+                  "image_url": "https://cdn2.unrealengine.com/solo-1920x1080-1920x1080-89393d12cea1.png",
+                  "title": "67",
+                  "matchmaking": {
+                    "override_playlist": "playlist_defaultsolo"
+                  }
+                }
+              },
+              "lastVisited": null,
+              "linkCode": "playlist_defaultsolo",
+              "isFavorite": false
+            }
+          ],
+          "hasMore": false
+        }
+      ]
     }
   ],
   "TestCohorts": [ "c114_Baseline" ],

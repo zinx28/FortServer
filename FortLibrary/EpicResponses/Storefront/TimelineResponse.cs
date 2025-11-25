@@ -11,7 +11,7 @@ namespace FortLibrary.EpicResponses.Storefront
     {
         public TimelineResponseChannels channels { get; set; } = new TimelineResponseChannels();
         public int eventsTimeOffsetHrs { get; set; } = 0;
-        public int cacheIntervalMins { get; set; } = 15;
+        public float cacheIntervalMins { get; set; } = 15;
         public string currentTime { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
     }
 
@@ -38,8 +38,15 @@ namespace FortLibrary.EpicResponses.Storefront
 
     public class ClientMatchmakingTL
     {
-        public object[] states { get; set; } = new object[] { };
+        public List<ClientMatchmakingTL_States> states { get; set; } = new();
         public string cacheExpire { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+    }
+
+    public class ClientMatchmakingTL_States
+    {
+        public string validFrom { get; set; } = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+        public List<object> activeEvents { get; set; } = new();
+        public object state { get; set; } = new();
     }
 
     public class ClientEventsTL
@@ -64,11 +71,16 @@ namespace FortLibrary.EpicResponses.Storefront
 
     public class ClientEventsStatesState
     {
-        public object[] activeStorefronts { get; set; }
-        public object eventNamedWeights { get; set; }
+        public List<object> activeStorefronts { get; set; }
+
+        public List<object> activeEvents = new();
+        public object eventNamedWeights { get; set; } = new();
         public int seasonNumber { get; set; } = 0;
+        public string eventPunchCardTemplateId { get; set; } = "";
         public string seasonTemplateId { get; set; }
         public int matchXpBonusPoints { get; set; } = 0;
+        public object sectionStoreEnds { get; set; } = new();
+        public string rmtPromotion { get; set; } = "";
         public string seasonBegin { get; set; } = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
         public string  seasonEnd { get; set; } = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
         public string seasonDisplayedEnd { get; set; } = DateTime.MinValue.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");

@@ -150,6 +150,16 @@ namespace FortBackend.src.App.Routes.API
                    
                 }
 
+                // all fortnite seems to do is call it like this and never without this so shrug
+                if(section == "spark-tracks")
+                {
+                    var jsonResponse2 = JsonConvert.SerializeObject(NewsManager.SparkTracks, new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+
+                    return Content(jsonResponse2, "application/json");
+                }
                 //string LobbyBackground = $"season{season}";
                 //if (season == "2")
                 //{
@@ -192,8 +202,8 @@ namespace FortBackend.src.App.Routes.API
         }
 
 
-            // not added the stupid cachcing to this
-            [HttpPost("/api/v1/fortnite-br/surfaces/motd/target")]
+        // not added the stupid cachcing to this
+        [HttpPost("/api/v1/fortnite-br/surfaces/motd/target")]
         public async Task<ActionResult<ContentJson>> MOTDTARGET()
         {
             Response.ContentType = "application/json";
@@ -249,5 +259,8 @@ namespace FortBackend.src.App.Routes.API
             }
             return Ok(new { });
         }
+
+
+        
     }
 }

@@ -145,17 +145,26 @@
     {
       "hidden": false,
       "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-      "playlist_name": "Playlist_DefaultSolo"
+      "playlist_name": "Playlist_DefaultSolo",
+      "display_name": {
+        "en": "Solo"
+      }
     },
     {
       "hidden": false,
       "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-      "playlist_name": "Playlist_DefaultDuo"
+      "playlist_name": "Playlist_DefaultDuo",
+      "display_name": {
+        "en": "Duos"
+      }
     },
     {
       "hidden": false,
       "image": "http://127.0.0.1:1111/image/Trans_Boykisser.png",
-      "playlist_name": "Playlist_DefaultSquad"
+      "playlist_name": "Playlist_DefaultSquad",
+      "display_name": {
+        "en": "Squads"
+      }
     },
     {
       "hidden": false,

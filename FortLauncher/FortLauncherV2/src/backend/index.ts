@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain } from "electron";
+import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from "electron";
 import axios from "axios";
 import path, { join } from "path";
 import icon from '../../resources/icon.png?asset'
@@ -20,7 +20,7 @@ let mainWindow: BrowserWindow | null;
 function createWindow(): void {
   console.log(process.env.VITE_BACKEND_URL);
   console.log(__dirname);
-  const preloadPath = join(__dirname, '../main/preload.js')
+  const preloadPath = join(app.getAppPath(), 'out/main/preload.js')
   console.log("Preload script path:", preloadPath);
 
   if (!mainWindow) {
@@ -50,7 +50,8 @@ function createWindow(): void {
     if (process.env.NODE_ENV === "development") {
       mainWindow.loadURL("http://localhost:5173");
     } else {
-      mainWindow.loadFile(join(__dirname, "../index.html"));
+      mainWindow.loadFile(join(app.getAppPath(), "out/renderer/index.html"));
+      Menu.setApplicationMenu(null);
     }
 
     ipcMain.handle("fortlauncher:ping", async () => {
@@ -99,6 +100,21 @@ function createWindow(): void {
         if (hasFortniteGame && hasEngine) return selectedPath;
         else return "Error~~";
       }
+    });
+
+    ipcMain.handle("fortlauncher:logout", async (_) => {
+      mainWindow!.webContents.send('IsLoggedIn', false);
+      saveTokenToIni(""); // skull
+      user.logout();
+    })
+
+    ipcMain.handle("fortlauncher:open-appdata", async (_) => {
+      const appDataPath = join(app.getPath("userData"), "FortLauncher");
+      if (appDataPath) {
+        await shell.openPath(appDataPath);
+        return true;
+      }
+      throw new Error("APPDATA environment variable not found");
     });
 
     ipcMain.handle("fortlauncher:addpath", async (_, { PathValue }) => {
@@ -168,6 +184,8 @@ function createWindow(): void {
       }
     });
 
+
+
     ipcMain.on("fortlauncher:launchgame", (_, { gameExePath }) => {
       setImmediate(() => {
         const fortlauncherFolderPath = join(app.getPath("userData"), "FortLauncher");
@@ -222,8 +240,6 @@ function createWindow(): void {
           }
         });
       });
-
-      console.log("PORN!");
     });
 
     ipcMain.handle("fortlauncher:addpathV2", async (_) => {
@@ -275,12 +291,10 @@ function createWindow(): void {
         );
 
         if (response.data) {
-          console.log("g");
           console.log(response.data);
           if (response.data.token) {
             saveTokenToIni(response.data.token);
             var LoginData = await login(mainWindow!, true);
-            console.log("YEAH");
             console.log(LoginData);
             if (LoginData) return LoginData;
             else

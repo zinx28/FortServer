@@ -6,6 +6,7 @@ using FortLibrary.EpicResponses.FortniteServices.Content;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Reflection;
+using System.Text.Json;
 
 namespace FortBackend.src.App.Utilities.Helpers.Cached
 {
@@ -13,12 +14,16 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
     {
         public static Dictionary<string, ContentJson> ContentJsonResponse = new();
         public static Dictionary<string, motdTarget> MotdJsonResponse = new();
+        public static Dictionary<string, List<MnemonicC>> mnemonicCs = new();
         public static Discovery CreativeDiscoveryResponse = new();
         public static DATAClass CreativeDiscoveryAssetsResponse = new();
         //  public static ContentJson ContentJsonResponse = new ContentJson();
         public static ContentConfig ContentConfig = new();
 
-        public static motdTarget MotdTarget = new();
+        // dynamic is terrible but why not :skull:
+        public static dynamic? SparkTracks;
+
+        //public static motdTarget MotdTarget = new();
         //public static void Init()
         //{
 
@@ -41,7 +46,7 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                     {
                         ContentJson contentJson = new();
                         motdTarget MotdcontentJson = new();
-
+                        List<MnemonicC> MnemonicCJson = new();
                         // 
 
                         ContentConfig.battleroyalenews.motds.ForEach(x =>
@@ -83,9 +88,9 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                             });
                         });
 
-                     //   MotdTarget.contentItems
+                        //   MotdTarget.contentItems
 
-
+                        
 
                         contentJson.loginMessage.loginmessage.message.title = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.title, propertyName);
                         contentJson.loginMessage.loginmessage.message.body = ContentConfig.loginmessage.GetLanguage(ContentConfig.loginmessage.body, propertyName);
@@ -130,6 +135,8 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                             contentJson.tournamentinformation.tournament_info.tournaments.Add(x);
                         });
 
+
+
                         ContentConfig.playlistinformation.ForEach(x =>
                         {
                             contentJson.playlistinformation.playlist_info.playlists.Add(new()
@@ -140,10 +147,30 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                                 description = x.GetLanguage(x.description, propertyName),
                                 display_name = x.GetLanguage(x.display_name, propertyName),
                             });
+
+                            MnemonicCJson.Add(new MnemonicC()
+                            {
+                                mnemonic = x.playlist_name.ToLower(),
+                                metadata = new()
+                                {
+                                    product_tag = $"Product.BR.Build.{x.GetLanguage(x.display_name, "en")}",
+                                    title = x.GetLanguage(x.display_name, propertyName),
+                                    locale = propertyName,
+                                    alt_title = x.display_name,
+                                    matchmaking = new()
+                                    {
+                                        override_playlist = x.playlist_name.ToLower()
+                                    },
+                                    tagline = x.GetLanguage(x.description, propertyName),
+                                    introduction = x.GetLanguage(x.description, propertyName)
+                                }
+                            });
+                           
                         });
 
                         Logger.Log($"Adding {propertyName}", "News");
                         ContentJsonResponse.Add(propertyName, contentJson);
+                        mnemonicCs.Add(propertyName, MnemonicCJson);
                         MotdJsonResponse.Add(propertyName, MotdcontentJson);
                     }
                 }
@@ -170,12 +197,20 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             {
                 CreativeDiscoveryAssetsResponse = JsonConvert.DeserializeObject<DATAClass>(DisAssetsjsonData)!;
             }
+
+            var SparkyTwackysData = System.IO.File.ReadAllText(PathConstants.SparkTracks);
+
+            if(!string.IsNullOrEmpty(SparkyTwackysData))
+            {
+                SparkTracks = JsonConvert.DeserializeObject<object>(SparkyTwackysData)!;
+            }
         }
 
         public static void Update()
         {
             ContentJsonResponse = new(); // clear ofc
             MotdJsonResponse = new();
+            mnemonicCs = new();
 
             if (ContentConfig != null)
             {
@@ -187,8 +222,9 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 {
                     string propertyName = property.Name;
 
-                    ContentJson contentJson = new ContentJson();
+                    ContentJson contentJson = new();
                     motdTarget MotdcontentJson = new();
+                    List<MnemonicC> MnemonicCJson = new();
 
                     ContentConfig.battleroyalenews.motds.ForEach(x =>
                     {
@@ -278,8 +314,25 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                             description = x.GetLanguage(x.description, propertyName),
                             display_name = x.GetLanguage(x.display_name, propertyName),
                         });
+
+                        MnemonicCJson.Add(new MnemonicC()
+                        {
+                            mnemonic = x.playlist_name,
+                            metadata = new()
+                            {
+                                title = x.GetLanguage(x.display_name, propertyName),
+                                locale = propertyName,
+                                matchmaking = new()
+                                {
+                                    override_playlist = x.playlist_name
+                                },
+                                tagline = x.GetLanguage(x.description, propertyName),
+                                introduction = x.GetLanguage(x.description, propertyName)
+                            }
+                        });
                     });
 
+                    mnemonicCs.Add(propertyName, MnemonicCJson);
                     ContentJsonResponse.Add(propertyName, contentJson);
                     MotdJsonResponse.Add(propertyName, MotdcontentJson);
                 }

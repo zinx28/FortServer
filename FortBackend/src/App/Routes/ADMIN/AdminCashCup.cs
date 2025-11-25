@@ -273,7 +273,7 @@ namespace FortBackend.src.App.Routes.ADMIN
             }
             catch (Exception ex)
             {
-
+                Logger.Error(ex.Message, "AdminCashCup");
             }
 
             return Json(new

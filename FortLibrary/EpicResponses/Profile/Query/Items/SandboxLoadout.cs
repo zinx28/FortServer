@@ -97,7 +97,7 @@ namespace FortLibrary.EpicResponses.Profile.Query.Items
         public List<string> items { get; set; } = new List<string>(); 
 
         [JsonProperty("activevariants")]
-        public List<object> activevariants { get; set; } = new List<object>();
+        public List<AthenaItemVariants> activevariants { get; set; } = new List<AthenaItemVariants>();
     }
 
     public class Loadout

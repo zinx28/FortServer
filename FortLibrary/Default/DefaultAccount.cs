@@ -73,7 +73,7 @@ namespace FortLibrary.Default
                                             {
                                                 ""
                                             },
-                                            activevariants = new List<object>()
+                                            activevariants = new()
                                         },
                                         backpack = new Slots
                                         {
@@ -81,7 +81,7 @@ namespace FortLibrary.Default
                                             {
                                                 ""
                                             },
-                                            activevariants = new List<object>()
+                                            activevariants = new()
                                         },
                                         pickaxe = new Slots
                                         {
@@ -89,7 +89,7 @@ namespace FortLibrary.Default
                                             {
                                                 "AthenaPickaxe:DefaultPickaxe"
                                             },
-                                            activevariants = new List<object>()
+                                            activevariants = new()
                                         },
                                         skydivecontrail = new Slots
                                         {

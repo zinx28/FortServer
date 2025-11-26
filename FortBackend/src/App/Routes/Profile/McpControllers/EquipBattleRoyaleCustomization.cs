@@ -77,7 +77,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             {
                                 return new Mcp();
                             }
-                            List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
+                            List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 7).ToList();
                             profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots.itemwrap.items = ReplacedItems;
                             ProfileChanges.Add(new
                             {
@@ -108,23 +108,39 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             value = itemToSlot
                         });
                     }
-               
 
-                    if(Body.variantUpdates.Count > 0)
+
+                    if (Body.variantUpdates.Count > 0)
                     {
-                        if(profileCacheEntry.AccountData.athena.Items[Body.itemToSlot] != null)
+                        var Variants = new List<AthenaItemVariants>();
+                        if (!Saved.DeserializeConfig.FullLockerForEveryone)
                         {
-                            var Variants = profileCacheEntry.AccountData.athena.Items[Body.itemToSlot].attributes.variants;
-
-                            foreach (var variant in Body.variantUpdates)
+                            if (profileCacheEntry.AccountData.athena.Items[Body.itemToSlot] != null)
                             {
-                                var FindVar = Variants.FirstOrDefault(e => e.channel == variant.channel);
-                                if(FindVar != null)
-                                {
-                                    FindVar.active = variant.active;
-                                }
+                                Variants = profileCacheEntry.AccountData.athena.Items[Body.itemToSlot].attributes.variants;
                             }
+                        }
+                        else
+                        {
+                            // not the best full locker tbh
+                            var item = Saved.BackendCachedData.FullLocker_AthenaItems.FirstOrDefault(e => e.Key == Body.itemToSlot);
+                            if (item.Value != null)
+                            {
+                                Variants = item.Value.attributes.variants;
+                            }
+                        }
 
+                        foreach (var variant in Body.variantUpdates)
+                        {
+                            var FindVar = Variants.FirstOrDefault(e => e.channel == variant.channel);
+                            if (FindVar != null)
+                            {
+                                FindVar.active = variant.active;
+                            }
+                        }
+
+                        if (Variants.Count > 0)
+                        {
                             ProfileChanges.Add(new
                             {
                                 changeType = "itemAttrChanged",
@@ -133,13 +149,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 attributeValue = Variants
                             });
 
-                            profileCacheEntry.AccountData.athena.Items[Body.itemToSlot].attributes.variants = Variants;
-                        }
-                     
-                    }
-                   
+                            if (!Saved.DeserializeConfig.FullLockerForEveryone)
+                                profileCacheEntry.AccountData.athena.Items[Body.itemToSlot].attributes.variants = Variants;
 
-                  
+                            profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots.GetSlotName(slotName).activevariants = Variants;
+                        }
+                    }
 
                     if (ProfileChanges.Count > 0)
                     {

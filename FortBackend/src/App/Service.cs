@@ -127,25 +127,34 @@ namespace FortBackend.src.App
                 if (!string.IsNullOrEmpty(json))
                 {
                     ShopJson shopData = JsonConvert.DeserializeObject<ShopJson>(json)!;
-                    if(shopData.ShopItems.Daily.Count == 0 &&
+                    if (shopData.ShopItems.Daily.Count == 0 &&
                         shopData.ShopItems.Weekly.Count == 0)
-                    {
                         // Shop is empty... how about we generate a new shop
-                        var GeneraterShocked = new Thread(async () => {
+                        (new Thread(async () =>
+                        {
                             await GenerateShop.Init();
-                        });
-
-                        GeneraterShocked.Start();
+                        })).Start();
+                    
+                    else if (DateTime.TryParse(shopData.expiration, out DateTime expirationDate))
+                    {
+                        if (DateTime.Now > expirationDate)
+                        {
+                            Logger.Warn("Shop auto re-generated due to being expired", "[SHOP]");
+                            (new Thread(async () =>
+                            {
+                                await GenerateShop.Init();
+                            })).Start();
+                        }
                     }
+
                 }
                 else
                 {
                     // need to clean this up!
-                    var GeneraterShocked = new Thread(async () => {
+                    (new Thread(async () =>
+                    {
                         await GenerateShop.Init();
-                    });
-
-                    GeneraterShocked.Start();
+                    })).Start();
                 }
 
                 var ItemShopGenThread = new Thread(async () =>

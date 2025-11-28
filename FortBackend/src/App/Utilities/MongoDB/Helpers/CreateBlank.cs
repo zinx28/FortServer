@@ -19,7 +19,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
             }
             catch
             {
-                Console.WriteLine($"Failed to create blank collection -> {collectionName}");
+                Logger.Error($"Failed to create blank collection -> {collectionName}", "MongoDB");
             }
         }
 

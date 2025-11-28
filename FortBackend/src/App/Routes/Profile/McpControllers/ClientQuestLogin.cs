@@ -52,18 +52,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     }
                 }
 
-
                 // Daily Quests WIP
-                  
+
                 if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == Season.Season))
                 {
                     // Response Data ~ DONT CHANGE
                     List<object> MultiUpdates = new List<object>();
                     List<object> MultiUpdatesForCommonCore = new List<object>();
                     int BaseRev = profileCacheEntry.AccountData.athena.RVN;
-
-                    Console.WriteLine(RVN);
-                    Console.WriteLine(BaseRev);
 
                     if (Season.Season == 0)
                     {
@@ -228,8 +224,49 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     // Until i work on a season that changes this (season 10 omg) i need to redo this
                     (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry) = await QuestsDealer.Init(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
-                    
+
                     // END OF BATTLE PASS QUESTS SYSTEM
+
+                    // START OF SPECIAL ITEMS
+                    // Granted per second, you may want to put skins of other things in this
+                    if (FoundSeason.special_items == null)
+                        FoundSeason.special_items = new();
+
+                    List<string> SeasonSpecialIg = BattlepassManager.SeasonSpecialItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+
+                    if (SeasonSpecialIg != null && SeasonSpecialIg.Count > 0)
+                    {
+                        foreach (var item in SeasonSpecialIg)
+                        {
+                            if (!FoundSeason.special_items.ContainsKey(item))
+                            {
+                                FoundSeason.special_items.Add(item, new AthenaItem
+                                {
+                                    templateId = item,
+                                    quantity = 1
+                                });
+
+                                MultiUpdates.Add(new MultiUpdateClass
+                                {
+                                    changeType = "itemAdded",
+                                    itemId = item,
+                                    item = new AthenaItem
+                                    {
+                                        templateId = item,
+                                        attributes = new AthenaItemAttributes
+                                        {
+                                            item_seen = false,
+                                        },
+                                        quantity = 1
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    // END OF SPECIAL ITEMS
+
+                    //
 
                     // LEVEL SYSTEM & XP
 
@@ -374,7 +411,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                         string xmlMessage;
                                         byte[] buffer;
                                         WebSocket webSocket = Client.Game_Client;
-                                        Console.WriteLine(webSocket.State);
+                                        Logger.PlainLog(webSocket.State);
                                         if (webSocket != null && webSocket.State == WebSocketState.Open)
                                         {
                                             XNamespace clientNs = "jabber:client";

@@ -349,8 +349,6 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 {
                                     if (SectionId == 1)
                                     {
-                                        Console.WriteLine(numberBox);
-
                                         Saved.DeserializeGameConfig.Season = numberBox;
                                         Saved.DeserializeGameConfig.ForceSeason = RadioValue;
 
@@ -426,7 +424,6 @@ namespace FortBackend.src.App.Routes.ADMIN
                                                             if (!currentValue.Equals(numberBox))
                                                             {
                                                                 property.SetValue(fortConfig, numberBox);
-                                                                Console.WriteLine(numberBox);
                                                             }
                                                         }
 
@@ -563,7 +560,7 @@ namespace FortBackend.src.App.Routes.ADMIN
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error updating temp data: {ex.Message}");
+                Logger.Error($"Error updating temp data: {ex.Message}", "[Dashboard]");
                 return Json(false);
             }
 

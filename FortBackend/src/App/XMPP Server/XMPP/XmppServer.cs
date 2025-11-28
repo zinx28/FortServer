@@ -83,7 +83,7 @@ namespace FortBackend.src.App.XMPP_Server.XMPP
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("OH SUGAR :/ it crashed why -> " + ex.Message);
+                            Logger.Error("OH SUGAR :/ it crashed why -> " + ex.Message);
                         }
                     }
                     else

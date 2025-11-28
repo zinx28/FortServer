@@ -45,6 +45,8 @@ namespace FortBackend.src.App
 
             startup.ConfigureServices(builder.Services);
 
+            Logger.SetLogLevel(Saved.DeserializeConfig.LogLevel);
+
             if (Saved.DeserializeConfig.HTTPS)
             {
                 Saved.BackendCachedData.DefaultProtocol = "https://";

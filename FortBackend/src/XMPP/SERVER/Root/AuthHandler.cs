@@ -20,7 +20,7 @@ namespace FortBackend.src.App.SERVER.Root
         {
             try
             {
-                Console.WriteLine("CLIENTDI: " + clientId);
+                Logger.PlainLog("CLIENTDI: " + clientId);
                 string xmlMessage;
                 byte[] buffer;
                 if (clientId == null)
@@ -42,7 +42,7 @@ namespace FortBackend.src.App.SERVER.Root
                     if (splitContent.Length == 3)
                     {
                         var AccessToken = splitContent[2].Replace("eg1~", "");
-                        Console.WriteLine(AccessToken);
+                        Logger.PlainLog(AccessToken);
                         TokenData AccessTokenClient = GlobalData.AccessToken.FirstOrDefault(i => i.token == splitContent[2])!;
                         if (AccessTokenClient == null/* && string.IsNullOrEmpty(AccessTokenClient.accountId)*/)
                         {
@@ -73,7 +73,7 @@ namespace FortBackend.src.App.SERVER.Root
                                     if (decodedContent != "" && dataSaved.AccountId != "" && dataSaved.DisplayName != "" && dataSaved.Token != "" && splitContent.Length == 3)
                                     {
                                         dataSaved.DidUserLoginNotSure = true;
-                                        Console.WriteLine($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName}");
+                                        Logger.Log($"New Xmpp Client Logged In User Name Is As {dataSaved.DisplayName}");
                                         XNamespace streamNs = "urn:ietf:params:xml:ns:xmpp-sasl";
                                         var featuresElement = new XElement(streamNs + "success",
                                                new XAttribute(XNamespace.None + "xmlns", "urn:ietf:params:xml:ns:xmpp-sasl")

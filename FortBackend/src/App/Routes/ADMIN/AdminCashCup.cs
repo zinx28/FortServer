@@ -63,7 +63,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                             {
                                 CreateBody createBody = JsonConvert.DeserializeObject<CreateBody>(rawRequestBody)!;
 
-                                Console.WriteLine(JsonConvert.SerializeObject(createBody));
+                                Logger.PlainLog(JsonConvert.SerializeObject(createBody));
                                 // stupid as check i could probably do a better way
                                 if (createBody != null && (
                                     string.IsNullOrEmpty(createBody.title) ||

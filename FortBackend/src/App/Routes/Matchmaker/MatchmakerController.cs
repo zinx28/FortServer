@@ -138,14 +138,9 @@ namespace FortBackend.src.App.Routes.Matchmaker
                 if (profileCacheEntry != null)
                 {
                     var tokenPayload = HttpContext.Items["Payload"] as TokenPayload;
-
-
                     var displayName = tokenPayload?.Dn;
                     var AccountId = tokenPayload?.Sub;
                     var clientId = tokenPayload?.Clid;
-
-                    Console.WriteLine(clientId);
-
 
                     if (profileCacheEntry.AccountData != null && profileCacheEntry.UserData != null)
                     {

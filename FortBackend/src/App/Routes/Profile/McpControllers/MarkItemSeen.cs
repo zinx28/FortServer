@@ -19,11 +19,10 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                
                 List<object> MultiUpdates = new List<object>();
                 List<object> ProfileChanges = new List<object>();
-           
+                
                 foreach (string item in Body.itemIds)
                 {
-                    Console.WriteLine(item);
-
+                    
                     if(profileCacheEntry.AccountData.athena.Items.ContainsKey(item))
                     {
                         profileCacheEntry.AccountData.athena.Items[item].attributes.item_seen = true;
@@ -40,15 +39,17 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         // Wow MartItemSeen Works On Quests
                         if (seasonObject != null)
                         {
-                            Console.WriteLine("2");
                             if (seasonObject.Quests.ContainsKey(item))
                             {
-                                Console.WriteLine("JHAHAHAH");
                                 seasonObject.Quests[item].attributes.item_seen = true;
                             }
                             else if (seasonObject.DailyQuests.Daily_Quests.ContainsKey(item))
                             {
                                 seasonObject.DailyQuests.Daily_Quests[item].attributes.item_seen = true;
+                            }
+                            else if (seasonObject.special_items.ContainsKey(item))
+                            {
+                                seasonObject.special_items[item].attributes.item_seen = true;
                             }
                         }
 

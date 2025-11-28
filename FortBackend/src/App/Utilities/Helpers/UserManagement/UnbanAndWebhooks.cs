@@ -46,7 +46,7 @@ namespace FortBackend.src.App.Utilities.Helpers.UserManagement
                 }
                 else
                 {
-                    Console.WriteLine("Why is this null");
+                    Logger.Error("Why is this null");
                 }
 
                 var embed2 = new

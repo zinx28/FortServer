@@ -85,7 +85,7 @@ namespace FortBackend.src.App.SERVER.Send
 
                 if (FromAccountIdData == null || ToAccountIdData == null)
                 {
-                    Console.WriteLine("NOT FOUND");
+                    Logger.PlainLog("NOT FOUND, frined?");
                     return; // invalid data not found?
                 }
 
@@ -150,13 +150,13 @@ namespace FortBackend.src.App.SERVER.Send
 
                     if(shittyXmppClass.type == "com.epicgames.party.data")
                     {
-                        Console.WriteLine(shittyXmppClass.payload.ToString());
+                        Logger.PlainLog(shittyXmppClass.payload.ToString());
                         PartyData partyData = JsonConvert.DeserializeObject<PartyData>(shittyXmppClass.payload.ToString());
                         if(partyData != null && !string.IsNullOrEmpty(partyData.partyId))
                         {
                             if(partyData.payload.Attrs.PartyState_s == "BattleRoyaleView")
                             {
-                                Console.WriteLine("I WAnt to shut down the matchmaker for everything in the party!");
+                                Logger.PlainLog("I WAnt to shut down the matchmaker for everything in the party!");
                                 if (string.IsNullOrEmpty(partyData.payload.Attrs.MatchmakingInfoString_s))
                                 {
                                     var PartyId = $"Party-{partyData.partyId}";
@@ -169,7 +169,7 @@ namespace FortBackend.src.App.SERVER.Send
                                         {
                                             using (HttpClient client = new HttpClient())
                                             {
-                                                Console.WriteLine($"{Saved.BackendCachedData.DefaultProtocol}{Saved.DeserializeConfig.MatchmakerIP}:{Saved.DeserializeConfig.MatchmakerPort}/fortmatchmaker/removeUser/{member.accountId}");
+                                                Logger.PlainLog($"{Saved.BackendCachedData.DefaultProtocol}{Saved.DeserializeConfig.MatchmakerIP}:{Saved.DeserializeConfig.MatchmakerPort}/fortmatchmaker/removeUser/{member.accountId}");
                                                 client.DefaultRequestHeaders.Add("Authorization", $"bearer {Saved.DeserializeConfig.JWTKEY}");
                                                 var response = await client.PostAsync($"{Saved.BackendCachedData.DefaultProtocol}{Saved.DeserializeConfig.MatchmakerIP}:{Saved.DeserializeConfig.MatchmakerPort}/fortmatchmaker/removeUser/{member.accountId}", null);
                                                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -182,7 +182,7 @@ namespace FortBackend.src.App.SERVER.Send
                                         }
                                        
                                             //fortmatchmaker/removeUser
-                                            Console.WriteLine($"how many peopel in party -> {test.members.Count}");
+                                            Logger.PlainLog($"how many peopel in party -> {test.members.Count}");
                                     }
                                 }
                             }
@@ -194,7 +194,7 @@ namespace FortBackend.src.App.SERVER.Send
                 }
                 else
                 {
-                    Console.WriteLine("THIS IS NULLW HY!");
+                    Logger.PlainLog("THIS IS NULLW HY!");
                 }
             }
             catch (Exception ex)

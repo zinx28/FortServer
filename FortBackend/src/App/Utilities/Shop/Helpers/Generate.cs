@@ -22,9 +22,9 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             if (skinItems != null)
             {
                 int randomIndex = random.Next(skinItems.Count);
-                Console.WriteLine(randomIndex);
+                Logger.PlainLog(randomIndex);
                 ShopBundles RandomSkinItem = skinItems[randomIndex];
-                Console.WriteLine(RandomSkinItem);
+                Logger.PlainLog(RandomSkinItem);
                 if (RandomSkinItem == null)
                 {
                     Logger.Error($"Shop generation will be canceled -> RandomSkinItem is null", "ItemShop");
@@ -97,7 +97,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             int price = 0;
                             if (Generator.categoryMap.ContainsKey(ItemTemplateId))
                             {
-                                Console.WriteLine("TEST!!");
+                                Logger.Log("TEST!!");
                                 price = Generator.categoryMap[ItemTemplateId](Item.rarity);
 
                                 if (price != 0)
@@ -347,12 +347,12 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 //
 
                 int price = 0;
-                Console.WriteLine(ChosenItemString);
-                Console.WriteLine(Generator.categoryMap.ContainsKey(ChosenItemString));
+                Logger.PlainLog(ChosenItemString);
+                Logger.PlainLog(Generator.categoryMap.ContainsKey(ChosenItemString));
                 if (Generator.categoryMap.ContainsKey(ChosenItemString))
                 {
                     price = Generator.categoryMap[ChosenItemString](RandomSkinItem.rarity);
-                    Console.WriteLine(price);
+                    Logger.PlainLog(price);
                     if (price != 0)
                     {
                         Price = price;

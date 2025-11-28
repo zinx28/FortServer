@@ -39,8 +39,8 @@ namespace FortBackend.src.App.Routes.Profile
                 using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                 {
                     var requestbody = await reader.ReadToEndAsync();
-                    Console.WriteLine(requestbody);
-                    Console.WriteLine(mcp);
+                    //Console.WriteLine(requestbody);
+                    //Console.WriteLine(mcp);
                     VersionClass Season = await SeasonUserAgent(Request);
 
                     if (string.IsNullOrEmpty(requestbody))
@@ -70,7 +70,7 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "QueryProfile":
                                     response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
-
+                                // todo quests
                                 default:
                                     Logger.Error("MISSING MCP REQUEST FOR DEDICATED SERVER -> " + mcp);
                                     response = new Mcp
@@ -150,6 +150,12 @@ namespace FortBackend.src.App.Routes.Profile
                                     break;
                                 case "SetBattleRoyaleBanner":
                                     response = await SetBattleRoyaleBanner.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetBattleRoyaleBannerReq>(requestbody)!);
+                                    break;
+                                case "SetItemFavoriteStatus":
+                                    response = await SetItemFavoriteStatus.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetItemFavoriteStatusReq>(requestbody)!);
+                                    break;
+                                case "SetItemFavoriteStatusBatch":
+                                    response = await SetItemFavoriteStatusBatch.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetItemFavoriteStatusBatchReq>(requestbody)!);
                                     break;
                                 case "PurchaseCatalogEntry":
                                     response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody)!);

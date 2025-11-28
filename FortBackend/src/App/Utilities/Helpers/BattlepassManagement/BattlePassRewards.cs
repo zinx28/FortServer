@@ -128,7 +128,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         }
                         else if (iteminfo.TemplateId.Contains("CosmeticVariantToken:"))
                         {
-                            Console.WriteLine(iteminfo.connectedTemplate);
+                            Logger.PlainLog(iteminfo.connectedTemplate);
                             if (!string.IsNullOrEmpty(iteminfo.connectedTemplate))
                             {
                                 AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == iteminfo.connectedTemplate).Value;

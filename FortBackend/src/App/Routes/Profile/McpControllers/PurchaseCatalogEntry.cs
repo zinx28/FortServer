@@ -20,7 +20,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
     {
         public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, PurchaseCatalogEntryRequest Body)
         {
-            Console.WriteLine(ProfileId);
             if (ProfileId == "common_core" || ProfileId == "profile0")
             {
                 List<SeasonClass> Seasons = profileCacheEntry.AccountData.commoncore.Seasons;

@@ -38,7 +38,6 @@ namespace FortBackend.src.App.SERVER.Root
                 switch (Type)
                 {
                     case "unavailable":
-                        Console.WriteLine("UNNNNNNNNNNNNNN");
                         if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value))
                         {
                             break;
@@ -258,8 +257,7 @@ namespace FortBackend.src.App.SERVER.Root
                     }
                  
 
-                    Console.WriteLine("TEST + " + findStatus);
-                    Console.WriteLine(away);
+                    Logger.PlainLog("TEST + " + findStatus);
 
                     await XmppFriend.UpdatePresenceForFriends(webSocket, status, away, false);
                     await XmppFriend.GrabSomeonesPresence(Saved_Clients.accountId, Saved_Clients.accountId, false);

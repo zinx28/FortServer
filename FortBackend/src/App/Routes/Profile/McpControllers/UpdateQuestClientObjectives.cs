@@ -44,7 +44,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     {
                         foreach(AdvancedCon Advanced in requestBodyy.advance)
                         {
-                            Console.WriteLine(Advanced.statName);
                             if (Advanced.statName.Contains("quest_"))
                             {
                                 var match = Regex.Match(Advanced.statName, @"^(.*?)(_\d+)?$"); ;
@@ -79,8 +78,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             attributeValue = Advanced.count
                                         });
 
-                                        Console.WriteLine(FoundSeason.Quests[$"Quest:{QuestStatName}"].templateId);
-                                        Console.WriteLine(FoundSeason.Quests[$"Quest:{QuestStatName}"].attributes.ObjectiveState[OBStateNumber].Name);
+                                        Logger.PlainLog(FoundSeason.Quests[$"Quest:{QuestStatName}"].templateId);
+                                        Logger.PlainLog(FoundSeason.Quests[$"Quest:{QuestStatName}"].attributes.ObjectiveState[OBStateNumber].Name);
 
                                         if (FoundSeason.Quests[$"Quest:{QuestStatName}"].attributes.ObjectiveState.All(os => os.Value == os.MaxValue))
                                         {
@@ -173,8 +172,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     });
                 }
 
-                Console.WriteLine(BaseRev);
-                Console.WriteLine(RVN);
+                Logger.PlainLog(BaseRev);
+                Logger.PlainLog(RVN);
                 if (BaseRev != RVN)
                 {
                     Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);

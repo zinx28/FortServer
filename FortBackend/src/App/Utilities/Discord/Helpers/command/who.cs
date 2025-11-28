@@ -65,7 +65,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                         Logger.Error("Failed To Find User!", "DiscordBot");
                         return;
                     }
-                    Console.WriteLine(UserId);
+                    Logger.PlainLog(UserId);
                     FindDiscordID = await Handlers.FindOne<User>("DiscordId", UserId, true);
                     if(FindDiscordID != null && FindDiscordID != "Error")
                     {
@@ -150,7 +150,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                             {
                                 ulong messageId = MessageComp.Message.Id;
                                 InProgess = true;
-                                Console.WriteLine(SelectedAction);
+                                Logger.PlainLog(SelectedAction);
                                 if (SelectedAction == "ban")
                                 {
                                     var modalBuilder = new ModalBuilder()
@@ -310,7 +310,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                     if (components.First(e => e.CustomId == "banAssist").Value != null)
                                     {
                                         BanAssistUser = components.First(e => e.CustomId == "banAssist").Value;
-                                        Console.WriteLine(BanAssistUser);
+                                        Logger.PlainLog(BanAssistUser);
 
                                         ProfileCacheEntry profileCacheEntry = await GrabData.ProfileDiscord(BanAssistUser);
 
@@ -353,7 +353,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                     xmlMessage = message.ToString();
                                                     buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                                    Console.WriteLine(xmlMessage);
+                                                    Logger.PlainLog(xmlMessage);
 
                                                     await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                                                 }
@@ -535,7 +535,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                         IMongoCollection<StoreInfo> StoreInfocollection = MongoDBStart.Database?.GetCollection<StoreInfo>("StoreInfo")!;
                                         var filter = Builders<StoreInfo>.Filter.AnyEq(b => b.UserIds, RespondBack.AccountId);
                                         var count = await StoreInfocollection.CountDocumentsAsync(filter);
-                                        Console.WriteLine(count.ToString());
+                                        Logger.PlainLog(count.ToString());
                                         if (count > 0)
                                         {
                                             await StoreInfocollection.DeleteOneAsync(filter);

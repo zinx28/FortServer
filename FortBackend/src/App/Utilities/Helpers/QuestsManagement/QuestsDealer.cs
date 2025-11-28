@@ -141,7 +141,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                     attributeValue = FoundSeason.Quests[AllBundles.templateId].attributes.quest_state
                                 });
 
-                                Console.WriteLine(!AllBundles.quest_data.ExtraQuests && !AllBundles.quest_data.Steps);
+                                Logger.PlainLog(!AllBundles.quest_data.ExtraQuests && !AllBundles.quest_data.Steps);
 
                                 if (!AllBundles.quest_data.ExtraQuests && !AllBundles.quest_data.Steps)
                                 {
@@ -425,7 +425,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                         }
                                         else if (GrantedItems.TemplateId.Contains("CosmeticVariantToken:"))
                                         {
-                                            Console.WriteLine(GrantedItems.connectedTemplate);
+                                            Logger.PlainLog(GrantedItems.connectedTemplate);
                                             if (!string.IsNullOrEmpty(GrantedItems.connectedTemplate))
                                             {
                                                 AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == GrantedItems.connectedTemplate).Value;
@@ -550,7 +550,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                 if (FoundNewQuest != null)
                                 {
                                     // ADD NEW QUESTS
-                                    Console.WriteLine($"I WANT TO ADD {FoundNewQuest.templateId}");
+                                    Logger.PlainLog($"I WANT TO ADD {FoundNewQuest.templateId}");
 
                                     List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
 
@@ -620,7 +620,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                 }
                                 else
                                 {
-                                    Console.WriteLine("I DONT SUPPORT " + Quests.TemplateId);
+                                    Logger.PlainLog("I DONT SUPPORT " + Quests.TemplateId);
                                 }
                             }
 
@@ -896,7 +896,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                         string xmlMessage;
                         byte[] buffer;
                         WebSocket webSocket = Client.Game_Client;
-                        Console.WriteLine(webSocket.State);
+                        Logger.PlainLog(webSocket.State);
                         if (webSocket != null && webSocket.State == WebSocketState.Open)
                         {
                             XNamespace clientNs = "jabber:client";

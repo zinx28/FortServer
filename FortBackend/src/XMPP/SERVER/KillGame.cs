@@ -71,7 +71,7 @@ namespace FortBackend.src.XMPP.SERVER
                                 var partyJoinInfoData = ParsedPresence.Properties[key];
 
                                 PartyId = partyJoinInfoData.partyId;
-                                Console.WriteLine($"Party ID: {PartyId}");
+                                Logger.PlainLog($"Party ID: {PartyId}");
 
                                 break;
                             }
@@ -81,14 +81,14 @@ namespace FortBackend.src.XMPP.SERVER
                         {
                            
                             if (Client.accountId == client.accountId) continue;
-                            Console.WriteLine(Client.accountId);
-                            Console.WriteLine(client.accountId);
+                            Logger.PlainLog(Client.accountId);
+                            Logger.PlainLog(client.accountId);
 
                             foreach(var test in Client.Rooms) {
-                                Console.Write("test" + Client.Rooms);
+                                Logger.PlainLog("test" + Client.Rooms);
                             }
                             // Check rooms so we dont tell everyone
-                            Console.Write("a " + Client.Rooms);
+                            Logger.PlainLog("a " + Client.Rooms);
 
                             byte[] buffer;
                             string xmlMessage;

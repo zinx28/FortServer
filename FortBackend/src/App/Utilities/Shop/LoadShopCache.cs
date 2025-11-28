@@ -33,7 +33,7 @@ namespace FortBackend.src.App.Utilities.Shop
                 Saved.Saved.BackendCachedData.ShopBundlesFiltered.Remove(bundle);
             }
 
-            Console.WriteLine($"ShopBundles Loaded: {Saved.Saved.BackendCachedData.ShopBundlesFiltered.Count()} / {Saved.Saved.BackendCachedData.ShopBundles.Count()}");
+            Logger.Log($"ShopBundles Loaded: {Saved.Saved.BackendCachedData.ShopBundlesFiltered.Count()} / {Saved.Saved.BackendCachedData.ShopBundles.Count()}");
         }
 
         // yaps
@@ -41,7 +41,7 @@ namespace FortBackend.src.App.Utilities.Shop
         {
             if (!File.Exists(filePath))
             {
-                Console.WriteLine($"File not found: {filePath}");
+                Logger.Error($"File not found: {filePath}");
                 return new List<ShopItems>();
             }
 

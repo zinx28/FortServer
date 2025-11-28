@@ -15,6 +15,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
         public static Dictionary<int, List<SeasonXP>> SeasonBattlePassXPItems = new Dictionary<int, List<SeasonXP>>();
 
         public static Dictionary<int, List<SeasonBP>> SeasonBattleStarsItems = new Dictionary<int, List<SeasonBP>>();
+        public static Dictionary<int, List<string>> SeasonSpecialItems = new Dictionary<int, List<string>>();
 
         public static void Init()
         {
@@ -26,6 +27,21 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 //Console.WriteLine(seasonFolder);
                 int season = int.Parse(seasonFolder.Split("\\Season")[1]);
 
+                var SeasonSpecialFolder = Path.Combine(seasonFolder, "SeasonSpecial.json");
+
+                if (File.Exists(SeasonSpecialFolder))
+                {
+                    string seasonSpecialD = File.ReadAllText(SeasonSpecialFolder);
+
+                    if (!string.IsNullOrEmpty(seasonSpecialD))
+                    {
+                        List<string> seasonSpecial = JsonConvert.DeserializeObject<List<string>>(seasonSpecialD)!;
+                    
+                        if(seasonSpecial.Count > 0)
+                            SeasonSpecialItems.Add(season, seasonSpecial);
+                        
+                    }
+                }
 
                 var SeasonXPFolder = Path.Combine(seasonFolder, "SeasonXP.json");
 

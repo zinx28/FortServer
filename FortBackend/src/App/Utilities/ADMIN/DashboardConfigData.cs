@@ -51,6 +51,13 @@ namespace FortBackend.src.App.Utilities.ADMIN
                             Type = "string",
                             Value = FortConfigData.MatchmakerIP
                         },
+                        new ConfigData
+                        {
+                            Title = "Log Level",
+                            METADATA = "LogLevel",
+                            Type = "int",
+                            Value = FortConfigData.LogLevel
+                        },
                     }
                  },
                 new ConfigTop

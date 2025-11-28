@@ -94,7 +94,14 @@ namespace FortLibrary.ConfigHelpers
 
         // -- //
 
-        public bool EnableLogs { get; set; } = false; // http requests
+        /*
+         * Low: 0
+         * Medium: 1
+         * High: 2
+         * Medium~High: 3 (plain logs won't display but asp logs will)
+         * Any higher will be reverted back to (2)
+         */
+        public int LogLevel { get; set; } = 0; // Low (basic logging, medium crazy logging, high crazy with asp logging) 
 
         // - could be in game config in the future
         public bool FullLockerForEveryone { get; set; } = false; // full locker (should show all up to 29.10 - .20 i forgot)

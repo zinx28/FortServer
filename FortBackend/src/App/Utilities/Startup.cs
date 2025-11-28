@@ -76,7 +76,7 @@ namespace FortBackend.src.App.Utilities
                 app.UseDeveloperExceptionPage();
             }
 
-            if (Saved.Saved.DeserializeConfig.EnableLogs)
+            if (Saved.Saved.DeserializeConfig.LogLevel > 1)
             {
                 Logger.Log("Logs are enabled", "SETUP");
                 app.UseMiddleware<LoggingMiddleware>();

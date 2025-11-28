@@ -47,7 +47,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                 try
                 {
                     TcpClient client = tcpListener.AcceptTcpClient();
-                    Console.WriteLine("NEW CONNECTION!!");
+                    Logger.PlainLog("NEW CONNECTION!!");
                     string clientId = Guid.NewGuid().ToString(); // GENERATES A NEW CLIENTID
                     _ = Task.Run(() => HandleTcpClientAsync(client, clientId));
                 }
@@ -130,7 +130,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "stream:stream")
                                 {
 
-                                    Console.WriteLine("chat");
+                                    Logger.PlainLog("chat");
                                     string responseXml1 = "<?xml version='1.0' encoding='UTF-8'?>" +
                                     "<stream:stream xmlns:stream='http://etherx.jabber.org/streams' " +
                                     $"xmlns='jabber:client' from='127.0.0.1'  id='{clientId}' " +
@@ -138,14 +138,14 @@ namespace FortBackend.src.App.XMPP_Server.TCP
 
                                     byte[] responseBytes2 = Encoding.UTF8.GetBytes(responseXml1.ToString());
                                     await stream.WriteAsync(responseBytes2, 0, responseBytes2.Length);
-                                    Console.WriteLine("Response sent");
+                                    Logger.PlainLog("Response sent");
                                     await Task.Delay(100);
                                     string responseXml3 = "<stream:features><starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'><required/></starttls>" + 
                                     "<mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>PLAIN</mechanism></mechanisms></stream:features>";
 
                                     byte[] responseBytes3 = Encoding.UTF8.GetBytes(responseXml3.ToString());
                                     await stream.WriteAsync(responseBytes3, 0, responseBytes3.Length);
-                                    Console.WriteLine("Response sent");
+                                    Logger.PlainLog("Response sent");
                                     break;
                                 }
                                 //<starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>
@@ -154,7 +154,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
                                     string xmlString = "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>";
                                     byte[] responseBytes33 = Encoding.UTF8.GetBytes(xmlString.ToString());
                                     await stream.WriteAsync(responseBytes33, 0, responseBytes33.Length);
-                                    Console.WriteLine("StartTls");
+                                    Logger.PlainLog("StartTls");
 
                                     //stream.Close();
                                     //client.Close();
@@ -165,7 +165,7 @@ namespace FortBackend.src.App.XMPP_Server.TCP
 
                                         int bytesRead2 = await stream.ReadAsync(buffer, 0, buffer.Length);
                                         string initialMessage = Encoding.UTF8.GetString(buffer, 0, bytesRead2);
-                                        Console.WriteLine($"Received initial message: {initialMessage}");
+                                        Logger.PlainLog($"Received initial message: {initialMessage}");
 
 
                                     }

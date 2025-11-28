@@ -311,6 +311,10 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("intro_game_played")]
         [JsonProperty("intro_game_played")]
         public bool intro_game_played { get; set; } = false;
+
+        [BsonElement("special_items")]
+        [JsonProperty("special_items")]
+        public Dictionary<string, AthenaItem> special_items { get; set; } = new();
     }
 
     public class Events

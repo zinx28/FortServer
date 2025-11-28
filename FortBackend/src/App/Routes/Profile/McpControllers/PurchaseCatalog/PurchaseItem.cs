@@ -70,7 +70,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
                     }
 
-                    Console.WriteLine(HasUserHaveItem);
+                    Logger.PlainLog(HasUserHaveItem);
 
                     NotificationsItems.Add(new NotificationsItemsClass
                     {
@@ -138,7 +138,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         };
                     }
 
-                    Console.WriteLine($"Currency Item Quantity: {CurrentVbucks.quantity}");
+                    Logger.PlainLog($"Currency Item Quantity: {CurrentVbucks.quantity}");
 
                     if (ShopContent.price > int.Parse(CurrentVbucks.quantity.ToString()))
                     {
@@ -239,7 +239,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                         responseVersion = 1
                     };
                     string mcpJson = JsonConvert.SerializeObject(mcp, Formatting.Indented);
-                    Console.WriteLine(mcpJson);
                     return mcp;
                 }
                 else

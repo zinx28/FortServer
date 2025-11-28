@@ -107,7 +107,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                                 string xmlMessage;
                                                 byte[] buffer;
                                                 WebSocket webSocket = Client.Game_Client;
-                                                Console.WriteLine(webSocket.State);
+                                                Logger.PlainLog(webSocket.State);
                                                 if (webSocket != null && webSocket.State == WebSocketState.Open)
                                                 {
                                                     XNamespace clientNs = "jabber:client";
@@ -126,7 +126,7 @@ namespace FortBackend.src.App.Utilities.Helpers.QuestsManagement
                                                     xmlMessage = message.ToString();
                                                     buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                                    Console.WriteLine(xmlMessage);
+                                                    Logger.PlainLog(xmlMessage);
 
                                                     await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
                                                 }

@@ -13,6 +13,7 @@ namespace FortLibrary
 
         private static StreamWriter? writer;
         private static readonly object _lock = new();
+        private static int LogLevel = 1; // 1 for the start only
 
         static Logger()
         {
@@ -50,6 +51,15 @@ namespace FortLibrary
         }
 
         /// <summary>
+        /// Set log level
+        /// </summary>
+        /// <param name="level">log level: 0 basic logs</param>
+        public static void SetLogLevel(int level)
+        {
+            LogLevel = level;
+        }
+
+        /// <summary>
         /// Logs plain text
         /// </summary>
         /// <param name="message">Message that will be printed</param>
@@ -58,7 +68,21 @@ namespace FortLibrary
             if(writer != null)
                 writer.WriteLine(message);
 
-            Console.WriteLine(message);
+            if (LogLevel > 0 && LogLevel != 3)
+                Console.WriteLine(message);
+        }
+
+        /// <summary>
+        /// Logs plain text
+        /// </summary>
+        /// <param name="message">Message that will be printed</param>
+        public static void PlainLog(object message)
+        {
+            if (writer != null)
+                writer.WriteLine(message);
+
+            if (LogLevel > 0 && LogLevel != 3)
+                Console.WriteLine(message);
         }
 
         /// <summary>

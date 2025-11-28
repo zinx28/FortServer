@@ -109,7 +109,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error handling command: {ex.Message}");
+                Logger.Error($"Error handling command: {ex.Message}", "SlashCommands");
               //  await command.RespondAsync("testr", ephemeral: true);
             }
         }

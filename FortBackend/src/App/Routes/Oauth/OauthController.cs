@@ -33,9 +33,6 @@ namespace FortBackend.src.App.Routes.Oauth
                 string accessToken = Request.Headers["Authorization"]!;
                 string refreshToken = Request.Headers["RefreshToken"]!;
 
-                Console.WriteLine(accessToken);
-                Console.WriteLine(refreshToken);
-
                 if (!string.IsNullOrEmpty(accessToken) && !string.IsNullOrEmpty(refreshToken))
                 {
                     var handler = new JwtSecurityTokenHandler();
@@ -59,7 +56,7 @@ namespace FortBackend.src.App.Routes.Oauth
 
                         // check the account
                         ProfileCacheEntry profileCacheEntry = await GrabData.Profile(payload.sub.ToString());
-                        Console.WriteLine(profileCacheEntry.AccountId);
+
                         if (!string.IsNullOrEmpty(profileCacheEntry.AccountId) && profileCacheEntry.UserData.banned != true)
                         {
                             var FindAccount = GlobalData.AccessToken.FirstOrDefault(e => e.accountId == profileCacheEntry.AccountId);
@@ -231,7 +228,7 @@ namespace FortBackend.src.App.Routes.Oauth
             }
             else
             {
-                Console.WriteLine("FAKE TOKEN?"); // never should happen
+                Logger.PlainLog("FAKE TOKEN?"); // never should happen ~ isnt worth error
             }
 
             return Ok(new { });
@@ -269,7 +266,6 @@ namespace FortBackend.src.App.Routes.Oauth
                     if (!string.IsNullOrEmpty(TokenType))
                     {
                         token_type = TokenType!;
-                        Console.WriteLine(token_type);
                     }
 
                 }
@@ -297,8 +293,6 @@ namespace FortBackend.src.App.Routes.Oauth
                     if (!string.IsNullOrEmpty(password))
                         Password = password!;
                 }
-
-                Console.WriteLine(grant_type);
 
                 string clientId = "";
                 try

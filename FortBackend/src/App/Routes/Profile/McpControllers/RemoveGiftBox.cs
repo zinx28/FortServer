@@ -42,7 +42,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 }
                 else if(requestBodyy.giftBoxItemIds.Count() > 0)
                 {
-                    Console.WriteLine(requestBodyy.giftBoxItemIds.Count());
+                    Logger.PlainLog(requestBodyy.giftBoxItemIds.Count());
                     foreach (var GiftBoxID in requestBodyy.giftBoxItemIds)
                     {
                         GiftCommonCoreItem GiftBoxItem = profileCacheEntry.AccountData.commoncore.Gifts.FirstOrDefault(e => e.Key == GiftBoxID).Value;

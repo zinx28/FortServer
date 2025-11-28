@@ -210,7 +210,7 @@ namespace FortBackend.src.App.Routes.API
                 {
                     string RequestBody = await reader.ReadToEndAsync();
                     if (string.IsNullOrEmpty(RequestBody)) return Ok(new { }); // uhm?
-                    Console.WriteLine(RequestBody);
+                    
                     //ReportUserClass
                     ReportUserClass reportUserClass = JsonConvert.DeserializeObject<ReportUserClass>(RequestBody)!;
 
@@ -280,16 +280,16 @@ namespace FortBackend.src.App.Routes.API
                                 HttpResponseMessage response32 = await httpClient.PostAsync(Saved.DeserializeConfig.ReportsWebhookUrl, httpContent1);
                                 if (response32.IsSuccessStatusCode)
                                 {
-                                    Console.WriteLine("Message sent successfully!");
+                                    Logger.Log("Message sent successfully!");
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"Failed to send message. Status code: {response32.StatusCode}");
+                                    Logger.Error($"Failed to send message. Status code: {response32.StatusCode}", "ReportFriends");
                                 }
                             }
                             catch (HttpRequestException ex)
                             {
-                                Console.WriteLine($"Error sending request: {ex.Message}");
+                                Logger.Error($"Error sending request: {ex.Message}", "ReportFriends");
                             }
                             //}
 

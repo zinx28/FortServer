@@ -32,7 +32,7 @@ namespace FortBackend.src.App.Utilities.Shop
                                     originalBundle.LastShownDate = filteredBundle.LastShownDate;
                                     Logger.Log($"Bundle: {filteredBundle.BundleID} date been updated to {filteredBundle.LastShownDate}");
                                 }
-                                Console.WriteLine(Saved.Saved.BackendCachedData.ShopBundles.Count);
+                                Logger.PlainLog(Saved.Saved.BackendCachedData.ShopBundles.Count);
                             }
 
                             // Then update the json file!!

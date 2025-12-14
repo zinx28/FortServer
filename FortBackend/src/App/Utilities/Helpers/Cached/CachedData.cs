@@ -150,6 +150,8 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
                 {
                     Logger.Log($"Force Season Is On [{DeserializeGameConfig.Season}]", "FortConfig");
                 }
+                else
+                    Logger.Warn($"Force Season is recommended!!", "FortConfig");
 
                 Logger.Log("Loaded Config", "FortGameConfig");
             }
@@ -295,9 +297,11 @@ namespace FortBackend.src.App.Utilities.Helpers.Cached
             try
             {
                 string filePath = await File.ReadAllTextAsync(ShopBundlesPath);
+                string filePath2 = await File.ReadAllTextAsync(PathConstants.ShopJson.ChristmasItems);
 
                 BackendCachedData.ShopBundles = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!; ;
                 BackendCachedData.ShopBundlesFiltered = JsonConvert.DeserializeObject<List<ShopBundles>>(filePath)!; ;
+                BackendCachedData.ShopFestiveItems.Add("christmas", JsonConvert.DeserializeObject<FestiveShopItems>(filePath2)!);
 
                 LoadShopCache.LoadAndFilterShopBundles(DeserializeGameConfig.Season);
                 LoadShopCache.LoadItems(DeserializeGameConfig.Season);

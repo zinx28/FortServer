@@ -39,7 +39,7 @@ namespace FortBackend.src.App.Routes.Friends
             {
                 Response.ContentType = "application/json";
                 var Party = GlobalData.parties.Find(x => x.id == partyId);
-                Console.WriteLine("TESTAAA " + Party);
+                Logger.PlainLog("TESTAAA " + Party);
                 if (Party != null)
                 {
                     return Content(JsonConvert.SerializeObject(Party), "application/json");
@@ -228,7 +228,7 @@ namespace FortBackend.src.App.Routes.Friends
                                     //PatchPatiesC
                                     if (Parties != null && PatchPartyResponse != null)
                                     {
-                                        Console.WriteLine("yeah " + PatchPartyResponse.config);
+                                       Logger.PlainLog("yeah " + PatchPartyResponse.config);
                                         foreach (var prop in PatchPartyResponse.config.GetType().GetProperties())
                                         {
                                             Parties.config[prop.Name] = prop.GetValue(PatchPartyResponse.config)!;
@@ -298,7 +298,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                             updated_at = Parties.updated_at
                                                         }))
                                                     );
-                                                    Console.WriteLine("SEND A XMPP MESSAGE");
+                                                    Logger.PlainLog("SEND A XMPP MESSAGE");
                                                     await SERVER.Send.Client.SendClientMessage(foundClient, message);
                                                     
                                                 }
@@ -312,7 +312,7 @@ namespace FortBackend.src.App.Routes.Friends
                                 }
                                 else
                                 {
-                                    Console.WriteLine("CLIENTINDEX IS NULL!!!");
+                                    Logger.PlainLog("CLIENTINDEX IS NULL!!!");
                                 }
                             }
                         }
@@ -633,11 +633,11 @@ namespace FortBackend.src.App.Routes.Friends
 
                         if (CurrentParty != null)
                         {
-                            Console.WriteLine(JsonConvert.SerializeObject(CurrentParty));
+                            Logger.PlainLog(JsonConvert.SerializeObject(CurrentParty));
                             using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                             {
                                 string requestBody = await reader.ReadToEndAsync();
-                                Console.WriteLine("INVITER + " + requestBody);
+                                Logger.PlainLog("INVITER + " + requestBody);
 
                                 var options = new JsonSerializerOptions
                                 {
@@ -648,8 +648,8 @@ namespace FortBackend.src.App.Routes.Friends
 
                                 if (invite != null)
                                 {
-                                    Console.WriteLine($"Member: {invite.MemberDisplayName ?? "N/A"}");
-                                    Console.WriteLine($"Platform: {invite.ConnectionPlatform ?? "N/A"}");
+                                    Logger.PlainLog($"Member: {invite.MemberDisplayName ?? "N/A"}");
+                                    Logger.PlainLog($"Platform: {invite.ConnectionPlatform ?? "N/A"}");
 
                                     var Invites = new
                                     {
@@ -666,11 +666,11 @@ namespace FortBackend.src.App.Routes.Friends
                                     CurrentParty.invites.Add(Invites);
                                     CurrentParty.updated_at = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
-                                    Console.WriteLine(profileCacheEntry.AccountId);
+                                    Logger.PlainLog(profileCacheEntry.AccountId);
 
                                     var UserInviting = CurrentParty.members.FirstOrDefault((member) => member.account_id == profileCacheEntry.AccountId);
 
-                                    Console.WriteLine(JsonConvert.SerializeObject(UserInviting));
+                                    Logger.PlainLog(JsonConvert.SerializeObject(UserInviting));
                                     if (UserInviting != null)
                                     {
                                         var foundClient = GlobalData.Clients.FirstOrDefault(client => client.accountId == accountId);
@@ -703,7 +703,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                 }))
                                             );
 
-                                            Console.WriteLine(message.ToString());
+                                            Logger.PlainLog(message.ToString());
 
                                             await SERVER.Send.Client.SendClientMessage(foundClient, message);
                                         }
@@ -713,7 +713,7 @@ namespace FortBackend.src.App.Routes.Friends
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Failed to deserialize the request body.");
+                                    Logger.PlainLog("Failed to deserialize the request body.");
                                 }
                             }
                          }
@@ -748,7 +748,7 @@ namespace FortBackend.src.App.Routes.Friends
                 using (StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8))
                 {
                     string requestBody = await reader.ReadToEndAsync();
-                    Console.WriteLine("Fortnite/parties + " + requestBody);
+
                     if (string.IsNullOrEmpty(requestBody))
                     {
                         throw new BaseError
@@ -1107,10 +1107,10 @@ namespace FortBackend.src.App.Routes.Friends
                                                         if (foundClient != null)
                                                         {
                                                             XNamespace clientNs = "jabber:client";
-                                                            Console.WriteLine(JsonConvert.SerializeObject(JoinParty.connection.meta));
+                                                            Logger.PlainLog(JsonConvert.SerializeObject(JoinParty.connection.meta));
                                                             foreach(var testig in JoinParty.connection.meta)
                                                             {
-                                                                Console.WriteLine(testig.Key + " " + testig.Value);
+                                                                Logger.PlainLog(testig.Key + " " + testig.Value);
                                                             }
                                                             
                         
@@ -1168,7 +1168,7 @@ namespace FortBackend.src.App.Routes.Friends
                                                                    }))
                                                            ));
 
-                                                            Console.WriteLine("joined PARTY");
+                                                            Logger.PlainLog("joined PARTY");
                                                         }
                                                     });
                                                 }
@@ -1179,25 +1179,25 @@ namespace FortBackend.src.App.Routes.Friends
                                                 });
                                             }else
                                             {
-                                                Console.WriteLine("WTF");
+                                                Logger.PlainLog("WTF");
                                             }
                                         }
                                     } else
                                     {
-                                        Console.WriteLine("IT IS -1");
+                                        Logger.PlainLog("IT IS -1");
                                     }
                                 }else
                                 {
-                                    Console.WriteLine("JOIN PARTY IS NULL");
+                                    Logger.PlainLog("JOIN PARTY IS NULL");
                                 }
                             }
                         }else
                         {
-                            Console.WriteLine("ACCOUNT ISNT FOUND");
+                            Logger.PlainLog("ACCOUNT ISNT FOUND");
                         }
                     }else
                     {
-                        Console.WriteLine("ACCOUNT NULL");
+                        Logger.PlainLog("ACCOUNT NULL");
                     }
                     //var MemberIndex = Party.members.FindIndex(x => x.account_id == accountId);
 

@@ -11,7 +11,7 @@ namespace FortLibrary.Shop
         public List<object> WeeklyFields { get; set; } = new List<object>();
         public List<object> DailyFields { get; set; } = new List<object>();
 
-        public int Season = 15;
+        public float Season = 15;
         public int WeeklyItems;
         public int DailyItems;
     }

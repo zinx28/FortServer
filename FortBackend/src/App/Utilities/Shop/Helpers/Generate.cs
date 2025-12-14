@@ -2,6 +2,7 @@
 using FortLibrary;
 using FortLibrary.Shop;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace FortBackend.src.App.Utilities.Shop.Helpers
 {
@@ -10,21 +11,34 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
         public static int HowManyTurns = 0;
         public static async Task<bool> Bundles()
         {
-
             if (Generator.Attempts == 4)
             {
                 Logger.Error("Went pass too many attempts", "ItemShop");
                 return false;
             }
-            Random random = new Random();
 
-            List<ShopBundles> skinItems = Saved.Saved.BackendCachedData.ShopBundlesFiltered;
-            if (skinItems != null)
+            Random random = new Random();
+            List<ShopBundles> bundleItems = new();
+            var currentEvent = Generator.GetActiveEvent();
+            if (!string.IsNullOrEmpty(currentEvent))
             {
-                int randomIndex = random.Next(skinItems.Count);
-                Console.WriteLine(randomIndex);
-                ShopBundles RandomSkinItem = skinItems[randomIndex];
-                Console.WriteLine(RandomSkinItem);
+                var FestiveShop = Saved.Saved.BackendCachedData.ShopFestiveItems
+                       .FirstOrDefault(e => e.Key == currentEvent);
+
+                if (FestiveShop.Key != null && FestiveShop.Value != null)
+                {
+                    bundleItems = FestiveShop.Value.Bundles;
+                }
+            }
+            else 
+                bundleItems = Saved.Saved.BackendCachedData.ShopBundlesFiltered; 
+
+            if (bundleItems != null)
+            {
+                int randomIndex = random.Next(bundleItems.Count);
+                Logger.PlainLog(randomIndex);
+                ShopBundles RandomSkinItem = bundleItems[randomIndex];
+                Logger.PlainLog(RandomSkinItem);
                 if (RandomSkinItem == null)
                 {
                     Logger.Error($"Shop generation will be canceled -> RandomSkinItem is null", "ItemShop");
@@ -34,7 +48,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 DateTime lastShownDate;
                 if (DateTime.TryParse(RandomSkinItem.LastShownDate, out lastShownDate))
                 {
-                    if (lastShownDate.Month == DateTime.Now.Month && lastShownDate.Year == DateTime.Now.Year)
+                    if ((lastShownDate.Month == DateTime.Now.Month && lastShownDate.Year == DateTime.Now.Year) && !RandomSkinItem.AllowAgain)
                     {
                         Logger.Log("Item Already been this month", "ItemShop");
                         Generator.Attempts += 1;
@@ -56,7 +70,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                     foreach (var Item in DailyArray)
                     {
-                        
+
                         if (!Item.categories.Any())
                         {
                             HowManyTurns += 1;
@@ -66,27 +80,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             Price = Item.singleprice;
                         }
                         else
-                        { 
-                            switch (Item.item.Split(":")[0])
-                            {
-                                case "AthenaCharacter":
-                                    ItemTemplateId = "skins";
-                                    break;
-                                case "AthenaDance":
-                                    ItemTemplateId = "emotes";
-                                    break;
-                                case "AthenaPickaxe":
-                                    ItemTemplateId = "pickaxes";
-                                    break;
-                                case "AthenaGlider":
-                                    ItemTemplateId = "gliders";
-                                    break;
-                                case "AthenaItemWrap":
-                                    ItemTemplateId = "wrap";
-                                    break;
-                                default:
-                                    break;
-                            }
+                        {
+                            ItemTemplateId = Generator.GetCategoryFromItem(Item.item)!;
 
                             if (string.IsNullOrEmpty(ItemTemplateId))
                             {
@@ -97,7 +92,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             int price = 0;
                             if (Generator.categoryMap.ContainsKey(ItemTemplateId))
                             {
-                                Console.WriteLine("TEST!!");
+                                Logger.Log("TEST!!");
                                 price = Generator.categoryMap[ItemTemplateId](Item.rarity);
 
                                 if (price != 0)
@@ -146,14 +141,17 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             items = Item.items,
                             price = Price,
                             singleprice = Price, // not done
+                            variants = Item.variants,
                             rarity = Item.rarity,
                             BundlePath = Item.BundlePath,
                             type = "Normal",
                             categories = Item.categories
                         });
                         Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
+
+                        Generator.DailyItems -= 1;
                     }
-                    Generator.DailyItems -= 1;
+                   
                 }
 
                 List<ShopBundlesItem> WeeklyArray = RandomSkinItem.Weekly;
@@ -164,40 +162,23 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     int Price = -1; // High As Broken
                     string ItemTemplateId = "";
 
-                  
+
                     foreach (var Item in WeeklyArray)
                     {
-                       
+
                         if (!Item.categories.Any())
                         {
                             HowManyTurns += 1;
                         }
 
-                        if(Item.singleprice != -1) {
+                        if (Item.singleprice != -1)
+                        {
                             Price = Item.singleprice;
                         }
                         else
                         {
-                            switch (Item.item.Split(":")[0])
-                            {
-                                case "AthenaCharacter":
-                                    ItemTemplateId = "skins";
-                                    break;
-                                case "AthenaDance":
-                                    ItemTemplateId = "emotes";
-                                    break;
-                                case "AthenaPickaxe":
-                                    ItemTemplateId = "pickaxes";
-                                    break;
-                                case "AthenaGlider":
-                                    ItemTemplateId = "gliders";
-                                    break;
-                                case "AthenaItemWrap":
-                                    ItemTemplateId = "wrap";
-                                    break;
-                                default:
-                                    break;
-                            }
+                            ItemTemplateId = Generator.GetCategoryFromItem(Item.item)!;
+
 
                             if (string.IsNullOrEmpty(ItemTemplateId))
                             {
@@ -277,12 +258,17 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             return true;
         }
 
-        public static async Task RandomItems(int Items, List<ItemsSaved> Type, List<object> DiscordFields, string ItemType = "Small")
+        public static async Task RandomItems(int Items, List<ItemsSaved> Type, List<object> DiscordFields, List<ShopItems> EventItems, double RandomFest = 0, string ItemType = "Small")
         {
             Logger.Log("Generating useless stuff -> " + Items, "ItemShop");
+            Random RandomNumber = new Random();
+
             for (int i = 0; i < Items; i++)
             {
-                await SingleItem(Generator.savedData, Type, Generator.itemTypes, Generator.rarityProb1, DiscordFields, ItemType);
+                if(EventItems != null && EventItems.Count > 0 && RandomNumber.NextDouble() < RandomFest)
+                   await FestiveSingleItem(Generator.savedData, Type, Generator.itemTypes, EventItems, DiscordFields, ItemType);
+                else
+                   await SingleItem(Generator.savedData, Type, Generator.itemTypes, Generator.rarityProb1, DiscordFields, ItemType);
             }
         }
 
@@ -347,12 +333,12 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 //
 
                 int price = 0;
-                Console.WriteLine(ChosenItemString);
-                Console.WriteLine(Generator.categoryMap.ContainsKey(ChosenItemString));
+                Logger.PlainLog(ChosenItemString);
+                Logger.PlainLog(Generator.categoryMap.ContainsKey(ChosenItemString));
                 if (Generator.categoryMap.ContainsKey(ChosenItemString))
                 {
                     price = Generator.categoryMap[ChosenItemString](RandomSkinItem.rarity);
-                    Console.WriteLine(price);
+                    Logger.PlainLog(price);
                     if (price != 0)
                     {
                         Price = price;
@@ -391,6 +377,71 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             {
                 Logger.Error($"Failed To Generate Item: {ChosenItemString}:Unknown ofc", "ItemShop");
             }
+        }
+    
+
+        public static async Task FestiveSingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, List<string> itemType, List<ShopItems> shopItems, List<object> DiscordFields, string type = "Small")
+        {
+            Random random = new Random();
+            int Price = -1;
+            var rng = new Random();
+
+
+            var available = shopItems
+                .Where(item =>
+                {
+                    if (DateTime.TryParse(item.LastShownDate, out var d))
+                        return d.Date != DateTime.UtcNow.Date;
+
+                    return true;
+                })
+                .ToList();
+
+            if (available.Count == 0)
+            {
+                // no point at the point to continue doing this
+                await SingleItem(savedData, ListItemSaved, itemType, Generator.rarityProb1, DiscordFields, type);
+                return;
+            }
+
+            var RandomSkinItem = available[rng.Next(available.Count)];
+
+            RandomSkinItem.LastShownDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
+
+            var ItemType = Generator.GetCategoryFromItem(RandomSkinItem.item);
+            int price = 0;
+            if (ItemType != null && Generator.categoryMap.ContainsKey(ItemType))
+            {
+                price = Generator.categoryMap[ItemType](RandomSkinItem.rarity);
+                Logger.PlainLog(price);
+                if (price != 0)
+                {
+                    Price = price;
+                }
+            }
+
+            DiscordFields.Add(new
+            {
+                name = RandomSkinItem.name,
+                value = Price
+            });
+
+            ListItemSaved.Add(new ItemsSaved
+            {
+                id = RandomSkinItem.id,
+                item = RandomSkinItem.item,
+                name = RandomSkinItem.name,
+                description = RandomSkinItem.description,
+                items = RandomSkinItem.items,
+                price = Price,
+                singleprice = Price,
+                variants = RandomSkinItem.variants,
+                BundlePath = RandomSkinItem.BundlePath,
+                type = type,
+                rarity = RandomSkinItem.rarity
+            });
+
+            Logger.Log($"Generated Item: {ItemType}:{RandomSkinItem.name}", "ItemShop:Festive");
         }
     }
 }

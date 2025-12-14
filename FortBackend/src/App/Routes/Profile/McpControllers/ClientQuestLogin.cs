@@ -1,33 +1,35 @@
-﻿using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
+﻿using Discord;
+using FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses;
 using FortBackend.src.App.Utilities;
+using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Helpers;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
-using FortLibrary.MongoDB.Module;
+using FortBackend.src.App.Utilities.Helpers.QuestsManagement;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 using FortBackend.src.App.Utilities.Quests;
+using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.XMPP.Data;
+using FortBackend.src.XMPP.SERVER.Send;
+using FortLibrary;
 using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Profile;
 using FortLibrary.EpicResponses.Profile.Purchases;
+using FortLibrary.EpicResponses.Profile.Query;
+using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.EpicResponses.Profile.Quests;
+using FortLibrary.MongoDB.Module;
+using FortLibrary.Shop;
+using FortLibrary.XMPP;
+using MongoDB.Bson.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using static FortBackend.src.App.Utilities.Helpers.Grabber;
-using FortLibrary;
+using System.Linq;
 using System.Net.Http.Json;
-using FortLibrary.EpicResponses.Profile.Query.Items;
-using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
-using FortBackend.src.App.Utilities.Constants;
-using FortLibrary.EpicResponses.Profile.Query;
-using MongoDB.Bson.IO;
-using FortLibrary.Shop;
-using Discord;
-using FortBackend.src.XMPP.Data;
-using FortLibrary.XMPP;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
-using System.Linq;
-using FortBackend.src.App.Utilities.Helpers.QuestsManagement;
-using FortBackend.src.App.Utilities.Saved;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -52,22 +54,19 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     }
                 }
 
-
                 // Daily Quests WIP
-                  
+
                 if (profileCacheEntry.AccountData.commoncore.Seasons.Any(x => x.SeasonNumber == Season.Season))
                 {
                     // Response Data ~ DONT CHANGE
                     List<object> MultiUpdates = new List<object>();
                     List<object> MultiUpdatesForCommonCore = new List<object>();
+                    int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
                     int BaseRev = profileCacheEntry.AccountData.athena.RVN;
-
-                    Console.WriteLine(RVN);
-                    Console.WriteLine(BaseRev);
 
                     if (Season.Season == 0)
                     {
-                        if (BaseRev != RVN)
+                        if (BaseRev_G != RVN)
                         {
                             Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                             MultiUpdates = test.profileChanges;
@@ -228,8 +227,49 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                     // Until i work on a season that changes this (season 10 omg) i need to redo this
                     (MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry) = await QuestsDealer.Init(FoundSeason, MultiUpdates, MultiUpdatesForCommonCore, profileCacheEntry);
-                    
+
                     // END OF BATTLE PASS QUESTS SYSTEM
+
+                    // START OF SPECIAL ITEMS
+                    // Granted per second, you may want to put skins of other things in this
+                    if (FoundSeason.special_items == null)
+                        FoundSeason.special_items = new();
+
+                    List<string> SeasonSpecialIg = BattlepassManager.SeasonSpecialItems.FirstOrDefault(e => e.Key == FoundSeason.SeasonNumber).Value;
+
+                    if (SeasonSpecialIg != null && SeasonSpecialIg.Count > 0)
+                    {
+                        foreach (var item in SeasonSpecialIg)
+                        {
+                            if (!FoundSeason.special_items.ContainsKey(item))
+                            {
+                                FoundSeason.special_items.Add(item, new AthenaItem
+                                {
+                                    templateId = item,
+                                    quantity = 1
+                                });
+
+                                MultiUpdates.Add(new MultiUpdateClass
+                                {
+                                    changeType = "itemAdded",
+                                    itemId = item,
+                                    item = new AthenaItem
+                                    {
+                                        templateId = item,
+                                        attributes = new AthenaItemAttributes
+                                        {
+                                            item_seen = false,
+                                        },
+                                        quantity = 1
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    // END OF SPECIAL ITEMS
+
+                    //
 
                     // LEVEL SYSTEM & XP
 
@@ -364,40 +404,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                     }
                                 });
 
-
-                                if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
-                                {
-                                    Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
-
-                                    if (Client != null)
-                                    {
-                                        string xmlMessage;
-                                        byte[] buffer;
-                                        WebSocket webSocket = Client.Game_Client;
-                                        Console.WriteLine(webSocket.State);
-                                        if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                        {
-                                            XNamespace clientNs = "jabber:client";
-
-                                            var message = new XElement(clientNs + "message",
-                                              new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                              new XAttribute("to", profileCacheEntry.AccountId),
-                                              new XElement(clientNs + "body", Newtonsoft.Json.JsonConvert.SerializeObject(new
-                                              {
-                                                  payload = new { },
-                                                  type = "com.epicgames.gift.received",
-                                                  timestamp = DateTime.UtcNow.ToString("o")
-                                              }))
-                                            );
-
-                                            xmlMessage = message.ToString();
-                                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                        }
-
-                                    }
-                                }
+                                await XmppGift.NotifyUser(profileCacheEntry.AccountId);
 
                                 MultiUpdatesForCommonCore.Add(new
                                 {
@@ -437,7 +444,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     }
 
 
-                    if (BaseRev != RVN)
+                    if (BaseRev_G != RVN)
                     {
                         Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                         MultiUpdates = test.profileChanges;

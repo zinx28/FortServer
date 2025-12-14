@@ -9,6 +9,7 @@ using FortLibrary;
 using Newtonsoft.Json;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -18,6 +19,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
         {
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
+                int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.athena.RVN;
                 List<object> ProfileChanges = new List<object>();
                 var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes;
@@ -45,20 +47,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     if (ProfileChanges.Count > 0)
                     {
                         profileCacheEntry.LastUpdated = DateTime.Now;
-                        profileCacheEntry.AccountData.athena.RVN += 1;
-                        profileCacheEntry.AccountData.athena.CommandRevision += 1;
+                        profileCacheEntry.AccountData.athena.BumpRevisions();
                         profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes = UpdatedData;
                     }
 
-                    List<dynamic> ProfileChangesV2 = new List<dynamic>();
-                    if (Season.SeasonFull >= 12.20)
+                    if (BaseRev_G != RVN)
                     {
-                        Mcp AthenaData = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
-                        ProfileChangesV2 = AthenaData.profileChanges;
-                    }
-                    else
-                    {
-                        ProfileChangesV2 = ProfileChanges;
+                        Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
+                        ProfileChanges = test.profileChanges;
                     }
 
                     return new Mcp()
@@ -66,7 +62,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         profileRevision = profileCacheEntry.AccountData.athena.RVN,
                         profileId = ProfileId,
                         profileChangesBaseRevision = BaseRev,
-                        profileChanges = ProfileChangesV2,
+                        profileChanges = ProfileChanges,
                         profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                         serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                         responseVersion = 1

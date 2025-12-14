@@ -64,7 +64,6 @@ namespace FortMatchmaker.src.App.Utilities.MongoDB.Helpers
                 var regexPattern = (BsonRegularExpression)null!;
                 if (!string.IsNullOrEmpty(CustomRegex))
                 {
-                    Console.WriteLine("T");
                     regexPattern = new BsonRegularExpression(CustomRegex, "i");
                 }
                 else

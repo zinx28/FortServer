@@ -75,6 +75,10 @@ function createWindow(): void {
       return "am i the rizzler?";
     });
 
+    ipcMain.handle('open-link', (_, url) => {
+      shell.openExternal(url)
+    })
+
     ipcMain.handle("fortlauncher:login", async () => {
       return login(mainWindow!);
     });
@@ -196,7 +200,7 @@ function createWindow(): void {
         }
 
         mainWindow?.webContents.send("gameStatus", {
-          Launching: false,
+          Launching: true,
           Type: "Message",
           Message: "Launching",
         });

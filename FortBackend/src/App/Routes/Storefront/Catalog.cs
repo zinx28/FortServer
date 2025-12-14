@@ -155,10 +155,18 @@ namespace FortBackend.src.App.Routes.Storefront
                     List<CatalogRequirements> requirements = new List<CatalogRequirements>();
                     List<itemGrants> itemGrants = new List<itemGrants>();
                     //Item itemIg = WeeklyItems.items.FirstOrDefault(item => !string.IsNullOrEmpty(item.description));
-                    var DisplayAsset = $"DA_Daily_{WeeklyItems.item}";
+                    var DisplayAsset = $"DA_Featured_{WeeklyItems.item}";
                     if (!string.IsNullOrEmpty(WeeklyItems.BundlePath))
                     {
                         DisplayAsset = WeeklyItems.BundlePath;
+                    }
+                    else {
+                        var Items = WeeklyItems.item.Split(':');
+
+                        if(Items.Length > 0)
+                        {
+                            DisplayAsset = $"DA_Featured_{Items[1]}";
+                        }
                     }
 
 

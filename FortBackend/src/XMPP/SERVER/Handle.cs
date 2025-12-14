@@ -44,7 +44,7 @@ namespace FortBackend.src.App.SERVER
                             try
                             {
                                 test = JToken.Parse(receivedMessage);
-                                Console.WriteLine("DISCONNETING USER AS FAKE RESPONSE // JSON");
+                                Logger.Error("DISCONNETING USER AS FAKE RESPONSE // JSON", "[XMPP]");
                                 receivedMessage = "";
                                 return;
                             }
@@ -113,7 +113,7 @@ namespace FortBackend.src.App.SERVER
             }
             finally
             {
-                Console.WriteLine("XMPP CLOSE");
+                Logger.PlainLog("XMPP CLOSE");
                 try
                 {
                     if (!serverShutdownToken.IsCancellationRequested && webSocket.State == WebSocketState.Open || webSocket.State == WebSocketState.CloseReceived)

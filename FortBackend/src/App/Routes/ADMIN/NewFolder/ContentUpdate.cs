@@ -3,6 +3,7 @@ using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Helpers;
 using FortBackend.src.App.Utilities.Helpers.Cached;
 using FortBackend.src.App.Utilities.Saved;
+using FortLibrary;
 using FortLibrary.ConfigHelpers;
 using FortLibrary.Dynamics;
 using Microsoft.Extensions.Primitives;
@@ -32,7 +33,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
         public class ServerContentRequest
         {
             public bool ForcedSeason { get; set; }
-            public int Season { get; set; } = 0;
+            public float Season { get; set; } = 0;
             public int WeeklyQuests { get; set; } = 0;
             public bool ShopRotation { get; set; } 
         }
@@ -48,10 +49,10 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
         {
           
             // News Updates
-            Console.WriteLine(Body);
-            Console.WriteLine(ContentName);
-            Console.WriteLine(ContentID);
-            Console.WriteLine(Index);
+            Logger.PlainLog(Body);
+            Logger.PlainLog(ContentName);
+            Logger.PlainLog(ContentID);
+            Logger.PlainLog(Index);
             if (ContentName == "news")
             {
                 ContentRequest contentRequest = JsonConvert.DeserializeObject<ContentRequest>(Body)!;
@@ -210,7 +211,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                     }
                     else iniConfigFiles.Data = new();
 
-                    Console.WriteLine(ResponseConv.FileName);
+                    Logger.PlainLog(ResponseConv.FileName);
 
                     var lines = ResponseConv.IniValue.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                     IniConfigData? currentSection = null;
@@ -276,21 +277,21 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                     List<IniContextRequest> ResponseConv = JsonConvert.DeserializeObject<List<IniContextRequest>>(Body)!;
                     FortConfig fortConfig = Saved.DeserializeConfig;
 
-                    Console.WriteLine("YHEA");
+                    Logger.PlainLog("YHEA");
 
                     // the dashboardconfigdata isnt used anywhere frtom the dashbaord and changing data wont simply work!
                     ResponseConv.ForEach(x =>
                     {
                         ConfigData Configdata = Configtop[x.index];
-                        Console.WriteLine(Configdata.Title);
-                        Console.WriteLine(JsonConvert.SerializeObject(Configdata));
+                        Logger.PlainLog(Configdata.Title);
+                        Logger.PlainLog(JsonConvert.SerializeObject(Configdata));
                         PropertyInfo property = typeof(FortConfig).GetProperty(Configdata.METADATA)!;
                         if (property != null)
                         {
                             var currentValue = property.GetValue(fortConfig);
                             if (currentValue != null)
                             {
-                                Console.WriteLine("E");
+                                Logger.PlainLog("E");
                                 if (Configdata.Type == "string")
                                 {
                                     if (!currentValue.Equals(x.value))
@@ -312,8 +313,8 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
                                 {
                                     // converts value to bool...
                                     bool BoolValue = false;
-                                    Console.WriteLine("TEST");
-                                    Console.WriteLine(x.value);
+                                    Logger.PlainLog("TEST");
+                                    Logger.PlainLog(x.value);
                                     try { BoolValue = bool.Parse(x.value); } catch { };
 
                                     if (!currentValue.Equals(BoolValue))

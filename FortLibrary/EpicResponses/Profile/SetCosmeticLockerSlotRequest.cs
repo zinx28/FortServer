@@ -11,4 +11,9 @@ namespace FortLibrary.EpicResponses.Profile
         public List<AthenaItemVariants> variantUpdates { get; set; } = new List<AthenaItemVariants>();
         public int optLockerUseCountOverride { get; set; }
     }
+
+    public class SetRandomCosmeticLoadoutFlagReq
+    {
+        public bool random { get; set; }
+    }
 }

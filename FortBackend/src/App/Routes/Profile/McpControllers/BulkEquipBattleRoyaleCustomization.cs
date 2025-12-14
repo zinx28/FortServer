@@ -6,6 +6,7 @@ using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortLibrary.MongoDB.Module;
 using FortLibrary.EpicResponses.Profile;
 using FortLibrary;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -15,9 +16,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
         {
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
+                int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.athena.RVN;
+                // ^^ todo make func
                 List<object> ProfileChanges = new List<object>();
-                var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots;
+                var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data[profileCacheEntry.AccountData.athena.last_applied_loadout].attributes.locker_slots_data.slots;
 
                 foreach(var item in Body.LoadoutData)
                 {
@@ -34,7 +37,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                             {
                                 return new Mcp();
                             }
-                            List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 6).ToList();
+                            List<string> ReplacedItems = Enumerable.Repeat(itemToSlot, 7).ToList();
                             UpdatedData.GetSlotName(SlotName).items = ReplacedItems;
                         }
                         else
@@ -68,12 +71,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 if (ProfileChanges.Count > 0)
                 {
                     profileCacheEntry.LastUpdated = DateTime.UtcNow;
-                    profileCacheEntry.AccountData.athena.RVN += 1;
-                    profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                    profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots = UpdatedData;
+                    profileCacheEntry.AccountData.athena.BumpRevisions();
+                    profileCacheEntry.AccountData.athena.loadouts_data[profileCacheEntry.AccountData.athena.last_applied_loadout].attributes.locker_slots_data.slots = UpdatedData;
                 }
 
-                if (BaseRev != RVN)
+                if (BaseRev_G != RVN)
                 {
                     Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                     ProfileChanges = test.profileChanges;

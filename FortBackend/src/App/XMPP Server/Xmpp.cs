@@ -19,11 +19,11 @@ namespace FortBackend.src.App.XMPP_V2
                 XmppServer.Intiliazation(args, cancellationToken);
             }).Start();
 
-            new Thread(() =>
-            {
-                TcpServer tcpServer = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
-                Task tcpServerTask = tcpServer.Start();
-            }).Start();
+            //new Thread(() =>
+            //{
+            //    TcpServer tcpServer = new TcpServer(Saved.DeserializeConfig.TCPXmppPort);
+            //    Task tcpServerTask = tcpServer.Start();
+            //}).Start();
 
         }
     }

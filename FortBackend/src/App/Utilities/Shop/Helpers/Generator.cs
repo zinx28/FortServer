@@ -6,6 +6,7 @@ using FortLibrary.Shop;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace FortBackend.src.App.Utilities.Shop.Helpers
 {
@@ -26,6 +27,27 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             { "wrap", (rarity) => GetPrice(rarity, PriceValues.wrap) }
         };
 
+        public static string? GetCategoryFromItem(string templateId)
+        {
+            var prefix = templateId.Split(':')[0];
+
+            return prefix switch
+            {
+                "AthenaCharacter" => "skins",
+                "AthenaDance" => "emotes",
+                "AthenaPickaxe" => "pickaxes",
+                "AthenaGlider" => "gliders",
+                "AthenaItemWrap" => "wrap",
+                _ => null
+            };
+        }
+
+        public static Dictionary<string, 
+            (int StartMonth, int StartDay, int EndMonth, int EndDay)> SeasonalEvents = new Dictionary<string, (int, int, int, int)>
+        {
+            { "christmas", (12, 14, 1, 2) },
+        };
+
         public static int GetPrice(string rarity, object category)
         {
             var prop = category.GetType().GetProperty(rarity);
@@ -41,6 +63,31 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
            
             }
             return -1;
+        }
+
+        public static string? GetActiveEvent()
+        {
+            var now = DateTime.Today;
+
+            if (!Saved.Saved.DeserializeGameConfig.SeasonalShopRotation)
+                return null;
+
+            foreach (var kvp in SeasonalEvents)
+            {
+                var name = kvp.Key;
+                var dates = kvp.Value;
+
+                var startDate = new DateTime(now.Year, dates.StartMonth, dates.StartDay);
+                var endDate = new DateTime(now.Year, dates.EndMonth, dates.EndDay);
+
+                if (endDate < startDate)
+                    endDate = endDate.AddYears(1);
+
+                if (now.Date >= startDate.Date && now.Date <= endDate.Date)
+                    return name;
+            }
+
+            return null;
         }
 
         public static List<string> itemTypes = new List<string>(); // auto added during startup
@@ -87,6 +134,20 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                 Logger.Log($"Expecting ~ WeeklyItems [{WeeklyItems}] - DailyItems [{DailyItems}]", "ItemShop");
 
+                var currentEvent = GetActiveEvent();
+                List<ShopItems> EventItems = new List<ShopItems>();
+                if (!string.IsNullOrEmpty(currentEvent))
+                {
+                    var FestiveShop = Saved.Saved.BackendCachedData.ShopFestiveItems
+                           .FirstOrDefault(e => e.Key == currentEvent);
+
+                    if (FestiveShop.Key != null && FestiveShop.Value != null)
+                    {
+                        Logger.Log("Lil Festive <3", "ItemShop");
+                        EventItems = FestiveShop.Value.Normal;
+                    }
+                }
+
                 while (Attempts != 4)
                 {
                     bool waitforme = await Generate.Bundles();
@@ -101,15 +162,13 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 }
                 Logger.Log("Generating left over items", "ItemShop");
 
-
-
-                await Generate.RandomItems(DailyItems, savedData.Daily, saveddata.DailyFields, "Normal");
-                await Generate.RandomItems(WeeklyItems, savedData.Weekly, saveddata.WeeklyFields, "Normal");
+                await Generate.RandomItems(DailyItems, savedData.Daily, saveddata.DailyFields, EventItems, 0.5, "Normal");
+                await Generate.RandomItems(WeeklyItems, savedData.Weekly, saveddata.WeeklyFields, EventItems,(2.0 / 3.0), "Normal");
 
                 if (savedData.Season >= 14)
                 {
-                    await Generate.RandomItems(4, savedData.Daily, saveddata.DailyFields);
-                    await Generate.RandomItems(4, savedData.Weekly, saveddata.WeeklyFields);
+                    await Generate.RandomItems(4, savedData.Daily, saveddata.DailyFields, EventItems);
+                    await Generate.RandomItems(4, savedData.Weekly, saveddata.WeeklyFields, EventItems);
 
                 }
               

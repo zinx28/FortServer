@@ -281,7 +281,7 @@ namespace FortBackend.src.App.Routes.Oauth
                 //refresh_token
                 //deployment_id
 
-                Console.WriteLine(FormRequest);
+                Logger.PlainLog(FormRequest);
                 string refresh_token = "";
                 string grant_type = "";
                 string scope = "";
@@ -369,15 +369,13 @@ namespace FortBackend.src.App.Routes.Oauth
                 var refreshTokenData = GlobalData.RefreshToken.FirstOrDefault(x => x.token == refresh_token);
                 if (refreshTokenData != null && !string.IsNullOrEmpty(refreshTokenData.token))
                 {
-                    Logger.Log("FOIUND A REFRESH TOKEN!!");
+                    Logger.PlainLog("FOIUND A REFRESH TOKEN!!");
                     var accessToken = refreshTokenData.token.Replace("eg1~", "");
                     var handler = new JwtSecurityTokenHandler();
                     var DecodedToken = handler.ReadJwtToken(accessToken);
                     string[] tokenParts = DecodedToken.ToString().Split(".");
 
-                    Console.WriteLine(accessToken);
-
-                    Console.WriteLine(DecodedToken);
+                    Logger.PlainLog(accessToken);
 
                     if (tokenParts.Length == 2)
                     {
@@ -390,7 +388,6 @@ namespace FortBackend.src.App.Routes.Oauth
                             var expTime = DateTimeOffset.FromUnixTimeSeconds(tokenPayload.Exp.Value);
                             if (DateTimeOffset.UtcNow >= expTime)
                             {
-                                Console.WriteLine("ERXPIRED");
                                 throw new BaseError
                                 {
                                     errorCode = "errors.com.epicgames.common.oauth.invalid_request",
@@ -418,7 +415,6 @@ namespace FortBackend.src.App.Routes.Oauth
                                 {
                                     if (JWT.VerifyTokenExpired(access_token_d.token))
                                     {
-                                        Console.WriteLine("EXPIRED");
                                         var DeviceID = Hex.GenerateRandomHexString(16);
 
                                         string AccessToken = JWT.GenerateJwtToken(new[]

@@ -120,16 +120,6 @@
     "season": 1
   },
   {
-    "id": "T3tX5lwbHEPIbCiJtyNPF85KWy1TCyT0G8jFNtHy",
-    "item": "AthenaPickaxe:Pickaxe_ID_022_HolidayGiftWrap",
-    "name": "You Shouldn't Have!",
-    "description": "For the combatant who has everything.",
-    "items": [],
-    "variants": [],
-    "rarity": "uncommon",
-    "season": 1
-  },
-  {
     "id": "cqBHXvqMYRVMafxXuLNHLTYxu4kLpI4EvMMWTP4T",
     "item": "AthenaPickaxe:Pickaxe_ID_023_SkiBoot",
     "name": "Ski Boot",
@@ -1047,16 +1037,6 @@
     "items": [],
     "variants": [],
     "rarity": "rare",
-    "season": 7
-  },
-  {
-    "id": "JOMxmFlqo8jI6XHyyxP1bbtHRDc5wFQ1eMb4FDB6",
-    "item": "AthenaPickaxe:Pickaxe_ID_139_Gingerbread",
-    "name": "Cookie Cutter",
-    "description": "Sweet vengeance.",
-    "items": [],
-    "variants": [],
-    "rarity": "uncommon",
     "season": 7
   },
   {

@@ -10,6 +10,7 @@ using FortLibrary.MongoDB.Module;
 using FortLibrary.Shop;
 using Microsoft.IdentityModel.Tokens;
 using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 {
@@ -67,6 +68,23 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                     quantity = 1
                                 }
                             });
+                        }
+                        // this is only used for paid tiers where "FREE TIERS" just doenst work
+                        // xp as well ig
+                        else if (iteminfo.TemplateId.Contains("AccountResource:"))
+                        {
+
+                            var testfr = iteminfo.TemplateId.Split(':')[1];
+                            if (testfr == "AthenaBattleStar")
+                            {
+                                FoundSeason.battlestars_currency += iteminfo.Quantity;
+                            }
+                            else
+                            {
+                                FoundSeason.SeasonXP += iteminfo.Quantity;
+                                (FoundSeason, NeedItems) = await LevelUpdater.Init(FoundSeason.SeasonNumber, FoundSeason, NeedItems);
+                                NeedItems = true; // force it as we don't want this to become false here
+                            }
                         }
                         else if (iteminfo.TemplateId.Contains("Athena"))
                         {
@@ -128,7 +146,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         }
                         else if (iteminfo.TemplateId.Contains("CosmeticVariantToken:"))
                         {
-                            Console.WriteLine(iteminfo.connectedTemplate);
+                            Logger.PlainLog(iteminfo.connectedTemplate);
                             if (!string.IsNullOrEmpty(iteminfo.connectedTemplate))
                             {
                                 AthenaItem athenaItem = profileCacheEntry.AccountData.athena.Items.FirstOrDefault(e => e.Key == iteminfo.connectedTemplate).Value;
@@ -221,13 +239,6 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         else if (iteminfo.TemplateId.Contains("Currency:"))
                         {
                             currencyItem.quantity += iteminfo.Quantity;
-                        }
-                        else if (iteminfo.TemplateId.Contains("AccountResource:"))
-                        {
-                            FoundSeason.SeasonXP += iteminfo.Quantity;
-
-                            (FoundSeason, NeedItems) = await LevelUpdater.Init(FoundSeason.SeasonNumber, FoundSeason, NeedItems);
-                            NeedItems = true; // force it as we don't want this to become false here
                         }
                         else
                         {

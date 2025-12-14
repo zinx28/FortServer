@@ -65,14 +65,14 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
                     foreach (var item in Region)
                     {
                         // we find the hoster that is hosting for that playlist and region
-                        Console.WriteLine(item.Region);
-                        Console.WriteLine(item.Playlist);
+                        Logger.PlainLog(item.Region);
+                        Logger.PlainLog(item.Playlist);
                         var Data = MatchmakerData.matchmakerData.FirstOrDefault(e => e.Region == item.Region && e.Playlist == item.Playlist);
 
                         if(Data != null && Data?.webSocket != null)
                         {
-                            Console.WriteLine($"FortHoster is connected with {MatchmakerData.SavedData.Values.Select(e => e.Region).ToList().Count}");
-                            Console.WriteLine(Saved.serverHotFixes.max_servers);
+                            Logger.Log($"FortHoster is connected with {MatchmakerData.SavedData.Values.Select(e => e.Region).ToList().Count}");
+                            Logger.PlainLog(Saved.serverHotFixes.max_servers);
                             
                             var ServerToUpdate = Saved.CurrentServers.FindAll(e => e.bServersLaunching == true && e.CurrentPlayers < e.MaxPlayers);
 
@@ -94,7 +94,7 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
                                         if (!item1.Value.Queuing) continue;
                                         if (item1.Value.Playlist != item.Playlist) continue;
                                         if (item1.Value.Region != item.Region) continue;
-                                        Console.WriteLine(item1.Value.Ticket);
+                                        Logger.PlainLog(item1.Value.Ticket);
                                         if (!string.IsNullOrEmpty(item1.Value.Ticket)) continue;
 
                                         item1.Value.Ticket = e.Session;
@@ -110,7 +110,7 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
 
                             if (ServersToJoin != null && ServersToJoin.Count > 0)
                             {
-                                Console.WriteLine("JOIN ABLE");
+                                Logger.Log("JOIN ABLE");
                                 foreach (var e in ServersToJoin)
                                 {
                                     string joinPayload = JsonConvert.SerializeObject(new
@@ -124,7 +124,7 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
                                         name = "Play"
                                     });
 
-                                    Console.WriteLine("2");
+                                    Logger.Log("2");
                                     foreach (var item1 in MatchmakerData.SavedData)
                                     {
                                         if (!item1.Value.Queuing) continue;
@@ -154,7 +154,7 @@ namespace FortMatchmaker.src.App.WebSockets.Helpers
                                         }
                                         catch (Exception ex)
                                         {
-                                            Console.WriteLine(ex.Message);
+                                            Logger.Error(ex.Message, "[FortniteGamer]");
                                         }
 
                                         item1.Key.Dispose();

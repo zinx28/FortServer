@@ -15,7 +15,7 @@ import Settings from './Content/Settings.vue';
         <Library ref="libraryTab" @buildpath="OpenBuildPopup" />
     </div>
     <div v-if="currentTab === 'settings'" style="margin-left: 270px;">
-        <Settings ref="libraryTab"  />
+        <Settings ref="libraryTab" :LoginResponse="getData"  />
     </div>
 
     <div @click="OpenBuildPopup(false)" v-if="LibraryPopup" class="AddBuildPopup">

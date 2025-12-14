@@ -25,6 +25,8 @@ namespace FortBackend.src.App.Utilities.Constants
             public static readonly string ShopGliders = Path.Combine(BaseDir, "Json/shop/gliders.json");
             public static readonly string ShopPickaxe = Path.Combine(BaseDir, "Json/shop/pickaxes.json");
             public static readonly string ShopWrap = Path.Combine(BaseDir, "Json/shop/wrap.json");
+
+            public static readonly string ChristmasItems = Path.Combine(BaseDir, "Json/shop/christmas/christmas.json");
         }
 
         public class Templates
@@ -58,7 +60,7 @@ namespace FortBackend.src.App.Utilities.Constants
 
         public class CachedPaths
         {
-            public static readonly string FortConfig = Path.Combine(BaseDir, "config.json");
+            public static readonly string FortConfig = Path.Combine(BaseDir, "Config.json");
             public static readonly string FortGame = Path.Combine(BaseDir, "GameConfig.json");
             public static readonly string FullLocker = Path.Combine(BaseDir, "Json/Profiles/FullLocker.json");
             public static readonly string DefaultBanner = Path.Combine(BaseDir, "Json/Profiles/Banners/DefaultBanners.json");

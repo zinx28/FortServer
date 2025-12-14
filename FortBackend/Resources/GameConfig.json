@@ -5,5 +5,6 @@
   "Season": 0,
   "WeeklyQuest": 1,
   "MfaClaim": true,
-  "ShopRotation": true
+  "ShopRotation": true,
+  "SeasonalShopRotation": true
 }

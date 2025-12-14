@@ -14,6 +14,7 @@ using FortBackend.src.App.Utilities;
 using FortLibrary.MongoDB.Module;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using Newtonsoft.Json;
+using FortBackend.src.XMPP.SERVER.Send;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog.BP
 {
@@ -29,295 +30,257 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog.BP
             {
                 if (FreeTier.Count > 0)
                 {
-                    if (Season.Season > 1)
+                    if (Season.Season <= 1)
+                        return (seasonObject, currencyItem, ApplyProfileChanges, MultiUpdates, profileCacheEntry); 
+
+                    List<Battlepass> PaidTier = BattlepassManager.PaidBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
+
+                    if (PaidTier != null)
                     {
-                        List<Battlepass> PaidTier = BattlepassManager.PaidBattlePassItems.FirstOrDefault(e => e.Key == Season.Season).Value;
-
-                        if (PaidTier != null)
+                        if (PaidTier.Count > 0)
                         {
-                            if (PaidTier.Count > 0)
+
+                            currencyItem.quantity -= Price;
+
+
+                            seasonObject.BookPurchased = true;
+
+                            ApplyProfileChanges.Add(new
                             {
+                                changeType = "statModified",
+                                name = "book_purchased",
+                                value = true
+                            });
 
-                                currencyItem.quantity -= Price;
-
-
-                                seasonObject.BookPurchased = true;
-
-                                ApplyProfileChanges.Add(new
+                            if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
+                            {
+                                if (WeeklyQuestsArray.Count > 0)
                                 {
-                                    changeType = "statModified",
-                                    name = "book_purchased",
-                                    value = true
-                                });
-
-                                if (WeeklyQuestManager.WeeklyQuestsSeasonAboveDictionary.TryGetValue($"Season{seasonObject.SeasonNumber}", out List<WeeklyQuestsJson> WeeklyQuestsArray))
-                                {
-                                    if (WeeklyQuestsArray.Count > 0)
+                                    List<string> ResponseIgIdrk = new List<string>();
+                                    var ResponseId = "";
+                                    foreach (var kvp in WeeklyQuestsArray)
                                     {
-                                        List<string> ResponseIgIdrk = new List<string>();
-                                        var ResponseId = "";
-                                        foreach (var kvp in WeeklyQuestsArray)
+                                        ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
+                                        ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
+
+                                        List<string> QuestTestResponse = new List<string>();
+                                        foreach (var Bundles in kvp.BundlesObject)
                                         {
-                                            ResponseIgIdrk.Add($"ChallengeBundle:{kvp.BundleId}");
-                                            ResponseId = $"ChallengeBundleSchedule:{kvp.BundleSchedule}";
+                                            if (Bundles.quest_data.ExtraQuests) continue;
 
-                                            List<string> QuestTestResponse = new List<string>();
-                                            foreach (var Bundles in kvp.BundlesObject)
+                                            QuestTestResponse.Add(Bundles.templateId);
+
+                                            DailyQuestsData QuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == Bundles.templateId).Value;
+                                            if (QuestData == null)
                                             {
-                                                if (Bundles.quest_data.ExtraQuests) continue;
+                                                List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
 
-                                                QuestTestResponse.Add(Bundles.templateId);
-
-                                                DailyQuestsData QuestData = seasonObject.Quests.FirstOrDefault(e => e.Key == Bundles.templateId).Value;
-                                                if (QuestData == null)
+                                                foreach (WeeklyObjectsObjectives ObjectiveItems in Bundles.Objectives)
                                                 {
-                                                    List<DailyQuestsObjectiveStates> QuestObjectStats = new List<DailyQuestsObjectiveStates>();
+                                                    //season_xp_gained
 
-                                                    foreach (WeeklyObjectsObjectives ObjectiveItems in Bundles.Objectives)
+                                                    QuestObjectStats.Add(new DailyQuestsObjectiveStates
                                                     {
-                                                        //season_xp_gained
-
-                                                        QuestObjectStats.Add(new DailyQuestsObjectiveStates
-                                                        {
-                                                            Name = $"completion_{ObjectiveItems.BackendName}",
-                                                            Value = 0,
-                                                            MaxValue = ObjectiveItems.Count
-                                                        });
-                                                    }
-
-                                                    seasonObject.Quests.Add($"{Bundles.templateId}", new DailyQuestsData
-                                                    {
-                                                        templateId = $"{Bundles.templateId}",
-                                                        attributes = new DailyQuestsDataDB
-                                                        {
-                                                            challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
-                                                            sent_new_notification = false,
-                                                            ObjectiveState = QuestObjectStats
-                                                        },
-                                                        quantity = 1
-                                                    });
-
-
-                                                    var ItemObjectResponse = new
-                                                    {
-                                                        templateId = $"{Bundles.templateId}",
-                                                        attributes = new Dictionary<string, object>
-                                                        {
-                                                            { "creation_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "level", -1 },
-                                                            { "item_seen", false },
-                                                            { "playlists", new List<object>() },
-                                                            { "sent_new_notification", true },
-                                                            { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
-                                                            { "xp_reward_scalar", 1 },
-                                                            { "challenge_linked_quest_given", "" },
-                                                            { "quest_pool", "" },
-                                                            { "quest_state", "Active" },
-                                                            { "bucket", "" },
-                                                            { "last_state_change_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                            { "challenge_linked_quest_parent", "" },
-                                                            { "max_level_bonus", 0 },
-                                                            { "xp", 0 },
-                                                            { "quest_rarity", "uncommon" },
-                                                            { "favorite", false },
-                                                            // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
-                                                        },
-                                                        quantity = 1
-                                                    };
-
-                                                    foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
-                                                    {
-                                                        ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
-                                                    }
-
-                                                    ApplyProfileChanges.Add(new MultiUpdateClass
-                                                    {
-                                                        changeType = "itemAdded",
-                                                        itemId = $"{Bundles.templateId}",
-                                                        item = ItemObjectResponse
+                                                        Name = $"completion_{ObjectiveItems.BackendName}",
+                                                        Value = 0,
+                                                        MaxValue = ObjectiveItems.Count
                                                     });
                                                 }
-                                            }
 
-                                            var AthenaItemChallengeBundle = new AthenaItemDynamic
-                                            {
-                                                templateId = $"ChallengeBundle:{kvp.BundleId}",
-                                                attributes = new Dictionary<string, object>
+                                                seasonObject.Quests.Add($"{Bundles.templateId}", new DailyQuestsData
                                                 {
-                                                    { "has_unlock_by_completion", false },
-                                                    { "num_quests_completed", 0 },
-                                                    { "level", 0 },
-                                                    { "grantedquestinstanceids", QuestTestResponse.ToArray() },
-                                                    { "item_seen",  true },
-                                                    { "max_allowed_bundle_level", 0 },
-                                                    { "num_granted_bundle_quests", QuestTestResponse.Count() },
-                                                    { "max_level_bonus", 0 },
-                                                    { "challenge_bundle_schedule_id", ResponseId },
-                                                    { "num_progress_quests_completed", 0 },
-                                                    { "xp", 0 },
-                                                    { "favorite", false }
-                                                },
-                                                quantity = 1,
-                                            };
+                                                    templateId = $"{Bundles.templateId}",
+                                                    attributes = new DailyQuestsDataDB
+                                                    {
+                                                        challenge_bundle_id = $"ChallengeBundle:{kvp.BundleId}",
+                                                        sent_new_notification = false,
+                                                        ObjectiveState = QuestObjectStats
+                                                    },
+                                                    quantity = 1
+                                                });
 
-                                            ApplyProfileChanges.Add(new
-                                            {
-                                                changeType = "itemRemoved",
-                                                itemId = $"ChallengeBundle:{kvp.BundleId}"
-                                            });
 
-                                            ApplyProfileChanges.Add(new MultiUpdateClass
-                                            {
-                                                changeType = "itemAdded",
-                                                itemId = $"ChallengeBundle:{kvp.BundleId}",
-                                                item = AthenaItemChallengeBundle
-                                            });
+                                                var ItemObjectResponse = new
+                                                {
+                                                    templateId = $"{Bundles.templateId}",
+                                                    attributes = new Dictionary<string, object>
+                                                    {
+                                                        { "creation_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "level", -1 },
+                                                        { "item_seen", false },
+                                                        { "playlists", new List<object>() },
+                                                        { "sent_new_notification", true },
+                                                        { "challenge_bundle_id", $"ChallengeBundle:{kvp.BundleId}" },
+                                                        { "xp_reward_scalar", 1 },
+                                                        { "challenge_linked_quest_given", "" },
+                                                        { "quest_pool", "" },
+                                                        { "quest_state", "Active" },
+                                                        { "bucket", "" },
+                                                        { "last_state_change_time", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                                        { "challenge_linked_quest_parent", "" },
+                                                        { "max_level_bonus", 0 },
+                                                        { "xp", 0 },
+                                                        { "quest_rarity", "uncommon" },
+                                                        { "favorite", false },
+                                                        // { $"completion_{dailyQuests.Properties.Objectives[0].BackendName}", 0 }
+                                                    },
+                                                    quantity = 1
+                                                };
+
+                                                foreach (DailyQuestsObjectiveStates yklist in QuestObjectStats)
+                                                {
+                                                    ItemObjectResponse.attributes.Add(yklist.Name, yklist.Value);
+                                                }
+
+                                                ApplyProfileChanges.Add(new MultiUpdateClass
+                                                {
+                                                    changeType = "itemAdded",
+                                                    itemId = $"{Bundles.templateId}",
+                                                    item = ItemObjectResponse
+                                                });
+                                            }
                                         }
 
-                                        var ItemTestObjectResponse = new
+                                        var AthenaItemChallengeBundle = new AthenaItemDynamic
                                         {
-                                            templateId = ResponseId,
+                                            templateId = $"ChallengeBundle:{kvp.BundleId}",
                                             attributes = new Dictionary<string, object>
-                                                                {
-                                                                    { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
-                                                                    { "max_level_bonus", 0 },
-                                                                    { "level", 0 },
-                                                                    { "item_seen", true },
-                                                                    { "xp", 0 },
-                                                                    { "favorite", false },
-                                                                    { "granted_bundles", ResponseIgIdrk.ToArray() }
-                                                                },
+                                            {
+                                                { "has_unlock_by_completion", false },
+                                                { "num_quests_completed", 0 },
+                                                { "level", 0 },
+                                                { "grantedquestinstanceids", QuestTestResponse.ToArray() },
+                                                { "item_seen",  true },
+                                                { "max_allowed_bundle_level", 0 },
+                                                { "num_granted_bundle_quests", QuestTestResponse.Count() },
+                                                { "max_level_bonus", 0 },
+                                                { "challenge_bundle_schedule_id", ResponseId },
+                                                { "num_progress_quests_completed", 0 },
+                                                { "xp", 0 },
+                                                { "favorite", false }
+                                            },
                                             quantity = 1,
                                         };
 
-                                        MultiUpdates.Add(new
+                                        ApplyProfileChanges.Add(new
                                         {
                                             changeType = "itemRemoved",
-                                            itemId = ResponseId,
+                                            itemId = $"ChallengeBundle:{kvp.BundleId}"
                                         });
 
-
-                                        MultiUpdates.Add(new MultiUpdateClass
+                                        ApplyProfileChanges.Add(new MultiUpdateClass
                                         {
                                             changeType = "itemAdded",
-                                            itemId = ResponseId,
-                                            item = ItemTestObjectResponse
+                                            itemId = $"ChallengeBundle:{kvp.BundleId}",
+                                            item = AthenaItemChallengeBundle
                                         });
                                     }
-                                }
 
-
-
-
-                                List<NotificationsItemsClassOG> ItemsGivenToUser = new List<NotificationsItemsClassOG>();
-                                foreach (Battlepass BattlePass in FreeTier)
-                                {
-                                    if (!NeedItems) break;
-                                    //We don't need this check on purchase as we "WANT" the user to get them items
-                                    //if (BookLevelOG <= BattlePass.Level) continue;
-                                    if (BattlePass.Level > seasonObject.BookLevel) break;
-
-                                    (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
-                                }
-                                foreach (Battlepass BattlePass in PaidTier)
-                                {
-                                    if (!NeedItems) break;
-                                    //if (BookLevelOG <= BattlePass.Level) continue;
-                                    if (BattlePass.Level > seasonObject.BookLevel) break;
-
-
-                                    (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
-                                }
-
-                                // after to get the correct price
-                                MultiUpdates.Add(new
-                                {
-                                    changeType = "itemQuantityChanged",
-                                    itemId = "Currency",
-                                    quantity = currencyItem.quantity
-                                });
-                                /*
-                                 *   NewItemsGiven.Add(new Dictionary<string, object>
+                                    var ItemTestObjectResponse = new
                                     {
-                                        { "itemType", FreeRewards["TemplateId"].ToString() },
-                                        { "itemGuid", FreeRewards["TemplateId"].ToString() },
-                                        { "quantity", int.Parse(FreeRewards["Quantity"].ToString() ?? "1") }
-                                    });
-                                */
-                                var RandomOfferId = Guid.NewGuid().ToString();
-                                MultiUpdates.Add(new ApplyProfileChangesClassV2
-                                {
-                                    changeType = "itemAdded",
-                                    itemId = RandomOfferId,
-                                    item = new
-                                    {
-                                        templateId = Season.Season >= 5 ? "GiftBox:gb_battlepasspurchased" : "GiftBox:gb_battlepass",
-                                        attributes = new
+                                        templateId = ResponseId,
+                                        attributes = new Dictionary<string, object>
                                         {
-                                            max_level_bonus = 0,
-                                            fromAccountId = "",
-                                            lootList = ItemsGivenToUser
+                                            { "unlock_epoch", DateTime.MinValue.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") },
+                                            { "max_level_bonus", 0 },
+                                            { "level", 0 },
+                                            { "item_seen", true },
+                                            { "xp", 0 },
+                                            { "favorite", false },
+                                            { "granted_bundles", ResponseIgIdrk.ToArray() }
                                         },
-                                        quantity = 1
-                                    }
-                                });
+                                        quantity = 1,
+                                    };
 
-                                profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
+                                    MultiUpdates.Add(new
+                                    {
+                                        changeType = "itemRemoved",
+                                        itemId = ResponseId,
+                                    });
+
+
+                                    MultiUpdates.Add(new MultiUpdateClass
+                                    {
+                                        changeType = "itemAdded",
+                                        itemId = ResponseId,
+                                        item = ItemTestObjectResponse
+                                    });
+                                }
+                            }
+
+                            List<NotificationsItemsClassOG> ItemsGivenToUser = new List<NotificationsItemsClassOG>();
+                            foreach (Battlepass BattlePass in FreeTier)
+                            {
+                                if (!NeedItems) break;
+                                //We don't need this check on purchase as we "WANT" the user to get them items
+                                //if (BookLevelOG <= BattlePass.Level) continue;
+                                if (BattlePass.Level > seasonObject.BookLevel) break;
+
+                                (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
+                            }
+                            foreach (Battlepass BattlePass in PaidTier)
+                            {
+                                if (!NeedItems) break;
+                                //if (BookLevelOG <= BattlePass.Level) continue;
+                                if (BattlePass.Level > seasonObject.BookLevel) break;
+
+
+                                (profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser) = await BattlePassRewards.Init(BattlePass.Rewards, profileCacheEntry, seasonObject, ApplyProfileChanges, currencyItem, NeedItems, ItemsGivenToUser);
+                            }
+
+                            // after to get the correct price
+                            MultiUpdates.Add(new
+                            {
+                                changeType = "itemQuantityChanged",
+                                itemId = "Currency",
+                                quantity = currencyItem.quantity
+                            });
+                            /*
+                                *   NewItemsGiven.Add(new Dictionary<string, object>
+                                {
+                                    { "itemType", FreeRewards["TemplateId"].ToString() },
+                                    { "itemGuid", FreeRewards["TemplateId"].ToString() },
+                                    { "quantity", int.Parse(FreeRewards["Quantity"].ToString() ?? "1") }
+                                });
+                            */
+                            var RandomOfferId = Guid.NewGuid().ToString();
+                            MultiUpdates.Add(new ApplyProfileChangesClassV2
+                            {
+                                changeType = "itemAdded",
+                                itemId = RandomOfferId,
+                                item = new
                                 {
                                     templateId = Season.Season >= 5 ? "GiftBox:gb_battlepasspurchased" : "GiftBox:gb_battlepass",
-                                    attributes = new GiftCommonCoreItemAttributes
+                                    attributes = new
                                     {
+                                        max_level_bonus = 0,
+                                        fromAccountId = "",
                                         lootList = ItemsGivenToUser
                                     },
                                     quantity = 1
-                                });
-
-                                if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
-                                {
-                                    Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
-
-                                    if (Client != null)
-                                    {
-                                        string xmlMessage;
-                                        byte[] buffer;
-                                        WebSocket webSocket = Client.Game_Client;
-                                        Console.WriteLine(webSocket.State);
-                                        if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                        {
-                                            XNamespace clientNs = "jabber:client";
-
-                                            var message = new XElement(clientNs + "message",
-                                              new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                              new XAttribute("to", profileCacheEntry.AccountId),
-                                              new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                              {
-                                                  payload = new { },
-                                                  type = "com.epicgames.gift.received",
-                                                  timestamp = DateTime.UtcNow.ToString("o")
-                                              }))
-                                            );
-
-                                            xmlMessage = message.ToString();
-                                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                            Console.WriteLine(xmlMessage);
-
-                                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                        }
-
-                                    }
-
                                 }
-                            }
-                            else
+                            });
+
+                            profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
                             {
-                                Logger.Error("PaidTier file is null [] ? battlepass tiering disabled");
-                            }
+                                templateId = Season.Season >= 5 ? "GiftBox:gb_battlepasspurchased" : "GiftBox:gb_battlepass",
+                                attributes = new GiftCommonCoreItemAttributes
+                                {
+                                    lootList = ItemsGivenToUser
+                                },
+                                quantity = 1
+                            });
+
+                            await XmppGift.NotifyUser(profileCacheEntry.AccountId);
                         }
                         else
                         {
-                            Logger.Log("Unsupported season");
+                            Logger.Error("PaidTier file is null [] ? battlepass tiering disabled");
                         }
+                    }
+                    else
+                    {
+                        Logger.Log("Unsupported season");
                     }
                 }
                 else

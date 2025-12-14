@@ -14,6 +14,7 @@ using FortLibrary.EpicResponses.Profile.Quests;
 using FortBackend.src.App.Utilities.Quests;
 using FortLibrary.Dynamics;
 using FortLibrary.EpicResponses.Profile.Purchases;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -24,11 +25,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             string currentDate = DateTime.UtcNow.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
             if (ProfileId == "athena")
             {
+                int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.athena.RVN;
 
                 List<object> MultiUpdates = new List<object>();
                 List<object> NotificationsUpdates = new List<object>();
-                List<object> ProfileChanges = new List<object>();
 
                 // ill need to make quest adding its own file
                 if (!string.IsNullOrEmpty(requestBodyy.questId))
@@ -158,37 +159,25 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                 }
 
                 if (MultiUpdates.Count > 0)
-                {
-                    profileCacheEntry.AccountData.athena.RVN += 1;
-                    profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                }
+                    profileCacheEntry.AccountData.athena.BumpRevisions();
 
-                if (BaseRev != RVN)
+                if (BaseRev_G != RVN)
                 {
                     Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
-                    ProfileChanges = test.profileChanges;
-                }
-                else
-                {
-                    ProfileChanges = MultiUpdates;
+                    MultiUpdates = test.profileChanges;
                 }
 
                 return new Mcp()
                 {
-                    profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
+                    profileRevision = profileCacheEntry.AccountData.athena.RVN,
                     profileId = ProfileId,
                     profileChangesBaseRevision = BaseRev,
-                    profileChanges = ProfileChanges,
+                    profileChanges = MultiUpdates,
                     notifications = NotificationsUpdates,
-                    profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
+                    profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                     serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     responseVersion = 1
                 };
-        
-
-
-
-              
             }
             return new Mcp();
         }

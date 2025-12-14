@@ -188,7 +188,7 @@ namespace FortBackend.src.App.Routes.ADMIN
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "DashboardContentID");
+                Logger.Error(ex.Message, "DashboardContentID_INI");
             }
 
             return Json(new
@@ -250,7 +250,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 //var Context = contextL;
                                 string? Title = FormRequest["title"];
                                 string? Body = FormRequest["body"];
-                                int numberBox = int.TryParse(FormRequest["NumberBox"], out int tempNumber) ? tempNumber : 0;
+                                float numberBox = float.TryParse(FormRequest["NumberBox"], out float tempNumber) ? tempNumber : 0;
                                 string ? SectionPart = FormRequest["newsId"];
                                 int SectionId = int.TryParse(FormRequest["sectionId"], out int TempcontentId) ? TempcontentId : 0;
                                 string? RadioBox = FormRequest["RadioBox"];
@@ -349,8 +349,6 @@ namespace FortBackend.src.App.Routes.ADMIN
                                 {
                                     if (SectionId == 1)
                                     {
-                                        Console.WriteLine(numberBox);
-
                                         Saved.DeserializeGameConfig.Season = numberBox;
                                         Saved.DeserializeGameConfig.ForceSeason = RadioValue;
 
@@ -426,9 +424,16 @@ namespace FortBackend.src.App.Routes.ADMIN
                                                             if (!currentValue.Equals(numberBox))
                                                             {
                                                                 property.SetValue(fortConfig, numberBox);
-                                                                Console.WriteLine(numberBox);
                                                             }
                                                         }
+                                                        else if (Configdata.Type == "float")
+                                                        {
+                                                            if (!currentValue.Equals(numberBox))
+                                                            {
+                                                                property.SetValue(fortConfig, numberBox);
+                                                            }
+                                                        }
+
 
                                                         // just gonna do it every time
                                                         var FortConfigPath = PathConstants.CachedPaths.FortConfig;
@@ -563,7 +568,7 @@ namespace FortBackend.src.App.Routes.ADMIN
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error updating temp data: {ex.Message}");
+                Logger.Error($"Error updating temp data: {ex.Message}", "[Dashboard]");
                 return Json(false);
             }
 

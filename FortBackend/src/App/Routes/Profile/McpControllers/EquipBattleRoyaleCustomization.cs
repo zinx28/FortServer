@@ -9,6 +9,7 @@ using FortLibrary.EpicResponses.Errors;
 using FortLibrary.MongoDB.Module;
 using FortLibrary.Dynamics;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -18,6 +19,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
         {
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
+                int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.athena.RVN;
                 List<object> ProfileChanges = new List<object>();
               //  var UpdatedData = profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots;
@@ -159,30 +161,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     if (ProfileChanges.Count > 0)
                     {
                         profileCacheEntry.LastUpdated = DateTime.UtcNow;
-                        profileCacheEntry.AccountData.athena.RVN += 1;
-                        profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                       // profileCacheEntry.AccountData.athena.loadouts_data["sandbox_loadout"].attributes.locker_slots_data.slots = UpdatedData;
+                        profileCacheEntry.AccountData.athena.BumpRevisions();
                     }
 
-                    if (BaseRev != RVN)
+                    if (BaseRev_G != RVN)
                     {
                         Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                         ProfileChanges = test.profileChanges;
                     }
-
-                    //if(Season.Season == 1)
-                    //{
-                    //    return new Mcp()
-                    //    {
-                    //        profileRevision = profileCacheEntry.AccountData.athena.RVN,
-                    //        profileId = ProfileId,
-                    //        profileChangesBaseRevision = BaseRev,
-                    //        profileChanges = ProfileChanges,
-                    //        profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
-                    //        serverTime = DateTime.Parse(DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")),
-                    //        responseVersion = 1
-                    //    };
-                    //}
 
                     return new Mcp()
                     {

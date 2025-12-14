@@ -71,9 +71,9 @@ namespace FortBackend.src.App.Routes.ADMIN
 
                 if (!string.IsNullOrEmpty(authToken))
                 {
-                    Console.WriteLine(authToken);
+                    Logger.PlainLog(authToken);
                     AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken.ToLower() == authToken)!;
-                    Console.WriteLine(JsonConvert.SerializeObject(adminData));
+                    Logger.PlainLog(JsonConvert.SerializeObject(adminData));
                     if (adminData != null)
                     {
                         if (adminData.bIsSetup)
@@ -114,7 +114,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                     AdminData adminData = Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AccessToken == authToken);
                     if (adminData != null)
                     {
-                        Console.WriteLine(JsonConvert.SerializeObject(adminData));
+                        Logger.PlainLog(JsonConvert.SerializeObject(adminData));
                         if (adminData != null)
                         {
                             if (adminData.bIsSetup)
@@ -168,7 +168,6 @@ namespace FortBackend.src.App.Routes.ADMIN
 
                 if (FormRequest.TryGetValue("email", out var emailL))
                 {
-                    Console.WriteLine("GI " + emailL);
                     email = emailL;
                 }
                 if (FormRequest.TryGetValue("password", out var passwordL))
@@ -205,7 +204,7 @@ namespace FortBackend.src.App.Routes.ADMIN
                             Expires = DateTime.UtcNow.AddDays(7)
                         });
 
-                        Console.WriteLine("ADDED TOKEN!");
+                        Logger.PlainLog("ADDED TOKEN!");
 
                         return Ok(new { message = "Login successful", Token, setup = true }); // setup? ig
                     }
@@ -241,10 +240,10 @@ namespace FortBackend.src.App.Routes.ADMIN
                         {
                             if (Request.Cookies.TryGetValue("AuthToken", out string? authToken))
                             {
-                                Console.WriteLine(authToken);
+                                Logger.PlainLog(authToken);
                                 if (adminData != null)
                                 {
-                                    Console.WriteLine(adminData.AccessToken);
+                                    Logger.PlainLog(adminData.AccessToken);
                                     if (adminData.AccessToken == authToken)
                                     {
                                         return Ok(new { message = "Login successful", Token, setup = false });
@@ -290,7 +289,6 @@ namespace FortBackend.src.App.Routes.ADMIN
 
                         if (profileCacheEntry != null)
                         {
-                            Console.WriteLine("TEST");
                             if (CryptoGen.VerifyPassword(password, profileCacheEntry.UserData.Password))
                             {
                                 var Token = JWT.GenerateRandomJwtToken(24, Saved.DeserializeConfig.JWTKEY);

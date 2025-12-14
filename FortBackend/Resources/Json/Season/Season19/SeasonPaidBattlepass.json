@@ -1,0 +1,26 @@
+[
+  {
+    "Rewards": [],
+    "Level": 0
+  },
+  {
+    "Rewards": [
+      {
+        "templateId": "AthenaCharacter:CID_A_292_Athena_Commando_F_ExoSuit",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "ChallengeBundleSchedule:Season19_Exosuit_Schedule",
+        "connectedTemplate": "",
+        "quantity": 1
+      },
+      {
+        "templateId": "AccountResource:AthenaBattleStar",
+        "connectedTemplate": "",
+        "quantity": 5
+      }
+    ],
+    "Level": 1
+  }
+]

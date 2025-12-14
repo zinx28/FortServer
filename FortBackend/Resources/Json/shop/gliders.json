@@ -40,16 +40,6 @@
     "season": 1
   },
   {
-    "id": "HhDUZWLEAj8G-HtvOlivT6bxstq6jHn0iitI5JRL",
-    "item": "AthenaGlider:Glider_ID_005_HolidaySweater",
-    "name": "Cozy Coaster",
-    "description": "Snuggle up to the firefight in holiday style.",
-    "items": [],
-    "variants": [],
-    "rarity": "rare",
-    "season": 1
-  },
-  {
     "id": "N5jWBU26WGFxmdJH9ICH-E4PjO5krGuA4Ke4rWuH",
     "item": "AthenaGlider:Glider_ID_006_WinterCamo",
     "name": "Snow Squall",
@@ -1020,16 +1010,6 @@
     "season": 7
   },
   {
-    "id": "MYVAanscLR1LFV7Ps91tUnZmGvnqISraYUMYODKa",
-    "item": "AthenaGlider:Glider_ID_119_ReaperFrozen",
-    "name": "Frozen Feathers",
-    "description": "A cold wind bellows.",
-    "items": [],
-    "variants": [],
-    "rarity": "frozen",
-    "season": 7
-  },
-  {
     "id": "KKGHN0tmYtZBmRjhfrWWJepR21boqmPVeMfIHzVZ",
     "item": "AthenaGlider:Glider_ID_120_IceCream",
     "name": "Ice Cream Cruiser",
@@ -1157,16 +1137,6 @@
     "items": [],
     "variants": [],
     "rarity": "legendary",
-    "season": 8
-  },
-  {
-    "id": "AevXd8OaqQjz9HG4cuzcvNBw0FNDUhvcdcruIQDV",
-    "item": "AthenaGlider:Glider_ID_134_DarkVikingFire",
-    "name": "Lavawing",
-    "description": "Awoken by a violent eruption.",
-    "items": [],
-    "variants": [],
-    "rarity": "lava",
     "season": 8
   },
   {

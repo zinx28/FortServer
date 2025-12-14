@@ -3,6 +3,7 @@ using FortLibrary.EpicResponses.Profile;
 using FortLibrary.MongoDB.Module;
 using FortLibrary;
 using static FortBackend.src.App.Utilities.Helpers.Grabber;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -14,16 +15,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
+                int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.athena.RVN;
 
-               
                 List<object> MultiUpdates = new List<object>();
                 List<object> ProfileChanges = new List<object>();
-           
+                
                 foreach (string item in Body.itemIds)
                 {
-                    Console.WriteLine(item);
-
+                    
                     if(profileCacheEntry.AccountData.athena.Items.ContainsKey(item))
                     {
                         profileCacheEntry.AccountData.athena.Items[item].attributes.item_seen = true;
@@ -40,15 +40,17 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                         // Wow MartItemSeen Works On Quests
                         if (seasonObject != null)
                         {
-                            Console.WriteLine("2");
                             if (seasonObject.Quests.ContainsKey(item))
                             {
-                                Console.WriteLine("JHAHAHAH");
                                 seasonObject.Quests[item].attributes.item_seen = true;
                             }
                             else if (seasonObject.DailyQuests.Daily_Quests.ContainsKey(item))
                             {
                                 seasonObject.DailyQuests.Daily_Quests[item].attributes.item_seen = true;
+                            }
+                            else if (seasonObject.special_items.ContainsKey(item))
+                            {
+                                seasonObject.special_items[item].attributes.item_seen = true;
                             }
                         }
 
@@ -62,17 +64,24 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     });
                 }
 
+                /*
+                 * 
+                 *                 int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
+                int BaseRev = profileCacheEntry.AccountData.athena.RVN;
+                int BaseRev_C = profileCacheEntry.AccountData.commoncore.RVN;
+                */
+
                 if (MultiUpdates.Count > 0)
                 {
                     profileCacheEntry.AccountData.athena.RVN += 1;
                     profileCacheEntry.AccountData.athena.CommandRevision += 1;
                 }
 
-                //if (BaseRev != RVN)
-                //{
-                //    Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
-                //    ProfileChanges = test.profileChanges;
-                //}
+                if (BaseRev_G != RVN)
+                {
+                    Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
+                    MultiUpdates = test.profileChanges;
+                }
                 //else
                 //{
                 //    ProfileChanges = MultiUpdates;

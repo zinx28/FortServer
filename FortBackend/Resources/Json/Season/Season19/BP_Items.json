@@ -1,0 +1,1788 @@
+[
+  {
+    "bRequireBp": false,
+    "OfferId": "9CC86E4644EC0926E8671889EB4A1B61",
+    "templateId": "AthenaSkyDiveContrail:trails_id_130_exosuit",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "2E4B9D3E411F2CA6F7F7E8BAAD9348FF",
+    "templateId": "AthenaBackpack:BID_915_ExoSuitFemale",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "0A1304E4407F355DD8E4859563AB92B4",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "C8661B5147016C2D9905D9911589975C",
+    "templateId": "CosmeticVariantToken:vtid_a_364_buffllama_colorb",
+    "Price": 25,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_288_Athena_Commando_M_BuffLlama",
+        "channel": "Material",
+        "added": [
+          "Mat2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_665_BuffLlamaMale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_848_BuffLlama",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "EAA7870D4ECD8DEB6DDB92A9E5472A7D",
+    "templateId": "HomebaseBannerIcon:brs19_parallel",
+    "Price": 10,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "8EF0946F4194DBB34DAA10A8BB482B61",
+    "templateId": "CosmeticVariantToken:vtid_a_362_lonewolf_colorc",
+    "Price": 30,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Material",
+        "added": [
+          "Mat3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_911_LoneWolfMale",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_715_LoneWolfMale",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_330_LoneWolfMale",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "08EA19EF4E2DEEA5C81765A4BC1817D3",
+    "templateId": "AthenaItemWrap:wrap_423_motorcyclist",
+    "Price": 15,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "B803AF59482FBEDA39EF1B99369BC814",
+    "templateId": "CosmeticVariantToken:vtid_a_368_motorcyclist_colorb",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "ClothingColor",
+        "added": [
+          "Mat4"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_913_MotorcyclistFemale",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_913_MotorcyclistFemale",
+        "channel": "Emissive",
+        "added": [
+          "Emissive3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_716_MotorcyclistFemale",
+        "channel": "Material",
+        "added": [
+          "Mat2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_716_MotorcyclistFemale",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_331_MotorcyclistFemale",
+        "channel": "Material",
+        "added": [
+          "Mat2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_331_MotorcyclistFemale",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "4D6851DE4CA806629378D19DB2AE436F",
+    "templateId": "CosmeticVariantToken:vtid_a_378_exosuit_styleb",
+    "Price": 15,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_292_Athena_Commando_F_ExoSuit",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "8DBA118B43BB459870B6B79EB8FDA110",
+    "templateId": "CosmeticVariantToken:vtid_a_367_gumball_colorc",
+    "Price": 25,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_289_Athena_Commando_M_Gumball",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_912_GumballMale",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_713_GumballMale",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_329_GumballMale",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "E1E695AD45EF4763E1AF23A7558B3883",
+    "templateId": "CosmeticVariantToken:vtid_a_385_parallelcomic_stylec",
+    "Price": 30,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_293_Athena_Commando_M_ParallelComic",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_916_ParallelComicMale",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "0197AF634360EE4CCF7DFAB6B491DFDB",
+    "templateId": "CosmeticVariantToken:vtid_a_376_islandnomad_colorb",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_291_Athena_Commando_F_IslandNomad",
+        "channel": "Material",
+        "added": [
+          "Mat2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_714_IslandNomadFemale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_914_IslandNomadFemale",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "864A43D94612F2E8A8C55CA420235E9A",
+    "templateId": "CosmeticVariantToken:vtid_a_369_motorcyclist_styleb",
+    "Price": 10,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Particle",
+        "added": [
+          "Particle4"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_913_MotorcyclistFemale",
+        "channel": "Emissive",
+        "added": [
+          "Emissive4"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_716_MotorcyclistFemale",
+        "channel": "Particle",
+        "added": [
+          "Particle4"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_331_MotorcyclistFemale",
+        "channel": "Particle",
+        "added": [
+          "Particle4"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "6F1D037A4C27BA30FEF184848F19B590",
+    "templateId": "AthenaPickaxe:Pickaxe_ID_715_LoneWolfMale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F6FC91854069B4C346AAB0977DE9EB28",
+    "templateId": "CosmeticVariantToken:vtid_a_438_lonewolf_superlevelt1",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Material",
+        "added": [
+          "Mat4"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "3F66C13A4CED5F6956A39A89C04DDA85",
+    "templateId": "CosmeticVariantToken:vtid_a_432_parallelcomic_superlevelt1",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_293_Athena_Commando_M_ParallelComic",
+        "channel": "Progressive",
+        "added": [
+          "Stage4"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "6D72B9DD4673AFD1438F27AB731481F0",
+    "templateId": "CosmeticVariantToken:vtid_a_426_buffllama_superlevelt1",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_288_Athena_Commando_M_BuffLlama",
+        "channel": "Material",
+        "added": [
+          "Mat4"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "0D96CB8A4A0374063D1BFF8F47718256",
+    "templateId": "CosmeticVariantToken:vtid_a_435_motorcyclist_superlevelt1",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "ClothingColor",
+        "added": [
+          "Mat5"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "623289C14BF47F81DCDF00B2EC6E179B",
+    "templateId": "CosmeticVariantToken:vtid_a_429_exosuit_superlevelt1",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_292_Athena_Commando_F_ExoSuit",
+        "channel": "ClothingColor",
+        "added": [
+          "Color.001"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "237C2D8A43BB74D00C0D5AA9011ADE5D",
+    "templateId": "CosmeticVariantToken:vtid_a_433_parallelcomic_superlevelt2",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_293_Athena_Commando_M_ParallelComic",
+        "channel": "Progressive",
+        "added": [
+          "Stage5"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "B2DCC1D34EDCC42B1D2D13869CE5F687",
+    "templateId": "CosmeticVariantToken:vtid_a_436_motorcyclist_superlevelt2",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "ClothingColor",
+        "added": [
+          "Mat6"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "D3B596ED459EAA81B71EB2959F950E4B",
+    "templateId": "CosmeticVariantToken:vtid_a_430_exosuit_superlevelt2",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_292_Athena_Commando_F_ExoSuit",
+        "channel": "ClothingColor",
+        "added": [
+          "Color.002"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "57C1C46047BD2B9D81DE8E8A29FDF0C8",
+    "templateId": "CosmeticVariantToken:vtid_a_427_buffllama_superlevelt2",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_288_Athena_Commando_M_BuffLlama",
+        "channel": "Material",
+        "added": [
+          "Mat5"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "13C2FE524CD9C59EEFD845910135567A",
+    "templateId": "CosmeticVariantToken:vtid_a_439_lonewolf_superlevelt2",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Material",
+        "added": [
+          "Mat5"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "7914F7C14D69F18142D78B93847DD8BB",
+    "templateId": "AthenaLoadingScreen:lsid_395_exosuitalt",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "65233FD3452CD5984AFCED83539F2860",
+    "templateId": "CosmeticVariantToken:vtid_a_440_lonewolf_superlevelt3",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Material",
+        "added": [
+          "Mat6"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "FE2E755449F1D4A497C3088A93D0D8AF",
+    "templateId": "CosmeticVariantToken:vtid_a_428_buffllama_superlevelt3",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_288_Athena_Commando_M_BuffLlama",
+        "channel": "Material",
+        "added": [
+          "Mat6"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "48C4A38B4FEA269C2FCF7AAE679D4622",
+    "templateId": "CosmeticVariantToken:vtid_a_437_motorcyclist_superlevelt3",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "ClothingColor",
+        "added": [
+          "Mat7"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "98AC795D4F7EF3CE0A6991AF5CCADCFA",
+    "templateId": "CosmeticVariantToken:vtid_a_431_exosuit_superlevelt3",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_292_Athena_Commando_F_ExoSuit",
+        "channel": "ClothingColor",
+        "added": [
+          "Color.003"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "E1A6CB5741D41E9CDD2ADCBA52DFFB09",
+    "templateId": "CosmeticVariantToken:vtid_a_434_parallelcomic_superlevelt3",
+    "Price": 20,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_293_Athena_Commando_M_ParallelComic",
+        "channel": "Progressive",
+        "added": [
+          "Stage6"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "207BC6AB4A8722EAFA07CFB0C1D00104",
+    "templateId": "AthenaDance:eid_lonewolf",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F5D4D5F9444A6A13A0EB6C9D38741A6E",
+    "templateId": "AthenaItemWrap:wrap_425_exosuit",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "E7CD6E6041B64E5594F01A82F7791F9C",
+    "templateId": "AthenaGlider:Glider_ID_330_LoneWolfMale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 6,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "870EEBFD4D067D8337979B94B7FE6E96",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "E6C86D3E465820600CF4F99D089E85AB",
+    "templateId": "AthenaDance:spid_342_lonewolfhero",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "83BEC81846AA1F6456B76A821E891E58",
+    "templateId": "CosmeticVariantToken:vtid_a_361_lonewolf_colorb",
+    "Price": 8,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Material",
+        "added": [
+          "Mat2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_911_LoneWolfMale",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_715_LoneWolfMale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_330_LoneWolfMale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "7981F39E493BDD05D0E53D904C05BC87",
+    "templateId": "AthenaBackpack:BID_911_LoneWolfMale",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "8566D265454FFB78F09DA4BEA72898AF",
+    "templateId": "AthenaDance:spid_336_exosuit",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "F7BBEDB644E157FC303A778E66ACEDBE",
+    "templateId": "AthenaItemWrap:wrap_420_lonewolf",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "3F2FCBBF4B693141C79C00AE3100F5F5",
+    "templateId": "CosmeticVariantToken:vtid_a_402_exosuit_backbling_styleb",
+    "Price": 4,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaBackpack:BID_915_ExoSuitFemale",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_915_ExoSuitFemale",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "2FC9E0184C541CDBE21947806CE9617D",
+    "templateId": "AthenaDance:emoji_s19_lonewolf",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "112EA58C415D5D8F64B658B14663B5DB",
+    "templateId": "AthenaDance:eid_lifted",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "4AF68E2A48949BFED69195BF6D4A98D7",
+    "templateId": "AthenaSkyDiveContrail:trails_id_133_lonewolfmale",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "4C46F35C41C713C95F00AF8214513056",
+    "templateId": "AthenaBackpack:BID_848_BuffLlama",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "943BA1894DB4BA8F0A85EB9EEA58D241",
+    "templateId": "AthenaCharacter:CID_A_288_Athena_Commando_M_BuffLlama",
+    "variants": [
+      {
+        "channel": "Material",
+        "active": "Mat1",
+        "owned": [
+          "Mat1"
+        ]
+      }
+    ],
+    "Price": 9,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "FA94555648326BFC23FF8D91A66EB420",
+    "templateId": "AthenaLoadingScreen:lsid_381_buffllama",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "257483914A4857BA03CC728C0E0095B4",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "2EB6F58041F2F98EB181F492B8CDFC2B",
+    "templateId": "HomebaseBannerIcon:brs19_buffllama",
+    "Price": 2,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "D998ABBC499B6A297B42859565134FF7",
+    "templateId": "AthenaCharacter:CID_A_292_Athena_Commando_F_ExoSuit",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      },
+      {
+        "channel": "Material",
+        "active": "Mat1",
+        "owned": [
+          "Mat1"
+        ]
+      },
+      {
+        "channel": "Mesh",
+        "active": "Mat3",
+        "owned": [
+          "Mat3"
+        ]
+      },
+      {
+        "channel": "Emissive",
+        "active": "Emissive1",
+        "owned": [
+          "Emissive1"
+        ]
+      },
+      {
+        "channel": "ClothingColor",
+        "active": "Color.000",
+        "owned": [
+          "Color.000"
+        ]
+      },
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": -1,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "28726E814E6CD3ACB9904FA436E3708C",
+    "templateId": "AthenaDance:emoji_s19_buffllama",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "045F2D144F78FE4597ADEE95831362A6",
+    "templateId": "AthenaDance:eid_doodling",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "E67CE0544376384C6BEE9292B90E1C1F",
+    "templateId": "AthenaDance:spid_335_buffllama",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "548109944808033E2ECCB590B4B1C0C6",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "E69CBF7E459A47E16612EF9266927717",
+    "templateId": "AthenaGlider:glider_id_310_buffllamamale",
+    "Price": 6,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "4652125E4D5F0BC1C15267BF061E9D40",
+    "templateId": "AthenaLoadingScreen:lsid_389_collage",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "2C3EEFEE46054D1339BAE2887D6074F2",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "4CF915F74258575FA434DABBBBD0B5B8",
+    "templateId": "AthenaPickaxe:Pickaxe_ID_665_BuffLlamaMale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "637BC2EF4A9BC64DB9E620AABD3643C9",
+    "templateId": "CosmeticVariantToken:vtid_a_365_buffllama_colorc",
+    "Price": 8,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_288_Athena_Commando_M_BuffLlama",
+        "channel": "Material",
+        "added": [
+          "Mat3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_848_BuffLlama",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_665_BuffLlamaMale",
+        "channel": "Particle",
+        "added": [
+          "Particle3"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "10B651E54CA86FB1B20757AE5315FB46",
+    "templateId": "AthenaItemWrap:wrap_421_buffllama",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "1882CE704594B349EEB2B28433548CE6",
+    "templateId": "AthenaGlider:glider_id_328_exosuitfemale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 6,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "FE141A8A4A77AB6C8175F4814AE88FDD",
+    "templateId": "AthenaMusicPack:musicpack_114_islandnomad",
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F992FD4546ED5ABA2D8E898E4C80C50A",
+    "templateId": "AthenaPickaxe:Pickaxe_ID_714_IslandNomadFemale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "FF0083734612D2F9049F0D85EA5DA52C",
+    "templateId": "AthenaCharacter:CID_A_291_Athena_Commando_F_IslandNomad",
+    "variants": [
+      {
+        "channel": "Parts",
+        "active": "Stage1",
+        "owned": [
+          "Stage1",
+          "Stage3"
+        ]
+      },
+      {
+        "channel": "Material",
+        "active": "Mat1",
+        "owned": [
+          "Mat1"
+        ]
+      }
+    ],
+    "Price": 9,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "4DB64617486D4506C7934D9591EFCE22",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "42B2FD134AC584553D7EE78C6EEDFE73",
+    "templateId": "AthenaLoadingScreen:lsid_383_islandnomad",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "B9027AF446324C58982CEF820E03BCCC",
+    "templateId": "AthenaItemWrap:wrap_424_islandnomad",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "729F3B93433F92E2F56555A2B1761FD7",
+    "templateId": "AthenaDance:spid_338_islandnomad",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "5523CB104A1400D1AFE841AECF09F532",
+    "templateId": "CosmeticVariantToken:vtid_a_359_lonewolf_styleb",
+    "Price": 8,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "15805A7841705341DCDBF5822B8AFAC4",
+    "templateId": "HomebaseBannerIcon:brs19_islandnomad",
+    "Price": 2,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "65AAE67D49738B6A35074794219D5BE8",
+    "templateId": "AthenaBackpack:BID_914_IslandNomadFemale",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "68DFF99B43FAF85BEF46C59A36A01F66",
+    "templateId": "AthenaPickaxe:pickaxe_id_712_exosuitfemale1h",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "02DFA4B2465BB21F49A996A44838D9E4",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "40FB45804C52DA3B55C807B3003CC838",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "66846AB842510F91328DEFA125DBAB8E",
+    "templateId": "AthenaSkyDiveContrail:trails_id_131_gumball",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "CDE35D824959E744326DF08C24333F0B",
+    "templateId": "AthenaDance:eid_chuckle",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "A6C966A04833C8A8208AE1A651A606F4",
+    "templateId": "AthenaDance:spid_337_gumball",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F144441E459E4A49F02DB1A29270430F",
+    "templateId": "AthenaBackpack:BID_912_GumballMale",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "C431B5BF418AE90D18C091B646F57B01",
+    "templateId": "AthenaCharacter:CID_A_289_Athena_Commando_M_Gumball",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 9,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "5BD80C3641AB3E766181A59253BB00AE",
+    "templateId": "CosmeticVariantToken:vtid_a_377_islandnomad_styleb",
+    "Price": 4,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_291_Athena_Commando_F_IslandNomad",
+        "channel": "Parts",
+        "added": [
+          "Stage2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "B7A440CF4C5D219204015DAB088090E7",
+    "templateId": "AthenaLoadingScreen:lsid_392_icelegends",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "1230AA744A4E49655CA022AC827A38B1",
+    "templateId": "AthenaPickaxe:Pickaxe_ID_713_GumballMale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "D554258C41E2FEA456840BB0AD433FF8",
+    "templateId": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      },
+      {
+        "channel": "Parts",
+        "active": "Stage4",
+        "owned": [
+          "Stage4"
+        ]
+      },
+      {
+        "channel": "Material",
+        "active": "Mat11",
+        "owned": [
+          "Mat11"
+        ]
+      }
+    ],
+    "Price": 9,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "9367F1E44A21D4762E5B20B71125AA10",
+    "templateId": "HomebaseBannerIcon:brs19_gumball",
+    "Price": 2,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "80F957CF47D54198BE5DA1A1E7DE453C",
+    "templateId": "AthenaMusicPack:musicpack_116_gumball",
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "769CFCE54E11EF60163F67AED3F2EFF7",
+    "templateId": "CosmeticVariantToken:vtid_a_366_gumball_colorb",
+    "Price": 8,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_289_Athena_Commando_M_Gumball",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_912_GumballMale",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_713_GumballMale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_329_GumballMale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "572518784C2384114452319C1FFCFD47",
+    "templateId": "AthenaDance:emoji_s19_gumball",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "401E03904C0E52552C82B5B9B003F8D8",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "593EE46D4ABAD09E2BC453856B5460A6",
+    "templateId": "AthenaItemWrap:wrap_422_gumball",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "631F83424B737BEF3E6FBD943BC288FE",
+    "templateId": "AthenaLoadingScreen:lsid_382_gumball",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "E80E39C1477CCEC9D01EB491C49D876D",
+    "templateId": "AthenaDance:EID_Gumball",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "7D4286354E58AA589C70A3AE3D83501B",
+    "templateId": "AthenaDance:spid_340_motorcyclist",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "0FF97127417CE4B32F3B6596BA6BAB4C",
+    "templateId": "AthenaGlider:Glider_ID_329_GumballMale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 6,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "C060D0C946D827401F97CD99F6E8E305",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "7F2D6276447A7B009C7D88A688D9338A",
+    "templateId": "AthenaDance:emoji_s19_motorcyclist",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "C2F784054C575B82CCB458BF6C276CC4",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F4363D5341645A18539D48AEDEDF0EF9",
+    "templateId": "CosmeticVariantToken:vtid_a_360_lonewolf_stylec",
+    "Price": 8,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Progressive",
+        "added": [
+          "Stage3"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_287_Athena_Commando_M_LoneWolf",
+        "channel": "Parts",
+        "added": [
+          "Stage5"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "6B3D785B4C782A24BA4FF2B7F72FBAF5",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "0F449EE0499652B3A6B2DFB86CED618C",
+    "templateId": "AthenaBackpack:BID_913_MotorcyclistFemale",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      },
+      {
+        "channel": "Emissive",
+        "active": "Emissive1",
+        "owned": [
+          "Emissive1"
+        ]
+      }
+    ],
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "701E619A40B6A10B130C5A9B274DDDF3",
+    "templateId": "AthenaPickaxe:Pickaxe_ID_716_MotorcyclistFemale",
+    "variants": [
+      {
+        "channel": "Material",
+        "active": "Mat1",
+        "owned": [
+          "Mat1"
+        ]
+      },
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F10B23E8461C8B0F657CFFB0E4DABA3C",
+    "templateId": "AthenaGlider:Glider_ID_331_MotorcyclistFemale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      },
+      {
+        "channel": "Material",
+        "active": "Mat1",
+        "owned": [
+          "Mat1"
+        ]
+      }
+    ],
+    "Price": 6,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "58512666416FE30709D78096BA1D743C",
+    "templateId": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      },
+      {
+        "channel": "Parts",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      },
+      {
+        "channel": "Mat1",
+        "active": "Mat1",
+        "owned": [
+          "Mat1"
+        ]
+      },
+      {
+        "channel": "Emissive",
+        "active": "Emissive1",
+        "owned": [
+          "Emissive1"
+        ]
+      },
+      {
+        "channel": "ClothingColor",
+        "active": "Mat3",
+        "owned": [
+          "Mat3"
+        ]
+      },
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 9,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "6D860AB64A03DF71C5249AAA3FAF8812",
+    "templateId": "AthenaLoadingScreen:lsid_385_motorcyclist",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "C4F313444C04F0C47F9FA08176E57998",
+    "templateId": "AthenaSkyDiveContrail:trails_id_134_motorcyclistfemale",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F31428EB45229CB488D247AB24F5886A",
+    "templateId": "HomebaseBannerIcon:brs19_lonewolf",
+    "Price": 2,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "028CD65848E068A96207A9AC937162D6",
+    "templateId": "HomebaseBannerIcon:brs19_parallelsymbol",
+    "Price": 2,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "0E089CE246353E666499209D75284167",
+    "templateId": "CosmeticVariantToken:vtid_a_370_motorcyclist_stylec",
+    "Price": 8,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Parts",
+        "added": [
+          "Stage2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Material",
+        "added": [
+          "Mat2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Emissive",
+        "added": [
+          "Emissive2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaCharacter:CID_A_290_Athena_Commando_F_Motorcyclist",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_913_MotorcyclistFemale",
+        "channel": "Emissive",
+        "added": [
+          "Emissive2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaPickaxe:Pickaxe_ID_716_MotorcyclistFemale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaGlider:Glider_ID_331_MotorcyclistFemale",
+        "channel": "Particle",
+        "added": [
+          "Particle2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "0C362396435CF988FD1FBE98B0D6FBA5",
+    "templateId": "AthenaMusicPack:musicpack_115_motorcyclist",
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "833BBC5849F742838A848DBBD5AACFE3",
+    "templateId": "AthenaSkyDiveContrail:trails_id_135_parallelcomic",
+    "Price": 4,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "647229A941580CF26C9617B74C4D385C",
+    "templateId": "AthenaCharacter:CID_A_293_Athena_Commando_M_ParallelComic",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 9,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "AB20EBB14288B5D698C1B3B98AAE5C29",
+    "templateId": "AthenaBackpack:BID_916_ParallelComicMale",
+    "variants": [
+      {
+        "channel": "Progressive",
+        "active": "Stage1",
+        "owned": [
+          "Stage1"
+        ]
+      }
+    ],
+    "Price": 5,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "F65D3C044E7487AD4A12D481A3BC1792",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "DB72AADE421385606A8C0AA12AD250E9",
+    "templateId": "AthenaDance:emoji_s19_parallelsling",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "B837DA8B4263BE49924B29A9B1D83B91",
+    "templateId": "AthenaDance:eid_youthere",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "48FF873642F1379749B59BA10001A05F",
+    "templateId": "AthenaLoadingScreen:lsid_387_island",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "BC5FF1BB4183D236EB7725A5E35C67D9",
+    "templateId": "AthenaLoadingScreen:lsid_384_lonewolf",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "822AEB7F442C8550C3AF259E749DF0C7",
+    "templateId": "AthenaDance:emoji_s19_parallelsenses",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "64F9DE4B4510BDDD664099A14DB5E65B",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "3F5FFD0348E0076EF9B41FB3155B97BE",
+    "templateId": "AthenaLoadingScreen:lsid_386_parallel",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "74BEBC604629EBA7F86A38842B549295",
+    "templateId": "CosmeticVariantToken:vtid_a_384_parallelcomic_styleb",
+    "Price": 8,
+    "Quantity": 1,
+    "new_variants": [
+      {
+        "connectedItem": "AthenaCharacter:CID_A_293_Athena_Commando_M_ParallelComic",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      },
+      {
+        "connectedItem": "AthenaBackpack:BID_916_ParallelComicMale",
+        "channel": "Progressive",
+        "added": [
+          "Stage2"
+        ]
+      }
+    ]
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "57FF9FD446B8B23667DC9D9B04A5DA03",
+    "templateId": "Currency:mtxgiveaway",
+    "Price": 5,
+    "Quantity": 100
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "6D9C1EBE46704F3CCF79AFB5928906FC",
+    "templateId": "AthenaDance:spid_341_parallel",
+    "Price": 3,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "A027912E446D790B4439C797EFA90F3F",
+    "templateId": "AthenaPickaxe:pickaxe_id_718_parallelcomicmale",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "55948AF6469BB0833B3F7CB9F20E7E5E",
+    "templateId": "AthenaGlider:glider_id_332_parallelcomicmale",
+    "variants": [
+      {
+        "channel": "Particle",
+        "active": "Particle1",
+        "owned": [
+          "Particle1"
+        ]
+      }
+    ],
+    "Price": 6,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": true,
+    "OfferId": "0B16464F4137F7D41006BA9DE59B28CD",
+    "templateId": "AthenaDance:EID_ParallelComic",
+    "Price": 7,
+    "Quantity": 1
+  },
+  {
+    "bRequireBp": false,
+    "OfferId": "8D3640624141C86E4BA80C915FC02436",
+    "templateId": "AthenaItemWrap:wrap_426_parallel",
+    "Price": 4,
+    "Quantity": 1
+  }
+]

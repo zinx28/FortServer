@@ -186,7 +186,7 @@ for (var index in datafile) {
     if (e.TemplateId != "") {
       templatePush = e.TemplateId;
     } else {
-      if (e.ItemDefinition.AssetPathName) {
+      if (e.ItemDefinition.AssetPathName && e.ItemDefinition.AssetPathName.includes(".")) {
         var test = e.ItemDefinition.AssetPathName.split(".")[1].toLowerCase();
         console.log(e.ItemDefinition.AssetPathName);
         //console.log(test);
@@ -204,6 +204,8 @@ for (var index in datafile) {
           templatePush = `AthenaDance:${test}`;
         } else if (test.includes("vtid")) {
           templatePush = `CosmeticVariantToken:${test}`;
+        } else if (test.includes("athenabattlestar")) {
+          templatePush = `FortPersistentResourceItem:AthenaBattleStar`;
         } else if (test.includes("mtxgiveaway")) {
           templatePush = `Currency:${test}`;
         } else if (test.includes("athenaseasonalxp")) {
@@ -232,7 +234,7 @@ for (var index in datafile) {
           templatePush = `AthenaBackpack:${test}`;
         } else if (e.ItemDefinition.AssetPathName.includes("BannerIcons")) {
           templatePush = `HomebaseBannerIcon:${test}`;
-        }else if (e.ItemDefinition.AssetPathName.includes("QuestSchedules")) {
+        } else if (e.ItemDefinition.AssetPathName.includes("QuestSchedules")) {
           templatePush = `ChallengeBundleSchedule:${test}`;
         }
 

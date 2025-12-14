@@ -41,7 +41,7 @@ namespace FortBackend.src.App.Routes.API
                     AcceptLanguage = "en"; // weird
                 }
 
-                Console.WriteLine(AcceptLanguage);
+                Logger.PlainLog(AcceptLanguage);
 
 
                 var cacheKey = $"ContentEndpointKey-{season}";

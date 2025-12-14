@@ -44,7 +44,6 @@ namespace FortBackend.src.App.SERVER.Root
                 switch (Type)
                 {
                     case "chat":
-                        Console.WriteLine("CGAT");
                         if (string.IsNullOrEmpty(xmlDoc.Root?.Attribute("to")?.Value)) break;
                         if (body.Length >= 300) break;
 

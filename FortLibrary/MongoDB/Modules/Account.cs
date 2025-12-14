@@ -1,4 +1,6 @@
-﻿using FortLibrary.EpicResponses.Profile.Query.Items;
+﻿using FortBackend.src.App.Utilities.MongoDB.Extentions;
+using FortLibrary.EpicResponses.Profile.Query;
+using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortLibrary.EpicResponses.Profile.Quests;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -54,30 +56,30 @@ namespace FortLibrary.MongoDB.Module
         public bool item_seen { get; set; } = false;
     }
 
-    public class Athena
+    public class Athena : IProfileRevisions
     {
         [BsonElement("Updated")]
         public DateTime Updated { get; set; } = DateTime.UtcNow;
 
         [BsonElement("items")]
         //[BsonIgnoreIfNull]
-        public Dictionary<string, AthenaItem> Items { get; set; }
+        public Dictionary<string, AthenaItem>? Items { get; set; }
 
 
         [BsonElement("loadouts_data")]
         //[JsonProperty("loadouts_data")] // we will now use loadouts for this.. this will be 
-        public Dictionary<string, SandboxLoadout> loadouts_data { get; set; }
+        public Dictionary<string, SandboxLoadout>? loadouts_data { get; set; }
 
 
         [BsonElement("loadouts")]
-        public string[] loadouts { get; set; } = new string[]
-        {
-            "sandbox_loadout"
-        };
+        public List<string>? loadouts { get; set; }
 
 
         [BsonElement("last_applied_loadout")]
         public string last_applied_loadout { get; set; } = "sandbox_loadout";
+
+        [BsonElement("random_loadout")]
+        public bool random_loadout { get; set; } = false; // idk how this owrks
 
         [BsonElement("battlestars")]
         public int BattleStars { get; set; } = 0;
@@ -97,7 +99,7 @@ namespace FortLibrary.MongoDB.Module
 
 
 
-    public class CommonCore
+    public class CommonCore : IProfileRevisions
     {
         [BsonElement("Updated")]
         public DateTime Updated { get; set; } = DateTime.UtcNow;
@@ -311,9 +313,19 @@ namespace FortLibrary.MongoDB.Module
         [BsonElement("intro_game_played")]
         [JsonProperty("intro_game_played")]
         public bool intro_game_played { get; set; } = false;
+
+        [BsonElement("special_items")]
+        [JsonProperty("special_items")]
+        public Dictionary<string, AthenaItem> special_items { get; set; } = new();
+
+        [BsonElement("purchased_bp_offers")]
+        [JsonProperty("purchased_bp_offers")]
+
+        public List<PurchasedBpOffsers> season_offers { get; set; } = new();
     }
 
-    public class Events
+
+        public class Events
     {
         [BsonElement("persistentScores")]
         [JsonProperty("persistentScores")]

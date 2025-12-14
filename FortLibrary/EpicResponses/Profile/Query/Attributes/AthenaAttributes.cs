@@ -10,7 +10,7 @@
         public bool use_random_loadout { get; set; }
         public List<object> past_seasons { get; set; } = new List<object>();
         public int season_match_boost { get; set; }
-        public string[] loadouts { get; set; }
+        public List<string> loadouts { get; set; } = new();
         public bool mfa_reward_claimed { get; set; }
         public int rested_xp_overflow { get; set; }
         public string last_xp_interaction { get; set; } = string.Empty;
@@ -34,7 +34,7 @@
         public int xp { get; set; }
         public int season_friend_match_boost { get; set; }
         public int active_loadout_index { get; set; }
-        public List<object> purchased_bp_offers { get; set; } = new List<object>();
+        public List<PurchasedBpOffsers> purchased_bp_offers { get; set; } = new();
         public string last_applied_loadout { get; set; } = string.Empty;
         public string favorite_musicpack { get; set; } = string.Empty;
         public string banner_icon { get; set; } = string.Empty;

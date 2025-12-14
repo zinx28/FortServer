@@ -71,7 +71,7 @@ namespace FortMatchmaker.src.App.Websockets
                     else if(matchmakerTicket.IsHoster)
                     {
                         var Sigma = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                        Console.WriteLine("Sigma: " + Encoding.UTF8.GetString(buffer, 0, Sigma.Count));
+                        Logger.PlainLog("Sigma: " + Encoding.UTF8.GetString(buffer, 0, Sigma.Count));
 
                         HosterJ hosterJ = JsonConvert.DeserializeObject<HosterJ>(Encoding.UTF8.GetString(buffer, 0, Sigma.Count))!;
 
@@ -92,7 +92,7 @@ namespace FortMatchmaker.src.App.Websockets
                     {
                         // ready?!?!
                         var Sigma = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                        Console.WriteLine("Sigma: " + Encoding.UTF8.GetString(buffer, 0, Sigma.Count));
+                        Logger.PlainLog("Sigma: " + Encoding.UTF8.GetString(buffer, 0, Sigma.Count));
                         IDThing iDThing = JsonConvert.DeserializeObject<IDThing>(Encoding.UTF8.GetString(buffer, 0, Sigma.Count))!;
 
                         if(iDThing != null)
@@ -104,19 +104,19 @@ namespace FortMatchmaker.src.App.Websockets
                                 {
                                     
                                     server.bServersLaunching = true;
-                                    Console.WriteLine("SERVERS LAUNCHING");
+                                    Logger.Log("SERVERS LAUNCHING");
                                 }
                                 // only if dll doesnt use console
                                 else if(iDThing.Message == "JOINABLE")
                                 {
                                     server.bServersLaunching = false;
                                     server.bJoinable = true;
-                                    Console.WriteLine("SERVERS JOINABLE");
+                                    Logger.Log("SERVERS JOINABLE");
                                 }
                                 else if(iDThing.Message == "CLOSED")
                                 {
                                     Saved.CurrentServers.Remove(server);
-                                    Console.WriteLine("SERVER CLOSED");
+                                    Logger.Log("SERVER CLOSED");
                                 }
                             }
                         }
@@ -125,7 +125,7 @@ namespace FortMatchmaker.src.App.Websockets
                 }
 
 
-                Console.WriteLine(webSocket.State);
+                Logger.PlainLog(webSocket.State);
                 if (webSocket.State == WebSocketState.CloseReceived)
                 {
                     await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closed Websocket please try to reconnect", CancellationToken.None);

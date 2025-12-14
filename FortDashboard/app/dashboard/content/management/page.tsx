@@ -278,13 +278,13 @@ export default function DashboardBase() {
                                   onChange={(e) =>
                                     setSecondTabContent((prev) => ({
                                       ...prev,
-                                      Season: Number(e.target.value),
+                                      Season: parseFloat(e.target.value),
                                     }))
                                   }
                                   min="0"
                                 />
                                 <p className="text-xs text-muted-foreground">
-                                  Season to force for all players
+                                  Season to force for all players, e.g 12.41, 11.31
                                 </p>
                               </div>
 

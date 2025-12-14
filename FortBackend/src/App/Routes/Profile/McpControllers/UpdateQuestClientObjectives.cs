@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using static System.Net.Mime.MediaTypeNames;
 using FortBackend.src.App.Utilities.Helpers.QuestsManagement;
 using System.Text.RegularExpressions;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -30,13 +31,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             string currentDate = DateTime.UtcNow.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
             if (ProfileId == "athena" || ProfileId == "profile0")
             {
+                int BaseRev_G = profileCacheEntry.AccountData.athena.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.athena.RVN;
+                int BaseRev_C = profileCacheEntry.AccountData.commoncore.RVN;
+                List<object> MultiUpdates = new();
+                List<object> MultiUpdatesForCommonCore = new();
 
-                List<object> MultiUpdates = new List<object>();
-                List<object> MultiUpdatesForCommonCore = new List<object>();
-                List<object> ProfileChanges = new List<object>();
-
-                SeasonClass FoundSeason = profileCacheEntry.AccountData.commoncore?.Seasons.FirstOrDefault(x => x.SeasonNumber == Season.Season)!;
+                SeasonClass FoundSeason = profileCacheEntry.AccountData.commoncore.Seasons.FirstOrDefault(x => x.SeasonNumber == Season.Season)!;
                 
                 if (FoundSeason != null)
                 {
@@ -44,7 +45,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     {
                         foreach(AdvancedCon Advanced in requestBodyy.advance)
                         {
-                            Console.WriteLine(Advanced.statName);
                             if (Advanced.statName.Contains("quest_"))
                             {
                                 var match = Regex.Match(Advanced.statName, @"^(.*?)(_\d+)?$"); ;
@@ -79,8 +79,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             attributeValue = Advanced.count
                                         });
 
-                                        Console.WriteLine(FoundSeason.Quests[$"Quest:{QuestStatName}"].templateId);
-                                        Console.WriteLine(FoundSeason.Quests[$"Quest:{QuestStatName}"].attributes.ObjectiveState[OBStateNumber].Name);
+                                        Logger.PlainLog(FoundSeason.Quests[$"Quest:{QuestStatName}"].templateId);
+                                        Logger.PlainLog(FoundSeason.Quests[$"Quest:{QuestStatName}"].attributes.ObjectiveState[OBStateNumber].Name);
 
                                         if (FoundSeason.Quests[$"Quest:{QuestStatName}"].attributes.ObjectiveState.All(os => os.Value == os.MaxValue))
                                         {
@@ -130,59 +130,34 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                 // NOT ADDED YET
                                 Logger.Error($"UpdateQuestClientObject doesnt have {Advanced.statName}");
                             }
-
-
-                            //foreach(string QuestData in FoundSeason.Quests.Keys)
-                            //{
-                            //    //FoundSeason.Quests[QuestData].attributes.ObjectiveState.Find(match => match.Name == $"completion_{Advanced.statName}").;
-                            //    //if (FoundSeason.Quests.TryGetValue(Advanced.statName, out var AvgQuest))
-                            //    //{
-                            //    //    //FoundSeason.Quests[$"Quest:{Advanced.statName}"].attributes.
-                            //    //}
-                            //}
-                          
                         }
                         
                     }
-                }
-
-                
+                }       
 
                 if (MultiUpdates.Count > 0)
-                {
-                    profileCacheEntry.AccountData.athena.RVN += 1;
-                    profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                }
-
-
+                    profileCacheEntry.AccountData.athena.BumpRevisions();
+                
                 List<object> MultiCommonCoreUpdate = new List<object>();
                 if (MultiUpdatesForCommonCore.Count > 0)
                 {
-                    var BeofreUpdate = profileCacheEntry.AccountData.commoncore.RVN;
                     profileCacheEntry.LastUpdated = DateTime.Now;
-                    profileCacheEntry.AccountData.commoncore.RVN += 1;
-                    profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                    profileCacheEntry.AccountData.commoncore.BumpRevisions();
 
                     MultiCommonCoreUpdate.Add(new
                     {
                         profileRevision = profileCacheEntry.AccountData.commoncore.RVN,
                         profileId = "common_core",
-                        profileChangesBaseRevision = BeofreUpdate,
+                        profileChangesBaseRevision = BaseRev_C,
                         profileChanges = MultiUpdatesForCommonCore,
                         profileCommandRevision = profileCacheEntry.AccountData.commoncore.CommandRevision,
                     });
                 }
 
-                Console.WriteLine(BaseRev);
-                Console.WriteLine(RVN);
-                if (BaseRev != RVN)
+                if (BaseRev_G != RVN)
                 {
                     Mcp test = await AthenaResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
-                    ProfileChanges = test.profileChanges;
-                }
-                else
-                {
-                    ProfileChanges = MultiUpdates;
+                    MultiUpdates = test.profileChanges;
                 }
 
                 return new Mcp()
@@ -190,18 +165,13 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                     profileRevision = profileCacheEntry.AccountData.athena.RVN,
                     profileId = ProfileId,
                     profileChangesBaseRevision = BaseRev,
-                    profileChanges = ProfileChanges,
+                    profileChanges = MultiUpdates,
                     multiUpdate = MultiCommonCoreUpdate,
-                    //notifications = NotificationsUpdates,
                     profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                     serverTime = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     responseVersion = 1
                 };
-        
 
-
-
-              
             }
             return new Mcp();
         }

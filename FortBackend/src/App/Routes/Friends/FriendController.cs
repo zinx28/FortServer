@@ -92,7 +92,6 @@ namespace FortBackend.src.App.Routes.Friends
                 {
                     var body = await reader.ReadToEndAsync();
                     var requestData = JsonConvert.DeserializeObject<ProjectUserSearchC>(body);
-                    Console.WriteLine(body);
 
                     // i have issue something i rather do this then !=
                     if(requestData is not null && requestData.productUserIds.Count > 0)

@@ -37,7 +37,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                         AdminData? cachedAdminData = Saved.Saved.CachedAdminData.Data?.FirstOrDefault(e => e.AdminUserEmail == CheckAdminUser.profileCacheEntry.UserData.Email);
                         if(cachedAdminData != null)
                         {
-                            Console.WriteLine("CHANGING ROLES");
+                            Logger.Log("CHANGING ROLES");
                             cachedAdminData.RoleId = adminInfo.Role;
                         }
 

@@ -36,7 +36,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
         {
             try
             {
-                Console.WriteLine(RVN);
                 bool FoundSeasonDataInProfile = profileCacheEntry.AccountData.commoncore.Seasons.Any(season => season.SeasonNumber == Season.Season);
 
                 if (!FoundSeasonDataInProfile)
@@ -57,6 +56,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                         BookXP = 0,
                         BookPurchased = false,
                         Quests = new Dictionary<string, DailyQuestsData>(),
+                        special_items = new(),
                         DailyQuests = new DailyQuests
                         {
                             Interval = "0001-01-01T00:00:00.000Z",
@@ -79,8 +79,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
 
                     if (seasonObject != null)
                     {
-                        Console.WriteLine("e " + profileCacheEntry.AccountData.athena.RVN);
-                        Console.WriteLine("e2 " + profileCacheEntry.AccountData.athena.CommandRevision);
                         if (profileCacheEntry.AccountData.athena.RVN == profileCacheEntry.AccountData.athena.CommandRevision)
                         {
                             profileCacheEntry.AccountData.athena.RVN =+ 1;
@@ -114,9 +112,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         {
                                             attributes = new AthenaStatsAttributes
                                             {
-                                                use_random_loadout = false,
+                                                use_random_loadout = profileCacheEntry.AccountData.athena.random_loadout,
                                                 past_seasons = new List<object>(),
-                                                loadouts =  profileCacheEntry.AccountData.athena.loadouts,
+                                                loadouts =  profileCacheEntry.AccountData.athena.loadouts!,
                                                 mfa_reward_claimed = false,
                                                 rested_xp_overflow = 0,
                                                 last_xp_interaction = "9999-12-10T22:14:37.647Z",
@@ -140,8 +138,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 rested_xp_mult = 0,
                                                 season_match_boost = seasonObject.season_match_boost,
                                                 season_friend_match_boost = seasonObject.season_friend_match_boost,
-                                                active_loadout_index = Array.IndexOf(profileCacheEntry.AccountData.athena.loadouts, profileCacheEntry.AccountData.athena.last_applied_loadout),
-                                                purchased_bp_offers = new List<object> { },
+                                                active_loadout_index = 0/*profileCacheEntry.AccountData.athena.loadouts.FindIndex((e) => e == profileCacheEntry.AccountData.athena.last_applied_loadout)*/,
+                                                purchased_bp_offers = seasonObject.season_offers,
                                                 last_applied_loadout = profileCacheEntry.AccountData.athena.last_applied_loadout?.ToString() ?? "",
                                                 xp = seasonObject.SeasonXP,
                                                 rested_xp = seasonObject.SeasonXP,
@@ -178,11 +176,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             }
                             else
                             {
-                                foreach (var kvp in profileCacheEntry.AccountData.athena.Items)
+                                foreach (var kvp in profileCacheEntry.AccountData.athena.Items!)
                                 {
                                     ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
                                 }
                             }
+
+                            foreach (var kvp in seasonObject.special_items)
+                                ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
 
 
                             // THIS IS INST THE PROPER WAY BUT IT'S BETTER NTO STORING THIS IN THE CODE UNLESS IS ACTUALLY NEEDED

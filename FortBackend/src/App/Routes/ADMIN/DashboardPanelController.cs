@@ -81,7 +81,7 @@ namespace FortBackend.src.App.Routes.ADMIN
 
                                 if (adminProfileCacheEntry != null)
                                 {
-                                    Console.WriteLine("WANTING TO UPDATE USERS DATA");
+                                    Logger.Log("WANTING TO UPDATE USERS DATA");
                                     await GrabAdminData.EditAdminV2(adminProfileCacheEntry.profileCacheEntry.UserData.Username,
                                         new AdminDataInfo
                                         {

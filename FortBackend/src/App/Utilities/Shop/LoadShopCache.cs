@@ -8,7 +8,7 @@ namespace FortBackend.src.App.Utilities.Shop
 {
     public class LoadShopCache
     {
-        public static void LoadAndFilterShopBundles(int currentSeason)
+        public static void LoadAndFilterShopBundles(float currentSeason)
         {
             List<ShopBundles> bundlesToRemove = new List<ShopBundles>();
 
@@ -33,15 +33,53 @@ namespace FortBackend.src.App.Utilities.Shop
                 Saved.Saved.BackendCachedData.ShopBundlesFiltered.Remove(bundle);
             }
 
-            Console.WriteLine($"ShopBundles Loaded: {Saved.Saved.BackendCachedData.ShopBundlesFiltered.Count()} / {Saved.Saved.BackendCachedData.ShopBundles.Count()}");
+            Logger.Log($"ShopBundles Loaded: {Saved.Saved.BackendCachedData.ShopBundlesFiltered.Count()} / {Saved.Saved.BackendCachedData.ShopBundlesFiltered.Count()}");
+
+
+            // Filter festive items, or smth like that
+
+            var filteredFes = new Dictionary<string, FestiveShopItems>();
+
+            foreach (var (eventName, festive) in Saved.Saved.BackendCachedData.ShopFestiveItems)
+            {
+                foreach (var bundle in festive.Bundles)
+                {
+                    bundle.Daily = bundle.Daily
+                        .Where(i => i.season <= currentSeason)
+                        .ToList();
+
+                    bundle.Weekly = bundle.Weekly
+                        .Where(i => i.season <= currentSeason)
+                        .ToList();
+                }
+
+                var BundleCount = festive.Bundles.Count;
+                var NormalCount = festive.Normal.Count;
+
+                festive.Bundles = festive.Bundles
+                     .Where(b => b.Daily.Any() || b.Weekly.Any())
+                     .ToList();
+
+                festive.Normal = festive.Normal
+                    .Where(i => i.season <= currentSeason)
+                    .ToList();
+
+                if (festive.Bundles.Any() || festive.Normal.Any())
+                    filteredFes[eventName] = festive;
+
+                Logger.Log($"ShopFestive {eventName} Bundle Loaded: {festive.Bundles.Count()} / {BundleCount}");
+                Logger.Log($"ShopFestive {eventName} Items Loaded: {festive.Normal.Count()} / {NormalCount}");
+            }
+
+            Saved.Saved.BackendCachedData.ShopFestiveItems = filteredFes;
         }
 
         // yaps
-        public static List<ShopItems> LoadAndFilter(string filePath, int currentSeason, string ItemLoader = "skins")
+        public static List<ShopItems> LoadAndFilter(string filePath, float currentSeason, string ItemLoader = "skins")
         {
             if (!File.Exists(filePath))
             {
-                Console.WriteLine($"File not found: {filePath}");
+                Logger.Error($"File not found: {filePath}");
                 return new List<ShopItems>();
             }
 
@@ -56,7 +94,7 @@ namespace FortBackend.src.App.Utilities.Shop
             return filteredSkins;
         }
 
-        public static void LoadItems(int currentSeason)
+        public static void LoadItems(float currentSeason)
         {
             Saved.Saved.BackendCachedData.ShopSkinItems = LoadAndFilter(PathConstants.ShopJson.ShopSkins, currentSeason);
             Saved.Saved.BackendCachedData.ShopEmotesItems = LoadAndFilter(PathConstants.ShopJson.ShopEmotes, currentSeason, "emotes");

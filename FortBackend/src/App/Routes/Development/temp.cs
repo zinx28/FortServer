@@ -1,24 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using FortBackend.src.App.Utilities;
-using Newtonsoft.Json;
-using FortBackend.src.App.Utilities.MongoDB.Helpers;
-using MongoDB.Driver;
-using System.Text.RegularExpressions;
-using FortBackend.src.App.Utilities.Helpers.Middleware;
-using FortLibrary;
-using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
-using FortLibrary.Dynamics;
+﻿using FortBackend.src.App.Utilities;
 using FortBackend.src.App.Utilities.Constants;
-using FortLibrary.MongoDB.Module;
-using Newtonsoft.Json.Linq;
+using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
+using FortBackend.src.App.Utilities.Helpers.Middleware;
+using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.App.Utilities.Saved;
-using FortLibrary.EpicResponses.Profile.Query.Items;
-using FortLibrary.EpicResponses.Profile.Purchases;
-using Microsoft.IdentityModel.Tokens;
 using FortBackend.src.XMPP.Data;
+using FortBackend.src.XMPP.SERVER.Send;
+using FortLibrary;
+using FortLibrary.Dynamics;
+using FortLibrary.EpicResponses.Profile.Purchases;
+using FortLibrary.EpicResponses.Profile.Query.Items;
+using FortLibrary.MongoDB.Module;
 using FortLibrary.XMPP;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net.WebSockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace FortBackend.src.App.Routes.Development
@@ -304,7 +305,7 @@ namespace FortBackend.src.App.Routes.Development
                                     int Season = -1;
                                     if (Saved.DeserializeGameConfig.ForceSeason)
                                     {
-                                        Season = Saved.DeserializeGameConfig.Season;
+                                        Season = (int)Saved.DeserializeGameConfig.Season;
                                     }
 
                                     profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
@@ -328,36 +329,8 @@ namespace FortBackend.src.App.Routes.Development
                                     profileCacheEntry.AccountData.commoncore.RVN += 1;
                                     profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
 
-                                    Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
 
-                                    if (Client != null)
-                                    {
-                                        string xmlMessage;
-                                        byte[] buffer;
-                                        WebSocket webSocket = Client.Game_Client;
-
-                                        if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                        {
-                                            XNamespace clientNs = "jabber:client";
-
-                                            var message = new XElement(clientNs + "message",
-                                                new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                new XAttribute("to", profileCacheEntry.AccountId),
-                                                new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                                {
-                                                    payload = new { },
-                                                    type = "com.epicgames.gift.received",
-                                                    timestamp = DateTime.UtcNow.ToString("o")
-                                                }))
-                                            );
-
-                                            xmlMessage = message.ToString();
-                                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                        }
-
-                                    }
+                                    await XmppGift.NotifyUser(profileCacheEntry.AccountId);
                                 }
                                 else
                                 {

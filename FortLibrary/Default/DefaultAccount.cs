@@ -49,6 +49,10 @@ namespace FortLibrary.Default
                             }
                         }
                     },
+                    loadouts = new()
+                    {
+                        "sandbox_loadout"
+                    },
                     loadouts_data = new Dictionary<string, SandboxLoadout>()
                     {
                         ["sandbox_loadout"] = new SandboxLoadout() // dont need much just the default obj

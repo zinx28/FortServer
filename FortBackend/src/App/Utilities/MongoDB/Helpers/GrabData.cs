@@ -38,7 +38,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     }
                     else
                     {
-                        Console.WriteLine("Bypass? Invaild Account");
+                        Logger.PlainLog("Bypass? Invaild Account"); // can just be someone trying to call endpoints without auth
                     }
                 }
                 else
@@ -48,7 +48,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                         //Console.WriteLine("RETURNING CORRET DATA <3");
                         return GrabData.Value;
                     }
-                    Console.WriteLine("what? how");
+                    Logger.Error("what? how");
                 }
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                     }
                     else
                     {
-                        Console.WriteLine("Bypass? Invaild Account");
+                        Logger.PlainLog("Bypass? Invaild Account"); // can just be someone trying to call endpoints without auth
                     }
                 }
                 else
@@ -91,7 +91,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                         //Console.WriteLine("RETURNING CORRET DATA <3");
                         return GrabData.Value;
                     }
-                    Console.WriteLine("what? how");
+                    Logger.PlainLog("what? how");
                 }
             }
             catch (Exception ex)
@@ -152,7 +152,7 @@ namespace FortBackend.src.App.Utilities.MongoDB.Helpers
                         //Console.WriteLine("RETURNING CORRET DATA <3");
                         return GrabData.Value;
                     }
-                    Console.WriteLine("what? how");
+                    Logger.PlainLog("what? how");
                 }
             }
             catch (Exception ex)

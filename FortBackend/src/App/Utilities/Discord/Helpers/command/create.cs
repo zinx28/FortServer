@@ -107,12 +107,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                         }
                                         else
                                         {
-                                            await command.RespondAsync("How tf did you get gere", ephemeral: true);
+                                            await command.RespondAsync("Database is null! :D", ephemeral: true);
                                         }
 
-
-
-                                      
                                     }
                                     else
                                     {
@@ -140,14 +137,8 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
 
                                 await command.RespondAsync(embed: embed.Build(), ephemeral: true);
                             }
-                        }
-
-
-                       
-                           
+                        }   
                     }
-
-                   
                 }
                 else
                 {

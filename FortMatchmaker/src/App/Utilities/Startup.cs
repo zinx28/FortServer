@@ -76,7 +76,7 @@ namespace FortMatchmaker.src.App.Utilities
 
                             using (webSocket)
                             {
-                                Console.WriteLine("User Connected!");
+                                Logger.PlainLog("User Connected!");
                                 await NewConnection.Init(webSocket, context.Request, clientId);
                             }
                         }

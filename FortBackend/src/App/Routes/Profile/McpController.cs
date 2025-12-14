@@ -39,8 +39,8 @@ namespace FortBackend.src.App.Routes.Profile
                 using (var reader = new StreamReader(Request.Body, Encoding.UTF8))
                 {
                     var requestbody = await reader.ReadToEndAsync();
-                    Console.WriteLine(requestbody);
-                    Console.WriteLine(mcp);
+                    //Console.WriteLine(requestbody);
+                    //Console.WriteLine(mcp);
                     VersionClass Season = await SeasonUserAgent(Request);
 
                     if (string.IsNullOrEmpty(requestbody))
@@ -70,7 +70,7 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "QueryProfile":
                                     response = await QueryProfile.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
                                     break;
-
+                                // todo quests
                                 default:
                                     Logger.Error("MISSING MCP REQUEST FOR DEDICATED SERVER -> " + mcp);
                                     response = new Mcp
@@ -136,6 +136,9 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "SetCosmeticLockerSlot":
                                     response = await SetCosmeticLockerSlot.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerSlotRequest>(requestbody)!);
                                     break;
+                                case "SetRandomCosmeticLoadout":
+                                    response = await SetRandomCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry);
+                                    break;
                                 case "MarkNewQuestNotificationSent":
                                     response = await MarkNewQuestNotificationSent.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<MarkNewQuestNotificationSentRequest>(requestbody)!);
                                     break;
@@ -150,6 +153,21 @@ namespace FortBackend.src.App.Routes.Profile
                                     break;
                                 case "SetBattleRoyaleBanner":
                                     response = await SetBattleRoyaleBanner.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetBattleRoyaleBannerReq>(requestbody)!);
+                                    break;
+                                case "SetCosmeticLockerBanner":
+                                    response = await SetCosmeticLockerBanner.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerBannerReq>(requestbody)!);
+                                    break;
+                                case "SetCosmeticLockerName":
+                                    response = await SetCosmeticLockerName.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetCosmeticLockerNameReq>(requestbody)!);
+                                    break;
+                                case "DeleteCosmeticLoadout":
+                                    response = await DeleteCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<DeleteCosmeticLoadoutReq>(requestbody)!);
+                                    break;
+                                case "SetItemFavoriteStatus":
+                                    response = await SetItemFavoriteStatus.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetItemFavoriteStatusReq>(requestbody)!);
+                                    break;
+                                case "SetItemFavoriteStatusBatch":
+                                    response = await SetItemFavoriteStatusBatch.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<SetItemFavoriteStatusBatchReq>(requestbody)!);
                                     break;
                                 case "PurchaseCatalogEntry":
                                     response = await PurchaseCatalogEntry.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseCatalogEntryRequest>(requestbody)!);
@@ -166,10 +184,15 @@ namespace FortBackend.src.App.Routes.Profile
                                 case "BulkEquipBattleRoyaleCustomization":
                                     response = await BulkEquipBattleRoyaleCustomization.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<BulkEquipBattleRoyaleCustomizationResponse>(requestbody)!);
                                     break;
-                                // not proper
-                                //case "CopyCosmeticLoadout":
-                                //    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutResponse>(requestbody));
-                                //    break;
+                                case "CopyCosmeticLoadout":
+                                    response = await CopyCosmeticLoadout.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<CopyCosmeticLoadoutReq>(requestbody)!);
+                                    break;
+                                case "PurchaseMultipleCatalogEntries":
+                                    response = await PurchaseMultipleCatalogEntries.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<PurchaseMultipleCatalogEntriesReq>(requestbody)!);
+                                    break;
+                                case "ExchangeGameCurrencyForBattlePassOffer":
+                                    response = await ExchangeGameCurrencyForBattlePassOffer.Init(accountId, ProfileID, Season, RVN, profileCacheEntry, JsonConvert.DeserializeObject<ExchangeGameCurrencyForBattlePassOfferReq>(requestbody)!);
+                                    break;
                                 default:
 
                                         response = new Mcp

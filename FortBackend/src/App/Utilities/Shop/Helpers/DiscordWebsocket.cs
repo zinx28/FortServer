@@ -39,7 +39,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             };
 
             string jsonEmbed = JsonConvert.SerializeObject(embed, Formatting.Indented);
-            Console.WriteLine(jsonEmbed);
 
             var embed2 = new
             {
@@ -50,8 +49,6 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             };
 
             string jsonEmbed1 = JsonConvert.SerializeObject(embed2, Formatting.Indented);
-            Console.WriteLine(jsonEmbed1);
-
             string jsonPayload2 = JsonConvert.SerializeObject(new { embeds = new[] { embed2 } });
             string jsonPayload1 = JsonConvert.SerializeObject(new { embeds = new[] { embed } });
 
@@ -65,16 +62,16 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     HttpResponseMessage response2 = await httpClient.PostAsync(webhookUrl, httpContent2);
                     if (response2.IsSuccessStatusCode && response32.IsSuccessStatusCode)
                     {
-                        Console.WriteLine("Message sent successfully!");
+                        Logger.Log("Message sent successfully!", "DiscWebSocket");
                     }
                     else
                     {
-                        Console.WriteLine($"Failed to send message. Status code: {response2.StatusCode}");
+                        Logger.Error($"Failed to send message. Status code: {response2.StatusCode}", "DiscWebSocket");
                     }
                 }
                 catch (HttpRequestException ex)
                 {
-                    Console.WriteLine($"Error sending request: {ex.Message}");
+                    Logger.Error($"Error sending request: {ex.Message}", "DisWebSocket");
                 }
             }
 

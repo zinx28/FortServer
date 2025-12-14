@@ -3,8 +3,10 @@ using Discord.WebSocket;
 using FortBackend.src.App.Utilities.Helpers.Middleware;
 using FortBackend.src.App.Utilities.Helpers.UserManagement;
 using FortBackend.src.App.Utilities.MongoDB;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 using FortBackend.src.App.Utilities.MongoDB.Helpers;
 using FortBackend.src.XMPP.Data;
+using FortBackend.src.XMPP.SERVER.Send;
 using FortLibrary;
 using FortLibrary.EpicResponses.Profile.Purchases;
 using FortLibrary.EpicResponses.Profile.Query.Items;
@@ -234,7 +236,7 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 }
                                             }
                                             var RandomOfferId = Guid.NewGuid().ToString();
-                                            int Season = -1;
+                                            float Season = -1;
                                             if (Saved.Saved.DeserializeGameConfig.ForceSeason)
                                             {
                                                 Season = Saved.Saved.DeserializeGameConfig.Season;
@@ -257,42 +259,10 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 },
                                                 quantity = 1
                                             });
-                                            profileCacheEntry.AccountData.commoncore.RVN += 1;
-                                            profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
 
-                                            Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+                                            profileCacheEntry.AccountData.commoncore.BumpRevisions();
 
-                                            if (Client != null)
-                                            {
-                                                string xmlMessage;
-                                                byte[] buffer;
-                                                WebSocket webSocket = Client.Game_Client;
-
-                                                if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                                {
-                                                    XNamespace clientNs = "jabber:client";
-
-                                                    var message = new XElement(clientNs + "message",
-                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                        new XAttribute("to", profileCacheEntry.AccountId),
-                                                        new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                                        {
-                                                            payload = new { },
-                                                            type = "com.epicgames.gift.received",
-                                                            timestamp = DateTime.UtcNow.ToString("o")
-                                                        }))
-                                                    );
-
-                                                    xmlMessage = message.ToString();
-                                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                                    //  Console.WriteLine(xmlMessage);
-
-                                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                                }
-
-                                            }
-
+                                            await XmppGift.NotifyUser(profileCacheEntry.AccountId);
                                             await interaction.RespondAsync($"Gave {Vbucks} to {profileCacheEntry.UserData.Username}", ephemeral: true);
                                         }
                                         else
@@ -324,41 +294,9 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 attributes = new GiftCommonCoreItemAttributes { },
                                                 quantity = 1
                                             });
-                                            profileCacheEntry.AccountData.commoncore.RVN += 1;
-                                            profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                                            profileCacheEntry.AccountData.commoncore.BumpRevisions();
 
-                                            Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
-
-                                            if (Client != null)
-                                            {
-                                                string xmlMessage;
-                                                byte[] buffer;
-                                                WebSocket webSocket = Client.Game_Client;
-
-                                                if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                                {
-                                                    XNamespace clientNs = "jabber:client";
-
-                                                    var message = new XElement(clientNs + "message",
-                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                        new XAttribute("to", profileCacheEntry.AccountId),
-                                                        new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                                        {
-                                                            payload = new { },
-                                                            type = "com.epicgames.gift.received",
-                                                            timestamp = DateTime.UtcNow.ToString("o")
-                                                        }))
-                                                    );
-
-                                                    xmlMessage = message.ToString();
-                                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                                    Logger.PlainLog(xmlMessage);
-
-                                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                                }
-
-                                            }
+                                            await XmppGift.NotifyUser(profileCacheEntry.AccountId);
                                         }
                                     }
 
@@ -439,62 +377,85 @@ namespace FortBackend.src.App.Utilities.Discord.Helpers.command
                                                 //});
                                             }
 
-                                            profileCacheEntry.UserData.temp_banned = true;
-
-                                            await Handlers.UpdateOne<User>("DiscordId", RespondBack.DiscordId, new Dictionary<string, object>()
+                                            if(Days != 0)
                                             {
-                                                { "temp_banned", true }
+                                                profileCacheEntry.UserData.temp_banned = true;
+ 
+                                                profileCacheEntry.AccountData.commoncore.ban_status = new BanStatus()
+                                                {
+                                                    bRequiresUserAck = true,
+                                                    banReasons = new List<string>() { "Exploiting" },
+                                                    bBanHasStarted = true,
+                                                    banStartTimeUtc = DateTime.UtcNow,
+                                                    banDurationDays = Days,
+                                                    exploitProgramName = "Exploiting",
+                                                    additionalInfo = "",
+                                                    competitiveBanReason = "Exploiting"
+                                                };
+                                            }
+                                            else
+                                            {
+                                                profileCacheEntry.UserData.temp_banned = false;
+
+                                                profileCacheEntry.AccountData.commoncore.ban_status = new BanStatus();
+                                            }
+
+
+
+                                                profileCacheEntry.AccountData.commoncore.BumpRevisions();
+
+                                            var RandomOfferId = Guid.NewGuid().ToString();
+                                            profileCacheEntry.AccountData.commoncore.Gifts.Add(RandomOfferId, new GiftCommonCoreItem
+                                            {
+                                                templateId = "GiftBox:gb_tournamentaction",
+                                                attributes = new GiftCommonCoreItemAttributes { },
+                                                quantity = 1
                                             });
 
+                                            await XmppGift.NotifyUser(profileCacheEntry.AccountId);
 
-                                            profileCacheEntry.AccountData.commoncore.ban_status = new BanStatus()
-                                            {
-                                                bRequiresUserAck = true,
-                                                banReasons = new List<string>() { "Exploiting" },
-                                                bBanHasStarted = true,
-                                                banStartTimeUtc = DateTime.UtcNow,
-                                                banDurationDays = Days,
-                                                exploitProgramName = "Exploiting",
-                                                additionalInfo = "",
-                                                competitiveBanReason = "Exploiting"
-                                            };
+                                        //    Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
 
+                                        //    if (Client != null)
+                                        //    {
+                                        //        string xmlMessage;
+                                        //        byte[] buffer;
+                                        //        WebSocket webSocket = Client.Game_Client;
+                                        //        //GB_TournamentAction
 
-                                            profileCacheEntry.AccountData.commoncore.RVN += 1;
-                                            profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                                        //        if (webSocket != null && webSocket.State == WebSocketState.Open)
+                                        //        {
+                                        //            XNamespace clientNs = "jabber:client";
 
-                                            Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
+                                        //            var message = new XElement(clientNs + "message",
+                                        //                new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
+                                        //                new XAttribute("to", profileCacheEntry.AccountId),
+                                        //                new XElement(clientNs + "body", JsonConvert.SerializeObject(new
+                                        //                {
+                                        //                    payload = new {
+                                        //                        bRequiresUserAck = true,
+                                        //                        banReasons = new List<string>() { "Exploiting" },
+                                        //                        bBanHasStarted = true,
+                                        //                        banStartTimeUtc = DateTime.UtcNow,
+                                        //                        banDurationDays = Days,
+                                        //                        exploitProgramName = "Exploiting",
+                                        //                        additionalInfo = "",
+                                        //                        competitiveBanReason = "Exploiting"
+                                        //                    },
+                                        //                    type = "com.epicgames.ban_status.received",
+                                        //                    timestamp = DateTime.UtcNow.ToString("o")
+                                        //                }))
+                                        //            );
 
-                                            if (Client != null)
-                                            {
-                                                string xmlMessage;
-                                                byte[] buffer;
-                                                WebSocket webSocket = Client.Game_Client;
+                                        //            xmlMessage = message.ToString();
+                                        //            buffer = Encoding.UTF8.GetBytes(xmlMessage);
 
-                                                if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                                {
-                                                    XNamespace clientNs = "jabber:client";
+                                        //            //  Console.WriteLine(xmlMessage);
 
-                                                    var message = new XElement(clientNs + "message",
-                                                        new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                        new XAttribute("to", profileCacheEntry.AccountId),
-                                                        new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                                        {
-                                                            payload = new { },
-                                                            type = "com.epicgames.ban_status.received",
-                                                            timestamp = DateTime.UtcNow.ToString("o")
-                                                        }))
-                                                    );
+                                        //            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                                        //        }
 
-                                                    xmlMessage = message.ToString();
-                                                    buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                                    //  Console.WriteLine(xmlMessage);
-
-                                                    await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                                }
-
-                                            }
+                                        //    }
                                         }
 
                                         //// do this last

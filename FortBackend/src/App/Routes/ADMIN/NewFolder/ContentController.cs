@@ -155,7 +155,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "DashboardContentID");
+                Logger.Error(ex.Message, "DashboardContentID_V2");
             }
 
             return Json(new
@@ -215,7 +215,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.Message, "DashboardContentID");
+                Logger.Error(ex.Message, "DashboardContentID_CoV2");
             }
 
             return Json(new

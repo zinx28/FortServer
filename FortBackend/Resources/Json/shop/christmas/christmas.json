@@ -1,221 +1,684 @@
-[
-  {
-    "item": "AthenaCharacter:CID_045_Athena_Commando_M_HolidaySweater",
-    "name": "Yuletide Ranger",
-    "description": "Up on the rooftop...",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaCharacter:CID_046_Athena_Commando_F_HolidaySweater",
-    "name": "Nog Ops",
-    "description": "Have yourself a merry little skirmish.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaCharacter:CID_047_Athena_Commando_F_HolidayReindeer",
-    "name": "Red-Nosed Raider",
-    "description": "It's time for some reindeer games.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaPickaxe:Pickaxe_ID_155_ValentinesFrozen",
-    "name": "Cold Hearted",
-    "description": "No love lost.",
-    "items": [],
-    "rarity": "frozen"
-  },
-  {
-    "item": "AthenaPickaxe:Pickaxe_ID_156_RavenQuillFrozen",
-    "name": "Frozen Beak",
-    "description": "Break the ice.",
-    "items": [],
-    "rarity": "frozen"
-  },
-  {
-    "item": "AthenaCharacter:CID_048_Athena_Commando_F_HolidayGingerbread",
-    "name": "Ginger Gunner",
-    "description": "Spread some holiday fear.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaCharacter:CID_049_Athena_Commando_M_HolidayGingerbread",
-    "name": "Merry Marauder",
-    "description": "Sing a slaying song tonight.",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaCharacter:CID_050_Athena_Commando_M_HolidayNutcracker",
-    "name": "Crackshot",
-    "description": "Get out there and... crack some nuts.",
-    "items": [],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaCharacter:CID_051_Athena_Commando_M_HolidayElf",
-    "name": "Codename E.L.F.",
-    "description": "Elusive. Lethal. Festive.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaCharacter:CID_330_Athena_Commando_F_IceQueen",
-    "name": "The Ice Queen",
-    "description": "Long live the queen.",
-    "items": [
-      {
-        "item": "AthenaBackpack:BID_199_IceQueen",
-        "name": "Ice Spikes"
-      }
-    ],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaCharacter:CID_329_Athena_Commando_F_SnowNinja",
-    "name": "Snowstrike",
-    "description": "Strike swiftly, and always leave your mark.",
-    "items": [
-      {
-        "item": "AthenaBackpack:BID_200_SnowNinjaFemale",
-        "nmame": "Snowbrand"
-      }
-    ],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaCharacter:CID_298_Athena_Commando_F_IceMaiden",
-    "name": "Glimmer",
-    "description": "Elegantly reclaiming winter's crown.",
-    "items": [
-      {
-        "item": "AthenaBackpack:BID_180_IceMaiden",
-        "name": "Glimmering Cloak"
-      }
-    ],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaCharacter:CID_299_Athena_Commando_M_SnowNinja",
-    "name": "Snowfoot",
-    "description": "Tread lightly, and never leave a trace.",
-    "items": [
-      {
-        "item": "AthenaBackpack:BID_181_SnowNinjaMale",
-        "name": "Snow Star"
-      }
-    ],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaCharacter:CID_280_Athena_Commando_M_Snowman",
-    "name": "Slushy Soldier",
-    "description": "Make every day a snow day.",
-    "items": [
-      {
-        "item": "AthenaBackpack:BID_164_SnowmanMale",
-        "name": "Slushy Jr."
-      }
-    ],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaPickaxe:Pickaxe_ID_015_HolidayCandyCane",
-    "name": "Candy Axe",
-    "description": "Deck the walls with festive mayhem!",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaPickaxe:Pickaxe_ID_145_IceMaiden",
-    "name": "Flurry",
-    "description": "Swing flurriously.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaCharacter:CID_222_Athena_Commando_F_DarkViking",
-    "name": "Valkyrie",
-    "description": "A chilling revelation.",
-    "items": [
-      {
-        "item": "AthenaBackpack:BID_113_DarkVikingFemale",
-        "name": "Valkyrie Wings"
-      }
-    ],
-    "rarity": "legendary"
-  },
-  {
-    "item": "AthenaPickaxe:Pickaxe_ID_150_IceQueen",
-    "name": "Icebringer",
-    "description": "Bitter cold.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaCharacter:CID_311_Athena_Commando_M_Reindeer",
-    "name": "Red-nosed Ranger",
-    "description": "Known for his antler antics.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaItemWrap:Wrap_007_CandyCane",
-    "name": "Candy Cane",
-    "description": "Show your style.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaCharacter:CID_316_Athena_Commando_F_WinterHoliday",
-    "name": "Tinseltoes",
-    "description": "Keep the competition on their toes.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaDance:EID_TakeTheElf",
-    "name": "Take The Elf",
-    "description": "Break out the mistletoe.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_085_SkullTrooper",
-    "name": "Crypt Cruiser",
-    "description": "From beyond the grave!",
-    "items": [],
-    "rarity": "epic"
-  },
-  {
-    "item": "AthenaPickaxe:Pickaxe_ID_137_NutCracker",
-    "name": "Snow Globe",
-    "description": "Shake vigorously.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_113_Barbarian",
-    "name": "Tusk",
-    "description": "Wild and woolly.",
-    "items": [],
-    "rarity": "uncommon"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_114_IceQueen",
-    "name": "Winter's Thorn",
-    "description": "Ride out the squall.",
-    "items": [],
-    "rarity": "rare"
-  },
-  {
-    "item": "AthenaGlider:Glider_ID_115_SnowNinja",
-    "name": "Snowblades",
-    "description": "Cut through the cold.",
-    "items": [],
-    "rarity": "rare"
-  }
-]
+{
+  "Bundles": [
+    {
+      "BundleID": 100,
+      "Daily": [
+        {
+          "id": "T3tX5lwbHEPIbCiJtyNPF85KWy1TCyT0G8jFNtHy",
+          "item": "AthenaPickaxe:Pickaxe_ID_022_HolidayGiftWrap",
+          "name": "You Shouldn't Have!",
+          "description": "For the combatant who has everything.",
+          "items": [],
+          "categories": [],
+          "rarity": "uncommon",
+          "season": 1
+        }
+      ],
+      "Weekly": [
+        {
+          "id": "8YJIX4AUq4VSmB4RzkiKDc0CTJ7sUfX7",
+          "item": "AthenaCharacter:CID_045_Athena_Commando_M_HolidaySweater",
+          "name": "Yuletide Ranger",
+          "description": "Up on the rooftop...",
+          "items": [],
+          "categories": [],
+          "rarity": "uncommon",
+          "season": 1
+        },
+        {
+          "id": "KW0LOBn50XfHCPt7mCELJdO1dOtrkona",
+          "item": "AthenaCharacter:CID_046_Athena_Commando_F_HolidaySweater",
+          "name": "Nog Ops",
+          "description": "Have yourself a merry little skirmish.",
+          "items": [],
+          "categories": [],
+          "rarity": "uncommon",
+          "season": 1
+        },
+        {
+          "id": "HhDUZWLEAj8G-HtvOlivT6bxstq6jHn0iitI5JRL",
+          "item": "AthenaGlider:Glider_ID_005_HolidaySweater",
+          "name": "Cozy Coaster",
+          "description": "Snuggle up to the firefight in holiday style.",
+          "items": [],
+          "categories": [],
+          "rarity": "rare",
+          "season": 1
+        }
+      ],
+      "AllowAgain": true
+    },
+    {
+      "BundleID": 101,
+      "Daily": [],
+      "Weekly": [
+        {
+          "id": "k5j867oHVuSXtzuQQZ545kkoWYAB8hnD",
+          "item": "AthenaGlider:Glider_ID_119_ReaperFrozen",
+          "name": "Frozen Feathers",
+          "description": "A cold wind bellows.",
+          "categories": [],
+          "items": [
+            {
+              "item": "AthenaPickaxe:Pickaxe_ID_155_ValentinesFrozen",
+              "name": "Cold Hearted"
+            },
+            {
+              "item": "AthenaPickaxe:Pickaxe_ID_156_RavenQuillFrozen",
+              "name": "Frozen Beak"
+            }
+          ],
+          "BundlePath": "DA_Featured_FrozenItemBundle",
+          "rarity": "rare",
+          "singleprice": 1000,
+          "original_price": 2400,
+          "price": 1000,
+          "season": 7.10
+        }
+      ],
+      "AllowAgain": true
+    },
+    {
+      "BundleID": 102,
+      "Daily": [],
+      "Weekly": [
+        {
+          "id": "xXM2iYHF6YQwa7ymkONctwyzDa9DOx0S",
+          "item": "AthenaCharacter:CID_049_Athena_Commando_M_HolidayGingerbread",
+          "name": "Merry Marauder",
+          "description": "Sing a slaying song tonight.",
+          "categories": [
+            "Panel 100"
+          ],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_186_GingerbreadMale",
+              "name": "Mini Marauder"
+            }
+          ],
+          "variants": [
+            {
+              "channel": "Material",
+              "active": "Mat0",
+              "owned": [
+                "Mat0",
+                "Mat1",
+                "Mat2",
+                "Mat3"
+              ]
+            }
+          ],
+          "rarity": "epic",
+          "season": 1
+        },
+        {
+          "id": "9kWcyFTL9PVT7a95HpqIebGtSlIMNA4Y",
+          "item": "AthenaCharacter:CID_048_Athena_Commando_F_HolidayGingerbread",
+          "name": "Ginger Gunner",
+          "description": "Spread some holiday fear.",
+          "categories": [
+            "Panel 100"
+          ],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_187_GingerbreadFemale",
+              "name": "Giddy Gunner"
+            }
+          ],
+          "rarity": "epic",
+          "variants": [
+            {
+              "channel": "Material",
+              "active": "Mat0",
+              "owned": [
+                "Mat0",
+                "Mat1",
+                "Mat2",
+                "Mat3"
+              ]
+            }
+          ],
+          "season": 1
+        },
+        {
+          "id": "qujCPvIrHKQWxuqH3E4qVcAvAOwkFkzj",
+          "item": "AthenaGlider:Glider_ID_105_Gingerbread",
+          "name": "Gingersled",
+          "description": "That's one sweet ride.",
+          "categories": [
+            "Panel 101"
+          ],
+          "items": [],
+          "rarity": "uncommon",
+          "season": 7.10
+        },
+        {
+          "id": "8uNlEdUj4RAhRwzoUGuIZbgsQklziWb6",
+          "item": "AthenaPickaxe:Pickaxe_ID_139_Gingerbread",
+          "name": "Cookie Cutter",
+          "description": "Sweet vengeance.",
+          "categories": [
+            "Panel 101"
+          ],
+          "items": [],
+          "rarity": "uncommon",
+          "season": 7.10
+        }
+      ],
+      "AllowAgain": true
+    },
+    {
+      "BundleID": 103,
+      "Daily": [
+        {
+          "id": "2iHYDrc2VvcFeD7FwhBpb4RlsrvlOhEf",
+          "item": "AthenaDance:EID_CrackshotClock",
+          "name": "Around the Clock",
+          "description": "Keep time.",
+          "categories": [],
+          "items": [],
+          "variants": [],
+          "rarity": "rare",
+          "season": 11.30
+        },
+        {
+          "id": "UoA4DvfRZDhshjLVRNoqrJ0QVTONFaqN",
+          "item": "AthenaPickaxe:Pickaxe_ID_137_NutCracker",
+          "name": "Snow Globe",
+          "description": "Shake vigorously.",
+          "categories": [],
+          "items": [],
+          "variants": [],
+          "rarity": "rare",
+          "season": 7.10
+        }
+      ],
+      "Weekly": [
+        {
+          "id": "SP7ieSik7jjF4QtqmvyQEuINc5oW7S5K",
+          "item": "AthenaCharacter:CID_050_Athena_Commando_M_HolidayNutcracker",
+          "name": "Crackshot",
+          "description": "Get out there and... crack some nuts.",
+          "categories": [],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_182_NutcrackerMale",
+              "name": "Birdshot",
+              "variants": [
+                {
+                  "channel": "Material",
+                  "active": "Mat1",
+                  "owned": [
+                    "Mat1",
+                    "Mat2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variants": [
+            {
+              "channel": "Material",
+              "active": "Mat1",
+              "owned": [
+                "Mat1",
+                "Mat2",
+                "Mat3",
+                "Mat4"
+              ]
+            }
+          ],
+          "rarity": "legendary",
+          "season": 1
+        },
+        {
+          "id": "M3uOND6oKEmZZdpiorciyQnDebJD0zHI",
+          "item": "AthenaCharacter:CID_050_Athena_Commando_M_HolidayNutcracker",
+          "name": "Crackabella",
+          "description": "She's a hard nut to crack.",
+          "categories": [],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_183_NutcrackerFemale",
+              "name": "Snackshot",
+              "variants": []
+            }
+          ],
+          "variants": [],
+          "rarity": "epic",
+          "season": 7.10
+        }
+      ],
+      "AllowAgain": true
+    },
+    {
+      "BundleID": 104,
+      "Daily": [],
+      "Weekly": [
+        {
+          "id": "ETQrjl7RUjmN1Yd2Rh9F5WgPvpqfKR0J",
+          "item": "AthenaCharacter:CID_330_Athena_Commando_F_IceQueen",
+          "name": "The Ice Queen",
+          "description": "Long live the queen.",
+          "categories": [],
+          "items": [],
+          "variants": [
+            {
+              "channel": "Material",
+              "active": "Mat0",
+              "owned": [
+                "Mat0",
+                "Mat1",
+                "Mat2",
+                "Mat3"
+              ]
+            }
+          ],
+          "rarity": "legendary",
+          "season": 7.10
+        },
+        {
+          "id": "4oFNhPERgjDTj6jwC62lYDBVoVLsUhXx",
+          "item": "AthenaPickaxe:Pickaxe_ID_150_IceQueen",
+          "name": "Icebringer",
+          "description": "Bitter cold.",
+          "categories": [],
+          "items": [],
+          "variants": [
+            {
+              "channel": "Material",
+              "active": "Mat0",
+              "owned": [
+                "Mat0",
+                "Mat1",
+                "Mat2",
+                "Mat3"
+              ]
+            }
+          ],
+          "rarity": "rare",
+          "season": 7.10
+        }
+      ],
+      "AllowAgain": true
+    },
+    {
+      "BundleID": 105,
+      "Daily": [],
+      "Weekly": [
+        {
+          "id": "v7xilhCkegSiXY0pUNJ8yrOdK0xZfchV",
+          "item": "AthenaCharacter:CID_299_Athena_Commando_M_SnowNinja",
+          "name": "Snowfoot",
+          "description": "Tread lightly, and never leave a trace.",
+          "categories": [],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_181_SnowNinjaMale",
+              "name": "Snow Star",
+              "variants": []
+            }
+          ],
+          "variants": [
+            {
+              "channel": "Material",
+              "active": "Mat1",
+              "owned": [
+                "Mat1",
+                "Mat2"
+              ]
+            }
+          ],
+          "rarity": "legendary",
+          "season": 7.10
+        },
+        {
+          "id": "oc4kVZJVxM07gaMc98FOMdZCOyR0dzhw",
+          "item": "AthenaCharacter:CID_329_Athena_Commando_F_SnowNinja",
+          "name": "Snowstrike",
+          "description": "Strike swiftly, and always leave your mark.",
+          "categories": [],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_200_SnowNinjaFemale",
+              "name": "Snowbrand",
+              "variants": []
+            }
+          ],
+          "variants": [],
+          "rarity": "epic",
+          "season": 7.10
+        },
+        {
+          "id": "XONOLpH6WOPJLsTGGYxl1SlwZpVKzgmf",
+          "item": "AthenaPickaxe:Pickaxe_ID_135_SnowNinja",
+          "name": "Inverted Blade",
+          "description": "Sharp from any direction.",
+          "categories": [
+            "Panel 67"
+          ],
+          "items": [],
+          "variants": [],
+          "rarity": "uncommon",
+          "season": 7.10
+        },
+        {
+          "id": "P0jtNmEhP4tz9K2rBorofB0cPuqqHcLI",
+          "item": "AthenaGlider:Glider_ID_115_SnowNinja",
+          "name": "Snowblades",
+          "description": "Cut through the cold.",
+          "categories": [
+            "Panel 67"
+          ],
+          "items": [],
+          "variants": [],
+          "rarity": "rare",
+          "season": 7.10
+        }
+      ],
+      "AllowAgain": true
+    },
+    {
+      "BundleID": 106,
+      "Daily": [],
+      "Weekly": [
+        {
+          "id": "xs75mmhVdYjmpJs5Rp4pvDCJZFQUPFHd",
+          "item": "AthenaCharacter:CID_298_Athena_Commando_F_IceMaiden",
+          "name": "Glimmer",
+          "description": "Elegantly reclaiming winter's crown.",
+          "categories": [
+            "Panel 21"
+          ],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_180_IceMaiden",
+              "name": "Glimmering Cloak",
+              "variants": []
+            }
+          ],
+          "variants": [],
+          "rarity": "legendary",
+          "season": 7.10
+        },
+        {
+          "id": "MN14NQURekvwTm6mKbcJSFQqR6CKDyRY",
+          "item": "AthenaPickaxe:Pickaxe_ID_145_IceMaiden",
+          "name": "Flurry",
+          "description": "Swing flurriously.",
+          "categories": [
+            "Panel 21"
+          ],
+          "items": [],
+          "variants": [],
+          "rarity": "rare",
+          "season": 7.10
+        },
+        {
+          "id": "EiMloY3mGbr1nO9GT8rQhPhxFBjWNX56",
+          "item": "AthenaGlider:Glider_ID_107_IceMaiden",
+          "name": "Crystal Carriage",
+          "description": "The finest coach in the land.",
+          "categories": [
+            "Panel 21"
+          ],
+          "items": [],
+          "variants": [],
+          "rarity": "rare",
+          "season": 7.10
+        }
+      ],
+      "AllowAgain": true
+    },
+    {
+      "BundleID": 107,
+      "Daily": [],
+      "Weekly": [
+        {
+          "id": "366hQXbFCZxv0cj1CdlGWbxLiiLIfVMb",
+          "item": "AthenaCharacter:CID_298_Athena_Commando_F_IceMaiden",
+          "name": "Krampus",
+          "description": "Here comes anti-claus...",
+          "categories": [],
+          "items": [
+            {
+              "item": "AthenaBackpack:BID_194_Krampus",
+              "name": "Brat Bag",
+              "variants": []
+            }
+          ],
+          "variants": [],
+          "rarity": "legendary",
+          "season": 7.10
+        },
+        {
+          "id": "CP80yVFrgkrL9sLYPzPbIaUBMl0e7wb8",
+          "item": "AthenaPickaxe:Pickaxe_ID_141_Krampus",
+          "name": "Brat Catcher",
+          "description": "Be on your best behavior.",
+          "categories": [],
+          "items": [],
+          "variants": [],
+          "rarity": "rare",
+          "season": 7.10
+        },
+        {
+          "id": "xGFmIv4hoWn9YiZJjGjCvdi5YjON1H5n",
+          "item": "AthenaGlider:Glider_ID_108_Krampus",
+          "name": "Krampus' Little Helper",
+          "description": "The greatest of all time.",
+          "categories": [],
+          "items": [],
+          "variants": [],
+          "rarity": "rare",
+          "season": 7.10
+        }
+      ],
+      "AllowAgain": true
+    }
+    
+  ],
+  "Normal": [
+    {
+      "id": "O8eu63w785LKCx0pvPh2NFQZhVq5I77W",
+      "item": "AthenaCharacter:CID_051_Athena_Commando_M_HolidayElf",
+      "name": "Codename E.L.F.",
+      "description": "Elusive. Lethal. Festive.",
+      "categories": [],
+      "items": [
+        {
+          "item": "AthenaBackpack:BID_445_Elf",
+          "name": "E.L.F. Shield",
+          "variants": [
+            {
+              "channel": "Material",
+              "active": "Mat1",
+              "owned": [
+                "Mat1",
+                "Mat2",
+                "Mat3"
+              ]
+            }
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "channel": "Material",
+          "active": "Mat1",
+          "owned": [
+            "Mat1",
+            "Mat2",
+            "Mat3"
+          ]
+        }
+      ],
+      "rarity": "rare",
+      "season": 1
+    },
+    {
+      "id": "FIkjtr7lbQqb9KFyWiDAEMlZ14VIUFq5",
+      "item": "AthenaCharacter:CID_047_Athena_Commando_F_HolidayReindeer",
+      "name": "Red-Nosed Raider",
+      "description": "It's time for some reindeer games.",
+      "categories": [],
+      "items": [],
+      "rarity": "rare",
+      "season": 1.11
+    },
+    {
+      "id": "LTXwvhloGMmUYJpaA20Jrbv0fyagnh90",
+      "item": "AthenaCharacter:CID_311_Athena_Commando_M_Reindeer",
+      "name": "Red-nosed Ranger",
+      "description": "Known for his antler antics.",
+      "categories": [],
+      "items": [],
+      "rarity": "uncommon",
+      "season": 7.10
+    },
+    {
+      "id": "5sj2FnJTZEvBIZb20oEINlwGtyzlUjE5",
+      "item": "AthenaCharacter:CID_280_Athena_Commando_M_Snowman",
+      "name": "Slushy Soldier",
+      "description": "Make every day a snow day.",
+      "categories": [],
+      "items": [
+        {
+          "item": "AthenaBackpack:BID_164_SnowmanMale",
+          "name": "Slushy Jr."
+        }
+      ],
+      "rarity": "epic",
+      "season": 7.10
+    },
+    {
+      "id": "G93bXxIvDhNEhRppjvMAAmv0aVy3myHx",
+      "item": "AthenaItemWrap:Wrap_007_CandyCane",
+      "name": "Candy Cane",
+      "description": "Show your style.",
+      "categories": [],
+      "items": [],
+      "rarity": "uncommon",
+      "season": 7.10
+    },
+    {
+      "id": "WxthsiLtot5Z7VDz8IIfKQHs30s2UEM6",
+      "item": "AthenaCharacter:CID_222_Athena_Commando_F_DarkViking",
+      "name": "Valkyrie",
+      "description": "A chilling revelation.",
+      "categories": [],
+      "items": [
+        {
+          "item": "AthenaBackpack:BID_113_DarkVikingFemale",
+          "name": "Valkyrie Wings"
+        }
+      ],
+      "rarity": "legendary",
+      "season": 5.41
+    },
+    {
+      "id": "yWf118jRFslzjyzZs8rBOtVgqTN5Gl3j",
+      "item": "AthenaGlider:Glider_ID_070_DarkViking",
+      "name": "Frostwing",
+      "description": "Awoken from ageless slumber.",
+      "categories": [],
+      "items": [],
+      "rarity": "legendary",
+      "season": 5.41
+    },
+    {
+      "id": "hdtBS4xQzcGVRcCqvTkSZ6SB22Jtn0Yt",
+      "item": "AthenaCharacter:CID_316_Athena_Commando_F_WinterHoliday",
+      "name": "Tinseltoes",
+      "description": "Keep the competition on their toes.",
+      "categories": [],
+      "items": [],
+      "rarity": "uncommon",
+      "season": 7.10
+    },
+    {
+      "id": "IGRZR5cHegMfhcujL8JMnztZJBcV7ibj",
+      "item": "AthenaGlider:Glider_ID_113_Barbarian",
+      "name": "Tusk",
+      "description": "Wild and woolly.",
+      "categories": [],
+      "items": [],
+      "rarity": "uncommon",
+      "season": 7.10
+    },
+    {
+      "id": "jcKGjqNdbWHmbhr70DTD8H2SFr3xaVNp",
+      "item": "AthenaCharacter:CID_304_Athena_Commando_M_Gnome",
+      "name": "Grimbles",
+      "description": "This garden gnome is at home on the roam in a snowy biome.",
+      "categories": [],
+      "items": [
+        {
+          "item": "AthenaBackpack:BID_185_GnomeMale",
+          "name": "Luminous Lamp"
+        }
+      ],
+      "variants": [
+        {
+          "channel": "Material",
+          "active": "Mat0",
+          "owned": [
+            "Mat0",
+            "Mat1"
+          ]
+        }
+      ],
+      "rarity": "rare",
+      "season": 7.10
+    },
+    {
+      "id": "mEt9Y11b7QEBK3CGVknqDbcKFNJWSBxn",
+      "item": "AthenaPickaxe:Pickaxe_ID_138_Gnome",
+      "name": "Cold Snap",
+      "description": "Frosted and flowery.",
+      "categories": [],
+      "items": [],
+      "variants": [],
+      "rarity": "rare",
+      "season": 7.10
+    },
+    {
+      "id": "GUf6kNTKiMluzwjsqjdeaLwPdpQIoL2M",
+      "item": "AthenaPickaxe:Pickaxe_ID_134_Snowman",
+      "name": "Icicle",
+      "description": "Cold to the touch.",
+      "categories": [],
+      "items": [],
+      "variants": [],
+      "rarity": "uncommon",
+      "season": 7.10
+    },
+    {
+      "id": "qFXKMNAGyLJVfKNbYDtfv07u6o2Hhht6",
+      "item": "AthenaDance:EID_PresentOpening",
+      "name": "Unwrapped",
+      "description": "What did you get me?",
+      "categories": [],
+      "items": [],
+      "variants": [],
+      "rarity": "uncommon",
+      "season": 7.10
+    },
+    {
+      "id": "eYWJtex220Rwm8vKySGZqJAOQQDPjwYn",
+      "item": "AthenaCharacter:CID_641_Athena_Commando_M_SweaterWeather",
+      "name": "Dolph",
+      "description": "He came to sleigh.",
+      "categories": [],
+      "items": [
+        {
+          "item": "AthenaBackpack:BID_438_SweaterWeather",
+          "name": "Bough Breaker",
+          "variants": []
+        }
+      ],
+      "rarity": "rare",
+      "season": 11.30
+    }
+  ]
+}

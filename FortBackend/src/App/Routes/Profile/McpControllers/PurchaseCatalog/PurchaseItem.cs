@@ -12,12 +12,13 @@ using static FortBackend.src.App.Utilities.Helpers.Grabber;
 using FortLibrary;
 using FortBackend.src.App.Utilities.Constants;
 using FortBackend.src.App.Utilities.Saved;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
     public class PurchaseItem
     {
-        public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, ProfileCacheEntry profileCacheEntry)
+        public static async Task<Mcp> Init(VersionClass Season, string ProfileId, PurchaseCatalogEntryRequest Body, ProfileCacheEntry profileCacheEntry, int RVN)
         {
            
             ShopJson shopData = Saved.BackendCachedData.CurrentShop;
@@ -31,8 +32,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                 var MultiUpdates = new List<object>();
                 var ApplyProfileChanges = new List<object>();
                 List<Dictionary<string, object>> itemList = new List<Dictionary<string, object>>();
+                int BaseRev_G = profileCacheEntry.AccountData.commoncore.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
-                int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
+                int BaseRev_A = profileCacheEntry.AccountData.athena.RVN;
 
                 foreach (ItemsSaved storefront in shopData.ShopItems.Daily)
                 {
@@ -120,10 +122,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             }
                         });
                     }
-                    //AthenaItem test = AccountDataParsed.commoncore.Items.FirstOrDefault(e => e.ContainsKey("Currency"))["Currency"] as AthenaItem;
+
                     CommonCoreItem CurrentVbucks = profileCacheEntry.AccountData.commoncore.Items["Currency"];
        
-                    //Console.WriteLine(AccountDataParsed.commoncore.Items[GrabPlacement]["Currency"]);
                     if (CurrentVbucks.quantity == 0)
                     {
                         throw new BaseError()
@@ -137,8 +138,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             error_description = "Your Poor",
                         };
                     }
-
-                    Logger.PlainLog($"Currency Item Quantity: {CurrentVbucks.quantity}");
 
                     if (ShopContent.price > int.Parse(CurrentVbucks.quantity.ToString()))
                     {
@@ -187,19 +186,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                     }
 
                     profileCacheEntry.AccountData.commoncore.Items["Currency"].quantity = Price;
+
                     if (MultiUpdates.Count > 0)
-                    {
-                        profileCacheEntry.AccountData.athena.RVN += 1;
-                        profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                    }
+                        profileCacheEntry.AccountData.athena.BumpRevisions();
 
                     if (ApplyProfileChanges.Count > 0)
-                    {
-                        profileCacheEntry.AccountData.commoncore.RVN += 1;
-                        profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
-                    }
+                        profileCacheEntry.AccountData.commoncore.BumpRevisions();
 
-                    if (Season.SeasonFull >= 12.20)
+                    if (BaseRev_G != RVN)
                     {
                         Mcp test = await CommonCoreResponse.Grab(profileCacheEntry.AccountId, ProfileId, Season, profileCacheEntry.AccountData.commoncore.RVN, profileCacheEntry);
                         ApplyProfileChanges = test.profileChanges;
@@ -231,7 +225,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             {
                                 profileRevision = profileCacheEntry.AccountData.athena.RVN,
                                 profileId = "athena",
-                                profileChangesBaseRevision = BaseRev2,
+                                profileChangesBaseRevision = BaseRev_A,
                                 profileChanges = MultiUpdates,
                                 profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                             }
@@ -343,17 +337,12 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
 
                             profileCacheEntry.AccountData.commoncore.Items["Currency"].quantity = Price;
+
                             if (MultiUpdates.Count > 0)
-                            {
-                                profileCacheEntry.AccountData.athena.RVN += 1;
-                                profileCacheEntry.AccountData.athena.CommandRevision += 1;
-                            }
+                                profileCacheEntry.AccountData.athena.BumpRevisions();
 
                             if (ApplyProfileChanges.Count > 0)
-                            {
-                                profileCacheEntry.AccountData.commoncore.RVN += 1;
-                                profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
-                            }
+                                profileCacheEntry.AccountData.commoncore.BumpRevisions();
 
                             Mcp mcp = new Mcp()
                             {
@@ -381,7 +370,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                     {
                                         profileRevision = profileCacheEntry.AccountData.athena.RVN,
                                         profileId = "athena",
-                                        profileChangesBaseRevision = BaseRev2,
+                                        profileChangesBaseRevision = BaseRev_A,
                                         profileChanges = MultiUpdates,
                                         profileCommandRevision = profileCacheEntry.AccountData.athena.CommandRevision,
                                     }

@@ -16,6 +16,8 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
 
         public static Dictionary<int, List<SeasonBP>> SeasonBattleStarsItems = new Dictionary<int, List<SeasonBP>>();
         public static Dictionary<int, List<string>> SeasonSpecialItems = new Dictionary<int, List<string>>();
+        public static Dictionary<int, List<SeasonBPPurchase>> BattlePassPItems = new Dictionary<int, List<SeasonBPPurchase>>();
+
 
         public static void Init()
         {
@@ -26,6 +28,9 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                 if (!seasonFolder.Contains("Season")) continue;
                 //Console.WriteLine(seasonFolder);
                 int season = int.Parse(seasonFolder.Split("\\Season")[1]);
+
+                if (Saved.Saved.DeserializeGameConfig.ForceSeason)
+                    if ((int)Saved.Saved.DeserializeGameConfig.Season != season) continue;
 
                 var SeasonSpecialFolder = Path.Combine(seasonFolder, "SeasonSpecial.json");
 
@@ -60,10 +65,8 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                         {
                             Logger.Error($"Failed To Load Season {season} ({Path.GetFileName(SeasonXPFolder)})", "BattlepassManager");
                         }
-                        //JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
                     }
                 }
-                // string battlepassFilePath = Path.Combine(seasonFolder, "BattlePass.json");
 
                 var SeasonBattleStarsFolder = Path.Combine(seasonFolder, "SeasonBP.json");
 
@@ -83,7 +86,6 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                             if(season > 1)
                                 Logger.Error($"Failed To Load Season {season} ({Path.GetFileName(SeasonBattleStarsFolder)})", "BattlepassManager");
                         }
-                        //JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
                     }
                 }
 
@@ -116,6 +118,30 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                     else
                     {
                         Logger.Error($"The season {season} doesn't contain a battlepass!", "BattlepassManager");
+                    }
+                }
+
+
+                if(season >= 17)
+                {
+                    string BpItemsFilePath = Path.Combine(seasonFolder, "BP_Items.json");
+
+                    if (File.Exists(BpItemsFilePath))
+                    {
+                        string seasonData = File.ReadAllText(BpItemsFilePath);
+
+                        if (!string.IsNullOrEmpty(seasonData))
+                        {
+                            List<SeasonBPPurchase> battleP = JsonConvert.DeserializeObject<List<SeasonBPPurchase>>(seasonData)!;
+                            if (battleP != null && battleP.Count > 0)
+                            {
+                                BattlePassPItems.Add(season, battleP);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Logger.Error($"The season {season} doesn't contain a *BP_Items*!", "BattlepassManager");
                     }
                 }
 
@@ -174,8 +200,6 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                     Logger.Error($"The season {season} doesn't contain a SeasonFreeBattlePass!", "BattlepassManager");
                 }
             }
-
-            ///JsonConvert.DeserializeObject<List<SeasonXP>>(SeasonData)
 
             Logger.Log($"Loaded BattlePasses [{BattlePasses.Count}/{seasonFolders.Count()}]", "BattlpassManager");
             Logger.Log($"Loaded FreeBattlePasses [{FreeBattlePassItems.Count}/{seasonFolders.Count()}]", "BattlpassManager");

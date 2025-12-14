@@ -94,7 +94,7 @@ namespace FortBackend.src.App.Utilities.Helpers
                                     }
                                     else
                                     {
-                                        VersionIG.Season = saved.Season;
+                                        VersionIG.Season = (int)saved.Season;
                                     }
                                 }
                                 else
@@ -138,7 +138,7 @@ namespace FortBackend.src.App.Utilities.Helpers
 
                     if (saved.ForceSeason)
                     {
-                        VersionIG.Season = saved.Season;
+                        VersionIG.Season = (int)saved.Season;
                     }
                 }
                 catch (Exception ex)

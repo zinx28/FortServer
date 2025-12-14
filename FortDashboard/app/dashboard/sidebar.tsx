@@ -1,4 +1,4 @@
-import { Activity, LogOut, Settings, Users } from "lucide-react";
+import { Activity, LogOut, Server, Settings, Users } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useUserStore } from "@/hooks/useUserStore";
@@ -59,6 +59,18 @@ const Sidebar = () => {
             </Button>
             <Button
               variant={
+                pathname === "/dashboard/servers" ? "secondary" : "ghost"
+              }
+              className="flex justify-start gap-2 px-4 py-2"
+              asChild
+            >
+              <Link href="/dashboard/servers">
+                <Server className="h-4 w-4" />
+                Matchmaker
+              </Link>
+            </Button>
+            <Button
+              variant={
                 pathname === "/dashboard/admin-panel" ? "secondary" : "ghost"
               }
               className="flex justify-start gap-2 px-4 py-2"
@@ -80,24 +92,24 @@ const Sidebar = () => {
               <p className="text-sm font-medium">{user?.displayName}</p>
             </div>
             <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
-                    <Settings className="h-4 w-4" />
-                    <span className="sr-only">Settings</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem>
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Settings</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem className="text-red-500" onClick={() => LogoutDashboard()}>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Logout</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Settings className="h-4 w-4" />
+                  <span className="sr-only">Settings</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="text-red-500" onClick={() => LogoutDashboard()}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Logout</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>

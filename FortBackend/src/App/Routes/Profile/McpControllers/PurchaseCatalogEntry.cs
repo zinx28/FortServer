@@ -69,7 +69,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                                 if (OfferId.Contains(":/"))
                                 {
-                                    Mcp mcp = await PurchaseItem.Init(Season, ProfileId, Body, profileCacheEntry);
+                                    Mcp mcp = await PurchaseItem.Init(Season, ProfileId, Body, profileCacheEntry, RVN);
                                     return mcp;
                                 }
                                 else
@@ -91,8 +91,6 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
                                             error_description = "Catalog Limit is at least 1!",
                                         };
                                     }
-
-                                    var SingleTierOffer = battlepass.catalogEntries.FirstOrDefault(e => e.offerId == OfferId && e.devName.Contains("SingleTier"));
 
                                     if (battlepass != null)
                                     {

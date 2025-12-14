@@ -1,0 +1,730 @@
+{
+    "Outfit_Sm": {
+        "Cost": 9,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Outfit_Med": {
+        "Cost": 9,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Outfit_Lrg": {
+        "Cost": 9,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Style_Sm": {
+        "Cost": 8,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Style_Med": {
+        "Cost": 8,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Style_Lrg": {
+        "Cost": 8,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Spray_Sm": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Spray_Med": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Spray_Lrg": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Emoticon_Sm": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Emoticon_Med": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Emoticon_Lrg": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Banner_Sm": {
+        "Cost": 2,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Banner_Med": {
+        "Cost": 2,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Banner_Lrg": {
+        "Cost": 2,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "LoadingScreen_Sm": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "LoadingScreen_Med": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "LoadingScreen_Lrg": {
+        "Cost": 3,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Wrap_Sm": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Wrap_Med": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Wrap_Lrg": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Contrail_Sm": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Contrail_Med": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Contrail_Lrg": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Music_Sm": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Music_Med": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Music_Lrg": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "PickAxe_Sm": {
+        "Cost": 7,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "PickAxe_Med": {
+        "Cost": 7,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "PickAxe_Lrg": {
+        "Cost": 7,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Glider_Sm": {
+        "Cost": 6,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Glider_Med": {
+        "Cost": 6,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Glider_Lrg": {
+        "Cost": 6,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BackBling_Sm": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BackBling_Med": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BackBling_Lrg": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Emote_Sm": {
+        "Cost": 7,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Emote_Med": {
+        "Cost": 7,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Emote_Lrg": {
+        "Cost": 7,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Vbucks_Sm": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Vbucks_Med": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Vbucks_Lrg": {
+        "Cost": 5,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "SuperLevelStyles_T1": {
+        "Cost": 20,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "SuperLevelStyles_T2": {
+        "Cost": 20,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "SuperLevelStyles_T3": {
+        "Cost": 20,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "CustomizableStyle": {
+        "Cost": 10,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "InkStylePoint"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/Blueprints/Blutilities/ForArtists/TextureTools/PlaceholderTextureGenerator/Placeholder_Icon_Template.Placeholder_Icon_Template",
+            "SubPathString": ""
+        }
+    },
+    "Outfit_Included": {
+        "Cost": -1,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Variant_Pickaxe": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Variant_Glider": {
+        "Cost": 6,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "Variant_Backbling": {
+        "Cost": 4,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BonusReward_T1": {
+        "Cost": 10,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BonusReward_T2": {
+        "Cost": 15,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BonusReward_T3": {
+        "Cost": 20,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BonusReward_T4": {
+        "Cost": 25,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "BonusReward_T5": {
+        "Cost": 30,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "AthenaBattleStar"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/UI/Foundation/Textures/Icons/Items/T-FNBR-BattlePoints.T-FNBR-BattlePoints",
+            "SubPathString": ""
+        }
+    },
+    "CustomizableStyle_More": {
+        "Cost": 15,
+        "CurrencyItemTemplate": {
+            "PrimaryAssetType": {
+                "Name": "AccountResource"
+            },
+            "PrimaryAssetName": "InkStylePoint"
+        },
+        "CurrencyItem_IconPath": {
+            "AssetPathName": "/Game/Blueprints/Blutilities/ForArtists/TextureTools/PlaceholderTextureGenerator/Placeholder_Icon_Template.Placeholder_Icon_Template",
+            "SubPathString": ""
+        }
+    }
+}

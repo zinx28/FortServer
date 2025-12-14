@@ -27,7 +27,7 @@ namespace FortBackend.src.App.Utilities.Shop
                                 var originalBundle = Saved.Saved.BackendCachedData.ShopBundles
                                 .FirstOrDefault(bundle => bundle.BundleID == filteredBundle.BundleID && (filteredBundle.Weekly.Count > 1 || filteredBundle.Daily.Count > 1));
 
-                                if (originalBundle != null)
+                                if (originalBundle != null && originalBundle.LastShownDate != filteredBundle.LastShownDate)
                                 {
                                     originalBundle.LastShownDate = filteredBundle.LastShownDate;
                                     Logger.Log($"Bundle: {filteredBundle.BundleID} date been updated to {filteredBundle.LastShownDate}");

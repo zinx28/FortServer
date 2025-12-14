@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
 using FortLibrary.EpicResponses.Profile.Query.Items;
+using FortBackend.src.App.Utilities.MongoDB.Extentions;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers
 {
@@ -19,6 +20,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
             string currentDate = DateTime.UtcNow.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
             if (ProfileId == "common_core")
             {
+                int BaseRev_G = profileCacheEntry.AccountData.commoncore.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
 
                 List<object> MultiUpdates = new List<object>();
@@ -63,12 +65,11 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
 
                 if (MultiUpdates.Count > 0)
                 {
-                    profileCacheEntry.AccountData.commoncore.RVN += 1;
-                    profileCacheEntry.AccountData.commoncore.CommandRevision += 1;
+                    profileCacheEntry.AccountData.commoncore.BumpRevisions();
                     profileCacheEntry.LastUpdated = DateTime.UtcNow;
                 }
 
-                if (BaseRev != RVN)
+                if (BaseRev_G != RVN)
                 {
                     Mcp test = await CommonCoreResponse.Grab(AccountId, ProfileId, Season, RVN, profileCacheEntry);
                     ProfileChanges = test.profileChanges;

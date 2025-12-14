@@ -34,6 +34,7 @@ namespace FortBackend.src.App.Utilities.Saved
         public List<ShopItems> ShopEmotesItems { get; set; } = new List<ShopItems>();
         public List<ShopItems> ShopGlidersItems { get; set; } = new List<ShopItems>();
         public List<ShopItems> ShopWrapItems { get; set; } = new List<ShopItems>();
+        public Dictionary<string, FestiveShopItems> ShopFestiveItems { get; set; } = new();
 
         public ShopJson CurrentShop { get; set; } = new ShopJson();
         public List<ItemsSaved> OGShop { get; set; } = new List<ItemsSaved>();

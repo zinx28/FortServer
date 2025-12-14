@@ -112,9 +112,9 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                         {
                                             attributes = new AthenaStatsAttributes
                                             {
-                                                use_random_loadout = false,
+                                                use_random_loadout = profileCacheEntry.AccountData.athena.random_loadout,
                                                 past_seasons = new List<object>(),
-                                                loadouts =  profileCacheEntry.AccountData.athena.loadouts,
+                                                loadouts =  profileCacheEntry.AccountData.athena.loadouts!,
                                                 mfa_reward_claimed = false,
                                                 rested_xp_overflow = 0,
                                                 last_xp_interaction = "9999-12-10T22:14:37.647Z",
@@ -138,8 +138,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                                                 rested_xp_mult = 0,
                                                 season_match_boost = seasonObject.season_match_boost,
                                                 season_friend_match_boost = seasonObject.season_friend_match_boost,
-                                                active_loadout_index = Array.IndexOf(profileCacheEntry.AccountData.athena.loadouts, profileCacheEntry.AccountData.athena.last_applied_loadout),
-                                                purchased_bp_offers = new List<object> { },
+                                                active_loadout_index = 0/*profileCacheEntry.AccountData.athena.loadouts.FindIndex((e) => e == profileCacheEntry.AccountData.athena.last_applied_loadout)*/,
+                                                purchased_bp_offers = seasonObject.season_offers,
                                                 last_applied_loadout = profileCacheEntry.AccountData.athena.last_applied_loadout?.ToString() ?? "",
                                                 xp = seasonObject.SeasonXP,
                                                 rested_xp = seasonObject.SeasonXP,
@@ -176,7 +176,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.QueryResponses
                             }
                             else
                             {
-                                foreach (var kvp in profileCacheEntry.AccountData.athena.Items)
+                                foreach (var kvp in profileCacheEntry.AccountData.athena.Items!)
                                 {
                                     ProfileChange.Profile.items.Add(kvp.Key, kvp.Value);
                                 }

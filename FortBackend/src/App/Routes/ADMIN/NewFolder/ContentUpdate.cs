@@ -33,7 +33,7 @@ namespace FortBackend.src.App.Routes.ADMIN.NewFolder
         public class ServerContentRequest
         {
             public bool ForcedSeason { get; set; }
-            public int Season { get; set; } = 0;
+            public float Season { get; set; } = 0;
             public int WeeklyQuests { get; set; } = 0;
             public bool ShopRotation { get; set; } 
         }

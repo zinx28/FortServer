@@ -1,26 +1,27 @@
-﻿using FortLibrary.EpicResponses.Profile.Purchases;
-using FortLibrary.EpicResponses.Profile;
-using FortLibrary;
-using static FortBackend.src.App.Utilities.Helpers.Grabber;
-using FortLibrary.Dynamics;
-using FortLibrary.Shop;
-using FortLibrary.EpicResponses.Storefront;
-using Microsoft.IdentityModel.Tokens;
-using FortLibrary.MongoDB.Module;
+﻿using Discord;
+using FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog.BP;
 using FortBackend.src.App.Utilities;
-using FortLibrary.EpicResponses.Errors;
-using FortLibrary.EpicResponses.Profile.Query.Items;
 using FortBackend.src.App.Utilities.Helpers.BattlepassManagement;
-using Newtonsoft.Json;
-using Discord;
+using FortBackend.src.App.Utilities.Quests;
 using FortBackend.src.XMPP.Data;
+using FortBackend.src.XMPP.SERVER.Send;
+using FortLibrary;
+using FortLibrary.Dynamics;
+using FortLibrary.EpicResponses.Errors;
+using FortLibrary.EpicResponses.Profile;
+using FortLibrary.EpicResponses.Profile.Purchases;
+using FortLibrary.EpicResponses.Profile.Query.Items;
+using FortLibrary.EpicResponses.Profile.Quests;
+using FortLibrary.EpicResponses.Storefront;
+using FortLibrary.MongoDB.Module;
+using FortLibrary.Shop;
 using FortLibrary.XMPP;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System.Net.WebSockets;
 using System.Text;
 using System.Xml.Linq;
-using FortBackend.src.App.Utilities.Quests;
-using FortLibrary.EpicResponses.Profile.Quests;
-using FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog.BP;
+using static FortBackend.src.App.Utilities.Helpers.Grabber;
 
 namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 {
@@ -35,8 +36,8 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
             List<object> ApplyProfileChanges = new List<object>();
             var NotificationsItems = new List<NotificationsItemsClass>();
 
-            int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;
-            int BaseRev2 = profileCacheEntry.AccountData.athena.RVN;
+            int BaseRev = Season.Season >= 17 ? profileCacheEntry.AccountData.commoncore.CommandRevision : profileCacheEntry.AccountData.commoncore.RVN;
+            int BaseRev2 = Season.Season >= 17 ? profileCacheEntry.AccountData.athena.CommandRevision : profileCacheEntry.AccountData.athena.RVN;
             catalogEntrieStore ShopContent = new catalogEntrieStore();
 
             foreach (catalogEntrieStore storefront in battlepass.catalogEntries)
@@ -109,16 +110,20 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                             bool NeedItems1 = true;
                             // THIS IS SO WE DONT GO CRAZY
                             int BookLevelOG = seasonObject.BookLevel;
-
-                            Logger.Warn(BookLevelOG.ToString());
+                            int BattleStarCurrenOG = seasonObject.battlestars_currency;
 
                             seasonObject.BookXP += (10 * Body.purchaseQuantity);
 
-                            if (Season.Season > 10 && Season.Season <= 17 && Price != 0)
+                            if (Season.Season >= 11 && Season.Season < 18 && Price != 0)
                             {
                                 seasonObject.BookLevel += Body.purchaseQuantity;
                                 seasonObject.Level = seasonObject.BookLevel;
                                 seasonObject.BookXP = seasonObject.BookLevel;
+                            }
+                            // i cant give this above season 19 yet
+                            else if (Season.Season >= 18 && Season.Season < 20 && Price != 0)
+                            {
+                                seasonObject.battlestars_currency += (5 * Body.purchaseQuantity);
                             }
 
                             (seasonObject, NeedItems1) = await LevelUpdater.Init(Season.Season, seasonObject, NeedItems1);
@@ -348,14 +353,29 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                     value = seasonObject.BookLevel
                                                 });
 
-                                                // season 12?!?!
-                                                Logger.Error("LEVEL " + seasonObject.Level.ToString());
                                                 ApplyProfileChanges.Add(new
                                                 {
                                                     changeType = "statModified",
                                                     name = $"level",
                                                     value = seasonObject.Level
                                                 });
+
+                                                if (BattleStarCurrenOG != seasonObject.battlestars_currency)
+                                                {
+                                                    ApplyProfileChanges.Add(new
+                                                    {
+                                                        changeType = "statModified",
+                                                        name = "battlestars",
+                                                        value = seasonObject.battlestars_currency
+                                                    });
+
+                                                    ApplyProfileChanges.Add(new
+                                                    {
+                                                        changeType = "statModified",
+                                                        name = "battlestars_season_total",
+                                                        value = seasonObject.battlestars_currency
+                                                    });
+                                                }
 
                                                 // after to get the correct price
                                                 MultiUpdates.Add(new
@@ -400,63 +420,14 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                                     quantity = 1
                                                 });
 
-                                                if (!string.IsNullOrEmpty(profileCacheEntry.AccountId))
-                                                {
-                                                    Clients Client = GlobalData.Clients.FirstOrDefault(client => client.accountId == profileCacheEntry.AccountId)!;
-
-                                                    if (Client != null)
-                                                    {
-                                                        string xmlMessage;
-                                                        byte[] buffer;
-                                                        WebSocket webSocket = Client.Game_Client;
-                                                        Logger.PlainLog(webSocket.State);
-                                                        if (webSocket != null && webSocket.State == WebSocketState.Open)
-                                                        {
-                                                            XNamespace clientNs = "jabber:client";
-
-                                                            var message = new XElement(clientNs + "message",
-                                                              new XAttribute("from", $"xmpp-admin@prod.ol.epicgames.com"),
-                                                              new XAttribute("to", profileCacheEntry.AccountId),
-                                                              new XElement(clientNs + "body", JsonConvert.SerializeObject(new
-                                                              {
-                                                                  payload = new { },
-                                                                  type = "com.epicgames.gift.received",
-                                                                  timestamp = DateTime.UtcNow.ToString("o")
-                                                              }))
-                                                            );
-
-                                                            xmlMessage = message.ToString();
-                                                            buffer = Encoding.UTF8.GetBytes(xmlMessage);
-
-                                                            Logger.PlainLog(xmlMessage);
-
-                                                            await webSocket.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
-                                                        }
-
-                                                    }
-
-                                                }
-
+                                                await XmppGift.NotifyUser(profileCacheEntry.AccountId);
                                             }
-
                                         }
 
                                     }
 
                                 }
                             }
-
-                            //
-                            //throw new BaseError()
-                            //{
-                            //    errorCode = "errors.com.epicgames.modules.catalog",
-                            //    errorMessage = "FortBackend Doesn't Support This At the moment~ SingleTier",
-                            //    messageVars = new List<string> { "PurchaseCatalogEntry" },
-                            //    numericErrorCode = 12801,
-                            //    originatingService = "any",
-                            //    intent = "prod",
-                            //    error_description = "FortBackend Doesn't Support This At the moment~ SingleTier",
-                            //};
                         }
                         else
                         {
@@ -475,15 +446,50 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                 };
                             }
 
-                            if (ShopContent.devName.ToString().Contains("BattleBundle"))
+                            if (ShopContent.devName.Contains("Battle"))
                             {
+
                                 bool NeedItems = true;
                                 int BookLevelOG = seasonObject.BookLevel;
+                                int BattleStarsOG = seasonObject.battlestars_currency;
 
-                                // We dont want this to be skunked
-                                if(!(seasonObject.BookLevel >= 25))
+                                if (ShopContent.devName.Contains("Bundle")) {
+                                    // We dont want this to be skunked
+                                    if (!(seasonObject.BookLevel >= 25))
+                                    {
+                                        seasonObject.BookLevel = 25;
+                                        if (Season.Season >= 11 && Season.Season < 17)
+                                        {
+                                            seasonObject.Level = 25;
+                                            ApplyProfileChanges.Add(new
+                                            {
+                                                changeType = "statModified",
+                                                name = $"level",
+                                                value = seasonObject.BookLevel
+                                            });
+                                        }
+                                    }
+
+                                    (seasonObject, NeedItems) = await LevelUpdater.Init(Season.Season, seasonObject, NeedItems);
+                                }
+
+                                (seasonObject, currencyItem, ApplyProfileChanges, MultiUpdates, profileCacheEntry) = await BattlePurchase.Init(seasonObject, Season, currencyItem, Price, ApplyProfileChanges, MultiUpdates, profileCacheEntry, NeedItems);
+
+                                if(BattleStarsOG != seasonObject.battlestars_currency)
                                 {
-                                    seasonObject.BookLevel = 25;
+                                    ApplyProfileChanges.Add(new
+                                    {
+                                        changeType = "statModified",
+                                        name = "battlestars",
+                                        value = seasonObject.battlestars_currency
+                                    });
+
+                                    ApplyProfileChanges.Add(new
+                                    {
+                                        changeType = "statModified",
+                                        name = "battlestars_season_total",
+                                        value = seasonObject.battlestars_currency
+                                    });
                                 }
 
                                 ApplyProfileChanges.Add(new
@@ -492,19 +498,15 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
                                     name = $"book_level",
                                     value = seasonObject.BookLevel
                                 });
-
-
-                                (seasonObject, NeedItems) = await LevelUpdater.Init(Season.Season, seasonObject, NeedItems);
-
-                                (seasonObject, currencyItem, ApplyProfileChanges, MultiUpdates, profileCacheEntry) = await BattlePurchase.Init(seasonObject, Season, currencyItem, Price, ApplyProfileChanges, MultiUpdates, profileCacheEntry, NeedItems);
+                            
 
                             }
-                            else if (ShopContent.devName.ToString().Contains("BattlePass"))
-                            {
-                                bool NeedItems = true;
-                                //int BookLevelOG = seasonObject.BookLevel;
-                                (seasonObject, currencyItem, ApplyProfileChanges, MultiUpdates, profileCacheEntry) = await BattlePurchase.Init(seasonObject, Season, currencyItem, Price, ApplyProfileChanges, MultiUpdates, profileCacheEntry, NeedItems);
-                            }
+                            //else if (ShopContent.devName.ToString().Contains("BattlePass"))
+                            //{
+                            //    bool NeedItems = true;
+                            //    //int BookLevelOG = seasonObject.BookLevel;
+                            //    (seasonObject, currencyItem, ApplyProfileChanges, MultiUpdates, profileCacheEntry) = await BattlePurchase.Init(seasonObject, Season, currencyItem, Price, ApplyProfileChanges, MultiUpdates, profileCacheEntry, NeedItems);
+                            //}
                             else
                             {
                                 throw new BaseError()

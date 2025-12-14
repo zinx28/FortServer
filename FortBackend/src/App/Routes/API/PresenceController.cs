@@ -6,28 +6,28 @@ namespace FortBackend.src.App.Routes.API
     [Route("presence/api/v1")]
     public class PresenceController : ControllerBase
     {
-        [HttpGet("_/{accountId}/settings/subscriptions")]
+        [HttpGet("{_}/{accountId}/settings/subscriptions")]
         public ActionResult GrabSettings(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());
         }
 
-        [HttpGet("_/{accountId}/last-online")]
+        [HttpGet("{_}/{accountId}/last-online")]
         public ActionResult GrabLastOnline(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());
         }
 
-        [HttpGet("_/{accountId}/subscriptions")]
+        [HttpGet("{_}/{accountId}/subscriptions")]
         public ActionResult SubWow(string accountId)
         {
             Response.ContentType = "application/json";
             return Ok(Array.Empty<string>());
         }
 
-        [HttpGet("_/{accountId}/subscriptions/nudged")]
+        [HttpGet("{_}/{accountId}/subscriptions/nudged")]
         public ActionResult GrabNudged(string accountId)
         {
             Response.ContentType = "application/json";

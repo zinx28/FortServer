@@ -25,7 +25,7 @@ namespace FortBackend.src.App.Utilities.Quests
                         // TO FORCE SEASON!!!
                         if (Saved.Saved.DeserializeGameConfig.ForceSeason)
                         {
-                            if (!(Path.GetFileName(folder) == $"Season{Saved.Saved.DeserializeGameConfig.Season}")) continue;
+                            if (!(Path.GetFileName(folder) == $"Season{(int)Saved.Saved.DeserializeGameConfig.Season}")) continue;
                         }
                             //Path.GetFileName(folder)
                               

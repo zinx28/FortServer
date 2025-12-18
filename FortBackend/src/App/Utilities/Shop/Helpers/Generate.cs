@@ -339,7 +339,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 {
                     price = Generator.categoryMap[ChosenItemString](RandomSkinItem.rarity);
                     Logger.PlainLog(price);
-                    if (price != 0)
+                    if (price != -1)
                     {
                         Price = price;
                     }
@@ -414,7 +414,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             {
                 price = Generator.categoryMap[ItemType](RandomSkinItem.rarity);
                 Logger.PlainLog(price);
-                if (price != 0)
+                if (price != -1)
                 {
                     Price = price;
                 }

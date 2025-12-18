@@ -125,21 +125,21 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers.PurchaseCatalog
 
                     CommonCoreItem CurrentVbucks = profileCacheEntry.AccountData.commoncore.Items["Currency"];
        
-                    if (CurrentVbucks.quantity == 0)
+                    if (CurrentVbucks.quantity == 0 && ShopContent.price != 0) // ha
                     {
                         throw new BaseError()
                         {
                             errorCode = "errors.com.epicgames.modules.catalog",
-                            errorMessage = "Your Poor",
+                            errorMessage = "You don't have enough funds for this", // idk the real response i havent attemped before
                             messageVars = new List<string> { "PurchaseCatalogEntry" },
                             numericErrorCode = 12801,
                             originatingService = "any",
                             intent = "prod",
-                            error_description = "Your Poor",
+                            error_description = "You don't have enough funds for this",
                         };
                     }
 
-                    if (ShopContent.price > int.Parse(CurrentVbucks.quantity.ToString()))
+                    if (ShopContent.price > CurrentVbucks.quantity)
                     {
                         throw new BaseError()
                         {

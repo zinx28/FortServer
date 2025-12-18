@@ -18,7 +18,7 @@ namespace FortBackend.src.App.Routes.Profile.McpControllers
         public static async Task<Mcp> Init(string AccountId, string ProfileId, VersionClass Season, int RVN, ProfileCacheEntry profileCacheEntry, RemoveGiftBoxReq requestBodyy)
         {
             string currentDate = DateTime.UtcNow.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
-            if (ProfileId == "common_core")
+            if (ProfileId == "common_core" || ProfileId == "common_public")
             {
                 int BaseRev_G = profileCacheEntry.AccountData.commoncore.GetBaseRevision(Season.Season);
                 int BaseRev = profileCacheEntry.AccountData.commoncore.RVN;

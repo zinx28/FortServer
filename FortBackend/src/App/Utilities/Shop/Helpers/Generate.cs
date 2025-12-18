@@ -26,9 +26,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                        .FirstOrDefault(e => e.Key == currentEvent);
 
                 if (FestiveShop.Key != null && FestiveShop.Value != null)
-                {
                     bundleItems = FestiveShop.Value.Bundles;
-                }
             }
             else 
                 bundleItems = Saved.Saved.BackendCachedData.ShopBundlesFiltered; 
@@ -36,9 +34,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
             if (bundleItems != null)
             {
                 int randomIndex = random.Next(bundleItems.Count);
-                Logger.PlainLog(randomIndex);
                 ShopBundles RandomSkinItem = bundleItems[randomIndex];
-                Logger.PlainLog(RandomSkinItem);
+
                 if (RandomSkinItem == null)
                 {
                     Logger.Error($"Shop generation will be canceled -> RandomSkinItem is null", "ItemShop");
@@ -48,7 +45,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 DateTime lastShownDate;
                 if (DateTime.TryParse(RandomSkinItem.LastShownDate, out lastShownDate))
                 {
-                    if ((lastShownDate.Month == DateTime.Now.Month && lastShownDate.Year == DateTime.Now.Year) && !RandomSkinItem.AllowAgain)
+                    if ((lastShownDate.Month == DateTime.UtcNow.Month && lastShownDate.Year == DateTime.UtcNow.Year) && !RandomSkinItem.AllowAgain)
                     {
                         Logger.Log("Item Already been this month", "ItemShop");
                         Generator.Attempts += 1;
@@ -56,7 +53,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                     }
                 }
 
-                RandomSkinItem.LastShownDate = DateTime.Now.ToString();
+                RandomSkinItem.LastShownDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
                 await UpdateShopBundle.UpdateShopData();
 
@@ -70,15 +67,11 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
                     foreach (var Item in DailyArray)
                     {
-
                         if (!Item.categories.Any())
-                        {
                             HowManyTurns += 1;
-                        }
+
                         if (Item.singleprice != -1)
-                        {
                             Price = Item.singleprice;
-                        }
                         else
                         {
                             ItemTemplateId = Generator.GetCategoryFromItem(Item.item)!;
@@ -89,42 +82,9 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 return false;
                             }
 
-                            int price = 0;
                             if (Generator.categoryMap.ContainsKey(ItemTemplateId))
-                            {
-                                Logger.Log("TEST!!");
-                                price = Generator.categoryMap[ItemTemplateId](Item.rarity);
-
-                                if (price != 0)
-                                {
-                                    Price = price;
-                                }
-                            }
-
-                            //if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
-                            //{
-                            //    Price = price;
-                            //}
+                                Price = Generator.categoryMap[ItemTemplateId](Item.rarity);
                         }
-
-                        //if (Item.singleprice == -1)
-                        //{
-                        //    if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
-                        //    {
-                        //        Price = price;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    if (Item.newprice != -1)
-                        //    {
-                        //        Price = Item.newprice;
-                        //    }
-                        //    else
-                        //    {
-                        //        Price = Item.singleprice;
-                        //    }
-                        //}
 
                         Generator.savedData.DailyFields.Add(new
                         {
@@ -147,8 +107,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             type = "Normal",
                             categories = Item.categories
                         });
-                        Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
 
+                        Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                         Generator.DailyItems -= 1;
                     }
                    
@@ -159,26 +119,20 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 {
                     Logger.Log("Generating Weekly Bundles", "ItemShop");
                     HowManyTurns = 0;
-                    int Price = -1; // High As Broken
+                    int Price = -1;
                     string ItemTemplateId = "";
 
 
                     foreach (var Item in WeeklyArray)
                     {
-
                         if (!Item.categories.Any())
-                        {
                             HowManyTurns += 1;
-                        }
 
                         if (Item.singleprice != -1)
-                        {
                             Price = Item.singleprice;
-                        }
                         else
                         {
                             ItemTemplateId = Generator.GetCategoryFromItem(Item.item)!;
-
 
                             if (string.IsNullOrEmpty(ItemTemplateId))
                             {
@@ -186,43 +140,9 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                                 return false;
                             }
 
-                            int price = 0;
                             if (Generator.categoryMap.ContainsKey(ItemTemplateId))
-                            {
-                                price = Generator.categoryMap[ItemTemplateId](Item.rarity);
-
-                                if (price != -1)
-                                {
-                                    Price = price;
-                                }
-                            }
-
-                            //if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
-                            //{
-                            //    Price = price;
-                            //}
+                                Price = Generator.categoryMap[ItemTemplateId](Item.rarity);
                         }
-
-
-
-                        //if (Item.singleprice == -1)
-                        //{
-                        //    if (Generator.PriceValues.TryGetValue(ItemTemplateId, out var categoryPrices) && categoryPrices.TryGetValue(Item.rarity, out var price))
-                        //    {
-                        //        Price = price;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    if (Item.newprice != -1)
-                        //    {
-                        //        Price = Item.newprice;
-                        //    }
-                        //    else
-                        //    {
-                        //        Price = Item.singleprice;
-                        //    }
-                        //}
 
                         Generator.savedData.WeeklyFields.Add(new
                         {
@@ -244,6 +164,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             type = "Normal",
                             categories = Item.categories
                         });
+
                         Logger.Log($"Generated {ItemTemplateId}:{Item.name}", "ItemShop");
                     }
                     Generator.WeeklyItems -= 1;
@@ -296,7 +217,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             break;
                         }
                     }
-                    //ChosenItem = (itemType[i]);
+
                     break;
                 }
             }
@@ -310,45 +231,17 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                 DateTime lastShownDate;
                 if (DateTime.TryParse(RandomSkinItem.LastShownDate, out lastShownDate))
                 {
-                    if (lastShownDate.Month == DateTime.Now.Month && lastShownDate.Year == DateTime.Now.Year)
+                    if (lastShownDate.Month == DateTime.UtcNow.Month && lastShownDate.Year == DateTime.UtcNow.Year)
                     {
                         await SingleItem(savedData, ListItemSaved, itemType, rarityProb, DiscordFields, type);
                         return;
                     }
                 }
 
-                RandomSkinItem.LastShownDate = DateTime.Now.ToString("yyyy-MM-dd");
+                RandomSkinItem.LastShownDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
-                // enable if you want doesnt really matter (epic has the same items in the shop 24/7 now)
-                
-                //string filePath = Path.Combine(PathConstants.BaseDir, $"json/shop/{ChosenItemString}.json");
-                //if (!File.Exists(filePath))
-                //{
-                //    Logger.Error("Chosen Item: " + ChosenItemString + " Path isnt found :(");
-                //    return;
-                //}
-                //string updatedJsonContent = JsonConvert.SerializeObject(ChosenItem, Formatting.Indented);
-                //File.WriteAllText(filePath, updatedJsonContent);
-
-                //
-
-                int price = 0;
-                Logger.PlainLog(ChosenItemString);
-                Logger.PlainLog(Generator.categoryMap.ContainsKey(ChosenItemString));
                 if (Generator.categoryMap.ContainsKey(ChosenItemString))
-                {
-                    price = Generator.categoryMap[ChosenItemString](RandomSkinItem.rarity);
-                    Logger.PlainLog(price);
-                    if (price != -1)
-                    {
-                        Price = price;
-                    }
-                }
-
-                //if (Generator.PriceValues.TryGetValue(ChosenItem, out var categoryPrices) && categoryPrices.TryGetValue(RandomSkinItem.rarity, out var price))
-                //{
-                //    Price = price;
-                //}
+                    Price = Generator.categoryMap[ChosenItemString](RandomSkinItem.rarity);
 
                 DiscordFields.Add(new
                 {
@@ -382,10 +275,8 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
         public static async Task FestiveSingleItem(SavedData savedData, List<ItemsSaved> ListItemSaved, List<string> itemType, List<ShopItems> shopItems, List<object> DiscordFields, string type = "Small")
         {
-            Random random = new Random();
             int Price = -1;
-            var rng = new Random();
-
+            Random rng = new Random();
 
             var available = shopItems
                 .Where(item =>
@@ -399,26 +290,17 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
 
             if (available.Count == 0)
             {
-                // no point at the point to continue doing this
                 await SingleItem(savedData, ListItemSaved, itemType, Generator.rarityProb1, DiscordFields, type);
                 return;
             }
 
             var RandomSkinItem = available[rng.Next(available.Count)];
-
             RandomSkinItem.LastShownDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
             var ItemType = Generator.GetCategoryFromItem(RandomSkinItem.item);
-            int price = 0;
+
             if (ItemType != null && Generator.categoryMap.ContainsKey(ItemType))
-            {
-                price = Generator.categoryMap[ItemType](RandomSkinItem.rarity);
-                Logger.PlainLog(price);
-                if (price != -1)
-                {
-                    Price = price;
-                }
-            }
+                Price = Generator.categoryMap[ItemType](RandomSkinItem.rarity);
 
             DiscordFields.Add(new
             {

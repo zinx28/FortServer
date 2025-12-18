@@ -139,7 +139,7 @@ namespace FortBackend.src.App
                     
                     else if (DateTime.TryParse(shopData.expiration, out DateTime expirationDate))
                     {
-                        if (DateTime.Now > expirationDate)
+                        if (DateTime.UtcNow > expirationDate)
                         {
                             Logger.Warn("Shop auto re-generated due to being expired", "[SHOP]");
                             (new Thread(async () =>

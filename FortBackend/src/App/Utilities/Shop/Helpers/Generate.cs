@@ -191,7 +191,7 @@ namespace FortBackend.src.App.Utilities.Shop.Helpers
                             {
                                 price = Generator.categoryMap[ItemTemplateId](Item.rarity);
 
-                                if (price != 0)
+                                if (price != -1)
                                 {
                                     Price = price;
                                 }

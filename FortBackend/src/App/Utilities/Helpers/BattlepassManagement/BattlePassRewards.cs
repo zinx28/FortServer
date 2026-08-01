@@ -205,7 +205,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 MultiUpdates.Add(new
                                 {
                                     changeType = "statModified",
-                                    name = "season_match_boost",
+                                    name = "season_friend_match_boost",
                                     value = FoundSeason.season_friend_match_boost
                                 });
                             }
@@ -216,7 +216,7 @@ namespace FortBackend.src.App.Utilities.Helpers.BattlepassManagement
                                 MultiUpdates.Add(new
                                 {
                                     changeType = "statModified",
-                                    name = "season_friend_match_boost",
+                                    name = "season_match_boost",
                                     value = FoundSeason.season_match_boost
                                 });
                             }
